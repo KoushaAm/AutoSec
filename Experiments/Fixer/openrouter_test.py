@@ -1,4 +1,3 @@
-# NVIDIA: Nemotron Nano 9B V2 - https://openrouter.ai/nvidia/nemotron-nano-9b-v2:free/api
 import json
 from datetime import datetime, timezone
 from pathlib import Path
