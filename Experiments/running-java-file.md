@@ -22,3 +22,9 @@ echo "echo someInput" | java Vulnerable
 
 ## Quick Remove .class files
 - `rm -rf *.class`
+
+## Checking LLM Output
+- Confirm `Vulnerable.java` compiles after patch.
+- Confirm inputs such as `1.2.3`, `v1`, `alpha-2` run `java -version` without leading/trailing whitespace issues.
+- Confirm dangerous inputs like `"; rm -rf /"` or `$(rm -rf /)` are rejected by the regex.
+- Confirm the program no longer interprets shell metacharacters (i.e., no injection).
