@@ -6,7 +6,8 @@ public class Vulnerable {
         Scanner myObj = new Scanner(System.in);
         // potential source
         String userInput = myObj.nextLine();
-        String cmd = "./mytool --version " + userInput;
+        String cmd = "java -version " + userInput;
+        System.out.println("constructed command: " + cmd);
 
         // potential sink
         Runtime.getRuntime().exec(cmd);
