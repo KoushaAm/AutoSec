@@ -27,4 +27,4 @@
     pip install openai python-dotenv
     ```
 2. Store API key in `.env`: `OPENROUTER_API_KEY=your_api_key_here`
-3. Run with: `python app.py`
+3. Run with: `python openrouter_test.py`
