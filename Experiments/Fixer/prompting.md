@@ -52,7 +52,7 @@ Output JSON schema (strict):
   "touched_files": ["path/to/file"],
   "assumptions": ["assumption 1", "assumption 2"],
   "behavior_change": "brief: yes/no + 1–2 lines describing changes visible to callers",
-  "confidence": 0.0-1.0  // numeric confidence that the patch fixes the PoV
+  "confidence": 0-100 // numeric confidence that the patch fixes the PoV
 }
 
 Additional constraints:
