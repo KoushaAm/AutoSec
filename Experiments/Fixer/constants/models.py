@@ -1,0 +1,7 @@
+from enum import Enum
+
+class Model(Enum):
+    NEMOTRON_NANO = "nvidia/nemotron-nano-9b-v2:free"
+    QWEN3 = "qwen/qwen3-coder:free"
+    DEEPSEEK = "deepseek/deepseek-chat-v3.1:free"
+    LLAMA3 = "meta-llama/llama-3.3-70b-instruct:free"
