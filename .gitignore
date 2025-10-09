@@ -1,0 +1,6 @@
+.vscode/
+*.log
+*.class
+
+# Ignore specific files
+cmd-line-exploit.txt
