@@ -148,8 +148,8 @@ def get_image_digest(image: str) -> Optional[str]:
     return None
 
 def run_build_in_docker(image: str, cmd: str, worktree: pathlib.Path, artifacts: pathlib.Path,
-                       timeout: int, log_path: pathlib.Path) -> Tuple[int, float]:
-    """Execute build command in Docker container with full logging"""
+                       timeout: int) -> Tuple[int, float]:
+    """Execute build command in Docker container"""
     start_time = time.time()
     
     # construct docker run command
@@ -161,33 +161,20 @@ def run_build_in_docker(image: str, cmd: str, worktree: pathlib.Path, artifacts:
         image, "bash", "-lc", cmd
     ]
     
-    # logging
-    with open(log_path, "w", encoding="utf-8", errors="ignore") as log:
-        log.write(f"Build Command: {cmd}\n")
-        log.write(f"Docker Command: {' '.join(shlex.quote(x) for x in docker_cmd)}\n")
-        log.write(f"Started: {datetime.datetime.now(datetime.timezone.utc).isoformat()}\n")
-        log.write("-" * 80 + "\n\n")
+    try:
+        returncode = subprocess.run(
+            docker_cmd, 
+            capture_output=True,
+            text=True,
+            timeout=timeout
+        ).returncode
         
-        try:
-            returncode = subprocess.run(
-                docker_cmd, 
-                stdout=log, 
-                stderr=subprocess.STDOUT, 
-                timeout=timeout
-            ).returncode
-            
-            duration = time.time() - start_time
-            log.write(f"\n\n" + "-" * 80 + "\n")
-            log.write(f"Completed: {datetime.datetime.now(datetime.timezone.utc).isoformat()}\n")
-            log.write(f"Duration: {duration:.2f}s\n")
-            log.write(f"Exit Code: {returncode}\n")
-            
-            return returncode, duration
-            
-        except subprocess.TimeoutExpired:
-            duration = time.time() - start_time
-            log.write(f"\n\n[TIMEOUT] Process killed after {duration:.1f}s\n")
-            return 124, duration  # timeout exit code
+        duration = time.time() - start_time
+        return returncode, duration
+        
+    except subprocess.TimeoutExpired:
+        duration = time.time() - start_time
+        return 124, duration  # timeout exit code
 
 def main():
     """Main entry point for Java build verification"""
@@ -253,8 +240,6 @@ Ex.:
     artifacts = pathlib.Path(args.artifacts)
     artifacts.mkdir(parents=True, exist_ok=True)
     
-    build_log = artifacts / "build.log"
-    test_log = artifacts / "test.log"
     summary_file = artifacts / "build_summary.json"
     
     # record start time
@@ -272,15 +257,14 @@ Ex.:
     # handle detection failure
     if not build_cmd:
         error_msg = metadata.get('error', 'Unknown detection error')
-        build_log.write_text(f"Java project detection failed: {error_msg}\n")
         
         summary = {
             "status": "FAIL",
             "error": error_msg,
             "detected_stack": None,
             "metadata": metadata,
-            "build": {"rc": 2, "log": str(build_log), "duration_seconds": 0},
-            "test": {"rc": 0, "log": None, "duration_seconds": 0},
+            "build": {"rc": 2, "duration_seconds": 0},
+            "test": {"rc": 0, "duration_seconds": 0},
             "start_time": process_start.isoformat(),
             "end_time": datetime.datetime.now(datetime.timezone.utc).isoformat()
         }
@@ -310,7 +294,7 @@ Ex.:
         print("Starting build phase...")
     
     build_rc, build_duration = run_build_in_docker(
-        actual_image, build_cmd, worktree, artifacts, args.timeout_build, build_log
+        actual_image, build_cmd, worktree, artifacts, args.timeout_build
     )
     
     # execute tests if build succeeded and tests are available
@@ -319,7 +303,7 @@ Ex.:
         if args.verbose:
             print("Build succeeded, starting test phase...")
         test_rc, test_duration = run_build_in_docker(
-            actual_image, test_cmd, worktree, artifacts, args.timeout_test, test_log
+            actual_image, test_cmd, worktree, artifacts, args.timeout_test
         )
     elif test_cmd and build_rc != 0:
         if args.verbose:
@@ -338,12 +322,10 @@ Ex.:
         "metadata": metadata,
         "build": {
             "rc": build_rc,
-            "log": str(build_log),
             "duration_seconds": round(build_duration, 2)
         },
         "test": {
             "rc": test_rc,
-            "log": str(test_log) if test_cmd else None,
             "duration_seconds": round(test_duration, 2)
         },
         "timing": {
@@ -360,10 +342,9 @@ Ex.:
         print(f"\nBuild completed with status: {status}")
         print(f"Total duration: {summary['timing']['total_duration_seconds']}s")
         print(f"Artifacts written to: {artifacts}")
-        print(f"Build log: {build_log}")
         print(f"Summary JSON: {summary_file}")
         if status == "FAIL":
-            print(f";Check {build_log} for error details")
+            print(f";Check summary JSON for error details")
     
     # always output the machine-readable JSON for automation
     print(json.dumps(summary, indent=2))
