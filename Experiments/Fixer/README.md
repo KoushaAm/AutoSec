@@ -28,3 +28,8 @@
     ```
 2. Store API key in `.env`: `OPENROUTER_API_KEY=your_api_key_here`
 3. Run with: `python openrouter_test.py`
+
+### Pretty Print JSON
+- Following the same stems as [Running LLMs in Python](#running-llms-in-python)
+- Run with: `python pretty_print_json.py`
+- Will output all JSON files in `output` directory in readable format
