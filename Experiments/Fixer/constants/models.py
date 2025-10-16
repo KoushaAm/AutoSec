@@ -5,3 +5,4 @@ class Model(Enum):
     QWEN3 = "qwen/qwen3-coder:free"
     DEEPSEEK = "deepseek/deepseek-chat-v3.1:free"
     LLAMA3 = "meta-llama/llama-3.3-70b-instruct:free"
+    GPT_OSS = "openai/gpt-oss-20b:free"
