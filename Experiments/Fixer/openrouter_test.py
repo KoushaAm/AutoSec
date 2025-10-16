@@ -67,7 +67,7 @@ def prettify_unified_diff(model_output: str) -> str:
 
 # ================== Main ==================
 def main():
-    CURRENT_MODEL = models.Model.QWEN3
+    CURRENT_MODEL = models.Model.LLAMA3
 
     try:
         completion = client.chat.completions.create(
