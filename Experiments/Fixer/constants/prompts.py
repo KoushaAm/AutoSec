@@ -61,7 +61,6 @@ Fields provided to the agent:
 Vulnerable snippet:
 ```java
 import java.util.Scanner;
-
 // command line injection vulnerable class
 public class Vulnerable {
     public static void main(String[] args) throws Exception {
@@ -74,4 +73,5 @@ public class Vulnerable {
         // potential sink
         Runtime.getRuntime().exec(cmd);
     }
-}'''
+}
+'''

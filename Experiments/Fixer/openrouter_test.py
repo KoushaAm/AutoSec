@@ -7,6 +7,7 @@ from openai import OpenAI
 
 # local imports
 from constants import prompts, models
+from utils import generic_utils as gu, prompt_utils as pu
 
 # ================== Constants ==================
 load_dotenv()
@@ -16,58 +17,61 @@ client = OpenAI(
   api_key=getenv("OPENROUTER_API_KEY"),
 )
 
-messagesArray = [
-    {"role": "system", "content": prompts.SYSTEM_MESSAGE},
-    {"role": "developer", "content": prompts.DEVELOPER_MESSAGE},
-    {"role": "user", "content": prompts.USER_MESSAGE},
-]
+AGENT_FIELDS_EXAMPLE = pu.AgentFields(
+    language="Java",
+    file="Vulnerable.java",
+    function="public static void main(String[] args) throws Exception",
+    CWE="CWE-78",
+    vuln_title="Fixing a command-line injection in a Java CLI program",
+    constraints={
+        "max_lines": 30,
+        "max_hunks": 2,
+        "no_new_deps": True,
+        "keep_signature": True
+    },
+    pov_root_cause="user input is concatenated into a shell command string and passed to Runtime.exec(), allowing command injection."
+)
 
-# ================== Functions ==================
-def utc_timestamped_filename(base: str, ext: str = "json") -> str:
-    ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-    return f"{base}_{ts}.{ext}"
+VULN_SNIPPET = """
+    import java.util.Scanner;
+// command line injection vulnerable class
+public class Vulnerable {
+    public static void main(String[] args) throws Exception {
+        Scanner myObj = new Scanner(System.in);
+        // potential source
+        String userInput = myObj.nextLine();
+        String cmd = "java -version " + userInput;
+        System.out.println("constructed command: " + cmd);
 
-def strip_code_fence(text: str) -> str:
+        // potential sink
+        Runtime.getRuntime().exec(cmd);
+    }
+}
     """
-    Remove a leading/trailing triple-backtick fence, optionally with a language tag.
-    If no fence present, returns the text unchanged.
-    """
-    text = text.strip()
-    if text.startswith("```"):
-        # remove leading fence line
-        # find the first newline after the opening fence
-        idx = text.find("\n")
-        if idx != -1:
-            # drop the opening fence line
-            text = text[idx+1:]
-        # remove trailing fence (```), if present
-        if text.endswith("```"):
-            text = text[: -3].rstrip()
-    return text
 
-def save_output_to_file(filename: str, content: str):
-    Path("output").mkdir(parents=True, exist_ok=True) # ensure output dir exists
+# # ================== Helper ==================
+def process_llm_output(llm_output, model_name):
+    # remove ``` if present
+    stripped_llm_output = gu.strip_code_fence(llm_output)
 
-    p = Path("output") / filename
-    # Try to pretty-validate JSON; if it fails, save raw for debugging
-    try: 
-        obj = json.loads(content)
-        p.write_text(json.dumps(obj, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    except json.JSONDecodeError:
-        p.write_text(content, encoding="utf-8")
-    print("Wrote", p)
+    # Save full output
+    file_to_save = gu.utc_timestamped_filename(model_name)
+    gu.save_output_to_file(file_to_save, stripped_llm_output)
 
-def prettify_unified_diff(model_output: str) -> str:
-    try:
-        response = json.loads(model_output)
-        diff = response.get("unified_diff") or ""
-        return diff.replace("\\n", "\n")
-    except json.JSONDecodeError:
-        return "(No JSON / unified_diff not found)"
+    # Show readable diff
+    print("\n=== Unified Diff ===\n")
+    print(gu.prettify_unified_diff(stripped_llm_output))
 
 # ================== Main ==================
 def main():
-    CURRENT_MODEL = models.Model.LLAMA3
+    CURRENT_MODEL = models.Model.GPT_OSS
+
+    messagesArray = [
+        {"role": "system", "content": prompts.SYSTEM_MESSAGE},
+        {"role": "developer", "content": prompts.DEVELOPER_MESSAGE},
+        # {"role": "user", "content": prompts.USER_MESSAGE},
+        {"role": "user", "content": pu.build_user_msg(AGENT_FIELDS_EXAMPLE, VULN_SNIPPET)},
+    ]
 
     try:
         completion = client.chat.completions.create(
@@ -80,20 +84,10 @@ def main():
         print("OpenRouter error:", e)
         print("\nHint: If you see a 404 about 'Free model publication', enable it in Settings -> Privacy")
         return
-
     llm_output = completion.choices[0].message.content
     # print(llm_output) # print full raw output
 
-    # remove ``` if present
-    stripped_llm_output = strip_code_fence(llm_output)
-
-    # Save full output
-    file_to_save = utc_timestamped_filename(CURRENT_MODEL.name)
-    save_output_to_file(file_to_save, stripped_llm_output)
-
-    # Show readable diff
-    print("\n=== Unified Diff ===\n")
-    print(prettify_unified_diff(stripped_llm_output))
+    process_llm_output(llm_output, CURRENT_MODEL.name)
 
 
 # execute main
