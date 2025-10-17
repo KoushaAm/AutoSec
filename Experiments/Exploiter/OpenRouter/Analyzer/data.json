@@ -1,0 +1,404 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "version": "2.1.0",
+    "runs": [
+        {
+            "tool": {
+                "driver": {
+                    "name": "CodeQL",
+                    "organization": "GitHub",
+                    "semanticVersion": "2.23.2",
+                    "notifications": [
+                        {
+                            "id": "java/baseline/expected-extracted-files",
+                            "name": "java/baseline/expected-extracted-files",
+                            "shortDescription": {
+                                "text": "Expected extracted files"
+                            },
+                            "fullDescription": {
+                                "text": "Files appearing in the source archive that are expected to be extracted."
+                            },
+                            "defaultConfiguration": {
+                                "enabled": true
+                            },
+                            "properties": {
+                                "tags": [
+                                    "expected-extracted-files",
+                                    "telemetry"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "py/baseline/expected-extracted-files",
+                            "name": "py/baseline/expected-extracted-files",
+                            "shortDescription": {
+                                "text": "Expected extracted files"
+                            },
+                            "fullDescription": {
+                                "text": "Files appearing in the source archive that are expected to be extracted."
+                            },
+                            "defaultConfiguration": {
+                                "enabled": true
+                            },
+                            "properties": {
+                                "tags": [
+                                    "expected-extracted-files",
+                                    "telemetry"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "cli/platform",
+                            "name": "cli/platform",
+                            "shortDescription": {
+                                "text": "Platform"
+                            },
+                            "fullDescription": {
+                                "text": "Platform"
+                            },
+                            "defaultConfiguration": {
+                                "enabled": true
+                            }
+                        }
+                    ],
+                    "rules": [
+                        {
+                            "id": "java/relative-path-command",
+                            "name": "java/relative-path-command",
+                            "shortDescription": {
+                                "text": "Executing a command with a relative path"
+                            },
+                            "fullDescription": {
+                                "text": "Executing a command with a relative path is vulnerable to malicious changes in the PATH environment variable."
+                            },
+                            "defaultConfiguration": {
+                                "enabled": true,
+                                "level": "warning"
+                            },
+                            "properties": {
+                                "tags": [
+                                    "security",
+                                    "external/cwe/cwe-078",
+                                    "external/cwe/cwe-088"
+                                ],
+                                "description": "Executing a command with a relative path is vulnerable to\n              malicious changes in the PATH environment variable.",
+                                "id": "java/relative-path-command",
+                                "kind": "problem",
+                                "name": "Executing a command with a relative path",
+                                "precision": "medium",
+                                "problem.severity": "warning",
+                                "security-severity": "5.4"
+                            }
+                        },
+                        {
+                            "id": "java/command-line-injection",
+                            "name": "java/command-line-injection",
+                            "shortDescription": {
+                                "text": "Uncontrolled command line"
+                            },
+                            "fullDescription": {
+                                "text": "Using externally controlled strings in a command line is vulnerable to malicious changes in the strings."
+                            },
+                            "defaultConfiguration": {
+                                "enabled": true,
+                                "level": "error"
+                            },
+                            "properties": {
+                                "tags": [
+                                    "security",
+                                    "external/cwe/cwe-078",
+                                    "external/cwe/cwe-088"
+                                ],
+                                "description": "Using externally controlled strings in a command line is vulnerable to malicious\n              changes in the strings.",
+                                "id": "java/command-line-injection",
+                                "kind": "path-problem",
+                                "name": "Uncontrolled command line",
+                                "precision": "high",
+                                "problem.severity": "error",
+                                "security-severity": "9.8"
+                            }
+                        },
+                        {
+                            "id": "java/exec-tainted-environment",
+                            "name": "java/exec-tainted-environment",
+                            "shortDescription": {
+                                "text": "Building a command with an injected environment variable"
+                            },
+                            "fullDescription": {
+                                "text": "Passing environment variables containing externally controlled strings to a command line is vulnerable to malicious changes to the environment of a subprocess."
+                            },
+                            "defaultConfiguration": {
+                                "enabled": true,
+                                "level": "error"
+                            },
+                            "properties": {
+                                "tags": [
+                                    "security",
+                                    "external/cwe/cwe-078",
+                                    "external/cwe/cwe-088",
+                                    "external/cwe/cwe-454"
+                                ],
+                                "description": "Passing environment variables containing externally controlled\n              strings to a command line is vulnerable to malicious changes to the\n              environment of a subprocess.",
+                                "id": "java/exec-tainted-environment",
+                                "kind": "path-problem",
+                                "name": "Building a command with an injected environment variable",
+                                "precision": "medium",
+                                "problem.severity": "error",
+                                "security-severity": "9.8"
+                            }
+                        },
+                        {
+                            "id": "java/concatenated-command-line",
+                            "name": "java/concatenated-command-line",
+                            "shortDescription": {
+                                "text": "Building a command line with string concatenation"
+                            },
+                            "fullDescription": {
+                                "text": "Using concatenated strings in a command line is vulnerable to malicious insertion of special characters in the strings."
+                            },
+                            "defaultConfiguration": {
+                                "enabled": true,
+                                "level": "error"
+                            },
+                            "properties": {
+                                "tags": [
+                                    "security",
+                                    "external/cwe/cwe-078",
+                                    "external/cwe/cwe-088"
+                                ],
+                                "description": "Using concatenated strings in a command line is vulnerable to malicious\n              insertion of special characters in the strings.",
+                                "id": "java/concatenated-command-line",
+                                "kind": "problem",
+                                "name": "Building a command line with string concatenation",
+                                "precision": "medium",
+                                "problem.severity": "error",
+                                "security-severity": "9.8"
+                            }
+                        }
+                    ]
+                },
+                "extensions": [
+                    {
+                        "name": "codeql/java-queries",
+                        "semanticVersion": "1.8.1+a05ffdbc810d58f3bf9cd44f48fab7b31fdea9fa",
+                        "locations": [
+                            {
+                                "uri": "file:///C:/Users/Vinci/AppData/Local/Programs/codeql/packs/codeql/java-queries/1.8.1/",
+                                "description": {
+                                    "text": "The QL pack root directory."
+                                },
+                                "properties": {
+                                    "tags": [
+                                        "CodeQL/LocalPackRoot"
+                                    ]
+                                }
+                            },
+                            {
+                                "uri": "file:///C:/Users/Vinci/AppData/Local/Programs/codeql/packs/codeql/java-queries/1.8.1/qlpack.yml",
+                                "description": {
+                                    "text": "The QL pack definition file."
+                                },
+                                "properties": {
+                                    "tags": [
+                                        "CodeQL/LocalPackDefinitionFile"
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "codeql/java-all",
+                        "semanticVersion": "7.7.1+a05ffdbc810d58f3bf9cd44f48fab7b31fdea9fa",
+                        "locations": [
+                            {
+                                "uri": "file:///C:/Users/Vinci/AppData/Local/Programs/codeql/packs/codeql/java-queries/1.8.1/.codeql/libraries/codeql/java-all/7.7.1/",
+                                "description": {
+                                    "text": "The QL pack root directory."
+                                },
+                                "properties": {
+                                    "tags": [
+                                        "CodeQL/LocalPackRoot"
+                                    ]
+                                }
+                            },
+                            {
+                                "uri": "file:///C:/Users/Vinci/AppData/Local/Programs/codeql/packs/codeql/java-queries/1.8.1/.codeql/libraries/codeql/java-all/7.7.1/qlpack.yml",
+                                "description": {
+                                    "text": "The QL pack definition file."
+                                },
+                                "properties": {
+                                    "tags": [
+                                        "CodeQL/LocalPackDefinitionFile"
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "codeql/threat-models",
+                        "semanticVersion": "1.0.32+a05ffdbc810d58f3bf9cd44f48fab7b31fdea9fa",
+                        "locations": [
+                            {
+                                "uri": "file:///C:/Users/Vinci/AppData/Local/Programs/codeql/packs/codeql/java-queries/1.8.1/.codeql/libraries/codeql/threat-models/1.0.32/",
+                                "description": {
+                                    "text": "The QL pack root directory."
+                                },
+                                "properties": {
+                                    "tags": [
+                                        "CodeQL/LocalPackRoot"
+                                    ]
+                                }
+                            },
+                            {
+                                "uri": "file:///C:/Users/Vinci/AppData/Local/Programs/codeql/packs/codeql/java-queries/1.8.1/.codeql/libraries/codeql/threat-models/1.0.32/qlpack.yml",
+                                "description": {
+                                    "text": "The QL pack definition file."
+                                },
+                                "properties": {
+                                    "tags": [
+                                        "CodeQL/LocalPackDefinitionFile"
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            "invocations": [
+                {
+                    "toolExecutionNotifications": [
+                        {
+                            "locations": [
+                                {
+                                    "physicalLocation": {
+                                        "artifactLocation": {
+                                            "uri": "CommandLineInjection.java",
+                                            "uriBaseId": "%SRCROOT%",
+                                            "index": 0
+                                        }
+                                    }
+                                }
+                            ],
+                            "message": {
+                                "text": ""
+                            },
+                            "level": "none",
+                            "descriptor": {
+                                "id": "java/baseline/expected-extracted-files",
+                                "index": 0
+                            },
+                            "properties": {
+                                "formattedMessage": {
+                                    "text": ""
+                                }
+                            }
+                        },
+                        {
+                            "locations": [
+                                {
+                                    "physicalLocation": {
+                                        "artifactLocation": {
+                                            "uri": "test.py",
+                                            "uriBaseId": "%SRCROOT%",
+                                            "index": 1
+                                        }
+                                    }
+                                }
+                            ],
+                            "message": {
+                                "text": ""
+                            },
+                            "level": "none",
+                            "descriptor": {
+                                "id": "py/baseline/expected-extracted-files",
+                                "index": 1
+                            },
+                            "properties": {
+                                "formattedMessage": {
+                                    "text": ""
+                                }
+                            }
+                        },
+                        {
+                            "message": {
+                                "text": "On the Windows 10 (amd64; 10.0) platform.",
+                                "markdown": "On the Windows 10 (amd64; 10.0) platform."
+                            },
+                            "level": "none",
+                            "timeUtc": "2025-10-16T04:44:46.020995500Z",
+                            "descriptor": {
+                                "id": "cli/platform",
+                                "index": 2
+                            },
+                            "properties": {
+                                "attributes": {
+                                    "arch": "amd64",
+                                    "name": "Windows 10",
+                                    "version": "10.0"
+                                },
+                                "visibility": {
+                                    "statusPage": false,
+                                    "telemetry": true
+                                }
+                            }
+                        }
+                    ],
+                    "executionSuccessful": true
+                }
+            ],
+            "artifacts": [
+                {
+                    "location": {
+                        "uri": "CommandLineInjection.java",
+                        "uriBaseId": "%SRCROOT%",
+                        "index": 0
+                    }
+                },
+                {
+                    "location": {
+                        "uri": "test.py",
+                        "uriBaseId": "%SRCROOT%",
+                        "index": 1
+                    }
+                }
+            ],
+            "results": [
+                {
+                    "ruleId": "java/concatenated-command-line",
+                    "ruleIndex": 3,
+                    "rule": {
+                        "id": "java/concatenated-command-line",
+                        "index": 3
+                    },
+                    "message": {
+                        "text": "Command line is built with string concatenation."
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "CommandLineInjection.java",
+                                    "uriBaseId": "%SRCROOT%",
+                                    "index": 0
+                                },
+                                "region": {
+                                    "startLine": 9,
+                                    "startColumn": 47,
+                                    "endColumn": 73
+                                }
+                            }
+                        }
+                    ],
+                    "partialFingerprints": {
+                        "primaryLocationLineHash": "99ae93fb5f5ea8df:1",
+                        "primaryLocationStartColumnFingerprint": "38"
+                    }
+                }
+            ],
+            "columnKind": "utf16CodeUnits",
+            "properties": {
+                "semmle.formatSpecifier": "sarifv2.1.0"
+            }
+        }
+    ]
+}
