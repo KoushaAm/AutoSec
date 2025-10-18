@@ -73,7 +73,7 @@ JAVA_BUILD_STACKS = [
     )
 ]
 
-def check_docker() -> bool:
+def check_docker() -> bool: # is docker available?
     try:
         result = subprocess.run(
             ["docker", "version", "--format", "{{.Server.Version}}"], 
@@ -196,8 +196,8 @@ Ex.:
         """
     )
     
-    parser.add_argument("--input", required=True, 
-                       help="Path to Java file, directory, or project root")
+    parser.add_argument("--input", 
+                       help="Path to Java file, directory, or project root (default: auto-detect)")
     parser.add_argument("--artifacts", default="./artifacts", 
                        help="Directory for build logs and results")
     parser.add_argument("--timeout-build", type=int, default=1800,
@@ -213,6 +213,53 @@ Ex.:
     
     args = parser.parse_args()
     
+    # if no --input arg provided
+    if not args.input:
+        # auto-detect input based on current working directory context
+        current_dir = pathlib.Path.cwd()
+        
+        candidates = [] 
+        
+        # current dir
+        if list(current_dir.glob("*.java")) or (current_dir / "pom.xml").exists() or list(current_dir.glob("build.gradle*")):
+            candidates.append(current_dir)
+        
+        # check parent directory for single files
+        parent_java_files = list(current_dir.parent.glob("*.java"))
+        if parent_java_files:
+            candidates.extend(parent_java_files)
+            
+        # checking test projects
+        test_projects = []
+        if (current_dir.parent / "test_springboot_project").exists():
+            test_projects.append(current_dir.parent / "test_springboot_project")
+        if (current_dir.parent / "VulnerableFixed.java").exists():
+            test_projects.append(current_dir.parent / "VulnerableFixed.java")
+            
+        if candidates:
+            input_path = candidates[0]
+            if args.verbose:
+                print(f"Auto-detected input: {input_path}")
+        elif test_projects:
+            input_path = test_projects[0]  # default to VulnerableFixed.java if available
+            if args.verbose:
+                print(f"Using test input: {input_path}")
+        else:
+            print("ERROR: No Java files or projects found.", file=sys.stderr)
+            print("", file=sys.stderr)
+            print("Available options:", file=sys.stderr)
+            print("  1. Specify --input path/to/java/file/or/project", file=sys.stderr)
+            print("  2. Run from a directory containing Java files", file=sys.stderr)
+            print("  3. Use make targets: make test-single, make test-maven", file=sys.stderr)
+            sys.exit(2)
+    else:
+        input_path = pathlib.Path(args.input)
+    
+    # validate input path
+    if not input_path.exists():
+        print(f"ERROR: Input path does not exist: {input_path}", file=sys.stderr)
+        sys.exit(2)
+    
     # validate docker availability
     if not check_docker():
         print("ERROR: Docker is not available or not running", file=sys.stderr)
@@ -220,12 +267,6 @@ Ex.:
         sys.exit(2)
     
     # setup paths - handle both files and directories
-    input_path = pathlib.Path(args.input)
-    if not input_path.exists():
-        print(f"ERROR: Input path does not exist: {input_path}", file=sys.stderr)
-        sys.exit(2)
-    
-    # if input is a single file, use its parent directory as worktree
     if input_path.is_file():
         worktree = input_path.parent
         if args.verbose:

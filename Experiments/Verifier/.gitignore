@@ -1,0 +1,12 @@
+build/artifacts/
+
+test_springboot_project/
+
+.DS_Store
+*.swp
+*.swo
+*~
+
+__pycache__/
+*.pyc
+*.pyo
