@@ -99,3 +99,34 @@ def build_user_msg(agent_fields, vuln_snippet: str) -> str:
     parts.append("```")
 
     return "\n".join(parts)
+
+ 
+# ============= Helper functions for OpenRouter interaction =============
+def supports_developer_role(client, model):
+    """Check if the model supports 'developer' role by sending a test message."""
+    test_msgs = [
+        {"role": "system", "content": "You are an obedient assistant."},
+        {"role": "developer", "content": "If you see this, answer DEVELOPER_OK only."},
+        {"role": "user", "content": "What do you reply?"}
+    ]
+    try:
+        req = client.chat.completions.create(model=model, messages=test_msgs, max_tokens=100)
+        res = req.choices[0].message.content
+        return "DEVELOPER_OK" in (res or "")
+    except Exception:
+        return False
+
+def get_messages(client, model, system_msg, developer_msg, user_msg):
+    if not supports_developer_role(client, model):
+        print(f"=== Model {model} does not support 'developer' role; merging into system message === \n\n")
+        # collapse developer into system
+        combined_system = system_msg + "\n\n--- Developer policies merged ---\n" + developer_msg
+        return [
+            {"role": "system", "content": combined_system},
+            {"role": "user", "content": user_msg},
+        ]
+    return [
+        {"role": "system", "content": system_msg},
+        {"role": "developer", "content": developer_msg},
+        {"role": "user", "content": user_msg},
+    ]
