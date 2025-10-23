@@ -1,29 +1,51 @@
-import json
 from datetime import datetime, timezone
 from pathlib import Path
-
+import re
+import json
 
 def utc_timestamped_filename(base: str, ext: str = "json") -> str:
     ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     return f"{base}_{ts}.{ext}"
 
-def strip_code_fence(text: str) -> str:
+def extract_json_block(text: str) -> str:
     """
-    Remove a leading/trailing triple-backtick fence, optionally with a language tag.
-    If no fence present, returns the text unchanged.
+    Extract the first valid top-level JSON object from text.
+    Handles cases with markdown fences, multiple JSON blocks, or extra prose.
     """
     text = text.strip()
-    if text.startswith("```"):
-        # remove leading fence line
-        # find the first newline after the opening fence
-        idx = text.find("\n")
-        if idx != -1:
-            # drop the opening fence line
-            text = text[idx+1:]
-        # remove trailing fence (```), if present
-        if text.endswith("```"):
-            text = text[: -3].rstrip()
-    return text
+
+    # --- Try to capture fenced JSON block first ---
+    fence_match = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", text, re.DOTALL | re.IGNORECASE)
+    if fence_match:
+        return fence_match.group(1).strip()
+
+    # --- Fallback: find first {...} balanced pair ---
+    start = text.find("{")
+    if start == -1:
+        raise ValueError("No '{' found in text — cannot extract JSON.")
+
+    depth = 0
+    in_str = False
+    esc = False
+    for i, ch in enumerate(text[start:], start):
+        if in_str:
+            if esc:
+                esc = False
+            elif ch == "\\":
+                esc = True
+            elif ch == '"':
+                in_str = False
+        else:
+            if ch == '"':
+                in_str = True
+            elif ch == "{":
+                depth += 1
+            elif ch == "}":
+                depth -= 1
+                if depth == 0:
+                    return text[start:i+1].strip()
+
+    raise ValueError("Unbalanced braces — could not find a full JSON object.")
 
 def save_output_to_file(filename: str, content: str):
     Path("output").mkdir(parents=True, exist_ok=True) # ensure output dir exists

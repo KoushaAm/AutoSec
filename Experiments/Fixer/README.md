@@ -27,7 +27,7 @@
     pip install openai python-dotenv
     ```
 2. Store API key in `.env`: `OPENROUTER_API_KEY=your_api_key_here`
-3. Run with: `python openrouter_test.py`
+3. Run with: `python openrouter.py`
 
 ### Pretty Print JSON
 - Following the same stems as [Running LLMs in Python](#running-llms-in-python)
