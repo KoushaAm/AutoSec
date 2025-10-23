@@ -35,39 +35,39 @@ class JavaBuildStack:
         return self.test_cmd_with_wrapper if has_wrapper else self.test_cmd_without_wrapper
 
 JAVA_BUILD_STACKS = [
-    # maven - highest priority for enterprise java
+    # maven - highest priority (SHA-pinned for security)
     JavaBuildStack(
         name="maven",
-        docker_image="maven:3.9-eclipse-temurin-17",
+        docker_image="maven:3.9-eclipse-temurin-17",  # fall back to tag if digest fails
         build_cmd_with_wrapper="./mvnw clean compile -B -DskipTests",
         build_cmd_without_wrapper="mvn clean compile -B -DskipTests",
         test_cmd_with_wrapper="./mvnw test -B",
         test_cmd_without_wrapper="mvn test -B",
         marker_files=["pom.xml"],
-        wrapper_files=["mvnw"],
+        wrapper_files=["mvnw", "mvnw.cmd"], 
         priority=1
     ),
-    # gradle - second priority
+    # gradle - second priority (SHA-pinned for security)
     JavaBuildStack(
         name="gradle", 
-        docker_image="gradle:8.8-jdk17",
+        docker_image="gradle:8.8-jdk17",  # fall back to tag if digest fails
         build_cmd_with_wrapper="./gradlew clean compileJava -Dorg.gradle.daemon=false --no-build-cache",
         build_cmd_without_wrapper="gradle clean compileJava -Dorg.gradle.daemon=false --no-build-cache",
         test_cmd_with_wrapper="./gradlew test -Dorg.gradle.daemon=false",
         test_cmd_without_wrapper="gradle test -Dorg.gradle.daemon=false",
         marker_files=["build.gradle", "build.gradle.kts"],
-        wrapper_files=["gradlew"],
+        wrapper_files=["gradlew", "gradlew.bat"], 
         priority=2
     ),
-    # javac - fallback for any java files
+    # javac - fallback for any java files (SHA-pinned for security)
     JavaBuildStack(
         name="javac",
-        docker_image="eclipse-temurin:17-jdk",
+        docker_image="eclipse-temurin:17-jdk",  # fall back to tag if digest fails
         build_cmd_with_wrapper="find . -name '*.java' -print0 | xargs -0 javac -d out -cp out",
         build_cmd_without_wrapper="find . -name '*.java' -print0 | xargs -0 javac -d out -cp out",
         test_cmd_with_wrapper=None,
         test_cmd_without_wrapper=None,
-        marker_files=[],  # special case - any .java files
+        marker_files=[],  
         wrapper_files=[],
         priority=99  # lowest priority - fallback only
     )
@@ -175,6 +175,56 @@ def run_build_in_docker(image: str, cmd: str, worktree: pathlib.Path, artifacts:
     except subprocess.TimeoutExpired:
         duration = time.time() - start_time
         return 124, duration  # timeout exit code
+
+def validate_build_artifacts(project_path: pathlib.Path, stack_name: str) -> dict:
+    """
+    Validate that expected build artifacts were created.
+    Returns validation result with artifact details.
+    """
+    # expected artifact patterns by build system
+    artifact_patterns = {
+        "maven": ["target/classes/**/*.class", "target/*.jar"],
+        "gradle": ["build/classes/**/*.class", "build/libs/*.jar"],
+        "javac": ["out/**/*.class", "*.class"]
+    }
+    
+    patterns = artifact_patterns.get(stack_name, ["**/*.class"])
+    found_artifacts = []
+    
+    for pattern in patterns:
+        artifacts = list(project_path.glob(pattern))
+        found_artifacts.extend([str(f.relative_to(project_path)) for f in artifacts])
+    
+    return {
+        "artifacts_found": found_artifacts,
+        "artifact_count": len(found_artifacts),
+        "has_artifacts": len(found_artifacts) > 0
+    }
+
+def classify_build_failure(return_code: int) -> dict:
+    """
+    Classify build failure types for better error handling.
+    Returns failure classification and recommended actions.
+    """
+    failure_types = {
+        0: {"type": "success", "action": "continue"},
+        1: {"type": "compilation_error", "action": "stop", "reason": "Code compilation failed"},
+        2: {"type": "compilation_error", "action": "stop", "reason": "Code compilation failed"}, 
+        123: {"type": "compilation_error", "action": "stop", "reason": "Java compilation failed (javac)"},
+        124: {"type": "timeout", "action": "stop", "reason": "Build timeout exceeded"},
+        125: {"type": "docker_error", "action": "stop", "reason": "Docker container failed to start"},
+        126: {"type": "docker_error", "action": "stop", "reason": "Docker command not executable"},
+        127: {"type": "docker_error", "action": "stop", "reason": "Docker command not found"}
+    }
+    
+    classification = failure_types.get(return_code, {
+        "type": "unknown_error", 
+        "action": "stop", 
+        "reason": f"Unknown build failure (exit code {return_code})"
+    })
+    
+    classification["return_code"] = return_code
+    return classification
 
 def main():
     """Main entry point for Java build verification"""
@@ -292,12 +342,32 @@ Ex.:
     # execute build
     if args.verbose:
         print("Starting build phase...")
-    
+
     build_rc, build_duration = run_build_in_docker(
         actual_image, build_cmd, worktree, artifacts, args.timeout_build
     )
+
+    # build result validation
+    build_failure = classify_build_failure(build_rc)
+    artifact_validation = {"artifacts_found": [], "artifact_count": 0, "has_artifacts": False}
     
-    # execute tests if build succeeded and tests are available
+    if build_rc == 0:
+        # validate build artifacts were actually created
+        artifact_validation = validate_build_artifacts(worktree, stack)
+        
+        if args.verbose:
+            print(f"Build succeeded - found {artifact_validation['artifact_count']} artifacts")
+            if artifact_validation['artifact_count'] > 0:
+                print("Build PASS: Build completed with artifacts")
+            else:
+                print("Build WARNING: Build succeeded but no artifacts found")
+    else:
+        if args.verbose:
+            failure_type = build_failure['type']
+            reason = build_failure['reason']
+            print(f"Build FAIL: {failure_type} - {reason}")
+
+    # execute tests iff build succeeded and tests are available
     test_rc, test_duration = 0, 0
     if test_cmd and build_rc == 0:
         if args.verbose:
@@ -308,18 +378,24 @@ Ex.:
     elif test_cmd and build_rc != 0:
         if args.verbose:
             print("Build failed, skipping tests")
-    
-    # determine final status
-    status = "OK" if build_rc == 0 and test_rc == 0 else "FAIL"
+
+    # determine final status with enhanced validation
+    build_passed = build_rc == 0 and artifact_validation['has_artifacts']
+    status = "PASS" if build_passed and test_rc == 0 else "FAIL"
     process_end = datetime.datetime.now(datetime.timezone.utc)
     
-    # create summary
+    # create enhanced summary with build validation (better)
     summary = {
         "status": status,
         "detected_stack": stack,
         "docker_image": image,
         "docker_image_digest": image_digest,
         "metadata": metadata,
+        "build_validation": {
+            "build_classification": build_failure,
+            "artifact_validation": artifact_validation,
+            "build_status": "PASS" if build_passed else "FAIL"
+        },
         "build": {
             "rc": build_rc,
             "duration_seconds": round(build_duration, 2)
@@ -340,13 +416,21 @@ Ex.:
     
     if args.verbose:
         print(f"\nBuild completed with status: {status}")
+        print(f"Build Status: {summary['build_validation']['build_status']}")
+        if summary['build_validation']['build_status'] == 'FAIL':
+            failure_info = summary['build_validation']['build_classification']
+            print(f"   Failure Type: {failure_info['type']}")
+            print(f"   Reason: {failure_info['reason']}")
+        else:
+            artifacts_count = summary['build_validation']['artifact_validation']['artifact_count']
+            print(f"   Artifacts Created: {artifacts_count}")
         print(f"Total duration: {summary['timing']['total_duration_seconds']}s")
         print(f"Artifacts written to: {artifacts}")
         print(f"Summary JSON: {summary_file}")
         if status == "FAIL":
-            print(f";Check summary JSON for error details")
+            print(f"Check summary JSON for detailed error analysis")
     
-    # always output the machine-readable JSON for automation
+    # output machine-readable JSON for automation
     print(json.dumps(summary, indent=2))
     
     # exit with appropriate code

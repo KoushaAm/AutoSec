@@ -1,0 +1,31 @@
+# Build artifacts and outputs
+artifacts/
+out/
+outs/
+
+# Java compiled classes
+*.class
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# Maven
+target/
+
+# Gradle
+build/
+.gradle/
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
