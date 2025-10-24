@@ -15,7 +15,7 @@ outs/
 target/
 
 # Gradle
-build/
+build/__pycache__
 .gradle/
 
 # IDE files

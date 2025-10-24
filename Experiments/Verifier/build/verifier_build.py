@@ -3,233 +3,241 @@ import argparse, json, pathlib, subprocess, sys, shlex, time, datetime
 from dataclasses import dataclass
 from typing import Optional, List, Tuple
 
+from behavior_check import execute_behavior_validation, format_behavior_results_for_display
+
 def has(p: pathlib.Path, *names):
-    """check if any of the given file names exist in a directory"""
     return any((p / n).exists() for n in names)
 
 def count_java_files(p: pathlib.Path) -> int:
-    """count total .java files in the project"""
     return len(list(p.rglob("*.java")))
 
 @dataclass
 class JavaBuildStack:
-    """encapsulates Java build system detection and Docker configuration"""
     name: str
     docker_image: str
     build_cmd_with_wrapper: str
     build_cmd_without_wrapper: str
-    test_cmd_with_wrapper: Optional[str]
-    test_cmd_without_wrapper: Optional[str]
-    marker_files: List[str]
-    wrapper_files: List[str]
-    priority: int  # lower number = higher priority
-    
-    def get_build_cmd(self, has_wrapper: bool) -> str:
-        """Get the actual build command based on wrapper availability"""
-        return self.build_cmd_with_wrapper if has_wrapper else self.build_cmd_without_wrapper
-    
-    def get_test_cmd(self, has_wrapper: bool) -> Optional[str]:
-        """Get the actual test command based on wrapper availability"""
-        if not self.test_cmd_with_wrapper and not self.test_cmd_without_wrapper:
-            return None
-        return self.test_cmd_with_wrapper if has_wrapper else self.test_cmd_without_wrapper
+    test_cmd_with_wrapper: Optional[str] = None
+    test_cmd_without_wrapper: Optional[str] = None
 
-JAVA_BUILD_STACKS = [
-    # maven - highest priority (SHA-pinned for security)
-    JavaBuildStack(
-        name="maven",
-        docker_image="maven:3.9-eclipse-temurin-17",  # fall back to tag if digest fails
-        build_cmd_with_wrapper="./mvnw clean compile -B -DskipTests",
-        build_cmd_without_wrapper="mvn clean compile -B -DskipTests",
-        test_cmd_with_wrapper="./mvnw test -B",
-        test_cmd_without_wrapper="mvn test -B",
-        marker_files=["pom.xml"],
-        wrapper_files=["mvnw", "mvnw.cmd"], 
-        priority=1
-    ),
-    # gradle - second priority (SHA-pinned for security)
-    JavaBuildStack(
-        name="gradle", 
-        docker_image="gradle:8.8-jdk17",  # fall back to tag if digest fails
-        build_cmd_with_wrapper="./gradlew clean compileJava -Dorg.gradle.daemon=false --no-build-cache",
-        build_cmd_without_wrapper="gradle clean compileJava -Dorg.gradle.daemon=false --no-build-cache",
-        test_cmd_with_wrapper="./gradlew test -Dorg.gradle.daemon=false",
-        test_cmd_without_wrapper="gradle test -Dorg.gradle.daemon=false",
-        marker_files=["build.gradle", "build.gradle.kts"],
-        wrapper_files=["gradlew", "gradlew.bat"], 
-        priority=2
-    ),
-    # javac - fallback for any java files (SHA-pinned for security)
-    JavaBuildStack(
-        name="javac",
-        docker_image="eclipse-temurin:17-jdk",  # fall back to tag if digest fails
-        build_cmd_with_wrapper="find . -name '*.java' -print0 | xargs -0 javac -d out -cp out",
-        build_cmd_without_wrapper="find . -name '*.java' -print0 | xargs -0 javac -d out -cp out",
-        test_cmd_with_wrapper=None,
-        test_cmd_without_wrapper=None,
-        marker_files=[],  
-        wrapper_files=[],
-        priority=99  # lowest priority - fallback only
-    )
-]
+    def get_build_command(self, has_wrapper: bool) -> str:
+        return self.build_cmd_with_wrapper if has_wrapper else self.build_cmd_without_wrapper
+
+    def get_test_command(self, has_wrapper: bool) -> Optional[str]:
+        if self.test_cmd_with_wrapper and self.test_cmd_without_wrapper:
+            return self.test_cmd_with_wrapper if has_wrapper else self.test_cmd_without_wrapper
+        return None
+
+def detect_java_project(p: pathlib.Path) -> Tuple[str, str, Optional[str], dict]:
+    metadata = {
+        "java_files": count_java_files(p),
+        "project_size": "unknown"
+    }
+    
+    java_count = metadata["java_files"]
+    if java_count == 1:
+        metadata["project_size"] = "single_file"
+    elif java_count <= 10:
+        metadata["project_size"] = "small"
+    elif java_count <= 100:
+        metadata["project_size"] = "medium"
+    else:
+        metadata["project_size"] = "large"
+
+    if has(p, "pom.xml"):
+        metadata["has_wrapper"] = has(p, "mvnw", "mvnw.cmd")
+        metadata["wrapper_type"] = "maven" if metadata["has_wrapper"] else None
+        
+        maven = JavaBuildStack(
+            name="maven",
+            docker_image="maven:3.9-eclipse-temurin-17",
+            build_cmd_with_wrapper="./mvnw clean compile -B",
+            build_cmd_without_wrapper="mvn clean compile -B",
+            test_cmd_with_wrapper="./mvnw test -B",
+            test_cmd_without_wrapper="mvn test -B"
+        )
+        return maven.name, maven.get_build_command(metadata["has_wrapper"]), maven.get_test_command(metadata["has_wrapper"]), metadata
+
+    if has(p, "build.gradle", "build.gradle.kts"):
+        metadata["has_wrapper"] = has(p, "gradlew", "gradlew.bat")
+        metadata["wrapper_type"] = "gradle" if metadata["has_wrapper"] else None
+        
+        gradle = JavaBuildStack(
+            name="gradle",
+            docker_image="gradle:8-jdk17",
+            build_cmd_with_wrapper="./gradlew build --no-daemon",
+            build_cmd_without_wrapper="gradle build --no-daemon",
+            test_cmd_with_wrapper="./gradlew test --no-daemon",
+            test_cmd_without_wrapper="gradle test --no-daemon"
+        )
+        return gradle.name, gradle.get_build_command(metadata["has_wrapper"]), gradle.get_test_command(metadata["has_wrapper"]), metadata
+
+    if java_count > 0:
+        javac = JavaBuildStack(
+            name="javac",
+            docker_image="eclipse-temurin:17-jdk",
+            build_cmd_with_wrapper="javac *.java && mkdir -p out && mv *.class out/",
+            build_cmd_without_wrapper="javac *.java && mkdir -p out && mv *.class out/"
+        )
+        return javac.name, javac.get_build_command(False), None, metadata
+
+    metadata["error"] = "No Java files or recognized build system found"
+    return None, None, None, metadata
+
+def get_docker_image_for_stack(stack: str) -> str:
+    images = {
+        "maven": "maven:3.9-eclipse-temurin-17",
+        "gradle": "gradle:8-jdk17", 
+        "javac": "eclipse-temurin:17-jdk"
+    }
+    return images.get(stack, "eclipse-temurin:17-jdk")
 
 def check_docker() -> bool:
     try:
-        result = subprocess.run(
-            ["docker", "version", "--format", "{{.Server.Version}}"], 
-            capture_output=True, text=True, timeout=10
-        )
+        result = subprocess.run(["docker", "--version"], 
+                              capture_output=True, text=True, timeout=10)
+        if result.returncode != 0:
+            return False
+        
+        result = subprocess.run(["docker", "ps"], 
+                              capture_output=True, text=True, timeout=10)
         return result.returncode == 0
-    except (subprocess.TimeoutExpired, FileNotFoundError):
+        
+    except (subprocess.TimeoutExpired, FileNotFoundError, subprocess.SubprocessError):
         return False
 
-def detect_java_project(project: pathlib.Path) -> Tuple[Optional[str], Optional[str], Optional[str], dict]:
-    """
-    Return (stack_name, build_command, test_command, metadata)
-    Handles everything from single .java files to bigger projects
-    """
-    
-    java_file_count = count_java_files(project)
-    if java_file_count == 0:
-        return None, None, None, {"java_files": 0, "error": "No .java files found"}
-    
-    metadata = {
-        "java_files": java_file_count,
-        "project_size": "single_file" if java_file_count == 1 else 
-                       "small" if java_file_count <= 10 else
-                       "medium" if java_file_count <= 100 else "large"
-    }
-    
-    # sort by prio and check each build system
-    for stack in sorted(JAVA_BUILD_STACKS, key=lambda x: x.priority):
-        
-        if stack.name == "javac":
-            # fallback - if we have java files but no build system
-            if java_file_count > 0:
-                # create output directory in the build command
-                build_cmd = "mkdir -p out && " + stack.get_build_cmd(False)
-                return stack.name, build_cmd, stack.get_test_cmd(False), metadata
-            continue
-            
-        # check for build system marker files
-        if has(project, *stack.marker_files):
-            has_wrapper = has(project, *stack.wrapper_files)
-            metadata["has_wrapper"] = has_wrapper
-            metadata["wrapper_type"] = stack.wrapper_files[0] if has_wrapper else None
-            
-            return (
-                stack.name,
-                stack.get_build_cmd(has_wrapper),
-                stack.get_test_cmd(has_wrapper),
-                metadata
-            )
-    
-    # should never reach here due to javac fallback
-    return None, None, None, metadata
-
-def get_docker_image_for_stack(stack_name: str) -> Optional[str]:
-    """get Docker image for a given stack name"""
-    for stack in JAVA_BUILD_STACKS:
-        if stack.name == stack_name:
-            return stack.docker_image
-    return None
-
 def get_image_digest(image: str) -> Optional[str]:
-    """get the actual image digest for reproducibility tracking"""
     try:
-        result = subprocess.run(
-            ["docker", "inspect", "--format", "{{index .RepoDigests 0}}", image],
-            capture_output=True, text=True, timeout=30
-        )
+        cmd = ["docker", "inspect", "--format={{index .RepoDigests 0}}", image]
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+        
         if result.returncode == 0 and result.stdout.strip():
-            return result.stdout.strip()
-    except subprocess.TimeoutExpired:
+            digest = result.stdout.strip()
+            return digest if digest != "<no value>" else None
+            
+    except (subprocess.TimeoutExpired, subprocess.SubprocessError):
         pass
     return None
 
 def run_build_in_docker(image: str, cmd: str, worktree: pathlib.Path, artifacts: pathlib.Path,
-                       timeout: int) -> Tuple[int, float]:
-    """Execute build command in Docker container"""
-    start_time = time.time()
+                       timeout_seconds: int = 1800) -> Tuple[int, float]:
+    artifacts.mkdir(parents=True, exist_ok=True)
     
-    # construct docker run command
+    start_time = time.time()
     docker_cmd = [
         "docker", "run", "--rm",
-        "-v", f"{worktree.resolve()}:/workspace",
-        "-v", f"{artifacts.resolve()}:/artifacts",  
+        "-v", f"{worktree.absolute()}:/workspace",
+        "-v", f"{artifacts.absolute()}:/artifacts", 
         "-w", "/workspace",
-        image, "bash", "-lc", cmd
+        image,
+        "bash", "-c", cmd
     ]
     
     try:
-        returncode = subprocess.run(
-            docker_cmd, 
+        result = subprocess.run(
+            docker_cmd,
             capture_output=True,
             text=True,
-            timeout=timeout
-        ).returncode
+            timeout=timeout_seconds,
+            cwd=worktree
+        )
         
         duration = time.time() - start_time
-        return returncode, duration
+        log_file = artifacts / "build_log.txt"
+        with log_file.open("w", encoding="utf-8") as f:
+            f.write(f"Command: {' '.join(docker_cmd)}\n")
+            f.write(f"Return code: {result.returncode}\n")
+            f.write(f"Duration: {duration:.2f}s\n\n")
+            f.write("=== STDOUT ===\n")
+            f.write(result.stdout)
+            f.write("\n=== STDERR ===\n")
+            f.write(result.stderr)
+            
+        return result.returncode, duration
         
     except subprocess.TimeoutExpired:
         duration = time.time() - start_time
-        return 124, duration  # timeout exit code
+        return 124, duration
+    except Exception as e:
+        duration = time.time() - start_time
+        log_file = artifacts / "build_log.txt"
+        with log_file.open("w", encoding="utf-8") as f:
+            f.write(f"Docker execution failed: {e}\n")
+        return 125, duration
 
-def validate_build_artifacts(project_path: pathlib.Path, stack_name: str) -> dict:
-    """
-    Validate that expected build artifacts were created.
-    Returns validation result with artifact details.
-    """
-    # expected artifact patterns by build system
+def validate_build_artifacts(project_path: pathlib.Path, stack: str) -> dict:
+    validation = {
+        "artifacts_found": [],
+        "artifact_count": 0,
+        "has_artifacts": False
+    }
     artifact_patterns = {
-        "maven": ["target/classes/**/*.class", "target/*.jar"],
-        "gradle": ["build/classes/**/*.class", "build/libs/*.jar"],
+        "maven": ["target/**/*.class", "target/**/*.jar", "target/**/*.war"],
+        "gradle": ["build/**/*.class", "build/**/*.jar", "build/**/*.war"],
         "javac": ["out/**/*.class", "*.class"]
     }
     
-    patterns = artifact_patterns.get(stack_name, ["**/*.class"])
-    found_artifacts = []
+    patterns = artifact_patterns.get(stack, ["**/*.class"])
     
     for pattern in patterns:
         artifacts = list(project_path.glob(pattern))
-        found_artifacts.extend([str(f.relative_to(project_path)) for f in artifacts])
+        for artifact in artifacts:
+            if artifact.is_file():
+                validation["artifacts_found"].append(str(artifact.relative_to(project_path)))
     
-    return {
-        "artifacts_found": found_artifacts,
-        "artifact_count": len(found_artifacts),
-        "has_artifacts": len(found_artifacts) > 0
-    }
+    validation["artifact_count"] = len(validation["artifacts_found"])
+    validation["has_artifacts"] = validation["artifact_count"] > 0
+    
+    return validation
 
 def classify_build_failure(return_code: int) -> dict:
-    """
-    Classify build failure types for better error handling.
-    Returns failure classification and recommended actions.
-    """
-    failure_types = {
-        0: {"type": "success", "action": "continue"},
-        1: {"type": "compilation_error", "action": "stop", "reason": "Code compilation failed"},
-        2: {"type": "compilation_error", "action": "stop", "reason": "Code compilation failed"}, 
-        123: {"type": "compilation_error", "action": "stop", "reason": "Java compilation failed (javac)"},
-        124: {"type": "timeout", "action": "stop", "reason": "Build timeout exceeded"},
-        125: {"type": "docker_error", "action": "stop", "reason": "Docker container failed to start"},
-        126: {"type": "docker_error", "action": "stop", "reason": "Docker command not executable"},
-        127: {"type": "docker_error", "action": "stop", "reason": "Docker command not found"}
+    classification = {
+        "type": "unknown_failure",
+        "action": "investigate",
+        "reason": "Unknown failure"
     }
-    
-    classification = failure_types.get(return_code, {
-        "type": "unknown_error", 
-        "action": "stop", 
-        "reason": f"Unknown build failure (exit code {return_code})"
-    })
+    if return_code == 0:
+        classification.update({
+            "type": "success",
+            "action": "continue",
+            "reason": "Build succeeded"
+        })
+    elif return_code == 1:
+        classification.update({
+            "type": "compilation_error", 
+            "action": "stop",
+            "reason": "Java compilation failed (javac)"
+        })
+    elif return_code == 124:
+        classification.update({
+            "type": "timeout",
+            "action": "retry_with_longer_timeout",
+            "reason": "Build timed out"
+        })
+    elif return_code == 125:
+        classification.update({
+            "type": "docker_error",
+            "action": "check_docker_setup", 
+            "reason": "Docker execution failed"
+        })
+    elif return_code == 2:
+        classification.update({
+            "type": "missing_dependencies",
+            "action": "install_dependencies",
+            "reason": "Missing build dependencies"
+        })
+    else:
+        classification.update({
+            "type": "build_failure",
+            "action": "stop", 
+            "reason": f"Unknown build failure (exit code {return_code})"
+        })
     
     classification["return_code"] = return_code
     return classification
 
 def main():
     """Main entry point for Java build verification"""
-    
-    # command line interface
     parser = argparse.ArgumentParser(
         description="Java Build Verifier - Handles any Java project from single files to enterprise applications",
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -263,19 +271,16 @@ Ex.:
     
     args = parser.parse_args()
     
-    # validate docker availability
     if not check_docker():
         print("ERROR: Docker is not available or not running", file=sys.stderr)
         print("Please start Docker and try again", file=sys.stderr)
         sys.exit(2)
     
-    # setup paths - handle both files and directories
     input_path = pathlib.Path(args.input)
     if not input_path.exists():
         print(f"ERROR: Input path does not exist: {input_path}", file=sys.stderr)
         sys.exit(2)
     
-    # if input is a single file, use its parent directory as worktree
     if input_path.is_file():
         worktree = input_path.parent
         if args.verbose:
@@ -286,25 +291,17 @@ Ex.:
         if args.verbose:
             print(f"Directory project: {worktree}")
     
-    # setup artifacts directory
     artifacts = pathlib.Path(args.artifacts)
     artifacts.mkdir(parents=True, exist_ok=True)
     
     summary_file = artifacts / "build_summary.json"
     
-    # record start time
     process_start = datetime.datetime.now(datetime.timezone.utc)
-    
-    if args.verbose:
-        print(f"Starting Java build verification at {process_start.isoformat()}")
-    
-    # detect java project type and build system
     stack, build_cmd, test_cmd, metadata = detect_java_project(worktree)
     
     if args.verbose:
         print(f"Detected: {stack} ({metadata.get('java_files', 0)} Java files)")
     
-    # handle detection failure
     if not build_cmd:
         error_msg = metadata.get('error', 'Unknown detection error')
         
@@ -323,68 +320,53 @@ Ex.:
         print(json.dumps(summary, indent=2))
         sys.exit(1)
     
-    # get docker image
     image = get_docker_image_for_stack(stack)
     image_digest = get_image_digest(image)
-    
-    # use digest if requested and available
     if args.use_digest and image_digest:
         actual_image = image_digest
-        if args.verbose:
-            print(f"Using exact digest: {image_digest}")
     else:
         actual_image = image
-        if args.verbose:
-            print(f"Using Docker image: {image}")
-            if image_digest:
-                print(f"Image digest: {image_digest}")
-    
-    # execute build
+        
     if args.verbose:
-        print("Starting build phase...")
-
+        print(f"Using Docker image: {image}")
+    
     build_rc, build_duration = run_build_in_docker(
         actual_image, build_cmd, worktree, artifacts, args.timeout_build
     )
-
-    # build result validation
     build_failure = classify_build_failure(build_rc)
     artifact_validation = {"artifacts_found": [], "artifact_count": 0, "has_artifacts": False}
+    build_passed = False
     
     if build_rc == 0:
-        # validate build artifacts were actually created
         artifact_validation = validate_build_artifacts(worktree, stack)
+        build_passed = build_rc == 0 and artifact_validation['has_artifacts']
         
         if args.verbose:
-            print(f"Build succeeded - found {artifact_validation['artifact_count']} artifacts")
-            if artifact_validation['artifact_count'] > 0:
-                print("Build PASS: Build completed with artifacts")
-            else:
-                print("Build WARNING: Build succeeded but no artifacts found")
+            print(f"Build: PASS ({artifact_validation['artifact_count']} artifacts)")
     else:
         if args.verbose:
             failure_type = build_failure['type']
-            reason = build_failure['reason']
-            print(f"Build FAIL: {failure_type} - {reason}")
+            print(f"Build: FAIL ({failure_type})")
 
-    # execute tests iff build succeeded and tests are available
     test_rc, test_duration = 0, 0
     if test_cmd and build_rc == 0:
-        if args.verbose:
-            print("Build succeeded, starting test phase...")
         test_rc, test_duration = run_build_in_docker(
             actual_image, test_cmd, worktree, artifacts, args.timeout_test
         )
-    elif test_cmd and build_rc != 0:
-        if args.verbose:
-            print("Build failed, skipping tests")
 
-    # determine final status with enhanced validation
-    build_passed = build_rc == 0 and artifact_validation['has_artifacts']
-    status = "PASS" if build_passed and test_rc == 0 else "FAIL"
+    behavior_result = None
+    if build_passed:
+        from behavior_check import execute_behavior_validation
+        behavior_result = execute_behavior_validation(
+            worktree, artifacts, stack, actual_image,
+            has_wrapper=metadata.get('has_wrapper', False),
+            docker_runner_func=run_build_in_docker,
+            timeout=args.timeout_test, verbose=args.verbose
+        )
+
+    behavior_passed = behavior_result is None or behavior_result['status'] in ['PASS', 'SKIP']
+    status = "PASS" if build_passed and test_rc == 0 and behavior_passed else "FAIL"
     process_end = datetime.datetime.now(datetime.timezone.utc)
-    
-    # create enhanced summary with build validation (better)
     summary = {
         "status": status,
         "detected_stack": stack,
@@ -396,6 +378,7 @@ Ex.:
             "artifact_validation": artifact_validation,
             "build_status": "PASS" if build_passed else "FAIL"
         },
+        "behavior_validation": behavior_result,
         "build": {
             "rc": build_rc,
             "duration_seconds": round(build_duration, 2)
@@ -411,30 +394,22 @@ Ex.:
         }
     }
     
-    # write summary and display results
     summary_file.write_text(json.dumps(summary, indent=2))
     
     if args.verbose:
-        print(f"\nBuild completed with status: {status}")
-        print(f"Build Status: {summary['build_validation']['build_status']}")
+        print(f"\nVerification Status: {status}")
         if summary['build_validation']['build_status'] == 'FAIL':
             failure_info = summary['build_validation']['build_classification']
-            print(f"   Failure Type: {failure_info['type']}")
-            print(f"   Reason: {failure_info['reason']}")
+            print(f"Build Failed: {failure_info['type']} - {failure_info['reason']}")
         else:
             artifacts_count = summary['build_validation']['artifact_validation']['artifact_count']
-            print(f"   Artifacts Created: {artifacts_count}")
-        print(f"Total duration: {summary['timing']['total_duration_seconds']}s")
-        print(f"Artifacts written to: {artifacts}")
-        print(f"Summary JSON: {summary_file}")
-        if status == "FAIL":
-            print(f"Check summary JSON for detailed error analysis")
+            print(f"Build Passed: {artifacts_count} artifacts created")
+        
+        format_behavior_results_for_display(behavior_result, verbose=True)
+    else:
+        print(f"Status: {status}")
     
-    # output machine-readable JSON for automation
-    print(json.dumps(summary, indent=2))
-    
-    # exit with appropriate code
-    sys.exit(0 if status == "OK" else 1)
+    sys.exit(0 if status == "PASS" else 1)
 
 if __name__ == "__main__":
     main()
