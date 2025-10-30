@@ -1,43 +1,23 @@
-# prompt_utils.py
+# utils/prompt_utils.py
 import json
+from pathlib import Path
+from typing import Optional, Union, List
 
 """
 Encapsulates metadata fields relevant to a vulnerability fixing agent.
-Attributes:
-    language (str): The programming language of the vulnerable code.
-    file (str): The filename containing the vulnerability.
-    function (str): The function or method signature where the vulnerability exists.
-    CWE (str): The Common Weakness Enumeration identifier for the vulnerability.
-    vuln_title (str): A brief title describing the vulnerability.
-    constraints (dict): Constraints for the fixing task (e.g., max_lines, max_hunks, no_new_deps, keep_signature).
-    pov_root_cause (str): Description of the root cause of the vulnerability.
-    __init__(language="", file="", function="", CWE="", vuln_title="", constraints=None, pov_root_cause=""):
-Example:
-    agent_fields_example = AgentFields(
-        language="Java",
-        file="Vulnerable.java",
-        function="public static void main(String[] args) throws Exception",
-        CWE="CWE-78",
-        vuln_title="Fixing a command-line injection in a Java CLI program",
-        constraints={
-            "max_lines": 30,
-            "max_hunks": 2,
-            "no_new_deps": True,
-            "keep_signature": True
-        },
-        pov_root_cause="user input is concatenated into a shell command string and passed to Runtime.exec(), allowing command injection."
-    )
+Provides helpers to build prompts and to safely extract code snippets from disk.
 """
+
 class AgentFields:
     def __init__(
         self,
-        language="",
-        file="",
-        function="",
-        CWE="",
-        vuln_title="",
-        constraints=None,
-        pov_root_cause=""
+        language: str = "",
+        file: str = "",
+        function: str = "",
+        CWE: str = "",
+        vuln_title: str = "",
+        constraints: Optional[dict] = None,
+        pov_root_cause: str = ""
     ):
         self.language = language
         self.file = file
@@ -55,18 +35,14 @@ class AgentFields:
             "CWE": self.CWE,
             "vuln_title": self.vuln_title,
             "constraints": self.constraints,
-            "pov_root_cause": self.pov_root_cause
+            "pov_root_cause": self.pov_root_cause,
         }
 
 
 def build_user_msg(agent_fields, vuln_snippet: str) -> str:
     """
     Build a user message from AgentFields (or dict) and a vulnerable snippet.
-    - Strings are JSON-quoted (double quotes).
-    - constraints rendered as a compact JSON object (booleans lowercased).
-    - returns a single string ready to send to the agent.
     """
-    # Accept either AgentFields instance or plain dict
     if hasattr(agent_fields, "to_dict"):
         fields = agent_fields.to_dict()
     elif isinstance(agent_fields, dict):
@@ -74,11 +50,9 @@ def build_user_msg(agent_fields, vuln_snippet: str) -> str:
     else:
         raise TypeError("agent_fields must be AgentFields or dict")
 
-    # Helper to JSON-quote values (strings will be quoted)
     def jq(val):
         return json.dumps(val, ensure_ascii=False)
 
-    # Prepare constraints JSON as a single-line JSON object
     constraints = fields.get("constraints") or {}
     constraints_json = json.dumps(constraints, separators=(", ", ": "), ensure_ascii=False)
 
@@ -91,16 +65,68 @@ def build_user_msg(agent_fields, vuln_snippet: str) -> str:
     parts.append(f"- vuln_title: {jq(fields.get('vuln_title', ''))}")
     parts.append(f"- constraints: {constraints_json}")
     parts.append(f"- pov_root_cause: {jq(fields.get('pov_root_cause', ''))}")
-    
+
     parts.append("\nVulnerable snippet:")
-    # Keep snippet language hint dynamic if you want; here using java as in your example
-    parts.append(f"```{fields.get('language', '').lower() or 'text'}")
+    parts.append(f"```{(fields.get('language', '') or 'text').lower()}")
     parts.append(vuln_snippet.strip())
     parts.append("```")
 
     return "\n".join(parts)
 
- 
+
+# ============= Extract Vuln Snippet from File =============
+def get_vuln_snippet_from_file(
+    path: str,
+    start_line: Optional[int] = None,
+    end_line: Optional[int] = None,
+    context: int = 2,
+    *,
+    repo_root: Union[str, Path],  # required now
+    max_bytes: int = 2_000_000,
+) -> str:
+    """
+    Read a snippet safely from a file given its path RELATIVE TO repo_root.
+
+    Example:
+        get_vuln_snippet_from_file(
+            "Experiments/vulnerable/CWE_78.java",
+            start_line=5, 
+            end_line=14,
+            repo_root="AutoSec/Experiments"
+        )
+    """
+    rr = Path(repo_root).expanduser().resolve()
+    raw = Path(path)
+    file_p = (rr / raw).resolve()
+
+    # Ensure containment within the repo root
+    if not (file_p == rr or rr in file_p.parents):
+        raise PermissionError(f"'{file_p}' is outside repo root '{rr}'.")
+
+    if not file_p.exists():
+        raise FileNotFoundError(f"File not found: {file_p}")
+
+    size = file_p.stat().st_size
+    if size > max_bytes:
+        raise ValueError(f"File too large: {size} > {max_bytes}")
+
+    raw_lines = file_p.read_text(encoding="utf-8").splitlines()
+    total = len(raw_lines)
+
+    if start_line is None and end_line is None:
+        s, e = 1, total
+    else:
+        s = max(1, int(start_line))
+        e = int(end_line) if end_line is not None else min(total, s + context * 2)
+
+    if s < 1 or e < s or s > total:
+        raise ValueError(f"Invalid range {s}-{e} for {total} lines")
+
+    rel_display = str(file_p.relative_to(rr))
+    snippet = raw_lines[s - 1 : e]
+    header = f"// SNIPPET SOURCE: {rel_display} lines {s}-{e}\n"
+    return header + "\n".join(snippet) + ("\n" if snippet and snippet[-1] != "" else "")
+
 # ============= Helper functions for OpenRouter interaction =============
 def supports_developer_role(client, model):
     """Check if the model supports 'developer' role by sending a test message."""
@@ -116,8 +142,12 @@ def supports_developer_role(client, model):
     except Exception:
         return False
 
-def get_messages(client, model, system_msg, developer_msg, user_msg):
-    if not supports_developer_role(client, model):
+def get_messages(client, model, system_msg, developer_msg, user_msg, ignore_developer_support_check=False) -> List[dict]:
+    """
+    Build messages array for OpenRouter chat completion.
+    If the model does not support 'developer' role, merge developer policies into system message.
+    """
+    if not ignore_developer_support_check and not supports_developer_role(client, model):
         print(f"=== Model {model} does not support 'developer' role; merging into system message === \n\n")
         # collapse developer into system
         combined_system = system_msg + "\n\n--- Developer policies merged ---\n" + developer_msg
