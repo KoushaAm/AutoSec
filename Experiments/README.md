@@ -2,7 +2,8 @@
 A director containing all agent experiments
 
 ## Info
-- `Vulnerable.java`: Command Line Injection sample Java vulnerability
+- `/vulnerable`: Sample CWE java vulnerabilities
+- `/vulnerable/fixed`: Sample CWE java patched vulnerabilities
 - `results.sarif`: Sample CodeQL results for the above CL Injection vulnerability
 
 ## Running Vulnerable.java
