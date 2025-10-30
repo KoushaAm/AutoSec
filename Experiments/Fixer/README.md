@@ -33,3 +33,7 @@
 - Following the same stems as [Running LLMs in Python](#running-llms-in-python)
 - Run with: `python pretty_print_json.py`
 - Will output all JSON files in `output` directory in readable format
+
+### Empty Output Directory
+- Run from within `Fixer` directory
+- `rm -rf output/*.json`
