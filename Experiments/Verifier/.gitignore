@@ -1,31 +1,17 @@
-# Build artifacts and outputs
 artifacts/
 out/
 outs/
-
-# Java compiled classes
 *.class
-
-# Package files
 *.jar
 *.war
 *.ear
-
-# Maven
 target/
-
-# Gradle
-build/__pycache__
+build/
+__pycache__/
 .gradle/
-
-# IDE files
 .vscode/
 .idea/
 *.iml
-
-# OS files
 .DS_Store
 Thumbs.db
-
-# Logs
 *.log
