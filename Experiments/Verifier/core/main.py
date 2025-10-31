@@ -29,7 +29,7 @@ def convert_paths_to_strings(obj):
     Recursively convert all pathlib.Path objects to strings for JSON serialization.
     """
     if isinstance(obj, pathlib.Path):
-        return str(obj)
+        return str(obj).replace('\\', '/')
     elif isinstance(obj, dict):
         return {key: convert_paths_to_strings(value) for key, value in obj.items()}
     elif isinstance(obj, list):
