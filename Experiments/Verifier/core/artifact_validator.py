@@ -70,7 +70,7 @@ class BuildArtifactValidator:
             artifacts = list(project_path.glob(pattern))
             for artifact in artifacts:
                 if artifact.is_file():
-                    relative_path = str(artifact.relative_to(project_path))
+                    relative_path = str(artifact.relative_to(project_path)).replace('\\', '/')
                     validation_result["artifacts_found"].append(relative_path)
                     
                     # categorize artifact types
@@ -117,7 +117,7 @@ class BuildArtifactValidator:
         for dir_name in dirs_to_check:
             dir_path = project_path / dir_name
             if dir_path.exists() and dir_path.is_dir():
-                build_dirs.append(str(dir_path.relative_to(project_path)))
+                build_dirs.append(str(dir_path.relative_to(project_path)).replace('\\', '/'))
         
         return build_dirs
     

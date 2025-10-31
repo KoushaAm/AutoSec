@@ -97,8 +97,8 @@ class SmokeTestGenerator:
         # convert all Path objects to strings for JSON serialization
         return {
             "java_files_count": len(java_files),
-            "java_files": [str(f.relative_to(project_path)) for f in java_files],  # Convert to strings
-            "main_classes": [str(f.relative_to(project_path)) for f in main_class_files],
+            "java_files": [str(f.relative_to(project_path)).replace('\\', '/') for f in java_files],  # Convert to strings
+            "main_classes": [str(f.relative_to(project_path)).replace('\\', '/') for f in main_class_files],
             "main_class_files": main_class_files,  # Keep Path objects for internal use
             "spring_boot_detected": spring_boot_detected,
             "web_app_detected": web_app_detected
@@ -185,7 +185,7 @@ public class GeneratedSmokeTest {
         return {
             "smoke_tests_generated": True,
             "test_types": ["context_loading", "health_endpoint", "startup_validation", "basic_connectivity"],
-            "generated_files": [str(test_file.relative_to(project_path))],
+            "generated_files": [str(test_file.relative_to(project_path)).replace('\\', '/')],
             "test_strategies": ["spring_boot_integration_test", "web_endpoint_validation"],
             "estimated_coverage": "comprehensive_spring_boot"
         }
@@ -233,7 +233,7 @@ public class GeneratedWebAppSmokeTest {
         return {
             "smoke_tests_generated": True,
             "test_types": ["servlet_context", "class_loading"],
-            "generated_files": [str(test_file.relative_to(project_path))],
+            "generated_files": [str(test_file.relative_to(project_path)).replace('\\', '/')],
             "test_strategies": ["web_app_basic_validation"],
             "estimated_coverage": "basic_web_app"
         }
@@ -340,7 +340,7 @@ public class GeneratedCliSmokeTest{i + 1} {{
             
             test_file = test_dir / f"GeneratedCliSmokeTest{i + 1}.java"
             test_file.write_text(smoke_test_content, encoding='utf-8')
-            generated_files.append(str(test_file.relative_to(project_path)))
+            generated_files.append(str(test_file.relative_to(project_path)).replace('\\', '/'))
         
         return {
             "smoke_tests_generated": True,
