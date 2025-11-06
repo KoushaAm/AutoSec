@@ -16,6 +16,7 @@ from .docker_runner import (
     classify_build_failure
 )
 from .artifact_validator import validate_build_artifacts
+from .smart_docker import get_smart_docker_image
 
 # Use absolute import instead of relative import that goes beyond top-level package
 import sys
@@ -68,6 +69,8 @@ Examples:
                        help="Test timeout in seconds (default: 1200)")
     parser.add_argument("--docker", action="store_true", required=True,
                        help="Required flag - all builds run in Docker")
+    parser.add_argument("--smart-docker", action="store_true",
+                       help="Use smart Docker image selection based on project versions")
     parser.add_argument("--verbose", "-v", action="store_true",
                        help="Enable verbose output")
     
@@ -129,11 +132,27 @@ Examples:
         sys.exit(1)
     
     # Phase 2: Docker Setup
-    image = get_docker_image_for_stack(stack)
-    docker_runner = DockerRunner()
+    if args.smart_docker:
+        image, is_custom, detected_versions = get_smart_docker_image(worktree, stack)
+        
+        if args.verbose:
+            print(f"Detected versions: Java {detected_versions['java_version']}", end="")
+            if detected_versions.get('build_tool_version'):
+                print(f", {stack} {detected_versions['build_tool_version']}")
+            else:
+                print()
+            
+            image_type = "custom-built" if is_custom else "official"
+            print(f"Using {image_type} Docker image: {image}")
+    else:
+        image = get_docker_image_for_stack(stack)
+        is_custom = False
+        detected_versions = {}
+        
+        if args.verbose:
+            print(f"Using default Docker image: {image}")
     
-    if args.verbose:
-        print(f"Using Docker image: {image}")
+    docker_runner = DockerRunner()
     
     # Phase 3: Build Execution
     build_rc, build_duration = docker_runner.run_command(
@@ -184,6 +203,8 @@ Examples:
         "status": status,
         "detected_stack": stack,
         "docker_image": image,
+        "is_custom_image": is_custom if args.smart_docker else False,
+        "detected_versions": detected_versions if args.smart_docker else {},
         "metadata": metadata,
         "build_validation": {
             "build_classification": build_failure,
