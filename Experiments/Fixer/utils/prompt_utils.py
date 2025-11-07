@@ -1,31 +1,28 @@
 # utils/prompt_utils.py
+from dataclasses import dataclass
 import json
 from pathlib import Path
-from typing import Optional, Union, List
+from typing import Optional, Union, List, Iterable, Tuple
 
 """
 Encapsulates metadata fields relevant to a vulnerability fixing agent.
 Provides helpers to build prompts and to safely extract code snippets from disk.
 """
 
+# ============ AgentFields dataclass =============
+@dataclass
 class AgentFields:
-    def __init__(
-        self,
-        language: str = "",
-        file: str = "",
-        function: str = "",
-        CWE: str = "",
-        vuln_title: str = "",
-        constraints: Optional[dict] = None,
-        pov_root_cause: str = ""
-    ):
-        self.language = language
-        self.file = file
-        self.function = function
-        self.CWE = CWE
-        self.vuln_title = vuln_title
-        self.constraints = constraints or {}
-        self.pov_root_cause = pov_root_cause
+    language: str = ""
+    file: str = ""
+    function: str = ""
+    CWE: str = ""
+    constraints: Optional[dict] = None
+    vuln_title: str = ""
+    pov_root_cause: str = ""
+
+    def __post_init__(self):
+        if self.constraints is None:
+            self.constraints = {}
 
     def to_dict(self):
         return {
@@ -33,46 +30,48 @@ class AgentFields:
             "file": self.file,
             "function": self.function,
             "CWE": self.CWE,
-            "vuln_title": self.vuln_title,
             "constraints": self.constraints,
+            "vuln_title": self.vuln_title,
             "pov_root_cause": self.pov_root_cause,
         }
 
-
-def build_user_msg(agent_fields, vuln_snippet: str) -> str:
+# ============= Multi-task User message builder (handles single-task too) =============
+def build_user_msg_multi(tasks: Iterable[Tuple[int, AgentFields, str]]) -> str:
     """
-    Build a user message from AgentFields (or dict) and a vulnerable snippet.
+    Build a composite USER message that lists one or more tasks.
+    Each item is (task_id, AgentFields, vulnerable_snippet).
+    The Developer prompt should require patch_id == task_id and same ordering.
+
+    Pass a list with one element for single-task mode.
     """
-    if hasattr(agent_fields, "to_dict"):
-        fields = agent_fields.to_dict()
-    elif isinstance(agent_fields, dict):
-        fields = agent_fields
-    else:
-        raise TypeError("agent_fields must be AgentFields or dict")
+    parts: List[str] = []
+    parts.append(
+        "You will receive multiple independent fix tasks. "
+        "For each task, produce one patch in the same order, and set `patch_id` equal to the provided `task_id`.\n"
+    )
+    parts.append("tasks:\n")
 
-    def jq(val):
-        return json.dumps(val, ensure_ascii=False)
+    for task_id, agent_fields, vuln_snippet in tasks:
+        fields = agent_fields.to_dict() if hasattr(agent_fields, "to_dict") else dict(agent_fields)
+        # fields
+        parts.append(f"- task_id: {task_id}")
+        parts.append(f"  language: {json.dumps(fields.get('language',''), ensure_ascii=False)}")
+        parts.append(f"  file: {json.dumps(fields.get('file',''), ensure_ascii=False)}")
+        parts.append(f"  function: {json.dumps(fields.get('function',''), ensure_ascii=False)}")
+        parts.append(f"  CWE: {json.dumps(fields.get('CWE',''), ensure_ascii=False)}")
+        constraints = fields.get("constraints") or {}
+        parts.append("  constraints: " + json.dumps(constraints, separators=(", ", ": "), ensure_ascii=False))
+        parts.append(f"  vuln_title: {json.dumps(fields.get('vuln_title',''), ensure_ascii=False)}")
+        parts.append(f"  pov_root_cause: {json.dumps(fields.get('pov_root_cause',''), ensure_ascii=False)}")
 
-    constraints = fields.get("constraints") or {}
-    constraints_json = json.dumps(constraints, separators=(", ", ": "), ensure_ascii=False)
-
-    parts = []
-    parts.append("Fields provided to the agent:")
-    parts.append(f"- language: {jq(fields.get('language', ''))}")
-    parts.append(f"- file: {jq(fields.get('file', ''))}")
-    parts.append(f"- function: {jq(fields.get('function', ''))}")
-    parts.append(f"- CWE: {jq(fields.get('CWE', ''))}")
-    parts.append(f"- vuln_title: {jq(fields.get('vuln_title', ''))}")
-    parts.append(f"- constraints: {constraints_json}")
-    parts.append(f"- pov_root_cause: {jq(fields.get('pov_root_cause', ''))}")
-
-    parts.append("\nVulnerable snippet:")
-    parts.append(f"```{(fields.get('language', '') or 'text').lower()}")
-    parts.append(vuln_snippet.strip())
-    parts.append("```")
+        # language fence heuristic for nicer rendering
+        lang = (fields.get("language", "") or "text").lower()
+        parts.append("  vulnerable_snippet:")
+        parts.append(f"  ```{lang}")
+        parts.append("\n".join("  " + line for line in vuln_snippet.strip().splitlines()))
+        parts.append("  ```\n")
 
     return "\n".join(parts)
-
 
 # ============= Extract Vuln Snippet from File =============
 def get_vuln_snippet_from_file(
@@ -81,7 +80,7 @@ def get_vuln_snippet_from_file(
     end_line: Optional[int] = None,
     context: int = 2,
     *,
-    repo_root: Union[str, Path],  # required now
+    repo_root: Union[str, Path],
     max_bytes: int = 2_000_000,
 ) -> str:
     """
@@ -90,7 +89,7 @@ def get_vuln_snippet_from_file(
     Example:
         get_vuln_snippet_from_file(
             "Experiments/vulnerable/CWE_78.java",
-            start_line=5, 
+            start_line=5,
             end_line=14,
             repo_root="AutoSec/Experiments"
         )
