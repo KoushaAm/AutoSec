@@ -1,9 +1,0 @@
-[submodule "Experiments/Verifier/Faultline/Faultline/perfecto-plugin"]
-	path = Experiments/Verifier/Faultline/Faultline/perfecto-plugin
-	url = git@github.com:jenkinsci/perfecto-plugin.git
-[submodule "Experiments/Verifier/Faultline/perfecto-plugin"]
-	path = Experiments/Verifier/Faultline/perfecto-plugin
-	url = git@github.com:jenkinsci/perfecto-plugin.git
-[submodule "Experiments/Verifier/Faultline/icse-26"]
-	path = Experiments/Verifier/Faultline/icse-26
-	url = git@github.com:faultline-pov/icse-26.git

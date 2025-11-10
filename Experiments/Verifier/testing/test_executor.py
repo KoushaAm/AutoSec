@@ -1,10 +1,4 @@
 #!/usr/bin/env python3
-"""
-Test Execution and result parsing module
-
-Handles execution of tests (existing or generated) and parsing of test results
-from various build systems (Maven, Gradle).
-"""
 import pathlib
 import datetime
 import time
@@ -16,18 +10,10 @@ from .smoke_generator import SmokeTestGenerator
 
 
 class TestResultParser:
-    """parse test execution results from build system output files"""
+    """Parse test execution results from build system output files"""
     
     def parse_test_results(self, project_path: pathlib.Path, stack_name: str, test_rc: int) -> Dict[str, Any]:
-        """
-        Args:
-            project_path: Path to the project root
-            stack_name: Build stack type (maven, gradle, javac)
-            test_rc: Test execution return code
-            
-        Returns:
-            Dictionary with parsed test results
-        """
+        """Returns dictionary with parsed test results"""
         test_results = {
             "total_tests": 0,
             "passed_tests": 0,
@@ -71,7 +57,6 @@ class TestResultParser:
         return test_results
     
     def _parse_maven_test_reports(self, report_dir: pathlib.Path) -> Dict[str, Any]:
-        """parse Maven Surefire/Failsafe test report XML files."""
         results = {
             "total_tests": 0,
             "passed_tests": 0, 
@@ -123,12 +108,10 @@ class TestResultParser:
         return results
     
     def _parse_gradle_test_reports(self, report_dir: pathlib.Path) -> Dict[str, Any]:
-        """parse Gradle test report XML files (similar to Maven format)."""
         # Gradle uses similar XML format to Maven
         return self._parse_maven_test_reports(report_dir)
     
     def _merge_test_results(self, target: Dict[str, Any], source: Dict[str, Any]):
-        """Merge test results from multiple sources."""
         target["total_tests"] += source["total_tests"]
         target["passed_tests"] += source["passed_tests"] 
         target["failed_tests"] += source["failed_tests"]
@@ -138,7 +121,7 @@ class TestResultParser:
 
 
 class TestExecutor:
-    """handling execution of tests and coordination between discovery, generation, and execution."""
+    """Handles execution of tests and coordination between discovery, generation, and execution"""
     
     def __init__(self):
         self.test_discovery = TestDiscovery()
@@ -156,12 +139,7 @@ class TestExecutor:
         timeout: int = 1200, 
         verbose: bool = False
     ) -> Dict[str, Any]:
-        """
-        execute complete behavior validation pipeline
-        
-        Includes test discovery, execution of existing tests, or generation
-        and execution of smoke tests if no tests are found.
-        """
+        """Execute complete behavior validation pipeline"""
         behavior_result = {
             "status": "UNKNOWN",
             "check_name": "behavior_validation", 
@@ -225,7 +203,6 @@ class TestExecutor:
         timeout: int,
         verbose: bool
     ) -> Dict[str, Any]:
-        """Execute existing tests found during discovery."""
         if verbose:
             print("Phase 2A: Existing Test Execution")
         
@@ -290,12 +267,10 @@ class TestExecutor:
         timeout: int,
         verbose: bool
     ) -> Dict[str, Any]:
-        """generate and execute smoke tests when no existing tests are found"""
         if verbose:
             print("Phase 2B: Smoke Test Generation & Execution")
         
         try:
-            # generate smoke tests
             smoke_generation = self.smoke_generator.generate_smoke_tests(project_path, stack_name)
             
             if not smoke_generation["smoke_tests_generated"]:
@@ -318,7 +293,7 @@ class TestExecutor:
                     "smoke_test_generation": smoke_generation
                 }
             
-            # execute smoke tests
+            # Execute smoke tests
             test_commands = self.test_discovery._get_test_commands_for_stack(stack_name)
             test_cmd = test_commands[0] if has_wrapper else test_commands[1] if len(test_commands) > 1 else test_commands[0]
             
@@ -326,10 +301,10 @@ class TestExecutor:
                 docker_image, test_cmd, project_path, artifacts_path, timeout
             )
             
-            # parse results
+            # Parse results
             test_results = self.result_parser.parse_test_results(project_path, stack_name, test_rc)
             
-            # clean up generated tests
+            # Clean up generated tests
             self.smoke_generator.cleanup_generated_tests(project_path)
             
             execution_result = {
@@ -343,7 +318,7 @@ class TestExecutor:
                 "cleanup_performed": True
             }
             
-            # determine status and recommendations
+            # Determine status and recommendations
             if test_rc == 0 and test_results["failed_tests"] == 0:
                 execution_result["status"] = "PASS"
                 execution_result["recommendations"] = ["Smoke tests passed - basic behavior validated"]
@@ -370,7 +345,7 @@ class TestExecutor:
             return execution_result
             
         except Exception as e:
-            # try cleaning up even on error
+            # Try cleaning up even on error
             try:
                 self.smoke_generator.cleanup_generated_tests(project_path)
             except:
@@ -396,7 +371,6 @@ class TestExecutor:
             }
     
     def format_behavior_results_for_display(self, behavior_result: Dict[str, Any], verbose: bool = False) -> None:
-        """for console display"""
         if not behavior_result:
             if verbose:
                 print("Behavior: SKIP (build failed)")
@@ -425,7 +399,6 @@ class TestExecutor:
                 print(f"Behavior: ERROR ({error_msg})")
 
 
-# convenience functions for backward compatibility
 def execute_behavior_validation(
     project_path: pathlib.Path, 
     artifacts_path: pathlib.Path,
@@ -436,11 +409,7 @@ def execute_behavior_validation(
     timeout: int = 1200, 
     verbose: bool = False
 ) -> Dict[str, Any]:
-    """
-    Execute Behavior Check: Test discovery and execution in Docker container
-    
-    This function maintains backward compatibility with the original interface.
-    """
+    """Convenience function that maintains backward compatibility"""
     executor = TestExecutor()
     return executor.execute_behavior_validation(
         project_path, artifacts_path, stack_name, docker_image, 
@@ -449,6 +418,5 @@ def execute_behavior_validation(
 
 
 def format_behavior_results_for_display(behavior_result: Dict[str, Any], verbose: bool = False) -> None:
-    """format behavior results for display - backward compatibility function."""
     executor = TestExecutor()
     executor.format_behavior_results_for_display(behavior_result, verbose)

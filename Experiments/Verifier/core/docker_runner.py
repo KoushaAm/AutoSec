@@ -1,10 +1,4 @@
 #!/usr/bin/env python3
-"""
-Docker Execution Module
-
-handling Docker container execution, image management, and build logging
-for the Java verification pipeline.
-"""
 import pathlib
 import subprocess
 import time
@@ -12,7 +6,7 @@ from typing import Tuple, Optional, Dict
 
 
 class DockerRunner:
-    """manages Docker container execution for build and test operations."""
+    """Manages Docker container execution for build and test operations"""
     
     # Docker image mappings for different build stacks
     STACK_IMAGES = {
@@ -23,7 +17,7 @@ class DockerRunner:
     
     @classmethod
     def check_docker_availability(cls) -> bool:
-        """check if Docker is installed and running"""
+        """Check if Docker is installed and running"""
         try:
             # Check if docker command exists
             result = subprocess.run(
@@ -45,11 +39,11 @@ class DockerRunner:
     
     @classmethod
     def get_image_for_stack(cls, stack: str) -> str:
-        """get appropriate Docker image for a build stack"""
+        """Get appropriate Docker image for a build stack"""
         return cls.STACK_IMAGES.get(stack, cls.STACK_IMAGES["javac"])
     
     def __init__(self):
-        """initialize Docker runner"""
+        """Initialize Docker runner"""
         pass
     
     def run_command(
@@ -124,7 +118,7 @@ class DockerRunner:
         stderr: str, 
         duration: float
     ):
-        """log Docker execution results to artifacts directory"""
+        """Log Docker execution results to artifacts directory"""
         log_file = artifacts_dir / "build_log.txt"
         
         with log_file.open("w", encoding="utf-8") as f:
@@ -143,7 +137,7 @@ class DockerRunner:
         duration: float,
         timeout_seconds: int
     ):
-        """log Docker timeout to artifacts directory."""
+        """Log Docker timeout to artifacts directory"""
         log_file = artifacts_dir / "build_log.txt"
         
         with log_file.open("w", encoding="utf-8") as f:
@@ -159,7 +153,7 @@ class DockerRunner:
         error_msg: str,
         duration: float
     ):
-        """log Docker execution error to artifacts directory."""
+        """Log Docker execution error to artifacts directory"""
         log_file = artifacts_dir / "build_log.txt"
         
         with log_file.open("w", encoding="utf-8") as f:
@@ -170,12 +164,12 @@ class DockerRunner:
 
 
 class BuildFailureClassifier:
-    """classifies build failures based on return codes and provides actionable feedback."""
+    """Classifies build failures based on return codes and provides actionable feedback"""
     
     @staticmethod
     def classify_failure(return_code: int) -> Dict[str, str]:
         """
-        classify build failure based on return code.
+        Classify build failure based on return code.
         
         Args:
             return_code: Process return code
@@ -232,12 +226,12 @@ class BuildFailureClassifier:
 
 # Convenience functions for backward compatibility
 def check_docker() -> bool:
-    """Check if Docker is available and running."""
+    """Check if Docker is available and running"""
     return DockerRunner.check_docker_availability()
 
 
 def get_docker_image_for_stack(stack: str) -> str:
-    """Get Docker image for build stack."""
+    """Get Docker image for build stack"""
     return DockerRunner.get_image_for_stack(stack)
 
 
@@ -248,15 +242,11 @@ def run_build_in_docker(
     artifacts: pathlib.Path,
     timeout_seconds: int = 1800
 ) -> Tuple[int, float]:
-    """
-    Run build command in Docker container.
-    
-    This function maintains backward compatibility with the original interface.
-    """
+    """Run build command in Docker container"""
     runner = DockerRunner()
     return runner.run_command(image, cmd, worktree, artifacts, timeout_seconds)
 
 
 def classify_build_failure(return_code: int) -> Dict[str, str]:
-    """Classify build failure based on return code."""
+    """Classify build failure based on return code"""
     return BuildFailureClassifier.classify_failure(return_code)
