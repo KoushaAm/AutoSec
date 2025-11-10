@@ -1,7 +1,7 @@
 """
 Core Verifier Module
 
-contains the main verification components:
+Contains the main verification components:
 - project_detector: Java project detection and analysis
 - docker_runner: Docker container execution and management
 - artifact_validator: Build artifact validation and analysis

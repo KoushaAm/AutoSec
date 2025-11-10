@@ -1,7 +1,7 @@
 """
-testing module
+Testing Module
 
-contains all the testing-related functionality:
+Contains all the testing-related functionality:
 - test_discovery: Discovery and analysis of existing tests
 - smoke_generator: Generation of smoke tests for different project types
 - test_executor: Test execution coordination and result parsing

@@ -1,18 +1,11 @@
 #!/usr/bin/env python3
-"""
-Build Artifact Validation Module
-
-handling validation of build artifacts (JAR files, class files, WAR files)
-to ensure successful compilation and build completion.
-"""
 import pathlib
 from typing import Dict, List, Any
 
 
 class BuildArtifactValidator:
-    """Validates build artifacts to ensure successful compilation."""
+    """Validates build artifacts to ensure successful compilation"""
     
-    # Artifact patterns for different build systems
     ARTIFACT_PATTERNS = {
         "maven": [
             "target/**/*.class",
@@ -37,14 +30,7 @@ class BuildArtifactValidator:
         self._validation_cache = {}
     
     def validate_artifacts(self, project_path: pathlib.Path, stack: str) -> Dict[str, Any]:
-        """
-        Args:
-            project_path: Path to the project root
-            stack: Build stack type (maven, gradle, javac)
-            
-        Returns:
-            Dictionary with validation results
-        """
+        """Returns dictionary with validation results"""
         cache_key = f"{project_path.absolute()}:{stack}"
         if cache_key in self._validation_cache:
             return self._validation_cache[cache_key]
@@ -65,32 +51,26 @@ class BuildArtifactValidator:
         
         patterns = self.ARTIFACT_PATTERNS.get(stack, self.ARTIFACT_PATTERNS["javac"])
         
-        # find all artifacts matching the patterns
+        # Find all artifacts matching the patterns
         for pattern in patterns:
             artifacts = list(project_path.glob(pattern))
             for artifact in artifacts:
                 if artifact.is_file():
-                    relative_path = str(artifact.relative_to(project_path)).replace('\\', '/')
+                    relative_path = str(artifact.relative_to(project_path))
                     validation_result["artifacts_found"].append(relative_path)
                     
-                    # categorize artifact types
+                    # Categorize artifact types
                     self._categorize_artifact(artifact, validation_result["artifact_types"])
         
-        # find build directories
         validation_result["build_directories"] = self._find_build_directories(project_path, stack)
-        
-        # calculate totals and determine status
         validation_result["artifact_count"] = len(validation_result["artifacts_found"])
         validation_result["has_artifacts"] = validation_result["artifact_count"] > 0
         validation_result["validation_status"] = self._determine_validation_status(validation_result, stack)
         
-        # cache result
         self._validation_cache[cache_key] = validation_result
-        
         return validation_result
     
     def _categorize_artifact(self, artifact_path: pathlib.Path, artifact_types: Dict[str, int]):
-        """By file extension"""
         suffix = artifact_path.suffix.lower()
         
         if suffix == ".class":
@@ -103,7 +83,6 @@ class BuildArtifactValidator:
             artifact_types["ear_files"] += 1
     
     def _find_build_directories(self, project_path: pathlib.Path, stack: str) -> List[str]:
-        """Find build output directories"""
         build_dirs = []
         
         potential_dirs = {
@@ -117,18 +96,17 @@ class BuildArtifactValidator:
         for dir_name in dirs_to_check:
             dir_path = project_path / dir_name
             if dir_path.exists() and dir_path.is_dir():
-                build_dirs.append(str(dir_path.relative_to(project_path)).replace('\\', '/'))
+                build_dirs.append(str(dir_path.relative_to(project_path)))
         
         return build_dirs
     
     def _determine_validation_status(self, validation_result: Dict[str, Any], stack: str) -> str:
-        """determine overall validation status based on artifacts found"""
         if not validation_result["has_artifacts"]:
             return "no_artifacts"
         
         artifact_types = validation_result["artifact_types"]
         
-        # for Maven/Gradle projects, expect at least class files
+        # For Maven/Gradle projects, expect at least class files
         if stack in ["maven", "gradle"]:
             if artifact_types["class_files"] > 0:
                 return "success"
@@ -136,8 +114,6 @@ class BuildArtifactValidator:
                 return "success"
             else:
                 return "insufficient_artifacts"
-        
-        # for javac projects, we just need class files
         elif stack == "javac":
             if artifact_types["class_files"] > 0:
                 return "success"
@@ -147,7 +123,7 @@ class BuildArtifactValidator:
         return "unknown"
     
     def get_validation_summary(self, validation_result: Dict[str, Any]) -> str:
-        """human-readable summary of validation results"""
+        """Generate human-readable summary of validation results"""
         if not validation_result["has_artifacts"]:
             return "No build artifacts found - compilation may have failed"
         
@@ -169,22 +145,15 @@ class BuildArtifactValidator:
             return f"Found {validation_result['artifact_count']} artifacts"
     
     def clear_cache(self):
-        """clear validation cache"""
         self._validation_cache.clear()
 
 
 class BuildOutputAnalyzer:
-    """analyzes build outputs for common patterns and issues"""
+    """Analyzes build outputs for common patterns and issues"""
     
     @staticmethod
     def analyze_build_log(artifacts_dir: pathlib.Path) -> Dict[str, Any]:
-        """
-        Args:
-            artifacts_dir: Directory containing build_log.txt
-            
-        Returns:
-            Dictionary with analysis results
-        """
+        """Returns dictionary with analysis results"""
         analysis = {
             "log_found": False,
             "compilation_errors": [],
@@ -203,19 +172,10 @@ class BuildOutputAnalyzer:
         try:
             log_content = log_file.read_text(encoding='utf-8', errors='ignore')
             
-            # Analyze for compilation errors
             analysis["compilation_errors"] = BuildOutputAnalyzer._find_compilation_errors(log_content)
-            
-            # Analyze for warnings
             analysis["warnings"] = BuildOutputAnalyzer._find_warnings(log_content)
-            
-            # Analyze for dependency issues
             analysis["dependency_issues"] = BuildOutputAnalyzer._find_dependency_issues(log_content)
-            
-            # Analyze for test failures
             analysis["test_failures"] = BuildOutputAnalyzer._find_test_failures(log_content)
-            
-            # Generate summary
             analysis["analysis_summary"] = BuildOutputAnalyzer._generate_summary(analysis)
             
         except Exception as e:
@@ -225,7 +185,6 @@ class BuildOutputAnalyzer:
     
     @staticmethod
     def _find_compilation_errors(log_content: str) -> List[str]:
-        """Find compilation errors in build log."""
         errors = []
         lines = log_content.split('\n')
         
@@ -244,11 +203,10 @@ class BuildOutputAnalyzer:
                     errors.append(line.strip())
                     break
         
-        return errors[:10]  # Limit to first 10 errors
+        return errors[:10]
     
     @staticmethod
     def _find_warnings(log_content: str) -> List[str]:
-        """Find warnings in build log."""
         warnings = []
         lines = log_content.split('\n')
         
@@ -265,7 +223,7 @@ class BuildOutputAnalyzer:
                     warnings.append(line.strip())
                     break
         
-        return warnings[:5]  # Limit to first 5 warnings
+        return warnings[:5]
     
     @staticmethod
     def _find_dependency_issues(log_content: str) -> List[str]:
@@ -287,7 +245,7 @@ class BuildOutputAnalyzer:
                     issues.append(line.strip())
                     break
         
-        return issues[:5]  # Limit to first 5 issues
+        return issues[:5]
     
     @staticmethod
     def _find_test_failures(log_content: str) -> List[str]:
@@ -306,7 +264,6 @@ class BuildOutputAnalyzer:
         for line in lines:
             line_lower = line.lower()
             
-            # Check if we're in a test execution section
             if "running tests" in line_lower or "test results" in line_lower:
                 in_test_section = True
                 continue
@@ -317,7 +274,7 @@ class BuildOutputAnalyzer:
                         failures.append(line.strip())
                         break
         
-        return failures[:5]  # Limit to first 5 failures
+        return failures[:5]
     
     @staticmethod
     def _generate_summary(analysis: Dict[str, Any]) -> str:
@@ -341,12 +298,7 @@ class BuildOutputAnalyzer:
             return "Build log analysis: No significant issues found"
 
 
-# convenience functions for backward compatibility
 def validate_build_artifacts(project_path: pathlib.Path, stack: str) -> Dict[str, Any]:
-    """
-    Validate build artifacts for a project.
-    
-    This function maintains backward compatibility with the original interface.
-    """
+    """Convenience function for backward compatibility"""
     validator = BuildArtifactValidator()
     return validator.validate_artifacts(project_path, stack)

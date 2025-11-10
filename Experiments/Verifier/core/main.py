@@ -18,17 +18,13 @@ from .docker_runner import (
 from .artifact_validator import validate_build_artifacts
 from .smart_docker import get_smart_docker_image
 
-# Use absolute import instead of relative import that goes beyond top-level package
-import sys
-import pathlib
+# Import testing module from parent directory
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent))
 from testing.test_executor import execute_behavior_validation, format_behavior_results_for_display
 
 
 def convert_paths_to_strings(obj):
-    """
-    Recursively convert all pathlib.Path objects to strings for JSON serialization.
-    """
+    """Recursively convert all pathlib.Path objects to strings for JSON serialization."""
     if isinstance(obj, pathlib.Path):
         return str(obj).replace('\\', '/')
     elif isinstance(obj, dict):
@@ -76,19 +72,19 @@ Examples:
     
     args = parser.parse_args()
     
-    # validate Docker availability
+    # Validate Docker availability
     if not check_docker():
         print("ERROR: Docker is not available or not running", file=sys.stderr)
         print("Please start Docker and try again", file=sys.stderr)
         sys.exit(2)
     
-    # validate input path
+    # Validate input path
     input_path = pathlib.Path(args.input)
     if not input_path.exists():
         print(f"ERROR: Input path does not exist: {input_path}", file=sys.stderr)
         sys.exit(2)
     
-    # determine working directory
+    # Determine working directory
     if input_path.is_file():
         worktree = input_path.parent
         if args.verbose:
@@ -99,12 +95,11 @@ Examples:
         if args.verbose:
             print(f"Directory project: {worktree}")
     
-    # set up artifacts directory
+    # Set up artifacts directory
     artifacts = pathlib.Path(args.artifacts)
     artifacts.mkdir(parents=True, exist_ok=True)
     summary_file = artifacts / "build_summary.json"
     
-    # start the verification process
     process_start = datetime.datetime.now(datetime.timezone.utc)
     
     # Phase 1: Project Detection
@@ -174,7 +169,7 @@ Examples:
             failure_type = build_failure['type']
             print(f"Build: FAIL ({failure_type})")
     
-    # Phase 4: Test Execution (legacy test command - if provided)
+    # Phase 4: Test Execution
     test_rc, test_duration = 0, 0
     if test_cmd and build_rc == 0:
         test_rc, test_duration = docker_runner.run_command(
@@ -227,7 +222,6 @@ Examples:
         }
     }
     
-    # Save summary
     summary_file.write_text(json.dumps(convert_paths_to_strings(summary), indent=2))
     
     # Display results
