@@ -1,0 +1,194 @@
+Thu Nov  6 02:06:26 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.65.06              Driver Version: 580.65.06      CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H100 80GB HBM3          On  |   00000000:46:00.0 Off |                   On |
+| N/A   24C    P0             65W /  700W |     116MiB /  81559MiB |     N/A      Default |
+|                                         |                        |              Enabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| MIG devices:                                                                            |
++------------------+----------------------------------+-----------+-----------------------+
+| GPU  GI  CI  MIG |              Shared Memory-Usage |        Vol|        Shared         |
+|      ID  ID  Dev |                Shared BAR1-Usage | SM     Unc| CE ENC  DEC  OFA  JPG |
+|                  |                                  |        ECC|                       |
+|==================+==================================+===========+=======================|
+|  0    1   0   0  |              48MiB / 40448MiB    | 60      0 |  3   0    3    0    3 |
+|                  |               0MiB / 24740MiB    |           |                       |
++------------------+----------------------------------+-----------+-----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+Thu Nov  6 02:06:27 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.65.06              Driver Version: 580.65.06      CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H100 80GB HBM3          On  |   00000000:46:00.0 Off |                   On |
+| N/A   24C    P0             65W /  700W |     116MiB /  81559MiB |     N/A      Default |
+|                                         |                        |              Enabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| MIG devices:                                                                            |
++------------------+----------------------------------+-----------+-----------------------+
+| GPU  GI  CI  MIG |              Shared Memory-Usage |        Vol|        Shared         |
+|      ID  ID  Dev |                Shared BAR1-Usage | SM     Unc| CE ENC  DEC  OFA  JPG |
+|                  |                                  |        ECC|                       |
+|==================+==================================+===========+=======================|
+|  0    1   0   0  |              48MiB / 40448MiB    | 60      0 |  3   0    3    0    3 |
+|                  |               0MiB / 24740MiB    |           |                       |
++------------------+----------------------------------+-----------+-----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+True 12.4 NVIDIA H100 80GB HBM3 MIG 3g.40gb
+====== Fetching and Building 1 Repositories ======
+== Processing jenkinsci__perfecto-plugin_CVE-2020-2261_1.17 ==
+== Fetching jenkinsci__perfecto-plugin_CVE-2020-2261_1.17 ==
+== Done fetching jenkinsci__perfecto-plugin_CVE-2020-2261_1.17 ==
+== Building jenkinsci__perfecto-plugin_CVE-2020-2261_1.17 ==
+== Done fetching and building jenkinsci__perfecto-plugin_CVE-2020-2261_1.17 ==
+
+====== Summary ======
+Successfully processed: 1/1
+Maven path set to: /opt/maven/apache-maven-3.5.0/
+JAVA_HOME set to: /usr/lib/jvm/java-1.8.0-openjdk-amd64/
+
+Environment variables for CodeQL database creation:
+PATH: /usr/lib/jvm/java-1.8.0-openjdk-amd64/bin:/opt/maven/apache-maven-3.5.0/bin:/opt/conda/envs/iris/bin:/opt/conda/condabin:/iris/codeql:/opt/conda/bin:/opt/gradle/gradle-8.9/bin:/opt/maven/apache-maven-3.9.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+JAVA_HOME: /usr/lib/jvm/java-1.8.0-openjdk-amd64/
+
+Java version check:
+openjdk version "1.8.0_462"
+OpenJDK Runtime Environment (build 1.8.0_462-8u462-ga~us1-0ubuntu2~22.04.2-b08)
+OpenJDK 64-Bit Server VM (build 25.462-b08, mixed mode)
+
+Creating database at: /scratch/vvv/data/codeql-dbs/jenkinsci__perfecto-plugin_CVE-2020-2261_1.17
+Using source path: /home/vvv/AutoSec/AutoSec/Experiments/Finder/data/project-sources/jenkinsci__perfecto-plugin_CVE-2020-2261_1.17
+Using JAVA_HOME: /usr/lib/jvm/java-1.8.0-openjdk-amd64/
+Successfully created CodeQL database for jenkinsci__perfecto-plugin_CVE-2020-2261_1.17
+/opt/conda/envs/iris/lib/python3.10/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+`torch_dtype` is deprecated! Use `dtype` instead!
+The `load_in_4bit` and `load_in_8bit` arguments are deprecated and will be removed in the future versions. Please, pass a `BitsAndBytesConfig` object in `quantization_config` argument instead.
+[INFO] [2025-11-06 02:07:52] Processing jenkinsci__perfecto-plugin_CVE-2020-2261_1.17 (Query: cwe-078wLLM, Trial: test)...
+[INFO] [2025-11-06 02:07:52] ==> Stage 1: Collecting external APIs...
+[INFO] [2025-11-06 02:07:52]   ==> Existing external APIs file found. Skipping running CodeQL...
+[INFO] [2025-11-06 02:07:52]   ==> Existing candidate APIs file found. Skipping filtering candidates...
+[INFO] [2025-11-06 02:07:52] ==> Stage 2: Collecting internal function parameters...
+[INFO] [2025-11-06 02:07:52]   ==> Existing function parameter file found. Skipping running CodeQL...
+[INFO] [2025-11-06 02:07:52]   ==> Existing source function parameter candidates file found. Skipping filtering candidates...
+[INFO] [2025-11-06 02:07:52] ==> Stage 3: Querying GPT for source/taint-prop/sink APIs...
+[INFO] [2025-11-06 02:07:52]   ==> Querying GPT... #Candidates: 106, #To Query APIs: 106, #Cached: 0
+[INFO] [2025-11-06 02:07:52] >>>Loading LLM model with CausalLM
+[INFO] [2025-11-06 02:07:53] >>>Loading model
+Fetching 17 files:   0%|          | 0/17 [00:00<?, ?it/s]Fetching 17 files:   6%|▌         | 1/17 [00:56<14:56, 56.03s/it]Fetching 17 files: 100%|██████████| 17/17 [00:56<00:00,  3.30s/it]
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards:   6%|▌         | 1/17 [00:03<00:56,  3.55s/it]Loading checkpoint shards:  12%|█▏        | 2/17 [00:07<00:54,  3.61s/it]Loading checkpoint shards:  18%|█▊        | 3/17 [00:10<00:50,  3.62s/it]Loading checkpoint shards:  24%|██▎       | 4/17 [00:14<00:46,  3.59s/it]Loading checkpoint shards:  29%|██▉       | 5/17 [00:17<00:43,  3.59s/it]Loading checkpoint shards:  35%|███▌      | 6/17 [00:21<00:38,  3.52s/it]Loading checkpoint shards:  41%|████      | 7/17 [00:25<00:36,  3.68s/it]Loading checkpoint shards:  47%|████▋     | 8/17 [00:29<00:33,  3.72s/it]Loading checkpoint shards:  53%|█████▎    | 9/17 [00:32<00:28,  3.56s/it]Loading checkpoint shards:  59%|█████▉    | 10/17 [00:35<00:24,  3.50s/it]Loading checkpoint shards:  65%|██████▍   | 11/17 [00:38<00:19,  3.25s/it]Loading checkpoint shards:  71%|███████   | 12/17 [00:41<00:15,  3.07s/it]Loading checkpoint shards:  76%|███████▋  | 13/17 [00:43<00:11,  2.95s/it]Loading checkpoint shards:  82%|████████▏ | 14/17 [00:46<00:08,  2.86s/it]Loading checkpoint shards:  88%|████████▊ | 15/17 [00:49<00:05,  2.81s/it]Loading checkpoint shards:  94%|█████████▍| 16/17 [00:51<00:02,  2.76s/it]Loading checkpoint shards: 100%|██████████| 17/17 [00:53<00:00,  2.48s/it]Loading checkpoint shards: 100%|██████████| 17/17 [00:53<00:00,  3.15s/it]
+Device set to use cuda:0
+  0%|          | 0/2 [00:00<?, ?it/s] 50%|█████     | 1/2 [01:20<01:20, 80.46s/it]4it [01:38, 20.21s/it]                       4it [01:38, 24.73s/it]
+[INFO] [2025-11-06 02:11:36]   ==> #APIs Labelled by LLM: 9, #Source: 1, #Sink: 2, #Taint Propagators: 6
+[INFO] [2025-11-06 02:11:36] ==> Stage 4: Querying GPT for source function parameters...
+[INFO] [2025-11-06 02:11:36]   ==> Attempting to fetch project readme from https://raw.githubusercontent.com/jenkinsci/perfecto-plugin/52c09ad2e26416211e4009b095c4f16508b27b8a/README.md...
+[INFO] [2025-11-06 02:11:36]   ==> Success!
+[INFO] [2025-11-06 02:11:36]   ==> #Candidate functions with source param: 0; after deduplication: 0; with documentations: 0. Querying LLM...
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+Running queries.
+Compiling query plan for /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/jenkinsci__perfecto-plugin_CVE-2020-2261_1.17/test/myqueries/cwe-078wLLM/CommandInjectionRuntimeExecwLLM.ql.
+[1/1] Compiled /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/jenkinsci__perfecto-plugin_CVE-2020-2261_1.17/test/myqueries/cwe-078wLLM/CommandInjectionRuntimeExecwLLM.ql.
+Starting evaluation of iris/cwe-078wLLM/CommandInjectionRuntimeExecwLLM.ql.
+[1/1 eval 7.5s] Evaluation done; writing results to iris/cwe-078wLLM/CommandInjectionRuntimeExecwLLM.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/jenkinsci__perfecto-plugin_CVE-2020-2261_1.17/test/myqueries/cwe-078wLLM/CommandInjectionRuntimeExecwLLM.ql.
+[1/1] Found in cache: /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/jenkinsci__perfecto-plugin_CVE-2020-2261_1.17/test/myqueries/cwe-078wLLM/CommandInjectionRuntimeExecwLLM.ql.
+Starting evaluation of iris/cwe-078wLLM/CommandInjectionRuntimeExecwLLM.ql.
+[1/1 eval 2.9s] Evaluation done; writing results to iris/cwe-078wLLM/CommandInjectionRuntimeExecwLLM.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Compiling query plan for /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/jenkinsci__perfecto-plugin_CVE-2020-2261_1.17/test/myqueries/fetch_func_locs/fetch_func_locs.ql.
+[1/1] Compiled /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/jenkinsci__perfecto-plugin_CVE-2020-2261_1.17/test/myqueries/fetch_func_locs/fetch_func_locs.ql.
+Starting evaluation of iris/fetch_func_locs/fetch_func_locs.ql.
+[1/1 eval 226ms] Evaluation done; writing results to /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/jenkinsci__perfecto-plugin_CVE-2020-2261_1.17/test/fetch_func_locs/results.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/jenkinsci__perfecto-plugin_CVE-2020-2261_1.17/test/myqueries/fetch_class_locs/fetch_class_locs.ql.
+[1/1] Compiled /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/jenkinsci__perfecto-plugin_CVE-2020-2261_1.17/test/myqueries/fetch_class_locs/fetch_class_locs.ql.
+Starting evaluation of iris/fetch_class_locs/fetch_class_locs.ql.
+[1/1 eval 244ms] Evaluation done; writing results to /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/jenkinsci__perfecto-plugin_CVE-2020-2261_1.17/test/fetch_class_locs/results.bqrs.
+Shutting down query evaluator.
+[INFO] [2025-11-06 02:11:36]   ==> Finished querying LLM. #Function with source param: 0
+[INFO] [2025-11-06 02:11:36] ==> Stage 5: Building project specific query...
+[INFO] [2025-11-06 02:11:36]   ==> Building source query...
+[INFO] [2025-11-06 02:11:36]   ==> Building taint-propagator query...
+[INFO] [2025-11-06 02:11:36]   ==> Building sink query...
+[INFO] [2025-11-06 02:11:36]   ==> Building extension yml...
+[INFO] [2025-11-06 02:11:36] ==> Stage 6: Finding vulnerabilities with CodeQL...
+[INFO] [2025-11-06 02:11:36]   ==> Copying custom queries...
+[INFO] [2025-11-06 02:11:36]   ==> Query CommandInjectionRuntimeExecwLLM.ql ready... Done!
+[INFO] [2025-11-06 02:11:36]   ==> Query MyCommandInjectionRuntimeExec.qll ready... Done!
+[INFO] [2025-11-06 02:11:36]   ==> Query MyCommandArguments.qll ready... Done!
+[INFO] [2025-11-06 02:11:36]   ==> Query MyCommandLineQuery.qll ready... Done!
+[INFO] [2025-11-06 02:11:36]   ==> Running CodeQL analysis...
+[INFO] [2025-11-06 02:12:42] ==> Stage 7: Post-processing CWE query results...
+[INFO] [2025-11-06 02:12:42]   ==> Extracting function and class locations...
+[INFO] [2025-11-06 02:12:42]   ==> Function locations not found; running CodeQL query to extract...
+[INFO] [2025-11-06 02:12:56]   ==> Original #alarms: 1; Original #paths: 1
+[INFO] [2025-11-06 02:12:56]   ==> New #alarms: 1; New #paths: 1
+[INFO] [2025-11-06 02:12:56] ==> Stage 8: Querying GPT for posthoc filtering...
+[INFO] [2025-11-06 02:12:56]   ==> Extracting function and class locations...
+[INFO] [2025-11-06 02:12:56]   ==> Class locations not found; running CodeQL query to extract...
+[INFO] [2025-11-06 02:13:10]   ==> Extracting function and class locations...
+[INFO] [2025-11-06 02:13:10]   ==> Loading result SARIF...
+[INFO] [2025-11-06 02:13:10] >>>Loading LLM model with CausalLM
+[INFO] [2025-11-06 02:13:11] >>>Loading model
+  0%|          | 0/1 [00:00<?, ?it/s]#Processed: 0, #Alerts: 0, #Calls: 0, #Cached: 0, #Fail: 0, #Ignored: 0:   0%|          | 0/1 [00:00<?, ?it/s]
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s][A
+Loading checkpoint shards:   6%|▌         | 1/17 [00:10<02:42, 10.15s/it][A
+Loading checkpoint shards:  12%|█▏        | 2/17 [00:11<01:13,  4.88s/it][A
+Loading checkpoint shards:  18%|█▊        | 3/17 [00:12<00:45,  3.22s/it][A
+Loading checkpoint shards:  24%|██▎       | 4/17 [00:13<00:31,  2.42s/it][A
+Loading checkpoint shards:  29%|██▉       | 5/17 [00:14<00:23,  1.93s/it][A
+Loading checkpoint shards:  35%|███▌      | 6/17 [00:15<00:17,  1.60s/it][A
+Loading checkpoint shards:  41%|████      | 7/17 [00:16<00:13,  1.39s/it][A
+Loading checkpoint shards:  47%|████▋     | 8/17 [00:17<00:11,  1.25s/it][A
+Loading checkpoint shards:  53%|█████▎    | 9/17 [00:18<00:09,  1.16s/it][A
+Loading checkpoint shards:  59%|█████▉    | 10/17 [00:19<00:07,  1.10s/it][A
+Loading checkpoint shards:  65%|██████▍   | 11/17 [00:20<00:06,  1.07s/it][A
+Loading checkpoint shards:  71%|███████   | 12/17 [00:21<00:05,  1.05s/it][A
+Loading checkpoint shards:  76%|███████▋  | 13/17 [00:22<00:04,  1.03s/it][A
+Loading checkpoint shards:  82%|████████▏ | 14/17 [00:23<00:03,  1.08s/it][A
+Loading checkpoint shards:  88%|████████▊ | 15/17 [00:25<00:02,  1.13s/it][A
+Loading checkpoint shards:  94%|█████████▍| 16/17 [00:26<00:01,  1.16s/it][A
+Loading checkpoint shards: 100%|██████████| 17/17 [00:27<00:00,  1.11s/it][ALoading checkpoint shards: 100%|██████████| 17/17 [00:27<00:00,  1.61s/it]
+Some parameters are on the meta device because they were offloaded to the cpu.
+Device set to use cuda:0
+#Processed: 0, #Alerts: 0, #Calls: 0, #Cached: 0, #Fail: 0, #Ignored: 0: 100%|██████████| 1/1 [04:42<00:00, 282.84s/it]#Processed: 0, #Alerts: 0, #Calls: 0, #Cached: 0, #Fail: 0, #Ignored: 0: 100%|██████████| 1/1 [04:42<00:00, 282.84s/it]
+[INFO] [2025-11-06 02:17:53] ==> Stage 9: Evaluating results...
+[INFO] [2025-11-06 02:17:53]   ==> Extracting function and class locations...
+[INFO] [2025-11-06 02:17:53]   ==> Computing statistics...
+[INFO] [2025-11-06 02:17:53]   ==> Evaluating results after stage 6 (vanilla)...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00, 50.77it/s]
+[INFO] [2025-11-06 02:17:53]     ==> [Recall@Method] RESULT: True, #Paths: 1, #TP Paths: 1
+[INFO] [2025-11-06 02:17:53]   ==> Evaluating results after stage 7 (with posthoc-filtering)...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00, 160.10it/s]
+[INFO] [2025-11-06 02:17:53]     ==> [Recall@Method] RESULT: True, #Paths: 1, #TP Paths: 1
+[INFO] [2025-11-06 02:17:53]   ==> Dumping final statistics and evaluation result to jenkinsci__perfecto-plugin_CVE-2020-2261_1.17/test/cwe-078wLLM-final/results.json...
