@@ -11,4 +11,4 @@ output/
 *.env
 
 # Ignore specific files
-cmd-line-exploit.txt.DS_Store
+cmd-line-exploit.txt
