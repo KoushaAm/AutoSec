@@ -1,0 +1,14 @@
+.vscode/
+.venv/
+__pycache__/
+output/
+
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.class
+*.env
+
+# Ignore specific files
+cmd-line-exploit.txt.DS_Store

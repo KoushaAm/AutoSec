@@ -1,0 +1,46 @@
+Fri Nov  7 01:01:51 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.65.06              Driver Version: 580.65.06      CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H100 80GB HBM3          On  |   00000000:0C:00.0 Off |                   On |
+| N/A   22C    P0             67W /  700W |     114MiB /  81559MiB |     N/A      Default |
+|                                         |                        |              Enabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| MIG devices:                                                                            |
++------------------+----------------------------------+-----------+-----------------------+
+| GPU  GI  CI  MIG |              Shared Memory-Usage |        Vol|        Shared         |
+|      ID  ID  Dev |                Shared BAR1-Usage | SM     Unc| CE ENC  DEC  OFA  JPG |
+|                  |                                  |        ECC|                       |
+|==================+==================================+===========+=======================|
+|  0    2   0   0  |              47MiB / 40448MiB    | 60      0 |  3   0    3    0    3 |
+|                  |               0MiB / 24740MiB    |           |                       |
++------------------+----------------------------------+-----------+-----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+True 12.4 NVIDIA H100 80GB HBM3 MIG 3g.40gb
+No projects match the specified filters.
+Project perwendel__spark_CVE-2018-9159_2.7.1,CVE-2018-9159 not found in CSV file
+/opt/conda/envs/iris/lib/python3.10/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+[INFO] [2025-11-07 01:02:24] Processing perwendel__spark_CVE-2018-9159_2.7.1,CVE-2018-9159 (Query: cwe-022wLLM, Trial: test)...
+[ERROR] [2025-11-07 01:02:24] ==> Cannot find CodeQL database for perwendel__spark_CVE-2018-9159_2.7.1,CVE-2018-9159; aborting
+Traceback (most recent call last):
+  File "/home/vvv/AutoSec/AutoSec/Experiments/Finder/src/iris.py", line 1351, in <module>
+    pipeline = SAPipeline(
+  File "/home/vvv/AutoSec/AutoSec/Experiments/Finder/src/iris.py", line 177, in __init__
+    raise Exception(f"Cannot find CodeQL database for {self.project_codeql_db_path}; aborting")
+Exception: Cannot find CodeQL database for /scratch/vvv/data/codeql-dbs/perwendel__spark_CVE-2018-9159_2.7.1,CVE-2018-9159; aborting
+srun: error: fc11009: task 0: Exited with exit code 1
+srun: Terminating StepId=10630165.2
