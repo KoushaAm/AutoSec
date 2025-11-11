@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 output/
 **/__pycache__
 **/target
@@ -10,3 +11,17 @@ data/build-info/
 data/project-sources
 log/
 config.json
+=======
+output/
+**/__pycache__
+**/target
+**/deps
+**/build
+.vscode/*
+codeql/
+data/codeql-dbs/
+data/build-info/
+data/project-sources
+log/
+config.json
+>>>>>>> origin/main
