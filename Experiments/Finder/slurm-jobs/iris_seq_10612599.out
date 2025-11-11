@@ -1,0 +1,172 @@
+Thu Nov  6 20:53:35 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.65.06              Driver Version: 580.65.06      CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H100 80GB HBM3          On  |   00000000:4C:00.0 Off |                   On |
+| N/A   25C    P0             68W /  700W |     147MiB /  81559MiB |     N/A      Default |
+|                                         |                        |              Enabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| MIG devices:                                                                            |
++------------------+----------------------------------+-----------+-----------------------+
+| GPU  GI  CI  MIG |              Shared Memory-Usage |        Vol|        Shared         |
+|      ID  ID  Dev |                Shared BAR1-Usage | SM     Unc| CE ENC  DEC  OFA  JPG |
+|                  |                                  |        ECC|                       |
+|==================+==================================+===========+=======================|
+|  0    2   0   0  |              80MiB / 40448MiB    | 60      0 |  3   0    3    0    3 |
+|                  |               0MiB / 24740MiB    |           |                       |
++------------------+----------------------------------+-----------+-----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+True 12.4 NVIDIA H100 80GB HBM3 MIG 3g.40gb
+====== Fetching and Building 1 Repositories ======
+== Processing perwendel__spark_CVE-2018-9159_2.7.1 ==
+== Fetching perwendel__spark_CVE-2018-9159_2.7.1 ==
+== Done fetching perwendel__spark_CVE-2018-9159_2.7.1 ==
+== Building perwendel__spark_CVE-2018-9159_2.7.1 ==
+== Done fetching and building perwendel__spark_CVE-2018-9159_2.7.1 ==
+
+====== Summary ======
+Successfully processed: 1/1
+Maven path set to: /opt/maven/apache-maven-3.5.0/
+JAVA_HOME set to: /usr/lib/jvm/java-1.8.0-openjdk-amd64/
+
+Environment variables for CodeQL database creation:
+PATH: /usr/lib/jvm/java-1.8.0-openjdk-amd64/bin:/opt/maven/apache-maven-3.5.0/bin:/opt/conda/envs/iris/bin:/opt/conda/condabin:/iris/codeql:/opt/conda/bin:/opt/gradle/gradle-8.9/bin:/opt/maven/apache-maven-3.9.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+JAVA_HOME: /usr/lib/jvm/java-1.8.0-openjdk-amd64/
+
+Java version check:
+openjdk version "1.8.0_462"
+OpenJDK Runtime Environment (build 1.8.0_462-8u462-ga~us1-0ubuntu2~22.04.2-b08)
+OpenJDK 64-Bit Server VM (build 25.462-b08, mixed mode)
+
+Creating database at: /scratch/vvv/data/codeql-dbs/perwendel__spark_CVE-2018-9159_2.7.1
+Using source path: /home/vvv/AutoSec/AutoSec/Experiments/Finder/data/project-sources/perwendel__spark_CVE-2018-9159_2.7.1
+Using JAVA_HOME: /usr/lib/jvm/java-1.8.0-openjdk-amd64/
+Successfully created CodeQL database for perwendel__spark_CVE-2018-9159_2.7.1
+/opt/conda/envs/iris/lib/python3.10/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Compiling query plan for /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/perwendel__spark_CVE-2018-9159_2.7.1/test/myqueries/fetch_external_apis/fetch_external_apis.ql.
+[1/1] Found in cache: /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/perwendel__spark_CVE-2018-9159_2.7.1/test/myqueries/fetch_external_apis/fetch_external_apis.ql.
+Starting evaluation of iris/fetch_external_apis/fetch_external_apis.ql.
+[1/1 eval 1.4s] Evaluation done; writing results to /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/perwendel__spark_CVE-2018-9159_2.7.1/test/fetch_external_apis/results.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/perwendel__spark_CVE-2018-9159_2.7.1/test/myqueries/fetch_func_params/fetch_func_params.ql.
+[1/1] Found in cache: /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/perwendel__spark_CVE-2018-9159_2.7.1/test/myqueries/fetch_func_params/fetch_func_params.ql.
+Starting evaluation of iris/fetch_func_params/fetch_func_params.ql.
+[1/1 eval 810ms] Evaluation done; writing results to /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/perwendel__spark_CVE-2018-9159_2.7.1/test/fetch_func_params/results.bqrs.
+Shutting down query evaluator.
+`torch_dtype` is deprecated! Use `dtype` instead!
+The `load_in_4bit` and `load_in_8bit` arguments are deprecated and will be removed in the future versions. Please, pass a `BitsAndBytesConfig` object in `quantization_config` argument instead.
+[INFO] [2025-11-06 20:55:39] Processing perwendel__spark_CVE-2018-9159_2.7.1 (Query: cwe-022wLLM, Trial: test)...
+[INFO] [2025-11-06 20:55:39] ==> Stage 1: Collecting external APIs...
+[INFO] [2025-11-06 20:55:39]   ==> Extracting all external APIs by running CodeQL... Done.
+[INFO] [2025-11-06 20:55:48]   ==> #Relevant API Calls: 5265, #Filtered Candidates: 553
+[INFO] [2025-11-06 20:55:48]   ==> Dumping filtered API candidates...
+[INFO] [2025-11-06 20:55:48] ==> Stage 2: Collecting internal function parameters...
+[INFO] [2025-11-06 20:55:48]   ==> Extracting all function parameters by running CodeQL... Done.
+[INFO] [2025-11-06 20:55:54]   ==> #Relevant APIs: 138, #Filtered Candidates: 106
+[INFO] [2025-11-06 20:55:54]   ==> Dumping filtered function parameter candidates...
+[INFO] [2025-11-06 20:55:54] ==> Stage 3: Querying GPT for source/taint-prop/sink APIs...
+[INFO] [2025-11-06 20:55:54]   ==> Querying GPT... #Candidates: 553, #To Query APIs: 553, #Cached: 0
+[INFO] [2025-11-06 20:55:54] >>>Loading LLM model with CausalLM
+[INFO] [2025-11-06 20:55:55] >>>Loading model
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards:   6%|▌         | 1/17 [00:04<01:08,  4.27s/it]Loading checkpoint shards:  12%|█▏        | 2/17 [00:07<00:58,  3.88s/it]Loading checkpoint shards:  18%|█▊        | 3/17 [00:11<00:53,  3.86s/it]Loading checkpoint shards:  24%|██▎       | 4/17 [00:15<00:47,  3.69s/it]Loading checkpoint shards:  29%|██▉       | 5/17 [00:18<00:43,  3.60s/it]Loading checkpoint shards:  35%|███▌      | 6/17 [00:22<00:39,  3.58s/it]Loading checkpoint shards:  41%|████      | 7/17 [00:25<00:35,  3.58s/it]Loading checkpoint shards:  47%|████▋     | 8/17 [00:29<00:32,  3.64s/it]Loading checkpoint shards:  53%|█████▎    | 9/17 [00:33<00:29,  3.63s/it]Loading checkpoint shards:  59%|█████▉    | 10/17 [00:36<00:25,  3.58s/it]Loading checkpoint shards:  65%|██████▍   | 11/17 [00:40<00:21,  3.64s/it]Loading checkpoint shards:  71%|███████   | 12/17 [00:43<00:17,  3.58s/it]Loading checkpoint shards:  76%|███████▋  | 13/17 [00:47<00:14,  3.55s/it]Loading checkpoint shards:  82%|████████▏ | 14/17 [00:50<00:10,  3.60s/it]Loading checkpoint shards:  88%|████████▊ | 15/17 [00:54<00:07,  3.70s/it]Loading checkpoint shards:  94%|█████████▍| 16/17 [00:58<00:03,  3.70s/it]Loading checkpoint shards: 100%|██████████| 17/17 [01:01<00:00,  3.37s/it]Loading checkpoint shards: 100%|██████████| 17/17 [01:01<00:00,  3.60s/it]
+Device set to use cuda:0
+  0%|          | 0/7 [00:00<?, ?it/s] 14%|█▍        | 1/7 [06:39<39:59, 400.00s/it] 57%|█████▋    | 4/7 [09:41<06:14, 124.68s/it]100%|██████████| 7/7 [12:27<00:00, 87.49s/it] 10it [15:12, 73.35s/it]                      13it [19:45, 80.18s/it]16it [24:38, 86.32s/it]19it [25:50, 65.39s/it]19it [25:50, 81.59s/it]
+[INFO] [2025-11-06 21:23:09]   ==> #APIs Labelled by LLM: 129, #Source: 29, #Sink: 18, #Taint Propagators: 82
+[INFO] [2025-11-06 21:23:09] ==> Stage 4: Querying GPT for source function parameters...
+[INFO] [2025-11-06 21:23:09]   ==> Attempting to fetch project readme from https://raw.githubusercontent.com/perwendel/spark/030e9d00125cbd1ad759668f85488aba1019c668/README.md...
+[INFO] [2025-11-06 21:23:09]   ==> Success!
+[INFO] [2025-11-06 21:23:10]   ==> #Candidate functions with source param: 106; after deduplication: 79; with documentations: 71. Querying LLM...
+  0%|          | 0/2 [00:00<?, ?it/s] 50%|█████     | 1/2 [02:13<02:13, 133.75s/it]4it [02:18, 26.48s/it]                        4it [02:18, 34.53s/it]
+Running queries.
+Compiling query plan for /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/perwendel__spark_CVE-2018-9159_2.7.1/test/myqueries/cwe-022wLLM/cwe-022wLLM.ql.
+[1/1] Compiled /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/perwendel__spark_CVE-2018-9159_2.7.1/test/myqueries/cwe-022wLLM/cwe-022wLLM.ql.
+Starting evaluation of iris/cwe-022wLLM/cwe-022wLLM.ql.
+[1/1 eval 7.7s] Evaluation done; writing results to iris/cwe-022wLLM/cwe-022wLLM.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/perwendel__spark_CVE-2018-9159_2.7.1/test/myqueries/cwe-022wLLM/cwe-022wLLM.ql.
+[1/1] Found in cache: /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/perwendel__spark_CVE-2018-9159_2.7.1/test/myqueries/cwe-022wLLM/cwe-022wLLM.ql.
+Starting evaluation of iris/cwe-022wLLM/cwe-022wLLM.ql.
+[1/1 eval 4.1s] Evaluation done; writing results to iris/cwe-022wLLM/cwe-022wLLM.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Compiling query plan for /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/perwendel__spark_CVE-2018-9159_2.7.1/test/myqueries/fetch_func_locs/fetch_func_locs.ql.
+[1/1] Found in cache: /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/perwendel__spark_CVE-2018-9159_2.7.1/test/myqueries/fetch_func_locs/fetch_func_locs.ql.
+Starting evaluation of iris/fetch_func_locs/fetch_func_locs.ql.
+[1/1 eval 215ms] Evaluation done; writing results to /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/perwendel__spark_CVE-2018-9159_2.7.1/test/fetch_func_locs/results.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/perwendel__spark_CVE-2018-9159_2.7.1/test/myqueries/fetch_class_locs/fetch_class_locs.ql.
+[1/1] Found in cache: /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/perwendel__spark_CVE-2018-9159_2.7.1/test/myqueries/fetch_class_locs/fetch_class_locs.ql.
+Starting evaluation of iris/fetch_class_locs/fetch_class_locs.ql.
+[1/1 eval 238ms] Evaluation done; writing results to /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/perwendel__spark_CVE-2018-9159_2.7.1/test/fetch_class_locs/results.bqrs.
+Shutting down query evaluator.
+[INFO] [2025-11-06 21:25:28]   ==> Finished querying LLM. #Function with source param: 15
+[INFO] [2025-11-06 21:25:28] ==> Stage 5: Building project specific query...
+[INFO] [2025-11-06 21:25:28]   ==> Building source query...
+[INFO] [2025-11-06 21:25:28]   ==> Building taint-propagator query...
+[INFO] [2025-11-06 21:25:28]   ==> Building sink query...
+[INFO] [2025-11-06 21:25:28]   ==> Building extension yml...
+[INFO] [2025-11-06 21:25:28] ==> Stage 6: Finding vulnerabilities with CodeQL...
+[INFO] [2025-11-06 21:25:28]   ==> Copying custom queries...
+[INFO] [2025-11-06 21:25:28]   ==> Query cwe-022wLLM.ql ready... Done!
+[INFO] [2025-11-06 21:25:28]   ==> Query MyTaintedPathQuery.qll ready... Done!
+[INFO] [2025-11-06 21:25:28]   ==> Running CodeQL analysis...
+[INFO] [2025-11-06 21:26:28] ==> Stage 7: Post-processing CWE query results...
+[INFO] [2025-11-06 21:26:28]   ==> Extracting function and class locations...
+[INFO] [2025-11-06 21:26:28]   ==> Function locations not found; running CodeQL query to extract...
+[INFO] [2025-11-06 21:26:33]   ==> Original #alarms: 12; Original #paths: 43
+[INFO] [2025-11-06 21:26:33]   ==> New #alarms: 10; New #paths: 40
+[INFO] [2025-11-06 21:26:33] ==> Stage 8: Querying GPT for posthoc filtering...
+[INFO] [2025-11-06 21:26:33]   ==> Extracting function and class locations...
+[INFO] [2025-11-06 21:26:33]   ==> Class locations not found; running CodeQL query to extract...
+[INFO] [2025-11-06 21:26:38]   ==> Extracting function and class locations...
+[INFO] [2025-11-06 21:26:38]   ==> Loading result SARIF...
+[INFO] [2025-11-06 21:26:38] >>>Loading LLM model with CausalLM
+[INFO] [2025-11-06 21:26:39] >>>Loading model
+  0%|          | 0/40 [00:00<?, ?it/s]#Processed: 0, #Alerts: 0, #Calls: 0, #Cached: 0, #Fail: 0, #Ignored: 0:   0%|          | 0/40 [00:00<?, ?it/s]#Processed: 0, #Alerts: 0, #Calls: 0, #Cached: 0, #Fail: 0, #Ignored: 0:   0%|          | 0/40 [00:00<?, ?it/s]#Processed: 0, #Alerts: 0, #Calls: 0, #Cached: 0, #Fail: 0, #Ignored: 0:   0%|          | 0/40 [00:00<?, ?it/s]
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s][A
+Loading checkpoint shards:   6%|▌         | 1/17 [00:01<00:19,  1.25s/it][A
+Loading checkpoint shards:  12%|█▏        | 2/17 [00:02<00:18,  1.24s/it][A
+Loading checkpoint shards:  18%|█▊        | 3/17 [00:03<00:17,  1.24s/it][A
+Loading checkpoint shards:  24%|██▎       | 4/17 [00:04<00:16,  1.24s/it][A
+Loading checkpoint shards:  29%|██▉       | 5/17 [00:06<00:14,  1.21s/it][A
+Loading checkpoint shards:  35%|███▌      | 6/17 [00:07<00:12,  1.14s/it][A
+Loading checkpoint shards:  41%|████      | 7/17 [00:08<00:11,  1.10s/it][A
+Loading checkpoint shards:  47%|████▋     | 8/17 [00:09<00:09,  1.07s/it][A
+Loading checkpoint shards:  53%|█████▎    | 9/17 [00:10<00:08,  1.05s/it][A
+Loading checkpoint shards:  59%|█████▉    | 10/17 [00:11<00:07,  1.04s/it][A
+Loading checkpoint shards:  65%|██████▍   | 11/17 [00:12<00:06,  1.03s/it][A
+Loading checkpoint shards:  71%|███████   | 12/17 [00:13<00:05,  1.02s/it][A
+Loading checkpoint shards:  76%|███████▋  | 13/17 [00:14<00:04,  1.02s/it][A
+Loading checkpoint shards:  82%|████████▏ | 14/17 [00:15<00:03,  1.01s/it][A
+Loading checkpoint shards:  88%|████████▊ | 15/17 [00:16<00:02,  1.01s/it][A
+Loading checkpoint shards:  94%|█████████▍| 16/17 [00:17<00:01,  1.01s/it][A
+Loading checkpoint shards: 100%|██████████| 17/17 [00:18<00:00,  1.06it/s][ALoading checkpoint shards: 100%|██████████| 17/17 [00:18<00:00,  1.06s/it]
+Some parameters are on the meta device because they were offloaded to the cpu.
+Device set to use cuda:0
+#Processed: 0, #Alerts: 0, #Calls: 0, #Cached: 0, #Fail: 0, #Ignored: 0:   8%|▊         | 3/40 [04:31<55:48, 90.50s/it]#Processed: 3, #Alerts: 3, #Calls: 3, #Cached: 0, #Fail: 0, #Ignored: 0:   8%|▊         | 3/40 [04:31<55:48, 90.50s/it]#Processed: 4, #Alerts: 4, #Calls: 3, #Cached: 1, #Fail: 0, #Ignored: 0:   8%|▊         | 3/40 [04:31<55:48, 90.50s/it]#Processed: 5, #Alerts: 5, #Calls: 3, #Cached: 2, #Fail: 0, #Ignored: 0:   8%|▊         | 3/40 [04:31<55:48, 90.50s/it]#Processed: 6, #Alerts: 6, #Calls: 3, #Cached: 3, #Fail: 0, #Ignored: 0:   8%|▊         | 3/40 [04:31<55:48, 90.50s/it]#Processed: 7, #Alerts: 7, #Calls: 3, #Cached: 4, #Fail: 0, #Ignored: 0:   8%|▊         | 3/40 [04:31<55:48, 90.50s/it]#Processed: 8, #Alerts: 8, #Calls: 3, #Cached: 5, #Fail: 0, #Ignored: 0:   8%|▊         | 3/40 [04:31<55:48, 90.50s/it]#Processed: 8, #Alerts: 8, #Calls: 3, #Cached: 5, #Fail: 0, #Ignored: 0:   8%|▊         | 3/40 [04:31<55:48, 90.50s/it]#Processed: 8, #Alerts: 8, #Calls: 3, #Cached: 5, #Fail: 0, #Ignored: 0:   8%|▊         | 3/40 [04:31<55:48, 90.50s/it]#Processed: 8, #Alerts: 8, #Calls: 3, #Cached: 5, #Fail: 0, #Ignored: 0:  28%|██▊       | 11/40 [09:27<23:14, 48.08s/it]#Processed: 11, #Alerts: 11, #Calls: 6, #Cached: 5, #Fail: 0, #Ignored: 0:  28%|██▊       | 11/40 [09:27<23:14, 48.08s/it]#Processed: 12, #Alerts: 12, #Calls: 6, #Cached: 6, #Fail: 0, #Ignored: 0:  28%|██▊       | 11/40 [09:27<23:14, 48.08s/it]#Processed: 13, #Alerts: 13, #Calls: 6, #Cached: 7, #Fail: 0, #Ignored: 0:  28%|██▊       | 11/40 [09:27<23:14, 48.08s/it]#Processed: 14, #Alerts: 14, #Calls: 6, #Cached: 8, #Fail: 0, #Ignored: 0:  28%|██▊       | 11/40 [09:27<23:14, 48.08s/it]#Processed: 15, #Alerts: 15, #Calls: 6, #Cached: 9, #Fail: 0, #Ignored: 0:  28%|██▊       | 11/40 [09:27<23:14, 48.08s/it]#Processed: 16, #Alerts: 16, #Calls: 6, #Cached: 10, #Fail: 0, #Ignored: 0:  28%|██▊       | 11/40 [09:27<23:14, 48.08s/it]#Processed: 17, #Alerts: 16, #Calls: 6, #Cached: 10, #Fail: 0, #Ignored: 1:  28%|██▊       | 11/40 [09:27<23:14, 48.08s/it]#Processed: 18, #Alerts: 16, #Calls: 6, #Cached: 10, #Fail: 0, #Ignored: 2:  28%|██▊       | 11/40 [09:27<23:14, 48.08s/it]#Processed: 19, #Alerts: 16, #Calls: 6, #Cached: 10, #Fail: 0, #Ignored: 3:  28%|██▊       | 11/40 [09:27<23:14, 48.08s/it]#Processed: 20, #Alerts: 16, #Calls: 6, #Cached: 10, #Fail: 0, #Ignored: 4:  28%|██▊       | 11/40 [09:27<23:14, 48.08s/it]#Processed: 20, #Alerts: 16, #Calls: 6, #Cached: 10, #Fail: 0, #Ignored: 4:  28%|██▊       | 11/40 [09:27<23:14, 48.08s/it]#Processed: 20, #Alerts: 16, #Calls: 6, #Cached: 10, #Fail: 0, #Ignored: 4:  28%|██▊       | 11/40 [09:27<23:14, 48.08s/it]#Processed: 20, #Alerts: 16, #Calls: 6, #Cached: 10, #Fail: 0, #Ignored: 4:  57%|█████▊    | 23/40 [14:09<09:14, 32.64s/it]#Processed: 23, #Alerts: 19, #Calls: 9, #Cached: 10, #Fail: 0, #Ignored: 4:  57%|█████▊    | 23/40 [14:09<09:14, 32.64s/it]#Processed: 24, #Alerts: 20, #Calls: 9, #Cached: 11, #Fail: 0, #Ignored: 4:  57%|█████▊    | 23/40 [14:09<09:14, 32.64s/it]#Processed: 25, #Alerts: 21, #Calls: 9, #Cached: 12, #Fail: 0, #Ignored: 4:  57%|█████▊    | 23/40 [14:09<09:14, 32.64s/it]#Processed: 26, #Alerts: 22, #Calls: 9, #Cached: 13, #Fail: 0, #Ignored: 4:  57%|█████▊    | 23/40 [14:09<09:14, 32.64s/it]#Processed: 27, #Alerts: 23, #Calls: 9, #Cached: 14, #Fail: 0, #Ignored: 4:  57%|█████▊    | 23/40 [14:09<09:14, 32.64s/it]#Processed: 28, #Alerts: 24, #Calls: 9, #Cached: 15, #Fail: 0, #Ignored: 4:  57%|█████▊    | 23/40 [14:09<09:14, 32.64s/it]#Processed: 29, #Alerts: 24, #Calls: 9, #Cached: 15, #Fail: 0, #Ignored: 5:  57%|█████▊    | 23/40 [14:09<09:14, 32.64s/it]#Processed: 30, #Alerts: 24, #Calls: 9, #Cached: 15, #Fail: 0, #Ignored: 6:  57%|█████▊    | 23/40 [14:09<09:14, 32.64s/it]#Processed: 31, #Alerts: 24, #Calls: 9, #Cached: 15, #Fail: 0, #Ignored: 7:  57%|█████▊    | 23/40 [14:09<09:14, 32.64s/it]#Processed: 32, #Alerts: 24, #Calls: 9, #Cached: 15, #Fail: 0, #Ignored: 8:  57%|█████▊    | 23/40 [14:09<09:14, 32.64s/it]#Processed: 32, #Alerts: 24, #Calls: 9, #Cached: 15, #Fail: 0, #Ignored: 8:  57%|█████▊    | 23/40 [14:09<09:14, 32.64s/it]#Processed: 32, #Alerts: 24, #Calls: 9, #Cached: 15, #Fail: 0, #Ignored: 8:  57%|█████▊    | 23/40 [14:09<09:14, 32.64s/it]#Processed: 32, #Alerts: 24, #Calls: 9, #Cached: 15, #Fail: 0, #Ignored: 8:  88%|████████▊ | 35/40 [18:51<02:21, 28.31s/it]#Processed: 35, #Alerts: 27, #Calls: 12, #Cached: 15, #Fail: 0, #Ignored: 8:  88%|████████▊ | 35/40 [18:51<02:21, 28.31s/it]#Processed: 36, #Alerts: 28, #Calls: 12, #Cached: 16, #Fail: 0, #Ignored: 8:  88%|████████▊ | 35/40 [18:51<02:21, 28.31s/it]#Processed: 37, #Alerts: 28, #Calls: 12, #Cached: 16, #Fail: 0, #Ignored: 9:  88%|████████▊ | 35/40 [18:51<02:21, 28.31s/it]#Processed: 38, #Alerts: 28, #Calls: 12, #Cached: 16, #Fail: 0, #Ignored: 10:  88%|████████▊ | 35/40 [18:51<02:21, 28.31s/it]#Processed: 39, #Alerts: 28, #Calls: 12, #Cached: 16, #Fail: 0, #Ignored: 11:  88%|████████▊ | 35/40 [18:51<02:21, 28.31s/it]#Processed: 39, #Alerts: 28, #Calls: 12, #Cached: 16, #Fail: 0, #Ignored: 11: 100%|██████████| 40/40 [18:51<00:00, 28.29s/it]
+[INFO] [2025-11-06 21:45:30] ==> Stage 9: Evaluating results...
+[INFO] [2025-11-06 21:45:30]   ==> Extracting function and class locations...
+[INFO] [2025-11-06 21:45:30]   ==> Computing statistics...
+[INFO] [2025-11-06 21:45:30]   ==> Evaluating results after stage 6 (vanilla)...
+  0%|          | 0/40 [00:00<?, ?it/s] 12%|█▎        | 5/40 [00:00<00:00, 44.60it/s] 25%|██▌       | 10/40 [00:00<00:00, 44.28it/s] 38%|███▊      | 15/40 [00:00<00:00, 43.33it/s] 50%|█████     | 20/40 [00:00<00:00, 40.19it/s] 62%|██████▎   | 25/40 [00:00<00:00, 40.28it/s] 75%|███████▌  | 30/40 [00:00<00:00, 39.26it/s] 85%|████████▌ | 34/40 [00:00<00:00, 38.93it/s] 98%|█████████▊| 39/40 [00:00<00:00, 39.16it/s]100%|██████████| 40/40 [00:00<00:00, 40.09it/s]
+[INFO] [2025-11-06 21:45:31]     ==> [Recall@Method] RESULT: True, #Paths: 40, #TP Paths: 32
+[INFO] [2025-11-06 21:45:31]   ==> Evaluating results after stage 7 (with posthoc-filtering)...
+  0%|          | 0/28 [00:00<?, ?it/s] 18%|█▊        | 5/28 [00:00<00:00, 45.78it/s] 36%|███▌      | 10/28 [00:00<00:00, 45.05it/s] 54%|█████▎    | 15/28 [00:00<00:00, 43.82it/s] 71%|███████▏  | 20/28 [00:00<00:00, 42.53it/s] 89%|████████▉ | 25/28 [00:00<00:00, 42.02it/s]100%|██████████| 28/28 [00:00<00:00, 42.99it/s]
+[INFO] [2025-11-06 21:45:32]     ==> [Recall@Method] RESULT: True, #Paths: 28, #TP Paths: 24
+[INFO] [2025-11-06 21:45:32]   ==> Dumping final statistics and evaluation result to perwendel__spark_CVE-2018-9159_2.7.1/test/cwe-022wLLM-final/results.json...
