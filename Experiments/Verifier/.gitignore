@@ -1,0 +1,17 @@
+artifacts/
+out/
+outs/
+*.class
+*.jar
+*.war
+*.ear
+target/
+build/
+__pycache__/
+.gradle/
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+*.log
