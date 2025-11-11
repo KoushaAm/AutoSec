@@ -1,0 +1,7 @@
+Experiments/Exploiter/OpenRouter/.env
+# all env files
+*.env
+# cache files
+__pycache__/
+*.pyc
+Experiments/Exploiter/OpenRouter/E2E/assets/*

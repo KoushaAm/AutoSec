@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import java
 
 from
@@ -10,3 +11,17 @@ select
   c.getFile().getRelativePath() as file,
   c.getLocation().getStartLine() as start_line,
   c.getLocation().getEndLine() + c.getTotalNumberOfLines() as end_line
+=======
+import java
+
+from
+  Method c
+where
+  c.fromSource() and
+  c.getName() != ""
+select
+  c.getName() as name,
+  c.getFile().getRelativePath() as file,
+  c.getLocation().getStartLine() as start_line,
+  c.getLocation().getEndLine() + c.getTotalNumberOfLines() as end_line
+>>>>>>> origin/main
