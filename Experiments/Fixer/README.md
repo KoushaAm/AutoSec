@@ -1,6 +1,8 @@
 # Fixer Experiments
 - Fixer Agent related LLM testing & experiments live here
 
+## Developer Information
+
 ### Tools
 - [Open Router](https://openrouter.ai/)
 
@@ -27,7 +29,16 @@
     pip install openai python-dotenv
     ```
 2. Store API key in `.env`: `OPENROUTER_API_KEY=your_api_key_here`
-3. Run with: `python openrouter.py`
+3. Run with: 
+    ```bash
+    python fixer.py # run normally
+
+    # To save the prompt that is given to the LLM in 'output/given_prompt.txt'
+    python fixer.py <-sp|--save-prompt>
+
+    # For all possible arguments without running main
+    python fixer.py <-h|--help>
+    ```
 
 ### Pretty Print JSON
 - Following the same stems as [Running LLMs in Python](#running-llms-in-python)
@@ -37,3 +48,7 @@
 ### Empty Output Directory
 - Run from within `Fixer` directory
 - `rm -rf output/*.json`
+
+<!-- ====================================== -->
+## Implementation Information
+...
