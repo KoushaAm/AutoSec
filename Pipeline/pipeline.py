@@ -3,7 +3,7 @@ import logging
 import uuid
 import argparse
 import json
-from langgraph.graph import StateGraph, END
+from langgraph.graph import StateGraph, END, START
 
 # logging
 logging.basicConfig(level=logging.INFO)
@@ -27,6 +27,7 @@ def build_workflow() -> Any:
     graph.add_node("verifier", verifier_node)
 
     # linear edges
+    graph.add_edge(START, "finder")
     graph.add_edge("finder", "exploiter")
     graph.add_edge("exploiter", "patcher")
     graph.add_edge("patcher", "verifier")
@@ -65,3 +66,5 @@ def patcher_node(state: AutoSecState) -> AutoSecState:
 def verifier_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node: verifier started")
     return state
+
+
