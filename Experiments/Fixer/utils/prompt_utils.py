@@ -21,7 +21,6 @@ from dataclasses import dataclass, field
 import json
 from pathlib import Path
 from typing import (
-    Optional,
     Union,
     List,
     Iterable,
@@ -34,7 +33,6 @@ from collections import defaultdict
 
 
 # ================== Strong typing for structures: constraints, sink, flow, PoV ==================
-
 class ConstraintDict(TypedDict):
     """
     Configuration constraints controlling patch generation limits.
@@ -86,7 +84,6 @@ class FileSnippetBundle(TypedDict):
 
 
 # ================== Agent metadata container ==================
-
 @dataclass
 class AgentFields:
     """
@@ -128,7 +125,6 @@ class AgentFields:
 
 
 # ================== Multi-task USER message builder ==================
-
 def build_user_msg_multi(
     tasks: Iterable[Tuple[int, AgentFields, Union[str, FileSnippetBundle]]]
 ) -> str:
@@ -189,56 +185,10 @@ def build_user_msg_multi(
 
 
 # ================== Snippet extractors (repo-root constrained) ==================
+#? Function level snippet extractor may be added later if needed.
+#?  Keep this in mind as a potential future extension.
 
-def get_vuln_snippet_from_file(
-    path: str,
-    start_line: Optional[int] = None,
-    end_line: Optional[int] = None,
-    *,
-    repo_root: Union[str, Path],
-    context: int = 6,
-    max_bytes: int = 2_000_000,
-) -> str:
-    """
-    Extract a function-level or explicit-range snippet from a file.
-
-    Notes:
-    - `context` is the number of lines of padding around the requested range
-      when either start_line or end_line is missing (default window = 2*context).
-    - Arguments after `*` are keyword-only to avoid accidental positional misuse.
-    """
-    repo_root_path = Path(repo_root).expanduser().resolve()
-    target_file = (repo_root_path / Path(path)).resolve()
-
-    if not (target_file == repo_root_path or repo_root_path in target_file.parents):
-        raise PermissionError(f"'{target_file}' is outside repo root '{repo_root_path}'.")
-    if not target_file.exists():
-        raise FileNotFoundError(f"File not found: {target_file}")
-    if target_file.stat().st_size > max_bytes:
-        raise ValueError(f"File too large: {target_file}")
-
-    file_lines = target_file.read_text(encoding="utf-8").splitlines()
-    total_lines = len(file_lines)
-
-    if start_line is None and end_line is None:
-        start_index = 1
-        end_index = min(total_lines, start_index + context * 2)
-    else:
-        start_index = max(1, int(start_line or 1))
-        end_index = int(end_line or start_index + context * 2)
-        if end_index > total_lines:
-            end_index = min(total_lines, start_index + context * 2)
-
-    if start_index < 1 or end_index < start_index or start_index > total_lines:
-        raise ValueError(f"Invalid range {start_index}-{end_index} for {total_lines} lines.")
-
-    file_relative_path = str(target_file.relative_to(repo_root_path))
-    snippet_lines = file_lines[start_index - 1 : end_index]
-    header = f"// SNIPPET SOURCE: {file_relative_path} lines {start_index}-{end_index}\n"
-
-    return header + "\n".join(snippet_lines) + ("\n" if snippet_lines and snippet_lines[-1] != "" else "")
-
-
+# Line-centered snippet extractor
 def get_snippet_around_line(
     path: str,
     center_line: int,
@@ -283,7 +233,6 @@ def get_snippet_around_line(
 
 
 # ================== Build multi-file snippet bundles (for data-flow) ==================
-
 def build_flow_context_snippets(
     *,
     repo_root: Union[str, Path],

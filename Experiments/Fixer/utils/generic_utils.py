@@ -144,6 +144,13 @@ def _unescape_newlines(s: str) -> str:
     """
     Convert escaped newlines to real newlines if the model returned a JSON-stringified diff.
     Also normalizes CRLF to LF.
+    
+    Args:
+        s: The string to process
+    Returns:
+        The processed string with unescaped newlines, or empty string if input is not a string
+    Note:
+        Non-string inputs are converted to empty string for safety in diff processing contexts.
     """
     if not isinstance(s, str):
         return ""

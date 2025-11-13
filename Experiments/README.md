@@ -1,5 +1,5 @@
 # Agent Experiments
-A director containing all agent experiments
+A directory containing all agent experiments
 
 ## Info
 - `/vulnerable`: Sample CWE java vulnerabilities
