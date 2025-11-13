@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 // command line injection vulnerable class
-public class VulnerableFixed {
+public class CWE_78_FIXED {
     public static void main(String[] args) throws Exception {
         Scanner myObj = new Scanner(System.in);
         // potential source

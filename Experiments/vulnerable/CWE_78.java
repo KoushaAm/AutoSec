@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 // command line injection vulnerable class
-public class Vulnerable {
+public class CWE_78 {
     public static void main(String[] args) throws Exception {
         Scanner myObj = new Scanner(System.in);
         // potential source
