@@ -212,7 +212,7 @@ class CWE_94(VulnerabilityInfo):
     POV_TESTS: List[PoVTestDict] = [
         {
             "name": "evil_formula",
-            "description": "Attemps to execute arbitrary code via expression",
+            "description": "Attempts to execute arbitrary code via expression",
             "entrypoint": "CWE_94#doGet",
             "args": [],
             "env": {"QUERY_STRING": "formula=java.lang.Runtime.getRuntime().exec('touch /tmp/pwned')"},
@@ -239,10 +239,7 @@ class CWE_918(VulnerabilityInfo):
         "keep_signature": True,
     }
 
-    # The provided sample includes placeholders (`...`) between lines 16–44.
-    # Based on the visible structure, the sink is inside fetch() near where
-    # a connection is opened and the input stream is read. We set a stable,
-    # close-by line number (41) so downstream context windows land correctly.
+    # The sink is inside fetch() near where a connection is opened and the input stream is read
     SINK: SinkDict = {
         "file": f"{VULN_DIR}CWE_918.java",
         "line": 41,

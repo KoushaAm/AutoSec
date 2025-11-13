@@ -9,6 +9,7 @@ import javax.script.ScriptException;
 
 public class CWE_94 extends HttpServlet {
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // User input is taken directly from a request parameter
