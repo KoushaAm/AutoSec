@@ -1,161 +1,328 @@
-# utils/prompt_utils.py
-from dataclasses import dataclass
+"""
+utils/prompt_utils.py
+
+Purpose:
+- Strongly-typed metadata container (AgentFields) for vulnerability-fixing tasks.
+- Safe, repo-root-constrained snippet extractors for:
+    1) function/range slices (legacy single-file paths)
+    2) small windows centered around specific lines (for source→sink data-flow)
+- Multi-task USER message builder that supports:
+    - Single-file: one snippet
+    - Multi-file: labeled per-file bundles from data-flow steps
+    - PoV test cases: included for downstream verifier reasoning
+
+Design notes:
+- All paths validated against repo_root (prevents directory traversal).
+- Arguments after '*' are keyword-only for clarity and safety.
+- Use descriptive variable names for readability and maintenance.
+"""
+
+from dataclasses import dataclass, field
 import json
 from pathlib import Path
-from typing import Optional, Union, List, Iterable, Tuple
+from typing import (
+    Optional,
+    Union,
+    List,
+    Iterable,
+    Tuple,
+    Dict,
+    TypedDict,
+    Mapping,
+)
+from collections import defaultdict
 
-"""
-Encapsulates metadata fields relevant to a vulnerability fixing agent.
-Provides helpers to build prompts and to safely extract code snippets from disk.
-"""
 
-# ============ AgentFields dataclass =============
+# ================== Strong typing for structures: constraints, sink, flow, PoV ==================
+
+class ConstraintDict(TypedDict):
+    """
+    Configuration constraints controlling patch generation limits.
+    Enforced by the Fixer when producing diffs.
+    """
+    max_lines: int
+    max_hunks: int
+    no_new_deps: bool
+    keep_signature: bool
+
+
+class SinkDict(TypedDict, total=False):
+    """Shape for the sink metadata (dangerous call site)."""
+    file: str
+    line: int
+    start_col: int
+    end_col: int
+    symbol: str
+
+
+class FlowStepDict(TypedDict, total=False):
+    """Shape for one data-flow step (source/propagation)."""
+    file: str
+    line: int
+    note: str
+
+
+class PoVTestDict(TypedDict, total=False):
+    """
+    Shape for a Proof-of-Value (PoV) test case the agent can use for feedback.
+    - entrypoint: what to run (CLI, method, route, etc.)
+    - args/env: execution inputs
+    - expected: result expectations used to confirm/negate a patch
+    """
+    name: str
+    description: str
+    entrypoint: str
+    args: List[str]
+    env: Dict[str, str]
+    expected: Dict[str, object]
+
+
+class FileSnippetBundle(TypedDict):
+    """
+    Multi-file snippet bundle structure:
+        {"by_file": { "<repo-relative-path>": "<concatenated snippet text>" } }
+    """
+    by_file: Dict[str, str]
+
+
+# ================== Agent metadata container ==================
+
 @dataclass
 class AgentFields:
-    language: str = ""
-    file: str = ""
-    function: str = ""
-    CWE: str = ""
-    constraints: Optional[dict] = None
+    """
+    Metadata describing the vulnerability to fix.
+
+    Required:
+        - language: e.g., "Java"
+        - function: function/method name ("" if not applicable)
+        - CWE: identifier string
+        - constraints: strongly-typed ConstraintDict
+        - sink: SinkDict (serves as anchor file)
+        - flow: list of FlowStepDict entries (source→sink path)
+        - pov_tests: list of PoVTestDict entries (for verifier feedback)
+
+    Optional:
+        - vuln_title: human-readable short title of the issue
+    """
+    language: str
+    function: str
+    CWE: str
+    constraints: ConstraintDict
+    sink: SinkDict
+    flow: List[FlowStepDict] = field(default_factory=list)
+    pov_tests: List[PoVTestDict] = field(default_factory=list)
     vuln_title: str = ""
-    pov_root_cause: str = ""
 
-    def __post_init__(self):
-        if self.constraints is None:
-            self.constraints = {}
-
-    def to_dict(self):
+    def to_dict(self) -> Dict[str, object]:
+        """JSON-serializable representation for prompt assembly."""
         return {
             "language": self.language,
-            "file": self.file,
             "function": self.function,
             "CWE": self.CWE,
             "constraints": self.constraints,
             "vuln_title": self.vuln_title,
-            "pov_root_cause": self.pov_root_cause,
+            "sink": self.sink,
+            "flow": self.flow,
+            "pov_tests": self.pov_tests,
         }
 
-# ============= Multi-task User message builder (handles single-task too) =============
-def build_user_msg_multi(tasks: Iterable[Tuple[int, AgentFields, str]]) -> str:
-    """
-    Build a composite USER message that lists one or more tasks.
-    Each item is (task_id, AgentFields, vulnerable_snippet).
-    The Developer prompt should require patch_id == task_id and same ordering.
 
-    Pass a list with one element for single-task mode.
+# ================== Multi-task USER message builder ==================
+
+def build_user_msg_multi(
+    tasks: Iterable[Tuple[int, AgentFields, Union[str, FileSnippetBundle]]]
+) -> str:
     """
-    parts: List[str] = []
-    parts.append(
+    Build a composite USER message listing one or more fix tasks.
+
+    Each item = (task_id, AgentFields, snippet_payload)
+    snippet_payload can be:
+        - str (single-file legacy)
+        - {"by_file": {...}} (multi-file bundle)
+
+    Output:
+        YAML-like list of tasks used as USER input to the Fixer.
+    """
+    text_lines: List[str] = []
+    text_lines.append(
         "You will receive multiple independent fix tasks. "
         "For each task, produce one patch in the same order, and set `patch_id` equal to the provided `task_id`.\n"
     )
-    parts.append("tasks:\n")
+    text_lines.append("tasks:\n")
 
-    for task_id, agent_fields, vuln_snippet in tasks:
-        fields = agent_fields.to_dict() if hasattr(agent_fields, "to_dict") else dict(agent_fields)
-        # fields
-        parts.append(f"- task_id: {task_id}")
-        parts.append(f"  language: {json.dumps(fields.get('language',''), ensure_ascii=False)}")
-        parts.append(f"  file: {json.dumps(fields.get('file',''), ensure_ascii=False)}")
-        parts.append(f"  function: {json.dumps(fields.get('function',''), ensure_ascii=False)}")
-        parts.append(f"  CWE: {json.dumps(fields.get('CWE',''), ensure_ascii=False)}")
-        constraints = fields.get("constraints") or {}
-        parts.append("  constraints: " + json.dumps(constraints, separators=(", ", ": "), ensure_ascii=False))
-        parts.append(f"  vuln_title: {json.dumps(fields.get('vuln_title',''), ensure_ascii=False)}")
-        parts.append(f"  pov_root_cause: {json.dumps(fields.get('pov_root_cause',''), ensure_ascii=False)}")
+    for task_id, agent_fields, snippet_payload in tasks:
+        fields: Mapping[str, object] = agent_fields.to_dict()
 
-        # language fence heuristic for nicer rendering
-        lang = (fields.get("language", "") or "text").lower()
-        parts.append("  vulnerable_snippet:")
-        parts.append(f"  ```{lang}")
-        parts.append("\n".join("  " + line for line in vuln_snippet.strip().splitlines()))
-        parts.append("  ```\n")
+        # Metadata header
+        text_lines.append(f"- task_id: {task_id}")
+        text_lines.append(f"  language: {json.dumps(fields['language'], ensure_ascii=False)}")
+        text_lines.append(f"  function: {json.dumps(fields['function'], ensure_ascii=False)}")
+        text_lines.append(f"  CWE: {json.dumps(fields['CWE'], ensure_ascii=False)}")
+        text_lines.append("  constraints: " + json.dumps(fields["constraints"], ensure_ascii=False))
+        text_lines.append(f"  vuln_title: {json.dumps(fields['vuln_title'], ensure_ascii=False)}")
 
-    return "\n".join(parts)
+        # Always include data_flow + PoV tests
+        text_lines.append("  data_flow:")
+        text_lines.append("    sink: " + json.dumps(fields["sink"], ensure_ascii=False))
+        text_lines.append("    flow: " + json.dumps(fields["flow"], ensure_ascii=False))
+        text_lines.append("  pov_tests: " + json.dumps(fields["pov_tests"], ensure_ascii=False))
 
-# ============= Extract Vuln Snippet from File =============
+        # Add snippet content
+        language_tag = str(fields["language"]).lower()
+
+        if isinstance(snippet_payload, dict) and "by_file" in snippet_payload:
+            text_lines.append("  vulnerable_snippets:")
+            for path_key, code_text in snippet_payload["by_file"].items():
+                text_lines.append(f"  - path: {json.dumps(path_key)}")
+                text_lines.append("    code: |")
+                for line in code_text.splitlines():
+                    text_lines.append(f"      {line}")
+            text_lines.append("")
+        else:
+            snippet_text = str(snippet_payload).strip()
+            text_lines.append("  vulnerable_snippet:")
+            text_lines.append(f"  ```{language_tag}")
+            text_lines.append("\n".join("  " + line for line in snippet_text.splitlines()))
+            text_lines.append("  ```\n")
+
+    return "\n".join(text_lines)
+
+
+# ================== Snippet extractors (repo-root constrained) ==================
+
 def get_vuln_snippet_from_file(
     path: str,
     start_line: Optional[int] = None,
     end_line: Optional[int] = None,
-    context: int = 2,
     *,
     repo_root: Union[str, Path],
+    context: int = 6,
     max_bytes: int = 2_000_000,
 ) -> str:
     """
-    Read a snippet safely from a file given its path RELATIVE TO repo_root.
+    Extract a function-level or explicit-range snippet from a file.
 
-    Example:
-        get_vuln_snippet_from_file(
-            "Experiments/vulnerable/CWE_78.java",
-            start_line=5,
-            end_line=14,
-            repo_root="AutoSec/Experiments"
-        )
+    Notes:
+    - `context` is the number of lines of padding around the requested range
+      when either start_line or end_line is missing (default window = 2*context).
+    - Arguments after `*` are keyword-only to avoid accidental positional misuse.
     """
-    rr = Path(repo_root).expanduser().resolve()
-    raw = Path(path)
-    file_p = (rr / raw).resolve()
+    repo_root_path = Path(repo_root).expanduser().resolve()
+    target_file = (repo_root_path / Path(path)).resolve()
 
-    # Ensure containment within the repo root
-    if not (file_p == rr or rr in file_p.parents):
-        raise PermissionError(f"'{file_p}' is outside repo root '{rr}'.")
+    if not (target_file == repo_root_path or repo_root_path in target_file.parents):
+        raise PermissionError(f"'{target_file}' is outside repo root '{repo_root_path}'.")
+    if not target_file.exists():
+        raise FileNotFoundError(f"File not found: {target_file}")
+    if target_file.stat().st_size > max_bytes:
+        raise ValueError(f"File too large: {target_file}")
 
-    if not file_p.exists():
-        raise FileNotFoundError(f"File not found: {file_p}")
-
-    size = file_p.stat().st_size
-    if size > max_bytes:
-        raise ValueError(f"File too large: {size} > {max_bytes}")
-
-    raw_lines = file_p.read_text(encoding="utf-8").splitlines()
-    total = len(raw_lines)
+    file_lines = target_file.read_text(encoding="utf-8").splitlines()
+    total_lines = len(file_lines)
 
     if start_line is None and end_line is None:
-        s, e = 1, total
+        start_index = 1
+        end_index = min(total_lines, start_index + context * 2)
     else:
-        s = max(1, int(start_line))
-        e = int(end_line) if end_line is not None else min(total, s + context * 2)
+        start_index = max(1, int(start_line or 1))
+        end_index = int(end_line or start_index + context * 2)
+        if end_index > total_lines:
+            end_index = min(total_lines, start_index + context * 2)
 
-    if s < 1 or e < s or s > total:
-        raise ValueError(f"Invalid range {s}-{e} for {total} lines")
+    if start_index < 1 or end_index < start_index or start_index > total_lines:
+        raise ValueError(f"Invalid range {start_index}-{end_index} for {total_lines} lines.")
 
-    rel_display = str(file_p.relative_to(rr))
-    snippet = raw_lines[s - 1 : e]
-    header = f"// SNIPPET SOURCE: {rel_display} lines {s}-{e}\n"
-    return header + "\n".join(snippet) + ("\n" if snippet and snippet[-1] != "" else "")
+    file_relative_path = str(target_file.relative_to(repo_root_path))
+    snippet_lines = file_lines[start_index - 1 : end_index]
+    header = f"// SNIPPET SOURCE: {file_relative_path} lines {start_index}-{end_index}\n"
 
-# ============= Helper functions for OpenRouter interaction =============
-def supports_developer_role(client, model):
-    """Check if the model supports 'developer' role by sending a test message."""
-    test_msgs = [
-        {"role": "system", "content": "You are an obedient assistant."},
-        {"role": "developer", "content": "If you see this, answer DEVELOPER_OK only."},
-        {"role": "user", "content": "What do you reply?"}
-    ]
-    try:
-        req = client.chat.completions.create(model=model, messages=test_msgs, max_tokens=100)
-        res = req.choices[0].message.content
-        return "DEVELOPER_OK" in (res or "")
-    except Exception:
-        return False
+    return header + "\n".join(snippet_lines) + ("\n" if snippet_lines and snippet_lines[-1] != "" else "")
 
-def get_messages(client, model, system_msg, developer_msg, user_msg, ignore_developer_support_check=False) -> List[dict]:
+
+def get_snippet_around_line(
+    path: str,
+    center_line: int,
+    *,
+    repo_root: Union[str, Path],
+    context: int = 4,
+    max_bytes: int = 2_000_000,
+) -> str:
     """
-    Build messages array for OpenRouter chat completion.
-    If the model does not support 'developer' role, merge developer policies into system message.
+    Extract a small window of code centered on a specific line.
+
+    Notes:
+    - `context` is the number of lines of padding on each side of `center_line`
+      (window size = 2*context).
+    - Center line is clamped to the file's bounds.
     """
-    if not ignore_developer_support_check and not supports_developer_role(client, model):
-        print(f"=== Model {model} does not support 'developer' role; merging into system message === \n\n")
-        # collapse developer into system
-        combined_system = system_msg + "\n\n--- Developer policies merged ---\n" + developer_msg
-        return [
-            {"role": "system", "content": combined_system},
-            {"role": "user", "content": user_msg},
-        ]
-    return [
-        {"role": "system", "content": system_msg},
-        {"role": "developer", "content": developer_msg},
-        {"role": "user", "content": user_msg},
-    ]
+    repo_root_path = Path(repo_root).expanduser().resolve()
+    target_file = (repo_root_path / Path(path)).resolve()
+
+    if not (target_file == repo_root_path or repo_root_path in target_file.parents):
+        raise PermissionError(f"'{target_file}' is outside repo root '{repo_root_path}'.")
+    if not target_file.exists():
+        raise FileNotFoundError(f"File not found: {target_file}")
+    if target_file.stat().st_size > max_bytes:
+        raise ValueError(f"File too large: {target_file}")
+
+    file_lines = target_file.read_text(encoding="utf-8").splitlines()
+    total_lines = len(file_lines)
+    center_line_number = max(1, min(int(center_line), total_lines))
+
+    start_index = max(1, center_line_number - context)
+    end_index = min(total_lines, center_line_number + context)
+
+    file_relative_path = str(target_file.relative_to(repo_root_path))
+    header = (
+        f"// SNIPPET SOURCE: {file_relative_path} around line {center_line_number} "
+        f"[{start_index}-{end_index}]\n"
+    )
+
+    snippet_block = file_lines[start_index - 1 : end_index]
+    return header + "\n".join(snippet_block) + ("\n" if end_index <= total_lines else "")
+
+
+# ================== Build multi-file snippet bundles (for data-flow) ==================
+
+def build_flow_context_snippets(
+    *,
+    repo_root: Union[str, Path],
+    sink: SinkDict,
+    flow: List[FlowStepDict],
+    base_context: int = 4,
+) -> FileSnippetBundle:
+    """
+    Given a sink and a list of flow steps (each with file + line), build a per-file
+    snippet bundle that we pass to the LLM. This ensures the model can see all
+    relevant files and the rough path from source → sink.
+
+    The returned structure is:
+      {"by_file": { "<repo-relative-path>": "<concatenated annotated snippets>" }}
+    """
+    snippets_by_path: Dict[str, List[str]] = defaultdict(list)
+    linearized_steps: List[Tuple[str, int, str]] = []
+
+    # Flow steps (if any)
+    for step in flow or []:
+        linearized_steps.append((step["file"], int(step["line"]), step.get("note", "flow step")))
+
+    # Sink is always included
+    linearized_steps.append(
+        (sink["file"], int(sink.get("line", 1)), f"sink: {sink.get('symbol', '')}".strip())
+    )
+
+    # Group by file and collect annotated windows
+    linearized_steps.sort(key=lambda info: (info[0], info[1]))
+
+    for repo_relative_path, line_number, note in linearized_steps:
+        snippet_text = get_snippet_around_line(
+            repo_relative_path,
+            line_number,
+            repo_root=repo_root,
+            context=base_context,
+        )
+        snippets_by_path[repo_relative_path].append(
+            f"// ---- {note} @ line {line_number} ----\n{snippet_text}"
+        )
+
+    return {"by_file": {path: "\n".join(blocks) for path, blocks in snippets_by_path.items()}}
