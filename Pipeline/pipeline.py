@@ -23,12 +23,18 @@ def build_workflow() -> Any:
     graph = StateGraph(AutoSecState)
     graph.add_node("finder", finder_node)
     graph.add_node("exploiter", exploiter_node)
+    # loop exploiter -> finder -> exploiter
+    graph.add_node("exploiter_check", exploiter_check)
     graph.add_node("patcher", patcher_node)
     graph.add_node("verifier", verifier_node)
 
     # linear edges
     graph.add_edge(START, "finder")
     graph.add_edge("finder", "exploiter")
+    # loop
+    graph.add_edge("exploiter", "exploiter_check")
+    graph.add_edge("exploiter_check", "finder")
+
     graph.add_edge("exploiter", "patcher")
     graph.add_edge("patcher", "verifier")
     graph.add_edge("verifier", END)
@@ -57,6 +63,10 @@ def exploiter_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node: exploiter started")
     return state
 
+# this function will varify exploiters results and compares it to finders
+# Are all discovered vulnerabilties exploitable? 
+def exploiter_check(state: AutoSecState):
+    return state
 
 def patcher_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node: patcher started")
