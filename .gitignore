@@ -12,3 +12,5 @@ output/
 
 # Ignore specific files
 cmd-line-exploit.txt
+
+Experiments/Exploiter/OpenRouter/E2E/assets/
