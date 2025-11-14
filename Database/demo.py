@@ -1,9 +1,10 @@
 import logging
-from pymongo.mongo_client import MongoClient
-from pymongo.server_api import ServerApi
-from bson import ObjectId  # for working with _id values
 from os import getenv
 from dotenv import load_dotenv
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
+from pymongo.errors import ConnectionFailure, ServerSelectionTimeoutError
+from bson import ObjectId  # for working with _id values
 
 # ========== GLOBAL SETUP ==========
 logging.basicConfig(level=logging.INFO)
@@ -11,12 +12,18 @@ logger = logging.getLogger("database.demo")
 
 # load env variables
 load_dotenv()
+DB_HOST = getenv("MONGO_HOST", "cluster0.z8vbz5o.mongodb.net")
+DB_APP_NAME = getenv("MONGO_APP_NAME", "Cluster0")
 DB_USERNAME = getenv("MONGO_SANDBOX_USERNAME")
 DB_PASSWORD = getenv("MONGO_SANDBOX_PASSWORD")
 
+if not DB_USERNAME or not DB_PASSWORD:
+    raise ValueError("MONGO_SANDBOX_USERNAME and MONGO_SANDBOX_PASSWORD must be set in .env file")
+
 # Create a MongoDB client
-uri = f"mongodb+srv://{DB_USERNAME}:{DB_PASSWORD}@cluster0.z8vbz5o.mongodb.net/?appName=Cluster0"
+uri = f"mongodb+srv://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}/?appName={DB_APP_NAME}"
 client = MongoClient(uri, server_api=ServerApi("1"))
+
 # Choose a database and collection
 db = client["sandbox_demo"] # this DB will be created on first write
 items = db["items"]         # same for this collection
@@ -99,9 +106,9 @@ def main():
     try:
         client.admin.command("ping")
         print("Connected to MongoDB Atlas ✅")
-    except Exception as e:
-        print("Connection failed:", e)
-        raise SystemExit
+    except (ConnectionFailure, ServerSelectionTimeoutError) as e:
+        logger.error(f"Connection failed: {e}")
+        raise SystemExit(1)
     
     print("=" * 40)
     reset_collection()
