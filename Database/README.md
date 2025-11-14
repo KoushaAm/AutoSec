@@ -20,3 +20,4 @@
     ```
 2. Store database username and password in `.env` as show by `.env.example`
 3. Run with `python demo.py`
+4. Exit virtual environment with `deactivate`
