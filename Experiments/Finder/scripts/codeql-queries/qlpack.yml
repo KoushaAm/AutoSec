@@ -1,11 +1,4 @@
-<<<<<<< HEAD
 name: custom-queries
 version: 0.0.1
 dependencies:
   codeql/java-all: "*"
-=======
-name: custom-queries
-version: 0.0.1
-dependencies:
-  codeql/java-all: "*"
->>>>>>> origin/main

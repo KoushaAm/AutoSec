@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 name: iris
 channels:
   - pytorch
@@ -14,20 +13,3 @@ dependencies:
   - transformers
   - pytorch=2.5
   - google-generativeai
-=======
-name: iris
-channels:
-  - pytorch
-  - nvidia
-  - conda-forge
-dependencies:
-  - python=3.10
-  - pandas
-  - requests
-  - tqdm
-  - openai
-  - accelerate
-  - transformers
-  - pytorch=2.5
-  - google-generativeai
->>>>>>> origin/main
