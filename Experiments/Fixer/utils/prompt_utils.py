@@ -2,19 +2,19 @@
 utils/prompt_utils.py
 
 Purpose:
-- Strongly-typed metadata container (AgentFields) for vulnerability-fixing tasks.
+- Strongly-typed metadata container (AgentFields) for patch-generation tasks.
 - Safe, repo-root-constrained snippet extractors for:
-    1) function/range slices (legacy single-file paths)
-    2) small windows centered around specific lines (for source→sink data-flow)
-- Multi-task USER message builder that supports:
-    - Single-file: one snippet
-    - Multi-file: labeled per-file bundles from data-flow steps
-    - PoV test cases: included for downstream verifier reasoning
+    1) function/range slices (legacy single-file)
+    2) line-centered windows for source→sink data-flow
+- Multi-task USER message builder supporting:
+    - Single-file snippet
+    - Multi-file bundles for data-flow (source→sink)
+    - PoV test cases for downstream patch verification
 
 Design notes:
-- All paths validated against repo_root (prevents directory traversal).
-- Arguments after '*' are keyword-only for clarity and safety.
-- Use descriptive variable names for readability and maintenance.
+- All filesystem paths are validated against repo_root (prevents traversal).
+- Arguments after '*' are keyword-only for safety and clarity.
+- The LLM receives all context needed for accurate patch generation.
 """
 
 from dataclasses import dataclass, field
@@ -32,11 +32,11 @@ from typing import (
 from collections import defaultdict
 
 
-# ================== Strong typing for structures: constraints, sink, flow, PoV ==================
+# ================== Strong typing for constraints, sink, flow, PoV ==================
 class ConstraintDict(TypedDict):
     """
     Configuration constraints controlling patch generation limits.
-    Enforced by the Fixer when producing diffs.
+    Enforced by the Patcher when producing diffs.
     """
     max_lines: int
     max_hunks: int
@@ -63,9 +63,6 @@ class FlowStepDict(TypedDict, total=False):
 class PoVTestDict(TypedDict, total=False):
     """
     Shape for a Proof-of-Value (PoV) test case the agent can use for feedback.
-    - entrypoint: what to run (CLI, method, route, etc.)
-    - args/env: execution inputs
-    - expected: result expectations used to confirm/negate a patch
     """
     name: str
     description: str
@@ -78,7 +75,7 @@ class PoVTestDict(TypedDict, total=False):
 class FileSnippetBundle(TypedDict):
     """
     Multi-file snippet bundle structure:
-        {"by_file": { "<repo-relative-path>": "<concatenated snippet text>" } }
+        {"by_file": { "<repo-relative-path>": "<concatenated snippet text>" }}
     """
     by_file: Dict[str, str]
 
@@ -87,19 +84,19 @@ class FileSnippetBundle(TypedDict):
 @dataclass
 class AgentFields:
     """
-    Metadata describing the vulnerability to fix.
+    Metadata describing the vulnerability to patch.
 
     Required:
         - language: e.g., "Java"
-        - function: function/method name ("" if not applicable)
+        - function: method name (or "" for global)
         - CWE: identifier string
         - constraints: strongly-typed ConstraintDict
-        - sink: SinkDict (serves as anchor file)
-        - flow: list of FlowStepDict entries (source→sink path)
-        - pov_tests: list of PoVTestDict entries (for verifier feedback)
+        - sink: SinkDict (primary file & line containing the sink)
+        - flow: list of FlowStepDict (source→sink propagation)
+        - pov_tests: list of PoVTestDict for guided reasoning
 
     Optional:
-        - vuln_title: human-readable short title of the issue
+        - vuln_title: human-readable short title
     """
     language: str
     function: str
@@ -129,27 +126,38 @@ def build_user_msg_multi(
     tasks: Iterable[Tuple[int, AgentFields, Union[str, FileSnippetBundle]]]
 ) -> str:
     """
-    Build a composite USER message listing one or more fix tasks.
+    Build a composite USER message listing multiple patch tasks.
 
     Each item = (task_id, AgentFields, snippet_payload)
     snippet_payload can be:
-        - str (single-file legacy)
-        - {"by_file": {...}} (multi-file bundle)
+        - str (single snippet)
+        - {"by_file": {...}} (multi-file data-flow bundle)
 
     Output:
-        YAML-like list of tasks used as USER input to the Fixer.
+        YAML-like list of patch tasks, used as USER prompt to the Patcher.
+
+    The Patcher LLM must output:
+        patches: [
+          {
+            "patch_id": <task_id>,
+            "plan": [...],
+            "cwe_matches": [...],
+            ...
+          }
+        ]
     """
     text_lines: List[str] = []
     text_lines.append(
-        "You will receive multiple independent fix tasks. "
-        "For each task, produce one patch in the same order, and set `patch_id` equal to the provided `task_id`.\n"
+        "You will receive one or more independent PATCH TASKS.\n"
+        "For each task, generate exactly one patch object.\n"
+        "The patch's `patch_id` MUST equal the provided `task_id`.\n"
     )
     text_lines.append("tasks:\n")
 
     for task_id, agent_fields, snippet_payload in tasks:
         fields: Mapping[str, object] = agent_fields.to_dict()
 
-        # Metadata header
+        # --- Metadata header
         text_lines.append(f"- task_id: {task_id}")
         text_lines.append(f"  language: {json.dumps(fields['language'], ensure_ascii=False)}")
         text_lines.append(f"  function: {json.dumps(fields['function'], ensure_ascii=False)}")
@@ -157,13 +165,13 @@ def build_user_msg_multi(
         text_lines.append("  constraints: " + json.dumps(fields["constraints"], ensure_ascii=False))
         text_lines.append(f"  vuln_title: {json.dumps(fields['vuln_title'], ensure_ascii=False)}")
 
-        # Always include data_flow + PoV tests
+        # --- Always include data-flow + PoV
         text_lines.append("  data_flow:")
         text_lines.append("    sink: " + json.dumps(fields["sink"], ensure_ascii=False))
         text_lines.append("    flow: " + json.dumps(fields["flow"], ensure_ascii=False))
         text_lines.append("  pov_tests: " + json.dumps(fields["pov_tests"], ensure_ascii=False))
 
-        # Add snippet content
+        # --- Snippet payload (either single or multi-file)
         language_tag = str(fields["language"]).lower()
 
         if isinstance(snippet_payload, dict) and "by_file" in snippet_payload:
@@ -185,10 +193,6 @@ def build_user_msg_multi(
 
 
 # ================== Snippet extractors (repo-root constrained) ==================
-#? Function level snippet extractor may be added later if needed.
-#?  Keep this in mind as a potential future extension.
-
-# Line-centered snippet extractor
 def get_snippet_around_line(
     path: str,
     center_line: int,
@@ -198,12 +202,8 @@ def get_snippet_around_line(
     max_bytes: int = 2_000_000,
 ) -> str:
     """
-    Extract a small window of code centered on a specific line.
-
-    Notes:
-    - `context` is the number of lines of padding on each side of `center_line`
-      (window size = 2*context).
-    - Center line is clamped to the file's bounds.
+    Extract a small window of code centered on a line.
+    Used to show the LLM the source→sink context.
     """
     repo_root_path = Path(repo_root).expanduser().resolve()
     target_file = (repo_root_path / Path(path)).resolve()
@@ -215,24 +215,21 @@ def get_snippet_around_line(
     if target_file.stat().st_size > max_bytes:
         raise ValueError(f"File too large: {target_file}")
 
-    file_lines = target_file.read_text(encoding="utf-8").splitlines()
-    total_lines = len(file_lines)
-    center_line_number = max(1, min(int(center_line), total_lines))
+    lines = target_file.read_text(encoding="utf-8").splitlines()
+    total = len(lines)
+    clamped_line = max(1, min(int(center_line), total))
 
-    start_index = max(1, center_line_number - context)
-    end_index = min(total_lines, center_line_number + context)
+    start_idx = max(1, clamped_line - context)
+    end_idx = min(total, clamped_line + context)
 
-    file_relative_path = str(target_file.relative_to(repo_root_path))
-    header = (
-        f"// SNIPPET SOURCE: {file_relative_path} around line {center_line_number} "
-        f"[{start_index}-{end_index}]\n"
-    )
+    rel_path = str(target_file.relative_to(repo_root_path))
+    header = f"// SNIPPET SOURCE: {rel_path} around line {clamped_line} [{start_idx}-{end_idx}]\n"
 
-    snippet_block = file_lines[start_index - 1 : end_index]
-    return header + "\n".join(snippet_block) + ("\n" if end_index <= total_lines else "")
+    snippet = lines[start_idx - 1 : end_idx]
+    return header + "\n".join(snippet) + ("\n" if end_idx <= total else "")
 
 
-# ================== Build multi-file snippet bundles (for data-flow) ==================
+# ================== Multi-file snippet bundle for data-flow ==================
 def build_flow_context_snippets(
     *,
     repo_root: Union[str, Path],
@@ -241,37 +238,36 @@ def build_flow_context_snippets(
     base_context: int = 4,
 ) -> FileSnippetBundle:
     """
-    Given a sink and a list of flow steps (each with file + line), build a per-file
-    snippet bundle that we pass to the LLM. This ensures the model can see all
-    relevant files and the rough path from source → sink.
+    Returns:
+        {"by_file": { "<repo-relative-path>": "<annotated concatenated snippets>" }}
 
-    The returned structure is:
-      {"by_file": { "<repo-relative-path>": "<concatenated annotated snippets>" }}
+    Provides complete source→sink context.
     """
     snippets_by_path: Dict[str, List[str]] = defaultdict(list)
-    linearized_steps: List[Tuple[str, int, str]] = []
+    linearized: List[Tuple[str, int, str]] = []
 
-    # Flow steps (if any)
+    # Flow steps first
     for step in flow or []:
-        linearized_steps.append((step["file"], int(step["line"]), step.get("note", "flow step")))
+        linearized.append((step["file"], int(step["line"]), step.get("note", "flow step")))
 
-    # Sink is always included
-    linearized_steps.append(
+    # Sink last
+    linearized.append(
         (sink["file"], int(sink.get("line", 1)), f"sink: {sink.get('symbol', '')}".strip())
     )
 
-    # Group by file and collect annotated windows
-    linearized_steps.sort(key=lambda info: (info[0], info[1]))
+    # Sort by filename, then line number
+    linearized.sort(key=lambda tup: (tup[0], tup[1]))
 
-    for repo_relative_path, line_number, note in linearized_steps:
-        snippet_text = get_snippet_around_line(
-            repo_relative_path,
-            line_number,
+    # Extract per-file snippets
+    for rel_path, line_no, note in linearized:
+        snippet = get_snippet_around_line(
+            rel_path,
+            line_no,
             repo_root=repo_root,
             context=base_context,
         )
-        snippets_by_path[repo_relative_path].append(
-            f"// ---- {note} @ line {line_number} ----\n{snippet_text}"
+        snippets_by_path[rel_path].append(
+            f"// ---- {note} @ line {line_no} ----\n{snippet}"
         )
 
-    return {"by_file": {path: "\n".join(blocks) for path, blocks in snippets_by_path.items()}}
+    return {"by_file": {p: "\n".join(blocks) for p, blocks in snippets_by_path.items()}}
