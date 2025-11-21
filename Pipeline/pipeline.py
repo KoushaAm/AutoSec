@@ -1,5 +1,6 @@
 from typing import TypedDict, Dict, Any, Optional
 import logging
+import os
 import uuid
 import argparse
 import subprocess
@@ -53,15 +54,28 @@ def finder_node(state: AutoSecState) -> AutoSecState:
     project_name = state["project_name"]
     query = state["vuln_id"]
 
-    # 1. run IRIS
-    subprocess.run(["python3", "./Agents/Finder/scripts/build_and_analyze.py",
-        "--project-name", project_name,
-        "--zip-path", f"/home/vvv/AutoSec/AutoSec/Projects/{project_name}.zip",
-        "--query", query,
-    ], check=True)
+    # 1. run IRIS inside docker container
+    docker_cmd = [
+        "docker", "run",
+        "--platform=linux/amd64",
+        "--rm",
+        "-v", "/home/vinci/AutoSec/Projects:/workspace/Projects",
+        "-v", "/home/vinci/AutoSec/Agents:/workspace/Agents",
+        "-w", "/workspace/Agents/Finder",
+        "iris:latest",
+        "bash", "-lc",
+        f"source /opt/conda/etc/profile.d/conda.sh && conda activate iris && "
+        f"python3 ./scripts/build_and_analyze.py "
+        f"--project-name {project_name} "
+        f"--zip-path /workspace/Projects/{project_name}.zip "
+        f"--query {query}"
+    ]
+
+    logger.info(f"Running IRIS inside Docker for project {project_name}")
+    subprocess.run(docker_cmd, check=True)
 
     # 2. Load IRIS output
-    sarif_path = f"/home/vvv/AutoSec/AutoSec/Experiments/Finder/output/{project_name}/test/{query}-posthoc-filter/results.sarif"
+    sarif_path = f"./Agents/Finder/output/{project_name}/test/{query}-posthoc-filter/results.sarif"
     with open(sarif_path) as f:
         findings = json.load(f)
 
@@ -88,7 +102,7 @@ def verifier_node(state: AutoSecState) -> AutoSecState:
 if __name__ == "__main__":
       # INITIAL INPUT STATE
     initial_state: AutoSecState = {
-        "project_slug": "perwendel__spark_CVE-2018-9159_2.7.1",
+        "project_name": "perwendel__spark_CVE-2018-9159_2.7.1",
         "vuln_id": "cwe-022wLLM",
     }
 
