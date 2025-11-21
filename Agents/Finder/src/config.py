@@ -1,14 +1,13 @@
 import os
 
 IRIS_ROOT_DIR = os.path.join(os.path.dirname(__file__), "..")
-SCRATCH_DIR = f"/scratch/{os.getenv('USER')}"
 
 
 # CODEQL_DIR should be the path of the patched version of CodeQL provided as a download in the releases section for Iris.
-CODEQL_DIR = "/iris/codeql"
+CODEQL_DIR = f"/iris/codeql"
 
-# CODEQL_DB_PATH is the path to the directory that contains CodeQL databases.
-CODEQL_DB_PATH = f"{SCRATCH_DIR}/data/codeql-dbs"
+# CODEQL_DB_PATH is the path to the dirZctory that contains CodeQL databases.
+CODEQL_DB_PATH = f"{IRIS_ROOT_DIR}/data/codeql-dbs"
 
 # PROJECT_SOURCE_CODE_DIR contains the Java projects.
 PROJECT_SOURCE_CODE_DIR = f"{IRIS_ROOT_DIR}/data/project-sources"
