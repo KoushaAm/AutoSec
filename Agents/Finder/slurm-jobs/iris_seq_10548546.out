@@ -1,0 +1,140 @@
+Thu Nov  6 03:07:01 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.65.06              Driver Version: 580.65.06      CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H100 80GB HBM3          On  |   00000000:46:00.0 Off |                   On |
+| N/A   22C    P0             66W /  700W |     226MiB /  81559MiB |     N/A      Default |
+|                                         |                        |              Enabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| MIG devices:                                                                            |
++------------------+----------------------------------+-----------+-----------------------+
+| GPU  GI  CI  MIG |              Shared Memory-Usage |        Vol|        Shared         |
+|      ID  ID  Dev |                Shared BAR1-Usage | SM     Unc| CE ENC  DEC  OFA  JPG |
+|                  |                                  |        ECC|                       |
+|==================+==================================+===========+=======================|
+|  0    2   0   0  |              47MiB / 40448MiB    | 60      0 |  3   0    3    0    3 |
+|                  |               0MiB / 24740MiB    |           |                       |
++------------------+----------------------------------+-----------+-----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+True 12.4 NVIDIA H100 80GB HBM3 MIG 3g.40gb
+====== Fetching and Building 1 Repositories ======
+== Processing jenkinsci__workflow-cps-global-lib-plugin_CVE-2022-25174_544.vff04fa68714d ==
+== Fetching jenkinsci__workflow-cps-global-lib-plugin_CVE-2022-25174_544.vff04fa68714d ==
+== Done fetching jenkinsci__workflow-cps-global-lib-plugin_CVE-2022-25174_544.vff04fa68714d ==
+== Building jenkinsci__workflow-cps-global-lib-plugin_CVE-2022-25174_544.vff04fa68714d ==
+== Done fetching and building jenkinsci__workflow-cps-global-lib-plugin_CVE-2022-25174_544.vff04fa68714d ==
+
+====== Summary ======
+Successfully processed: 1/1
+Maven path set to: /opt/maven/apache-maven-3.5.0/
+JAVA_HOME set to: /usr/lib/jvm/java-1.8.0-openjdk-amd64/
+
+Environment variables for CodeQL database creation:
+PATH: /usr/lib/jvm/java-1.8.0-openjdk-amd64/bin:/opt/maven/apache-maven-3.5.0/bin:/opt/conda/envs/iris/bin:/opt/conda/condabin:/iris/codeql:/opt/conda/bin:/opt/gradle/gradle-8.9/bin:/opt/maven/apache-maven-3.9.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+JAVA_HOME: /usr/lib/jvm/java-1.8.0-openjdk-amd64/
+
+Java version check:
+openjdk version "1.8.0_462"
+OpenJDK Runtime Environment (build 1.8.0_462-8u462-ga~us1-0ubuntu2~22.04.2-b08)
+OpenJDK 64-Bit Server VM (build 25.462-b08, mixed mode)
+
+Creating database at: /scratch/vvv/data/codeql-dbs/jenkinsci__workflow-cps-global-lib-plugin_CVE-2022-25174_544.vff04fa68714d
+Using source path: /home/vvv/AutoSec/AutoSec/Experiments/Finder/data/project-sources/jenkinsci__workflow-cps-global-lib-plugin_CVE-2022-25174_544.vff04fa68714d
+Using JAVA_HOME: /usr/lib/jvm/java-1.8.0-openjdk-amd64/
+Successfully created CodeQL database for jenkinsci__workflow-cps-global-lib-plugin_CVE-2022-25174_544.vff04fa68714d
+/opt/conda/envs/iris/lib/python3.10/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+`torch_dtype` is deprecated! Use `dtype` instead!
+The `load_in_4bit` and `load_in_8bit` arguments are deprecated and will be removed in the future versions. Please, pass a `BitsAndBytesConfig` object in `quantization_config` argument instead.
+[INFO] [2025-11-06 03:08:58] Processing jenkinsci__workflow-cps-global-lib-plugin_CVE-2022-25174_544.vff04fa68714d (Query: cwe-078wLLM, Trial: test)...
+[INFO] [2025-11-06 03:08:58] ==> Stage 1: Collecting external APIs...
+[INFO] [2025-11-06 03:08:58]   ==> Existing external APIs file found. Skipping running CodeQL...
+[INFO] [2025-11-06 03:08:58]   ==> Existing candidate APIs file found. Skipping filtering candidates...
+[INFO] [2025-11-06 03:08:58] ==> Stage 2: Collecting internal function parameters...
+[INFO] [2025-11-06 03:08:58]   ==> Existing function parameter file found. Skipping running CodeQL...
+[INFO] [2025-11-06 03:08:58]   ==> Existing source function parameter candidates file found. Skipping filtering candidates...
+[INFO] [2025-11-06 03:08:58] ==> Stage 3: Querying GPT for source/taint-prop/sink APIs...
+[INFO] [2025-11-06 03:08:58]   ==> Querying GPT... #Candidates: 508, #To Query APIs: 474, #Cached: 34
+[INFO] [2025-11-06 03:08:58] >>>Loading LLM model with CausalLM
+[INFO] [2025-11-06 03:08:59] >>>Loading model
+Fetching 17 files:   0%|          | 0/17 [00:00<?, ?it/s]Fetching 17 files:   6%|▌         | 1/17 [00:53<14:17, 53.57s/it]Fetching 17 files: 100%|██████████| 17/17 [00:53<00:00,  3.15s/it]
+Loading checkpoint shards:   0%|          | 0/17 [00:00<?, ?it/s]Loading checkpoint shards:   6%|▌         | 1/17 [00:03<00:53,  3.37s/it]Loading checkpoint shards:  12%|█▏        | 2/17 [00:06<00:49,  3.29s/it]Loading checkpoint shards:  18%|█▊        | 3/17 [00:10<00:46,  3.35s/it]Loading checkpoint shards:  24%|██▎       | 4/17 [00:13<00:43,  3.36s/it]Loading checkpoint shards:  29%|██▉       | 5/17 [00:16<00:39,  3.30s/it]Loading checkpoint shards:  35%|███▌      | 6/17 [00:19<00:35,  3.27s/it]Loading checkpoint shards:  41%|████      | 7/17 [00:23<00:32,  3.27s/it]Loading checkpoint shards:  47%|████▋     | 8/17 [00:26<00:29,  3.28s/it]Loading checkpoint shards:  53%|█████▎    | 9/17 [00:29<00:26,  3.32s/it]Loading checkpoint shards:  59%|█████▉    | 10/17 [00:33<00:23,  3.30s/it]Loading checkpoint shards:  65%|██████▍   | 11/17 [00:35<00:18,  3.07s/it]Loading checkpoint shards:  71%|███████   | 12/17 [00:38<00:14,  2.90s/it]Loading checkpoint shards:  76%|███████▋  | 13/17 [00:40<00:11,  2.79s/it]Loading checkpoint shards:  82%|████████▏ | 14/17 [00:43<00:08,  2.71s/it]Loading checkpoint shards:  88%|████████▊ | 15/17 [00:45<00:05,  2.66s/it]Loading checkpoint shards:  94%|█████████▍| 16/17 [00:48<00:02,  2.62s/it]Loading checkpoint shards: 100%|██████████| 17/17 [00:49<00:00,  2.36s/it]Loading checkpoint shards: 100%|██████████| 17/17 [00:49<00:00,  2.94s/it]
+Device set to use cuda:0
+  0%|          | 0/6 [00:00<?, ?it/s] 17%|█▋        | 1/6 [08:24<42:03, 504.78s/it] 67%|██████▋   | 4/6 [10:10<04:08, 124.13s/it]7it [18:45, 149.64s/it]                       10it [24:33, 134.94s/it]13it [26:16, 96.49s/it] 16it [26:50, 66.39s/it]16it [26:50, 100.65s/it]
+[INFO] [2025-11-06 03:37:38]   ==> #APIs Labelled by LLM: 107, #Source: 12, #Sink: 33, #Taint Propagators: 62
+[INFO] [2025-11-06 03:37:38] ==> Stage 4: Querying GPT for source function parameters...
+[INFO] [2025-11-06 03:37:38]   ==> Attempting to fetch project readme from https://raw.githubusercontent.com/jenkinsci/workflow-cps-global-lib-plugin/ace0de3c2d691662021ea10306eeb407da6b6365/README.md...
+[INFO] [2025-11-06 03:37:38]   ==> Success!
+[INFO] [2025-11-06 03:37:38]   ==> #Candidate functions with source param: 13; after deduplication: 13; with documentations: 0. Querying LLM...
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:03<00:00,  3.44s/it]100%|██████████| 1/1 [00:03<00:00,  3.44s/it]
+Running queries.
+Compiling query plan for /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/jenkinsci__workflow-cps-global-lib-plugin_CVE-2022-25174_544.vff04fa68714d/test/myqueries/cwe-078wLLM/CommandInjectionRuntimeExecwLLM.ql.
+[1/1] Compiled /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/jenkinsci__workflow-cps-global-lib-plugin_CVE-2022-25174_544.vff04fa68714d/test/myqueries/cwe-078wLLM/CommandInjectionRuntimeExecwLLM.ql.
+Starting evaluation of iris/cwe-078wLLM/CommandInjectionRuntimeExecwLLM.ql.
+[1/1 eval 10.6s] Evaluation done; writing results to iris/cwe-078wLLM/CommandInjectionRuntimeExecwLLM.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Running queries.
+Compiling query plan for /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/jenkinsci__workflow-cps-global-lib-plugin_CVE-2022-25174_544.vff04fa68714d/test/myqueries/cwe-078wLLM/CommandInjectionRuntimeExecwLLM.ql.
+[1/1] Found in cache: /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/jenkinsci__workflow-cps-global-lib-plugin_CVE-2022-25174_544.vff04fa68714d/test/myqueries/cwe-078wLLM/CommandInjectionRuntimeExecwLLM.ql.
+Starting evaluation of iris/cwe-078wLLM/CommandInjectionRuntimeExecwLLM.ql.
+[1/1 eval 3s] Evaluation done; writing results to iris/cwe-078wLLM/CommandInjectionRuntimeExecwLLM.bqrs.
+Shutting down query evaluator.
+Interpreting results.
+Compiling query plan for /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/jenkinsci__workflow-cps-global-lib-plugin_CVE-2022-25174_544.vff04fa68714d/test/myqueries/fetch_func_locs/fetch_func_locs.ql.
+[1/1] Found in cache: /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/jenkinsci__workflow-cps-global-lib-plugin_CVE-2022-25174_544.vff04fa68714d/test/myqueries/fetch_func_locs/fetch_func_locs.ql.
+Starting evaluation of iris/fetch_func_locs/fetch_func_locs.ql.
+[1/1 eval 253ms] Evaluation done; writing results to /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/jenkinsci__workflow-cps-global-lib-plugin_CVE-2022-25174_544.vff04fa68714d/test/fetch_func_locs/results.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/jenkinsci__workflow-cps-global-lib-plugin_CVE-2022-25174_544.vff04fa68714d/test/myqueries/fetch_class_locs/fetch_class_locs.ql.
+[1/1] Found in cache: /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/jenkinsci__workflow-cps-global-lib-plugin_CVE-2022-25174_544.vff04fa68714d/test/myqueries/fetch_class_locs/fetch_class_locs.ql.
+Starting evaluation of iris/fetch_class_locs/fetch_class_locs.ql.
+[1/1 eval 291ms] Evaluation done; writing results to /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/jenkinsci__workflow-cps-global-lib-plugin_CVE-2022-25174_544.vff04fa68714d/test/fetch_class_locs/results.bqrs.
+Shutting down query evaluator.
+[INFO] [2025-11-06 03:37:42]   ==> Finished querying LLM. #Function with source param: 0
+[INFO] [2025-11-06 03:37:42] ==> Stage 5: Building project specific query...
+[INFO] [2025-11-06 03:37:42]   ==> Building source query...
+[INFO] [2025-11-06 03:37:42]   ==> Building taint-propagator query...
+[INFO] [2025-11-06 03:37:42]   ==> Building sink query...
+[INFO] [2025-11-06 03:37:42]   ==> Building extension yml...
+[INFO] [2025-11-06 03:37:42] ==> Stage 6: Finding vulnerabilities with CodeQL...
+[INFO] [2025-11-06 03:37:42]   ==> Copying custom queries...
+[INFO] [2025-11-06 03:37:42]   ==> Query CommandInjectionRuntimeExecwLLM.ql ready... Done!
+[INFO] [2025-11-06 03:37:42]   ==> Query MyCommandInjectionRuntimeExec.qll ready... Done!
+[INFO] [2025-11-06 03:37:42]   ==> Query MyCommandArguments.qll ready... Done!
+[INFO] [2025-11-06 03:37:42]   ==> Query MyCommandLineQuery.qll ready... Done!
+[INFO] [2025-11-06 03:37:42]   ==> Running CodeQL analysis...
+[INFO] [2025-11-06 03:38:35] ==> Stage 7: Post-processing CWE query results...
+[INFO] [2025-11-06 03:38:35]   ==> Extracting function and class locations...
+[INFO] [2025-11-06 03:38:35]   ==> Function locations not found; running CodeQL query to extract...
+[INFO] [2025-11-06 03:38:40]   ==> Original #alarms: 0; Original #paths: 0
+[INFO] [2025-11-06 03:38:40]   ==> New #alarms: 0; New #paths: 0
+[INFO] [2025-11-06 03:38:40] ==> Stage 8: Querying GPT for posthoc filtering...
+[INFO] [2025-11-06 03:38:40]   ==> Extracting function and class locations...
+[INFO] [2025-11-06 03:38:40]   ==> Class locations not found; running CodeQL query to extract...
+[INFO] [2025-11-06 03:38:45]   ==> Extracting function and class locations...
+[INFO] [2025-11-06 03:38:45]   ==> Loading result SARIF...
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+[INFO] [2025-11-06 03:38:45] ==> Stage 9: Evaluating results...
+[INFO] [2025-11-06 03:38:45]   ==> Extracting function and class locations...
+[INFO] [2025-11-06 03:38:45]   ==> Computing statistics...
+[INFO] [2025-11-06 03:38:45]   ==> Evaluating results after stage 6 (vanilla)...
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+[INFO] [2025-11-06 03:38:45]     ==> [Recall@Method] RESULT: False, #Paths: 0, #TP Paths: 0
+[INFO] [2025-11-06 03:38:45]   ==> Evaluating results after stage 7 (with posthoc-filtering)...
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+[INFO] [2025-11-06 03:38:45]     ==> [Recall@Method] RESULT: False, #Paths: 0, #TP Paths: 0
+[INFO] [2025-11-06 03:38:45]   ==> Dumping final statistics and evaluation result to jenkinsci__workflow-cps-global-lib-plugin_CVE-2022-25174_544.vff04fa68714d/test/cwe-078wLLM-final/results.json...
