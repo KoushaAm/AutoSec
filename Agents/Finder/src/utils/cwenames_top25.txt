@@ -1,0 +1,33 @@
+name,id
+OS Command Injection,78
+Cryptographic,327
+weak hash,328
+LDAP Injection,90
+Path Traversal,22
+SQL Injection,89
+trust boundary violation,501
+Insufficiently Random Values,330
+XPath Injection,643
+Cross Site Scripting,79
+Out-of-bounds Read,125
+Race Condition or Concurrent Execution using Shared Resource with Improper Synchronization,362
+Command Injection,77
+Out-of-bounds Write,787
+Use After Free,416
+Improper Input Validation,20
+Improper Privilege Management,269
+NULL Pointer Dereference,476
+Integer Overflow,190
+Improper Control of Generation of Code or Code Injection,94
+Cross-Site Request Forgery,352
+Missing Authorization,862
+Server-Side Request Forgery (SSRF),918
+Improper Restriction of Operations within the Bounds of a Memory Buffer,119
+Deserialization of Untrusted Data,502
+Improper Authentication,287
+Unrestricted Upload of File with Dangerous Type,434
+Use of Hard-coded Credentials,798
+Missing Authentication for Critical Function,306
+Incorrect Authorization,863
+Incorrect Default Permissions,276
+Sensitive Cookie in HTTPS Session Without 'Secure' Attribute,614

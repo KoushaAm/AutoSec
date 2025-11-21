@@ -1,0 +1,83 @@
+Fri Nov 21 11:51:24 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.65.06              Driver Version: 580.65.06      CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H100 80GB HBM3          On  |   00000000:4C:00.0 Off |                   On |
+| N/A   25C    P0            137W /  700W |    7550MiB /  81559MiB |     N/A      Default |
+|                                         |                        |              Enabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| MIG devices:                                                                            |
++------------------+----------------------------------+-----------+-----------------------+
+| GPU  GI  CI  MIG |              Shared Memory-Usage |        Vol|        Shared         |
+|      ID  ID  Dev |                Shared BAR1-Usage | SM     Unc| CE ENC  DEC  OFA  JPG |
+|                  |                                  |        ECC|                       |
+|==================+==================================+===========+=======================|
+|  0    2   0   0  |              44MiB / 40448MiB    | 60      0 |  3   0    3    0    3 |
+|                  |               0MiB / 24740MiB    |           |                       |
++------------------+----------------------------------+-----------+-----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+True 12.4 NVIDIA H100 80GB HBM3 MIG 3g.40gb
+====== Fetching and Building 1 Repositories ======
+== Processing ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1 ==
+== Fetching ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1 ==
+== Done fetching ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1 ==
+== Building ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1 ==
+== Done fetching and building ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1 ==
+
+====== Summary ======
+Successfully processed: 1/1
+Maven path set to: /opt/maven/apache-maven-3.5.0/
+JAVA_HOME set to: /usr/lib/jvm/java-1.8.0-openjdk-amd64/
+
+Environment variables for CodeQL database creation:
+PATH: /usr/lib/jvm/java-1.8.0-openjdk-amd64/bin:/opt/maven/apache-maven-3.5.0/bin:/opt/conda/envs/iris/bin:/opt/conda/condabin:/iris/codeql:/opt/conda/bin:/opt/gradle/gradle-8.9/bin:/opt/maven/apache-maven-3.9.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+JAVA_HOME: /usr/lib/jvm/java-1.8.0-openjdk-amd64/
+
+Java version check:
+openjdk version "1.8.0_462"
+OpenJDK Runtime Environment (build 1.8.0_462-8u462-ga~us1-0ubuntu2~22.04.2-b08)
+OpenJDK 64-Bit Server VM (build 25.462-b08, mixed mode)
+
+Creating database at: /scratch/vvv/data/codeql-dbs/ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1
+Using source path: /home/vvv/AutoSec/AutoSec/Experiments/Finder/data/project-sources/ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1
+Using JAVA_HOME: /usr/lib/jvm/java-1.8.0-openjdk-amd64/
+Successfully created CodeQL database for ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1
+/opt/conda/envs/iris/lib/python3.10/site-packages/transformers/utils/hub.py:110: FutureWarning: Using `TRANSFORMERS_CACHE` is deprecated and will be removed in v5 of Transformers. Use `HF_HOME` instead.
+  warnings.warn(
+Compiling query plan for /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1/test/myqueries/fetch_external_apis/fetch_external_apis.ql.
+[1/1] Found in cache: /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1/test/myqueries/fetch_external_apis/fetch_external_apis.ql.
+Starting evaluation of iris/fetch_external_apis/fetch_external_apis.ql.
+[1/1 eval 3s] Evaluation done; writing results to /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1/test/fetch_external_apis/results.bqrs.
+Shutting down query evaluator.
+Compiling query plan for /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1/test/myqueries/fetch_func_params/fetch_func_params.ql.
+[1/1] Found in cache: /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1/test/myqueries/fetch_func_params/fetch_func_params.ql.
+Starting evaluation of iris/fetch_func_params/fetch_func_params.ql.
+[1/1 eval 1.5s] Evaluation done; writing results to /home/vvv/AutoSec/AutoSec/Experiments/Finder/output/ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1/test/fetch_func_params/results.bqrs.
+Shutting down query evaluator.
+`torch_dtype` is deprecated! Use `dtype` instead!
+[INFO] [2025-11-21 11:57:26] Processing ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1 (Query: cwe-022wLLM, Trial: test)...
+[INFO] [2025-11-21 11:57:26] ==> Stage 1: Collecting external APIs...
+[INFO] [2025-11-21 11:57:26]   ==> Extracting all external APIs by running CodeQL... Done.
+[INFO] [2025-11-21 11:57:37]   ==> #Relevant API Calls: 22358, #Filtered Candidates: 1028
+[INFO] [2025-11-21 11:57:37]   ==> Dumping filtered API candidates...
+[INFO] [2025-11-21 11:57:37] ==> Stage 2: Collecting internal function parameters...
+[INFO] [2025-11-21 11:57:37]   ==> Extracting all function parameters by running CodeQL... Done.
+[INFO] [2025-11-21 11:57:44]   ==> #Relevant APIs: 528, #Filtered Candidates: 439
+[INFO] [2025-11-21 11:57:44]   ==> Dumping filtered function parameter candidates...
+[INFO] [2025-11-21 11:57:44] ==> Stage 3: Querying GPT for source/taint-prop/sink APIs...
+[INFO] [2025-11-21 11:57:44]   ==> Querying GPT... #Candidates: 1028, #To Query APIs: 698, #Cached: 330
+[INFO] [2025-11-21 11:57:44] >>>Loading LLM model with CausalLM
+[INFO] [2025-11-21 11:57:45] >>>Loading model
