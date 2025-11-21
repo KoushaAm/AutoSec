@@ -31,13 +31,13 @@
 2. Store API key in `.env`: `OPENROUTER_API_KEY=your_api_key_here`
 3. Run with: 
     ```bash
-    python fixer.py # run normally
+    python patcher.py # run normally
 
     # To save the prompt that is given to the LLM in 'output/given_prompt.txt'
-    python fixer.py <-sp|--save-prompt>
+    python patcher.py <-sp|--save-prompt>
 
     # For all possible arguments without running main
-    python fixer.py <-h|--help>
+    python patcher.py <-h|--help>
     ```
 
 ### Empty Output Directory

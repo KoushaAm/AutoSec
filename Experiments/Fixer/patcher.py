@@ -1,4 +1,3 @@
-# fixer.py
 import argparse, sys, json
 from os import getenv
 from dotenv import load_dotenv
@@ -24,12 +23,10 @@ client = OpenAI(
 )
 
 # Tool version stamped into saved output metadata (host-side only).
-TOOL_VERSION = "fixer-1.2.1"
+TOOL_VERSION = "patcher-1.3.0"
 
 # Choose one or more vulnerability definitions to test here.
-VULNERABILITIES = [vuln_info.CWE_78, vuln_info.CWE_22, vuln_info.CWE_94]
-# VULNERABILITIES = [vuln_info.CWE_918]
-
+VULNERABILITIES = [vuln_info.CWE_78, vuln_info.CWE_22, vuln_info.CWE_94, vuln_info.CWE_918]
 
 # ================== Helpers ==================
 def save_prompt_debug(messages: List[Dict[str, str]], model_name: str) -> None:
@@ -90,11 +87,27 @@ def _mk_agent_fields(vuln_class) -> pu.AgentFields:
     )
 
 
-# ================== Validation (new strict schema) ==================
+# ================== Validation (strict schema) ==================
 def _validate_single_patch_schema(patch: Dict[str, Any]) -> None:
     """
-    Enforce the new, strict patch schema.
-    cwe_matches and verifier_confidence are required.
+    Enforce the strict patch schema expected from the Patcher LLM output.
+
+    Required keys (per patch object returned by the model):
+        - patch_id
+        - plan (list)
+        - cwe_matches (non-empty list)
+        - unified_diff
+        - safety_verification
+        - risk_notes
+        - touched_files (list)
+        - assumptions
+        - behavior_change
+        - confidence
+
+    Note:
+        - `verifier_confidence` is no longer required at this stage. Any such
+          field returned by the model will be ignored when writing patch
+          artifacts.
     """
     required_keys = [
         "patch_id",
@@ -107,7 +120,6 @@ def _validate_single_patch_schema(patch: Dict[str, Any]) -> None:
         "assumptions",
         "behavior_change",
         "confidence",
-        "verifier_confidence",
     ]
     for key in required_keys:
         if key not in patch:
@@ -119,8 +131,8 @@ def _validate_single_patch_schema(patch: Dict[str, Any]) -> None:
         raise ValueError("touched_files must be a list")
     if not isinstance(patch["cwe_matches"], list) or len(patch["cwe_matches"]) == 0:
         raise ValueError("cwe_matches must be a non-empty list")
-    if patch["verifier_confidence"] in (None, ""):
-        raise ValueError("verifier_confidence must be provided and non-empty")
+    if not isinstance(patch["patch_id"], int):
+        raise ValueError(f"patch_id must be an integer, got {patch['patch_id']!r}")
 
 
 def _validate_multi_schema(obj: Dict[str, Any]) -> Dict[str, Any]:
@@ -141,10 +153,12 @@ def _validate_multi_schema(obj: Dict[str, Any]) -> Dict[str, Any]:
 
 def process_llm_output(llm_output: str, model_name: str):
     """
-    Extract JSON from LLM output, validate, save, and print a readable summary.
+    Extract JSON from LLM output, validate against the multi-patch schema,
+    then write:
+      1) A run-level manifest file
+      2) One patch artifact file per patch
 
-    If JSON parsing fails, dumps the full raw output to output/invalid_json_*.txt
-    via generic_utils.save_invalid_json_dump, then raises a clear error.
+    Finally, print a human-readable summary of all patches.
     """
     # 1. Try to carve out a { ... } block
     json_text = gu.extract_json_block(llm_output)
@@ -164,15 +178,114 @@ def process_llm_output(llm_output: str, model_name: str):
         )
         raise
 
-    obj = _validate_multi_schema(obj)
+    # 3. Validate schema and set basic metadata
+    full = _validate_multi_schema(obj)
 
-    # Save full JSON
-    file_to_save = gu.utc_timestamped_filename(model_name)
-    gu.save_output_to_file(file_to_save, json.dumps(obj, indent=2))
+    # Derive a run_id and output directory based on the metadata timestamp.
+    # Manifest and patch artifact paths follow:
+    #   output/patcher_<timestamp>/patcher_<timestamp>.json
+    #   output/patcher_<timestamp>/patch_XXX.json
+    ts_iso = full.get("metadata", {}).get("timestamp")
 
-    print("\n=== Fixer Summary (multi) ===")
-    for idx, patch in enumerate(obj["patches"], start=1):
-        print(f"\n--- Patch {idx} (id={patch.get('patch_id','?')}) ---")
+    try:
+        if ts_iso:
+            dt = datetime.fromisoformat(ts_iso.replace("Z", "+00:00"))
+        else:
+            dt = datetime.now(timezone.utc)
+        run_ts = dt.strftime("%Y%m%dT%H%M%SZ")
+    except Exception:
+        dt = datetime.now(timezone.utc)
+        run_ts = dt.strftime("%Y%m%dT%H%M%SZ")
+
+    run_id = f"patcher_{run_ts}"
+    output_root = Path("output")
+    run_dir = output_root / run_id
+
+    meta = full.setdefault("metadata", {})
+    meta["run_id"] = run_id
+    meta["tool_version"] = TOOL_VERSION
+    meta["model_name"] = model_name
+    meta["total_patches"] = len(full.get("patches", []))
+
+    # Build manifest index entries + write each patch artifact.
+    manifest_patches: List[Dict[str, Any]] = []
+    artifact_paths_by_id: Dict[int, str] = {}
+
+    for patch in full.get("patches", []):
+        patch_id = patch.get("patch_id")
+        if not isinstance(patch_id, int):
+            raise ValueError(f"patch_id must be an integer, got: {patch_id!r}")
+
+        # Derive primary file_path/file_name from touched_files (sink file).
+        touched_files = patch.get("touched_files") or []
+        if touched_files and isinstance(touched_files, list):
+            primary_path = touched_files[0]
+        else:
+            primary_path = ""
+
+        try:
+            primary_name = Path(primary_path).name if primary_path else ""
+        except TypeError:
+            primary_path = ""
+            primary_name = ""
+
+        # Construct patch artifact payload per agreed schema.
+        patch_artifact = {
+            "metadata": {
+                "patch_id": patch_id,
+                "timestamp": meta["timestamp"],
+                "file_path": primary_path,
+                "file_name": primary_name,
+            },
+            "patch": {
+                "plan": patch.get("plan", []),
+                "cwe_matches": patch.get("cwe_matches", []),
+                "unified_diff": patch.get("unified_diff", ""),
+                "safety_verification": patch.get("safety_verification", ""),
+                "risk_notes": patch.get("risk_notes", ""),
+                "touched_files": touched_files,
+                "assumptions": patch.get("assumptions", ""),
+                "behavior_change": patch.get("behavior_change", ""),
+                "confidence": patch.get("confidence", ""),
+            },
+        }
+
+        # Write patch artifact: output/patcher_<ts>/patch_XXX.json
+        patch_filename = f"patch_{patch_id:03d}.json"
+        patch_path = run_dir / patch_filename
+        gu.write_patch_artifact(patch_path, patch_artifact)
+
+        artifact_path_str = patch_path.as_posix()
+        manifest_entry = {
+            "patch_id": patch_id,
+            "cwe_matches": patch.get("cwe_matches", []),
+            "artifact_path": artifact_path_str,
+        }
+        manifest_patches.append(manifest_entry)
+        artifact_paths_by_id[patch_id] = artifact_path_str
+
+    # 5. Write the manifest file itself.
+    manifest = {
+        "metadata": {
+            "run_id": meta["run_id"],
+            "timestamp": meta["timestamp"],
+            "tool_version": meta["tool_version"],
+            "model_name": meta["model_name"],
+            "total_patches": meta["total_patches"],
+        },
+        "patches": manifest_patches,
+    }
+
+    manifest_path = run_dir / f"{run_id}.json"
+    gu.write_manifest(manifest_path, manifest)
+
+    # 6. Print a human-readable summary using the full patch objects.
+    print("\n=== Patcher Summary (multi) ===")
+    for idx, patch in enumerate(full.get("patches", []), start=1):
+        patch_id = patch.get("patch_id", "?")
+        artifact_path = artifact_paths_by_id.get(patch_id, "(unknown)")
+        print(f"\n--- Patch {idx} (id={patch_id}) ---")
+        print(f"Artifact: {artifact_path}")
         print("Plan:", " / ".join(patch.get("plan", [])) or "(none)")
         for match in patch.get("cwe_matches", []):
             print(f"  CWE {match.get('cwe_id')} (similarity={match.get('similarity')})")
@@ -187,21 +300,22 @@ def process_llm_output(llm_output: str, model_name: str):
         print("Assumptions:", patch.get("assumptions", ""))
         print("Behavior change:", patch.get("behavior_change", ""))
         print("Confidence:", patch.get("confidence", ""))
-        print("Verifier confidence:", patch.get("verifier_confidence", ""))
 
 
 # ================== Main ==================
 def main():
     # Parse command-line arguments
-    parser = argparse.ArgumentParser(description="Fixer tool")
+    parser = argparse.ArgumentParser(description="Patcher tool")
     parser.add_argument(
-        "-sp", "--save-prompt", 
-        action="store_true", 
-        help="Save the generated prompt to output/given_prompt.txt for debugging")
+        "-sp",
+        "--save-prompt",
+        action="store_true",
+        help="Save the generated prompt to output/given_prompt.txt for debugging",
+    )
     args = parser.parse_args()
 
     # Select model
-    CURRENT_MODEL = models.Model.LLAMA3
+    CURRENT_MODEL = models.Model.QWEN3
     MODEL_VALUE = CURRENT_MODEL.value
 
     # Repo root (two levels up from this file)
@@ -243,7 +357,7 @@ def main():
             model=MODEL_VALUE,
             messages=messagesArray,
             temperature=0.0,
-            max_tokens=8000,
+            # max_tokens=8000,
         )
     except Exception as e:
         print("OpenRouter error:", e, file=sys.stderr)
@@ -255,7 +369,7 @@ def main():
         sys.exit(1)
 
     try:
-        process_llm_output(llm_output, CURRENT_MODEL.name)
+        process_llm_output(llm_output, MODEL_VALUE)
     except ValueError as exc:
         print(f"[fatal] Failed to process LLM output: {exc}", file=sys.stderr)
         sys.exit(1)
