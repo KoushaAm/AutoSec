@@ -22,7 +22,7 @@ This file is aligned with the new, strict schema consumed by:
 """
 
 from typing import List, Dict
-from utils.prompt_utils import (
+from core.types import (
     ConstraintDict,
     SinkDict,
     FlowStepDict,
