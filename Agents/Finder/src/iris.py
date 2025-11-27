@@ -271,7 +271,7 @@ dependencies:
         os.makedirs(self.custom_codeql_root, exist_ok=True)
         with open(qlpack_path, 'w') as f:
             f.write(qlpack_content)
-            
+
     def get_model(self):
         if self.model is None:
             self.model = LLM.get_llm(model_name=self.llm, logger=self.project_logger, kwargs={"seed": self.seed, "max_new_tokens": 2048})
@@ -482,7 +482,7 @@ dependencies:
         try:
             #print("try 1", json_str)
             import re
-            
+
             # Remove markdown code block markers if present
             json_str = re.sub(r'```json\s*', '', json_str)
             json_str = re.sub(r'```\s*$', '', json_str)
@@ -495,7 +495,7 @@ dependencies:
             json_str = re.sub("//.*", "", json_str)
             json_str = re.sub("\"\"", "\"", json_str)
 
-            
+
             # Extract JSON array
             json_match = re.findall("\[[\s\S]*\]", json_str)
             if not json_match:
@@ -1047,16 +1047,16 @@ dependencies:
 
         # Run SARIF analysis
         sarif_cmd = [CODEQL, "database", "analyze", "--rerun"] + search_path_args + [
-            self.project_codeql_db_path, "--format=sarif-latest", 
+            self.project_codeql_db_path, "--format=sarif-latest",
             f"--output={self.query_output_result_sarif_path}", to_run_query_full_path
         ]
         sp.run(sarif_cmd)
         if not os.path.exists(self.query_output_result_sarif_path):
             self.project_logger.error("  ==> Result SARIF not produced; aborting"); return
 
-        # Run CSV analysis  
+        # Run CSV analysis
         csv_cmd = [CODEQL, "database", "analyze", "--rerun"] + search_path_args + [
-            self.project_codeql_db_path, "--format=csv", 
+            self.project_codeql_db_path, "--format=csv",
             f"--output={self.query_output_result_csv_path}", to_run_query_full_path
         ]
         sp.run(csv_cmd)
@@ -1123,7 +1123,7 @@ dependencies:
     def is_valid_code_flow(self, code_flow, source_is_func_param, project_methods):
         thread_flow = code_flow["threadFlows"][0]
         locations = thread_flow["locations"]
-    
+
         # if source_is_func_param:
         #     source_loc = locations[0]
         #     source_file_url = source_loc["location"]["physicalLocation"]["artifactLocation"]["uri"]
@@ -1275,7 +1275,7 @@ dependencies:
             self.post_process_cwe_query_result()
             self.evaluate_result()
             self.debug_result()
-            exit(1)
+            exit(0)
 
         # 1. Collect all the invoked external APIs
         self.collect_invoked_external_apis()
