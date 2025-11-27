@@ -1,5 +1,5 @@
 """
-Tree-sitter–based MethodLocator implementation for Java.
+Tree-sitter-based MethodLocator implementation for Java.
 
 This module parses Java source files and extracts method boundaries
 (declarations + bodies), enabling mapping from (file, line) -> MethodInfo.
