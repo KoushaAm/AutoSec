@@ -1,4 +1,4 @@
 openai
 python-dotenv
-tree_sitter
-tree_sitter_languages
+tree-sitter
+tree-sitter-java

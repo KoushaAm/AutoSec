@@ -1,9 +1,10 @@
-# core/method_locator/java.py
 """
 Tree-sitter–based MethodLocator implementation for Java.
 
 This module parses Java source files and extracts method boundaries
 (declarations + bodies), enabling mapping from (file, line) -> MethodInfo.
+
+It uses the `tree_sitter` core library together with `tree_sitter_java`.
 """
 
 from __future__ import annotations
@@ -12,11 +13,14 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Optional
 
-from tree_sitter import Parser
-from tree_sitter_languages import get_language
+import tree_sitter_java as tsjava
+from tree_sitter import Language, Parser
 
 from . import MethodInfo
 
+
+# Build the Java language object once per process.
+JAVA_LANGUAGE = Language(tsjava.language())
 
 @dataclass
 class _IndexedFile:
@@ -37,7 +41,7 @@ class _IndexedFile:
 
 class JavaMethodLocator:
     """
-    Java MethodLocator backed by Tree-sitter.
+    Java MethodLocator backed by Tree-sitter (tree_sitter + tree_sitter_java).
 
     Responsibilities:
       - Parse Java files under a given repo_root.
@@ -48,8 +52,8 @@ class JavaMethodLocator:
     def __init__(self, repo_root: Path) -> None:
         self._repo_root = Path(repo_root).resolve()
 
-        self._parser = Parser()
-        self._parser.set_language(get_language("java"))
+        # Parser instance for Java.
+        self._parser = Parser(JAVA_LANGUAGE)
 
         # Cache of indexed files: absolute path -> _IndexedFile
         self._files: Dict[Path, _IndexedFile] = {}
@@ -202,7 +206,7 @@ class JavaMethodLocator:
         """
         Attempt to extract the simple method name from the node.
 
-        Tree-sitter Java grammar typically uses a 'identifier' child for names.
+        Tree-sitter Java grammar typically uses an 'identifier' child for names.
         """
         for child in node.children:
             if child.type == "identifier":

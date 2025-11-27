@@ -1,420 +1,146 @@
-# Patcher Code Context Extractor
-The current *sliding-window* snippet selection (e.g., "±K lines around
-each vulnerable line") is fundamentally misaligned with what we need:
-**semantically coherent, path-aware code context** for LLM-based
-vulnerability fixing.
-
-We replace it with a **Code Context Extractor**, inspired by 
-[ZeroFalse](https://github.com/mhsniranmanesh/ZeroFalse), that:
-
--   Treats **methods and dataflow paths** as the primary units of
-    context (not raw line ranges).
--   Uses vuln metadata (`SINK` + `FLOW`) to reconstruct a **source→sink
-    trace** across functions/files.
--   Extracts **method-bounded segments** and **bridges** between
-    dataflow steps instead of arbitrary windows.
--   Merges overlapping segments and shrinks them via **priority-based
-    budgeting** to satisfy `max_lines`.
--   Produces a single, ordered, non-redundant context snippet per
-    vulnerability, tailored to the Fixer's constraints.
-
-The result: significantly more informative and compact prompts, with
-minimal overlap and much better alignment to the actual vulnerability
-path.
-
-<!-- ================================================================= -->
-## Table of Contents
-1. [Background and Problem Statement](#1-background-and-problem-statement)
-   - [1.1 Current approach: sliding window](#11-current-approach-sliding-window)
-   - [1.2 Desired properties](#12-desired-properties)
-2. [High-Level Design: Code Context Extractor](#2-high-level-design-code-context-extractor)
-3. [Step-by-Step Algorithm](#3-step-by-step-algorithm)
-   - [3.1 Preprocessing: Method Index (MethodLocator)](#31-preprocessing-method-index-methodlocator)
-   - [3.2 Dataflow Trace Construction from Vulnerability Metadata](#32-dataflow-trace-construction-from-vulnerability-metadata)
-   - [3.3 Intra-Procedural Extraction: Context Within a Single Method](#33-intra-procedural-extraction-context-within-a-single-method)
-   - [3.4 Inter-Procedural Extraction](#34-inter-procedural-extraction)
-   - [3.5 Segment Representation](#35-segment-representation)
-4. [Segment Merging and Deduplication](#4-segment-merging-and-deduplication)
-5. [Budgeting vs `max_lines` and Other Constraints](#5-budgeting-vs-max_lines-and-other-constraints)
-   - [5.1 Priority tiers](#51-priority-tiers)
-   - [5.2 Shrinking algorithm](#52-shrinking-algorithm)
-6. [Noise Reduction: Whitespace and Unhelpful Lines](#6-noise-reduction-whitespace-and-unhelpful-lines)
-7. [Integration into the AutoSec Pipeline](#7-integration-into-the-autosec-pipeline)
-8. [Comparison: Sliding Window vs. Code Context Extractor](#8-comparison-sliding-window-vs-code-context-extractor)
-9. [Summary](#9-summary)
-
-
-<!-- ================================================================= -->
-> ↑ [Back to Top](#patcher-code-context-extractor) ↑
-## 1. Background and Problem Statement
-
-### 1.1 Current approach: sliding window
-
-Right now, snippet extraction is roughly:
-
--   For each important line (e.g., from `vuln_info`):
-    -   Take `K` lines before and after that line.
-    -   Merge these windows into a snippet.
-    -   Clip or truncate based on `max_lines`.
-
-This *line-distance-based* strategy has three core issues:
-
-1.  **Overlapping windows**
-    -   Multiple important lines in the same region → overlapping ranges
-        → complex merging and wasted budget.
-2.  **Incomplete semantics**
-    -   The window may:
-        -   Cut a method in half.
-        -   Omit variable declarations, control-flow, or intermediate
-            transformations.
-    -   The LLM sees partial logic and cannot reason precisely about
-        taint, guards, or side effects.
-3.  **Noise and whitespace**
-    -   To hit `max_lines`, we often include large amounts of
-        whitespace, comments, or unrelated code (especially if windows
-        cross method boundaries).
-
-These problems grow worse when the vulnerability spans **multiple
-functions or files**.
-
-<!-- ============================== -->
-### 1.2 Desired properties
-
-We want a snippet extractor that:
-
--   Is **method-aware**: respects function boundaries and signatures.
--   Is **dataflow-aware**: follows the **source→sink path** rather than
-    arbitrary distances.
--   Is **budget-aware**: respects `max_lines`, `max_hunks` and other
-    constraints.
--   Produces **stable, non-overlapping segments**, easy to reason about
-    and debug.
--   Provides enough context for the LLM to:
-    -   Understand how data flows from source to sink.
-    -   See relevant checks/sanitization.
-    -   Propose minimal, correct patches.
-
-This is precisely the philosophy behind ZeroFalse's Code Context
-Extraction, which we adapt to AutoSec.
-
-<!-- ================================================================= -->
-> ↑ [Back to Top](#patcher-code-context-extractor) ↑
-## 2. High-Level Design: Code Context Extractor
-
-We introduce a dedicated **Code Context Extractor** component that
-replaces the sliding window.
-
-At a high level, for each vulnerability:
-
-1.  Use `vuln_info` metadata (`SINK`, `FLOW`, file paths, line numbers)
-    to build a **trace** of points involved in the vulnerability.
-2.  Map each trace point to its **enclosing method** using a
-    **MethodLocator** (per language).
-3.  Within each method:
-    -   Identify **key lines** (source, sink, intermediate steps).
-    -   Extract the **bridge code** between them (lines that carry or
-        transform tainted data).
-    -   Add small, method-bounded padding.
-4.  Across methods/files:
-    -   When flow crosses method boundaries, include:
-        -   Target method context.
-        -   Relevant **call sites** and signatures, as available.
-5.  Collect these as **ContextSegments**, then:
-    -   Merge overlapping segments.
-    -   Enforce `max_lines` using a **priority-based budgeting
-        strategy**.
-    -   Strip unhelpful whitespace and large irrelevant comment blocks.
+# 🗃️ Code Extractor: A Path-Aware Approach
 
-The output is a small, semantically coherent set of code ranges that
-capture the dataflow path with minimal redundancy.
-
-<!-- ================================================================= -->
-> ↑ [Back to Top](#patcher-code-context-extractor) ↑
-## 3. Step-by-Step Algorithm
+The **Code Extractor** is designed to replace the old **"sliding window”** approach with a system that matches how vulnerabilities work in real code: through **methods** and **source→sink dataflow paths**, not arbitrary line ranges.
 
-### 3.1 Preprocessing: Method Index (MethodLocator)
 
-**Goal:** For any `(file, line)` pair, quickly determine which method
-(if any) contains that line, and what the method's boundaries are.
 
-For each relevant source file:
+## 🚫 Limitations of the Sliding Window Approach
 
-1.  **Parse or scan the file** using language-specific logic:
+Conceptually, the sliding-window strategy works by taking:
 
-    -   For Java, for example:
-        -   Detect method declarations via the AST or regex-style
-            parsing.
-        -   Track opening/closing braces to find their start/end line
-            numbers.
+* For each "important” line from vuln metadata, it grabs **K lines above and below**.
+* It merges **overlapping windows** and clips the result to **max_lines**.
 
-2.  Build a **method index** per file:
+This approach leads to:
 
-    ```py
-    methods[file] = [
-        {
-            "name": "doGet",
-            "start_line": 15,
-            "end_line": 45,
-            "signature": "void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException"
-        },
-        ...
-    ]
-    ```
+* **Overlapping, noisy snippets** that often cut methods in half and miss key declarations or control-flow.
+* Inclusion of lots of whitespace, comments, and **unrelated code**, especially when vulnerabilities span multiple methods or files.
 
-3.  Provide a query API:
 
-    ```py
-    method_meta = find_method_for_line(file_path, line_number)
-    # returns None if the line is not inside any method (e.g., top-level code)
-    ```
 
-This is analogous to the ["MethodLocator" abstraction used by ZeroFalse](https://github.com/mhsniranmanesh/ZeroFalse/tree/main/OpenVuln/code-context/method-finder).
+## ✅ Goals of the New Extractor
 
-<!-- ============================== -->
-### 3.2 Dataflow Trace Construction from Vulnerability Metadata
+In contrast, the new extractor starts from a clear set of goals. It must be:
 
-**Goal:** Convert your structured `VulnerabilityInfo` into an ordered
-list of *trace points*.
+* **Method-aware**: Respect function boundaries.
+* **Dataflow-aware**: Follow the source→sink path.
+* **Budget-aware**: Respect `max_lines` and similar constraints.
+* Produce **stable, non-overlapping segments** that are easy for both humans and the LLM to reason about.
 
-Given a `VulnerabilityInfo` subclass:
 
--   `SINK` with `file` and `line`
--   `FLOW` array with intermediate steps (`file`, `line`, `note`, etc.)
 
-We construct:
+## ⚙️ High-Level Extractor Workflow
 
-```py
-trace_points = [
-    {"file": SINK["file"], "line": SINK["line"], "kind": "sink"},
-    {"file": step["file"], "line": step["line"], "kind": "flow", "note": step["note"], ...},
-    ...
-]
-```
+The Code Extractor runs once per vulnerability and produces a small set of meaningful code ranges.
 
-Ordering:
+1.  It uses **`vuln_info` metadata** (the **SINK** and **FLOW** arrays) to reconstruct a **logical trace** of the vulnerability: where untrusted data originates, how it is transformed, and where it hits the sink.
+2.  It maps each trace point (`file`, `line`) to its **enclosing method** using a language-specific **`MethodLocator`**.
+3.  Within each method, it focuses on the portions that actually participate in the dataflow: the lines where **source, intermediate steps, and sink** occur, plus the **"bridges”** between them.
+4.  Across methods and files, it recognizes when the flow crosses boundaries and collects context from both **caller and callee methods** (and optionally **callsites**).
+5.  It represents each extracted piece as a structured **"segment”** that encodes `file`, `line range`, `method name`, and **`role`** (e.g., source method, sink method), then merges and trims these segments to fit under constraints.
 
--   Generally, we respect the **logical order** encoded in `FLOW`
-    (source → sink).
--   When needed, we may sort by `(file, line)` within a given method,
-    but we do not randomize or lose the overall sequence.
 
-Each trace point then gets augmented with its method metadata:
 
-```py
-for p in trace_points:
-    p["method"] = find_method_for_line(p["file"], p["line"]) or "__global__"
-```
+## 🏗️ Implementation Stages
 
-<!-- ============================== -->
-### 3.3 Intra-Procedural Extraction: Context Within a Single Method
+The extractor pipeline has several stages:
 
-**Goal:** For steps that occur within the same method, extract the full
-**bridge** between them plus a bit of padding, clipped to method
-boundaries.
+### 1. Method Indexing via `MethodLocator`
 
-For each `(file, method)` group:
+This stage indexes methods to enable quick lookup of code boundaries.
 
-1.  Filter `trace_points` to those that share the same `file` and
-    method.
+* A **language-specific locator** (e.g., a tree-sitter–based Java locator) parses relevant source files and discovers method declarations, recording:
+    * **Method name**
+    * **Start and end lines** for the method body
+    * **Textual signature**
+* It builds an index, e.g., $methods[file] = [ \{name, start\_line, end\_line, signature\}, \dots ]$.
+* It exposes an API, **`find_method_for_line(file_path, line_number)`**, to quickly answer "which method am I in?”
 
-2.  Sort these by line number.
+### 2. Dataflow Trace Construction
 
-3.  For each consecutive pair `(p_i, p_j)` in that method:
+The vulnerability metadata is converted into an ordered, augmented list of trace points.
 
-    -   Let `a = min(p_i.line, p_j.line)`,
-        `b = max(p_i.line, p_j.line)`.
-    -   Define a **bridge range** `[a, b]`:
-        -   This covers assignments, checks, loops, and any intermediate
-            transformations applied to tainted data between the two
-            points.
+* It combines the **SINK** dictionary and **FLOW** list into an ordered list of trace points, each with `file`, `line`, `kind` ("sink" or "flow"), and `note`.
+* Each trace point is augmented with its **enclosing method** by querying the `MethodLocator`.
+* The logical source→sink order encoded in **FLOW** is preserved.
 
-4.  Determine the **outermost** lines touched in this method:
+### 3. Intra-Procedural Extraction (Bridges)
 
-    ```py
-    min_line = min(p.line for p in method_points)
-    max_line = max(p.line for p in method_points)
-    ```
+For flows within a single method, the extractor derives a tight "bridge” connecting all relevant lines.
 
-5.  Add **method-bounded padding**:
+* It groups trace points by (`file`, `method`).
+* Inside each group, it sorts points by line number and **infers bridge ranges** between consecutive points, capturing lines that transform or guard the tainted data.
+* It finds the min/max lines of trace points and expands this region slightly with a small **padding margin**, while **clamping to the method’s own start and end lines**. This ensures the snippet is method-bounded and includes related logic without bleeding into unrelated code.
 
-    ```py
-    start = max(method_start_line, min_line - PADDING)
-    end   = min(method_end_line,   max_line + PADDING)
-    ```
+### 4. Inter-Procedural Extraction (Cross-Method Flow)
 
-6.  Create a **ContextSegment** for this method:
+This handles when data moves across methods or files.
 
-    ```py
-    ContextSegment(
-        file=file,
-        start_line=start,
-        end_line=end,
-        method=method_name,
-        role=role,    # e.g. "sink_method", "source_method", "bridge"
-    )
-    ```
+* When the flow spans methods, it:
+    * Extracts the **callee method context** using the intra-procedural logic.
+    * Optionally extracts the **caller callsite context** (a small window around the method invocation).
+* **Roles** are assigned to segments to help the LLM: **Source method**, **Sink method**, **Bridge**, **Callsites**.
 
-Roles are assigned by semantics:
+### 5. Segment Representation
 
--   Method containing the sink line: `"sink_method"`.
--   Method containing the first source: `"source_method"`.
--   Intermediate methods: `"bridge"` or `"intermediate_method"`.
+A **segment** is the structured primitive unit of context:
 
-<!-- ============================== -->
-### 3.4 Inter-Procedural Extraction
+* `file path`
+* `start_line` and `end_line` (inclusive)
+* `method name` (if any)
+* `role` (e.g., "source\_method", "sink\_method", "callsite")
 
-When flow crosses method boundaries:
+### 6. Merging and Deduplication
 
--   Extract callee method context same as intra-procedural.
--   Extract caller **callsite window**.
--   Assign roles:
-    -   `"callee_method"`
-    -   `"callsite"`
+Segments are merged and deduplicated per file to avoid overlap and redundancy.
 
-This includes argument propagation context.
+* It sorts all segments by `start_line` per file.
+* It walks through to **merge overlapping or adjacent intervals** (e.g., `[10–20]` and `[18–30]` $\to$ `[10–30]`).
+* It combines **roles** when segments merge.
+* This produces **deterministic, clean, non-overlapping ranges**.
 
-<!-- ============================== -->
-### 3.5 Segment Representation
+### 7. Budgeting and Shrinking
 
-A segment is:
+To respect `max_lines` constraints, a shrinking algorithm is applied based on priority tiers:
 
-```py
-ContextSegment(
-    file="...",
-    start_line=...,
-    end_line=...,
-    method="...",
-    role="sink_method"/"source_method"/"bridge"/"callsite"/...
-)
-```
+| Tier | Priority | Content | Shrinking Action |
+| : | : | : | : |
+| **Tier 1** | **Must keep** | Sink lines, immediate surrounding logic, direct uses of tainted variables. | Kept untouched. |
+| **Tier 2** | **Strongly preferred** | Bridges, validation/sanitization lines, source regions. | Shrunk to smaller windows around key trace lines. |
+| **Tier 3** | **Optional** | Large helper bodies, broad callsite context. | Aggressively shrunk or dropped. |
 
-These segments encode ordered, meaningful code ranges.
+It is **always guaranteed** that every trace point (source, intermediate, sink) and a few lines of nearby context remain in the final output.
 
+### 8. Final Cleanup
 
-<!-- ================================================================= -->
-> ↑ [Back to Top](#patcher-code-context-extractor) ↑
-## 4. Segment Merging and Deduplication
+The extractor maximizes semantic density by cleaning up noise:
 
-For all segments in one file:
+* Trims leading and trailing **blank lines**.
+* Removes large, clearly **irrelevant comment blocks**.
+* Avoids pulling in unnecessary **imports or boilerplate**.
+* Ensures no **duplicated lines** after merging and rendering.
 
-1.  Convert to intervals `(start, end, roles)`.
 
-2.  Sort by `start`.
 
-3.  Merge overlapping or adjacent segments:
+## 🔄 Integration and Comparison
 
-        [10,20], [18,30] → [10,30]
+The Code Context Extractor drops into the existing AutoSec pipeline as a direct replacement for sliding-window calls.
 
-4.  Combine role sets for merged segments.
+### Integration
 
-This eliminates redundant overlaps and simplifies downstream budgeting.
+Instead of doing "get K lines around this line,” the Fixer now:
 
+1.  Calls the extractor with vulnerability metadata and the repo root.
+2.  Receives a small number of **well-defined segments**.
+3.  Renders these segments into a final snippet or multi-file bundle, annotated with file names, line ranges, method names, and roles, and passes it as `vulnerable_snippets` in the prompt.
 
-<!-- ================================================================= -->
-> ↑ [Back to Top](#patcher-code-context-extractor) ↑
-## 5. Budgeting vs `max_lines` and Other Constraints
+### Comparison Summary
 
-### 5.1 Priority tiers
+| Feature | 🗑️ Sliding-Window Approach | ✨ Code Context Extractor |
+| --- | --- | --- |
+| **Primary Unit** | Arbitrary line windows around points. | Methods and dataflow bridges. |
+| **Dataflow/Scope**| Weak semantics; poor multi-function support. | **Explicitly dataflow-driven and multi-function aware.** |
+| **Output Quality**| Overlapping, noisy, and high redundancy. | **Deterministic merging and noise reduction.** |
+| **LLM Fit** | Gives partial logic that's hard to patch. | **Concise, semantically coherent context.** |
 
-**Tier 1 (Must Keep):**
-
--   Sink lines and surrounding logic\
--   Direct usage of tainted variables
-
-**Tier 2 (Strongly Preferred):**
-
--   Bridges connecting source→sink\
--   Lines containing sanitization logic\
--   Source method regions
-
-**Tier 3 (Optional):**
-
--   Large helper method bodies\
--   Minimal callsite windows
-
-<!-- ============================== -->
-### 5.2 Shrinking algorithm
-
-If `total_lines > max_lines`:
-
-1.  Keep Tier 1 unchanged.
-2.  Shrink Tier 2 segments to local windows around their key trace
-    lines.
-3.  Shrink Tier 3 segments aggressively or drop them.
-4.  Always preserve:
-    -   Lines containing trace points
-    -   A few lines of context for readability
-
-<!-- ================================================================= -->
-> ↑ [Back to Top](#patcher-code-context-extractor) ↑
-## 6. Noise Reduction: Whitespace and Unhelpful Lines
-
-Internal cleanup of each final range:
-
--   Trim leading/trailing blank lines
--   Remove large irrelevant comments
--   Avoid boilerplate imports accidentally included
--   Ensure no duplicated lines
-
-This ensures maximal semantic density.
-
-<!-- ================================================================= -->
-> ↑ [Back to Top](#patcher-code-context-extractor) ↑
-## 7. Integration into the AutoSec Pipeline
-
-### Replacing the sliding-window call
-
-**Old:**
-```py
-snippet = get_snippet_around_line(file, line, window_size=K)
-```
-
-**New:**
-```py
-segments = extract_context(vuln, repo)
-snippet = render_context(segments)
-```
-
-### Render function annotates:
--   File name
--   Line numbers
--   Segment roles
-
-Ideal for Fixer, Exploiter, Verifier agents.
-
-<!-- ================================================================= -->
-> ↑ [Back to Top](#patcher-code-context-extractor) ↑
-## 8. Comparison: Sliding Window vs. Code Context Extractor
-
-| Property                 | Sliding Window      | Code Context Extractor     |
-|--------------------------|---------------------|----------------------------|
-| Unit of extraction       | Lines around point  | Methods + dataflow bridges |
-| Semantics                | Weak                | Strong, dataflow-driven    | 
-| Multi-function support   | Poor                | Excellent                  |
-| Overlap management       | Weak                | Deterministic merging      |
-| Noise                    | High                | Low                        |
-| LLM patch suitability    | Limited             | Strong                     |
-
-
-<!-- ================================================================= -->
-> ↑ [Back to Top](#patcher-code-context-extractor) ↑
-## 9. Summary
-
-The failing sliding-window approach is replaced by a **ZeroFalse-inspired**, **path-aware 
-Code Context Extractor** that:
-
-- Uses vuln metadata (`SINK` + `FLOW`) to reconstruct a logical dataflow trace.
-- Anchors extraction to **methods** and **inter-step bridges**, not arbitrary line windows.
-- Produces **non-overlapping**, **priority-ranked segments**, then compresses them under 
-`max_lines` while preserving the crucial semantics.
-- Integrates cleanly into AutoSec as a dedicated component used by the Fixer 
-(and potentially Verifier/Exploiter) to supply high-quality code context for 
-LLM reasoning.
-
-This design gives us a principled, explainable, and tunable code extraction pipeline 
-that aligns with ZeroFalse’s approach and directly addresses the shortcomings of the 
-sliding-window method.
-
-<!-- ================================================================= -->
----
-> ↑ [Back to Top](#patcher-code-context-extractor) ↑
+In summary, the new extractor provides a **principled, explainable, and tunable extraction flo
