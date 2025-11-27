@@ -4,7 +4,7 @@ from os import getenv
 from dotenv import load_dotenv
 from openai import OpenAI
 from pathlib import Path
-from typing import Dict, List, Tuple, Union
+from typing import Any, Dict, List, Tuple, Union
 from datetime import datetime, timezone
 
 # local imports
@@ -25,6 +25,8 @@ from utils import (
     combine_prompt_messages,
     build_user_msg_multi,
     mk_agent_fields,
+    estimate_prompt_tokens,
+    determine_max_tokens,
     process_llm_output,
 )
 
@@ -105,6 +107,12 @@ def main():
         build_user_msg_multi(tasks),
     )
 
+    # Estimate prompt token usage and derive max_tokens for this run
+    prompt_tokens = estimate_prompt_tokens(messagesArray)
+    max_tokens = determine_max_tokens(MODEL_NAME, prompt_tokens)
+    print(f"[debug] Estimated prompt tokens: {prompt_tokens}")
+    print(f"[debug] Using max_tokens={max_tokens} for model '{MODEL_VALUE}'")
+
     # Save generated prompt for debugging, run with `-sp` flag
     if args.save_prompt:
         _save_prompt_debug(messagesArray, MODEL_NAME)
@@ -116,7 +124,7 @@ def main():
             model=MODEL_VALUE,
             messages=messagesArray,
             temperature=0.0,
-            # max_tokens=8000,
+            max_tokens=max_tokens,
         )
     except Exception as e:
         print("OpenRouter error:", e, file=sys.stderr)

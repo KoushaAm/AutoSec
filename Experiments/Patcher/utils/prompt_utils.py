@@ -1,6 +1,8 @@
 # utils/prompt_utils.py
 import json
 from typing import (
+    Any,
+    Dict,
     Union,
     List,
     Iterable,
@@ -10,6 +12,10 @@ from typing import (
 
 # local imports
 from constants import VulnerabilityInfo
+from config import (
+    DEFAULT_CONTEXT_LIMIT,
+    MODEL_CONTEXT_LIMITS
+)
 from core import (
     AgentFields,
     ConstraintDict,
@@ -115,3 +121,57 @@ def mk_agent_fields(vuln_class: VulnerabilityInfo) -> AgentFields:
         pov_tests=pov_tests_meta,
         vuln_title=vuln_title,
     )
+
+def estimate_prompt_tokens(messages: List[Dict[str, Any]]) -> int:
+    """
+    Very rough token estimate: tokens ≈ total_characters / 4.
+
+    This doesn't need to be exact; it just keeps us inside the model's
+    context window when we set max_tokens for the completion.
+    """
+    total_chars = 0
+    for msg in messages:
+        content = msg.get("content", "")
+        if isinstance(content, str):
+            total_chars += len(content)
+        else:
+            # In case of non-string content (tools, etc.), stringify.
+            total_chars += len(str(content))
+    # Avoid zero tokens, always at least a small positive number
+    return max(1, total_chars // 4)
+
+
+def determine_max_tokens(model_name: str, prompt_tokens: int) -> int:
+    """
+    Decide a max_tokens value based on:
+      - estimated prompt_tokens
+      - an approximate context limit per model
+
+    Strategy:
+      - max_ctx = context limit (prompt + completion)
+      - reserve a small safety margin (e.g., 256 tokens)
+      - max_tokens = max_ctx - prompt_tokens - margin
+      - clamp to a reasonable [min_out, max_out] range
+    """
+    max_ctx = MODEL_CONTEXT_LIMITS.get(model_name, DEFAULT_CONTEXT_LIMIT)
+
+    # Margin to avoid hitting hard context limit (tooling, small errors, etc.)
+    SAFETY_MARGIN = 256
+
+    # Floor and ceiling for response size. You can tune this depending on how
+    # large your patches typically are.
+    MIN_OUT = 512     # don't go lower than this unless we absolutely must
+    MAX_OUT = 6000    # arbitrary ceiling to avoid insane completions
+
+    available = max_ctx - prompt_tokens - SAFETY_MARGIN
+    if available <= 0:
+        # Worst case: prompt already uses (or slightly exceeds) the window.
+        # Still request a small number of tokens; model/host will truncate if needed.
+        return MIN_OUT
+
+    # Clamp available to our [MIN_OUT, MAX_OUT] band
+    if available < MIN_OUT:
+        return available
+    if available > MAX_OUT:
+        return MAX_OUT
+    return available
