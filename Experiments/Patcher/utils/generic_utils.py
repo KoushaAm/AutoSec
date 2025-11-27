@@ -1,8 +1,6 @@
-# utils/generic_utils.py
+import re, json
 from datetime import datetime, timezone
 from pathlib import Path
-import re
-import json
 from typing import Any, Dict, List, Union
 
 
@@ -22,11 +20,6 @@ def save_invalid_json_dump(text: str, reason: str) -> Path:
 
     Creates:
         output/invalid_json_<timestamp>.txt
-
-    The file contains:
-      - Reason for failure
-      - Timestamp
-      - The raw text returned by the model
     """
     output_dir = Path("output")
     output_dir.mkdir(exist_ok=True)
@@ -55,18 +48,14 @@ def extract_json_block(text: str) -> str:
     """
     Extract the first valid top-level JSON object from text.
 
-    Handles cases with:
+    Supports:
       - Markdown fenced JSON blocks (```json ... ```)
-      - Extra prose before/after the JSON
-      - Multiple JSON objects (takes the first well-formed one)
-
-    On failure:
-      - Saves the raw text to output/invalid_json_<timestamp>.txt
-      - Raises ValueError pointing to the dump file
+      - Extra prose before/after JSON
+      - Multiple JSON objects → returns first complete one
     """
     text = text.strip()
 
-    # --- Try to capture fenced JSON block first ---
+    # --- Try fenced JSON ```
     fence_match = re.search(
         r"```(?:json)?\s*(\{.*?\})\s*```",
         text,
@@ -75,16 +64,14 @@ def extract_json_block(text: str) -> str:
     if fence_match:
         return fence_match.group(1).strip()
 
-    # --- Fallback: find first {...} balanced pair ---
+    # --- Fallback: first {...} balanced
     start_index = text.find("{")
     if start_index == -1:
         debug_path = save_invalid_json_dump(
-            text,
-            reason="No '{' character found – cannot locate a JSON object.",
+            text, reason="No '{' character found – cannot locate a JSON object."
         )
         raise ValueError(
-            f"No '{{' found in text – cannot extract JSON. "
-            f"Raw output saved to: {debug_path}"
+            f"No '{{' found in text – cannot extract JSON. Saved to: {debug_path}"
         )
 
     depth = 0
@@ -107,25 +94,20 @@ def extract_json_block(text: str) -> str:
             elif ch == "}":
                 depth -= 1
                 if depth == 0:
-                    # Found a complete top-level JSON object
                     return text[start_index : i + 1].strip()
 
-    # If we exit the loop with non-zero depth, braces are unbalanced
     debug_path = save_invalid_json_dump(
-        text,
-        reason="Unbalanced braces – could not find a full JSON object.",
+        text, reason="Unbalanced braces – full JSON object not found."
     )
     raise ValueError(
-        f"Unbalanced braces – could not find a full JSON object. "
-        f"Raw output saved to: {debug_path}"
+        f"Unbalanced braces – could not extract JSON. Saved to: {debug_path}"
     )
 
 
 def save_output_to_file(filename: str, content: str):
     """
-    Save output content to the /output directory.
-    - If 'content' is valid JSON, it is pretty-printed.
-    - Otherwise, it is saved as-is for debugging.
+    Save content to /output directory.
+    Pretty-prints JSON if possible.
     """
     output_dir = Path("output")
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -140,49 +122,26 @@ def save_output_to_file(filename: str, content: str):
     print("Wrote", path.resolve())
 
 
-def _unescape_newlines(s: str) -> str:
-    """
-    Convert escaped newlines to real newlines if the model returned a JSON-stringified diff.
-    Also normalizes CRLF to LF.
-    
-    Args:
-        s: The string to process
-    Returns:
-        The processed string with unescaped newlines, or empty string if input is not a string
-    Note:
-        Non-string inputs are converted to empty string for safety in diff processing contexts.
-    """
-    if not isinstance(s, str):
-        return ""
-    # First, replace literal backslash-n sequences with real newlines.
-    s = s.replace("\\r\\n", "\n").replace("\\n", "\n")
-    # Normalize any remaining CRLF
-    return s.replace("\r\n", "\n")
-
-
 def prettify_unified_diff(payload: Union[str, Dict[str, Any]]) -> str:
     """
     Accepts:
-      - Full multi-patch JSON (str) with {"patches":[...]} and returns all diffs joined.
-      - Single-patch JSON (str or dict) with {"unified_diff":"..."} and returns that diff.
-      - A raw diff string and returns it (unescapes '\\n' to newlines).
+      - Multi-patch JSON → prints all diffs
+      - Single patch JSON → print unified_diff
+      - Raw string → return unescaped
 
-    Returns a human-friendly unified diff string (possibly for multiple patches),
-    or a diagnostic message if not found.
+    Returns: unified diff or diagnostic message.
     """
-    # If it's already a dict, treat it as parsed JSON
+    # Parse JSON if possible
     if isinstance(payload, dict):
         obj = payload
     else:
-        # payload is a string: either JSON or raw diff
         try:
             obj = json.loads(payload)
         except json.JSONDecodeError:
-            # Not JSON: assume it's a raw diff string
             return _unescape_newlines(payload)
 
-    # Handle new multi-patch structure
-    if isinstance(obj, dict) and "patches" in obj and isinstance(obj["patches"], list):
+    # Multi-patch
+    if "patches" in obj and isinstance(obj["patches"], list):
         diffs: List[str] = []
         for idx, patch in enumerate(obj["patches"], start=1):
             diff_text = _unescape_newlines(patch.get("unified_diff", "") or "")
@@ -192,8 +151,47 @@ def prettify_unified_diff(payload: Union[str, Dict[str, Any]]) -> str:
             diffs.append(header + "\n" + diff_text)
         return "\n\n".join(diffs) if diffs else "(No unified_diffs found in patches[])"
 
-    # Legacy single-patch JSON object
+    # Legacy single-patch
     if "unified_diff" in obj:
         return _unescape_newlines(obj.get("unified_diff", "") or "")
 
     return "(No JSON / unified_diff not found)"
+
+
+def write_manifest(path: Path, manifest: Dict[str, Any]) -> Path:
+    """
+    Write the manifest JSON to the given absolute path.
+
+    Ensures directory exists:
+        output/patcher_<timestamp>/patcher_<timestamp>.json
+    """
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    print("Wrote manifest:", path.resolve())
+    return path
+
+
+def write_patch_artifact(path: Path, artifact: Dict[str, Any]) -> Path:
+    """
+    Write a single patch artifact JSON to the given absolute path.
+
+    Ensures directory exists:
+        output/patcher_<timestamp>/patch_XXX.json
+    """
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(artifact, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    print("Wrote patch artifact:", path.resolve())
+    return path
+
+
+def _unescape_newlines(s: str) -> str:
+    """
+    Convert escaped newlines to real newlines.
+    Normalize CRLF → LF.
+    """
+    if not isinstance(s, str):
+        return ""
+    s = s.replace("\\r\\n", "\n").replace("\\n", "\n")
+    return s.replace("\r\n", "\n")
