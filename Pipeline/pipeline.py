@@ -6,6 +6,7 @@ import argparse
 import subprocess
 import json
 from langgraph.graph import StateGraph, END, START
+from langgraph.types import Command
 
 # logging
 logging.basicConfig(level=logging.INFO)
@@ -20,6 +21,7 @@ class AutoSecState(TypedDict, total=False):
     patcher: Optional[Dict[str, Any]]
     verifier: Optional[Dict[str, Any]]
 
+
 def build_workflow() -> Any:
     graph = StateGraph(AutoSecState)
     graph.add_node("finder", finder_node)
@@ -30,9 +32,11 @@ def build_workflow() -> Any:
     # linear edges
     graph.add_edge(START, "finder")
     graph.add_edge("finder", "exploiter")
-    graph.add_edge("exploiter", "patcher")
     graph.add_edge("patcher", "verifier")
-    graph.add_edge("verifier", END)
+
+    # conditional edges
+    # exploiter -> finder OR exploiter -> patcher
+    # verifier -> finder OR verifier -> end
 
     workflow = graph.compile()
     return workflow
@@ -75,8 +79,9 @@ def finder_node(state: AutoSecState) -> AutoSecState:
 
     # 2. Run IRIS analysis
     try:
-        subprocess.run(docker_cmd, check=True, capture_output=True, text=True)
+        subprocess.run(docker_cmd, check=True, text=True)
 
+    # analysis failed for some reason
     except subprocess.CalledProcessError as e:
             print("Finder failed with an error")
             print("Return code:", e.returncode)
@@ -95,6 +100,7 @@ def finder_node(state: AutoSecState) -> AutoSecState:
         # 4. Save results into pipeline state
         state["vuln"] = findings
 
+    # no vulnerabilites were found
     except FileNotFoundError:
         print("Finder found no vulnerabilites")
         state["vuln"] = None
@@ -105,7 +111,22 @@ def finder_node(state: AutoSecState) -> AutoSecState:
 
 def exploiter_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node: exploiter started")
-    return state
+
+    retry_finder = False
+    new_state = dict(state)
+
+    if retry_finder:
+        return Command(
+            goto="finder",
+            update=new_state
+        )
+
+    # continue linearly to patcher
+    return Command(
+        goto="patcher",
+        update=new_state
+    )
+
 
 
 def patcher_node(state: AutoSecState) -> AutoSecState:
@@ -115,7 +136,21 @@ def patcher_node(state: AutoSecState) -> AutoSecState:
 
 def verifier_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node: verifier started")
-    return state
+
+    retry_finder = False
+    new_state = dict(state)
+
+    if retry_finder:
+        return Command(
+            goto="finder",
+            update=new_state
+        )
+
+    # finish pipeline
+    return Command(
+        goto=END,
+        update=new_state
+    )
 
 
 if __name__ == "__main__":
@@ -131,4 +166,3 @@ if __name__ == "__main__":
     final_state = workflow.invoke(initial_state)
 
     print("\n==========\nPIPELINE COMPLETE")
-    print(json.dumps(final_state, indent=2))
