@@ -26,6 +26,15 @@ def unzip_folder(zip_path, project_name):
     with zipfile.ZipFile(zip_path, "r") as zip_ref:
         zip_ref.extractall(target_dir)
 
+
+    # flatten if zip contains an extra top folder ---
+    extracted_items = list(target_dir.iterdir())
+    if len(extracted_items) == 1 and extracted_items[0].is_dir():
+        inner = extracted_items[0]
+        for item in inner.iterdir():
+            item.rename(target_dir / item.name)
+        inner.rmdir()
+
     print(f"Extracted {zip_path} into {target_dir}")
 
 # apply patch for build to work within the enviornment
@@ -92,6 +101,7 @@ Example:
     unzip_folder(zip_path, project_name)
     apply_patch_if_exists(project_name)
     build_project(project_name)
+    build_codeql(project_name)
     run_iris_analysis(project_name, query, "test")
 
     print("\n----------------------------------\nSuccess")
