@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /**
  * @name Cross-site scripting from local source
  * @description Writing user input directly to a web page
@@ -20,26 +19,3 @@ from XssLocalFlow::PathNode source, XssLocalFlow::PathNode sink
 where XssLocalFlow::flowPath(source, sink)
 select sink.getNode(), source, sink, "Cross-site scripting vulnerability due to $@.",
   source.getNode(), "user-provided value"
-=======
-/**
- * @name Cross-site scripting from local source
- * @description Writing user input directly to a web page
- *              allows for a cross-site scripting vulnerability.
- * @kind path-problem
- * @problem.severity recommendation
- * @security-severity 6.1
- * @precision medium
- * @id java/myxss-local
- * @tags security
- *       external/cwe/cwe-079
- */
-
-import java
-import semmle.code.java.security.XssLocalQuery
-import MyXssLocalFlow::PathGraph
-
-from XssLocalFlow::PathNode source, XssLocalFlow::PathNode sink
-where XssLocalFlow::flowPath(source, sink)
-select sink.getNode(), source, sink, "Cross-site scripting vulnerability due to $@.",
-  source.getNode(), "user-provided value"
->>>>>>> origin/main
