@@ -22,7 +22,6 @@ class PatchParser:
         )
     
     def parse_unified_diff(self, unified_diff: str) -> Dict[str, List[PatchChange]]:
-        """Parse unified diff into structured file changes"""
         lines = unified_diff.split('\n')
         file_changes = {}
         current_file = None
@@ -32,7 +31,7 @@ class PatchParser:
             line = lines[i].strip()
             
             if line.startswith('--- '):
-                # Extract file path
+                # Extract file path from Fixer format
                 full_path = line[4:].strip()
                 if full_path.startswith('Experiments/vulnerable/'):
                     current_file = full_path.replace('Experiments/vulnerable/', '')
@@ -41,76 +40,57 @@ class PatchParser:
                 file_changes[current_file] = []
                 
             elif line.startswith('@@ ') and current_file:
-                # Parse this hunk and find where it ends
-                hunk_start = i
-                hunk_end = i + 1
+                # Parse complete hunk - find all lines until next @@ or end
+                hunk_lines = [line]  # Include the @@ header
+                i += 1
                 
-                # Find the end of this hunk (next @@ or the end of file)
-                while hunk_end < len(lines):
-                    next_line = lines[hunk_end].strip()
-                    if next_line.startswith('@@') or next_line.startswith('---') or next_line.startswith('+++'):
+                # Collect all lines in this hunk
+                while i < len(lines):
+                    next_line = lines[i]
+                    if next_line.strip().startswith('@@') or next_line.strip().startswith('---') or next_line.strip().startswith('+++'):
+                        i -= 1  # Back up to process this line in outer loop
                         break
-                    hunk_end += 1
+                    hunk_lines.append(next_line)
+                    i += 1
                 
-                # Parse this specific hunk
-                hunk_changes = self._parse_single_hunk(lines[hunk_start:hunk_end])
+                # Parse this complete hunk
+                hunk_changes = self._parse_fixer_hunk(hunk_lines)
                 file_changes[current_file].extend(hunk_changes)
-                
-                # Move to the end of this hunk
-                i = hunk_end - 1
             
             i += 1
         
         return file_changes
     
-    def _parse_single_hunk(self, hunk_lines: List[str]) -> List[PatchChange]:
-        """Parse a single hunk (from @@ to next @@ or end)"""
+    def _parse_fixer_hunk(self, hunk_lines: List[str]) -> List[PatchChange]:
         changes = []
         
         if not hunk_lines or not hunk_lines[0].startswith('@@'):
             return changes
         
-        # Parse the @@ header to get line numbers
-        header = hunk_lines[0]
-        try:
-            parts = header.split()
-            if len(parts) >= 3:
-                old_info = parts[1][1:]  # Remove '-'
-                old_start = int(old_info.split(',')[0])
-                current_old_line = old_start
-                current_new_line = int(parts[2][1:].split(',')[0])  # Remove '+'
-            else:
-                current_old_line = 1
-                current_new_line = 1
-        except (ValueError, IndexError):
-            current_old_line = 1
-            current_new_line = 1
-        
         # Process each line in the hunk (skip the @@ header)
         for line in hunk_lines[1:]:
-            if not line:  # Empty line
+            if not line:  # Skip empty lines
                 continue
                 
             if line.startswith('-'):
+                # Deletion - store the exact content to find and remove
+                content = line[1:]  # Remove '-' prefix
                 changes.append(PatchChange(
                     change_type=PatchChangeType.DELETE,
-                    line_number=current_old_line,
-                    content=line[1:],  # Remove '-'
+                    line_number=0,  # We'll use content matching instead
+                    content=content,
                     file_path=""
                 ))
-                current_old_line += 1
             elif line.startswith('+'):
+                # Addition - store the exact content to add
+                content = line[1:]  # Remove '+' prefix
                 changes.append(PatchChange(
                     change_type=PatchChangeType.ADD,
-                    line_number=current_new_line,
-                    content=line[1:],  # Remove '+'
+                    line_number=0,  # We'll use content matching instead
+                    content=content,
                     file_path=""
                 ))
-                current_new_line += 1
-            elif line.startswith(' '):
-                # Context line - both counters advance
-                current_old_line += 1
-                current_new_line += 1
+            # Skip context lines (lines starting with ' ')
         
         return changes
 
@@ -122,7 +102,6 @@ class PatchApplicator:
         self.parser = PatchParser()
     
     def apply_patch(self, patch_info: PatchInfo, project_path: pathlib.Path) -> bool:
-        """Apply a patch to the project files"""
         try:
             if not patch_info.unified_diff:
                 return False
@@ -151,71 +130,167 @@ class PatchApplicator:
             return False
     
     def _apply_file_changes(self, target_file: pathlib.Path, changes: List[PatchChange]) -> bool:
-        """Apply changes to a single file using content matching"""
         try:
-            original_lines = target_file.read_text().splitlines(keepends=True)
+            original_content = target_file.read_text()
+            original_lines = original_content.splitlines()
+            
             deletions = [c for c in changes if c.change_type == PatchChangeType.DELETE]
             additions = [c for c in changes if c.change_type == PatchChangeType.ADD]
             
-            new_lines = original_lines.copy()
+            # Apply deletions first
+            modified_lines = original_lines.copy()
             deletion_positions = []
             
-            # Apply deletions
             for deletion in deletions:
-                target_content = deletion.content.strip()
+                target_content = deletion.content
                 found_line = None
                 
-                for i, line in enumerate(new_lines):
-                    if line.strip() == target_content:
+                # Try exact match first
+                for i, line in enumerate(modified_lines):
+                    if line == target_content:
                         found_line = i
                         break
                 
+                # If exact match fails, try stripped match
+                if found_line is None:
+                    target_stripped = target_content.strip()
+                    for i, line in enumerate(modified_lines):
+                        if line.strip() == target_stripped:
+                            found_line = i
+                            break
+                
                 if found_line is not None:
-                    del new_lines[found_line]
+                    del modified_lines[found_line]
                     deletion_positions.append(found_line)
+                else:
+                    return False
             
-            # Apply additions
-            if deletions and additions and deletion_positions:
-                insert_position = min(deletion_positions)
-                insert_position = max(0, min(insert_position, len(new_lines)))
+            # Apply additions - insert at the positions where we deleted
+            if deletion_positions and additions:
+                # Sort deletion positions and apply additions in reverse order
+                deletion_positions.sort()
+                
+                # Insert additions at the first deletion position
+                insert_pos = deletion_positions[0]
                 
                 for addition in additions:
-                    line_content = addition.content
-                    if not line_content.endswith('\n'):
-                        line_content += '\n'
-                    
-                    new_lines.insert(insert_position, line_content)
-                    insert_position += 1
-                    
-            elif additions and not deletions:
-                for addition in additions:
-                    line_content = addition.content
-                    if not line_content.endswith('\n'):
-                        line_content += '\n'
-                    
-                    insert_pos = self._find_insertion_point(new_lines, addition.content)
-                    new_lines.insert(insert_pos, line_content)
+                    modified_lines.insert(insert_pos, addition.content)
+                    insert_pos += 1
             
-            target_file.write_text(''.join(new_lines))
+            # Write the modified content
+            target_file.write_text('\n'.join(modified_lines) + '\n')
             return True
             
         except Exception as e:
             return False
     
-    def _find_insertion_point(self, lines: List[str], new_content: str) -> int:
-        """Find the best insertion point for new content"""
-        # Insert at the end of the main method or class
-        # Look for common patterns like method endings
+    def _group_related_changes(self, deletions: List[PatchChange], additions: List[PatchChange], original_lines: List[str]) -> List[Dict]:
+        groups = []
         
+        # Simple strategy: pair deletions with additions based on proximity
+        used_additions = set()
+        
+        for deletion in deletions:
+            # Find the line to delete
+            delete_line_idx = None
+            target_content = deletion.content.strip()
+            
+            for i, line in enumerate(original_lines):
+                if line.strip() == target_content:
+                    delete_line_idx = i
+                    break
+            
+            if delete_line_idx is not None:
+                # Find related additions (heuristic: additions that should replace this deletion)
+                related_additions = []
+                
+                # For Fixer patterns, additions usually come right after deletions in the same logical block
+                for addition in additions:
+                    if addition not in used_additions:
+                        # Simple heuristic: if addition references variables from the deleted line
+                        deleted_content = deletion.content.strip()
+                        addition_content = addition.content.strip()
+                        
+                        # Check if they share variable names or are in same logical block
+                        if self._are_related_changes(deleted_content, addition_content):
+                            related_additions.append(addition)
+                            used_additions.add(addition)
+                
+                groups.append({
+                    'type': 'replace',
+                    'line_index': delete_line_idx,
+                    'delete_content': deletion.content,
+                    'add_content': [add.content for add in related_additions]
+                })
+        
+        # Handle standalone additions (not paired with deletions)
+        for addition in additions:
+            if addition not in used_additions:
+                # Find best insertion point for standalone additions
+                insertion_point = self._find_smart_insertion_point(original_lines, addition.content)
+                groups.append({
+                    'type': 'insert',
+                    'line_index': insertion_point,
+                    'add_content': [addition.content]
+                })
+        
+        # Sort groups by line index for proper application order
+        return sorted(groups, key=lambda g: g['line_index'])
+    
+    def _are_related_changes(self, deleted_content: str, addition_content: str) -> bool:
+        # Extract variable names and keywords
+        import re
+        
+        # Get variable names from both lines
+        deleted_vars = re.findall(r'\b[a-zA-Z_][a-zA-Z0-9_]*\b', deleted_content)
+        addition_vars = re.findall(r'\b[a-zA-Z_][a-zA-Z0-9_]*\b', addition_content)
+        
+        # Check for common variables
+        common_vars = set(deleted_vars) & set(addition_vars)
+        
+        # They're related if they share variables or if addition is a control structure around similar content
+        return len(common_vars) > 0 or 'if' in addition_content.lower()
+    
+    def _apply_change_group(self, lines: List[str], group: Dict) -> List[str]:
+        modified_lines = lines.copy()
+        line_idx = group['line_index']
+        
+        if group['type'] == 'replace':
+            # Replace the line at line_idx with new content
+            if 0 <= line_idx < len(modified_lines):
+                # Remove the original line
+                del modified_lines[line_idx]
+                
+                # Insert new lines at the same position
+                for i, new_content in enumerate(group['add_content']):
+                    modified_lines.insert(line_idx + i, new_content.rstrip())
+        
+        elif group['type'] == 'insert':
+            # Insert new content at line_idx
+            for i, new_content in enumerate(group['add_content']):
+                insert_pos = min(line_idx + i, len(modified_lines))
+                modified_lines.insert(insert_pos, new_content.rstrip())
+        
+        return modified_lines
+    
+    def _find_smart_insertion_point(self, lines: List[str], new_content: str) -> int:
+        content_lower = new_content.lower().strip()
+        
+        # If it's an if statement or control structure, insert before method end
+        if content_lower.startswith('if ') or content_lower.startswith('while ') or content_lower.startswith('for '):
+            # Find the last non-empty line before method closing brace
+            for i in reversed(range(len(lines))):
+                line = lines[i].strip()
+                if line and not line.startswith('//') and line != '}':
+                    # Insert after this line, before the closing brace
+                    return i + 1
+        
+        # Default: insert before the last closing brace
         for i in reversed(range(len(lines))):
-            line = lines[i].strip()
-            # Insert before closing braces that look like method/class endings
-            if line == '}' and i > 0:
-                prev_line = lines[i-1].strip()
-                if not prev_line.startswith('//') and prev_line != '':
-                    return i
+            if lines[i].strip() == '}':
+                return i
         
-        # Fallback: insert at the end
+        # Fallback: append at end
         return len(lines)
 
 
@@ -224,7 +299,6 @@ class ProjectManager:
     
     @staticmethod
     def create_patched_copy(original_path: pathlib.Path, output_path: pathlib.Path, target_files: List[str] = None) -> bool:
-        """Create a copy of the project for patching with only target files"""
         try:
             if output_path.exists():
                 shutil.rmtree(output_path)
@@ -254,7 +328,6 @@ class ProjectManager:
     
     @staticmethod
     def find_project_root(file_path: str) -> pathlib.Path:
-        """Find the root directory of a project"""
         # Navigate up from current file to find AutoSec root, then to vulnerable directory (TODO: later change?)
         current_file = pathlib.Path(__file__)
         # Go up to AutoSec root
