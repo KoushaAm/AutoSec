@@ -54,7 +54,7 @@ def finder_node(state: AutoSecState) -> AutoSecState:
     project_name = state["project_name"]
     query = state["vuln_id"]
 
-    # 1. run IRIS inside docker container
+    # 1. setup command to have IRIS inside docker container
     docker_cmd = [
         "docker", "run",
         "--platform=linux/amd64",
@@ -72,20 +72,34 @@ def finder_node(state: AutoSecState) -> AutoSecState:
     ]
 
     logger.info(f"Running IRIS inside Docker for project {project_name}")
-    subprocess.run(docker_cmd, check=True)
 
-    # 2. Load IRIS output
-    sarif_path = f"./Agents/Finder/output/{project_name}/test/{query}-posthoc-filter/results.sarif"]
+    # 2. Run IRIS analysis
+    try:
+        subprocess.run(docker_cmd, check=True, capture_output=True, text=True)
+
+    except subprocess.CalledProcessError as e:
+            print("Finder failed with an error")
+            print("Return code:", e.returncode)
+            print("stdout:", e.stdout)
+            print("stderr:", e.stderr)
+
+            state["vuln"] = None
+            return state
+
+    # 3. Load IRIS output
+    sarif_path = f"./Agents/Finder/output/{project_name}/test/{query}-posthoc-filter/results.sarif"
     try:
         with open(sarif_path) as f:
             findings = json.load(f)
 
-        # 3. Save results into pipeline state
+        # 4. Save results into pipeline state
         state["vuln"] = findings
 
     except FileNotFoundError:
         print("Finder found no vulnerabilites")
         state["vuln"] = None
+
+    return state
 
 
 
