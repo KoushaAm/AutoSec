@@ -14,7 +14,7 @@ class VerificationStatus(Enum):
 
 @dataclass
 class VerificationResult:
-    """Result of verifying a single patch"""
+    """Result of verifying single patch"""
     patch_id: int
     status: VerificationStatus
     reasoning: str

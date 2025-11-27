@@ -45,7 +45,6 @@ def main():
     total_patches = len(results)
     
     print(f"\nSummary: {safe_patches}/{total_patches} patches validated as safe")
-    print(f"Results available for patch refinement feedback and Loop 6 coverage updates.")
 
 if __name__ == "__main__":
     main()
