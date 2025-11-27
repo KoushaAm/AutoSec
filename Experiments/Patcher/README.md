@@ -10,15 +10,13 @@ The Patcher uses large language models (LLMs) to generate **minimal, correct, an
 
 ### 1. Create a Virtual Environment
 ```bash
-python3 -m venv .venv
+python3 -m venv .venv # only first time
 source .venv/bin/activate
 ```
 
 ### 2. Install Dependencies
 ```bash
 pip install -r requirements.txt
-# install tree-sitter directly fallback if needed
-pip install "git+https://github.com/tree-sitter/py-tree-sitter-languages.git"
 ```
 
 ### 3. Add Your OpenRouter API Key
@@ -47,26 +45,29 @@ python3 patcher.py <-h|--help>
 ```
 Experiments/
 ├── Patcher/
-│   ├── core/
-│   │   ├── types.py                # Global Strongly-typed structures
-│   │   ├── code_extractor.py       # Code Extractor
-│   │   └── method_locator/         # Tree-sitter method boundary detection/
-│   │       ├── java.py
-│   │       └── ...
 │   ├── constants/
 │   │   ├── models.py               # LLM model enums
 │   │   ├── prompts.py              # System + developer prompts
 │   │   └── vuln_info.py            # Vulnerability definitions (CWE)
+│   ├── core/
+│   │   ├── method_locator/         # Tree-sitter method boundary detection/
+│   │   │   ├── __init__.py
+│   │   │   ├── java.py
+│   │   │   └── ...
+│   │   ├── __init__.py                
+│   │   ├── code_extractor.py       # Code Extractor
+│   │   └── types.py                # Global Strongly-typed structures
+│   ├── info/                       # Detailed design & docs
+│   ├── output/                     # Generated patches & artifacts
 │   ├── utils/
 │   │   ├── generic_utils.py        # JSON / file helpers
 │   │   ├── openrouter_utils.py     # LLM API helpers
 │   │   └── prompt_utils.py         # Prompt assembly
-│   ├── info/                       # Detailed design & docs
-│   ├── output/                     # Generated patches & artifacts
+│   ├── .env                
 │   ├── patcher.py                  # Main CLI entrypoint
 │   ├── README.md 
 │   └── requirements.txt 
-└── vulnerable/                     # Java examples used for testing/
+└── vulnerable/                     # Java examples used for testing
     ├── CWE_22.java
     └── ...
 ```

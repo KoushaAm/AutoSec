@@ -75,8 +75,9 @@ def get_method_locator(language: str, repo_root: Path) -> MethodLocator:
     """
     lang_norm = language.strip().lower()
 
+    # lazy imports to avoid hard dependency at import time
     if lang_norm == "java":
-        from .java import JavaMethodLocator  # lazy import to avoid hard dependency at import time
+        from .java_method_locator import JavaMethodLocator
 
         return JavaMethodLocator(repo_root=repo_root)
 

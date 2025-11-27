@@ -1,7 +1,6 @@
+import re, json
 from datetime import datetime, timezone
 from pathlib import Path
-import re
-import json
 from typing import Any, Dict, List, Union
 
 
@@ -123,17 +122,6 @@ def save_output_to_file(filename: str, content: str):
     print("Wrote", path.resolve())
 
 
-def _unescape_newlines(s: str) -> str:
-    """
-    Convert escaped newlines to real newlines.
-    Normalize CRLF → LF.
-    """
-    if not isinstance(s, str):
-        return ""
-    s = s.replace("\\r\\n", "\n").replace("\\n", "\n")
-    return s.replace("\r\n", "\n")
-
-
 def prettify_unified_diff(payload: Union[str, Dict[str, Any]]) -> str:
     """
     Accepts:
@@ -196,3 +184,14 @@ def write_patch_artifact(path: Path, artifact: Dict[str, Any]) -> Path:
     path.write_text(json.dumps(artifact, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print("Wrote patch artifact:", path.resolve())
     return path
+
+
+def _unescape_newlines(s: str) -> str:
+    """
+    Convert escaped newlines to real newlines.
+    Normalize CRLF → LF.
+    """
+    if not isinstance(s, str):
+        return ""
+    s = s.replace("\\r\\n", "\n").replace("\\n", "\n")
+    return s.replace("\r\n", "\n")

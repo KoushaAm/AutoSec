@@ -23,6 +23,7 @@ Output requirements:
 - Return exactly one **JSON object** with keys `"metadata"` and `"patches"`.
 - The host will compute `"metadata.total_patches"` and append `"metadata.timestamp"` and `"metadata.tool_version"` automatically - you may omit `"total_patches"` or set it; the host value will be authoritative.
 - Produce one patch per task (`patch_id` == task_id).
+- Do **not** use Markdown formatting or code fences (no ```json). Respond with raw JSON only.
 
 Your output must validate exactly against the schema defined in the DEVELOPER_MESSAGE.
 '''
@@ -59,12 +60,18 @@ You must output a single JSON object matching the schema below:
   ]
 }
 
+(The comments above are for illustration only. Your actual JSON output must NOT contain any comments.)
+
 ### TASK CONTEXT
 For each task, you are given:
 - language, CWE, constraints
 - data_flow (sink + flow steps)
 - pov_tests (for reasoning)
-- vulnerable_snippet(s) - code context
+- vulnerable_snippet(s) or vulnerable_snippets (multi-file bundle) - code context
+
+Treat the provided vulnerable snippet(s) as the **authoritative code you may modify**:
+- Do not invent new files or methods that are not present in the snippets.
+- All touched_files must correspond to real paths present in the task context.
 
 ### WORKFLOW
 
@@ -80,14 +87,14 @@ For each task, you are given:
    - Ensure all touched files are explicitly listed.
 
 3. **Document the fix**
-   - “plan”: clear sequence of developer-facing steps.
-   - “safety_verification”: merge of “why_safe” + “verifier_rationale”.
+   - "plan": clear sequence of developer-facing steps.
+   - "safety_verification": merge of "why_safe" + "verifier_rationale".
      Describe both *how* the code is now secure *and* *how* PoV tests would confirm success.
-   - “risk_notes”: disclose tradeoffs or functional changes.
-   - “assumptions”: clarify external or architectural assumptions.
-   - “behavior_change”: mention any user-visible differences (ideally none).
-   - “confidence”: provide a realistic, evidence-based estimate.
-   - “cwe_matches”: show which CWE patterns guided your reasoning.
+   - "risk_notes": disclose tradeoffs or functional changes.
+   - "assumptions": clarify external or architectural assumptions.
+   - "behavior_change": mention any user-visible differences (ideally none).
+   - "confidence": provide a realistic, evidence-based estimate.
+   - "cwe_matches": show which CWE patterns guided your reasoning.
 
 4. **Constraints**
    - Do not exceed constraints in CONSTRAINTS.
@@ -95,16 +102,17 @@ For each task, you are given:
    - Keep diff readable and minimal.
 
 5. **Invalid cases**
-   - If the fix cannot be achieved safely under constraints, produce:
-     ```
-     "unified_diff": "",
-     "safety_verification": "Unable to fix safely within current constraints",
-     "risk_notes": "Explain why"
-     ```
-     but still fill all other required fields.
+   - If the fix cannot be achieved safely under constraints, you must still output a valid patch object.
+   - In that case, set at minimum:
+     - "unified_diff": ""
+     - "safety_verification": "Unable to fix safely within current constraints"
+     - "risk_notes": "Explain why"
+   - All other required fields (plan, cwe_matches, touched_files, assumptions, behavior_change, confidence) must still be present.
 
 ### KEY REMINDERS
 - The model's output is parsed programmatically; invalid JSON will fail.
 - Do not output Markdown or extra commentary.
+- Do not wrap the JSON in any code fences (no ```json, ``` or similar).
+- Do not include comments (`//` or `/* ... */`) in the JSON you return.
 - Do not set "timestamp" or "tool_version" in metadata.
 '''
