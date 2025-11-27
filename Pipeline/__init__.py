@@ -15,7 +15,7 @@ class BlockFormatter(logging.Formatter):
 
 
 # package-level logger (for everything under Pipeline.*)
-logger = logging.getLogger("Pipeline")
+logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 logger.propagate = False  # prevent duplicate root logging
 
