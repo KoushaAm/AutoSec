@@ -30,8 +30,7 @@ from core import (
     PoVTestDict,
 )
 
-# In your repo, these example files live under a vulnerable examples folder.
-# Adjust this prefix to match your project layout. Finder will pass repo-relative paths
+# Adjust this prefix to match the project layout. Finder will pass repo-relative paths
 # in production; the Fixer only ever reads files under REPO_ROOT.
 VULN_DIR = "Experiments/vulnerable/"
 
