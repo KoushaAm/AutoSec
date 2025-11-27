@@ -4,7 +4,7 @@ class Model(Enum):
     QWEN3 = "qwen/qwen3-235b-a22b:free"
     DEEPSEEK = "deepseek/deepseek-chat-v3.1:free"
     LLAMA3 = "meta-llama/llama-3.3-70b-instruct:free"
-    GROK = "x-ai/grok-4.1-fast:free"
+    # GROK = "x-ai/grok-4.1-fast:free" 
     KAT_CODER = "kwaipilot/kat-coder-pro:free"
 
 """
