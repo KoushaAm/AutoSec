@@ -1,4 +1,22 @@
 # Patcher/patcher.py
+"""
+The Patcher module serves as the LLM-driven security patch generator for the
+AutoSec pipeline. It loads vulnerability definitions, extracts multi-file 
+source-to-sink code context using the method-based Code Extractor,
+and assembles a fully-structured prompt for the LLM.
+
+The module handles:
+- Building AgentFields for each vulnerability (language, sink, data-flow, constraints)
+- Extracting method-level code bundles for sinks and flow steps
+- Constructing system/developer/user messages for the LLM
+- Estimating prompt token usage and dynamically computing max_tokens
+- Processing and saving the generated patch artifacts
+
+`patcher_main()` is the entrypoint invoked by the orchestrating pipeline.
+It performs a full end-to-end patch generation run for all defined
+vulnerabilities and outputs machine-readable JSON patches and optional prompt
+debug logs.
+"""
 import argparse, sys
 from os import getenv
 from dotenv import load_dotenv

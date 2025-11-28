@@ -15,10 +15,11 @@ MODEL_VALUE = CURRENT_MODEL.value
 
 TOOL_VERSION = "patcher-1.4.1"
 
+OUTPUT_PATH = "output"
+
 # Choose one or more vulnerability definitions to test here.
 # VULNERABILITIES = [vi.CWE_78, vi.CWE_22, vi.CWE_94, vi.CWE_918]
 VULNERABILITIES = [vi.CWE_78_PerfectoCredentials]
-
 
 # Model context limits: approximate context windows per model name,
 # If MODEL_NAME isn't found here, we fall back to DEFAULT_CONTEXT_LIMIT.
