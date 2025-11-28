@@ -26,7 +26,7 @@ OPENROUTER_API_KEY=your_api_key_here
 ```bash
 python3 main.py
 
-# To save the prompt that is given to the LLM in 'output/given_prompt.txt'
+# Save the Patcher Agent prompt
 python3 main.py <-sp|--save-prompt>
 
 # For all possible arguments without running main
@@ -34,7 +34,7 @@ python3 main.py <-h|--help>
 ```
 
 
-### Project Structure
+## Project Structure
 - Only files relevant to the primary AutoSec Pipeline have been listed
 ```
 AutoSec/
