@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 # ========== GLOBAL SETUP ==========
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger("database.demo")
+logger = logging.getLogger(__name__)
 
 # load env variables
 load_dotenv()
