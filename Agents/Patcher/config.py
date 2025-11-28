@@ -1,13 +1,16 @@
 # Patcher/config.py
 from typing import Dict
+from pathlib import Path
 # local imports
-
 # TODO| vuln info will be removed altered later to take data from the
 # TODO| pipeline and convert it to vuln_info objects dynamically
 from .constants import Model, vuln_info as vi
 
 # Select OpenRouter model
-CURRENT_MODEL = Model.KAT_CODER 
+CURRENT_MODEL = Model.KAT_CODER
+
+# Get the directory where patcher.py is located
+SCRIPT_DIR = Path(__file__).parent
 
 # ===== Expose for use in other modules =====
 MODEL_NAME = CURRENT_MODEL.name
@@ -15,7 +18,8 @@ MODEL_VALUE = CURRENT_MODEL.value
 
 TOOL_VERSION = "patcher-1.4.1"
 
-OUTPUT_PATH = "Agents/Patcher/output"
+# Set OUTPUT_PATH relative to patcher.py's directory
+OUTPUT_PATH = SCRIPT_DIR / "output" # Agents/Patcher/output
 
 # Choose one or more vulnerability definitions to test here.
 # VULNERABILITIES = [vi.CWE_78, vi.CWE_22, vi.CWE_94, vi.CWE_918]
