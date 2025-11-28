@@ -111,7 +111,7 @@ def save_output_to_file(filename: str, content: str):
     Save content to /output directory.
     Pretty-prints JSON if possible.
     """
-    output_dir = Path("output")
+    output_dir = Path(OUTPUT_PATH)
     output_dir.mkdir(parents=True, exist_ok=True)
     path = output_dir / filename
 

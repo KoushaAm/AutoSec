@@ -15,7 +15,7 @@ MODEL_VALUE = CURRENT_MODEL.value
 
 TOOL_VERSION = "patcher-1.4.1"
 
-OUTPUT_PATH = "output"
+OUTPUT_PATH = "Agents/Patcher/output"
 
 # Choose one or more vulnerability definitions to test here.
 # VULNERABILITIES = [vi.CWE_78, vi.CWE_22, vi.CWE_94, vi.CWE_918]
