@@ -1,5 +1,6 @@
 import pathlib
-from verifier import create_verifier, VerificationStatus
+from pipeline_verifier.core.verifier import create_verifier
+from pipeline_verifier.models.verification import VerificationStatus
 
 
 def main():
@@ -45,6 +46,7 @@ def main():
     total_patches = len(results)
     
     print(f"\nSummary: {safe_patches}/{total_patches} patches validated as safe")
+
 
 if __name__ == "__main__":
     main()
