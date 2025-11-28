@@ -27,6 +27,7 @@ from datetime import datetime, timezone
 
 # local imports
 from .config import (
+    OUTPUT_PATH,
     VULNERABILITIES,
     MODEL_NAME,
     MODEL_VALUE,
@@ -63,7 +64,7 @@ def _save_prompt_debug(messages: List[Dict[str, str]], model_name: str) -> None:
     Writes to: /output/given_prompt.txt (same directory as JSON output files).
     Each message role and content is clearly separated for easy inspection.
     """
-    output_dir = Path("output")
+    output_dir = Path(OUTPUT_PATH)
     output_dir.mkdir(exist_ok=True)
     debug_path = output_dir / "given_prompt.txt"
 
