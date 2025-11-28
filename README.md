@@ -25,4 +25,31 @@ OPENROUTER_API_KEY=your_api_key_here
 ### 4. Run the Pipeline
 ```bash
 python3 main.py
+
+# To save the prompt that is given to the LLM in 'output/given_prompt.txt'
+python3 main.py <-sp|--save-prompt>
+
+# For all possible arguments without running main
+python3 main.py <-h|--help>
+```
+
+
+### Project Structure
+- Only files relevant to the primary AutoSec Pipeline have been listed
+```
+AutoSec/
+├── Agents/
+│   ├── Exploiter
+│   ├── Finder
+│   ├── Patcher
+│   └── Verifier
+├── Pipeline/
+│   ├── __init__.py
+│   └── pipeline.py
+├── Projects/
+│   └── <list of test projects>
+├── .env
+├── main.py
+├── README.md
+└── requirements.txt
 ```

@@ -4,7 +4,7 @@ from langgraph.graph import StateGraph, END, START
 
 # local imports
 from . import logger
-from Agents.Patcher import pipeline_test
+from Agents.Patcher import patcher_main
 
 # logging
 # logging.basicConfig(level=logging.INFO)
@@ -109,8 +109,8 @@ def _exploiter_node(state: AutoSecState) -> AutoSecState:
 def _patcher_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node - patcher started")
 
-    result = pipeline_test()
-    print("Patcher test result:", result)
+    success = patcher_main()
+    state["patcher"] = {"success": success}
 
     return state
 
