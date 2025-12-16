@@ -1,6 +1,7 @@
 from typing import TypedDict, Dict, Any, Optional
 import json, subprocess, os, uuid, argparse
 from langgraph.graph import StateGraph, END, START
+from langgraph.types import Command
 
 # local imports
 from . import logger
@@ -25,16 +26,18 @@ def _build_workflow() -> Any:
     # linear edges
     graph.add_edge(START, "finder")
     graph.add_edge("finder", "exploiter")
-    graph.add_edge("exploiter", "patcher")
     graph.add_edge("patcher", "verifier")
-    graph.add_edge("verifier", END)
+
+    # conditional edges
+    # exploiter -> finder OR exploiter -> patcher
+    # verifier -> finder OR verifier -> end
 
     workflow = graph.compile()
     return workflow
 
 
 def get_db() -> dict:
-    # function to pull vulnerabilties from database
+    # function to pull vulnerabilities from database
     return [] # returns json object
 
 def push_db() -> tuple[int, str]:
@@ -68,10 +71,11 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
     # logger.info(f"Running IRIS inside Docker for project {project_name}")
 
-    # # 2. Run IRIS analysis
+    # 2. Run IRIS analysis
     # try:
-    #     subprocess.run(docker_cmd, check=True, capture_output=True, text=True)
+    #     subprocess.run(docker_cmd, check=True, text=True)
 
+    # # analysis failed for some reason
     # except subprocess.CalledProcessError as e:
     #         print("Finder failed with an error")
     #         print("Return code:", e.returncode)
@@ -90,6 +94,7 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
     #     # 4. Save results into pipeline state
     #     state["vuln"] = findings
 
+    # # no vulnerabilites were found
     # except FileNotFoundError:
     #     print("Finder found no vulnerabilites")
     #     state["vuln"] = None
@@ -97,9 +102,25 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
     return state
 
 
+
 def _exploiter_node(state: AutoSecState) -> AutoSecState:
-    logger.info("Node - exploiter started")
-    return state
+    logger.info("Node: exploiter started")
+
+    retry_finder = False
+    new_state = dict(state)
+
+    if retry_finder:
+        return Command(
+            goto="finder",
+            update=new_state
+        )
+
+    # continue linearly to patcher
+    return Command(
+        goto="patcher",
+        update=new_state
+    )
+
 
 
 def _patcher_node(state: AutoSecState) -> AutoSecState:
@@ -112,8 +133,22 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
 
 
 def _verifier_node(state: AutoSecState) -> AutoSecState:
-    logger.info("Node - verifier started")
-    return state
+    logger.info("Node: verifier started")
+
+    retry_finder = False
+    new_state = dict(state)
+
+    if retry_finder:
+        return Command(
+            goto="finder",
+            update=new_state
+        )
+
+    # finish pipeline
+    return Command(
+        goto=END,
+        update=new_state
+    )
 
 
 # ====== Execute workflow =====
