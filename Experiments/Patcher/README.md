@@ -5,8 +5,8 @@ The Patcher uses large language models (LLMs) to generate **minimal, correct, an
 
 
 ## Getting Started
-- All development must be done in a **Linux environment**
-- Must have **Python 3.11 installed locally**
+- All development must be done in a **Linux environment** (WSL can be used)
+- Must have **Python 3.12 installed locally**
 
 ### 1. Create a Virtual Environment
 ```bash
@@ -20,7 +20,7 @@ pip install -r requirements.txt
 ```
 
 ### 3. Add Your OpenRouter API Key
-Create .env in this directory:
+Create `.env` in this directory:
 ```env
 OPENROUTER_API_KEY=your_api_key_here
 ```
