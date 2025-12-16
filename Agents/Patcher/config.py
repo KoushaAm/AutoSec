@@ -2,7 +2,7 @@
 from typing import Dict
 from pathlib import Path
 # local imports
-# TODO| vuln info will be removed altered later to take data from the
+# TODO| vuln info will be removed or altered later to take data from the
 # TODO| pipeline and convert it to vuln_info objects dynamically
 from .constants import Model, vuln_info as vi
 

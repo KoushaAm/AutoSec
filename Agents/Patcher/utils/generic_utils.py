@@ -1,5 +1,6 @@
 # Patcher/utils/generic_utils.py
-import re, json
+import re
+import json
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Union
