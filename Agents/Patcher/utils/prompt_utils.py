@@ -15,13 +15,8 @@ from ..config import (
     DEFAULT_CONTEXT_LIMIT,
     MODEL_CONTEXT_LIMITS
 )
-from ..constants import VulnerabilityInfo
 from ..core import (
     AgentFields,
-    ConstraintDict,
-    SinkDict,
-    FlowStepDict,
-    PoVTestDict,
     FileSnippetBundle
 )
 
@@ -95,32 +90,6 @@ def build_user_msg_multi(
 
     return "\n".join(text_lines)
 
-
-def mk_agent_fields(vuln_class: VulnerabilityInfo) -> AgentFields:
-    """
-    Construct strongly-typed AgentFields from a vuln_info.* class.
-    The vuln_info base class validates structure at import time, so
-    we can rely on these attributes existing and being well-formed.
-    """
-    language: str = vuln_class.LANGUAGE
-    function_name: str = vuln_class.FUNC_NAME
-    cwe_id: str = vuln_class.CWE
-    constraints: ConstraintDict = vuln_class.CONSTRAINTS
-    sink_meta: SinkDict = vuln_class.SINK
-    flow_meta: List[FlowStepDict] = vuln_class.FLOW or []
-    pov_tests_meta: List[PoVTestDict] = vuln_class.POV_TESTS or []
-    vuln_title: str = getattr(vuln_class, "VULN_TITLE", "")
-
-    return AgentFields(
-        language=language,
-        function=function_name,
-        CWE=cwe_id,
-        constraints=constraints,
-        sink=sink_meta,
-        flow=flow_meta,
-        pov_tests=pov_tests_meta,
-        vuln_title=vuln_title,
-    )
 
 def estimate_prompt_tokens(messages: List[Dict[str, Any]]) -> int:
     """

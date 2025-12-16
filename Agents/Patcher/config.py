@@ -7,7 +7,7 @@ from pathlib import Path
 from .constants import Model, vuln_info as vi
 
 # Select OpenRouter model
-CURRENT_MODEL = Model.KAT_CODER
+CURRENT_MODEL = Model.LLAMA3
 
 # Get the directory where patcher.py is located
 SCRIPT_DIR = Path(__file__).parent
@@ -23,14 +23,14 @@ OUTPUT_PATH = SCRIPT_DIR / "output" # Agents/Patcher/output
 
 # Choose one or more vulnerability definitions to test here.
 # VULNERABILITIES = [vi.CWE_78, vi.CWE_22, vi.CWE_94, vi.CWE_918]
-VULNERABILITIES = [vi.CWE_78_PerfectoCredentials]
+VULNERABILITIES = [vi.CWE_78_PerfectoCredentials, vi.CWE_94] 
 
 # Model context limits: approximate context windows per model name,
 # If MODEL_NAME isn't found here, we fall back to DEFAULT_CONTEXT_LIMIT.
 DEFAULT_CONTEXT_LIMIT = 8192  # conservative default
 
 MODEL_CONTEXT_LIMITS: Dict[str, int] = {
-    # Examples, update to your real models:
+    # Examples, update as required
     Model.LLAMA3.name: 8192,
     Model.QWEN3.name: 16384,
     Model.DEEPSEEK.name: 8192,

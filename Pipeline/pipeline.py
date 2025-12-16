@@ -6,10 +6,6 @@ from langgraph.graph import StateGraph, END, START
 from . import logger
 from Agents.Patcher import patcher_main
 
-# logging
-# logging.basicConfig(level=logging.INFO)
-# logger = logging.getLogger(__name__)
-
 class AutoSecState(TypedDict, total=False):
     project_name: Optional[str]         # ex: jenkinsci__perfecto-plugin_CVE
     vuln_id: Optional[str]

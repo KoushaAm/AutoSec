@@ -22,8 +22,16 @@ from os import getenv
 from dotenv import load_dotenv
 from openai import OpenAI
 from pathlib import Path
-from typing import Any, Dict, List, Tuple, Union
+from typing import Dict, List, Tuple, Union
 from datetime import datetime, timezone
+from .constants import VulnerabilityInfo
+from .core import (
+    AgentFields,
+    ConstraintDict,
+    SinkDict,
+    FlowStepDict,
+    PoVTestDict,
+)
 
 # local imports
 from .config import (
@@ -43,7 +51,6 @@ from .core import (
 from .utils import (
     combine_prompt_messages,
     build_user_msg_multi,
-    mk_agent_fields,
     estimate_prompt_tokens,
     determine_max_tokens,
     process_llm_output,
@@ -86,6 +93,32 @@ def _save_prompt_debug(messages: List[Dict[str, str]], model_name: str) -> None:
     debug_path.write_text(debug_text, encoding="utf-8")
 
     print(f"[debug] Saved generated prompt to {debug_path.resolve()}\n")
+
+def mk_agent_fields(vuln_class: VulnerabilityInfo) -> AgentFields:
+    """
+    Construct strongly-typed AgentFields from a vuln_info.* class.
+    The vuln_info base class validates structure at import time, so
+    we can rely on these attributes existing and being well-formed.
+    """
+    language: str = vuln_class.LANGUAGE
+    function_name: str = vuln_class.FUNC_NAME
+    cwe_id: str = vuln_class.CWE
+    constraints: ConstraintDict = vuln_class.CONSTRAINTS
+    sink_meta: SinkDict = vuln_class.SINK
+    flow_meta: List[FlowStepDict] = vuln_class.FLOW or []
+    pov_tests_meta: List[PoVTestDict] = vuln_class.POV_TESTS or []
+    vuln_title: str = getattr(vuln_class, "VULN_TITLE", "")
+
+    return AgentFields(
+        language=language,
+        function=function_name,
+        CWE=cwe_id,
+        constraints=constraints,
+        sink=sink_meta,
+        flow=flow_meta,
+        pov_tests=pov_tests_meta,
+        vuln_title=vuln_title,
+    )
 
 # ================== Main ==================
 def patcher_main() -> bool:
