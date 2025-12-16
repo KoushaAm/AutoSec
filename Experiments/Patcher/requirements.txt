@@ -1,5 +1,3 @@
-langgraph
-# Patcher agent dependencies
 openai
 python-dotenv
 tree-sitter
