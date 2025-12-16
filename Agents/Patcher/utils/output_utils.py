@@ -1,5 +1,6 @@
 # Patcher/utils/output_utils.py
-import sys, json
+import sys
+import json
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List

@@ -17,21 +17,14 @@ It performs a full end-to-end patch generation run for all defined
 vulnerabilities and outputs machine-readable JSON patches and optional prompt
 debug logs.
 """
-import argparse, sys
+import argparse
+import sys
 from os import getenv
 from dotenv import load_dotenv
 from openai import OpenAI
 from pathlib import Path
 from typing import Dict, List, Tuple, Union
 from datetime import datetime, timezone
-from .constants import VulnerabilityInfo
-from .core import (
-    AgentFields,
-    ConstraintDict,
-    SinkDict,
-    FlowStepDict,
-    PoVTestDict,
-)
 
 # local imports
 from .config import (
@@ -41,11 +34,16 @@ from .config import (
     MODEL_VALUE,
 )
 from .constants import (
+    VulnerabilityInfo,
     SYSTEM_MESSAGE,
     DEVELOPER_MESSAGE,
 )
 from .core import (
     AgentFields,
+    ConstraintDict,
+    SinkDict,
+    FlowStepDict,
+    PoVTestDict,
     build_method_flow_snippets,
 )
 from .utils import (
@@ -58,9 +56,15 @@ from .utils import (
 
 # ================== Environment Setup ==================
 load_dotenv()
+api_key = getenv("OPENROUTER_API_KEY")
+
+if not api_key:
+    raise RuntimeError(
+        "OPENROUTER_API_KEY environment variable not set. Please set it in your environment or .env file."
+    )
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key=getenv("OPENROUTER_API_KEY", "OpenRouter API key not found"),
+    api_key=api_key,
 )
 
 # ================== Helpers ==================
