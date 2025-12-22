@@ -7,6 +7,7 @@ import argparse
 from langgraph.graph import StateGraph, END, START
 from langgraph.types import Command
 
+from Agents.Exploiter.data.primevul.setup import project_slug
 # local imports
 from . import logger
 from Agents.Patcher import patcher_main
@@ -109,15 +110,39 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
 def _exploiter_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node: exploiter started")
-
     retry_finder = False
     new_state = dict(state)
+    project_name = new_state["project_name"] if "project_name" in new_state else None
 
-    if retry_finder:
-        return Command(
-            goto="finder",
-            update=new_state
-        )
+    try:
+        data = state["vuln"]
+        # TODO: get findings and fetch the first code flow
+        #  --> needs realtime state update but we can't run finder each time
+
+    except:
+        print("Exploiter failed to find vulnerability data.")
+        return
+
+    # calling Exploiter
+    run_cmd = [
+        "python3",
+        "main.py",
+        "--dataset", "cwe-bench-java",
+        "--project", {project_name},
+        "--model", "gpt5",
+        "--budget", "5.0",
+        "--timeout", "3600",
+        "--no_branch",
+        "--verbose",
+    ]
+
+    subprocess.call(run_cmd)
+
+    # if retry_finder:
+    #     return Command(
+    #         goto="finder",
+    #         update=new_state
+    #     )
 
     # continue linearly to patcher
     return Command(
