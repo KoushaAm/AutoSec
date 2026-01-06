@@ -108,7 +108,7 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
 
 
-def _exploiter_node(state: AutoSecState) -> AutoSecState:
+def _exploiter_node(state: AutoSecState) -> Command | None:
     logger.info("Node: exploiter started")
     retry_finder = False
     new_state = dict(state)
@@ -137,12 +137,6 @@ def _exploiter_node(state: AutoSecState) -> AutoSecState:
     ]
 
     subprocess.call(run_cmd)
-
-    # if retry_finder:
-    #     return Command(
-    #         goto="finder",
-    #         update=new_state
-    #     )
 
     # continue linearly to patcher
     return Command(
