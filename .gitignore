@@ -1,6 +1,7 @@
 .vscode/settings.json
 .venv/
 __pycache__/
+Pipeline/verifier/verifier_output/
 output/
 
 *.pyc
