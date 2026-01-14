@@ -1,9 +1,11 @@
 # Patcher/utils/generic_utils.py
-import re, json
+import re
+import json
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Union
-
+# local imports
+from ..config import OUTPUT_PATH
 
 def utc_timestamped_filename(base: str, ext: str = "json") -> str:
     """
@@ -22,7 +24,7 @@ def save_invalid_json_dump(text: str, reason: str) -> Path:
     Creates:
         output/invalid_json_<timestamp>.txt
     """
-    output_dir = Path("output")
+    output_dir = Path(OUTPUT_PATH)
     output_dir.mkdir(exist_ok=True)
 
     filename = utc_timestamped_filename("invalid_json", "txt")
@@ -110,7 +112,7 @@ def save_output_to_file(filename: str, content: str):
     Save content to /output directory.
     Pretty-prints JSON if possible.
     """
-    output_dir = Path("output")
+    output_dir = Path(OUTPUT_PATH)
     output_dir.mkdir(parents=True, exist_ok=True)
     path = output_dir / filename
 

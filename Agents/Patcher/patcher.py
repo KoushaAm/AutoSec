@@ -1,30 +1,54 @@
 # Patcher/patcher.py
-import argparse, sys
+"""
+The Patcher module serves as the LLM-driven security patch generator for the
+AutoSec pipeline. It loads vulnerability definitions, extracts multi-file 
+source-to-sink code context using the method-based Code Extractor,
+and assembles a fully-structured prompt for the LLM.
+
+The module handles:
+- Building AgentFields for each vulnerability (language, sink, data-flow, constraints)
+- Extracting method-level code bundles for sinks and flow steps
+- Constructing system/developer/user messages for the LLM
+- Estimating prompt token usage and dynamically computing max_tokens
+- Processing and saving the generated patch artifacts
+
+`patcher_main()` is the entrypoint invoked by the orchestrating pipeline.
+It performs a full end-to-end patch generation run for all defined
+vulnerabilities and outputs machine-readable JSON patches and optional prompt
+debug logs.
+"""
+import argparse
+import sys
 from os import getenv
 from dotenv import load_dotenv
 from openai import OpenAI
 from pathlib import Path
-from typing import Any, Dict, List, Tuple, Union
+from typing import Dict, List, Tuple, Union
 from datetime import datetime, timezone
 
 # local imports
 from .config import (
+    OUTPUT_PATH,
     VULNERABILITIES,
     MODEL_NAME,
     MODEL_VALUE,
 )
 from .constants import (
+    VulnerabilityInfo,
     SYSTEM_MESSAGE,
     DEVELOPER_MESSAGE,
 )
 from .core import (
     AgentFields,
+    ConstraintDict,
+    SinkDict,
+    FlowStepDict,
+    PoVTestDict,
     build_method_flow_snippets,
 )
 from .utils import (
     combine_prompt_messages,
     build_user_msg_multi,
-    mk_agent_fields,
     estimate_prompt_tokens,
     determine_max_tokens,
     process_llm_output,
@@ -32,9 +56,15 @@ from .utils import (
 
 # ================== Environment Setup ==================
 load_dotenv()
+api_key = getenv("OPENROUTER_API_KEY")
+
+if not api_key:
+    raise RuntimeError(
+        "OPENROUTER_API_KEY environment variable not set. Please set it in your environment or .env file."
+    )
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key=getenv("OPENROUTER_API_KEY", "OpenRouter API key not found"),
+    api_key=api_key,
 )
 
 # ================== Helpers ==================
@@ -45,7 +75,7 @@ def _save_prompt_debug(messages: List[Dict[str, str]], model_name: str) -> None:
     Writes to: /output/given_prompt.txt (same directory as JSON output files).
     Each message role and content is clearly separated for easy inspection.
     """
-    output_dir = Path("output")
+    output_dir = Path(OUTPUT_PATH)
     output_dir.mkdir(exist_ok=True)
     debug_path = output_dir / "given_prompt.txt"
 
@@ -67,6 +97,32 @@ def _save_prompt_debug(messages: List[Dict[str, str]], model_name: str) -> None:
     debug_path.write_text(debug_text, encoding="utf-8")
 
     print(f"[debug] Saved generated prompt to {debug_path.resolve()}\n")
+
+def mk_agent_fields(vuln_class: VulnerabilityInfo) -> AgentFields:
+    """
+    Construct strongly-typed AgentFields from a vuln_info.* class.
+    The vuln_info base class validates structure at import time, so
+    we can rely on these attributes existing and being well-formed.
+    """
+    language: str = vuln_class.LANGUAGE
+    function_name: str = vuln_class.FUNC_NAME
+    cwe_id: str = vuln_class.CWE
+    constraints: ConstraintDict = vuln_class.CONSTRAINTS
+    sink_meta: SinkDict = vuln_class.SINK
+    flow_meta: List[FlowStepDict] = vuln_class.FLOW or []
+    pov_tests_meta: List[PoVTestDict] = vuln_class.POV_TESTS or []
+    vuln_title: str = getattr(vuln_class, "VULN_TITLE", "")
+
+    return AgentFields(
+        language=language,
+        function=function_name,
+        CWE=cwe_id,
+        constraints=constraints,
+        sink=sink_meta,
+        flow=flow_meta,
+        pov_tests=pov_tests_meta,
+        vuln_title=vuln_title,
+    )
 
 # ================== Main ==================
 def patcher_main() -> bool:
