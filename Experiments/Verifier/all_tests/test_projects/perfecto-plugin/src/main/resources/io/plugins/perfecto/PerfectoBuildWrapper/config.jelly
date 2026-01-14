@@ -1,0 +1,33 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout"
+         xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+
+    <f:block>
+ 		<img width="100%" height="100" src="${resURL}/plugin/perfecto/images/perfecto.png" alt="perfecto" title="perfecto" />
+        <f:entry title="${%Credentials}" field="credentialId">
+            <c:select xmlns:c="/lib/credentials" checkMethod="post" />
+        </f:entry>
+        
+        <f:entry field="perfectoConnectLocation" title="${%Perfecto Connect Path}">
+             <f:textbox checkMethod="post" />
+        </f:entry>
+        
+        <f:entry field="perfectoConnectFile" title="${%Perfecto Connect File Name}">
+            <f:textbox checkMethod="post" />
+        </f:entry>
+		
+        <f:advanced>
+            <f:entry title="${%Additional Parameters}" field="pcParameters">
+        		 <f:textbox checkMethod="post" />
+    		</f:entry>
+	        <f:entry title="${%Override Tunnel ID Name}" field="tunnelIdCustomName">
+	            <f:textbox checkMethod="post" />
+	        </f:entry>
+	        	<f:entry field="reuseTunnelId" title="${%Existing Tunnel ID}">
+            <f:textbox checkMethod="post" />
+        </f:entry>
+        </f:advanced>
+
+    </f:block>
+
+</j:jelly>

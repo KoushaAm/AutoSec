@@ -13,6 +13,8 @@ class SmartDockerSelector:
     
     OFFICIAL_IMAGE_MATRIX = {
         "maven": {
+            # TEMP
+            "8.3.5": "maven:3.5-jdk-8",  # CWE Bench spec for ESAPI
             "8.3.8": "maven:3.8-openjdk-8",
             "8.3.9": "maven:3.9-openjdk-8", 
             "11.3.8": "maven:3.8-openjdk-11",
@@ -46,8 +48,22 @@ class SmartDockerSelector:
         project_path: pathlib.Path, 
         stack: str
     ) -> Tuple[str, bool, Dict[str, str]]:
-        """Returns tuple of (image_name, is_custom_built, detected_versions)"""
-        versions = detect_project_versions(project_path, stack)
+        """Returns (image_name, is_custom_built, detected_versions)"""
+        
+        # TEMP
+        # Check if it is a CWE Bench project with known specifications
+        project_name = project_path.name
+        cwe_bench_specs = self._get_cwe_bench_specifications(project_name)
+        
+        if cwe_bench_specs:
+            # TEMP
+            # Use CWE Bench tested specifications
+            versions = cwe_bench_specs
+            print(f"Using CWE Bench specifications: Java {versions['java_version']}, Maven {versions['build_tool_version']}")
+        else:
+            # Fall back to auto-detect
+            versions = detect_project_versions(project_path, stack)
+            print(f"Auto-detected versions: Java {versions['java_version']}, Maven {versions.get('build_tool_version', 'N/A')}")
         
         # Try to find matching official image
         official_image = self._find_matching_official_image(versions)
@@ -62,6 +78,22 @@ class SmartDockerSelector:
         # Fallback to default official image
         fallback_image = self._get_fallback_image(stack)
         return fallback_image, False, versions
+    
+    # TEMP
+    def _get_cwe_bench_specifications(self, project_name: str) -> Optional[Dict[str, str]]:
+        """Get CWE Bench tested specifications for known projects"""
+        # Map of CWE Bench project names to their tested specifications
+        cwe_bench_specs = {
+            # TEMP ESAPI
+            "ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1": {
+                "java_version": "8",
+                "build_tool_version": "3.5",
+                "stack": "maven"
+            },
+            # ... add more later
+        }
+        
+        return cwe_bench_specs.get(project_name)
     
     def _find_matching_official_image(self, versions: Dict[str, str]) -> Optional[str]:
         stack = versions["stack"]
@@ -157,7 +189,7 @@ RUN gradle clean build -x test
 FROM eclipse-temurin:{java_version}-jre-alpine
 WORKDIR /app
 COPY --from=builder /workspace/build/classes/java/main/ ./
-CMD ["java", "-cp", ".", "Main"]
+CMD ["java", "Main"]
 """
         
         elif stack == "javac":
@@ -214,14 +246,22 @@ CMD ["java", "Main"]
     def _execute_docker_build(self, build_context: pathlib.Path, image_tag: str) -> bool:
         try:
             result = subprocess.run([
-                "docker", "build", "--tag", image_tag, 
-                "--quiet",
+                "docker", "build", "--tag", image_tag,
                 str(build_context)
             ], capture_output=True, text=True, timeout=600)
             
+            # Log the Docker build output for debugging
+            print(f"Docker build for {image_tag}:")
+            print(f"Return code: {result.returncode}")
+            if result.stdout:
+                print(f"STDOUT: {result.stdout}")
+            if result.stderr:
+                print(f"STDERR: {result.stderr}")
+            
             return result.returncode == 0
             
-        except Exception:
+        except Exception as e:
+            print(f"Docker build exception: {e}")
             return False
     
     def _get_fallback_image(self, stack: str) -> str:

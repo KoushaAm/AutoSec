@@ -39,7 +39,6 @@ def _build_workflow() -> Any:
     workflow = graph.compile()
     return workflow
 
-
 def get_db() -> dict:
     # function to pull vulnerabilities from database
     return [] # returns json object
