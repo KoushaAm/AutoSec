@@ -2,7 +2,6 @@
 
 from .patch_handler import (
     PatchParser,
-    PatchApplicator,
     ProjectManager
 )
 from .verification_handler import (
@@ -13,7 +12,6 @@ from .verification_handler import (
 
 __all__ = [
     'PatchParser',
-    'PatchApplicator',
     'ProjectManager',
     'BuildVerifier',
     'ResultComparator',

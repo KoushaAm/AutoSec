@@ -5,8 +5,10 @@ from typing import Dict, Any, Optional
 from ..models.verification import VerificationResult, VerificationStatus, PatchInfo
 import datetime
 
-# Add existing Verifier infrastructure
-VERIFIER_PATH = pathlib.Path(__file__).parent.parent.parent.parent / "Experiments" / "Verifier"
+# Add existing Verifier infrastructure - fix path calculation
+# Current file: pipeline_verifier/handlers/verification_handler.py
+# Need to go up: handlers -> pipeline_verifier -> Verifier (3 levels, not 4)
+VERIFIER_PATH = pathlib.Path(__file__).parent.parent.parent
 
 
 class BuildVerifier:
@@ -24,7 +26,7 @@ class BuildVerifier:
     def run_verification(self, project_path: pathlib.Path) -> Dict[str, Any]:
         """Run verification on a project using the existing verifier infrastructure"""
         try:
-            verifier_script = self.verifier_path / "verify.py"
+            verifier_script = self.verifier_path / "pipeline_verifier" / "core" / "build_verifier.py"
             
             # Convert to absolute path to fix path resolution issue 
             absolute_project_path = project_path.resolve()
