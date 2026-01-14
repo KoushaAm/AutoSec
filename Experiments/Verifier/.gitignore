@@ -4,6 +4,10 @@ build/artifacts/
 **/target/
 **/build/
 
+# Verifier output directories
+output/
+unified_verification_output/
+
 # Java compilation outputs (in test projects)
 **/*.class
 **/*.jar
