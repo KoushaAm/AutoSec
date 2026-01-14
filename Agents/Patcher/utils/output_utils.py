@@ -1,12 +1,13 @@
 # Patcher/utils/output_utils.py
-import sys, json
+import sys
+import json
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List
 
 
 # local imports
-from ..config import TOOL_VERSION
+from ..config import TOOL_VERSION, OUTPUT_PATH
 from .generic_utils import (
     save_invalid_json_dump,
     extract_json_block,
@@ -126,7 +127,7 @@ def process_llm_output(llm_output: str, model_name: str):
         run_ts = dt.strftime("%Y%m%dT%H%M%SZ")
 
     run_id = f"patcher_{run_ts}"
-    output_root = Path("output")
+    output_root = Path(OUTPUT_PATH)
     run_dir = output_root / run_id
 
     meta = full.setdefault("metadata", {})
