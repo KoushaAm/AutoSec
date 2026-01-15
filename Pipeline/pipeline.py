@@ -171,7 +171,6 @@ def _exploiter_node(state: AutoSecState) -> Command:
 
     if not exploitable:
         logger.warning("Exploiter ran but did not find an exploitable PoV.")
-        # Your policy:
         # return Command(goto="finder", update=new_state)
         return Command(goto=END, update=new_state)
 
