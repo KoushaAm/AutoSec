@@ -4,13 +4,14 @@ import subprocess
 import os
 import uuid
 import argparse
+import sys
 from langgraph.graph import StateGraph, END, START
 from langgraph.types import Command
 
-from Agents.Exploiter.data.primevul.setup import project_slug
+# from Agents.Exploiter.data.primevul.setup import project_slug
 # local imports
 from . import logger
-from Agents.Patcher import patcher_main
+# from Agents.Patcher import patcher_main
 
 class AutoSecState(TypedDict, total=False):
     project_name: Optional[str]         # ex: jenkinsci__perfecto-plugin_CVE
@@ -108,27 +109,26 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
 
 
-def _exploiter_node(state: AutoSecState) -> Command | None:
+def _exploiter_node(state: AutoSecState) -> Command:
     logger.info("Node: exploiter started")
-    retry_finder = False
+
     new_state = dict(state)
-    project_name = new_state["project_name"] if "project_name" in new_state else None
+    project_name = new_state.get("project_name")
+    if not project_name:
+        raise ValueError("project_name missing from state")
 
-    try:
-        data = state["vuln"]
-        # TODO: get findings and fetch the first code flow
-        #  --> needs realtime state update but we can't run finder each time
+    exploiter_dir = os.path.join(os.getcwd(), "Agents", "Exploiter")
+    exploiter_main = os.path.join(exploiter_dir, "main.py")
 
-    except:
-        print("Exploiter failed to find vulnerability data.")
-        return
+    # (Optional) sanity: ensure exploiter main exists
+    if not os.path.exists(exploiter_main):
+        raise FileNotFoundError(f"Exploiter entrypoint not found: {exploiter_main}")
 
-    # calling Exploiter
     run_cmd = [
-        "python3",
-        "main.py",
+        sys.executable,          # use the same venv python running the pipeline
+        "main.py",               # run from within exploiter_dir via cwd
         "--dataset", "cwe-bench-java",
-        "--project", {project_name},
+        "--project", project_name,
         "--model", "gpt5",
         "--budget", "5.0",
         "--timeout", "3600",
@@ -136,13 +136,47 @@ def _exploiter_node(state: AutoSecState) -> Command | None:
         "--verbose",
     ]
 
-    subprocess.call(run_cmd)
+    try:
+        subprocess.run(run_cmd, cwd=exploiter_dir, check=True)
+    except subprocess.CalledProcessError as e:
+        logger.error(f"Exploiter subprocess failed (exit={e.returncode}).")
+        # policy: retry finder, or stop.
+        # return Command(goto="finder", update=new_state)
+        return Command(goto=END, update=new_state)
 
-    # continue linearly to patcher
-    return Command(
-        goto="patcher",
-        update=new_state
+    # Read exploiter report to decide what to do next
+    report_path = os.path.join(
+        exploiter_dir,
+        "data",
+        "cwe-bench-java",
+        "workdir_no_branch",
+        "project-sources",
+        project_name,
+        "report.json",
     )
+
+    if not os.path.exists(report_path):
+        logger.error(f"Exploiter report not found: {report_path}")
+        # return Command(goto="finder", update=new_state)
+        return Command(goto=END, update=new_state)
+
+    with open(report_path, "r") as f:
+        report_data = json.load(f)
+
+    exploitable = bool(report_data.get("exploitable", False))
+    new_state["exploiter"] = {
+        "success": exploitable,
+        "report_path": report_path,
+    }
+
+    if not exploitable:
+        logger.warning("Exploiter ran but did not find an exploitable PoV.")
+        # Your policy:
+        # return Command(goto="finder", update=new_state)
+        return Command(goto=END, update=new_state)
+
+    logger.info("Vulnerability exploited! Continuing to patcher.")
+    return Command(goto="patcher", update=new_state)
 
 
 
@@ -178,7 +212,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 def pipeline_main():
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
-        "project_name": "perwendel__spark_CVE-2018-9159_2.7.1",
+        "project_name": "ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1",
         "vuln_id": "cwe-022wLLM",
     }
 
