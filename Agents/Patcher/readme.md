@@ -29,3 +29,10 @@ Agents/
     ├── patcher.py                  # Main CLI entrypoint
     └── readme.md
 ```
+
+### Run Patcher Only
+- Static Module Check: `python3 -m Agents.Patcher.patcher --help`
+- Prompt-only dry-run: `python3 Agents/Patcher/patcher.py -sp`
+
+### Remove old output artifacts
+- `rm -rf Agents/Patcher/output/*`
