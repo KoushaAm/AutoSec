@@ -15,6 +15,7 @@ from Agents.Finder.src.output_converter import sarif_to_finder_output
 
 class AutoSecState(TypedDict, total=False):
     project_name: Optional[str]         # ex: jenkinsci__perfecto-plugin_CVE
+    language: Optional[str]
     vuln_id: Optional[str]
     vuln: Optional[Dict[str, Any]]
     finder_output: Optional[List[FinderOutput]]
@@ -100,7 +101,6 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
         # 4. Save results into pipeline state
         state["finder_output"] = sarif_to_finder_output(findings, cwe=state["vuln_id"])
-        print(state["finder_output"])
         state["vuln"] = findings # keep oringial json dump just in case its needed
 
     # no vulnerabilites were found
@@ -167,6 +167,7 @@ def pipeline_main():
     initial_state: AutoSecState = {
         "project_name": "perwendel__spark_CVE-2018-9159_2.7.1",
         "vuln_id": "cwe-022",
+        "language": "python",
     }
 
     workflow = _build_workflow()

@@ -19,5 +19,4 @@ class VulnerabilityInstance(TypedDict):
 
 class FinderOutput(TypedDict):
     cwe: str                     # e.g. "cwe-078"
-    language: str                # e.g. "python"
     vulnerabilities: List[VulnerabilityInstance]
