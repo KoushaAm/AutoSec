@@ -18,5 +18,5 @@ class VulnerabilityInstance(TypedDict):
 
 
 class FinderOutput(TypedDict):
-    cwe: str                     # e.g. "cwe-078"
+    cwe_id: str                     # e.g. "cwe-078"
     vulnerabilities: List[VulnerabilityInstance]

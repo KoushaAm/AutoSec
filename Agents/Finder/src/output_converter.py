@@ -31,7 +31,7 @@ def _parse_thread_flow_location(tfl: Dict[str, Any]) -> TraceStep:
     return step
 
 
-def sarif_to_finder_output(sarif: Dict[str, Any], *, cwe: str) -> FinderOutput:
+def sarif_to_finder_output(sarif: Dict[str, Any], *, cwe_id: str) -> FinderOutput:
     vulnerabilities: List[VulnerabilityInstance] = []
 
     for run in sarif.get("runs", []):
@@ -59,6 +59,6 @@ def sarif_to_finder_output(sarif: Dict[str, Any], *, cwe: str) -> FinderOutput:
             )
 
     return FinderOutput(
-        cwe=cwe,
+        cwe_id=cwe_id,
         vulnerabilities=vulnerabilities,
     )
