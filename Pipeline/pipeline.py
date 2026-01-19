@@ -100,7 +100,7 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
             findings = json.load(f)
 
         # 4. Save results into pipeline state
-        state["finder_output"] = sarif_to_finder_output(findings, cwe=state["vuln_id"])
+        state["finder_output"] = sarif_to_finder_output(findings, cwe_id=state["vuln_id"])
         state["vuln"] = findings # keep oringial json dump just in case its needed
 
     # no vulnerabilites were found
