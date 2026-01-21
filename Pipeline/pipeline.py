@@ -124,25 +124,25 @@ def _exploiter_node(state: AutoSecState) -> Command:
     if not os.path.exists(exploiter_main):
         raise FileNotFoundError(f"Exploiter entrypoint not found: {exploiter_main}")
 
-    run_cmd = [
-        sys.executable,          # use the same venv python running the pipeline
-        "main.py",               # run from within exploiter_dir via cwd
-        "--dataset", "cwe-bench-java",
-        "--project", project_name,
-        "--model", "gpt5",
-        "--budget", "5.0",
-        "--timeout", "3600",
-        "--no_branch",
-        "--verbose",
-    ]
-
-    try:
-        subprocess.run(run_cmd, cwd=exploiter_dir, check=True)
-    except subprocess.CalledProcessError as e:
-        logger.error(f"Exploiter subprocess failed (exit={e.returncode}).")
-        # policy: retry finder, or stop.
-        # return Command(goto="finder", update=new_state)
-        return Command(goto=END, update=new_state)
+    # run_cmd = [
+    #     sys.executable,          # use the same venv python running the pipeline
+    #     "main.py",               # run from within exploiter_dir via cwd
+    #     "--dataset", "cwe-bench-java",
+    #     "--project", project_name,
+    #     "--model", "gpt5",
+    #     "--budget", "5.0",
+    #     "--timeout", "3600",
+    #     "--no_branch",
+    #     "--verbose",
+    # ]
+    #
+    # try:
+    #     subprocess.run(run_cmd, cwd=exploiter_dir, check=True)
+    # except subprocess.CalledProcessError as e:
+    #     logger.error(f"Exploiter subprocess failed (exit={e.returncode}).")
+    #     # policy: retry finder, or stop.
+    #     # return Command(goto="finder", update=new_state)
+    #     return Command(goto=END, update=new_state)
 
     # Read exploiter report to decide what to do next
     report_path = os.path.join(
@@ -163,11 +163,29 @@ def _exploiter_node(state: AutoSecState) -> Command:
     with open(report_path, "r") as f:
         report_data = json.load(f)
 
-    exploitable = bool(report_data.get("exploitable", False))
-    new_state["exploiter"] = {
-        "success": exploitable,
-        "report_path": report_path,
-    }
+    # exploitable = bool(report_data.get("exploitable", False))
+
+    if isinstance(report_data, dict):
+        exploitable = bool(report_data.get("exploitable", False))
+    elif isinstance(report_data, list):
+        # try last entry as "final report"
+        exploitable = False
+        if report_data and isinstance(report_data[-1], dict) and "exploitable" in report_data[-1]:
+            exploitable = bool(report_data[-1].get("exploitable", False))
+        else:
+            # fallback: any entry marks exploitable
+            exploitable = any(isinstance(x, dict) and x.get("exploitable") for x in report_data)
+    else:
+        raise TypeError(f"Unexpected report.json top-level type: {type(report_data)}")
+
+    try :
+        new_state["exploiter"] = {
+            "success": exploitable,
+            "report_path": report_path,
+        }
+
+    except Exception as e:
+        logger.error(f"Exploiter subprocess failed (exit={e.returncode}).")
 
     if not exploitable:
         logger.warning("Exploiter ran but did not find an exploitable PoV.")
@@ -175,7 +193,13 @@ def _exploiter_node(state: AutoSecState) -> Command:
         return Command(goto=END, update=new_state)
 
     logger.info("Vulnerability exploited! Continuing to patcher.")
+    state["exploiter"] = new_state
+
+    print(state["exploiter"])
+
     return Command(goto="patcher", update=new_state)
+
+
 
 
 
