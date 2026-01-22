@@ -6,12 +6,18 @@ import uuid
 import argparse
 from langgraph.graph import StateGraph, END, START
 from langgraph.types import Command
+from pathlib import Path
 
 # local imports
 from . import logger
 from Agents.Patcher import patcher_main
 from Agents.Finder.src.types import FinderOutput
 from Agents.Finder.src.output_converter import sarif_to_finder_output
+
+# relative path information
+BASE_DIR = Path(__file__).resolve().parent.parent
+PROJECTS_DIR = (BASE_DIR / "Projects").resolve()
+AGENTS_DIR   = (BASE_DIR / "Agents").resolve()
 
 class AutoSecState(TypedDict, total=False):
     project_name: Optional[str]         # ex: jenkinsci__perfecto-plugin_CVE
@@ -64,8 +70,8 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         "docker", "run",
         "--platform=linux/amd64",
         "--rm",
-        "-v", "/home/vinci/AutoSec/Projects:/workspace/Projects",
-        "-v", "/home/vinci/AutoSec/Agents:/workspace/Agents",
+        "-v", f"{PROJECTS_DIR}:/workspace/Projects",
+        "-v", f"{AGENTS_DIR}:/workspace/Agents",
         "-w", "/workspace/Agents/Finder",
         "iris:latest",
         "bash", "-lc",
