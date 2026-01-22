@@ -24,7 +24,9 @@ OPENROUTER_API_KEY=your_api_key_here
 
 ### 4. Create the docker container for Finder
 Go to the /Agents/Finder folder and run the following
-```docker build -f Dockerfile --platform linux/x86_64 -t iris:latest .
+```bash
+docker build -f Dockerfile --platform linux/x86_64 -t iris:latest .
+
 docker run --platform=linux/amd64 -it iris:latest
 ```
 
