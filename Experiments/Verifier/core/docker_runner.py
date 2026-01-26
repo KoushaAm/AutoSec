@@ -19,21 +19,21 @@ class DockerRunner:
     
     Tries multiple JDK/build-tool combinations using pre-built official Docker images instead of local installations.
     """
-    # Retry attempts using Docker images
-    # Order matters: most common configs first for faster success
+    # Retry attempts aligned with CWE-Bench's proven success rates
+    # Uses multi-arch images that work on both Intel (x86-64) and Apple Silicon (ARM64)
     BUILD_ATTEMPTS = {
         "maven": [
-            # Attempt 1: Modern default (Java 17 + Maven 3.9)
-            {"image": "maven:3.9-eclipse-temurin-17", "jdk": "17", "tool": "3.9"},
+            # Attempt 1: Java 8 + Maven 3.9 (Temurin supports ARM64)
+            {"image": "maven:3.9-eclipse-temurin-8", "jdk": "8", "tool": "3.9"},
             
-            # Attempt 2: Legacy Java 8 + Maven 3.8 (FIXED: use valid image)
-            {"image": "maven:3.8-openjdk-8", "jdk": "8", "tool": "3.8"},
+            # Attempt 2: Java 17 + Maven 3.9 (modern default)
+            {"image": "maven:3.9-eclipse-temurin-17", "jdk": "17", "tool": "3.9"},
             
             # Attempt 3: Java 11 + Maven 3.8
             {"image": "maven:3.8-openjdk-11", "jdk": "11", "tool": "3.8"},
             
-            # Attempt 4: Java 8 + Maven 3.6 (another valid Java 8 option)
-            {"image": "maven:3.6-openjdk-8", "jdk": "8", "tool": "3.6"},
+            # Attempt 4: Java 8 + Maven 3.8 (Temurin)
+            {"image": "maven:3.8-eclipse-temurin-8", "jdk": "8", "tool": "3.8"},
             
             # Attempt 5: Java 17 + Maven 3.8
             {"image": "maven:3.8-eclipse-temurin-17", "jdk": "17", "tool": "3.8"},
@@ -43,11 +43,11 @@ class DockerRunner:
         ],
         
         "gradle": [
-            # Attempt 1: Modern Gradle 8 + Java 17
-            {"image": "gradle:8-jdk17", "jdk": "17", "tool": "8"},
+            # Attempt 1: Gradle 8 + Java 8 (modern Gradle with Java 8)
+            {"image": "gradle:8-jdk8", "jdk": "8", "tool": "8"},
             
-            # Attempt 2: Gradle 7 + Java 8 (legacy projects)
-            {"image": "gradle:7-jdk8", "jdk": "8", "tool": "7"},
+            # Attempt 2: Modern Gradle 8 + Java 17
+            {"image": "gradle:8-jdk17", "jdk": "17", "tool": "8"},
             
             # Attempt 3: Gradle 8 + Java 11
             {"image": "gradle:8-jdk11", "jdk": "11", "tool": "8"},
@@ -60,11 +60,11 @@ class DockerRunner:
         ],
         
         "javac": [
-            # Attempt 1: Java 17 (current LTS)
-            {"image": "eclipse-temurin:17-jdk", "jdk": "17", "tool": "n/a"},
+            # Attempt 1: Java 8 (Eclipse Temurin - supports ARM64)
+            {"image": "eclipse-temurin:8-jdk", "jdk": "8", "tool": "n/a"},
             
-            # Attempt 2: Java 8 (legacy)
-            {"image": "openjdk:8-jdk", "jdk": "8", "tool": "n/a"},
+            # Attempt 2: Java 17 (current LTS)
+            {"image": "eclipse-temurin:17-jdk", "jdk": "17", "tool": "n/a"},
             
             # Attempt 3: Java 11 (older LTS)
             {"image": "eclipse-temurin:11-jdk", "jdk": "11", "tool": "n/a"},
@@ -141,7 +141,7 @@ class DockerRunner:
         timeout: int,
         project_identifier: Optional[str] = None,
         verbose: bool = False,
-        test_cmd: Optional[str] = None  # NEW: Pass test command to validate during retry
+        test_cmd: Optional[str] = None  
     ) -> Dict[str, Any]:
         """
         Build a project with automatic retry using multiple Docker images.
@@ -187,7 +187,7 @@ class DockerRunner:
                     timeout
                 )
                 
-                # NEW: Also validate tests if provided
+                # Validate tests if provided
                 test_passed = True
                 if rc == 0 and test_cmd:
                     test_rc, test_duration = self.run_command(
