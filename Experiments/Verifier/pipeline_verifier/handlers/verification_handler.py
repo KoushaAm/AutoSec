@@ -34,8 +34,6 @@ class BuildVerifier:
             cmd = [
                 "python3", str(verifier_script),
                 "--input", str(absolute_project_path),
-                "--docker",
-                "--smart-docker",
                 "--verbose"
             ]
             

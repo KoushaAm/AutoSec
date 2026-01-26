@@ -3,7 +3,7 @@
 __pycache__/
 Pipeline/verifier/verifier_output/
 output/
-
+.DS_Store
 *.pyc
 *.pyo
 *.pyd
@@ -13,3 +13,6 @@ output/
 
 # Ignore specific files
 cmd-line-exploit.txt
+
+# Projects
+Projects/

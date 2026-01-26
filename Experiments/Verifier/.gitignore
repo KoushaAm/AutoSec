@@ -37,8 +37,6 @@ __pycache__/
 .temp/
 artifacts/
 
-# Docker volumes and build caches (if any)
+# Docker volumes and build caches
 .docker/
-
-# Sample project(s) if any
-cwe-bench-java-master/
+build-cache/
