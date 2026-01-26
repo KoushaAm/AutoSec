@@ -2,7 +2,7 @@
 """
 Unified Docker Build Runner with Retry Strategy
 
-Inspired by CWE-Bench-Java/IRIS, this runner tries multiple Docker image combinations
+Inspired by IRIS/CWE-Bench-Java, this runner tries multiple Docker image combinations
 until a successful build is found. Successful configurations are cached per project
 for faster subsequent builds.
 """
@@ -19,8 +19,7 @@ class DockerRunner:
     
     Tries multiple JDK/build-tool combinations using pre-built official Docker images instead of local installations.
     """
-    
-    # Retry attempts inspired by CWE-Bench, but using Docker images
+    # Retry attempts using Docker images
     # Order matters: most common configs first for faster success
     BUILD_ATTEMPTS = {
         "maven": [
