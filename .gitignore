@@ -12,3 +12,6 @@ output/
 
 # Ignore specific files
 cmd-line-exploit.txt
+
+# exploiter specific
+Agents/Exploiter/logs/*

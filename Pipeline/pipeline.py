@@ -124,25 +124,25 @@ def _exploiter_node(state: AutoSecState) -> Command:
     if not os.path.exists(exploiter_main):
         raise FileNotFoundError(f"Exploiter entrypoint not found: {exploiter_main}")
 
-    # run_cmd = [
-    #     sys.executable,          # use the same venv python running the pipeline
-    #     "main.py",               # run from within exploiter_dir via cwd
-    #     "--dataset", "cwe-bench-java",
-    #     "--project", project_name,
-    #     "--model", "gpt5",
-    #     "--budget", "5.0",
-    #     "--timeout", "3600",
-    #     "--no_branch",
-    #     "--verbose",
-    # ]
-    #
-    # try:
-    #     subprocess.run(run_cmd, cwd=exploiter_dir, check=True)
-    # except subprocess.CalledProcessError as e:
-    #     logger.error(f"Exploiter subprocess failed (exit={e.returncode}).")
-    #     # policy: retry finder, or stop.
-    #     # return Command(goto="finder", update=new_state)
-    #     return Command(goto=END, update=new_state)
+    run_cmd = [
+        sys.executable,          # use the same venv python running the pipeline
+        "main.py",               # run from within exploiter_dir via cwd
+        "--dataset", "cwe-bench-java",
+        "--project", project_name,
+        "--model", "gpt5",
+        "--budget", "5.0",
+        "--timeout", "3600",
+        "--no_branch",
+        "--verbose",
+    ]
+
+    try:
+        subprocess.run(run_cmd, cwd=exploiter_dir, check=True)
+    except subprocess.CalledProcessError as e:
+        logger.error(f"Exploiter subprocess failed (exit={e.returncode}).")
+        # policy: retry finder, or stop.
+        # return Command(goto="finder", update=new_state)
+        return Command(goto=END, update=new_state)
 
     # Read exploiter report to decide what to do next
     report_path = os.path.join(
@@ -189,8 +189,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
 
     if not exploitable:
         logger.warning("Exploiter ran but did not find an exploitable PoV.")
-        # return Command(goto="finder", update=new_state)
-        return Command(goto=END, update=new_state)
+        return Command(goto="finder", update=new_state)
 
     logger.info("Vulnerability exploited! Continuing to patcher.")
     state["exploiter"] = new_state
@@ -235,7 +234,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 def pipeline_main():
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
-        "project_name": "ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1",
+        "project_name": "codehaus-plexus__plexus-archiver_CVE-2018-1002200_3.5",
         "vuln_id": "cwe-022wLLM",
     }
 
