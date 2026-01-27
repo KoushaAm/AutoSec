@@ -1,0 +1,6 @@
+Vulnerability Rule ID: java/my-command-line-injection-extra
+CWE ID: CWE-78
+InputsTested: [ "normal input", "malicious input 1", "malicious input 2" ]
+Exploitable: NO
+Rationale: The test with malicious input produced a command string containing disallowed characters.
+Procedure: We used reflection to access the command string and checked for disallowed characters.

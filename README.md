@@ -22,7 +22,16 @@ Create `.env` in root directory:
 OPENROUTER_API_KEY=your_api_key_here
 ```
 
-### 4. Run the Pipeline
+### 4. Create the docker container for Finder
+Go to the /Agents/Finder folder and run the following
+```bash
+docker build -f Dockerfile --platform linux/x86_64 -t iris:latest .
+
+docker run --platform=linux/amd64 -it iris:latest
+```
+
+
+### 5. Run the Pipeline
 ```bash
 python3 main.py
 
