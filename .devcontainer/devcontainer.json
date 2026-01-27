@@ -1,0 +1,38 @@
+{
+   "name": "AutoSec Dev Container",
+   "build": {
+      "context": "..",
+      "dockerfile": ".devcontainer/dev.Dockerfile"
+   },
+   "remoteUser": "vscode",
+
+   "workspaceFolder": "/workspaces/autosec",
+   "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/autosec,type=bind,consistency=cached",
+
+   "mounts": ["source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"],
+
+   "customizations": {
+      "vscode": {
+         "extensions": [
+            "ms-azuretools.vscode-docker",
+            "ms-python.python",
+            "ms-python.vscode-pylance",
+            "redhat.java",
+            "vscjava.vscode-maven",
+            "eamodio.gitlens",
+            "aaron-bond.better-comments",
+            "streetsidesoftware.code-spell-checker",
+            "vscode-icons-team.vscode-icons"
+         ],
+         "settings": {
+            "terminal.integrated.defaultProfile.linux": "bash",
+
+            "python.defaultInterpreterPath": "/workspaces/autosec/.venv/bin/python",
+            "python.terminal.activateEnvironment": true,
+            "python.analysis.extraPaths": ["/workspaces/autosec"]
+         }
+      }
+   },
+
+   "postCreateCommand": "bash .devcontainer/scripts/postCreate.sh"
+}
