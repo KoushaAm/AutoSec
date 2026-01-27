@@ -1,0 +1,16 @@
+target
+work
+httpclient.log.zip
+httpclient.log
+lightweight.log*
+settings.xml
+jenkins.bmml
+test.log
+.idea/
+.classpath
+.editorconfig
+.project
+.settings/
+*.success
+.DS_Store
+*BuildUtils.java
