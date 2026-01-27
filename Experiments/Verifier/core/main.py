@@ -16,7 +16,6 @@ from .docker_runner import (
     classify_build_failure
 )
 from .artifact_validator import validate_build_artifacts
-from .smart_docker import get_smart_docker_image
 
 # Import testing module from parent directory
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent))
@@ -40,18 +39,21 @@ def convert_paths_to_strings(obj):
 def main():
     """Main entry point for Java build verification."""
     parser = argparse.ArgumentParser(
-        description="Java Build Verifier - Handles any Java project from single files to enterprise applications",
+        description="Java Build Verifier - Unified Docker build with intelligent retry",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
   # Single Java file
-  python3 -m core.main --input /path/to/HelloWorld.java --docker
+  python3 -m core.main --input /path/to/HelloWorld.java
   
   # Maven project  
-  python3 -m core.main --input /path/to/maven-project --docker
+  python3 -m core.main --input /path/to/maven-project
   
   # Gradle project
-  python3 -m core.main --input /path/to/gradle-project --docker
+  python3 -m core.main --input /path/to/gradle-project
+  
+Note: All builds run in Docker with automatic retry across multiple JDK/build-tool versions.
+      Successful configs cached per project for faster subsequent builds.
         """
     )
     
@@ -63,10 +65,6 @@ Examples:
                        help="Build timeout in seconds (default: 1800)")
     parser.add_argument("--timeout-test", type=int, default=1200,
                        help="Test timeout in seconds (default: 1200)")
-    parser.add_argument("--docker", action="store_true", required=True,
-                       help="Required flag - all builds run in Docker")
-    parser.add_argument("--smart-docker", action="store_true",
-                       help="Use smart Docker image selection based on project versions")
     parser.add_argument("--verbose", "-v", action="store_true",
                        help="Enable verbose output")
     
@@ -126,36 +124,31 @@ Examples:
         print(json.dumps(summary, indent=2))
         sys.exit(1)
     
-    # Phase 2: Docker Setup
-    if args.smart_docker:
-        image, is_custom, detected_versions = get_smart_docker_image(worktree, stack)
-        
-        if args.verbose:
-            print(f"Detected versions: Java {detected_versions['java_version']}", end="")
-            if detected_versions.get('build_tool_version'):
-                print(f", {stack} {detected_versions['build_tool_version']}")
-            else:
-                print()
-            
-            image_type = "custom-built" if is_custom else "official"
-            print(f"Using {image_type} Docker image: {image}")
-    else:
-        image = get_docker_image_for_stack(stack)
-        is_custom = False
-        detected_versions = {}
-        
-        if args.verbose:
-            print(f"Using default Docker image: {image}")
+    # Phase 2: Unified Docker Build with Retry
+    docker_runner = DockerRunner(cache_dir=artifacts / "build-cache")
     
-    docker_runner = DockerRunner()
+    # Generate project identifier for caching (based on project path)
+    project_id = worktree.name.lower().replace(" ", "-")
     
-    # Phase 3: Build Execution
-    build_rc, build_duration = docker_runner.run_command(
-        image, build_cmd, worktree, artifacts, args.timeout_build
+    if args.verbose:
+        print(f"Building with unified Docker retry strategy...")
+    
+    build_result = docker_runner.build_with_retry(
+        stack=stack,
+        build_cmd=build_cmd,
+        worktree=worktree,
+        artifacts=artifacts,
+        timeout=args.timeout_build,
+        project_identifier=project_id,
+        verbose=args.verbose,
+        test_cmd=test_cmd  # NEW: Pass test command for validation during retry
     )
     
+    build_rc = build_result["return_code"]
+    build_duration = build_result["duration"]
+    build_passed = build_result["success"]
+    
     build_failure = classify_build_failure(build_rc)
-    build_passed = False
     artifact_validation = {"artifacts_found": [], "artifact_count": 0, "has_artifacts": False}
     
     if build_rc == 0:
@@ -169,18 +162,24 @@ Examples:
             failure_type = build_failure['type']
             print(f"Build: FAIL ({failure_type})")
     
-    # Phase 4: Test Execution
+    # Phase 3: Test Execution
     test_rc, test_duration = 0, 0
-    if test_cmd and build_rc == 0:
+    if test_cmd and build_passed:
+        if args.verbose:
+            print(f"Running tests with {build_result['image_used']}...")
         test_rc, test_duration = docker_runner.run_command(
-            image, test_cmd, worktree, artifacts, args.timeout_test
+            build_result["image_used"], 
+            test_cmd, 
+            worktree, 
+            artifacts, 
+            args.timeout_test
         )
     
-    # Phase 5: Behavior Validation
+    # Phase 4: Behavior Validation
     behavior_result = None
     if build_passed:
         behavior_result = execute_behavior_validation(
-            worktree, artifacts, stack, image,
+            worktree, artifacts, stack, build_result["image_used"],
             has_wrapper=metadata.get('has_wrapper', False),
             docker_runner_func=lambda img, cmd, wt, art, timeout: docker_runner.run_command(img, cmd, wt, art, timeout),
             timeout=args.timeout_test, verbose=args.verbose
@@ -189,7 +188,7 @@ Examples:
         if args.verbose:
             print("Behavior: SKIP (build failed)")
     
-    # Phase 6: Summary and Results
+    # Phase 5: Summary and Results
     behavior_passed = behavior_result is None or behavior_result['status'] in ['PASS', 'SKIP']
     status = "PASS" if build_passed and test_rc == 0 and behavior_passed else "FAIL"
     process_end = datetime.datetime.now(datetime.timezone.utc)
@@ -197,9 +196,10 @@ Examples:
     summary = {
         "status": status,
         "detected_stack": stack,
-        "docker_image": image,
-        "is_custom_image": is_custom if args.smart_docker else False,
-        "detected_versions": detected_versions if args.smart_docker else {},
+        "docker_image": build_result.get("image_used", "unknown"),
+        "build_config": build_result.get("config", {}),
+        "from_cache": build_result.get("from_cache", False),
+        "attempt_number": build_result.get("attempt_number", 0),
         "metadata": metadata,
         "build_validation": {
             "build_classification": build_failure,
@@ -227,6 +227,13 @@ Examples:
     # Display results
     if args.verbose:
         print(f"\nVerification Status: {status}")
+        if build_result.get("from_cache"):
+            print(f"Build Config: Cached (JDK {build_result['config']['jdk']}, {stack.title()} {build_result['config']['tool']})")
+        else:
+            print(f"Build Config: Found after {build_result.get('attempt_number', 0)} attempts")
+            print(f"  Image: {build_result.get('image_used', 'unknown')}")
+            print(f"  JDK: {build_result['config']['jdk']}, {stack.title()}: {build_result['config']['tool']}")
+        
         if summary['build_validation']['build_status'] == 'FAIL':
             failure_info = summary['build_validation']['build_classification']
             print(f"Build Failed: {failure_info['type']} - {failure_info['reason']}")
