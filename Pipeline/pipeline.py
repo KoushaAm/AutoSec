@@ -112,6 +112,21 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 def _exploiter_node(state: AutoSecState) -> Command:
     logger.info("Node: exploiter started")
 
+    # saving vulnerabilities json into result.json in exploiter's project directory
+    raw_vuln_dir = os.path.join(os.getcwd(), "Agents", "Exploiter", "vuln_agent", "modules", "data", "raw", "result.json")
+    print("raw_vuln_dir", raw_vuln_dir)
+
+    # TODO: UNCOMMENT THIS WHEN FINDER IS RUNNING AND stat["vuln"] exists
+    # vuln_data = state.get("vuln", None)
+    #
+    # if not vuln_data:
+    #     logger.error("Vulnerability data not found")
+    #     return Command(goto=END, update=state)
+    #
+    # with open(raw_vuln_dir, "w") as f:
+    #     f.write(json.dumps(vuln_data))
+
+    # taking a copy of the state
     new_state = dict(state)
     project_name = new_state.get("project_name")
     if not project_name:
@@ -120,13 +135,13 @@ def _exploiter_node(state: AutoSecState) -> Command:
     exploiter_dir = os.path.join(os.getcwd(), "Agents", "Exploiter")
     exploiter_main = os.path.join(exploiter_dir, "main.py")
 
-    # (Optional) sanity: ensure exploiter main exists
     if not os.path.exists(exploiter_main):
         raise FileNotFoundError(f"Exploiter entrypoint not found: {exploiter_main}")
 
+    # Execution
     run_cmd = [
-        sys.executable,          # use the same venv python running the pipeline
-        "main.py",               # run from within exploiter_dir via cwd
+        sys.executable,
+        "main.py",
         "--dataset", "cwe-bench-java",
         "--project", project_name,
         "--model", "gpt5",
@@ -140,11 +155,9 @@ def _exploiter_node(state: AutoSecState) -> Command:
         subprocess.run(run_cmd, cwd=exploiter_dir, check=True)
     except subprocess.CalledProcessError as e:
         logger.error(f"Exploiter subprocess failed (exit={e.returncode}).")
-        # policy: retry finder, or stop.
-        # return Command(goto="finder", update=new_state)
         return Command(goto=END, update=new_state)
 
-    # Read exploiter report to decide what to do next
+    # opening exploiter report to decide what to do next
     report_path = os.path.join(
         exploiter_dir,
         "data",
@@ -157,14 +170,12 @@ def _exploiter_node(state: AutoSecState) -> Command:
 
     if not os.path.exists(report_path):
         logger.error(f"Exploiter report not found: {report_path}")
-        # return Command(goto="finder", update=new_state)
         return Command(goto=END, update=new_state)
 
     with open(report_path, "r") as f:
         report_data = json.load(f)
 
-    # exploitable = bool(report_data.get("exploitable", False))
-
+    # here we check if vulnerability exploitation was successful
     if isinstance(report_data, dict):
         exploitable = bool(report_data.get("exploitable", False))
     elif isinstance(report_data, list):
