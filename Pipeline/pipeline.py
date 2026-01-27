@@ -1,4 +1,4 @@
-from typing import TypedDict, Dict, Any, Optional
+from typing import TypedDict, Dict, Any, Optional, List
 import json
 import subprocess
 import os
@@ -7,16 +7,26 @@ import argparse
 import sys
 from langgraph.graph import StateGraph, END, START
 from langgraph.types import Command
+from pathlib import Path
 
 # from Agents.Exploiter.data.primevul.setup import project_slug
 # local imports
 from . import logger
-# from Agents.Patcher import patcher_main
+from Agents.Patcher import patcher_main
+from Agents.Finder.src.types import FinderOutput
+from Agents.Finder.src.output_converter import sarif_to_finder_output
+
+# relative path information
+BASE_DIR = Path(__file__).resolve().parent.parent
+PROJECTS_DIR = (BASE_DIR / "Projects").resolve()
+AGENTS_DIR   = (BASE_DIR / "Agents").resolve()
 
 class AutoSecState(TypedDict, total=False):
     project_name: Optional[str]         # ex: jenkinsci__perfecto-plugin_CVE
+    language: Optional[str]
     vuln_id: Optional[str]
     vuln: Optional[Dict[str, Any]]
+    finder_output: Optional[List[FinderOutput]]
     artifacts: Optional[Dict[str, str]]
     exploiter: Optional[Dict[str, Any]]
     patcher: Optional[Dict[str, Any]]
@@ -41,7 +51,6 @@ def _build_workflow() -> Any:
     workflow = graph.compile()
     return workflow
 
-
 def get_db() -> dict:
     # function to pull vulnerabilities from database
     return [] # returns json object
@@ -55,55 +64,58 @@ def push_db() -> tuple[int, str]:
 def _finder_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node - finder started")
 
-    # project_name = state["project_name"]
-    # query = state["vuln_id"]
+    project_name = state["project_name"]
+    query = state["vuln_id"] + "wLLM"
 
-    # # 1. setup command to have IRIS inside docker container
-    # docker_cmd = [
-    #     "docker", "run",
-    #     "--platform=linux/amd64",
-    #     "--rm",
-    #     "-v", "/home/vinci/AutoSec/Projects:/workspace/Projects",
-    #     "-v", "/home/vinci/AutoSec/Agents:/workspace/Agents",
-    #     "-w", "/workspace/Agents/Finder",
-    #     "iris:latest",
-    #     "bash", "-lc",
-    #     f"source /opt/conda/etc/profile.d/conda.sh && conda activate iris && "
-    #     f"python3 ./scripts/build_and_analyze.py "
-    #     f"--project-name {project_name} "
-    #     f"--zip-path /workspace/Projects/{project_name}.zip "
-    #     f"--query {query}"
-    # ]
+    # 1. setup command to have IRIS inside docker container
+    docker_cmd = [
+        "docker", "run",
+        "--platform=linux/amd64",
+        "--rm",
+        "-v", f"{PROJECTS_DIR}:/workspace/Projects",
+        "-v", f"{AGENTS_DIR}:/workspace/Agents",
+        "-w", "/workspace/Agents/Finder",
+        "iris:latest",
+        "bash", "-lc",
+        f"source /opt/conda/etc/profile.d/conda.sh && conda activate iris && "
+        f"python3 ./scripts/build_and_analyze.py "
+        f"--project-name {project_name} "
+        f"--zip-path /workspace/Projects/{project_name}.zip "
+        f"--query {query}"
+    ]
 
-    # logger.info(f"Running IRIS inside Docker for project {project_name}")
+    logger.info(f"Running IRIS inside Docker for project {project_name}")
 
     # 2. Run IRIS analysis
-    # try:
-    #     subprocess.run(docker_cmd, check=True, text=True)
+    try:
+        subprocess.run(docker_cmd, check=True, text=True)
 
-    # # analysis failed for some reason
-    # except subprocess.CalledProcessError as e:
-    #         print("Finder failed with an error")
-    #         print("Return code:", e.returncode)
-    #         print("stdout:", e.stdout)
-    #         print("stderr:", e.stderr)
+    # analysis failed for some reason
+    except subprocess.CalledProcessError as e:
+            print("Finder failed with an error")
+            print("Return code:", e.returncode)
+            print("stdout:", e.stdout)
+            print("stderr:", e.stderr)
 
-    #         state["vuln"] = None
-    #         return state
+            state["finder_output"] = None
+            state["vuln"] = None
+            return state
 
-    # # 3. Load IRIS output
-    # sarif_path = f"./Agents/Finder/output/{project_name}/test/{query}-posthoc-filter/results.sarif"
-    # try:
-    #     with open(sarif_path) as f:
-    #         findings = json.load(f)
+    # 3. Load IRIS output
+    sarif_path = f"./Agents/Finder/output/{project_name}/test/{query}-posthoc-filter/results.sarif"
+    try:
+        with open(sarif_path) as f:
+            findings = json.load(f)
 
-    #     # 4. Save results into pipeline state
-    #     state["vuln"] = findings
+        # 4. Save results into pipeline state
+        state["finder_output"] = sarif_to_finder_output(findings, cwe_id=state["vuln_id"])
+        state["vuln"] = findings # keep oringial json dump just in case its needed
 
-    # # no vulnerabilites were found
-    # except FileNotFoundError:
-    #     print("Finder found no vulnerabilites")
-    #     state["vuln"] = None
+    # no vulnerabilites were found
+    except FileNotFoundError:
+        print("Finder found no vulnerabilites")
+        state["finder_output"] = None
+        state["vuln"] = None
 
     return state
 
@@ -245,8 +257,9 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 def pipeline_main():
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
-        "project_name": "codehaus-plexus__plexus-archiver_CVE-2018-1002200_3.5",
-        "vuln_id": "cwe-022wLLM",
+        "project_name": "perwendel__spark_CVE-2018-9159_2.7.1",
+        "vuln_id": "cwe-022",
+        "language": "python",
     }
 
     workflow = _build_workflow()

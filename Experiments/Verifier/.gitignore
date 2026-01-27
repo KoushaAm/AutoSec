@@ -1,17 +1,42 @@
-artifacts/
-out/
-outs/
-*.class
-*.jar
-*.war
-*.ear
-target/
-build/
+# Build artifacts and outputs
+build/artifacts/
+**/out/
+**/target/
+**/build/
+
+# Verifier output directories
+output/
+unified_verification_output/
+
+# Java compilation outputs (in test projects)
+**/*.class
+**/*.jar
+**/*.war
+**/*.ear
+
+# Generated test files (smoke tests create temporary files)
+**/src/test/java/generated/
+
+# Python cache and bytecode
 __pycache__/
-.gradle/
+*.pyc
+*.pyo
+*.pyd
+
+# IDE and editor files
+.DS_Store
 .vscode/
 .idea/
-*.iml
-.DS_Store
-Thumbs.db
+*.swp
+*.swo
+*~
+
+# Temporary and log files
 *.log
+*.tmp
+.temp/
+artifacts/
+
+# Docker volumes and build caches
+.docker/
+build-cache/
