@@ -42,15 +42,17 @@ class JavaProjectDetector:
         return {
             "maven": JavaBuildStack(
                 name="maven",
-                build_cmd_with_wrapper="./mvnw clean compile -B",
-                build_cmd_without_wrapper="mvn clean compile -B",
+                # Use test-compile to catch test framework issues during retry
+                build_cmd_with_wrapper="./mvnw clean test-compile -B",
+                build_cmd_without_wrapper="mvn clean test-compile -B",
                 test_cmd_with_wrapper="./mvnw test -B",
                 test_cmd_without_wrapper="mvn test -B"
             ),
             "gradle": JavaBuildStack(
                 name="gradle",
-                build_cmd_with_wrapper="./gradlew build --no-daemon",
-                build_cmd_without_wrapper="gradle build --no-daemon",
+                # Gradle: compile main + test code without running tests
+                build_cmd_with_wrapper="./gradlew compileJava compileTestJava --no-daemon",
+                build_cmd_without_wrapper="gradle compileJava compileTestJava --no-daemon",
                 test_cmd_with_wrapper="./gradlew test --no-daemon",
                 test_cmd_without_wrapper="gradle test --no-daemon"
             ),
