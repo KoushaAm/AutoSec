@@ -17,7 +17,7 @@ import pathlib
 sys.path.insert(0, str(pathlib.Path(__file__).parent / "pipeline_verifier"))
 
 # Import and run the CLI
-from pipeline_verifier.cli import main
+from pipeline.cli import main
 
 if __name__ == "__main__":
     main()
