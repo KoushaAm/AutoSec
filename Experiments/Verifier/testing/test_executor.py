@@ -6,7 +6,6 @@ import xml.etree.ElementTree as ET
 from typing import Dict, List, Any, Tuple, Callable
 
 from .test_discovery import TestDiscovery
-from .smoke_generator import SmokeTestGenerator
 
 
 class TestResultParser:
@@ -121,11 +120,10 @@ class TestResultParser:
 
 
 class TestExecutor:
-    """Handles execution of tests and coordination between discovery, generation, and execution"""
+    """Handles execution of tests and coordination between discovery and execution"""
     
     def __init__(self):
         self.test_discovery = TestDiscovery()
-        self.smoke_generator = SmokeTestGenerator()
         self.result_parser = TestResultParser()
     
     def execute_behavior_validation(
@@ -139,7 +137,7 @@ class TestExecutor:
         timeout: int = 1200, 
         verbose: bool = False
     ) -> Dict[str, Any]:
-        """Execute complete behavior validation pipeline"""
+        """Execute behavior validation by running existing tests only"""
         behavior_result = {
             "status": "UNKNOWN",
             "check_name": "behavior_validation", 
@@ -154,7 +152,7 @@ class TestExecutor:
         behavior_start = time.time()
         
         try:
-            # Phase 1: Test Discovery
+            # Test Discovery
             test_discovery = self.test_discovery.discover_tests(project_path, stack_name)
             behavior_result["test_discovery"] = test_discovery
             
@@ -165,17 +163,30 @@ class TestExecutor:
                     print("Tests: No tests discovered")
             
             if test_discovery["has_tests"]:
-                # Phase 2A: Execute existing tests
+                # Execute existing tests
                 behavior_result.update(self._execute_existing_tests(
                     project_path, artifacts_path, test_discovery, 
                     docker_image, has_wrapper, docker_runner_func, timeout, verbose
                 ))
             else:
-                # Phase 2B: Generate and execute smoke tests
-                behavior_result.update(self._execute_smoke_tests(
-                    project_path, artifacts_path, stack_name,
-                    docker_image, has_wrapper, docker_runner_func, timeout, verbose
-                ))
+                # No tests to run
+                behavior_result["status"] = "SKIP"
+                behavior_result["recommendations"] = ["No existing tests found in project"]
+                behavior_result["test_execution"] = {
+                    "command_executed": None,
+                    "return_code": 0,
+                    "duration_seconds": 0,
+                    "test_results": {
+                        "total_tests": 0,
+                        "passed_tests": 0,
+                        "failed_tests": 0,
+                        "skipped_tests": 0,
+                        "test_success_rate": 0.0,
+                        "test_reports_found": False
+                    }
+                }
+                if verbose:
+                    print("   SKIP: No tests to execute")
         
         except Exception as e:
             behavior_result["status"] = "ERROR"
@@ -204,7 +215,7 @@ class TestExecutor:
         verbose: bool
     ) -> Dict[str, Any]:
         if verbose:
-            print("Phase 2A: Existing Test Execution")
+            print("Executing existing tests...")
         
         test_commands = test_discovery["test_commands"]
         test_cmd = test_commands[0] if has_wrapper else test_commands[1] if len(test_commands) > 1 else test_commands[0]
@@ -255,120 +266,6 @@ class TestExecutor:
                     print(f"   No test reports found - likely compilation or setup failure")
         
         return execution_result
-    
-    def _execute_smoke_tests(
-        self,
-        project_path: pathlib.Path,
-        artifacts_path: pathlib.Path,
-        stack_name: str,
-        docker_image: str,
-        has_wrapper: bool,
-        docker_runner_func: Callable,
-        timeout: int,
-        verbose: bool
-    ) -> Dict[str, Any]:
-        if verbose:
-            print("Phase 2B: Smoke Test Generation & Execution")
-        
-        try:
-            smoke_generation = self.smoke_generator.generate_smoke_tests(project_path, stack_name)
-            
-            if not smoke_generation["smoke_tests_generated"]:
-                return {
-                    "status": "SKIP",
-                    "recommendations": ["No smoke tests could be generated"],
-                    "test_execution": {
-                        "command_executed": None,
-                        "return_code": 0,
-                        "duration_seconds": 0,
-                        "test_results": {
-                            "total_tests": 0,
-                            "passed_tests": 0,
-                            "failed_tests": 0,
-                            "skipped_tests": 0,
-                            "test_success_rate": 0.0,
-                            "test_reports_found": False
-                        }
-                    },
-                    "smoke_test_generation": smoke_generation
-                }
-            
-            # Execute smoke tests
-            test_commands = self.test_discovery._get_test_commands_for_stack(stack_name)
-            test_cmd = test_commands[0] if has_wrapper else test_commands[1] if len(test_commands) > 1 else test_commands[0]
-            
-            test_rc, test_duration = docker_runner_func(
-                docker_image, test_cmd, project_path, artifacts_path, timeout
-            )
-            
-            # Parse results
-            test_results = self.result_parser.parse_test_results(project_path, stack_name, test_rc)
-            
-            # Clean up generated tests
-            self.smoke_generator.cleanup_generated_tests(project_path)
-            
-            execution_result = {
-                "test_execution": {
-                    "command_executed": test_cmd,
-                    "return_code": test_rc,
-                    "duration_seconds": round(test_duration, 2),
-                    "test_results": test_results
-                },
-                "smoke_test_generation": smoke_generation,
-                "cleanup_performed": True
-            }
-            
-            # Determine status and recommendations
-            if test_rc == 0 and test_results["failed_tests"] == 0:
-                execution_result["status"] = "PASS"
-                execution_result["recommendations"] = ["Smoke tests passed - basic behavior validated"]
-                
-                if verbose:
-                    test_types = ", ".join(smoke_generation.get("test_types", []))
-                    print(f"   PASS: Smoke tests executed - {test_types}")
-                    
-            elif test_results["failed_tests"] > 0:
-                execution_result["status"] = "FAIL"  
-                execution_result["recommendations"] = ["Smoke tests failed - potential issues detected"]
-                
-                if verbose:
-                    failed = test_results["failed_tests"]
-                    print(f"   FAIL: {failed} smoke tests failed")
-                    
-            else:
-                execution_result["status"] = "ERROR"
-                execution_result["recommendations"] = ["Smoke test execution failed"]
-                
-                if verbose:
-                    print(f"   ERROR: Smoke test execution failed (RC: {test_rc})")
-            
-            return execution_result
-            
-        except Exception as e:
-            # Try cleaning up even on error
-            try:
-                self.smoke_generator.cleanup_generated_tests(project_path)
-            except:
-                pass
-            
-            return {
-                "status": "ERROR",
-                "error": str(e),
-                "recommendations": [f"Smoke test execution error: {e}"],
-                "test_execution": {
-                    "command_executed": None,
-                    "return_code": -1,
-                    "duration_seconds": 0,
-                    "test_results": {
-                        "total_tests": 0,
-                        "passed_tests": 0,
-                        "failed_tests": 0,
-                        "skipped_tests": 0,
-                        "test_success_rate": 0.0,
-                        "test_reports_found": False
-                    }
-                }
-            }
     
     def format_behavior_results_for_display(self, behavior_result: Dict[str, Any], verbose: bool = False) -> None:
         if not behavior_result:
