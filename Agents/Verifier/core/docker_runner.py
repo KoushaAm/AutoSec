@@ -307,32 +307,3 @@ def check_docker() -> bool:
         return result.returncode == 0
     except Exception:
         return False
-
-
-def get_docker_image_for_stack(stack: str) -> str:
-    """
-    Get default Docker image for a stack type.
-    
-    This is now primarily used as a fallback. The main build_with_retry()
-    method handles intelligent image selection.
-    """
-    default_images = {
-        "maven": "maven:3.9-eclipse-temurin-17",
-        "gradle": "gradle:8-jdk17",
-        "javac": "eclipse-temurin:17-jdk"
-    }
-    return default_images.get(stack, "eclipse-temurin:17-jdk")
-
-
-def classify_build_failure(return_code: int) -> Dict[str, str]:
-    """Classify build failure based on return code."""
-    if return_code == 0:
-        return {"type": "success", "reason": "Build completed successfully"}
-    elif return_code == 1:
-        return {"type": "compilation_error", "reason": "Compilation or build script failure"}
-    elif return_code == 124:
-        return {"type": "timeout", "reason": "Build exceeded time limit"}
-    elif return_code == 125:
-        return {"type": "docker_error", "reason": "Docker execution error"}
-    else:
-        return {"type": "unknown", "reason": f"Build failed with exit code {return_code}"}
