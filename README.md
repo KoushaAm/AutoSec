@@ -30,8 +30,13 @@ docker build -f Dockerfile --platform linux/x86_64 -t iris:latest .
 docker run --platform=linux/amd64 -it iris:latest
 ```
 
+### 5. Make sure to have an OpenAI key for the Exploiter Module
+Export your OpenAI API key as OPENAI_KEY_FAULTLINE on your OS
+```
+export OPENAI_KEY_FAULTLINE="your_api_key_here"
+```
 
-### 5. Run the Pipeline
+### 6. Run the Pipeline
 ```bash
 python3 main.py
 
