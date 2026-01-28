@@ -13,6 +13,7 @@ from pathlib import Path
 # local imports
 from . import logger
 from Agents.Patcher import patcher_main
+from Agents.Verifier import verifier_main
 from Agents.Finder.src.types import FinderOutput
 from Agents.Finder.src.output_converter import sarif_to_finder_output
 
@@ -234,23 +235,47 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
     return state
 
 
-def _verifier_node(state: AutoSecState) -> AutoSecState:
+def _verifier_node(state: AutoSecState) -> Command:
     logger.info("Node: verifier started")
-
-    retry_finder = False
+    
     new_state = dict(state)
-
-    if retry_finder:
-        return Command(
-            goto="finder",
-            update=new_state
-        )
-
-    # finish pipeline
-    return Command(
-        goto=END,
-        update=new_state
-    )
+    
+    try:
+        # currently uses patcher's latest output but may need to change to state
+        logger.info("Running Verifier on latest Patcher output...")
+        verification_results = verifier_main(use_latest=True)
+        
+        new_state["verifier"] = verification_results
+        
+        # summary log
+        if verification_results.get("success"):
+            total = verification_results.get("patches_verified", 0)
+            passed = verification_results.get("passed", 0)
+            failed = verification_results.get("failed", 0)
+            
+            logger.info(f"Verifier completed: {passed}/{total} patches passed, {failed} failed")
+            
+            # TODO: Implement feedback loops
+            # - If patches PASSED → goto="finder" (find more vulnerabilities)
+            # - If patches FAILED → goto="patcher" (generate better patches)
+            # For now: linear pipeline ends here
+            
+            logger.info("Verification complete. Pipeline finished (feedback loops not yet implemented).")
+            return Command(goto=END, update=new_state)
+        else:
+            # Verification encountered an error
+            error = verification_results.get("error", "Unknown error")
+            logger.error(f"Verifier failed: {error}")
+            return Command(goto=END, update=new_state)
+            
+    except Exception as e:
+        logger.error(f"Verifier node encountered exception: {e}")
+        new_state["verifier"] = {
+            "success": False,
+            "error": str(e),
+            "patches_verified": 0
+        }
+        return Command(goto=END, update=new_state)
 
 
 # ====== Execute workflow =====
