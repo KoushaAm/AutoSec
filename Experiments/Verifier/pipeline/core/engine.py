@@ -6,7 +6,10 @@ from typing import Dict, Any, List, Optional
 
 from ..models.verification import VerificationResult, PatchInfo
 from ..handlers.patch_handler import PatchParser, ProjectManager
-from ..handlers.verification_handler import BuildVerifier, ResultComparator, POVTester
+from ..handlers.build_handler import DockerBuildRunner
+from ..handlers.pov_handler import POVTestRunner
+from ..handlers.llm_test_handler import LLMTestHandler
+from ..handlers.result_evaluator import ResultEvaluator
 from ..utils.file_operations import ArtifactManager, ErrorHandler, ConfigManager
 
 # Import LLM patch applicator from within the module
@@ -22,13 +25,13 @@ class VerifierCore:
             pathlib.Path(self.config_manager.get("output_directory"))
         )
         
-        # Initialize handlers
         self.patch_parser = PatchParser()
-        self.patch_applicator = LLMPatchApplicator(model=Model.LLAMA3)  # No dry_run flag needed
+        self.patch_applicator = LLMPatchApplicator(model=Model.LLAMA3)
         self.project_manager = ProjectManager()
-        self.build_verifier = BuildVerifier()
-        self.result_comparator = ResultComparator()
-        self.pov_tester = POVTester()  # TODO: not yet implemented
+        self.build_runner = DockerBuildRunner()
+        self.pov_tester = POVTestRunner()
+        self.llm_test_handler = LLMTestHandler(verbose=True)
+        self.result_evaluator = ResultEvaluator()
     
     def verify_fixer_output(self, fixer_json_path: str) -> List[VerificationResult]:
         """Patch validation entry point"""
@@ -66,7 +69,7 @@ class VerifierCore:
         return results
     
     def _verify_single_patch(self, patch_info: PatchInfo, session_dir: pathlib.Path) -> VerificationResult:
-        """Single patch verification - only verify patched code builds and passes tests"""
+        """Single patch verification. Only verify patched code builds and passes tests"""
         start_time = datetime.datetime.now()
         patch_dir = self.artifact_manager.create_patch_directory(session_dir, patch_info.patch_id)
         
@@ -133,13 +136,13 @@ class VerifierCore:
             shutil.copy2(patched_file_path, target_file_in_verification)
             print("✓")
             
-            # Step 3: Build and test patched project
+            # Step 3: Build and test patched project (using new DockerBuildRunner)
             print(f"   [3/3] Building & testing patched project...", end=" ", flush=True)
-            patched_result = self.build_verifier.run_verification(verification_project_dir, patch_info)
+            patched_result = self.build_runner.run_verification(verification_project_dir, patch_info)
             print(f"{'✓' if patched_result.get('success') else '✗'}")
             
-            # Generate decision based only on patched result
-            verification_result = self.result_comparator.compare_results(
+            # Generate decision based only on patched result (using new ResultEvaluator)
+            verification_result = self.result_evaluator.compare_results(
                 patch_info, patched_result, start_time
             )
             
