@@ -78,9 +78,11 @@ class BuildVerifier:
             
             print(f"      [Test Discovery] Scanning for tests in {stack_name} project...")
             
-            # Discover tests
-            test_discovery = self.test_discovery.discover_tests(project_path, stack_name)
-            result["test_discovery"] = test_discovery
+            cmd = [
+                "python3", str(verifier_script),
+                "--input", str(absolute_project_path),
+                "--verbose"
+            ]
             
             if test_discovery["has_tests"]:
                 print(f"      [Test Discovery] Found {test_discovery['test_count']} existing test files ({test_discovery['test_framework']})")

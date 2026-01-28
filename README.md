@@ -22,7 +22,21 @@ Create `.env` in root directory:
 OPENROUTER_API_KEY=your_api_key_here
 ```
 
-### 4. Run the Pipeline
+### 4. Create the docker container for Finder
+Go to the /Agents/Finder folder and run the following
+```bash
+docker build -f Dockerfile --platform linux/x86_64 -t iris:latest .
+
+docker run --platform=linux/amd64 -it iris:latest
+```
+
+### 5. Make sure to have an OpenAI key for the Exploiter Module
+Export your OpenAI API key as OPENAI_KEY_FAULTLINE on your OS
+```
+export OPENAI_KEY_FAULTLINE="your_api_key_here"
+```
+
+### 6. Run the Pipeline
 ```bash
 python3 main.py
 
