@@ -227,7 +227,7 @@ class DockerRunner:
             
             rc, duration = self.run_command(image, build_cmd, worktree, artifacts, timeout)
             
-            # NEW: If build succeeded but we have tests, validate them too
+            # If build succeeded but we have tests, validate them too. 
             test_passed = True
             if rc == 0 and test_cmd:
                 if verbose:
