@@ -39,8 +39,8 @@ def _build_workflow() -> Any:
 
     # linear edges
     graph.add_edge(START, "finder")
-    graph.add_edge("finder", "exploiter")
-    graph.add_edge("patcher", "verifier")
+    # graph.add_edge("finder", "exploiter")
+    # graph.add_edge("patcher", "verifier")
 
     # conditional edges
     # exploiter -> finder OR exploiter -> patcher
@@ -62,6 +62,11 @@ def push_db() -> tuple[int, str]:
 def _finder_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node - finder started")
 
+    host_ws = os.environ.get("HOST_WORKSPACE")
+    host_ws = host_ws.replace("\\", "/") # for windows compatibility
+    if not host_ws:
+        raise RuntimeError("HOST_WORKSPACE env var not set. Add it in devcontainer.json.")
+    
     project_name = state["project_name"]
     query = state["vuln_id"] + "wLLM"
 
@@ -70,13 +75,13 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         "docker", "run",
         "--platform=linux/amd64",
         "--rm",
-        "-v", f"{PROJECTS_DIR}:/workspace/Projects",
-        "-v", f"{AGENTS_DIR}:/workspace/Agents",
+        "-v", f"{host_ws}/Projects:/workspace/Projects",
+        "-v", f"{host_ws}/Agents:/workspace/Agents",
         "-w", "/workspace/Agents/Finder",
         "iris:latest",
         "bash", "-lc",
-        f"source /opt/conda/etc/profile.d/conda.sh && conda activate iris && "
-        f"python3 ./scripts/build_and_analyze.py "
+        "source /opt/conda/etc/profile.d/conda.sh && conda activate iris && "
+        "python3 ./scripts/build_and_analyze.py "
         f"--project-name {project_name} "
         f"--zip-path /workspace/Projects/{project_name}.zip "
         f"--query {query}"

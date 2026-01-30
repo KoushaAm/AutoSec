@@ -1,15 +1,3 @@
 {
-   "recommendations": [
-      // MongoDB
-      "mongodb.mongodb-vscode",
-
-      // Code formatting and linting
-      "esbenp.prettier-vscode",
-
-      // Git
-      "eamodio.gitlens"
-   ],
-   "unwantedRecommendations": [
-      // Extensions that conflict with project setup
-   ]
+   "recommendations": ["ms-vscode-remote.remote-containers"]
 }
