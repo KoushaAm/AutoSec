@@ -2,14 +2,23 @@
    "name": "AutoSec Dev Container",
    "build": {
       "context": "..",
-      "dockerfile": ".devcontainer/dev.Dockerfile"
+      "dockerfile": "dev.Dockerfile"
    },
+
    "remoteUser": "vscode",
 
    "workspaceFolder": "/workspaces/autosec",
    "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/autosec,type=bind,consistency=cached",
 
+   // Docker-outside-of-Docker
    "mounts": ["source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"],
+
+   // Ensure vscode user can access the docker socket (common fix on Linux)
+   "runArgs": ["--init", "--group-add=0"],
+
+    "containerEnv": {
+        "HOST_WORKSPACE": "${localWorkspaceFolder}"
+    },
 
    "customizations": {
       "vscode": {
@@ -27,12 +36,16 @@
          "settings": {
             "terminal.integrated.defaultProfile.linux": "bash",
 
+            // Prefer the project venv (created in postCreate)
             "python.defaultInterpreterPath": "/workspaces/autosec/.venv/bin/python",
             "python.terminal.activateEnvironment": true,
-            "python.analysis.extraPaths": ["/workspaces/autosec"]
+
+            // Helps Pylance find your modules
+            "python.analysis.extraPaths": ["/workspaces/autosec"],
+
+            // Optional but nice: avoid "Select Interpreter" nag
+            "python.venvPath": "/workspaces/autosec"
          }
       }
-   },
-
-   "postCreateCommand": "bash .devcontainer/scripts/postCreate.sh"
+   }
 }
