@@ -126,7 +126,10 @@ class TestDiscovery:
                 "gradle test --no-daemon"
             ],
             "javac": [
-                "echo 'Tests not supported for javac projects without build system'"
+                # Compile tests and run with JUnit console launcher
+                "javac -cp .:junit-platform-console-standalone.jar:. *Test.java && java -jar junit-platform-console-standalone.jar --class-path . --scan-class-path",
+                # Fallback: just compile to verify syntax
+                "javac -cp . *Test.java"
             ]
         }
         
