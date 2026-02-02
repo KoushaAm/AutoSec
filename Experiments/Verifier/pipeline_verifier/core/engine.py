@@ -38,7 +38,20 @@ class VerifierCore:
         results = []
         session_dir = self.artifact_manager.create_session_directory(fixer_json_path)
         
-        for patch_data in fixer_data.get('patches', []):
+        # Check if Patcher output is empty
+        patches = fixer_data.get('patches', [])
+        if not patches:
+            print("\n⚠️  WARNING: No patches found in Patcher output")
+            print("   The Patcher may have failed to generate patches, or the input file is empty.")
+            print(f"   Input file: {fixer_json_path}")
+            
+            # Save empty session summary with warning
+            self.artifact_manager.save_session_summary(results, session_dir, fixer_json_path)
+            return results
+        
+        print(f"\nFound {len(patches)} patch(es) to verify\n")
+        
+        for patch_data in patches:
             patch_info = self.patch_parser.parse_fixer_patch(patch_data)
             cwe_id = patch_info.cwe_matches[0]['cwe_id'] if patch_info.cwe_matches else 'Unknown'
             
@@ -53,7 +66,7 @@ class VerifierCore:
         return results
     
     def _verify_single_patch(self, patch_info: PatchInfo, session_dir: pathlib.Path) -> VerificationResult:
-        """Single patch verification - full project builds with proper file substitution"""
+        """Single patch verification - only verify patched code builds and passes tests"""
         start_time = datetime.datetime.now()
         patch_dir = self.artifact_manager.create_patch_directory(session_dir, patch_info.patch_id)
         
@@ -70,13 +83,8 @@ class VerifierCore:
             target_file_path = patch_info.touched_files[0]
             target_filename = pathlib.Path(target_file_path).name
             
-            # Step 1: Build original vulnerable project
-            print(f"   [1/4] Building original project ({target_filename})...", end=" ", flush=True)
-            original_result = self.build_verifier.run_verification(vulnerable_project_path)
-            print(f"{'✓' if original_result.get('success') else '✗'}")
-            
-            # Step 2: Apply patch
-            print(f"   [2/4] Applying patch...", end=" ", flush=True)
+            # Step 1: Apply patch
+            print(f"   [1/3] Applying patch...", end=" ", flush=True)
             
             patch_info_dict = {
                 "unified_diff": patch_info.unified_diff,
@@ -107,8 +115,8 @@ class VerifierCore:
             patched_file_path = pathlib.Path(patched_file_info["output_path"])
             print("✓")
             
-            # Step 3: Create verification project
-            print(f"   [3/4] Creating patched project...", end=" ", flush=True)
+            # Step 2: Create verification project
+            print(f"   [2/3] Creating patched project...", end=" ", flush=True)
             verification_project_dir = patch_dir / "verification_project"
             verification_project_dir.mkdir(exist_ok=True)
             
@@ -125,20 +133,20 @@ class VerifierCore:
             shutil.copy2(patched_file_path, target_file_in_verification)
             print("✓")
             
-            # Step 4: Build patched project
-            print(f"   [4/4] Building patched project...", end=" ", flush=True)
-            patched_result = self.build_verifier.run_verification(verification_project_dir)
+            # Step 3: Build and test patched project
+            print(f"   [3/3] Building & testing patched project...", end=" ", flush=True)
+            patched_result = self.build_verifier.run_verification(verification_project_dir, patch_info)
             print(f"{'✓' if patched_result.get('success') else '✗'}")
             
-            # Compare and generate decision
+            # Generate decision based only on patched result
             verification_result = self.result_comparator.compare_results(
-                patch_info, original_result, patched_result, start_time
+                patch_info, patched_result, start_time
             )
             
             # Save artifacts
             self._save_verification_artifacts(
                 patch_info, patch_dir, patched_file_path, patch_result, 
-                original_result, patched_result, verification_result,
+                patched_result, verification_result,
                 target_filename, vulnerable_project_path, verification_project_dir
             )
             
@@ -149,12 +157,14 @@ class VerifierCore:
 
     def _save_verification_artifacts(self, patch_info: PatchInfo, patch_dir: pathlib.Path, 
                                    patched_file_path: pathlib.Path, patch_result: dict,
-                                   original_result: dict, patched_result: dict, 
+                                   patched_result: dict, 
                                    verification_result: VerificationResult,
                                    target_filename: str, vulnerable_project_path: pathlib.Path,
                                    verification_project_dir: pathlib.Path):
-        """Save verification artifacts"""
+        """Save verification artifacts with organized test results"""
         try:
+            import json
+            
             # Save detailed verification results
             results_file = patch_dir / "verification_results.json"
             results_data = {
@@ -164,12 +174,6 @@ class VerifierCore:
                     "model_used": patch_result.get("model_used", "unknown")
                 },
                 "build_verification": {
-                    "original": {
-                        "success": original_result.get("success", False),
-                        "return_code": original_result.get("return_code", -1),
-                        "duration": original_result.get("duration", 0),
-                        "tested_project": str(vulnerable_project_path)
-                    },
                     "patched": {
                         "success": patched_result.get("success", False),
                         "return_code": patched_result.get("return_code", -1),
@@ -177,11 +181,22 @@ class VerifierCore:
                         "tested_project": str(verification_project_dir)
                     }
                 },
+                "test_discovery": patched_result.get("test_discovery", {
+                    "has_tests": False,
+                    "test_count": 0,
+                    "message": "No test discovery performed"
+                }),
+                "test_execution": patched_result.get("test_execution", {
+                    "status": "SKIP",
+                    "message": "No tests executed"
+                }),
                 "final_decision": {
                     "status": verification_result.status.value,
                     "reasoning": verification_result.reasoning,
                     "confidence": verification_result.confidence_score,
-                    "verification_time": verification_result.verification_time
+                    "verification_time": verification_result.verification_time,
+                    "build_success": verification_result.build_success,
+                    "test_success": verification_result.test_success
                 }
             }
             
@@ -191,6 +206,24 @@ class VerifierCore:
             # Create unified diff file
             diff_file = patch_dir / "patch.diff"
             diff_file.write_text(patch_info.unified_diff, encoding='utf-8')
+            
+            # Save test results summary if tests were executed
+            test_execution = patched_result.get("test_execution", {})
+            if test_execution.get("test_results", {}).get("total_tests", 0) > 0:
+                test_summary_file = patch_dir / "test_summary.json"
+                test_summary = {
+                    "test_results": test_execution.get("test_results", {}),
+                    "test_discovery": patched_result.get("test_discovery", {}),
+                    "execution_details": {
+                        "command": test_execution.get("command", ""),
+                        "duration_seconds": test_execution.get("duration_seconds", 0),
+                        "return_code": test_execution.get("return_code", -1)
+                    }
+                }
+                with open(test_summary_file, 'w') as f:
+                    json.dump(test_summary, f, indent=2)
+                
+                print(f"   📊 Test summary saved to: {test_summary_file.name}")
             
         except Exception as e:
             print(f"   ⚠️  Failed to save artifacts: {e}")
