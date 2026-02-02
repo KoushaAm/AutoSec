@@ -16,7 +16,10 @@ output/
 # Ignore specific files
 cmd-line-exploit.txt
 
-# Projects
-Projects/
 # exploiter specific
 Agents/Exploiter/logs/*
+
+# Projects
+Projects/
+Experiments/
+Database/
