@@ -5,7 +5,7 @@
 - The following is done from the root directory
 
 ### 0. Launch Dev Container
-- 
+- Open the project in VS Code, then run "Dev Containers: Reopen in Container" from the Command Palette (Ctrl+Shift+P).
 
 ### 1. Create a Virtual Environment
 ```bash
@@ -31,7 +31,7 @@ Go to the root or `/Agents/Finder` folder and run the following
 docker build --platform linux/amd64 -t iris:latest -f Agents/Finder/Dockerfile Agents/Finder
 
 # Run from /Agents/Finder
-docker build -f Dockerfile --platform linux/x86_64 -t iris:latest .
+docker build -f Dockerfile --platform linux/amd64 -t iris:latest .
 
 docker run --platform=linux/amd64 -it iris:latest
 ```
