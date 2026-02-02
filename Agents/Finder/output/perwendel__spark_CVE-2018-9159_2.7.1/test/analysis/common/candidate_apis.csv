@@ -1,0 +1,554 @@
+package,clazz,func,full_signature
+org.slf4j,LoggerFactory,getLogger,Logger getLogger(Class<?> p0)
+java.util,HashMap,containsKey,boolean containsKey(Object p0)
+java.util,HashMap,get,Object get(Object p0)
+org.slf4j,Logger,warn,"void warn(String p0, Object p1, Object p2)"
+java.lang,Throwable,getMessage,String getMessage()
+java.util,HashMap,get,String get(Object p0)
+java.util,HashMap,put,"Object put(Integer p0, Object p1)"
+java.util,HashMap,"HashMap<Integer,Object>","HashMap<Integer,Object>()"
+java.util,HashMap,"HashMap<Integer,String>","HashMap<Integer,String>()"
+java.util,HashMap,put,"String put(Integer p0, String p1)"
+java.util,HashMap,"HashMap<Class<? extends Exception>,ExceptionHandlerImpl<>>","HashMap<Class<? extends Exception>,ExceptionHandlerImpl<>>()"
+java.util,Map,put,"ExceptionHandlerImpl<> put(Class<? extends Exception> p0, ExceptionHandlerImpl<> p1)"
+java.util,Map,containsKey,boolean containsKey(Object p0)
+java.lang,Class,getSuperclass,Class<?> getSuperclass()
+java.util,Map,get,ExceptionHandlerImpl<> get(Object p0)
+java.util,Map,clear,void clear()
+java.lang,RuntimeException,RuntimeException,RuntimeException()
+java.util,HashMap,"HashMap<String,QueryParamsMap>","HashMap<String,QueryParamsMap>()"
+java.util.regex,Pattern,compile,Pattern compile(String p0)
+java.lang,IllegalArgumentException,IllegalArgumentException,IllegalArgumentException(String p0)
+javax.servlet,ServletRequest,getParameterMap,"Map<String,String[]> getParameterMap()"
+java.util,Map,entrySet,"Set<Entry<String,String[]>> entrySet()"
+java.util,Entry,getKey,String getKey()
+java.util,Entry,getValue,String[] getValue()
+java.util,Map,put,"QueryParamsMap put(String p0, QueryParamsMap p1)"
+java.lang,String,isEmpty,boolean isEmpty()
+java.util,Map,get,QueryParamsMap get(Object p0)
+java.util.regex,Pattern,matcher,Matcher matcher(CharSequence p0)
+java.util.regex,Matcher,find,boolean find()
+java.lang,String,substring,String substring(int p0)
+java.util.regex,Matcher,group,String group()
+java.util.regex,Matcher,end,int end()
+java.lang,String,startsWith,boolean startsWith(String p0)
+java.lang,String,substring,"String substring(int p0, int p1)"
+java.lang,String,length,int length()
+java.util,Map,isEmpty,boolean isEmpty()
+java.lang,Boolean,valueOf,Boolean valueOf(String p0)
+java.lang,Integer,valueOf,Integer valueOf(String p0)
+java.lang,Long,valueOf,Long valueOf(String p0)
+java.lang,Float,valueOf,Float valueOf(String p0)
+java.lang,Double,valueOf,Double valueOf(String p0)
+java.util,HashMap,"HashMap<String,String[]>","HashMap<String,String[]>()"
+java.util,Map,entrySet,"Set<Entry<String,QueryParamsMap>> entrySet()"
+java.util,Map,put,"String[] put(String p0, String[] p1)"
+java.util,Entry,getValue,QueryParamsMap getValue()
+java.lang,Enum,Enum,"Enum(String p0, int p1)"
+java.util,HashMap,"HashMap<String,String>","HashMap<String,String>()"
+java.util,ArrayList,ArrayList<String>,ArrayList<String>()
+java.util,Collections,unmodifiableMap,"Map<K,V> unmodifiableMap(Map<? extends K,? extends V> p0)"
+java.util,Map,get,String get(Object p0)
+java.lang,String,toLowerCase,String toLowerCase()
+javax.servlet.http,HttpServletRequest,getMethod,String getMethod()
+javax.servlet,ServletRequest,getScheme,String getScheme()
+javax.servlet.http,HttpServletRequest,getHeader,String getHeader(String p0)
+javax.servlet,ServletRequest,getServerPort,int getServerPort()
+javax.servlet.http,HttpServletRequest,getPathInfo,String getPathInfo()
+javax.servlet.http,HttpServletRequest,getServletPath,String getServletPath()
+javax.servlet.http,HttpServletRequest,getContextPath,String getContextPath()
+java.lang,StringBuffer,toString,String toString()
+javax.servlet.http,HttpServletRequest,getRequestURL,StringBuffer getRequestURL()
+javax.servlet,ServletRequest,getContentType,String getContentType()
+javax.servlet,ServletRequest,getRemoteAddr,String getRemoteAddr()
+javax.servlet,ServletRequest,getCharacterEncoding,String getCharacterEncoding()
+javax.servlet,ServletRequest,getInputStream,ServletInputStream getInputStream()
+org.slf4j,Logger,warn,"void warn(String p0, Throwable p1)"
+javax.servlet,ServletRequest,getContentLength,int getContentLength()
+javax.servlet,ServletRequest,getParameter,String getParameter(String p0)
+javax.servlet,ServletRequest,getParameterValues,String[] getParameterValues(String p0)
+java.util,Map,keySet,Set<String> keySet()
+javax.servlet.http,HttpServletRequest,getHeaderNames,Enumeration<String> getHeaderNames()
+java.util,TreeSet,TreeSet<String>,TreeSet<String>()
+java.util,Enumeration,hasMoreElements,boolean hasMoreElements()
+java.util,Set,add,boolean add(String p0)
+java.util,Enumeration,nextElement,String nextElement()
+javax.servlet.http,HttpServletRequest,getQueryString,String getQueryString()
+javax.servlet,ServletRequest,setAttribute,"void setAttribute(String p0, Object p1)"
+javax.servlet,ServletRequest,getAttribute,Object getAttribute(String p0)
+java.util,HashSet,HashSet<String>,HashSet<String>()
+javax.servlet,ServletRequest,getAttributeNames,Enumeration<String> getAttributeNames()
+javax.servlet.http,HttpServletRequest,getSession,HttpSession getSession()
+javax.servlet.http,HttpServletRequest,getSession,HttpSession getSession(boolean p0)
+javax.servlet.http,HttpServletRequest,getCookies,Cookie[] getCookies()
+java.util,Map,put,"String put(String p0, String p1)"
+javax.servlet.http,Cookie,getName,String getName()
+javax.servlet.http,Cookie,getValue,String getValue()
+java.lang,String,equals,boolean equals(Object p0)
+javax.servlet.http,HttpServletRequest,getRequestURI,String getRequestURI()
+javax.servlet,ServletRequest,getProtocol,String getProtocol()
+org.slf4j,Logger,debug,void debug(String p0)
+java.lang,StringBuilder,StringBuilder,StringBuilder(String p0)
+java.lang,StringBuilder,append,StringBuilder append(String p0)
+java.net,URLDecoder,decode,"String decode(String p0, String p1)"
+java.lang,StringBuilder,toString,String toString()
+java.util,Collections,unmodifiableList,List<T> unmodifiableList(List<? extends T> p0)
+javax.servlet.http,HttpServletResponse,setStatus,void setStatus(int p0)
+javax.servlet.http,HttpServletResponse,getStatus,int getStatus()
+javax.servlet,ServletResponse,setContentType,void setContentType(String p0)
+javax.servlet,ServletResponse,getContentType,String getContentType()
+org.slf4j,Logger,isDebugEnabled,boolean isDebugEnabled()
+org.slf4j,Logger,debug,"void debug(String p0, Object[] p1)"
+javax.servlet.http,HttpServletResponse,sendRedirect,void sendRedirect(String p0)
+org.slf4j,Logger,debug,"void debug(String p0, Object p1, Object p2)"
+javax.servlet.http,HttpServletResponse,setHeader,"void setHeader(String p0, String p1)"
+javax.servlet.http,HttpServletResponse,sendError,void sendError(int p0)
+javax.servlet.http,HttpServletResponse,addHeader,"void addHeader(String p0, String p1)"
+javax.servlet.http,Cookie,Cookie,"Cookie(String p0, String p1)"
+javax.servlet.http,Cookie,setPath,void setPath(String p0)
+javax.servlet.http,Cookie,setDomain,void setDomain(String p0)
+javax.servlet.http,Cookie,setMaxAge,void setMaxAge(int p0)
+javax.servlet.http,Cookie,setSecure,void setSecure(boolean p0)
+javax.servlet.http,Cookie,setHttpOnly,void setHttpOnly(boolean p0)
+javax.servlet.http,HttpServletResponse,addCookie,void addCookie(Cookie p0)
+java.util,Optional,empty,Optional<T> empty()
+java.util,ArrayDeque,ArrayDeque<String>,ArrayDeque<String>()
+java.util.concurrent,CountDownLatch,CountDownLatch,CountDownLatch(int p0)
+org.slf4j,Logger,error,"void error(String p0, Throwable p1)"
+org.slf4j,LoggerFactory,getLogger,Logger getLogger(String p0)
+java.lang,IllegalStateException,IllegalStateException,IllegalStateException(String p0)
+org.slf4j,Logger,warn,void warn(String p0)
+java.util,Objects,requireNonNull,"T requireNonNull(T p0, String p1)"
+java.util,HashMap,"HashMap<String,WebSocketHandlerWrapper>","HashMap<String,WebSocketHandlerWrapper>()"
+java.util,Map,put,"WebSocketHandlerWrapper put(String p0, WebSocketHandlerWrapper p1)"
+java.util,Optional,of,Optional<T> of(T p0)
+java.util.concurrent,CountDownLatch,await,void await()
+org.slf4j,Logger,info,void info(String p0)
+java.lang,Thread,interrupt,void interrupt()
+java.lang,Thread,currentThread,Thread currentThread()
+java.lang,Thread,start,void start()
+java.lang,Thread,Thread,Thread(Runnable p0)
+java.util,Deque,addLast,void addLast(String p0)
+java.util,Deque,removeLast,String removeLast()
+java.util.stream,Stream,collect,"R collect(Collector<? super String,A,R> p0)"
+java.util,Collection,stream,Stream<String> stream()
+java.util.stream,Collectors,joining,"Collector<CharSequence,?,String> joining(CharSequence p0)"
+java.util.function,Consumer,accept,void accept(Exception p0)
+java.util.concurrent,CountDownLatch,countDown,void countDown()
+javax.servlet.http,HttpSession,getAttribute,Object getAttribute(String p0)
+javax.servlet.http,HttpSession,setAttribute,"void setAttribute(String p0, Object p1)"
+javax.servlet.http,HttpSession,getAttributeNames,Enumeration<String> getAttributeNames()
+java.util,TreeSet,add,boolean add(String p0)
+javax.servlet.http,HttpSession,getCreationTime,long getCreationTime()
+javax.servlet.http,HttpSession,getId,String getId()
+javax.servlet.http,HttpSession,getLastAccessedTime,long getLastAccessedTime()
+javax.servlet.http,HttpSession,getMaxInactiveInterval,int getMaxInactiveInterval()
+javax.servlet.http,HttpSession,setMaxInactiveInterval,void setMaxInactiveInterval(int p0)
+javax.servlet.http,HttpSession,invalidate,void invalidate()
+javax.servlet.http,HttpSession,isNew,boolean isNew()
+javax.servlet.http,HttpSession,removeAttribute,void removeAttribute(String p0)
+java.lang,Class,getSimpleName,String getSimpleName()
+java.util,HashMap,"HashMap<Object,EmbeddedServerFactory>","HashMap<Object,EmbeddedServerFactory>()"
+java.util,Map,get,EmbeddedServerFactory get(Object p0)
+java.lang,RuntimeException,RuntimeException,RuntimeException(String p0)
+java.util,Map,put,"EmbeddedServerFactory put(Object p0, EmbeddedServerFactory p1)"
+org.eclipse.jetty.server,Server,getConnectors,Connector[] getConnectors()
+java.net,ServerSocket,ServerSocket,ServerSocket(int p0)
+java.net,ServerSocket,getLocalPort,int getLocalPort()
+org.slf4j,Logger,error,"void error(String p0, Object p1)"
+org.eclipse.jetty.server,AbstractConnector,getServer,Server getServer()
+org.eclipse.jetty.server,Server,setConnectors,void setConnectors(Connector[] p0)
+org.eclipse.jetty.server.handler,HandlerWrapper,setHandler,void setHandler(Handler p0)
+java.util,ArrayList,ArrayList<Handler>,ArrayList<Handler>()
+org.eclipse.jetty.server.handler,HandlerList,HandlerList,HandlerList()
+org.eclipse.jetty.server.handler,HandlerCollection,setHandlers,void setHandlers(Handler[] p0)
+org.slf4j,Logger,info,"void info(String p0, Object p1)"
+org.slf4j,Logger,info,"void info(String p0, Object p1, Object p2)"
+org.eclipse.jetty.util.component,AbstractLifeCycle,start,void start()
+org.eclipse.jetty.server,Server,join,void join()
+org.eclipse.jetty.util.component,AbstractLifeCycle,stop,void stop()
+org.eclipse.jetty.util.thread,ThreadPool,getThreads,int getThreads()
+org.eclipse.jetty.util.thread,ThreadPool,getIdleThreads,int getIdleThreads()
+org.eclipse.jetty.server,Server,getThreadPool,ThreadPool getThreadPool()
+javax.servlet.http,HttpServletRequestWrapper,HttpServletRequestWrapper,HttpServletRequestWrapper(HttpServletRequest p0)
+javax.servlet,ServletRequestWrapper,getRequest,ServletRequest getRequest()
+javax.servlet,ServletRequestWrapper,getInputStream,ServletInputStream getInputStream()
+javax.servlet,ServletInputStream,ServletInputStream,ServletInputStream()
+java.io,ByteArrayInputStream,ByteArrayInputStream,ByteArrayInputStream(byte[] p0)
+java.io,ByteArrayInputStream,read,int read()
+java.io,ByteArrayInputStream,available,int available()
+org.eclipse.jetty.server.session,SessionHandler,SessionHandler,SessionHandler()
+javax.servlet,Filter,doFilter,"void doFilter(ServletRequest p0, ServletResponse p1, FilterChain p2)"
+org.eclipse.jetty.server,Request,setHandled,void setHandled(boolean p0)
+org.eclipse.jetty.server,Server,Server,Server(ThreadPool p0)
+org.eclipse.jetty.util.thread,QueuedThreadPool,QueuedThreadPool,"QueuedThreadPool(int p0, int p1, int p2)"
+org.eclipse.jetty.server,Server,Server,Server()
+org.eclipse.jetty.server,ServerConnector,ServerConnector,"ServerConnector(Server p0, ConnectionFactory[] p1)"
+org.eclipse.jetty.util.ssl,SslContextFactory,SslContextFactory,SslContextFactory(String p0)
+org.eclipse.jetty.server,ServerConnector,ServerConnector,"ServerConnector(Server p0, SslContextFactory p1, ConnectionFactory[] p2)"
+org.eclipse.jetty.util.ssl,SslContextFactory,setKeyStorePassword,void setKeyStorePassword(String p0)
+org.eclipse.jetty.util.ssl,SslContextFactory,setTrustStorePath,void setTrustStorePath(String p0)
+org.eclipse.jetty.util.ssl,SslContextFactory,setTrustStorePassword,void setTrustStorePassword(String p0)
+org.eclipse.jetty.util.ssl,SslContextFactory,setNeedClientAuth,void setNeedClientAuth(boolean p0)
+org.eclipse.jetty.util.ssl,SslContextFactory,setWantClientAuth,void setWantClientAuth(boolean p0)
+org.eclipse.jetty.server,AbstractConnector,setIdleTimeout,void setIdleTimeout(long p0)
+java.util.concurrent,TimeUnit,toMillis,long toMillis(long p0)
+org.eclipse.jetty.server,ServerConnector,setSoLingerTime,void setSoLingerTime(int p0)
+org.eclipse.jetty.server,AbstractNetworkConnector,setHost,void setHost(String p0)
+org.eclipse.jetty.server,AbstractNetworkConnector,setPort,void setPort(int p0)
+org.eclipse.jetty.server,HttpConfiguration,HttpConfiguration,HttpConfiguration()
+org.eclipse.jetty.server,HttpConfiguration,setSecureScheme,void setSecureScheme(String p0)
+org.eclipse.jetty.server,HttpConfiguration,addCustomizer,void addCustomizer(Customizer p0)
+org.eclipse.jetty.server,ForwardedRequestCustomizer,ForwardedRequestCustomizer,ForwardedRequestCustomizer()
+org.eclipse.jetty.server,HttpConnectionFactory,HttpConnectionFactory,HttpConnectionFactory(HttpConfiguration p0)
+java.lang,Class,newInstance,Object newInstance()
+java.lang,RuntimeException,RuntimeException,"RuntimeException(String p0, Throwable p1)"
+java.lang,Class,isAssignableFrom,boolean isAssignableFrom(Class<?> p0)
+java.lang,Class,isAnnotationPresent,boolean isAnnotationPresent(Class<? extends Annotation> p0)
+org.eclipse.jetty.websocket.server,WebSocketUpgradeFilter,configureContext,WebSocketUpgradeFilter configureContext(ServletContextHandler p0)
+org.eclipse.jetty.server.handler,Context,getAttribute,Object getAttribute(String p0)
+org.eclipse.jetty.server.handler,ContextHandler,getServletContext,Context getServletContext()
+java.lang,Class,getName,String getName()
+org.eclipse.jetty.servlet,ServletContextHandler,ServletContextHandler,"ServletContextHandler(HandlerContainer p0, String p1, boolean p2, boolean p3)"
+java.util,Optional,isPresent,boolean isPresent()
+org.eclipse.jetty.websocket.api,WebSocketPolicy,setIdleTimeout,void setIdleTimeout(long p0)
+org.eclipse.jetty.websocket.servlet,WebSocketServletFactory,getPolicy,WebSocketPolicy getPolicy()
+java.util,Optional,get,Integer get()
+org.eclipse.jetty.websocket.server,WebSocketUpgradeFilter,getFactory,WebSocketServletFactory getFactory()
+java.util,Map,get,WebSocketHandlerWrapper get(Object p0)
+org.eclipse.jetty.websocket.server,NativeWebSocketConfiguration,addMapping,"void addMapping(PathSpec p0, WebSocketCreator p1)"
+org.eclipse.jetty.http.pathmap,ServletPathSpec,ServletPathSpec,ServletPathSpec(String p0)
+java.util.concurrent.atomic,AtomicBoolean,AtomicBoolean,AtomicBoolean(boolean p0)
+java.util.concurrent.atomic,AtomicBoolean,set,void set(boolean p0)
+java.util.concurrent.atomic,AtomicBoolean,get,boolean get()
+javax.servlet,ServletResponse,isCommitted,boolean isCommitted()
+java.io,OutputStream,flush,void flush()
+java.io,OutputStream,close,void close()
+org.slf4j,Logger,info,"void info(String p0, Object[] p1)"
+java.lang,String,format,"String format(String p0, Object[] p1)"
+javax.servlet,FilterChain,doFilter,"void doFilter(ServletRequest p0, ServletResponse p1)"
+java.io,File,exists,boolean exists()
+java.net,URL,openConnection,URLConnection openConnection()
+java.net,HttpURLConnection,getResponseCode,int getResponseCode()
+java.net,URLConnection,getContentLength,int getContentLength()
+java.net,HttpURLConnection,disconnect,void disconnect()
+java.io,InputStream,close,void close()
+java.io,File,canRead,boolean canRead()
+java.io,File,isDirectory,boolean isDirectory()
+java.io,File,length,long length()
+java.net,URLConnection,getLastModified,long getLastModified()
+java.net,HttpURLConnection,setRequestMethod,void setRequestMethod(String p0)
+java.io,FileNotFoundException,FileNotFoundException,FileNotFoundException(String p0)
+java.io,IOException,IOException,"IOException(String p0, Throwable p1)"
+java.io,InputStream,read,int read(byte[] p0)
+java.io,File,lastModified,long lastModified()
+java.lang,String,hashCode,int hashCode()
+java.lang,String,indexOf,int indexOf(int p0)
+java.lang,StringBuilder,StringBuilder,StringBuilder(int p0)
+java.lang,AbstractStringBuilder,charAt,char charAt(int p0)
+java.lang,StringBuilder,deleteCharAt,StringBuilder deleteCharAt(int p0)
+java.lang,StringBuilder,insert,"StringBuilder insert(int p0, String p1)"
+java.lang,StringBuilder,insert,"StringBuilder insert(int p0, char p1)"
+java.lang,Class,getResource,URL getResource(String p0)
+java.lang,ClassLoader,getResource,URL getResource(String p0)
+java.lang,Class,getResourceAsStream,InputStream getResourceAsStream(String p0)
+java.lang,ClassLoader,getResourceAsStream,InputStream getResourceAsStream(String p0)
+java.lang,StringBuilder,append,StringBuilder append(char p0)
+java.net,MalformedURLException,MalformedURLException,MalformedURLException(String p0)
+java.lang,String,endsWith,boolean endsWith(String p0)
+java.io,File,File,File(String p0)
+java.io,File,getAbsolutePath,String getAbsolutePath()
+java.io,FileInputStream,FileInputStream,FileInputStream(File p0)
+java.net,URI,toURL,URL toURL()
+java.io,File,toURI,URI toURI()
+java.io,File,getPath,String getPath()
+java.lang,String,lastIndexOf,"int lastIndexOf(int p0, int p1)"
+java.lang,String,charAt,char charAt(int p0)
+java.lang,AbstractStringBuilder,length,int length()
+java.lang,StringBuilder,delete,"StringBuilder delete(int p0, int p1)"
+java.util,HashMap,"HashMap<String,HttpMethod>","HashMap<String,HttpMethod>()"
+java.util,HashMap,put,"HttpMethod put(String p0, HttpMethod p1)"
+java.lang,Enum,toString,String toString()
+java.util,HashMap,get,HttpMethod get(Object p0)
+java.lang,Enum,name,String name()
+java.util,ArrayList,ArrayList<RouteEntry>,ArrayList<RouteEntry>()
+java.util,ArrayList,ArrayList<RouteMatch>,ArrayList<RouteMatch>()
+java.util,Arrays,asList,List<T> asList(T[] p0)
+java.util,HashMap,"HashMap<String,RouteEntry>","HashMap<String,RouteEntry>()"
+java.util,Map,put,"RouteEntry put(String p0, RouteEntry p1)"
+java.util,Map,get,RouteEntry get(Object p0)
+java.lang,String,trim,String trim()
+org.slf4j,Logger,error,void error(String p0)
+java.nio,ByteBuffer,array,byte[] array()
+java.io,OutputStream,write,void write(byte[] p0)
+java.lang,String,getBytes,byte[] getBytes(String p0)
+java.io,IOException,IOException,IOException(Throwable p0)
+javax.servlet,FilterConfig,getInitParameter,String getInitParameter(String p0)
+java.lang,Class,forName,Class<?> forName(String p0)
+javax.servlet,ServletException,ServletException,ServletException(Throwable p0)
+java.lang,String,split,String[] split(String p0)
+javax.servlet,ServletException,ServletException,ServletException(String p0)
+java.lang,String,replace,"String replace(CharSequence p0, CharSequence p1)"
+java.nio.file,Path,toString,String toString()
+java.nio.file,Path,toAbsolutePath,Path toAbsolutePath()
+java.nio.file,Paths,get,"Path get(String p0, String[] p1)"
+java.util,HashMap,HashMap<>,HashMap<>()
+java.util,Optional,orElse,String orElse(String p0)
+java.util,Optional,ofNullable,Optional<T> ofNullable(T p0)
+java.lang,String,replaceAll,"String replaceAll(String p0, String p1)"
+java.util,Map,getOrDefault,"String getOrDefault(Object p0, String p1)"
+java.io,PrintWriter,write,void write(String p0)
+javax.servlet,ServletResponse,getWriter,PrintWriter getWriter()
+java.io,PrintWriter,flush,void flush()
+java.util,Map,forEach,"void forEach(BiConsumer<? super String,? super String> p0)"
+java.util,ArrayList,ArrayList<AbstractResourceHandler>,ArrayList<AbstractResourceHandler>()
+java.util,Date,toString,String toString()
+java.util,Date,Date,Date(long p0)
+java.lang,System,currentTimeMillis,long currentTimeMillis()
+java.util,Map,putAll,"void putAll(Map<? extends String,? extends String> p0)"
+java.util,HashMap,"HashMap<Class<?>,Class<?>>","HashMap<Class<?>,Class<?>>(int p0)"
+java.util,HashMap,"HashMap<String,Class<?>>","HashMap<String,Class<?>>(int p0)"
+java.util,HashSet,HashSet<Class<?>>,HashSet<Class<?>>(int p0)
+java.util,Map,put,"Class<?> put(Class<?> p0, Class<?> p1)"
+java.util,Map,entrySet,"Set<Entry<Class<?>,Class<?>>> entrySet()"
+java.util,Entry,getValue,Class<?> getValue()
+java.util,Entry,getKey,Class<?> getKey()
+java.util,Set,addAll,boolean addAll(Collection<? extends Class<?>> p0)
+java.util,Map,values,Collection<Class<?>> values()
+java.util,Set,add,boolean add(Class<?> p0)
+java.util,Map,put,"Class<?> put(String p0, Class<?> p1)"
+java.lang,Thread,getContextClassLoader,ClassLoader getContextClassLoader()
+java.lang,Class,getClassLoader,ClassLoader getClassLoader()
+java.util,Map,get,Class<?> get(Object p0)
+java.lang.reflect,Array,newInstance,"Object newInstance(Class<?> p0, int p1)"
+java.lang,ClassLoader,loadClass,Class<?> loadClass(String p0)
+java.lang,String,lastIndexOf,int lastIndexOf(int p0)
+java.lang,String,replace,"String replace(char p0, char p1)"
+java.util,Collection,isEmpty,boolean isEmpty()
+javax.servlet,ServletResponse,getOutputStream,ServletOutputStream getOutputStream()
+java.util.stream,Stream,anyMatch,boolean anyMatch(Predicate<? super String> p0)
+java.util,Collections,list,ArrayList<T> list(Enumeration<T> p0)
+javax.servlet.http,HttpServletRequest,getHeaders,Enumeration<String> getHeaders(String p0)
+java.util,Collection,contains,boolean contains(Object p0)
+javax.servlet.http,HttpServletResponse,getHeaders,Collection<String> getHeaders(String p0)
+java.util.zip,GZIPOutputStream,GZIPOutputStream,"GZIPOutputStream(OutputStream p0, boolean p1)"
+java.lang,String,contains,boolean contains(CharSequence p0)
+java.io,StringWriter,StringWriter,StringWriter(int p0)
+java.io,PrintWriter,PrintWriter,PrintWriter(Writer p0)
+java.io,PrintWriter,println,void println()
+java.io,StringWriter,toString,String toString()
+java.io,StringWriter,StringWriter,StringWriter()
+java.io,ByteArrayOutputStream,ByteArrayOutputStream,ByteArrayOutputStream()
+java.io,ByteArrayOutputStream,write,"void write(byte[] p0, int p1, int p2)"
+java.io,ByteArrayOutputStream,toByteArray,byte[] toByteArray()
+java.io,OutputStream,write,"void write(byte[] p0, int p1, int p2)"
+java.io,InputStreamReader,InputStreamReader,InputStreamReader(InputStream p0)
+java.io,Reader,read,int read(char[] p0)
+java.io,Writer,write,"void write(char[] p0, int p1, int p2)"
+java.lang,StringBuffer,StringBuffer,StringBuffer(String p0)
+java.lang,StringBuffer,append,StringBuffer append(String p0)
+java.util,Collections,sort,void sort(List<T> p0)
+java.lang,Float,compare,"int compare(float p0, float p1)"
+java.lang,Float,parseFloat,float parseFloat(String p0)
+java.net,URL,URL,URL(String p0)
+java.net,URL,getProtocol,String getProtocol()
+java.net,URI,getSchemeSpecificPart,String getSchemeSpecificPart()
+java.net,URL,getFile,String getFile()
+java.net,URI,getScheme,String getScheme()
+java.lang,String,indexOf,int indexOf(String p0)
+java.net,URL,toString,String toString()
+java.net,URI,URI,URI(String p0)
+java.net,URLConnection,setUseCaches,void setUseCaches(boolean p0)
+java.lang,CharSequence,length,int length()
+java.lang,Character,isWhitespace,boolean isWhitespace(char p0)
+java.lang,CharSequence,charAt,char charAt(int p0)
+java.lang,StringBuilder,StringBuilder,StringBuilder()
+java.lang,String,indexOf,"int indexOf(String p0, int p1)"
+java.lang,String,lastIndexOf,int lastIndexOf(String p0)
+java.util,Collection,toArray,T[] toArray(T[] p0)
+java.util,Collection,size,int size()
+java.util,Collection,iterator,Iterator<?> iterator()
+java.util,Iterator,hasNext,boolean hasNext()
+java.lang,StringBuilder,append,StringBuilder append(Object p0)
+java.util,Iterator,next,Object next()
+java.nio.charset,Charset,isSupported,boolean isSupported(String p0)
+java.lang,String,String,"String(byte[] p0, String p1)"
+java.lang,String,String,String(byte[] p0)
+java.util,HashMap,"HashMap<String,Class<?>>","HashMap<String,Class<?>>()"
+java.util,HashMap,put,"Class<?> put(String p0, Class<?> p1)"
+java.util,HashMap,"HashMap<Class<?>,String>","HashMap<Class<?>,String>()"
+java.util,HashMap,put,"String put(Class<?> p0, String p1)"
+java.util,HashMap,"HashMap<Class<?>,Method>","HashMap<Class<?>,Method>()"
+java.util,HashMap,put,"Method put(Class<?> p0, Method p1)"
+java.lang,Class,getMethod,"Method getMethod(String p0, Class<?>[] p1)"
+java.lang,Error,Error,Error(Throwable p0)
+java.lang,NumberFormatException,NumberFormatException,NumberFormatException(String p0)
+java.lang,StringBuilder,append,"StringBuilder append(CharSequence p0, int p1, int p2)"
+java.lang,StringBuilder,append,StringBuilder append(int p0)
+java.lang,IllegalArgumentException,IllegalArgumentException,IllegalArgumentException()
+java.lang,Appendable,append,Appendable append(char p0)
+org.eclipse.jetty.util,NotUtf8Exception,NotUtf8Exception,NotUtf8Exception(String p0)
+java.lang,RuntimeException,RuntimeException,RuntimeException(Throwable p0)
+java.lang,Appendable,append,"Appendable append(CharSequence p0, int p1, int p2)"
+java.lang,Character,toChars,char[] toChars(int p0)
+java.lang,AbstractStringBuilder,setLength,void setLength(int p0)
+java.lang,Throwable,printStackTrace,void printStackTrace()
+java.net,URLConnection,getInputStream,InputStream getInputStream()
+java.net,URLConnection,connect,void connect()
+java.net,URLConnection,getHeaderFields,"Map<String,List<String>> getHeaderFields()"
+java.util,Map,get,List<String> get(Object p0)
+org.apache.http.impl.client,HttpClientBuilder,build,CloseableHttpClient build()
+org.apache.http.impl.client,HttpClientBuilder,create,HttpClientBuilder create()
+org.apache.http.client.methods,HttpPost,HttpPost,HttpPost(String p0)
+org.apache.http.client,HttpClient,execute,HttpResponse execute(HttpUriRequest p0)
+org.apache.http,StatusLine,getStatusCode,int getStatusCode()
+org.apache.http,HttpResponse,getStatusLine,StatusLine getStatusLine()
+java.lang,Throwable,toString,String toString()
+org.apache.http.client.methods,HttpRequestBase,releaseConnection,void releaseConnection()
+org.powermock.reflect,Whitebox,setInternalState,"void setInternalState(Object p0, String p1, Object p2)"
+org.powermock.reflect,Whitebox,getInternalState,"T getInternalState(Object p0, String p1)"
+java.io,File,delete,boolean delete()
+java.io,FileWriter,FileWriter,FileWriter(File p0)
+java.io,File,File,"File(String p0, String p1)"
+java.lang,System,getProperty,String getProperty(String p0)
+java.io,Writer,write,void write(String p0)
+java.io,OutputStreamWriter,flush,void flush()
+java.io,OutputStreamWriter,close,void close()
+java.lang,String,getBytes,byte[] getBytes()
+java.nio,ByteBuffer,wrap,ByteBuffer wrap(byte[] p0)
+java.lang,String,equalsIgnoreCase,boolean equalsIgnoreCase(String p0)
+java.lang,UnsupportedOperationException,UnsupportedOperationException,UnsupportedOperationException()
+org.eclipse.jetty.util,URIUtil,encodePath,String encodePath(String p0)
+java.net,URLEncoder,encode,"String encode(String p0, String p1)"
+org.eclipse.jetty.websocket.client,WebSocketClient,WebSocketClient,WebSocketClient()
+org.eclipse.jetty.websocket.client,WebSocketClient,connect,"Future<Session> connect(Object p0, URI p1, ClientUpgradeRequest p2)"
+java.net,URI,create,URI create(String p0)
+org.eclipse.jetty.websocket.client,ClientUpgradeRequest,ClientUpgradeRequest,ClientUpgradeRequest()
+java.lang,Integer,Integer,Integer(int p0)
+java.lang,Float,Float,Float(float p0)
+java.lang,Double,Double,Double(double p0)
+java.lang,Long,Long,Long(long p0)
+java.util,Map,size,int size()
+java.util,Map,get,String[] get(Object p0)
+java.util,ArrayList,ArrayList<Cookie>,ArrayList<Cookie>()
+java.util,Collection,add,boolean add(Cookie p0)
+java.util,Set,toArray,Object[] toArray()
+javax.servlet.http,Cookie,getDomain,String getDomain()
+javax.servlet.http,Cookie,getPath,String getPath()
+javax.servlet.http,Cookie,getMaxAge,int getMaxAge()
+javax.servlet.http,Cookie,getSecure,boolean getSecure()
+javax.servlet.http,Cookie,isHttpOnly,boolean isHttpOnly()
+java.util,HashSet,HashSet<String>,HashSet<String>(Collection<? extends String> p0)
+java.util,Collections,enumeration,Enumeration<T> enumeration(Collection<T> p0)
+java.lang.reflect,Method,invoke,"Object invoke(Object p0, Object[] p1)"
+java.lang,Thread,setContextClassLoader,void setContextClassLoader(ClassLoader p0)
+java.net,URLClassLoader,getURLs,URL[] getURLs()
+java.lang,ClassLoader,getSystemClassLoader,ClassLoader getSystemClassLoader()
+java.net,URLClassLoader,URLClassLoader,"URLClassLoader(URL[] p0, ClassLoader p1)"
+java.util,HashMap,put,"Object put(Object p0, Object p1)"
+java.util,HashMap,HashMap,HashMap()
+java.lang,Exception,Exception,Exception(String p0)
+java.lang,Exception,Exception,Exception()
+java.io,File,File,"File(File p0, String p1)"
+org.eclipse.jetty.server,Server,setRequestLog,void setRequestLog(RequestLog p0)
+org.eclipse.jetty.server,NCSARequestLog,NCSARequestLog,NCSARequestLog(String p0)
+org.eclipse.jetty.util.thread,QueuedThreadPool,QueuedThreadPool,QueuedThreadPool(int p0)
+java.util,Map,get,ConnectionFactory get(Object p0)
+org.eclipse.jetty.server,SslConnectionFactory,getSslContextFactory,SslContextFactory getSslContextFactory()
+java.io,File,getName,String getName()
+org.eclipse.jetty.util.resource,Resource,getFile,File getFile()
+org.eclipse.jetty.util.ssl,SslContextFactory,getKeyStoreResource,Resource getKeyStoreResource()
+org.eclipse.jetty.util.ssl,SslContextFactory,getTrustStoreResource,Resource getTrustStoreResource()
+java.lang,Class,cast,SparkWebSocketCreator cast(Object p0)
+org.eclipse.jetty.websocket.api,WebSocketAdapter,WebSocketAdapter,WebSocketAdapter()
+javax.servlet,ServletContext,getAttribute,Object getAttribute(String p0)
+org.eclipse.jetty.websocket.server,NativeWebSocketConfiguration,getMatch,MappedResource<WebSocketCreator> getMatch(String p0)
+org.eclipse.jetty.http.pathmap,MappedResource,getPathSpec,PathSpec getPathSpec()
+org.eclipse.jetty.http.pathmap,PathSpec,getDeclaration,String getDeclaration()
+org.eclipse.jetty.websocket.server,NativeWebSocketConfiguration,getFactory,WebSocketServerFactory getFactory()
+java.lang,Integer,longValue,long longValue()
+org.eclipse.jetty.websocket.api,WebSocketPolicy,getIdleTimeout,long getIdleTimeout()
+org.eclipse.jetty.websocket.server,WebSocketServerFactory,getPolicy,WebSocketPolicy getPolicy()
+org.powermock.api.mockito.expectation,WithAnyArguments,withAnyArguments,OngoingStubbing<ServletContextHandler> withAnyArguments()
+org.powermock.api.mockito,PowerMockito,whenNew,ConstructorExpectationSetup<T> whenNew(Class<T> p0)
+java.util.concurrent,CountDownLatch,await,"boolean await(long p0, TimeUnit p1)"
+org.eclipse.jetty.websocket.api,RemoteEndpoint,sendString,void sendString(String p0)
+org.eclipse.jetty.websocket.api,Session,getRemote,RemoteEndpoint getRemote()
+org.eclipse.jetty.websocket.api,Session,close,"void close(int p0, String p1)"
+java.util,Collections,synchronizedList,List<T> synchronizedList(List<T> p0)
+java.util,ArrayList,ArrayList<E>,ArrayList<E>()
+java.util,HashMap,"HashMap<String,Book>","HashMap<String,Book>()"
+java.util,Random,Random,Random()
+java.util,Random,nextInt,int nextInt(int p0)
+java.util,Map,put,"Book put(String p0, Book p1)"
+java.lang,String,valueOf,String valueOf(int p0)
+java.util,Map,get,Book get(Object p0)
+java.util,Map,remove,Book remove(Object p0)
+java.util.zip,GZIPInputStream,GZIPInputStream,GZIPInputStream(InputStream p0)
+java.net,URLConnection,addRequestProperty,"void addRequestProperty(String p0, String p1)"
+java.util,HashMap,"HashMap<String,Object>","HashMap<String,Object>()"
+java.util,Map,put,"Object put(String p0, Object p1)"
+freemarker.template,Configuration,getTemplate,Template getTemplate(String p0)
+freemarker.template,Template,process,"void process(Object p0, Writer p1)"
+java.lang,IllegalArgumentException,IllegalArgumentException,IllegalArgumentException(Throwable p0)
+freemarker.template,Configuration,Configuration,Configuration(Version p0)
+freemarker.template,Configuration,setClassForTemplateLoading,"void setClassForTemplateLoading(Class<> p0, String p1)"
+com.google.gson,Gson,Gson,Gson()
+com.google.gson,Gson,toJson,String toJson(Object p0)
+java.lang,Enum,equals,boolean equals(Object p0)
+javax.servlet,FilterConfig,getFilterName,String getFilterName()
+javax.servlet,FilterConfig,getInitParameterNames,Enumeration<String> getInitParameterNames()
+javax.servlet,FilterConfig,getServletContext,ServletContext getServletContext()
+org.eclipse.jetty.server,ServerConnector,ServerConnector,ServerConnector(Server p0)
+org.eclipse.jetty.webapp,WebAppContext,WebAppContext,WebAppContext()
+org.eclipse.jetty.webapp,WebAppContext,setServer,void setServer(Server p0)
+org.eclipse.jetty.server.handler,ContextHandler,setContextPath,void setContextPath(String p0)
+org.eclipse.jetty.webapp,WebAppContext,setWar,void setWar(String p0)
+java.io,InputStream,read,int read()
+java.io,File,mkdirs,boolean mkdirs()
+java.io,File,createNewFile,boolean createNewFile()
+org.apache.http.conn.ssl,SSLConnectionSocketFactory,SSLConnectionSocketFactory,"SSLConnectionSocketFactory(SSLSocketFactory p0, HostnameVerifier p1)"
+org.apache.http.config,RegistryBuilder,build,Registry<ConnectionSocketFactory> build()
+org.apache.http.config,RegistryBuilder,register,"RegistryBuilder<ConnectionSocketFactory> register(String p0, ConnectionSocketFactory p1)"
+org.apache.http.config,RegistryBuilder,create,RegistryBuilder<I> create()
+org.apache.http.impl.conn,BasicHttpClientConnectionManager,BasicHttpClientConnectionManager,BasicHttpClientConnectionManager(Lookup<ConnectionSocketFactory> p0)
+org.apache.http.impl.client,HttpClientBuilder,setConnectionManager,HttpClientBuilder setConnectionManager(HttpClientConnectionManager p0)
+org.apache.http.impl.client,DefaultRedirectStrategy,DefaultRedirectStrategy,DefaultRedirectStrategy()
+org.apache.http.impl.client,DefaultRedirectStrategy,isRedirected,"boolean isRedirected(HttpRequest p0, HttpResponse p1, HttpContext p2)"
+org.apache.http.impl.client,HttpClientBuilder,setRedirectStrategy,HttpClientBuilder setRedirectStrategy(RedirectStrategy p0)
+org.apache.http,HttpResponse,getEntity,HttpEntity getEntity()
+org.apache.http,HttpMessage,getAllHeaders,Header[] getAllHeaders()
+org.apache.http.util,EntityUtils,toString,String toString(HttpEntity p0)
+org.apache.http,Header,getName,String getName()
+org.apache.http,Header,getValue,String getValue()
+org.apache.http.client.methods,HttpGet,HttpGet,HttpGet(String p0)
+org.apache.http.message,AbstractHttpMessage,setHeader,"void setHeader(String p0, String p1)"
+org.apache.http.client.methods,HttpEntityEnclosingRequestBase,setEntity,void setEntity(HttpEntity p0)
+org.apache.http.entity,StringEntity,StringEntity,StringEntity(String p0)
+org.apache.http.client.methods,HttpPatch,HttpPatch,HttpPatch(String p0)
+org.apache.http.client.methods,HttpDelete,HttpDelete,HttpDelete(String p0)
+org.apache.http.client.methods,HttpPut,HttpPut,HttpPut(String p0)
+org.apache.http.client.methods,HttpHead,HttpHead,HttpHead(String p0)
+org.apache.http.client.methods,HttpTrace,HttpTrace,HttpTrace(String p0)
+org.apache.http.client.methods,HttpOptions,HttpOptions,HttpOptions(String p0)
+java.util,Map,entrySet,"Set<Entry<String,String>> entrySet()"
+org.apache.http,HttpMessage,addHeader,"void addHeader(String p0, String p1)"
+java.util,Entry,getValue,String getValue()
+java.io,FileInputStream,FileInputStream,FileInputStream(String p0)
+javax.net.ssl,TrustManagerFactory,getInstance,TrustManagerFactory getInstance(String p0)
+javax.net.ssl,TrustManagerFactory,getDefaultAlgorithm,String getDefaultAlgorithm()
+javax.net.ssl,SSLContext,getInstance,SSLContext getInstance(String p0)
+java.security,KeyStore,getInstance,KeyStore getInstance(String p0)
+java.security,KeyStore,getDefaultType,String getDefaultType()
+java.security,KeyStore,load,"void load(InputStream p0, char[] p1)"
+java.lang,String,toCharArray,char[] toCharArray()
+java.io,FileInputStream,close,void close()
+javax.net.ssl,TrustManagerFactory,init,void init(KeyStore p0)
+javax.net.ssl,SSLContext,init,"void init(KeyManager[] p0, TrustManager[] p1, SecureRandom p2)"
+javax.net.ssl,TrustManagerFactory,getTrustManagers,TrustManager[] getTrustManagers()
+javax.net.ssl,SSLContext,getSocketFactory,SSLSocketFactory getSocketFactory()
+org.apache.http.client.methods,HttpRequestBase,HttpRequestBase,HttpRequestBase()
+org.apache.http.client.methods,HttpRequestBase,setURI,void setURI(URI p0)
+java.util,ArrayList,ArrayList<Object>,ArrayList<Object>()
+java.util,ArrayList,ArrayList<Integer>,ArrayList<Integer>()
+java.util,Collection,add,boolean add(Integer p0)
