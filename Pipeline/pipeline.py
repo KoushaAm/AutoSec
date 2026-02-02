@@ -39,8 +39,8 @@ def _build_workflow() -> Any:
 
     # linear edges
     graph.add_edge(START, "finder")
-    # graph.add_edge("finder", "exploiter")
-    # graph.add_edge("patcher", "verifier")
+    graph.add_edge("finder", "exploiter")
+    graph.add_edge("patcher", "verifier")
 
     # conditional edges
     # exploiter -> finder OR exploiter -> patcher
@@ -147,8 +147,15 @@ def _exploiter_node(state: AutoSecState) -> AutoSecState:
 def _patcher_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node - patcher started")
 
-    success = patcher_main()
-    state["patcher"] = {"success": success}
+    print(f"=== Patcher invoked for {state['project_name']} ===")
+    # print first output of finder_output for debugging
+    if state.get("finder_output"):
+        print(f"finder_output (cwe): {state['finder_output']['cwe_id']}")
+        print(f"finder_output (vulns): {state['finder_output']['vulnerabilities'][0]}")
+
+    # TODO: implement patcher integration
+    # success = patcher_main()
+    # state["patcher"] = {"success": success}
 
     return state
 
@@ -178,7 +185,7 @@ def pipeline_main():
     initial_state: AutoSecState = {
         "project_name": "perwendel__spark_CVE-2018-9159_2.7.1",
         "vuln_id": "cwe-022",
-        "language": "python",
+        "language": "java",
     }
 
     workflow = _build_workflow()
@@ -186,9 +193,9 @@ def pipeline_main():
     # Execute the graph
     final_state = workflow.invoke(initial_state)
 
-    print("\n====== STATE DUMP ======")
-    print(json.dumps(final_state, indent=2))
-    print("======^==========^======\n")
+    # print("\n====== STATE DUMP ======")
+    # print(json.dumps(final_state, indent=2))
+    # print("======^==========^======\n")
 
 
 # standalone execution
