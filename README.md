@@ -1,9 +1,11 @@
 # AutoSec
 
 ## Getting Started
-- All development must be done in a **Linux environment**
-- Must have **Python 3.12 installed locally**
+- All development should be done inside the provided dev container
 - The following is done from the root directory
+
+### 0. Launch Dev Container
+- Open the project in VS Code, then run "Dev Containers: Reopen in Container" from the Command Palette (Ctrl+Shift+P).
 
 ### 1. Create a Virtual Environment
 ```bash
@@ -23,9 +25,13 @@ OPENROUTER_API_KEY=your_api_key_here
 ```
 
 ### 4. Create the docker container for Finder
-Go to the /Agents/Finder folder and run the following
+Go to the root or `/Agents/Finder` folder and run the following
 ```bash
-docker build -f Dockerfile --platform linux/x86_64 -t iris:latest .
+# Run from root
+docker build --platform linux/amd64 -t iris:latest -f Agents/Finder/Dockerfile Agents/Finder
+
+# Run from /Agents/Finder
+docker build -f Dockerfile --platform linux/amd64 -t iris:latest .
 
 docker run --platform=linux/amd64 -it iris:latest
 ```
