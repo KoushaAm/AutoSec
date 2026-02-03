@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 from datetime import datetime, timezone
 
-from .config import OUTPUT_PATH, VULNERABILITIES, MODEL_NAME, MODEL_VALUE
+from .config import OUTPUT_PATH, VULNERABILITIES_EXPERIMENTS, MODEL_NAME, MODEL_VALUE
 from .constants import VulnerabilityInfo, SYSTEM_MESSAGE, DEVELOPER_MESSAGE
 from .core import (
     AgentFields,
@@ -109,7 +109,7 @@ def mk_agent_fields(vuln_class: VulnerabilityInfo) -> AgentFields:
     )
 
 
-def patcher_main() -> bool:
+def patcher_main(language, cwe_id, vulnerabilityList) -> bool:
     parser = argparse.ArgumentParser(description="Patcher tool")
     parser.add_argument(
         "-sp",
@@ -120,6 +120,24 @@ def patcher_main() -> bool:
     args = parser.parse_args()
 
     REPO_ROOT = Path(__file__).resolve().parents[2]
+
+    VULNERABILITIES = VULNERABILITIES_EXPERIMENTS # use with sample vulnerabilities
+    # Populate VULNERABILITIES with pipeline data if provided
+    if language and cwe_id and vulnerabilityList:
+        VULNERABILITIES = []
+        for vuln_data in vulnerabilityList:
+            # TODO: BELOW IS A GENERATED EXAMPLE THAT DOES NOT REFLECT REAL DATA SHAPE
+            if vuln_data.get("LANGUAGE") == language and vuln_data.get("CWE") == cwe_id:
+                class DynamicVulnInfo(VulnerabilityInfo):
+                    LANGUAGE = vuln_data["LANGUAGE"]
+                    FUNC_NAME = vuln_data["FUNC_NAME"]
+                    CWE = vuln_data["CWE"]
+                    CONSTRAINTS = vuln_data["CONSTRAINTS"]
+                    SINK = vuln_data["SINK"]
+                    FLOW = vuln_data["FLOW"]
+                    POV_TESTS = vuln_data["POV_TESTS"]
+                    VULN_TITLE = vuln_data.get("VULN_TITLE", "")
+                VULNERABILITIES.append(DynamicVulnInfo)
 
     # Create ONE run dir for the whole patcher execution
     dt = datetime.now(timezone.utc)
