@@ -64,17 +64,14 @@ def push_db() -> tuple[int, str]:
 def _finder_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node - finder started")
 
-<<<<<<< finder-move-project-sources
     # make sure Project/Sources folder exists
     Path(PROJECTS_DIR / "Sources").mkdir(exist_ok=True)
 
-=======
     host_ws = os.environ.get("HOST_WORKSPACE")
     if not host_ws:
         raise RuntimeError("HOST_WORKSPACE env var not set. Add it in devcontainer.json.")
     host_ws = host_ws.replace("\\", "/") # for windows compatibility
-    
->>>>>>> main
+
     project_name = state["project_name"]
     query = state["vuln_id"] + "wLLM"
 
