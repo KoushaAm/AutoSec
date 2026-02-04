@@ -64,6 +64,9 @@ def push_db() -> tuple[int, str]:
 def _finder_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node - finder started")
 
+    # make sure Project/Sources folder exists
+    Path(PROJECTS_DIR / "Sources").mkdir(exist_ok=True)
+
     project_name = state["project_name"]
     query = state["vuln_id"] + "wLLM"
 
