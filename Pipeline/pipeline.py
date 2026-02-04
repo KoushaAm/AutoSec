@@ -5,7 +5,6 @@ import os
 import uuid
 import argparse
 import sys
-import shutil
 from langgraph.graph import StateGraph, END, START
 from langgraph.types import Command
 from pathlib import Path
@@ -21,7 +20,6 @@ from Agents.Finder.src.output_converter import sarif_to_finder_output
 BASE_DIR = Path(__file__).resolve().parent.parent
 PROJECTS_DIR = (BASE_DIR / "Projects").resolve()
 AGENTS_DIR   = (BASE_DIR / "Agents").resolve()
-
 
 class AutoSecState(TypedDict, total=False):
     project_name: Optional[str]         # ex: jenkinsci__perfecto-plugin_CVE
