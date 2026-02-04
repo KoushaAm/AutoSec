@@ -64,9 +64,17 @@ def push_db() -> tuple[int, str]:
 def _finder_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node - finder started")
 
+<<<<<<< finder-move-project-sources
     # make sure Project/Sources folder exists
     Path(PROJECTS_DIR / "Sources").mkdir(exist_ok=True)
 
+=======
+    host_ws = os.environ.get("HOST_WORKSPACE")
+    if not host_ws:
+        raise RuntimeError("HOST_WORKSPACE env var not set. Add it in devcontainer.json.")
+    host_ws = host_ws.replace("\\", "/") # for windows compatibility
+    
+>>>>>>> main
     project_name = state["project_name"]
     query = state["vuln_id"] + "wLLM"
 
@@ -75,13 +83,13 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         "docker", "run",
         "--platform=linux/amd64",
         "--rm",
-        "-v", f"{PROJECTS_DIR}:/workspace/Projects",
-        "-v", f"{AGENTS_DIR}:/workspace/Agents",
+        "-v", f"{host_ws}/Projects:/workspace/Projects",
+        "-v", f"{host_ws}/Agents:/workspace/Agents",
         "-w", "/workspace/Agents/Finder",
         "iris:latest",
         "bash", "-lc",
-        f"source /opt/conda/etc/profile.d/conda.sh && conda activate iris && "
-        f"python3 ./scripts/build_and_analyze.py "
+        "source /opt/conda/etc/profile.d/conda.sh && conda activate iris && "
+        "python3 ./scripts/build_and_analyze.py "
         f"--project-name {project_name} "
         f"--zip-path /workspace/Projects/Zipped/{project_name}.zip "
         f"--query {query}"
@@ -231,8 +239,15 @@ def _exploiter_node(state: AutoSecState) -> Command:
 def _patcher_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node - patcher started")
 
-    success = patcher_main()
-    state["patcher"] = {"success": success}
+    print(f"=== Patcher invoked for {state['project_name']} ===")
+    # print first output of finder_output for debugging
+    if state.get("finder_output"):
+        print(f"finder_output (cwe): {state['finder_output']['cwe_id']}")
+        print(f"finder_output (vulns): {state['finder_output']['vulnerabilities'][0]}")
+
+    # TODO: implement patcher integration
+    # success = patcher_main()
+    # state["patcher"] = {"success": success}
 
     return state
 
@@ -262,7 +277,7 @@ def pipeline_main():
     initial_state: AutoSecState = {
         "project_name": "perwendel__spark_CVE-2018-9159_2.7.1",
         "vuln_id": "cwe-022",
-        "language": "python",
+        "language": "java",
     }
 
     workflow = _build_workflow()
@@ -270,9 +285,9 @@ def pipeline_main():
     # Execute the graph
     final_state = workflow.invoke(initial_state)
 
-    print("\n====== STATE DUMP ======")
-    print(json.dumps(final_state, indent=2))
-    print("======^==========^======\n")
+    # print("\n====== STATE DUMP ======")
+    # print(json.dumps(final_state, indent=2))
+    # print("======^==========^======\n")
 
 
 # standalone execution
