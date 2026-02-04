@@ -16,11 +16,6 @@ output/
 # Ignore specific files
 cmd-line-exploit.txt
 
-<<<<<<< finder-move-project-sources
-# Projects
-Projects/Sources/.
-=======
->>>>>>> main
 # exploiter specific
 Agents/Exploiter/logs/*
 
