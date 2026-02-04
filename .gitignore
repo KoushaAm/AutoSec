@@ -17,6 +17,6 @@ output/
 cmd-line-exploit.txt
 
 # Projects
-Projects/
+Projects/Sources/.
 # exploiter specific
 Agents/Exploiter/logs/*
