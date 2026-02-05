@@ -108,24 +108,13 @@ def mk_agent_fields(vuln_class: VulnerabilityInfo) -> AgentFields:
         vuln_title=vuln_title,
     )
 
+def populate_vulnerability_list(language, cwe_id, vulnerability_list):
+    # Placeholder function to populate vulnerability list from pipeline data
 
-def patcher_main(language, cwe_id, vulnerabilityList) -> bool:
-    parser = argparse.ArgumentParser(description="Patcher tool")
-    parser.add_argument(
-        "-sp",
-        "--save-prompt",
-        action="store_true",
-        help="Save each generated Patcher prompt to output/prompts/ for debugging",
-    )
-    args = parser.parse_args()
-
-    REPO_ROOT = Path(__file__).resolve().parents[2]
-
-    VULNERABILITIES = VULNERABILITIES_EXPERIMENTS # use with sample vulnerabilities
     # Populate VULNERABILITIES with pipeline data if provided
-    if language and cwe_id and vulnerabilityList:
+    if language and cwe_id and vulnerability_list:
         VULNERABILITIES = []
-        for vuln_data in vulnerabilityList:
+        for vuln_data in vulnerability_list:
             # TODO: BELOW IS A GENERATED EXAMPLE THAT DOES NOT REFLECT REAL DATA SHAPE
             if vuln_data.get("LANGUAGE") == language and vuln_data.get("CWE") == cwe_id:
                 class DynamicVulnInfo(VulnerabilityInfo):
@@ -138,6 +127,23 @@ def patcher_main(language, cwe_id, vulnerabilityList) -> bool:
                     POV_TESTS = vuln_data["POV_TESTS"]
                     VULN_TITLE = vuln_data.get("VULN_TITLE", "")
                 VULNERABILITIES.append(DynamicVulnInfo)
+
+
+# =============== Main entrypoint for Patcher agent ===============
+def patcher_main(language, cwe_id, vulnerability_list, project_name) -> bool:
+    parser = argparse.ArgumentParser(description="Patcher tool")
+    parser.add_argument(
+        "-sp",
+        "--save-prompt",
+        action="store_true",
+        help="Save each generated Patcher prompt to output/prompts/ for debugging",
+    )
+    args = parser.parse_args()
+
+    REPO_ROOT = Path(__file__).resolve().parents[2]
+
+    VULNERABILITIES = VULNERABILITIES_EXPERIMENTS # use with sample vulnerabilities
+    # VULNERABILITIES = populate_vulnerability_list(language, cwe_id, vulnerability_list)
 
     # Create ONE run dir for the whole patcher execution
     dt = datetime.now(timezone.utc)
