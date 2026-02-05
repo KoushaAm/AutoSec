@@ -29,6 +29,7 @@ class AutoSecState(TypedDict, total=False):
     vuln_id: Optional[str]
     vuln: Optional[Dict[str, Any]]
     finder_model: Optional[str]
+    finder_reanalyze: Optional[bool]
     finder_output: Optional[List[FinderOutput]]
     artifacts: Optional[Dict[str, str]]
     exploiter: Optional[Dict[str, Any]]
@@ -81,6 +82,15 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
     query = state["vuln_id"] + "wLLM"
     model = state["finder_model"]
 
+    # setup args for build_and_analyze.py script. make sure project if project is reanalyzed, use --overwrite and no need to unzip folder
+    build_and_analyze_args = f"--project-name {project_name} --query {query} --model {model} "
+    if state["finder_reanalyze"]:
+        build_and_analyze_args += f"--overwrite"
+    else:
+        build_and_analyze_args += f"--zip-path /workspace/Projects/Zipped/{project_name}.zip"
+
+    print(f"\n---- ARGS: {build_and_analyze_args} ----\n")
+
     # 1. setup command to have IRIS inside docker container
     docker_cmd = [
         "docker", "run",
@@ -92,11 +102,7 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         "iris:latest",
         "bash", "-lc",
         "source /opt/conda/etc/profile.d/conda.sh && conda activate iris && "
-        "python3 ./scripts/build_and_analyze.py "
-        f"--project-name {project_name} "
-        f"--zip-path /workspace/Projects/Zipped/{project_name}.zip "
-        f"--query {query} "
-        f"--model {model}"
+        "python3 ./scripts/build_and_analyze.py " + build_and_analyze_args
     ]
 
     logger.info(f"Running IRIS inside Docker for project {project_name}")
@@ -324,6 +330,7 @@ def pipeline_main():
         "vuln_id": SELECTED_PROJECT.cwe_id,
         "language": "java",
         "finder_model": "qwen2.5-32b",
+        "finder_reanalyze": False,
     }
 
     workflow = _build_workflow()
