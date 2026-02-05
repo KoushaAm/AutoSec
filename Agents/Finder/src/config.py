@@ -10,7 +10,7 @@ CODEQL_DIR = f"/iris/codeql"
 CODEQL_DB_PATH = f"{IRIS_ROOT_DIR}/data/codeql-dbs"
 
 # PROJECT_SOURCE_CODE_DIR contains the Java projects.
-PROJECT_SOURCE_CODE_DIR = f"{IRIS_ROOT_DIR}/data/project-sources"
+PROJECT_SOURCE_CODE_DIR = f"{IRIS_ROOT_DIR}/data/../../../Projects/Sources"
 
 # PACKAGE_MODULES_PATH contains each project's internal modules.
 PACKAGE_MODULES_PATH = f"{IRIS_ROOT_DIR}/data/package-names"
