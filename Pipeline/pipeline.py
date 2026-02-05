@@ -256,9 +256,64 @@ def _verifier_node(state: AutoSecState) -> Command:
     new_state = dict(state)
     
     try:
-        # currently uses patcher's latest output but may need to change to state
-        logger.info("Running Verifier on latest Patcher output...")
-        verification_results = verifier_main(use_latest=True)
+        patcher_data = state.get("patcher", {})
+        patcher_output_path = patcher_data.get("output_path")
+        
+        if not patcher_output_path:
+            logger.error("No patcher output_path in state - Patcher must set state['patcher']['output_path']")
+            new_state["verifier"] = {
+                "success": False,
+                "error": "Patcher output path not provided in state",
+                "patches_verified": 0
+            }
+            return Command(goto=END, update=new_state)
+        
+        # get Exploiter's report.json path
+        exploiter_data = state.get("exploiter", {})
+        exploiter_report_path = exploiter_data.get("report_path")
+        
+        # load Patcher's manifest
+        logger.info(f"Loading Patcher output: {patcher_output_path}")
+        with open(patcher_output_path, "r") as f:
+            patcher_manifest = json.load(f)
+        
+        # load Exploiter's POV tests if available
+        pov_tests = None
+        if exploiter_report_path and os.path.exists(exploiter_report_path):
+            logger.info(f"Loading POV tests from Exploiter: {exploiter_report_path}")
+            with open(exploiter_report_path, "r") as f:
+                report_data = json.load(f)
+            
+            # extract POV tests from Exploiter report
+            if isinstance(report_data, list):
+                pov_tests = report_data
+            elif isinstance(report_data, dict):
+                pov_tests = [report_data]
+            
+            logger.info(f"Found {len(pov_tests) if pov_tests else 0} POV test(s) from Exploiter")
+            
+            # inject POV tests into each patch in Patcher's manifest
+            for patch in patcher_manifest.get("patches", []):
+                patch["pov_tests"] = pov_tests
+            
+            # save updated manifest in Agents/Verifier/output/ directory
+            verifier_output_dir = BASE_DIR / "Agents" / "Verifier" / "output"
+            verifier_output_dir.mkdir(parents=True, exist_ok=True)
+            
+            # timestamped filename for the merged manifest
+            from datetime import datetime
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            updated_manifest_path = verifier_output_dir / f"manifest_with_pov_{timestamp}.json"
+            
+            with open(updated_manifest_path, "w") as f:
+                json.dump(patcher_manifest, f, indent=2)
+            
+            patcher_output_path = str(updated_manifest_path)
+            logger.info(f"Saved merged manifest to: {patcher_output_path}")
+        
+        # run Verifier with the updated manifest
+        logger.info(f"Running Verifier on: {patcher_output_path}")
+        verification_results = verifier_main(input_path=patcher_output_path, use_latest=False)
         
         new_state["verifier"] = verification_results
         
