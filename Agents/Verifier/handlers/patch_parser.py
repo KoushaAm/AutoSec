@@ -4,7 +4,7 @@ from typing import Dict, Any, List, Optional
 from ..models.verification import PatchInfo, PatchChange, PatchChangeType
 
 class PatchParser:
-    """Parses unified diff (Fixer output) patches into structured data"""
+    """Parses unified diff patches into structured data"""
     
     def parse_fixer_patch(self, patch_data: Dict[str, Any]) -> PatchInfo:
         return PatchInfo(
@@ -105,23 +105,8 @@ class ProjectManager:
                 shutil.rmtree(output_path)
             output_path.mkdir(parents=True)
             
-            # If no target files specified, copy everything (fallback)
-            if not target_files:
-                shutil.copytree(original_path, output_path)
-                return True
-            
-            # Copy only specified target files
-            for file_path in target_files:
-                filename = pathlib.Path(file_path).name
-                source_file = original_path / filename
-                dest_file = output_path / filename
-                
-                if source_file.exists():
-                    shutil.copy2(source_file, dest_file)
-                else:
-                    print(f"      Warning: Target file not found: {source_file}")
-                    return False
-            
+            # Copy entire project directory
+            shutil.copytree(original_path, output_path, dirs_exist_ok=True)
             return True
         except Exception as e:
             print(f"      Error creating project copy: {e}")
@@ -130,48 +115,64 @@ class ProjectManager:
     @staticmethod
     def find_project_root(file_path: str) -> pathlib.Path:
         """
-        Find the vulnerable project root directory.
-        If the file is in a subdirectory (e.g., perfecto/PerfectoBuildWrapper.java),
-        use that subdirectory as the project root for proper isolation.
-        """
-        # Navigate up from current file to find AutoSec root, then to vulnerable directory
-        current_file = pathlib.Path(__file__)
-        # Go up: Agents/Verifier/handlers/patch_parser.py -> handlers -> Verifier -> Agents -> AutoSec
-        autosec_root = current_file.parent.parent.parent.parent
-        vulnerable_dir = autosec_root / "Experiments" / "vulnerable"
+        Extract project root from the full file path.
         
-        # Check if the file_path contains a subdirectory within vulnerable/
-        # e.g., "Experiments/vulnerable/perfecto/PerfectoBuildWrapper.java"
+        Expects: "Projects/Sources/project_name/src/main/File.java"
+        Returns: Projects/Sources/project_name/
+        """
         file_path_obj = pathlib.Path(file_path)
         
-        # Try to find if there's a subdirectory specified in the path
-        if "vulnerable/" in str(file_path):
-            # Extract the part after "vulnerable/"
-            parts_after_vulnerable = str(file_path).split("vulnerable/")[1]
-            path_parts = pathlib.Path(parts_after_vulnerable).parts
-            
-            # If there are multiple parts, the first part is a subdirectory
-            if len(path_parts) > 1:
-                subdir_name = path_parts[0]
-                project_root = vulnerable_dir / subdir_name
-                
-                # Verify the subdirectory exists
-                if project_root.exists() and project_root.is_dir():
-                    print(f"      Project root (subdirectory): {project_root}")
-                    print(f"      Target file to be patched: {path_parts[-1]}")
-                    if list(project_root.glob('*.java')):
-                        print(f"      Java files in project: {[f.name for f in project_root.glob('*.java')]}")
+        # Check if path contains "Projects/Sources/"
+        if "Projects" in file_path_obj.parts and "Sources" in file_path_obj.parts:
+            # Find the index of "Sources" in the path
+            parts = file_path_obj.parts
+            try:
+                sources_idx = parts.index("Sources")
+                # Project root is one level after "Sources"
+                # e.g., Projects/Sources/project_name/
+                if sources_idx + 1 < len(parts):
+                    # Reconstruct path up to and including the project directory
+                    project_root_parts = parts[:sources_idx + 2]
+                    project_root = pathlib.Path(*project_root_parts)
+                    
+                    # Make it absolute if it's not already
+                    if not project_root.is_absolute():
+                        # Navigate to AutoSec root and construct absolute path
+                        current_file = pathlib.Path(__file__)
+                        autosec_root = current_file.parent.parent.parent.parent
+                        project_root = autosec_root / project_root
+                    
                     return project_root
+            except (ValueError, IndexError):
+                pass
         
-        # Fallback: Use the main vulnerable directory
-        print(f"      Project root (vulnerable directory): {vulnerable_dir}")
-        print(f"      Directory exists: {vulnerable_dir.exists()}")
-        if vulnerable_dir.exists():
-            java_files = list(vulnerable_dir.glob('*.java'))
-            print(f"      Files in vulnerable directory: {[f.name for f in java_files]}")
-            
-            # Extract the specific file that will be patched from file_path
-            target_filename = pathlib.Path(file_path).name
-            print(f"      Target file to be patched: {target_filename}")
+        # Fallback: if path doesn't match expected format, raise error
+        raise ValueError(
+            f"Invalid file path format: {file_path}\n"
+            f"Expected format: 'Projects/Sources/project_name/src/...'"
+        )
+    
+    @staticmethod
+    def extract_relative_file_path(patcher_file_path: str) -> str:
+        """
+        Extract the relative file path within the project.
         
-        return vulnerable_dir
+        Input: "Projects/Sources/project_name/src/main/File.java"
+        Output: "src/main/File.java"
+        """
+        path_obj = pathlib.Path(patcher_file_path)
+        
+        # Find "Sources" in the path and get everything after the project name
+        if "Projects" in path_obj.parts and "Sources" in path_obj.parts:
+            parts = path_obj.parts
+            try:
+                sources_idx = parts.index("Sources")
+                # Everything after Sources/project_name/ is the relative path
+                if sources_idx + 2 < len(parts):
+                    relative_parts = parts[sources_idx + 2:]
+                    return str(pathlib.Path(*relative_parts))
+            except (ValueError, IndexError):
+                pass
+        
+        # Fallback: just return the filename
+        return path_obj.name
