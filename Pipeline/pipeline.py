@@ -1,3 +1,4 @@
+from enum import Enum
 from typing import TypedDict, Dict, Any, Optional, List
 import json
 import subprocess
@@ -43,7 +44,7 @@ def _build_workflow() -> Any:
     graph.add_edge(START, "finder")
     # graph.add_edge("finder", "exploiter")
     graph.add_edge("finder", "patcher")
-    graph.add_edge("patcher", "verifier")
+    # graph.add_edge("patcher", "verifier")
 
     # conditional edges
     # exploiter -> finder OR exploiter -> patcher
@@ -236,11 +237,12 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
 
     if state.get("finder_output"):
         cwe_id = state['finder_output']['cwe_id']
-        print(f"finder_output (vulns): \n{state['finder_output']['vulnerabilities'][0]}")
+        
+        # print(f"finder_output (vulns): \n{state['finder_output']['vulnerabilities'][0]}")
         vulnList = state['finder_output']['vulnerabilities']
 
     # TODO: implement patcher integration
-    success = patcher_main(lang, cwe_id, vulnList)
+    success = patcher_main(lang, cwe_id, vulnList, state['project_name'])
     state["patcher"] = {"success": success}
 
     return state
@@ -264,14 +266,31 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
         update=new_state
     )
 
+# ====== Project Variants ======
+class ProjectVariant(Enum):
+    CODEHAUS_2018 = {
+        "name": "codehaus-plexus__plexus-archiver_CVE-2018-1002200_3.5",
+        "cwe_id": "cwe-022"
+    }
+    PERWENDEL_2018 = {
+        "name": "perwendel__spark_CVE-2018-9159_2.7.1",
+        "cwe_id": "cwe-022"
+    }
+
+    @property
+    def project_name(self) -> str:
+        return self.value["name"]
+
+    @property
+    def cwe_id(self) -> str:
+        return self.value["cwe_id"]
 
 # ====== Execute workflow =====
 def pipeline_main():
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
-        "project_name": "perwendel__spark_CVE-2018-9159_2.7.1",
-        # "project_name": "codehaus-plexus__plexus-archiver_CVE-2018-1002200_3.5", # for exploiter testing
-        "vuln_id": "cwe-022",
+        "project_name": ProjectVariant.CODEHAUS_2018.project_name,
+        "vuln_id": ProjectVariant.CODEHAUS_2018.cwe_id,
         "language": "java",
     }
 
