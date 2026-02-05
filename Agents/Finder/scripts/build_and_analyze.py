@@ -73,8 +73,8 @@ def build_codeql(project_name):
     subprocess.run(build_cmd, check=True)
 
 # run iris analysis (using iris.py)
-def run_iris_analysis(project_name, query, run_id):
-    build_cmd = ["python3", f"{ROOT_DIR}/src/iris.py", "--query", query, "--run-id", run_id, "--llm", "qwen2.5-32b", project_name]
+def run_iris_analysis(project_name, query, run_id, model):
+    build_cmd = ["python3", f"{ROOT_DIR}/src/iris.py", "--query", query, "--run-id", run_id, "--llm", model, project_name]
     subprocess.run(build_cmd, check=True)
 
 # main function that parses cli args and runs whole pipeline for finder
@@ -84,25 +84,27 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Example:
-  python3 scripts/build_and_analyze.py --project-name perwendel__spark_CVE-2018-9159_2.7.1 --zip-path project.zip --query cwe-078wLLM
+  python3 scripts/build_and_analyze.py --project-name perwendel__spark_CVE-2018-9159_2.7.1 --zip-path project.zip --query cwe-078wLLM --model "qwen2.5-32b"
         """
     )
 
     parser.add_argument("--project-name", type=str)
     parser.add_argument("--zip-path", type=Path)
     parser.add_argument("--query", type=str)
+    parser.add_argument("--model", type=str)
 
     args = parser.parse_args()
     project_name = args.project_name
     zip_path = Path(args.zip_path)
     query = args.query
+    model = args.model
 
     # run full pipeline
     unzip_folder(zip_path, project_name)
     apply_patch_if_exists(project_name)
     build_project(project_name)
     build_codeql(project_name)
-    run_iris_analysis(project_name, query, "test")
+    run_iris_analysis(project_name, query, "test", model)
 
     print("\n----------------------------------\nSuccess")
 
