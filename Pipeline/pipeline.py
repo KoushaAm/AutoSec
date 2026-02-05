@@ -117,6 +117,7 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
             state["finder_output"] = None
             state["vuln"] = None
+            state["finder_reanalyze"] = False
             return state
 
     # 3. Load IRIS output
@@ -135,6 +136,7 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         state["finder_output"] = None
         state["vuln"] = None
 
+    state["finder_reanalyze"] = False
     return state
 
 
@@ -230,6 +232,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
 
     if not exploitable:
         logger.warning("Exploiter ran but did not find an exploitable PoV.")
+        new_state["finder_reanalyze"] = True
         return Command(goto="finder", update=new_state)
 
     logger.info("Vulnerability exploited! Continuing to patcher.")
@@ -266,6 +269,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
     new_state = dict(state)
 
     if retry_finder:
+        new_state["finder_reanalyze"] = True
         return Command(
             goto="finder",
             update=new_state
