@@ -73,8 +73,12 @@ def build_codeql(project_name):
     subprocess.run(build_cmd, check=True)
 
 # run iris analysis (using iris.py)
-def run_iris_analysis(project_name, query, run_id, model):
+def run_iris_analysis(project_name, query, run_id, model, overwrite):
     build_cmd = ["python3", f"{ROOT_DIR}/src/iris.py", "--query", query, "--run-id", run_id, "--llm", model, project_name]
+    if (overwrite):
+        print("Overwriting previous finder analysis.")
+        build_cmd.append("--overwrite")
+
     subprocess.run(build_cmd, check=True)
 
 # main function that parses cli args and runs whole pipeline for finder
@@ -92,19 +96,24 @@ Example:
     parser.add_argument("--zip-path", type=Path)
     parser.add_argument("--query", type=str)
     parser.add_argument("--model", type=str)
+    parser.add_argument("--overwrite", action="store_true")
 
     args = parser.parse_args()
     project_name = args.project_name
-    zip_path = Path(args.zip_path)
     query = args.query
     model = args.model
+    overwrite = args.overwrite
 
-    # run full pipeline
-    unzip_folder(zip_path, project_name)
+    # run full pipeline. only unzip if zip-path specified
+    if args.zip_path:
+        zip_path = Path(args.zip_path)
+        print(f"Unzipping source folder at {zip_path}")
+        unzip_folder(zip_path, project_name)
+
     apply_patch_if_exists(project_name)
     build_project(project_name)
     build_codeql(project_name)
-    run_iris_analysis(project_name, query, "test", model)
+    run_iris_analysis(project_name, query, "test", model, overwrite)
 
     print("\n----------------------------------\nSuccess")
 
