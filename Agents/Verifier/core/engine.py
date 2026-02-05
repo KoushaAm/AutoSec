@@ -79,78 +79,89 @@ class VerifierCore:
                     patch_info.patch_id, "No touched files specified", start_time
                 )
             
-            # Get the vulnerable project directory (contains all vulnerable files)
-            vulnerable_project_path = self.project_manager.find_project_root(patch_info.touched_files[0])
+            # Get file path from Patcher output
+            # Expected : "Projects/Sources/project_name/src/main/File.java"
+            patcher_file_path = patch_info.touched_files[0]
             
-            # Extract the specific file that will be patched
-            target_file_path = patch_info.touched_files[0]
-            target_filename = pathlib.Path(target_file_path).name
+            # Extract project root from the file path
+            print(f"   [1/3] Locating project root...", end=" ", flush=True)
+            try:
+                project_root = self.project_manager.find_project_root(patcher_file_path)
+            except ValueError as e:
+                print("✗")
+                return ErrorHandler.create_error_result(
+                    patch_info.patch_id, str(e), start_time
+                )
             
-            # Step 1: Apply patch
-            print(f"   [1/3] Applying patch...", end=" ", flush=True)
+            if not project_root.exists():
+                print("✗")
+                return ErrorHandler.create_error_result(
+                    patch_info.patch_id, f"Project root does not exist: {project_root}", start_time
+                )
+            print("✓")
             
+            # Applying patch directly to file in Projects/Sources/
+            print(f"   [2/3] Applying patch to file...", end=" ", flush=True)
+            
+            # Convert to absolute path (if needed)
+            actual_file_path = pathlib.Path(patcher_file_path)
+            if not actual_file_path.is_absolute():
+                # Make it absolute relative to AutoSec root
+                autosec_root = pathlib.Path(__file__).parent.parent.parent.parent
+                actual_file_path = autosec_root / actual_file_path
+            
+            if not actual_file_path.exists():
+                print("✗")
+                return ErrorHandler.create_error_result(
+                    patch_info.patch_id, f"File not found: {actual_file_path}", start_time
+                )
+            
+            # Build patch info dict with actual file path
             patch_info_dict = {
+                "file_path": str(actual_file_path),
                 "unified_diff": patch_info.unified_diff,
                 "plan": patch_info.plan,
-                "safety_verification": patch_info.safety_verification,
-                "touched_files": patch_info.touched_files
+                "safety_verification": patch_info.safety_verification
             }
             
-            patch_result = self.patch_applicator.apply_patch_to_directory(
-                source_dir=vulnerable_project_path,
-                patch_info=patch_info_dict,
-                output_dir=patch_dir
+            # Apply patch - create {original_name}_patched.java and delete original
+            patch_result = self.patch_applicator.apply_patch(patch_info_dict)
+            
+            if patch_result["status"] != "success":
+                print("✗")
+                return ErrorHandler.create_error_result(
+                    patch_info.patch_id, 
+                    f"Patch application failed: {patch_result.get('error', 'Unknown error')}", 
+                    start_time
+                )
+            
+            patched_file_path = pathlib.Path(patch_result["patched_file"])
+            print("✓")
+            print(f"      Created: {patched_file_path.name}")
+            
+            # Save patch application artifacts
+            patch_app_dir = patch_dir / "patch_application"
+            patch_app_dir.mkdir(parents=True, exist_ok=True)
+            self._save_patch_application_artifacts(patch_info, patch_result, patch_app_dir)
+            
+            # Build and test project with patched file
+            print(f"   [3/3] Building & testing project with patched file...")
+            patched_result = self.build_runner.run_verification(
+                project_root, patch_info, output_dir=patch_dir
             )
+            print(f"      {'✓' if patched_result.get('success') else '✗'}")
             
-            if patch_result["status"] not in ["success", "partial"]:
-                print("✗")
-                return ErrorHandler.create_error_result(
-                    patch_info.patch_id, f"Patch application failed: {patch_result.get('error', 'Unknown error')}", start_time
-                )
-            
-            patched_file_info = patch_result["file_results"][0] if patch_result["file_results"] else None
-            if not patched_file_info or patched_file_info["status"] != "success":
-                print("✗")
-                return ErrorHandler.create_error_result(
-                    patch_info.patch_id, "No successful patch application results", start_time
-                )
-            
-            patched_file_path = pathlib.Path(patched_file_info["output_path"])
-            print("✓")
-            
-            # Step 2: Create verification project
-            print(f"   [2/3] Creating patched project...", end=" ", flush=True)
-            verification_project_dir = patch_dir / "verification_project"
-            verification_project_dir.mkdir(exist_ok=True)
-            
-            import shutil
-            for item in vulnerable_project_path.iterdir():
-                if item.is_file():
-                    dest_file = verification_project_dir / item.name
-                    shutil.copy2(item, dest_file)
-                elif item.is_dir():
-                    dest_dir = verification_project_dir / item.name
-                    shutil.copytree(item, dest_dir, dirs_exist_ok=True)
-            
-            target_file_in_verification = verification_project_dir / target_filename
-            shutil.copy2(patched_file_path, target_file_in_verification)
-            print("✓")
-            
-            # Step 3: Build and test patched project (using new DockerBuildRunner)
-            print(f"   [3/3] Building & testing patched project...", end=" ", flush=True)
-            patched_result = self.build_runner.run_verification(verification_project_dir, patch_info)
-            print(f"{'✓' if patched_result.get('success') else '✗'}")
-            
-            # Generate decision based only on patched result (using new ResultEvaluator)
+            # Generate decision based only on patched result
             verification_result = self.result_evaluator.compare_results(
                 patch_info, patched_result, start_time
             )
             
             # Save artifacts
             self._save_verification_artifacts(
-                patch_info, patch_dir, patched_file_path, patch_result, 
-                patched_result, verification_result,
-                target_filename, vulnerable_project_path, verification_project_dir
+                patch_info, patch_dir, 
+                patched_file_path,
+                patch_result, patched_result, verification_result,
+                project_root
             )
             
             return verification_result
@@ -162,8 +173,7 @@ class VerifierCore:
                                    patched_file_path: pathlib.Path, patch_result: dict,
                                    patched_result: dict, 
                                    verification_result: VerificationResult,
-                                   target_filename: str, vulnerable_project_path: pathlib.Path,
-                                   verification_project_dir: pathlib.Path):
+                                   project_root: pathlib.Path):
         """Save verification artifacts with organized test results"""
         try:
             import json
@@ -173,7 +183,8 @@ class VerifierCore:
             results_data = {
                 "patch_application": {
                     "status": patch_result["status"],
-                    "patched_file": patched_file_path.name,
+                    "original_file": patch_result.get("original_file", ""),
+                    "patched_file": str(patched_file_path),
                     "model_used": patch_result.get("model_used", "unknown")
                 },
                 "build_verification": {
@@ -181,7 +192,7 @@ class VerifierCore:
                         "success": patched_result.get("success", False),
                         "return_code": patched_result.get("return_code", -1),
                         "duration": patched_result.get("duration", 0),
-                        "tested_project": str(verification_project_dir)
+                        "project_root": str(project_root)
                     }
                 },
                 "test_discovery": patched_result.get("test_discovery", {
@@ -230,6 +241,23 @@ class VerifierCore:
             
         except Exception as e:
             print(f"   ⚠️  Failed to save artifacts: {e}")
+
+    def _save_patch_application_artifacts(self, patch_info: PatchInfo, patch_result: dict, patch_app_dir: pathlib.Path):
+        """Save patch application artifacts"""
+        try:
+            patch_app_file = patch_app_dir / "patch_application.json"
+            patch_app_data = {
+                "patch_id": patch_info.patch_id,
+                "status": patch_result["status"],
+                "original_file": patch_result.get("original_file", ""),
+                "patched_file": patch_result.get("patched_file", ""),
+                "model_used": patch_result.get("model_used", "unknown"),
+                "error": patch_result.get("error", "")
+            }
+            with open(patch_app_file, 'w') as f:
+                json.dump(patch_app_data, f, indent=2)
+        except Exception as e:
+            print(f"   ⚠️  Failed to save patch application artifacts: {e}")
 
 def create_verifier(config: Optional[Dict[str, Any]] = None) -> VerifierCore:
     """Factory function to create a configured verifier instance"""

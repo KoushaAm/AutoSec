@@ -24,7 +24,7 @@ class LLMPatchApplicator:
     def __init__(self, model: Model = None, output_base_dir: Path = None):
         """Initialize with OpenRouter client and model selection"""
         self.model = model or config.CURRENT_MODEL
-        self.output_base_dir = output_base_dir or config.DEFAULT_OUTPUT_DIR
+        self.output_base_dir = Path(__file__).parent.parent / "output"
         
         # Create output directory if it doesn't exist
         self.output_base_dir.mkdir(parents=True, exist_ok=True)
@@ -47,113 +47,80 @@ class LLMPatchApplicator:
         print(f"   Output Base Dir: {self.output_base_dir}")
         print(f"   Version: {config.TOOL_VERSION}")
     
-    def apply_patch_to_directory(self, source_dir: Path, patch_info: dict, output_dir: Path) -> Dict[str, Any]:
+    def apply_patch(self, patch_info: dict) -> Dict[str, Any]:
         """
-        Apply a patch and create clean output with only the patched file.
-        Creates: filename-patched.java (not a full directory copy)
+        Apply a patch to a file and replace it with {original_name}_patched.java.
+        The original file in Projects/Sources/... is deleted after patching.
         
         Args:
-            source_dir: Directory containing original vulnerable files
-            patch_info: Patch information (unified_diff, plan, etc.)
-            output_dir: Where to create the patched file
+            patch_info: Patch information containing:
+                - file_path: Full path to file in Projects/Sources/...
+                - unified_diff: The patch to apply
+                - plan: List of steps (optional)
+                - safety_verification: Safety notes (optional)
             
         Returns:
             Dict with status, paths, and metadata
         """
         try:
-            # Create clean output directory
-            if output_dir.exists():
-                import shutil
-                shutil.rmtree(output_dir)
-            output_dir.mkdir(parents=True, exist_ok=True)
+            # Get the file path from patch info
+            file_path_str = patch_info.get("file_path")
+            if not file_path_str:
+                # Fall back to touched_files if available
+                touched_files = patch_info.get("touched_files", [])
+                if not touched_files:
+                    return {
+                        "status": "error",
+                        "error": "No file_path or touched_files specified in patch info"
+                    }
+                file_path_str = touched_files[0]  # take first file for now
             
-            # Get the specific file to patch
-            target_files = patch_info.get("touched_files", [])
-            if not target_files:
+            file_path = Path(file_path_str)
+            
+            if not file_path.exists():
                 return {
                     "status": "error",
-                    "error": "No touched files specified in patch info",
-                    "source_dir": str(source_dir),
-                    "output_dir": str(output_dir)
+                    "error": f"File not found: {file_path}"
                 }
             
-            # Apply patch to each touched file (usually just one)
-            results = []
-            for file_path in target_files:
-                # Extract just the filename from the full path
-                file_name = Path(file_path).name
-                source_file = source_dir / file_name
-                
-                if not source_file.exists():
-                    results.append({
-                        "file": file_name,
-                        "status": "error", 
-                        "error": f"Source file not found: {source_file}"
-                    })
-                    continue
-                
-                # Create patched filename: CWE_78.java -> CWE_78-patched.java
-                base_name = source_file.stem  # CWE_78
-                extension = source_file.suffix  # .java
-                patched_filename = f"{base_name}-patched{extension}"
-                patched_file = output_dir / patched_filename
-                
-                # Read original code
-                original_code = source_file.read_text(encoding='utf-8')
-                
-                # Apply patch using LLM
-                try:
-                    modified_code = self._apply_patch_with_llm(
-                        original_code,
-                        patch_info.get("unified_diff", ""),
-                        patch_info.get("plan", []),
-                        patch_info.get("safety_verification", "")
-                    )
-                    
-                    # Write only the patched file (not the full directory)
-                    patched_file.write_text(modified_code, encoding='utf-8')
-                    
-                    results.append({
-                        "file": file_name,
-                        "patched_file": patched_filename,
-                        "status": "success",
-                        "source_path": str(source_file),
-                        "output_path": str(patched_file),
-                        "patch_applied": True
-                    })
-                    
-                    print(f"   Created {patched_filename} from {file_name}")
-                    
-                except Exception as e:
-                    results.append({
-                        "file": file_name,
-                        "status": "error",
-                        "error": f"LLM patch application failed: {str(e)}",
-                        "source_path": str(source_file)
-                    })
-                    print(f"   Failed to patch {file_name}: {e}")
+            print(f"   Reading original file: {file_path.name}")
+            original_code = file_path.read_text(encoding='utf-8')
             
-            # Determine overall status
-            successful_files = [r for r in results if r["status"] == "success"]
-            failed_files = [r for r in results if r["status"] == "error"]
+            print(f"   Applying patch using {self.model.value}...", end=" ", flush=True)
+            modified_code = self._apply_patch_with_llm(
+                original_code,
+                patch_info.get("unified_diff", ""),
+                patch_info.get("plan", []),
+                patch_info.get("safety_verification", "")
+            )
+            print("✓")
+            
+            # Create patched file with _patched suffix
+            original_stem = file_path.stem  # e.g., "MyClass"
+            patched_filename = f"{original_stem}_patched.java"
+            patched_file_path = file_path.parent / patched_filename
+            
+            print(f"   Creating patched file: {patched_filename}")
+            patched_file_path.write_text(modified_code, encoding='utf-8')
+            
+            # Delete original file
+            print(f"   Deleting original file: {file_path.name}")
+            file_path.unlink()
             
             return {
-                "status": "success" if successful_files and not failed_files else "partial" if successful_files else "error",
-                "source_dir": str(source_dir),
-                "output_dir": str(output_dir),
-                "files_processed": len(results),
-                "files_successful": len(successful_files),
-                "files_failed": len(failed_files),
-                "file_results": results,
-                "model_used": self.model.value
+                "status": "success",
+                "original_file": str(file_path),
+                "patched_file": str(patched_file_path),
+                "patch_applied": True,
+                "model_used": self.model.value,
+                "operation": "replace_with_patched_suffix"
             }
             
         except Exception as e:
             return {
                 "status": "error",
                 "error": f"Failed to apply patch: {str(e)}",
-                "source_dir": str(source_dir),
-                "output_dir": str(output_dir)
+                "file_path": file_path_str if 'file_path_str' in locals() else "unknown"
             }
     
     def _apply_patch_with_llm(self, original_code: str, unified_diff: str, 
@@ -177,8 +144,6 @@ class LLMPatchApplicator:
         ]
         
         # Send request to OpenRouter with retry logic
-        print(f"Applying patch using {self.model.value}...")
-        
         for attempt in range(self.patch_settings["retry_attempts"]):
             try:
                 completion = self.client.chat.completions.create(
@@ -237,16 +202,14 @@ class LLMPatchApplicator:
     
     def _generate_summary(self, results: List[Dict[str, Any]]) -> Dict[str, Any]:
         """Generate summary statistics from results"""
-        successful = sum(1 for r in results if r["status"] == "success")
-        warnings = sum(1 for r in results if r["status"] == "warning")
-        failed = sum(1 for r in results if r["status"] == "error")
+        successful = sum(1 for r in results if r.get("status") == "success")
+        failed = sum(1 for r in results if r.get("status") == "error")
         
         return {
             "timestamp": datetime.datetime.now().isoformat(),
             "model_used": self.model.value,
             "total_patches": len(results),
             "successful": successful,
-            "warnings": warnings,
             "failed": failed,
             "success_rate": successful / len(results) if results else 0,
             "results": results
@@ -271,10 +234,7 @@ def apply_latest_patcher_output(model: Model = None) -> List[Dict[str, Any]]:
             with open(patch_file, 'r') as f:
                 patch_info = json.load(f)
             
-            source_dir = Path(patch_info["metadata"]["source_dir"])
-            output_dir = applicator.output_base_dir / f"patched_{patch_file.stem}"
-            
-            result = applicator.apply_patch_to_directory(source_dir, patch_info, output_dir)
+            result = applicator.apply_patch(patch_info)
             results.append(result)
         except Exception as e:
             print(f"Failed to process {patch_file}: {e}")
@@ -332,10 +292,7 @@ Examples:
                     with open(patch_file, 'r') as f:
                         patch_info = json.load(f)
                     
-                    source_dir = Path(patch_info["metadata"]["source_dir"])
-                    output_dir = applicator.output_base_dir / f"patched_{patch_file.stem}"
-                    
-                    result = applicator.apply_patch_to_directory(source_dir, patch_info, output_dir)
+                    result = applicator.apply_patch(patch_info)
                     results.append(result)
                 except Exception as e:
                     print(f"Failed to process {patch_file}: {e}")
@@ -355,12 +312,10 @@ Examples:
     # Summary
     if results:
         successful = sum(1 for r in results if r["status"] == "success")
-        warnings = sum(1 for r in results if r["status"] == "warning")
         failed = sum(1 for r in results if r["status"] == "error")
         
         print(f"\nSUMMARY:")
         print(f"  Successful: {successful}")
-        print(f"  Warnings: {warnings}")
         print(f"  Failed: {failed}")
 
 

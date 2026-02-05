@@ -28,9 +28,15 @@ class DockerBuildRunner:
         if str(self.verifier_path) not in sys.path:
             sys.path.insert(0, str(self.verifier_path))
     
-    def run_verification(self, project_path: pathlib.Path, patch_info: Optional[PatchInfo] = None) -> Dict[str, Any]:
+    def run_verification(self, project_path: pathlib.Path, patch_info: Optional[PatchInfo] = None, 
+                        output_dir: Optional[pathlib.Path] = None) -> Dict[str, Any]:
         """
         Run verification on a project: build + test discovery + test execution in Docker
+        
+        Args:
+            project_path: Path to the project in Projects/Sources/
+            patch_info: Optional patch information
+            output_dir: Directory to save build/test artifacts (under Verifier/output/)
         
         Returns:
             Dictionary with build and test results
@@ -44,9 +50,15 @@ class DockerBuildRunner:
                 "duration": 0
             }
         
-        # Initialize Docker runner with project-specific cache
-        artifacts_dir = project_path.parent / "artifacts"
-        artifacts_dir.mkdir(parents=True, exist_ok=True)
+        # Use provided output directory or create one under Verifier/output
+        if output_dir:
+            artifacts_dir = output_dir / "build_and_test"
+            artifacts_dir.mkdir(parents=True, exist_ok=True)
+        else:
+            # Fallback to old location if no output_dir provided
+            artifacts_dir = project_path.parent / "artifacts"
+            artifacts_dir.mkdir(parents=True, exist_ok=True)
+        
         self.docker_runner = DockerRunner(cache_dir=artifacts_dir / "build-cache")
         
         # Phase 1: Detect project type and get build commands
