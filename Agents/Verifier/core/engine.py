@@ -69,112 +69,263 @@ class VerifierCore:
         return results
     
     def _verify_single_patch(self, patch_info: PatchInfo, session_dir: pathlib.Path) -> VerificationResult:
-        """Single patch verification. Only verify patched code builds and passes tests"""
+        """
+        Orchestrates single patch verification through all stages.
+        Delegates to specialized methods for each verification step.
+        """
         start_time = datetime.datetime.now()
         patch_dir = self.artifact_manager.create_patch_directory(session_dir, patch_info.patch_id)
         
         try:
-            if not patch_info.touched_files:
-                return ErrorHandler.create_error_result(
-                    patch_info.patch_id, "No touched files specified", start_time
-                )
+            # Initialize verification context
+            context = self._initialize_verification_context(patch_info, patch_dir, start_time)
+            if isinstance(context, VerificationResult):  # Error during initialization
+                return context
             
-            # Get file path from Patcher output
-            # Expected : "Projects/Sources/project_name/src/main/File.java"
-            patcher_file_path = patch_info.touched_files[0]
+            # Step 1 & 2: Locate project and apply patch
+            patch_result = self._apply_patch_to_project(context)
+            if isinstance(patch_result, VerificationResult):  # Error during patching
+                return patch_result
             
-            # Extract project root from the file path
-            print(f"   [1/3] Locating project root...", end=" ", flush=True)
-            try:
-                project_root = self.project_manager.find_project_root(patcher_file_path)
-            except ValueError as e:
-                print("✗")
-                return ErrorHandler.create_error_result(
-                    patch_info.patch_id, str(e), start_time
-                )
+            # Step 3: Build and run existing tests
+            build_result = self._run_build_and_existing_tests(context)
+            if isinstance(build_result, VerificationResult):  # Build failed critically
+                return build_result
             
-            if not project_root.exists():
-                print("✗")
-                return ErrorHandler.create_error_result(
-                    patch_info.patch_id, f"Project root does not exist: {project_root}", start_time
-                )
-            print("✓")
+            # Step 4: Run POV tests (if available)
+            pov_result = self._run_pov_tests(context)
             
-            # Applying patch directly to file in Projects/Sources/
-            print(f"   [2/3] Applying patch to file...", end=" ", flush=True)
+            # Step 5: Generate and run LLM tests
+            llm_result = self._run_llm_tests(context)
             
-            # Convert to absolute path (if needed)
-            actual_file_path = pathlib.Path(patcher_file_path)
-            if not actual_file_path.is_absolute():
-                # Make it absolute relative to AutoSec root
-                autosec_root = pathlib.Path(__file__).parent.parent.parent.parent
-                actual_file_path = autosec_root / actual_file_path
-            
-            if not actual_file_path.exists():
-                print("✗")
-                return ErrorHandler.create_error_result(
-                    patch_info.patch_id, f"File not found: {actual_file_path}", start_time
-                )
-            
-            # Build patch info dict with actual file path
-            patch_info_dict = {
-                "file_path": str(actual_file_path),
-                "unified_diff": patch_info.unified_diff,
-                "plan": patch_info.plan,
-                "safety_verification": patch_info.safety_verification
-            }
-            
-            # Apply patch - create {original_name}_patched.java and delete original
-            patch_result = self.patch_applicator.apply_patch(patch_info_dict)
-            
-            if patch_result["status"] != "success":
-                print("✗")
-                return ErrorHandler.create_error_result(
-                    patch_info.patch_id, 
-                    f"Patch application failed: {patch_result.get('error', 'Unknown error')}", 
-                    start_time
-                )
-            
-            patched_file_path = pathlib.Path(patch_result["patched_file"])
-            print("✓")
-            print(f"      Created: {patched_file_path.name}")
-            
-            # Save patch application artifacts
-            patch_app_dir = patch_dir / "patch_application"
-            patch_app_dir.mkdir(parents=True, exist_ok=True)
-            self._save_patch_application_artifacts(patch_info, patch_result, patch_app_dir)
-            
-            # Build and test project with patched file
-            print(f"   [3/3] Building & testing project with patched file...")
-            patched_result = self.build_runner.run_verification(
-                project_root, patch_info, output_dir=patch_dir
-            )
-            print(f"      {'✓' if patched_result.get('success') else '✗'}")
-            
-            # Generate decision based only on patched result
-            verification_result = self.result_evaluator.compare_results(
-                patch_info, patched_result, start_time
+            # Evaluate all results and generate final decision
+            verification_result = self._evaluate_results(
+                context, build_result, pov_result, llm_result
             )
             
-            # Save artifacts
-            self._save_verification_artifacts(
-                patch_info, patch_dir, 
-                patched_file_path,
-                patch_result, patched_result, verification_result,
-                project_root
+            # Save all artifacts
+            self._save_all_artifacts(
+                context, build_result, pov_result, llm_result, verification_result
             )
             
             return verification_result
             
         except Exception as e:
             return ErrorHandler.create_error_result(patch_info.patch_id, str(e), start_time)
+    
+    def _initialize_verification_context(
+        self, 
+        patch_info: PatchInfo, 
+        patch_dir: pathlib.Path,
+        start_time: datetime.datetime
+    ) -> Dict[str, Any]:
+        if not patch_info.touched_files:
+            return ErrorHandler.create_error_result(
+                patch_info.patch_id, "No touched files specified", start_time
+            )
+        
+        patcher_file_path = patch_info.touched_files[0]
+        
+        # Extract project root
+        print(f"   [1/5] Locating project root...", end=" ", flush=True)
+        try:
+            project_root = self.project_manager.find_project_root(patcher_file_path)
+        except ValueError as e:
+            print("✗")
+            return ErrorHandler.create_error_result(
+                patch_info.patch_id, str(e), start_time
+            )
+        
+        if not project_root.exists():
+            print("✗")
+            return ErrorHandler.create_error_result(
+                patch_info.patch_id, f"Project root does not exist: {project_root}", start_time
+            )
+        print("✓")
+        
+        # Convert to absolute path
+        actual_file_path = pathlib.Path(patcher_file_path)
+        if not actual_file_path.is_absolute():
+            autosec_root = pathlib.Path(__file__).parent.parent.parent.parent
+            actual_file_path = autosec_root / actual_file_path
+        
+        if not actual_file_path.exists():
+            print("✗")
+            return ErrorHandler.create_error_result(
+                patch_info.patch_id, f"File not found: {actual_file_path}", start_time
+            )
+        
+        return {
+            "patch_info": patch_info,
+            "patch_dir": patch_dir,
+            "project_root": project_root,
+            "actual_file_path": actual_file_path,
+            "start_time": start_time
+        }
+    
+    def _apply_patch_to_project(self, context: Dict[str, Any]) -> Dict[str, Any]:
+        """Apply patch to the source file in Projects/Sources/"""
+        patch_info = context["patch_info"]
+        patch_dir = context["patch_dir"]
+        actual_file_path = context["actual_file_path"]
+        start_time = context["start_time"]
+        
+        print(f"   [2/5] Applying patch to file...", end=" ", flush=True)
+        
+        # Build patch info dict
+        patch_info_dict = {
+            "file_path": str(actual_file_path),
+            "unified_diff": patch_info.unified_diff,
+            "plan": patch_info.plan,
+            "safety_verification": patch_info.safety_verification
+        }
+        
+        # Apply patch - creates {original_name}_patched.java and deletes original
+        patch_result = self.patch_applicator.apply_patch(patch_info_dict)
+        
+        if patch_result["status"] != "success":
+            print("✗")
+            return ErrorHandler.create_error_result(
+                patch_info.patch_id, 
+                f"Patch application failed: {patch_result.get('error', 'Unknown error')}", 
+                start_time
+            )
+        
+        patched_file_path = pathlib.Path(patch_result["patched_file"])
+        print("✓")
+        print(f"      Created: {patched_file_path.name}")
+        
+        # Save patch application artifacts
+        patch_app_dir = patch_dir / "patch_application"
+        patch_app_dir.mkdir(parents=True, exist_ok=True)
+        self._save_patch_application_artifacts(patch_info, patch_result, patch_app_dir)
+        
+        # Store results in context
+        context["patch_result"] = patch_result
+        context["patched_file_path"] = patched_file_path
+        
+        return context
+    
+    def _run_build_and_existing_tests(self, context: Dict[str, Any]) -> Dict[str, Any]:
+        patch_info = context["patch_info"]
+        project_root = context["project_root"]
+        patch_dir = context["patch_dir"]
+        
+        print(f"   [3/5] Building & testing project with patched file...")
+        
+        patched_result = self.build_runner.run_verification(
+            project_root, patch_info, output_dir=patch_dir
+        )
+        
+        print(f"      {'✓' if patched_result.get('success') else '✗'}")
+        
+        # Store Docker image and stack for consistency in later steps
+        context["docker_image"] = patched_result.get("docker_image")
+        context["stack"] = patched_result.get("stack")
+        context["build_result"] = patched_result
+        
+        return patched_result
+    
+    def _run_pov_tests(self, context: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        patch_info = context["patch_info"]
+        project_root = context["project_root"]
+        patch_dir = context["patch_dir"]
+        docker_image = context.get("docker_image")
+        stack = context.get("stack")
+        
+        if not patch_info.pov_tests:
+            print(f"   [4/5] No POV tests provided, skipping...")
+            return None
+        
+        print(f"   [4/5] Running POV tests from Exploiter...")
+        
+        pov_result = self.pov_tester.run_pov_tests(
+            project_root,
+            docker_image,
+            stack,
+            patch_info.pov_tests,
+            patch_dir / "pov_tests"
+        )
+        
+        if pov_result.get("status") == "PASS":
+            print(f"      ✓ POV tests passed ({pov_result['passed_pov_tests']}/{pov_result['total_pov_tests']})")
+        elif pov_result.get("status") == "FAIL":
+            print(f"      ✗ POV tests failed ({pov_result['failed_pov_tests']}/{pov_result['total_pov_tests']})")
+        else:
+            print(f"      ⊘ POV tests skipped")
+        
+        return pov_result
+    
+    def _run_llm_tests(self, context: Dict[str, Any]) -> Dict[str, Any]:
+        patch_info = context["patch_info"]
+        project_root = context["project_root"]
+        patch_dir = context["patch_dir"]
+        docker_image = context.get("docker_image")
+        stack = context.get("stack")
+        
+        print(f"   [5/5] Generating and running LLM security tests...")
+        
+        llm_result = self.llm_test_handler.generate_and_run_tests(
+            project_root,
+            docker_image,
+            stack,
+            patch_info,
+            patch_dir / "llm_tests"
+        )
+        
+        if llm_result.get("status") == "PASS":
+            test_results = llm_result.get("test_execution", {}).get("test_results", {})
+            print(f"      ✓ LLM tests passed ({test_results.get('passed_tests', 0)}/{test_results.get('total_tests', 0)})")
+        elif llm_result.get("status") == "FAIL":
+            print(f"      ✗ LLM tests failed")
+        else:
+            print(f"      ⊘ LLM test generation/execution skipped")
+        
+        return llm_result
+    
+    def _evaluate_results(
+        self,
+        context: Dict[str, Any],
+        build_result: Dict[str, Any],
+        pov_result: Optional[Dict[str, Any]],
+        llm_result: Dict[str, Any]
+    ) -> VerificationResult:
+        """Evaluate all test results and generate final verification decision"""
+        patch_info = context["patch_info"]
+        start_time = context["start_time"]
+        
+        return self.result_evaluator.compare_results(
+            patch_info, build_result, start_time, 
+            pov_result=pov_result, 
+            llm_test_result=llm_result
+        )
+    
+    def _save_all_artifacts(
+        self,
+        context: Dict[str, Any],
+        build_result: Dict[str, Any],
+        pov_result: Optional[Dict[str, Any]],
+        llm_result: Dict[str, Any],
+        verification_result: VerificationResult
+    ):
+        patch_info = context["patch_info"]
+        patch_dir = context["patch_dir"]
+        patched_file_path = context["patched_file_path"]
+        patch_result = context["patch_result"]
+        project_root = context["project_root"]
+        
+        self._save_verification_artifacts(
+            patch_info, patch_dir, 
+            patched_file_path,
+            patch_result, build_result, verification_result,
+            project_root, pov_result, llm_result
+        )
 
     def _save_verification_artifacts(self, patch_info: PatchInfo, patch_dir: pathlib.Path, 
                                    patched_file_path: pathlib.Path, patch_result: dict,
                                    patched_result: dict, 
                                    verification_result: VerificationResult,
-                                   project_root: pathlib.Path):
-        """Save verification artifacts with organized test results"""
+                                   project_root: pathlib.Path, pov_result=None, llm_test_result=None):
         try:
             import json
             
@@ -204,6 +355,8 @@ class VerifierCore:
                     "status": "SKIP",
                     "message": "No tests executed"
                 }),
+                "pov_tests": pov_result or {},
+                "llm_tests": llm_test_result or {},
                 "final_decision": {
                     "status": verification_result.status.value,
                     "reasoning": verification_result.reasoning,
@@ -243,7 +396,6 @@ class VerifierCore:
             print(f"   ⚠️  Failed to save artifacts: {e}")
 
     def _save_patch_application_artifacts(self, patch_info: PatchInfo, patch_result: dict, patch_app_dir: pathlib.Path):
-        """Save patch application artifacts"""
         try:
             patch_app_file = patch_app_dir / "patch_application.json"
             patch_app_data = {

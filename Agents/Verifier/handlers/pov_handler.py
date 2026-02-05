@@ -23,7 +23,7 @@ class POVTestRunner:
         Run POV tests from Exploiter on the patched project.
         
         Args:
-            project_path: Path to patched project
+            project_path: Path to patched project in Projects/Sources/
             docker_image: Docker image to use (from successful build)
             stack: Build system (maven/gradle)
             pov_tests: List of POV test information from Exploiter
@@ -54,8 +54,11 @@ class POVTestRunner:
         # Initialize Docker runner
         docker_runner = DockerRunner(cache_dir=artifacts_dir / "build-cache")
         
+        # find Exploiter's project path for copying POV tests
+        exploiter_project_path = self._find_exploiter_project_path(project_path)
+        
         try:
-            # For each POV test, check if it exists in the project
+            # for each POV test, copy it from Exploiter and then run it
             for idx, pov_test in enumerate(pov_tests, start=1):
                 pov_test_paths = pov_test.get("pov_test_path", [])
                 
@@ -70,17 +73,26 @@ class POVTestRunner:
                 
                 # Use first test path
                 pov_test_relative_path = pov_test_paths[0]
-                pov_test_full_path = project_path / pov_test_relative_path
                 
-                if not pov_test_full_path.exists():
-                    print(f"      POV Test {idx}: Test file not found: {pov_test_relative_path}")
+                # copy POV test from Exploiter to Projects/Sources/
+                copy_success = self._copy_pov_test_to_project(
+                    exploiter_project_path,
+                    project_path,
+                    pov_test_relative_path
+                )
+                
+                if not copy_success:
+                    print(f"      POV Test {idx}: Failed to copy test file from Exploiter")
                     result["pov_test_details"].append({
                         "test_index": idx,
                         "test_path": pov_test_relative_path,
                         "status": "SKIP",
-                        "reason": "Test file not found in patched project"
+                        "reason": "Failed to copy test file from Exploiter's directory"
                     })
                     continue
+                
+                pov_test_full_path = project_path / pov_test_relative_path
+                print(f"      POV Test {idx}: Copied to {pov_test_relative_path}")
                 
                 # Extract test class name from path
                 test_class = self._extract_test_class_name(pov_test_relative_path)
@@ -130,6 +142,83 @@ class POVTestRunner:
             result["error"] = str(e)
         
         return result
+    
+    def _find_exploiter_project_path(self, target_project_path: pathlib.Path) -> pathlib.Path:
+        """
+        Find the Exploiter's copy of the project.
+        Searches multiple possible workdir locations.
+        
+        Args:
+            target_project_path: Path to project in Projects/Sources/ (e.g., .../project_name/)
+        
+        Returns:
+            Path to Exploiter's copy (e.g., Agents/Exploiter/data/cwe-bench-java/.../project_name/)
+        """
+        project_name = target_project_path.name
+        
+        autosec_root = pathlib.Path(__file__).parent.parent.parent.parent
+        
+        # Try multiple possible workdir locations 
+        possible_workdirs = [
+            "workdir_no_branch",      # --no_branch flag
+            "workdir_no_flow",        # --no_flow flag
+            "workdir_no_flow_no_branch",  # Both flags
+            "workdir"                 # No flags (default)
+        ]
+        
+        for workdir_name in possible_workdirs:
+            exploiter_project_path = (
+                autosec_root / "Agents" / "Exploiter" / "data" / "cwe-bench-java" / 
+                workdir_name / "project-sources" / project_name
+            )
+            
+            # Return the first one that exists
+            if exploiter_project_path.exists():
+                return exploiter_project_path
+        
+        # if none found return the most common one (workdir_no_branch) as fallback
+        return (
+            autosec_root / "Agents" / "Exploiter" / "data" / "cwe-bench-java" / 
+            "workdir_no_branch" / "project-sources" / project_name
+        )
+    
+    def _copy_pov_test_to_project(
+        self,
+        exploiter_project_path: pathlib.Path,
+        target_project_path: pathlib.Path,
+        pov_test_relative_path: str
+    ) -> bool:
+        """
+        Copy POV test from Exploiter's project to Projects/Sources/
+        
+        Args:
+            exploiter_project_path: e.g., Agents/Exploiter/data/.../project-sources/project_name/
+            target_project_path: e.g., Projects/Sources/project_name/
+            pov_test_relative_path: e.g., src/test/java/.../POVTest.java
+        
+        Returns:
+            True if copy succeeded, False otherwise
+        """
+        import shutil
+        
+        source_file = exploiter_project_path / pov_test_relative_path
+        target_file = target_project_path / pov_test_relative_path
+        
+        # Check if source exists
+        if not source_file.exists():
+            print(f"      ⚠️  POV test not found in Exploiter: {source_file}")
+            return False
+        
+        # Create parent directories if needed
+        target_file.parent.mkdir(parents=True, exist_ok=True)
+        
+        try:
+            # Copy the test file
+            shutil.copy2(source_file, target_file)
+            return True
+        except Exception as e:
+            print(f"      ⚠️  Failed to copy POV test: {e}")
+            return False
     
     def _extract_test_class_name(self, test_path: str) -> str:
         """
