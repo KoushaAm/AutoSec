@@ -26,6 +26,7 @@ class AutoSecState(TypedDict, total=False):
     language: Optional[str]
     vuln_id: Optional[str]
     vuln: Optional[Dict[str, Any]]
+    finder_model: Optional[str]
     finder_output: Optional[List[FinderOutput]]
     artifacts: Optional[Dict[str, str]]
     exploiter: Optional[Dict[str, Any]]
@@ -72,8 +73,10 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         raise RuntimeError("HOST_WORKSPACE env var not set. Add it in devcontainer.json.")
     host_ws = host_ws.replace("\\", "/") # for windows compatibility
 
+    # get relevant args from autosecstate
     project_name = state["project_name"]
     query = state["vuln_id"] + "wLLM"
+    model = state["finder_model"]
 
     # 1. setup command to have IRIS inside docker container
     docker_cmd = [
@@ -89,7 +92,8 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         "python3 ./scripts/build_and_analyze.py "
         f"--project-name {project_name} "
         f"--zip-path /workspace/Projects/Zipped/{project_name}.zip "
-        f"--query {query}"
+        f"--query {query} "
+        f"--model {model}"
     ]
 
     logger.info(f"Running IRIS inside Docker for project {project_name}")
@@ -275,6 +279,7 @@ def pipeline_main():
         "project_name": "perwendel__spark_CVE-2018-9159_2.7.1",
         "vuln_id": "cwe-022",
         "language": "java",
+        "finder_model": "qwen2.5-32b",
     }
 
     workflow = _build_workflow()
