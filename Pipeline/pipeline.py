@@ -26,6 +26,8 @@ class AutoSecState(TypedDict, total=False):
     language: Optional[str]
     vuln_id: Optional[str]
     vuln: Optional[Dict[str, Any]]
+    finder_model: Optional[str]
+    finder_reanalyze: Optional[bool]
     finder_output: Optional[List[FinderOutput]]
     artifacts: Optional[Dict[str, str]]
     exploiter: Optional[Dict[str, Any]]
@@ -72,8 +74,19 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         raise RuntimeError("HOST_WORKSPACE env var not set. Add it in devcontainer.json.")
     host_ws = host_ws.replace("\\", "/") # for windows compatibility
 
+    # get relevant args from autosecstate
     project_name = state["project_name"]
     query = state["vuln_id"] + "wLLM"
+    model = state["finder_model"]
+
+    # setup args for build_and_analyze.py script. make sure project if project is reanalyzed, use --overwrite and no need to unzip folder
+    build_and_analyze_args = f"--project-name {project_name} --query {query} --model {model} "
+    if state["finder_reanalyze"]:
+        build_and_analyze_args += f"--overwrite"
+    else:
+        build_and_analyze_args += f"--zip-path /workspace/Projects/Zipped/{project_name}.zip"
+
+    print(f"\n---- ARGS: {build_and_analyze_args} ----\n")
 
     # 1. setup command to have IRIS inside docker container
     docker_cmd = [
@@ -86,10 +99,7 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         "iris:latest",
         "bash", "-lc",
         "source /opt/conda/etc/profile.d/conda.sh && conda activate iris && "
-        "python3 ./scripts/build_and_analyze.py "
-        f"--project-name {project_name} "
-        f"--zip-path /workspace/Projects/Zipped/{project_name}.zip "
-        f"--query {query}"
+        "python3 ./scripts/build_and_analyze.py " + build_and_analyze_args
     ]
 
     logger.info(f"Running IRIS inside Docker for project {project_name}")
@@ -107,6 +117,7 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
             state["finder_output"] = None
             state["vuln"] = None
+            state["finder_reanalyze"] = False
             return state
 
     # 3. Load IRIS output
@@ -125,6 +136,7 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         state["finder_output"] = None
         state["vuln"] = None
 
+    state["finder_reanalyze"] = False
     return state
 
 
@@ -220,6 +232,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
 
     if not exploitable:
         logger.warning("Exploiter ran but did not find an exploitable PoV.")
+        new_state["finder_reanalyze"] = True
         return Command(goto="finder", update=new_state)
 
     logger.info("Vulnerability exploited! Continuing to patcher.")
@@ -256,6 +269,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
     new_state = dict(state)
 
     if retry_finder:
+        new_state["finder_reanalyze"] = True
         return Command(
             goto="finder",
             update=new_state
@@ -275,6 +289,8 @@ def pipeline_main():
         "project_name": "perwendel__spark_CVE-2018-9159_2.7.1",
         "vuln_id": "cwe-022",
         "language": "java",
+        "finder_model": "qwen2.5-32b",
+        "finder_reanalyze": False,
     }
 
     workflow = _build_workflow()
