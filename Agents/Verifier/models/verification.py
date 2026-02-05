@@ -39,6 +39,7 @@ class PatchInfo:
     assumptions: str
     behavior_change: str
     safety_verification: str
+    pov_tests: List[Dict[str, Any]] = None
 
 
 @dataclass

@@ -137,28 +137,83 @@ class LLMTestHandler:
         test_code: str, 
         patch_info: PatchInfo
     ) -> pathlib.Path:
-        """Write generated tests to the appropriate test directory"""
+        """Write generated tests to the appropriate test directory with proper package structure"""
         
-        # Determine test directory based on build system
-        if stack == "maven":
-            test_dir = project_path / "src" / "test" / "java"
-        elif stack == "gradle":
-            test_dir = project_path / "src" / "test" / "java"
+        # Determine base test directory
+        if stack in ["maven", "gradle"]:
+            test_base_dir = project_path / "src" / "test" / "java"
         else:
-            test_dir = project_path / "test"
+            test_base_dir = project_path / "test"
         
-        # Create test directory if it doesn't exist
+        # Extract package from original source file path (most reliable)
+        original_file_path = pathlib.Path(patch_info.touched_files[0])
+        package_path = self._extract_package_path(original_file_path)
+        
+        # Fallback: parse package from LLM-generated code
+        if not package_path:
+            package_from_code = self._extract_package_from_code(test_code)
+            package_path = package_from_code.replace('.', '/') if package_from_code else None
+        
+        # Build full test directory path
+        test_dir = test_base_dir / package_path if package_path else test_base_dir
         test_dir.mkdir(parents=True, exist_ok=True)
         
-        # Generate test file name
-        original_file = pathlib.Path(patch_info.touched_files[0]).stem
-        test_file_name = f"{original_file}SecurityTest.java"
+        # Create test file
+        test_file_name = f"{original_file_path.stem}SecurityTest.java"
         test_file_path = test_dir / test_file_name
         
-        # Write test code
+        # Write and return
         test_file_path.write_text(test_code, encoding='utf-8')
-        
         return test_file_path
+    
+    def _extract_package_path(self, file_path: pathlib.Path) -> Optional[str]:
+        """
+        Extract package directory structure from source file path.
+        
+        Example:
+            Projects/Sources/project/src/main/java/org/owasp/esapi/File.java
+            -> "org/owasp/esapi"
+        """
+        file_str = str(file_path)
+        
+        # Look for common Java source patterns
+        patterns = [
+            'src/main/java/',
+            'src/test/java/',
+            '/java/src/',
+            '/src/'
+        ]
+        
+        for pattern in patterns:
+            if pattern in file_str:
+                # Split and get everything after the pattern
+                parts = file_str.split(pattern)
+                if len(parts) > 1:
+                    # Get the part after pattern. remove filename
+                    package_with_file = parts[-1]
+                    # Remove the filename to get just package path
+                    package_path = str(pathlib.Path(package_with_file).parent)
+                    # return if it's not just "." (current dir)
+                    if package_path and package_path != '.':
+                        return package_path
+        
+        return None
+    
+    def _extract_package_from_code(self, test_code: str) -> Optional[str]:
+        """
+        Extract package declaration from generated test code.
+        
+        Example:
+            "package org.owasp.esapi;" -> "org.owasp.esapi"
+        """
+        import re
+        
+        # Look for package declaration at the start of the file
+        match = re.search(r'^\s*package\s+([\w.]+)\s*;', test_code, re.MULTILINE)
+        if match:
+            return match.group(1)
+        
+        return None
     
     def _run_generated_tests_in_docker(
         self,

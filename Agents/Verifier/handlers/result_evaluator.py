@@ -1,8 +1,7 @@
 """
 Result Evaluator
 
-Evaluates verification results and generates feedback for the Patcher agent.
-Determines whether a patch is valid, breaks build, or breaks tests.
+Evaluating results and preparing for patch refinement
 """
 import datetime
 from typing import Dict, Any, Tuple
@@ -16,23 +15,41 @@ class ResultEvaluator:
         self,
         patch_info: PatchInfo,
         patched_result: Dict[str, Any],
-        start_time: datetime.datetime
+        start_time: datetime.datetime,
+        pov_result: Dict[str, Any] = None,
+        llm_test_result: Dict[str, Any] = None
     ) -> VerificationResult:
-        """Evaluate patched code verification results (no pre-patch comparison needed)"""
+        """Evaluate patched code verification results including POV and LLM tests"""
         
         patched_success = patched_result.get("success", False)
         patched_rc = patched_result.get("return_code", 1)
         
-        print(f"      Patched result: RC={patched_rc}, Success={patched_success}")
+        # POV test results
+        pov_passed = True
+        if pov_result:
+            pov_status = pov_result.get("status")
+            pov_passed = pov_status == "PASS" or pov_status == "SKIP"
+            if pov_status == "FAIL":
+                print(f"      ⚠️  POV tests FAILED - vulnerability still exploitable!")
         
-        # Determine verification status
+        # LLM test results
+        llm_passed = True
+        if llm_test_result:
+            llm_status = llm_test_result.get("status")
+            llm_passed = llm_status == "PASS" or llm_status == "SKIP"
+            if llm_status == "FAIL":
+                print(f"      ⚠️  LLM security tests FAILED!")
+        
+        print(f"      Patched result: RC={patched_rc}, Build={patched_success}, POV={pov_passed}, LLM={llm_passed}")
+        
+        # Determine verification status considering all test results
         status, reasoning, build_success, test_success = self._analyze_results(
-            patched_success, patched_rc
+            patched_success, patched_rc, pov_passed, llm_passed
         )
         
         # Generate patcher feedback for potential refinement
         patcher_feedback = self._generate_patcher_feedback(
-            status, patch_info, patched_result
+            status, patch_info, patched_result, pov_result, llm_test_result
         )
         
         verification_time = (datetime.datetime.now() - start_time).total_seconds()
@@ -51,9 +68,10 @@ class ResultEvaluator:
     def _analyze_results(
         self,
         patched_success: bool,
-        patched_rc: int
+        patched_rc: int,
+        pov_passed: bool = True,
+        llm_passed: bool = True
     ) -> Tuple[VerificationStatus, str, bool, bool]:
-        """Analyze verification results to determine status"""
         
         if not patched_success:
             if patched_rc == 1:
@@ -77,22 +95,41 @@ class ResultEvaluator:
                     False,
                     False
                 )
-        else:
-            # Success - patch builds and tests pass
+        
+        # Build succeeded, now check POV and LLM tests
+        if not pov_passed:
             return (
-                VerificationStatus.PATCH_VALID,
-                "Patch builds successfully and passes all tests",
+                VerificationStatus.PATCH_BREAKS_TESTS,
+                "Patch passes build but POV tests FAILED - vulnerability still exploitable",
                 True,
-                True
+                False
             )
+        
+        if not llm_passed:
+            return (
+                VerificationStatus.PATCH_BREAKS_TESTS,
+                "Patch passes build but LLM security tests FAILED",
+                True,
+                False
+            )
+        
+        # All tests passed
+        return (
+            VerificationStatus.PATCH_VALID,
+            "Patch builds successfully and passes all tests (existing + POV + LLM)",
+            True,
+            True
+        )
     
     def _generate_patcher_feedback(
         self,
         status: VerificationStatus,
         patch_info: PatchInfo,
-        patched_result: Dict[str, Any]
+        patched_result: Dict[str, Any],
+        pov_result: Dict[str, Any] = None,
+        llm_test_result: Dict[str, Any] = None
     ) -> Dict[str, Any]:
-        """Generate feedback for patch refinement (Verifier → Patcher)"""
+        """Generate feedback for patch refinement including POV and LLM test results"""
         
         feedback = {
             "status": status.value,
@@ -107,6 +144,8 @@ class ResultEvaluator:
                 "return_code": patched_result.get("return_code", -1),
                 "duration": patched_result.get("duration", 0)
             },
+            "pov_tests": pov_result or {},
+            "llm_tests": llm_test_result or {},
             "recommendations": []
         }
         
@@ -116,11 +155,22 @@ class ResultEvaluator:
             feedback["build_regression"] = True
             
         elif status == VerificationStatus.PATCH_BREAKS_TESTS:
-            feedback["recommendations"].append("Fix test failures introduced by patch")
+            # Check which tests failed
+            if pov_result and pov_result.get("status") == "FAIL":
+                feedback["recommendations"].append("POV tests FAILED - vulnerability is still exploitable after patching")
+                feedback["pov_regression"] = True
+            
+            if llm_test_result and llm_test_result.get("status") == "FAIL":
+                feedback["recommendations"].append("LLM security tests FAILED - patch may not fully address security issues")
+                feedback["llm_test_regression"] = True
+            
+            if not (pov_result and pov_result.get("status") == "FAIL") and not (llm_test_result and llm_test_result.get("status") == "FAIL"):
+                feedback["recommendations"].append("Fix test failures introduced by patch")
+            
             feedback["test_regression"] = True
             
         elif status == VerificationStatus.PATCH_VALID:
-            feedback["recommendations"].append("Patch validated - builds and tests pass")
+            feedback["recommendations"].append("Patch validated - builds and passes all tests (existing + POV + LLM)")
             feedback["patch_accepted"] = True
                 
         else:  # VERIFICATION_ERROR
