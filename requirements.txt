@@ -1,6 +1,18 @@
+# Global dependencies
 langgraph
+python-dotenv==1.1.0
+openai==1.57.4
+
+# Exploiter agent dependencies
+networkx==3.3
+Requests==2.32.3
+google-generativeai==0.6.0
+prettytable==3.16.0
+docker==7.1.0
+pandas==2.3.0
+litellm
+legacy-cgi==2.6.2
+
 # Patcher agent dependencies
-openai
-python-dotenv
 tree-sitter
 tree-sitter-java

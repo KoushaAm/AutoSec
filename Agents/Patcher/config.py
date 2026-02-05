@@ -22,7 +22,7 @@ TOOL_VERSION = "patcher-1.4.1"
 OUTPUT_PATH = SCRIPT_DIR / "output" # Agents/Patcher/output
 
 # Choose one or more vulnerability definitions to test here.
-VULNERABILITIES = [ve["CWE-78"], ve["CWE-22"], ve["CWE-94"], ve["CWE-918"], ve["CWE-78-Perfecto"]] 
+VULNERABILITIES_EXPERIMENTS = [ve["CWE-78"], ve["CWE-22"], ve["CWE-94"], ve["CWE-918"], ve["CWE-78-Perfecto"]] 
 
 # Model context limits: approximate context windows per model name,
 # If MODEL_NAME isn't found here, we fall back to DEFAULT_CONTEXT_LIMIT.

@@ -12,13 +12,11 @@
 
    // Docker-outside-of-Docker
    "mounts": ["source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"],
-
-   // Ensure vscode user can access the docker socket (common fix on Linux)
    "runArgs": ["--init", "--group-add=0"],
 
-    "containerEnv": {
-        "HOST_WORKSPACE": "${localWorkspaceFolder}"
-    },
+   "containerEnv": {
+      "HOST_WORKSPACE": "${localWorkspaceFolder}"
+   },
 
    "customizations": {
       "vscode": {
@@ -36,15 +34,15 @@
          "settings": {
             "terminal.integrated.defaultProfile.linux": "bash",
 
-            // Prefer the project venv (created in postCreate)
+            // You control when/if this exists
             "python.defaultInterpreterPath": "/workspaces/autosec/.venv/bin/python",
             "python.terminal.activateEnvironment": true,
 
-            // Helps Pylance find your modules
+            // Module resolution for AutoSec
             "python.analysis.extraPaths": ["/workspaces/autosec"],
 
-            // Optional but nice: avoid "Select Interpreter" nag
-            "python.venvPath": "/workspaces/autosec"
+            // Directory VS Code scans for virtual environments
+            "python.venvPath": "/workspaces"
          }
       }
    }
