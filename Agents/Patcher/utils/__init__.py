@@ -1,10 +1,13 @@
 # Patcher/utils/__init__.py
+
 from .openrouter_utils import combine_prompt_messages
+
 from .prompt_utils import (
-    build_user_msg_single,
+    build_patch_prompt,
     estimate_prompt_tokens,
     determine_max_tokens,
 )
+
 from .output_utils import (
     process_llm_output_single,
     write_run_manifest,
@@ -12,7 +15,7 @@ from .output_utils import (
 
 __all__ = [
     "combine_prompt_messages",
-    "build_user_msg_single",
+    "build_patch_prompt",
     "estimate_prompt_tokens",
     "determine_max_tokens",
     "process_llm_output_single",

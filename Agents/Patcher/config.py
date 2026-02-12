@@ -2,9 +2,7 @@
 from typing import Dict
 from pathlib import Path
 # local imports
-# TODO| vuln info will be removed or altered later to take data from the
-# TODO| pipeline and convert it to vuln_info objects dynamically
-from .constants import Model, VULNERABILITY_EXPERIMENTS as ve
+from .constants import Model
 
 # Select OpenRouter model
 CURRENT_MODEL = Model.LLAMA3
@@ -16,13 +14,10 @@ SCRIPT_DIR = Path(__file__).parent
 MODEL_NAME = CURRENT_MODEL.name
 MODEL_VALUE = CURRENT_MODEL.value
 
-TOOL_VERSION = "patcher-1.4.1"
+TOOL_VERSION = "patcher-2.0.0"
 
 # Set OUTPUT_PATH relative to patcher.py's directory
 OUTPUT_PATH = SCRIPT_DIR / "output" # Agents/Patcher/output
-
-# Choose one or more vulnerability definitions to test here.
-VULNERABILITIES_EXPERIMENTS = [ve["CWE-78"], ve["CWE-22"], ve["CWE-94"], ve["CWE-918"], ve["CWE-78-Perfecto"]] 
 
 # Model context limits: approximate context windows per model name,
 # If MODEL_NAME isn't found here, we fall back to DEFAULT_CONTEXT_LIMIT.
