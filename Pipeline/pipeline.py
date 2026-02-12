@@ -16,6 +16,7 @@ from . import logger
 from Agents.Patcher import patcher_main
 from Agents.Finder.src.types import FinderOutput
 from Agents.Finder.src.output_converter import sarif_to_finder_output
+from datetime import datetime
 
 # relative path information
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -234,19 +235,31 @@ def _exploiter_node(state: AutoSecState) -> Command:
 def _patcher_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node - patcher started")
 
-    print(f"=== Patcher invoked for {state['project_name']} ===")
-    if state.get("language"):
-        lang = state["language"]
+    if not state.get("language"):
+        raise ValueError("language missing from state")
 
-    if state.get("finder_output"):
-        cwe_id = state['finder_output']['cwe_id']
-        
-        # print(f"finder_output (vulns): \n{state['finder_output']['vulnerabilities'][0]}")
-        vulnList = state['finder_output']['vulnerabilities']
+    if not state.get("project_name"):
+        raise ValueError("project_name missing from state")
 
-    # TODO: implement patcher integration
-    success = patcher_main(lang, cwe_id, vulnList, state['project_name'])
-    state["patcher"] = {"success": success}
+    if not state.get("finder_output"):
+        raise ValueError("finder_output missing from state")
+
+    # if not state.get("exploiter"):
+        # raise ValueError("exploiter output missing from state")
+
+    # TODO: update with exploiter pov_logic when accessible
+    pov_logic = "Example PoV logic from exploiter report"
+
+    success = patcher_main(
+            language=state["language"], 
+            cwe_id=state['finder_output']['cwe_id'], 
+            vulnerability_list=state['finder_output']['vulnerabilities'], 
+            project_name=state["project_name"], 
+            pov_logic=pov_logic,
+            save_prompt=True,
+        )
+    
+    state["patcher"] = {"success": success, "date_time": datetime.now().isoformat()}
 
     return state
 
@@ -275,6 +288,14 @@ class ProjectVariant(Enum):
         "name": "codehaus-plexus__plexus-archiver_CVE-2018-1002200_3.5",
         "cwe_id": "cwe-022"
     }
+    CODEHAUS_2017 = {
+        "name": "codehaus-plexus__plexus-utils_CVE-2017-1000487_3.0.15",
+        "cwe_id": "cwe-078"
+    }
+    NAHSRA = {
+        "name": "nahsra__antisamy_CVE-2016-10006_1.5.3",
+        "cwe_id": "cwe-079"
+    }
     PERWENDEL_2018 = {
         "name": "perwendel__spark_CVE-2018-9159_2.7.1",
         "cwe_id": "cwe-022"
@@ -290,10 +311,11 @@ class ProjectVariant(Enum):
 
 # ====== Execute workflow =====
 def pipeline_main():
+    SELECTED_PROJECT = ProjectVariant.CODEHAUS_2018
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
-        "project_name": ProjectVariant.CODEHAUS_2018.project_name,
-        "vuln_id": ProjectVariant.CODEHAUS_2018.cwe_id,
+        "project_name": SELECTED_PROJECT.project_name,
+        "vuln_id": SELECTED_PROJECT.cwe_id,
         "language": "java",
     }
 
@@ -302,11 +324,13 @@ def pipeline_main():
     # Execute the graph
     final_state = workflow.invoke(initial_state)
 
-    # print("\n====== STATE DUMP ======")
-    # print(json.dumps(final_state, indent=2))
-    # print("======^==========^======\n")
+    return final_state
 
 
 # standalone execution
 if __name__ == "__main__":
-    pipeline_main()
+    final_state = pipeline_main()
+
+    print("\n====== STATE DUMP ======")
+    print(json.dumps(final_state, indent=2))
+    print("======^==========^======\n")

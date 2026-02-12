@@ -1,19 +1,25 @@
-# Patcher/utils/prompt_utils.py
+# Agents/Patcher/utils/prompt_utils.py
 import json
-from typing import Any, Dict, Union, List, Mapping
+from typing import Any, Dict, List, Union
 
 from ..config import DEFAULT_CONTEXT_LIMIT, MODEL_CONTEXT_LIMITS
-from ..core import AgentFields, FileSnippetBundle
+from ..core.types import VulnerabilitySpec, FileSnippetBundle
 
-def build_user_msg_single(
+
+def build_patch_prompt(
     task_id: int,
-    agent_fields: AgentFields,
+    spec: VulnerabilitySpec,
     snippet_payload: Union[str, FileSnippetBundle],
 ) -> str:
     """
-    Build a USER message for exactly ONE patch task.
+    Build a USER message for exactly ONE vulnerability patch task.
+
+    This prompt is Finder-aligned and must remain stable:
+    - One prompt per VulnerabilitySpec (unique vulnerability instance)
+    - Includes ALL traces + derived sink + exploiter pov_logic
+    - Includes extracted snippets for all referenced files
     """
-    fields: Mapping[str, object] = agent_fields.to_dict()
+    fields: Dict[str, Any] = spec.to_dict()
 
     text_lines: List[str] = []
     text_lines.append(
@@ -25,22 +31,34 @@ def build_user_msg_single(
     text_lines.append("task:\n")
     text_lines.append(f"  task_id: {task_id}")
     text_lines.append(f"  language: {json.dumps(fields['language'], ensure_ascii=False)}")
-    text_lines.append(f"  function: {json.dumps(fields['function'], ensure_ascii=False)}")
-    text_lines.append(f"  CWE: {json.dumps(fields['CWE'], ensure_ascii=False)}")
+    text_lines.append(f"  cwe_id: {json.dumps(fields['cwe_id'], ensure_ascii=False)}")
+    text_lines.append(f"  project_name: {json.dumps(fields['project_name'], ensure_ascii=False)}")
     text_lines.append("  constraints: " + json.dumps(fields["constraints"], ensure_ascii=False))
-    text_lines.append(f"  vuln_title: {json.dumps(fields['vuln_title'], ensure_ascii=False)}")
 
-    text_lines.append("  data_flow:")
-    text_lines.append("    sink: " + json.dumps(fields["sink"], ensure_ascii=False))
-    text_lines.append("    flow: " + json.dumps(fields["flow"], ensure_ascii=False))
-    text_lines.append("  pov_tests: " + json.dumps(fields["pov_tests"], ensure_ascii=False))
+    # Finder-aligned: traces + sink
+    text_lines.append("  traces: " + json.dumps(fields["traces"], ensure_ascii=False))
+    text_lines.append("  sink: " + json.dumps(fields["sink"], ensure_ascii=False))
 
+    # Exploiter context (PoV)
+    text_lines.append(f"  pov_logic: {json.dumps(fields.get('pov_logic', ''), ensure_ascii=False)}")
+
+    # Guidance that matches your new rules
+    text_lines.append(
+        "  patch_rules: |\n"
+        "    - Fix ONLY this vulnerability instance.\n"
+        "    - Prefer a single-file fix whenever possible.\n"
+        "    - Patch multiple files ONLY if it cannot be resolved in a single file.\n"
+        "    - Keep changes minimal while fully mitigating all trace paths.\n"
+        "    - Respect constraints (no new deps if no_new_deps=true; keep signature if keep_signature=true).\n"
+    )
+
+    # Snippets
     if isinstance(snippet_payload, dict) and "by_file" in snippet_payload:
         text_lines.append("  vulnerable_snippets:")
         for path_key, code_text in snippet_payload["by_file"].items():
             text_lines.append(f"  - path: {json.dumps(path_key, ensure_ascii=False)}")
             text_lines.append("    code: |")
-            for line in code_text.splitlines():
+            for line in str(code_text).splitlines():
                 text_lines.append(f"      {line}")
         text_lines.append("")
     else:
@@ -53,6 +71,7 @@ def build_user_msg_single(
 
     return "\n".join(text_lines)
 
+
 # keep estimate_prompt_tokens + determine_max_tokens unchanged
 def estimate_prompt_tokens(messages: List[Dict[str, Any]]) -> int:
     total_chars = 0
@@ -60,6 +79,7 @@ def estimate_prompt_tokens(messages: List[Dict[str, Any]]) -> int:
         content = msg.get("content", "")
         total_chars += len(content) if isinstance(content, str) else len(str(content))
     return max(1, total_chars // 4)
+
 
 def determine_max_tokens(model_name: str, prompt_tokens: int) -> int:
     max_ctx = MODEL_CONTEXT_LIMITS.get(model_name, DEFAULT_CONTEXT_LIMIT)
