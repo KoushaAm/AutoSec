@@ -13,7 +13,6 @@ Key properties:
 - Fallback: if a trace line is not inside any method, emit a single line-window
   block for that file covering all such points.
 - Dedup: trace points are deduped by (uri, line, message).
-- Line caps: respects spec.constraints["max_lines"] as a PER-FILE soft cap.
 """
 
 from __future__ import annotations
@@ -21,6 +20,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Tuple, Union, Set
+
+from ..config import SNIPPET_MAX_LINES
 
 from .types import VulnerabilitySpec, TraceStepDict, FileSnippetBundle
 from .method_locator import get_method_locator, MethodInfo
@@ -48,8 +49,7 @@ def _normalize_repo_root(repo_root: Union[str, Path]) -> Path:
 
 def _prefix_uri(project_name: str, uri: str) -> str:
     """
-    Convert Finder uri (e.g. 'src/main/java/...') into repo-relative path
-    used in this repo layout:
+    Convert Finder uri (e.g. 'src/main/java/...') into repo-relative path:
 
         Projects/Sources/<project_name>/<uri>
 
@@ -59,28 +59,33 @@ def _prefix_uri(project_name: str, uri: str) -> str:
     return f"Projects/Sources/{project_name}/{clean}"
 
 
+def _window_slice(
+    *,
+    lines: List[str],
+    center_min_line: int,
+    center_max_line: int,
+    context_lines: int,
+) -> Tuple[int, int, List[str]]:
+    """
+    Return a window [start,end] (1-based inclusive) around a range of lines.
+    """
+    file_len = len(lines)
+    start = max(1, int(center_min_line) - int(context_lines))
+    end = min(file_len, int(center_max_line) + int(context_lines))
+    return start, end, lines[start - 1 : end]
+
+
 def extract_snippets_for_vuln(
     *,
     spec: VulnerabilitySpec,
     repo_root: Union[str, Path],
-    context_lines: int = 4,
+    context_lines: int = 12,
 ) -> FileSnippetBundle:
     """
     Build a FileSnippetBundle containing minimal, non-overlapping method snippets
     that cover all trace steps (across all traces) plus the derived sink.
-
-    Args:
-        spec: VulnerabilitySpec (Finder-aligned).
-        repo_root: Absolute or relative path to the AutoSec repo root.
-        context_lines: Fallback window context lines around non-method points.
-
-    Returns:
-        {
-          "by_file": {
-            "<repo-relative-path>": "<annotated method snippets for that file>"
-          }
-        }
     """
+    # ---- Validate sink ----
     sink_step = spec.sink
     sink_uri = (sink_step.get("uri") or "").strip()
     sink_line = int(sink_step.get("line") or 0)
@@ -88,16 +93,13 @@ def extract_snippets_for_vuln(
     if not sink_uri or sink_line < 1:
         raise ValueError(f"Invalid sink in VulnerabilitySpec: uri={sink_uri!r} line={sink_line!r}")
 
-    
     repo_root_path = _normalize_repo_root(repo_root)
     locator = get_method_locator(spec.language, repo_root_path)
 
     # 1) Collect trace points per repo-relative file path.
     points_by_file: Dict[str, List[_TracePoint]] = {}
-
     seen_points: Set[Tuple[str, int, str]] = set()
 
-    # Gather ALL steps from ALL traces.
     for trace in spec.traces:
         for step in trace:
             uri = step["uri"]
@@ -114,24 +116,23 @@ def extract_snippets_for_vuln(
             )
 
     # Ensure sink is explicitly marked as sink (even if already present as a normal step).
-    sink_step: TraceStepDict = spec.sink
-    sink_rel_path = _prefix_uri(spec.project_name, sink_step["uri"])
-    sink_line = int(sink_step["line"])
+    sink_rel_path = _prefix_uri(spec.project_name, sink_uri)
     sink_note = (sink_step.get("message") or "").strip() or "sink"
     points_by_file.setdefault(sink_rel_path, []).append(
         _TracePoint(line=sink_line, note=sink_note, kind="sink")
     )
 
     by_file: Dict[str, str] = {}
-    per_file_cap = int(spec.constraints["max_lines"])
 
-    # 2) For each file, resolve lines to methods and build snippets.
+    # IMPORTANT: spec.constraints["max_lines"] is a PATCH SIZE limit (diff), not a snippet/context limit.
+    # Use a separate, larger context budget.
+    per_file_cap = int(SNIPPET_MAX_LINES) if SNIPPET_MAX_LINES else 800
+
     for rel_path in sorted(points_by_file.keys()):
         file_points = points_by_file[rel_path]
         abs_path = (repo_root_path / rel_path).resolve()
         rel_path_obj = Path(rel_path)
 
-        # Map (start_line, end_line) -> {"info": MethodInfo, "points": [_TracePoint]}
         methods_for_file: Dict[Tuple[int, int], Dict[str, object]] = {}
         fallback_points: List[_TracePoint] = []
 
@@ -149,7 +150,6 @@ def extract_snippets_for_vuln(
             bucket = methods_for_file.setdefault(key, {"info": mi, "points": []})
             bucket["points"].append(tp)  # type: ignore[assignment]
 
-        # Read source if possible; otherwise emit a placeholder.
         try:
             source_text = abs_path.read_text(encoding="utf-8")
             lines = source_text.splitlines()
@@ -160,18 +160,16 @@ def extract_snippets_for_vuln(
         snippets: List[str] = []
         used_line_budget = 0
 
-        # File header.
         snippets.append(f"// FILE: {rel_path}")
         used_line_budget += 1
 
-        # 2a) Emit method snippets, sorted by start_line.
+        # Emit method snippets, sorted by start_line.
         for (start_line, end_line), payload in sorted(
             methods_for_file.items(), key=lambda item: item[0][0]
         ):
             mi: MethodInfo = payload["info"]  # type: ignore[assignment]
             points: List[_TracePoint] = payload["points"]  # type: ignore[assignment]
 
-            # Method body (clamped to file length).
             start_idx = max(1, mi.start_line) - 1
             end_idx = min(len(lines), mi.end_line)
             body_lines = lines[start_idx:end_idx]
@@ -179,32 +177,58 @@ def extract_snippets_for_vuln(
             header_lines: List[str] = []
             header_lines.append(f"// METHOD: {mi.name} [{mi.start_line}-{mi.end_line}]")
 
-            if points:
+            points_sorted = sorted(points, key=lambda p: (0 if p.kind == "sink" else 1, p.line))
+            if points_sorted:
                 header_lines.append("// TRACE POINTS:")
-                # stable ordering: sink first, then line asc
-                points_sorted = sorted(points, key=lambda p: (0 if p.kind == "sink" else 1, p.line))
                 for tp in points_sorted:
                     tag = "SINK" if tp.kind == "sink" else "TRACE"
                     header_lines.append(f"//   - {tag} line {tp.line}: {tp.note}")
 
-            block_len = len(header_lines) + len(body_lines) + 1  # +1 for blank separator
-            if used_line_budget + block_len > per_file_cap:
-                snippets.append("// [TRUNCATED] max_lines budget reached for this file")
+            block_len = len(header_lines) + len(body_lines) + 1  # +1 blank line
+            if used_line_budget + block_len <= per_file_cap:
+                snippets.append("\n".join(header_lines))
+                snippets.extend(body_lines)
+                snippets.append("")
+                used_line_budget += block_len
+                continue
+
+            # ---- Window fallback (method too large) ----
+            # Include a tight window around the trace points so the LLM still has real code.
+            pt_lines = [p.line for p in points_sorted] if points_sorted else [mi.start_line]
+            center_min = max(1, min(pt_lines))
+            center_max = min(len(lines), max(pt_lines))
+            win_start, win_end, win_body = _window_slice(
+                lines=lines,
+                center_min_line=center_min,
+                center_max_line=center_max,
+                context_lines=context_lines,
+            )
+
+            header2 = list(header_lines)
+            header2.append(f"// [WINDOWED] method too large; showing lines {win_start}-{win_end}")
+
+            block_len2 = len(header2) + len(win_body) + 1
+            if used_line_budget + block_len2 > per_file_cap:
+                snippets.append("// [TRUNCATED] snippet budget reached; cannot include windowed snippet")
                 break
 
-            snippets.append("\n".join(header_lines))
-            snippets.extend(body_lines)
-            snippets.append("")  # blank line
-            used_line_budget += block_len
+            snippets.append("\n".join(header2))
+            snippets.extend(win_body)
+            snippets.append("")
+            used_line_budget += block_len2
 
-        # 2b) Fallback: points not contained in any method -> single window block.
+        # Fallback: points not contained in any method -> single window block.
         if fallback_points and used_line_budget < per_file_cap:
             all_lines = sorted(tp.line for tp in fallback_points)
             min_line = max(1, all_lines[0])
             max_line = min(len(lines), all_lines[-1])
 
-            block_start = max(1, min_line - context_lines)
-            block_end = min(len(lines), max_line + context_lines)
+            block_start, block_end, body_lines = _window_slice(
+                lines=lines,
+                center_min_line=min_line,
+                center_max_line=max_line,
+                context_lines=context_lines,
+            )
 
             header_lines: List[str] = []
             header_lines.append(f"// BLOCK: {rel_path} [lines {block_start}-{block_end}]")
@@ -213,15 +237,13 @@ def extract_snippets_for_vuln(
                 tag = "SINK" if tp.kind == "sink" else "TRACE"
                 header_lines.append(f"//   - {tag} line {tp.line}: {tp.note}")
 
-            body_lines = lines[block_start - 1 : block_end]
             block_len = len(header_lines) + len(body_lines) + 1
-
             if used_line_budget + block_len <= per_file_cap:
                 snippets.append("\n".join(header_lines))
                 snippets.extend(body_lines)
                 snippets.append("")
             else:
-                snippets.append("// [TRUNCATED] fallback block omitted due to max_lines budget")
+                snippets.append("// [TRUNCATED] fallback block omitted due to snippet budget")
 
         by_file[rel_path] = "\n".join(snippets).rstrip() + "\n"
 

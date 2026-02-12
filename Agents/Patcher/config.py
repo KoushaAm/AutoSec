@@ -1,4 +1,5 @@
 # Patcher/config.py
+import os
 from typing import Dict
 from pathlib import Path
 # local imports
@@ -15,6 +16,11 @@ MODEL_NAME = CURRENT_MODEL.name
 MODEL_VALUE = CURRENT_MODEL.value
 
 TOOL_VERSION = "patcher-2.0.0"
+
+# max lines for extracted snippets (per file), controllable through env var
+# example command: PATCHER_SNIPPET_MAX_LINES=800 python main.py
+SNIPPET_MAX_LINES = int(os.getenv("PATCHER_SNIPPET_MAX_LINES", "300"))
+print(f"[Patcher] Using SNIPPET_MAX_LINES={SNIPPET_MAX_LINES} for code extraction")
 
 # Set OUTPUT_PATH relative to patcher.py's directory
 OUTPUT_PATH = SCRIPT_DIR / "output" # Agents/Patcher/output
