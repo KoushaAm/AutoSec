@@ -3,7 +3,8 @@ import re
 import json
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List, Union
+from typing import Any, Dict, List, Optional, Union
+
 # local imports
 from ..config import OUTPUT_PATH
 
@@ -17,18 +18,43 @@ def utc_timestamped_filename(base: str, ext: str = "json") -> str:
     return f"{base}_{ts}.{ext}"
 
 
-def save_invalid_json_dump(text: str, reason: str) -> Path:
+def _build_invalid_json_filename(run_timestamp: str, stage: str, task_id: Optional[int]) -> str:
+    """
+    Build a run-scoped invalid JSON filename:
+        invalid_json_<run_timestamp>__<stage>__task_<id>.txt
+    """
+    safe_stage = re.sub(r"[^a-zA-Z0-9_-]+", "_", stage).strip("_") or "unknown"
+    if task_id is not None:
+        return f"invalid_json_{run_timestamp}__{safe_stage}__task_{task_id:03d}.txt"
+    return f"invalid_json_{run_timestamp}__{safe_stage}.txt"
+
+
+def save_invalid_json_dump(
+    text: str,
+    reason: str,
+    *,
+    run_dir: Optional[Path] = None,
+    run_timestamp: Optional[str] = None,
+    stage: str = "parse",
+    task_id: Optional[int] = None,
+) -> Path:
     """
     Save a debug dump of an invalid / non-JSON LLM output to disk for inspection.
 
     Creates:
-        output/invalid_json_<timestamp>.txt
+      - <run_dir>/invalid_json_<run_timestamp>__<stage>__task_<id>.txt   (preferred)
+      - output/invalid_json_<timestamp>.txt                      (fallback)
     """
-    output_dir = Path(OUTPUT_PATH)
-    output_dir.mkdir(exist_ok=True)
-
-    filename = utc_timestamped_filename("invalid_json", "txt")
-    debug_path = output_dir / filename
+    if run_dir is not None and run_timestamp is not None:
+        output_dir = Path(run_dir)
+        output_dir.mkdir(parents=True, exist_ok=True)
+        filename = _build_invalid_json_filename(run_timestamp, stage, task_id)
+        debug_path = output_dir / filename
+    else:
+        output_dir = Path(OUTPUT_PATH)
+        output_dir.mkdir(exist_ok=True)
+        filename = utc_timestamped_filename("invalid_json", "txt")
+        debug_path = output_dir / filename
 
     timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%SZ")
 
@@ -47,7 +73,14 @@ def save_invalid_json_dump(text: str, reason: str) -> Path:
     return debug_path
 
 
-def extract_json_block(text: str) -> str:
+def extract_json_block(
+    text: str,
+    *,
+    run_dir: Optional[Path] = None,
+    run_timestamp: Optional[str] = None,
+    stage: str = "extract_json_block",
+    task_id: Optional[int] = None,
+) -> str:
     """
     Extract the first valid top-level JSON object from text.
 
@@ -55,6 +88,8 @@ def extract_json_block(text: str) -> str:
       - Markdown fenced JSON blocks (```json ... ```)
       - Extra prose before/after JSON
       - Multiple JSON objects → returns first complete one
+
+    If extraction fails, writes an invalid-json dump into the run_dir when provided.
     """
     text = text.strip()
 
@@ -71,10 +106,15 @@ def extract_json_block(text: str) -> str:
     start_index = text.find("{")
     if start_index == -1:
         debug_path = save_invalid_json_dump(
-            text, reason="No '{' character found – cannot locate a JSON object."
+            text,
+            reason="No '{' character found - cannot locate a JSON object.",
+            run_dir=run_dir,
+            run_timestamp=run_timestamp,
+            stage=stage,
+            task_id=task_id,
         )
         raise ValueError(
-            f"No '{{' found in text – cannot extract JSON. Saved to: {debug_path}"
+            f"No '{{' found in text - cannot extract JSON. Saved to: {debug_path}"
         )
 
     depth = 0
@@ -100,10 +140,15 @@ def extract_json_block(text: str) -> str:
                     return text[start_index : i + 1].strip()
 
     debug_path = save_invalid_json_dump(
-        text, reason="Unbalanced braces – full JSON object not found."
+        text,
+        reason="Unbalanced braces - full JSON object not found.",
+        run_dir=run_dir,
+        run_timestamp=run_timestamp,
+        stage=stage,
+        task_id=task_id,
     )
     raise ValueError(
-        f"Unbalanced braces – could not extract JSON. Saved to: {debug_path}"
+        f"Unbalanced braces - could not extract JSON. Saved to: {debug_path}"
     )
 
 
@@ -166,7 +211,7 @@ def write_manifest(path: Path, manifest: Dict[str, Any]) -> Path:
     Write the manifest JSON to the given absolute path.
 
     Ensures directory exists:
-        output/patcher_<timestamp>/patcher_<timestamp>.json
+        output/patcher_<timestamp>/patcher_manifest_<timestamp>.json
     """
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)

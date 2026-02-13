@@ -5,7 +5,7 @@ from os import getenv
 from dotenv import load_dotenv
 from openai import OpenAI
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 from datetime import datetime, timezone
 
 from .config import OUTPUT_PATH, MODEL_NAME, MODEL_VALUE
@@ -21,8 +21,6 @@ from .core.code_extractor import extract_snippets_for_vuln
 from .utils import (
     combine_prompt_messages,
     build_patch_prompt,
-    estimate_prompt_tokens,
-    determine_max_tokens,
     process_llm_output_single,
     write_run_manifest,
 )
@@ -39,6 +37,7 @@ def _save_prompt_debug(
     messages: List[Dict[str, str]],
     model_name: str,
     *,
+    run_dir: Path,
     task_id: Optional[int] = None,
     cwe_id: Optional[str] = None,
 ) -> None:
@@ -46,12 +45,11 @@ def _save_prompt_debug(
     Save the exact prompt text sent to the LLM for debugging and reproducibility.
 
     Writes to:
-        output/prompts/task-XXX_cwe-022_<timestamp>.txt
+        <run_dir>/prompts/task-XXX_cwe-022_<timestamp>.txt
 
     One file per prompt invocation (never overwritten).
     """
-    output_root = Path(OUTPUT_PATH)
-    prompts_dir = output_root / "prompts"
+    prompts_dir = Path(run_dir) / "prompts"
     prompts_dir.mkdir(parents=True, exist_ok=True)
 
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
@@ -160,10 +158,12 @@ def patcher_main(
     project_name: str,
     pov_logic: str = "",
     save_prompt: bool = False,
-    use_experiments: bool = False,
-) -> bool:
+) -> Tuple[bool, str]:
     """
     Pipeline-safe entrypoint (no argparse).
+
+    Returns:
+      (success: bool, run_dir_path: str)
 
     Inputs are provided by pipeline.py:
       - language
@@ -173,9 +173,6 @@ def patcher_main(
       - pov_logic (Exploiter context)
     """
     repo_root = _detect_repo_root()
-
-    if use_experiments:
-        raise RuntimeError("use_experiments=True is deprecated. Call patcher_main(...) with pipeline-provided inputs.")
 
     specs = populate_vulnerability_specs(
         language=language,
@@ -187,8 +184,8 @@ def patcher_main(
 
     # Create ONE run dir for the whole patcher execution
     dt = datetime.now(timezone.utc)
-    run_ts = dt.strftime("%Y%m%dT%H%M%SZ")
-    run_id = f"patcher_{run_ts}"
+    run_timestamp = dt.strftime("%Y%m%dT%H%M%SZ")
+    run_id = f"patcher_{run_timestamp}"
     run_timestamp_iso = dt.isoformat().replace("+00:00", "Z")
 
     output_root = Path(OUTPUT_PATH)
@@ -196,7 +193,7 @@ def patcher_main(
     run_dir.mkdir(parents=True, exist_ok=True)
 
     manifest_patches: List[Dict[str, Any]] = []
-    all_ok = True
+    patcher_success = True
 
     for task_index, spec in enumerate(specs, start=1):
         # 1) Extract code context from all trace steps (dedup/merge inside extractor)
@@ -215,17 +212,13 @@ def patcher_main(
         # 3) Assemble messages
         messagesArray = combine_prompt_messages(SYSTEM_MESSAGE, DEVELOPER_MESSAGE, user_msg)
 
-        prompt_tokens = estimate_prompt_tokens(messagesArray)
-        max_tokens = determine_max_tokens(MODEL_NAME, prompt_tokens)
-
         print(f"\n=== Task {task_index}: cwe_id={spec.cwe_id} ===")
-        print(f"[debug] Estimated prompt tokens: {prompt_tokens}")
-        print(f"[debug] Using max_tokens={max_tokens} for model '{MODEL_VALUE}'")
 
         if save_prompt:
             _save_prompt_debug(
                 messagesArray,
                 MODEL_NAME,
+                run_dir=run_dir,
                 task_id=task_index,
                 cwe_id=spec.cwe_id,
             )
@@ -236,45 +229,49 @@ def patcher_main(
                 model=MODEL_VALUE,
                 messages=messagesArray,
                 temperature=0.0,
-                max_tokens=max_tokens,
+                max_tokens=8000, # TODO: programmatically determine this based on model context and prompt size?
             )
         except Exception as e:
-            all_ok = False
+            patcher_success = False
             print(f"[error] OpenRouter error on task {task_index}: {e}", file=sys.stderr)
             continue
 
         llm_output = completion.choices[0].message.content or ""
         if not llm_output.strip():
-            all_ok = False
-            print(f"[error] No output from LLM for task {task_index}", file=sys.stderr)
+            patcher_success = False
+            print(f"[error] No output from LLM for task {task_index}\n", file=sys.stderr)
+            print(f"[debug] Full completion response: {completion}\n", file=sys.stderr)
+            print(f"[debug] Full LLM response: {llm_output}\n", file=sys.stderr)
             continue
 
-        # 4) Persist artifact JSON + update manifest (contract unchanged)
+        # 4) Persist artifact JSON + update manifest
         try:
             manifest_entry, _artifact_path = process_llm_output_single(
                 llm_output,
                 MODEL_VALUE,
                 run_dir=run_dir,
                 run_id=run_id,
+                run_timestamp=run_timestamp,
                 run_timestamp_iso=run_timestamp_iso,
                 task_id=task_index,
             )
             manifest_patches.append(manifest_entry)
         except Exception as exc:
-            all_ok = False
+            patcher_success = False
             print(f"[fatal] Failed to process LLM output for task {task_index}: {exc}", file=sys.stderr)
             continue
 
     write_run_manifest(
         run_dir=run_dir,
         run_id=run_id,
+        run_timestamp=run_timestamp,
         model_name=MODEL_VALUE,
         run_timestamp_iso=run_timestamp_iso,
         manifest_patches=manifest_patches,
     )
 
     print(f"\n=== Patcher completed: {len(manifest_patches)} patches written to {run_dir.resolve()} ===")
-    return all_ok
+    return patcher_success, str(run_dir.resolve())
 
 
 if __name__ == "__main__":

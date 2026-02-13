@@ -45,7 +45,7 @@ def _build_workflow() -> Any:
     graph.add_edge(START, "finder")
     # graph.add_edge("finder", "exploiter")
     graph.add_edge("finder", "patcher")
-    # graph.add_edge("patcher", "verifier")
+    graph.add_edge("patcher", "verifier")
 
     # conditional edges
     # exploiter -> finder OR exploiter -> patcher
@@ -247,10 +247,12 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
     # if not state.get("exploiter"):
         # raise ValueError("exploiter output missing from state")
 
+    # state["exploiter"]["pov_logic"]
+
     # TODO: update with exploiter pov_logic when accessible
     pov_logic = "Example PoV logic from exploiter report"
 
-    success = patcher_main(
+    success, run_dir = patcher_main(
             language=state["language"], 
             cwe_id=state['finder_output']['cwe_id'], 
             vulnerability_list=state['finder_output']['vulnerabilities'], 
@@ -259,7 +261,7 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
             save_prompt=True,
         )
     
-    state["patcher"] = {"success": success, "date_time": datetime.now().isoformat()}
+    state["patcher"] = {"success": success, "artifact_path": run_dir}
 
     return state
 
@@ -324,13 +326,13 @@ def pipeline_main():
     # Execute the graph
     final_state = workflow.invoke(initial_state)
 
-    return final_state
+    print("\n====== STATE DUMP ======")
+    print(final_state)
+    print("======^==========^======\n")
+    print(json.dumps(final_state, indent=2))
+    print("======^==========^======\n")
 
 
 # standalone execution
 if __name__ == "__main__":
-    final_state = pipeline_main()
-
-    print("\n====== STATE DUMP ======")
-    print(json.dumps(final_state, indent=2))
-    print("======^==========^======\n")
+    pipeline_main()
