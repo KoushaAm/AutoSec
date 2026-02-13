@@ -1,30 +1,29 @@
-# core/__init__.py
+# Agents/Patcher/core/__init__.py
 """
-Core package for the Patcher/Fixer system.
+Core package for the Patcher system.
 
 This package contains:
-- types.py          : shared TypedDicts and dataclasses (AgentFields, etc.)
-- code_extractor.py : code context extraction logic (method/data-flow based)
-- method_locator/   : language-specific method boundary discovery
+- types.py          : shared TypedDicts and dataclasses (Finder-aligned)
+- code_extractor.py : code context extraction logic (trace-driven)
+- method_locator/   : language-specific method boundary discovery (Tree-sitter)
 """
 
 from .types import (
     ConstraintDict,
-    SinkDict,
-    FlowStepDict,
-    PoVTestDict,
+    TraceStepDict,
+    Trace,
+    VulnerabilitySpec,
     FileSnippetBundle,
-    AgentFields,
 )
 
-from .code_extractor import build_method_flow_snippets
+# New extractor entrypoint (to be implemented/updated next)
+from .code_extractor import extract_snippets_for_vuln
 
 __all__ = [
     "ConstraintDict",
-    "SinkDict",
-    "FlowStepDict",
-    "PoVTestDict",
+    "TraceStepDict",
+    "Trace",
+    "VulnerabilitySpec",
     "FileSnippetBundle",
-    "AgentFields",
-    "build_method_flow_snippets",
+    "extract_snippets_for_vuln", 
 ]

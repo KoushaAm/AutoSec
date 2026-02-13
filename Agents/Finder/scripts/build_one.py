@@ -129,7 +129,8 @@ def get_build_info_from_csv(project_slug, csv_path):
 
 def build_with_maven(project_slug, attempt):
     """Build project using Maven."""
-    target_dir = PROJECT_SOURCE_CODE_DIR / project_slug
+    # target_dir = PROJECT_SOURCE_CODE_DIR / project_slug
+    target_dir = Path(PROJECT_SOURCE_CODE_DIR, project_slug).resolve()
 
     jdk_version = attempt['jdk']
     mvn_version = attempt['mvn']
@@ -190,7 +191,8 @@ def build_with_maven(project_slug, attempt):
 
 def build_with_gradle(project_slug, attempt):
     """Build project using Gradle."""
-    target_dir = PROJECT_SOURCE_CODE_DIR / project_slug
+    # target_dir = PROJECT_SOURCE_CODE_DIR / project_slug
+    target_dir = Path(PROJECT_SOURCE_CODE_DIR, project_slug).resolve()
 
     jdk_version = attempt['jdk']
     gradle_version = attempt['gradle']
@@ -238,8 +240,11 @@ def build_with_gradle(project_slug, attempt):
 
 def build_with_gradlew(project_slug, attempt):
     """Build project using gradlew script."""
-    target_dir = PROJECT_SOURCE_CODE_DIR / project_slug
-    gradlew_path = target_dir / "gradlew"
+    # target_dir = PROJECT_SOURCE_CODE_DIR / project_slug
+    target_dir = Path(PROJECT_SOURCE_CODE_DIR, project_slug).resolve()
+
+    # gradlew_path = target_dir / "gradlew"
+    gradlew_path = Path(target_dir, "gradlew").resolve()
 
     jdk_version = attempt['jdk']
 
