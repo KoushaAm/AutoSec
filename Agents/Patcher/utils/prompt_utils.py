@@ -70,28 +70,3 @@ def build_patch_prompt(
         text_lines.append("")
 
     return "\n".join(text_lines)
-
-
-# keep estimate_prompt_tokens + determine_max_tokens unchanged
-def estimate_prompt_tokens(messages: List[Dict[str, Any]]) -> int:
-    total_chars = 0
-    for msg in messages:
-        content = msg.get("content", "")
-        total_chars += len(content) if isinstance(content, str) else len(str(content))
-    return max(1, total_chars // 4)
-
-
-def determine_max_tokens(model_name: str, prompt_tokens: int) -> int:
-    max_ctx = MODEL_CONTEXT_LIMITS.get(model_name, DEFAULT_CONTEXT_LIMIT)
-    SAFETY_MARGIN = 256
-    MIN_OUT = 512
-    MAX_OUT = 6000
-
-    available = max_ctx - prompt_tokens - SAFETY_MARGIN
-    if available <= 0:
-        return MIN_OUT
-    if available < MIN_OUT:
-        return available
-    if available > MAX_OUT:
-        return MAX_OUT
-    return available

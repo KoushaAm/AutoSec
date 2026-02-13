@@ -4,8 +4,6 @@ from .openrouter_utils import combine_prompt_messages
 
 from .prompt_utils import (
     build_patch_prompt,
-    estimate_prompt_tokens,
-    determine_max_tokens,
 )
 
 from .output_utils import (
@@ -16,8 +14,6 @@ from .output_utils import (
 __all__ = [
     "combine_prompt_messages",
     "build_patch_prompt",
-    "estimate_prompt_tokens",
-    "determine_max_tokens",
     "process_llm_output_single",
     "write_run_manifest",
 ]
