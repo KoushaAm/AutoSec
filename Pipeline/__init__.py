@@ -22,7 +22,7 @@ logger.propagate = False  # prevent duplicate root logging
 if not logger.handlers:
     handler = logging.StreamHandler()
 
-    # NOTE: no %(message)s here – message is handled by BlockFormatter body
+    # NOTE: no %(message)s here - message is handled by BlockFormatter body
     fmt = "%(asctime)s - %(name)s:%(levelname)s"
     handler.setFormatter(BlockFormatter(fmt))
 

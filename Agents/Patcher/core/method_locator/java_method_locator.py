@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 
 import tree_sitter_java as tsjava
 from tree_sitter import Language, Parser
@@ -21,6 +21,7 @@ from . import MethodInfo
 
 # Build the Java language object once per process.
 JAVA_LANGUAGE = Language(tsjava.language())
+
 
 @dataclass
 class _IndexedFile:
@@ -33,6 +34,7 @@ class _IndexedFile:
         line_offsets: List of starting byte offsets for each line (0-based index -> byte offset).
         methods:      List of MethodInfo entries discovered in this file.
     """
+
     path: Path
     source: bytes
     line_offsets: List[int]
@@ -48,6 +50,14 @@ class JavaMethodLocator:
       - Extract method and constructor declarations.
       - Provide method boundaries in 1-based line coordinates.
     """
+
+    # Java grammar node types of interest
+    _METHOD_NODE_TYPES: Tuple[str, ...] = (
+        "method_declaration",
+        "constructor_declaration",
+        # Seen in newer Java grammars for records / compact constructors
+        "compact_constructor_declaration",
+    )
 
     def __init__(self, repo_root: Path) -> None:
         self._repo_root = Path(repo_root).resolve()
@@ -68,8 +78,9 @@ class JavaMethodLocator:
         """
         abs_path = self._resolve_to_abs(file_path)
 
-        if abs_path in self._files:
-            return list(self._files[abs_path].methods)
+        cached = self._files.get(abs_path)
+        if cached is not None:
+            return list(cached.methods)
 
         indexed = self._build_index_for_file(abs_path)
         self._files[abs_path] = indexed
@@ -89,9 +100,10 @@ class JavaMethodLocator:
             self.index_file(abs_path)
 
         indexed = self._files.get(abs_path)
-        if not indexed:
+        if not indexed or not indexed.methods:
             return None
 
+        # Linear scan is fine for typical file sizes; can be optimized later if needed.
         for mi in indexed.methods:
             if mi.start_line <= line <= mi.end_line:
                 return mi
@@ -107,16 +119,24 @@ class JavaMethodLocator:
         p = Path(file_path)
         if not p.is_absolute():
             p = (self._repo_root / p).resolve()
+        else:
+            p = p.resolve()
 
         try:
             p.relative_to(self._repo_root)
-        except ValueError:
+        except ValueError as e:
             raise ValueError(
                 f"File '{p}' is outside repo root '{self._repo_root}'. "
-                "JavaMethodLocator expects repo-root–relative paths."
-            )
+                "JavaMethodLocator expects paths within repo_root."
+            ) from e
 
         return p
+
+    def _abs_to_repo_rel(self, abs_path: Path) -> Path:
+        """
+        Convert an absolute path under repo_root to a repo-relative path.
+        """
+        return abs_path.relative_to(self._repo_root)
 
     def _build_index_for_file(self, abs_path: Path) -> _IndexedFile:
         if not abs_path.exists():
@@ -131,18 +151,22 @@ class JavaMethodLocator:
         methods: List[MethodInfo] = []
 
         # Walk the tree and collect all method-like declarations.
-        # Java grammar node types of interest:
-        #   - "method_declaration"
-        #   - "constructor_declaration"
         stack = [root]
         while stack:
             node = stack.pop()
-            if node.type in ("method_declaration", "constructor_declaration"):
+            if node.type in self._METHOD_NODE_TYPES:
                 mi = self._method_info_from_node(node, abs_path, source_bytes, line_offsets)
                 if mi is not None:
                     methods.append(mi)
+
             # DFS: add children to stack
-            stack.extend(node.children)
+            # (reversed to preserve original order more closely when popping)
+            children = node.children
+            if children:
+                stack.extend(reversed(children))
+
+        # Stable ordering helps downstream determinism (esp. caching/tests).
+        methods.sort(key=lambda m: (m.start_line, m.end_line, m.name))
 
         return _IndexedFile(
             path=abs_path,
@@ -190,12 +214,15 @@ class JavaMethodLocator:
         # Best-effort signature: slice from start of node to end of its header line.
         signature = self._extract_signature_line(node, source_bytes, line_offsets)
 
+        # IMPORTANT: store repo-relative path to avoid leaking environment paths
+        rel_file = self._abs_to_repo_rel(abs_path)
+
         return MethodInfo(
             name=name,
             start_line=start_line,
             end_line=end_line,
             signature=signature,
-            file=abs_path,
+            file=rel_file,
         )
 
     @staticmethod
