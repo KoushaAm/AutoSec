@@ -3,10 +3,10 @@
 Language-agnostic method locator interface and factory.
 
 A MethodLocator maps (file, line) -> MethodInfo, where MethodInfo
-captures the bounds and identity of the enclosing method.
+captures the bounds and identity of the enclosing method/function.
 
 Concrete implementations live in language-specific modules, e.g.:
-- core/method_locator/java.py
+- core/method_locator/java_method_locator.py
 """
 
 from __future__ import annotations
@@ -16,17 +16,17 @@ from pathlib import Path
 from typing import Protocol, List, Optional
 
 
-@dataclass
+@dataclass(frozen=True)
 class MethodInfo:
     """
     Metadata about a single method/function in a source file.
 
     Attributes:
         name:       Simple method name (e.g., 'main', 'doGet')
-        start_line: 1-based line where the method body starts (inclusive)
-        end_line:   1-based line where the method body ends (inclusive)
+        start_line: 1-based start line of the declaration node (inclusive)
+        end_line:   1-based end line of the declaration node (inclusive)
         signature:  Best-effort textual representation of the declaration
-        file:       Absolute path to the file
+        file:       Path to the file (repo-relative, not absolute)
     """
     name: str
     start_line: int
@@ -64,7 +64,7 @@ def get_method_locator(language: str, repo_root: Path) -> MethodLocator:
         - "java" (case-insensitive)
 
     Args:
-        language: Logical language tag from AgentFields.language (e.g. "Java").
+        language: Language tag (e.g., "java", "Java")
         repo_root: Repository root (used for resolving relative paths).
 
     Returns:
@@ -75,7 +75,7 @@ def get_method_locator(language: str, repo_root: Path) -> MethodLocator:
     """
     lang_norm = language.strip().lower()
 
-    # lazy imports to avoid hard dependency at import time
+    # Lazy imports to avoid hard dependencies at import time.
     if lang_norm == "java":
         from .java_method_locator import JavaMethodLocator
 

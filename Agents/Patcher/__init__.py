@@ -7,12 +7,10 @@ from .pipeline_test import test_pipeline_main
 from .patcher import patcher_main
 from .config import (
     TOOL_VERSION,
-    VULNERABILITIES,
 )
 
 __all__ = [
     "test_pipeline_main",
     "patcher_main",
     "TOOL_VERSION",
-    "VULNERABILITIES",
 ]

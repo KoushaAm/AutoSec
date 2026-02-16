@@ -5,7 +5,8 @@ import constants.vuln_info as vi
 from constants import Model
 
 # Select OpenRouter model
-CURRENT_MODEL = Model.KAT_CODER 
+# CURRENT_MODEL = Model.KAT_CODER 
+CURRENT_MODEL = Model.LLAMA3
 
 # ===== Expose for use in other modules =====
 MODEL_NAME = CURRENT_MODEL.name

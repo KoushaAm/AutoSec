@@ -1,48 +1,50 @@
 # Patcher/utils/output_utils.py
 import sys
 import json
-from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
-
-# local imports
-from ..config import TOOL_VERSION, OUTPUT_PATH
+from ..config import TOOL_VERSION
 from .generic_utils import (
     save_invalid_json_dump,
     extract_json_block,
     write_patch_artifact,
     write_manifest,
-    prettify_unified_diff
+    prettify_unified_diff,
 )
+
+
+# ================== Diff normalization ==================
+def _normalize_unified_diff(patch: Dict[str, Any]) -> str:
+    """
+    Prefer unified_diff_lines (new schema) and join into a single string.
+    Backward compatible with legacy unified_diff (string).
+    """
+    if "unified_diff_lines" in patch:
+        lines = patch.get("unified_diff_lines")
+        if lines is None:
+            return ""
+        if not isinstance(lines, list) or any(not isinstance(x, str) for x in lines):
+            raise ValueError("unified_diff_lines must be a list of strings")
+        return "\n".join(lines)
+
+    # Legacy fallback
+    diff = patch.get("unified_diff", "")
+    if not isinstance(diff, str):
+        raise ValueError("unified_diff must be a string")
+    return diff
+
 
 # ================== Validation (strict schema) ==================
 def _validate_single_patch_schema(patch: Dict[str, Any]) -> None:
     """
     Enforce the strict patch schema expected from the Patcher LLM output.
-
-    Required keys (per patch object returned by the model):
-        - patch_id
-        - plan (list)
-        - cwe_matches (non-empty list)
-        - unified_diff
-        - safety_verification
-        - risk_notes
-        - touched_files (list)
-        - assumptions
-        - behavior_change
-        - confidence
-
-    Note:
-        - `verifier_confidence` is no longer required at this stage. Any such
-          field returned by the model will be ignored when writing patch
-          artifacts.
     """
     required_keys = [
         "patch_id",
         "plan",
         "cwe_matches",
-        "unified_diff",
+        # unified_diff_lines (preferred) OR unified_diff (legacy) validated separately
         "safety_verification",
         "risk_notes",
         "touched_files",
@@ -54,51 +56,67 @@ def _validate_single_patch_schema(patch: Dict[str, Any]) -> None:
         if key not in patch:
             raise ValueError(f"Missing required key in patch: {key}")
 
-    if not isinstance(patch["plan"], list):
-        raise ValueError("plan must be a list")
-    if not isinstance(patch["touched_files"], list):
-        raise ValueError("touched_files must be a list")
-    if not isinstance(patch["cwe_matches"], list) or len(patch["cwe_matches"]) == 0:
-        raise ValueError("cwe_matches must be a non-empty list")
     if not isinstance(patch["patch_id"], int):
         raise ValueError(f"patch_id must be an integer, got {patch['patch_id']!r}")
 
+    if not isinstance(patch["plan"], list):
+        raise ValueError("plan must be a list")
 
-def _validate_multi_schema(obj: Dict[str, Any]) -> Dict[str, Any]:
-    """Validate multi-patch schema and set host-side metadata fields."""
-    if "patches" not in obj or not isinstance(obj["patches"], list):
-        raise ValueError("Expected key 'patches' with a list of patch objects")
+    if not isinstance(patch["touched_files"], list):
+        raise ValueError("touched_files must be a list")
+    if any(not isinstance(x, str) for x in patch["touched_files"]):
+        raise ValueError("touched_files must be a list of strings")
 
-    for patch in obj["patches"]:
-        _validate_single_patch_schema(patch)
+    if not isinstance(patch["cwe_matches"], list) or len(patch["cwe_matches"]) == 0:
+        raise ValueError("cwe_matches must be a non-empty list")
 
-    # Host-owned metadata (LLM must NOT set these).
-    meta = obj.setdefault("metadata", {})
-    meta["total_patches"] = len(obj["patches"])
-    meta["timestamp"] = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
-    meta["tool_version"] = TOOL_VERSION
-    return obj
+    # Require at least one diff field to exist and be well-formed
+    if "unified_diff_lines" not in patch and "unified_diff" not in patch:
+        raise ValueError("Patch must include unified_diff_lines (preferred) or unified_diff (legacy)")
+
+    # Validate/normalize diff content
+    _ = _normalize_unified_diff(patch)
+
+    # Confidence must be a realistic integer score
+    conf = patch.get("confidence")
+    if not isinstance(conf, int):
+        raise ValueError(f"confidence must be an integer, got {conf!r}")
+    if conf < 0 or conf > 100:
+        raise ValueError(f"confidence must be in [0, 100], got {conf}")
 
 
-def process_llm_output(llm_output: str, model_name: str):
+def _parse_and_validate_single(
+    llm_output: str,
+    model_name: str,
+    *,
+    run_dir: Path,
+    run_timestamp: str,
+    task_id: int,
+) -> Dict[str, Any]:
     """
-    Extract JSON from LLM output, validate against the multi-patch schema,
-    then write:
-      1) A run-level manifest file
-      2) One patch artifact file per patch
+    Extract JSON, parse it, then validate that it contains exactly one patch.
+    Returns the single patch object (not the full top-level JSON).
 
-    Finally, print a human-readable summary of all patches.
+    Invalid JSON dumps are written inside the patcher run artifact folder.
     """
-    # 1. Try to carve out a { ... } block
-    json_text = extract_json_block(llm_output)
+    json_text = extract_json_block(
+        llm_output,
+        run_dir=run_dir,
+        run_timestamp=run_timestamp,
+        stage="extract_json_block",
+        task_id=task_id,
+    )
 
-    # 2. Try to parse JSON; if it fails, dump + raise
     try:
         obj = json.loads(json_text)
     except json.JSONDecodeError as exc:
         debug_path = save_invalid_json_dump(
             llm_output,
             reason=f"JSON parsing error: {exc}",
+            run_dir=run_dir,
+            run_timestamp=run_timestamp,
+            stage="json_parse",
+            task_id=task_id,
         )
         print(
             f"[error] Failed to parse JSON for model '{model_name}'. "
@@ -107,125 +125,129 @@ def process_llm_output(llm_output: str, model_name: str):
         )
         raise
 
-    # 3. Validate schema and set basic metadata
-    full = _validate_multi_schema(obj)
+    if "patches" not in obj or not isinstance(obj["patches"], list):
+        raise ValueError("Expected key 'patches' with a list of patch objects")
 
-    # Derive a run_id and output directory based on the metadata timestamp.
-    # Manifest and patch artifact paths follow:
-    #   output/patcher_<timestamp>/patcher_<timestamp>.json
-    #   output/patcher_<timestamp>/patch_XXX.json
-    ts_iso = full.get("metadata", {}).get("timestamp")
+    if len(obj["patches"]) != 1:
+        raise ValueError(f"Expected exactly 1 patch in patches[], got {len(obj['patches'])}")
 
-    try:
-        if ts_iso:
-            dt = datetime.fromisoformat(ts_iso.replace("Z", "+00:00"))
-        else:
-            dt = datetime.now(timezone.utc)
-        run_ts = dt.strftime("%Y%m%dT%H%M%SZ")
-    except Exception:
-        dt = datetime.now(timezone.utc)
-        run_ts = dt.strftime("%Y%m%dT%H%M%SZ")
+    patch = obj["patches"][0]
+    _validate_single_patch_schema(patch)
+    return patch
 
-    run_id = f"patcher_{run_ts}"
-    output_root = Path(OUTPUT_PATH)
-    run_dir = output_root / run_id
 
-    meta = full.setdefault("metadata", {})
-    meta["run_id"] = run_id
-    meta["tool_version"] = TOOL_VERSION
-    meta["model_name"] = model_name
-    meta["total_patches"] = len(full.get("patches", []))
+def process_llm_output_single(
+    llm_output: str,
+    model_name: str,
+    *,
+    run_dir: Path,
+    run_id: str,
+    run_timestamp: str,
+    run_timestamp_iso: str,
+    task_id: int,
+) -> Tuple[Dict[str, Any], str]:
+    """
+    Parse a single-task LLM output, validate it, write one patch artifact file.
 
-    # Build manifest index entries + write each patch artifact.
-    manifest_patches: List[Dict[str, Any]] = []
-    artifact_paths_by_id: Dict[int, str] = {}
+    Returns:
+      (manifest_entry, artifact_path_str)
+    """
+    patch = _parse_and_validate_single(
+        llm_output,
+        model_name,
+        run_dir=run_dir,
+        run_timestamp=run_timestamp,
+        task_id=task_id,
+    )
 
-    for patch in full.get("patches", []):
-        patch_id = patch.get("patch_id")
-        if not isinstance(patch_id, int):
-            raise ValueError(f"patch_id must be an integer, got: {patch_id!r}")
+    patch_id = patch["patch_id"]
+    if patch_id != task_id:
+        raise ValueError(f"patch_id mismatch: expected {task_id}, got {patch_id}")
 
-        # Derive primary file_path/file_name from touched_files (sink file).
-        touched_files = patch.get("touched_files") or []
-        if touched_files and isinstance(touched_files, list):
-            primary_path = touched_files[0]
-        else:
-            primary_path = ""
+    # Normalize unified diff to a single string for storage/printing
+    unified_diff = _normalize_unified_diff(patch)
 
-        try:
-            primary_name = Path(primary_path).name if primary_path else ""
-        except TypeError:
-            primary_path = ""
-            primary_name = ""
+    touched_files = patch.get("touched_files") or []
+    primary_path = touched_files[0] if touched_files else ""
+    primary_name = Path(primary_path).name if primary_path else ""
 
-        # Construct patch artifact payload per agreed schema.
-        patch_artifact = {
-            "metadata": {
-                "patch_id": patch_id,
-                "timestamp": meta["timestamp"],
-                "file_path": primary_path,
-                "file_name": primary_name,
-            },
-            "patch": {
-                "plan": patch.get("plan", []),
-                "cwe_matches": patch.get("cwe_matches", []),
-                "unified_diff": patch.get("unified_diff", ""),
-                "safety_verification": patch.get("safety_verification", ""),
-                "risk_notes": patch.get("risk_notes", ""),
-                "touched_files": touched_files,
-                "assumptions": patch.get("assumptions", ""),
-                "behavior_change": patch.get("behavior_change", ""),
-                "confidence": patch.get("confidence", ""),
-            },
-        }
-
-        # Write patch artifact: output/patcher_<ts>/patch_XXX.json
-        patch_filename = f"patch_{patch_id:03d}.json"
-        patch_path = run_dir / patch_filename
-        write_patch_artifact(patch_path, patch_artifact)
-
-        artifact_path_str = patch_path.as_posix()
-        manifest_entry = {
+    patch_artifact = {
+        "metadata": {
+            "run_id": run_id,
             "patch_id": patch_id,
+            "timestamp": run_timestamp_iso,
+            "file_path": primary_path,
+            "file_name": primary_name,
+        },
+        "patch": {
+            "plan": patch.get("plan", []),
             "cwe_matches": patch.get("cwe_matches", []),
-            "artifact_path": artifact_path_str,
-        }
-        manifest_patches.append(manifest_entry)
-        artifact_paths_by_id[patch_id] = artifact_path_str
+            # Store the joined diff string for downstream compatibility
+            "unified_diff": unified_diff,
+            # Also keep the raw list if present (useful for debugging; consumers can ignore)
+            "unified_diff_lines": patch.get("unified_diff_lines", []),
+            "safety_verification": patch.get("safety_verification", ""),
+            "risk_notes": patch.get("risk_notes", ""),
+            "touched_files": touched_files,
+            "assumptions": patch.get("assumptions", ""),
+            "behavior_change": patch.get("behavior_change", ""),
+            "confidence": patch.get("confidence", 0),
+        },
+    }
 
-    # 5. Write the manifest file itself.
+    patch_filename = f"patch_{patch_id:03d}.json"
+    patch_path = Path(run_dir) / patch_filename
+    write_patch_artifact(patch_path, patch_artifact)
+
+    artifact_path_str = patch_path.as_posix()
+    manifest_entry = {
+        "patch_id": patch_id,
+        "cwe_matches": patch.get("cwe_matches", []),
+        "artifact_path": artifact_path_str,
+    }
+
+    # Human-readable per-patch summary
+    print(f"\n--- Patch (id={patch_id}) written ---")
+    print(f"Artifact: {artifact_path_str}")
+    print("Plan:", " / ".join(patch.get("plan", [])) or "(none)")
+    print("\n=== Safety & Verification ===")
+    print(patch.get("safety_verification", ""))
+    print("\n=== Risk Notes ===")
+    print(patch.get("risk_notes", ""))
+    print("\n=== Unified Diff ===")
+    print(prettify_unified_diff(unified_diff))
+    print("\nTouched files:", ", ".join(touched_files))
+    print("Assumptions:", patch.get("assumptions", ""))
+    print("Behavior change:", patch.get("behavior_change", ""))
+    print("Confidence:", patch.get("confidence", 0))
+
+    return manifest_entry, artifact_path_str
+
+
+def write_run_manifest(
+    *,
+    run_dir: Path,
+    run_id: str,
+    run_timestamp: str,
+    model_name: str,
+    run_timestamp_iso: str,
+    manifest_patches: List[Dict[str, Any]],
+) -> Path:
+    """
+    Write one run-level manifest that indexes all per-task patch artifacts.
+
+    Manifest filename:
+      patcher_manifest_<run_timestamp>.json
+    """
     manifest = {
         "metadata": {
-            "run_id": meta["run_id"],
-            "timestamp": meta["timestamp"],
-            "tool_version": meta["tool_version"],
-            "model_name": meta["model_name"],
-            "total_patches": meta["total_patches"],
+            "run_id": run_id,
+            "timestamp": run_timestamp_iso,
+            "tool_version": TOOL_VERSION,
+            "model_name": model_name,
+            "total_patches": len(manifest_patches),
         },
         "patches": manifest_patches,
     }
-
-    manifest_path = run_dir / f"{run_id}.json"
-    write_manifest(manifest_path, manifest)
-
-    # 6. Print a human-readable summary using the full patch objects.
-    print("\n=== Patcher Summary (multi) ===")
-    for idx, patch in enumerate(full.get("patches", []), start=1):
-        patch_id = patch.get("patch_id", "?")
-        artifact_path = artifact_paths_by_id.get(patch_id, "(unknown)")
-        print(f"\n--- Patch {idx} (id={patch_id}) ---")
-        print(f"Artifact: {artifact_path}")
-        print("Plan:", " / ".join(patch.get("plan", [])) or "(none)")
-        for match in patch.get("cwe_matches", []):
-            print(f"  CWE {match.get('cwe_id')} (similarity={match.get('similarity')})")
-
-        print("\n=== Safety & Verification ===")
-        print(patch.get("safety_verification", ""))
-        print("\n=== Risk Notes ===")
-        print(patch.get("risk_notes", ""))
-        print("\n=== Unified Diff ===")
-        print(prettify_unified_diff(patch.get("unified_diff", "")))
-        print("\nTouched files:", ", ".join(patch.get("touched_files", [])))
-        print("Assumptions:", patch.get("assumptions", ""))
-        print("Behavior change:", patch.get("behavior_change", ""))
-        print("Confidence:", patch.get("confidence", ""))
+    manifest_path = Path(run_dir) / f"patcher_manifest_{run_timestamp}.json"
+    return write_manifest(manifest_path, manifest)

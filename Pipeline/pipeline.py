@@ -1,3 +1,4 @@
+from enum import Enum
 from typing import TypedDict, Dict, Any, Optional, List
 import json
 import subprocess
@@ -12,9 +13,10 @@ from pathlib import Path
 # from Agents.Exploiter.data.primevul.setup import project_slug
 # local imports
 from . import logger
-# from Agents.Patcher import patcher_main
+from Agents.Patcher import patcher_main
 from Agents.Finder.src.types import FinderOutput
 from Agents.Finder.src.output_converter import sarif_to_finder_output
+from datetime import datetime
 
 # relative path information
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,7 +43,8 @@ def _build_workflow() -> Any:
 
     # linear edges
     graph.add_edge(START, "finder")
-    graph.add_edge("finder", "exploiter")
+    # graph.add_edge("finder", "exploiter")
+    graph.add_edge("finder", "patcher")
     graph.add_edge("patcher", "verifier")
 
     # conditional edges
@@ -64,6 +67,14 @@ def push_db() -> tuple[int, str]:
 def _finder_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node - finder started")
 
+    # make sure Project/Sources folder exists
+    Path(PROJECTS_DIR / "Sources").mkdir(exist_ok=True)
+
+    host_ws = os.environ.get("HOST_WORKSPACE")
+    if not host_ws:
+        raise RuntimeError("HOST_WORKSPACE env var not set. Add it in devcontainer.json.")
+    host_ws = host_ws.replace("\\", "/") # for windows compatibility
+
     project_name = state["project_name"]
     query = state["vuln_id"] + "wLLM"
 
@@ -72,53 +83,52 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         "docker", "run",
         "--platform=linux/amd64",
         "--rm",
-        "-v", f"{PROJECTS_DIR}:/workspace/Projects",
-        "-v", f"{AGENTS_DIR}:/workspace/Agents",
+        "-v", f"{host_ws}/Projects:/workspace/Projects",
+        "-v", f"{host_ws}/Agents:/workspace/Agents",
         "-w", "/workspace/Agents/Finder",
         "iris:latest",
         "bash", "-lc",
-        f"source /opt/conda/etc/profile.d/conda.sh && conda activate iris && "
-        f"python3 ./scripts/build_and_analyze.py "
+        "source /opt/conda/etc/profile.d/conda.sh && conda activate iris && "
+        "python3 ./scripts/build_and_analyze.py "
         f"--project-name {project_name} "
-        f"--zip-path /workspace/Projects/{project_name}.zip "
+        f"--zip-path /workspace/Projects/Zipped/{project_name}.zip "
         f"--query {query}"
     ]
 
     logger.info(f"Running IRIS inside Docker for project {project_name}")
-    #
-    # # 2. Run IRIS analysis
-    # try:
-    #     subprocess.run(docker_cmd, check=True, text=True)
-    #
-    # # analysis failed for some reason
-    # except subprocess.CalledProcessError as e:
-    #         print("Finder failed with an error")
-    #         print("Return code:", e.returncode)
-    #         print("stdout:", e.stdout)
-    #         print("stderr:", e.stderr)
-    #
-    #         state["finder_output"] = None
-    #         state["vuln"] = None
-    #         return state
-    #
-    # # 3. Load IRIS output
-    # sarif_path = f"./Agents/Finder/output/{project_name}/test/{query}-posthoc-filter/results.sarif"
-    # try:
-    #     with open(sarif_path) as f:
-    #         findings = json.load(f)
-    #
-    #     # 4. Save results into pipeline state
-    #     state["finder_output"] = sarif_to_finder_output(findings, cwe_id=state["vuln_id"])
-    #     state["vuln"] = findings # keep oringial json dump just in case its needed
-    #
-    # # no vulnerabilites were found
-    # except FileNotFoundError:
-    #     print("Finder found no vulnerabilites")
-    #     state["finder_output"] = None
-    #     state["vuln"] = None
+
+    # 2. Run IRIS analysis
+    try:
+        subprocess.run(docker_cmd, check=True, text=True)
+
+    # analysis failed for some reason
+    except subprocess.CalledProcessError as e:
+            print("Finder failed with an error")
+            print("Return code:", e.returncode)
+            print("stdout:", e.stdout)
+            print("stderr:", e.stderr)
+
+            state["finder_output"] = None
+            state["vuln"] = None
+            return state
+
+    # 3. Load IRIS output
+    sarif_path = f"./Agents/Finder/output/{project_name}/test/{query}-posthoc-filter/results.sarif"
+    try:
+        with open(sarif_path) as f:
+            findings = json.load(f)
+
+        # 4. Save results into pipeline state
+        state["finder_output"] = sarif_to_finder_output(findings, cwe_id=state["vuln_id"])
+        state["vuln"] = findings # keep oringial json dump just in case its needed
+
+    # no vulnerabilites were found
+    except FileNotFoundError:
+        print("Finder found no vulnerabilites")
+        state["finder_output"] = None
+        state["vuln"] = None
 
     return state
-
 
 
 def _exploiter_node(state: AutoSecState) -> Command:
@@ -130,11 +140,11 @@ def _exploiter_node(state: AutoSecState) -> Command:
 
     # TODO: UNCOMMENT THIS WHEN FINDER IS RUNNING AND stat["vuln"] exists
     # vuln_data = state.get("vuln", None)
-    #
+    
     # if not vuln_data:
     #     logger.error("Vulnerability data not found")
     #     return Command(goto=END, update=state)
-    #
+    
     # with open(raw_vuln_dir, "w") as f:
     #     f.write(json.dumps(vuln_data))
 
@@ -217,19 +227,41 @@ def _exploiter_node(state: AutoSecState) -> Command:
     logger.info("Vulnerability exploited! Continuing to patcher.")
     state["exploiter"] = new_state
 
-    print(state["exploiter"])
+    # print(state["exploiter"])
 
     return Command(goto="patcher", update=new_state)
-
-
-
 
 
 def _patcher_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node - patcher started")
 
-    success = patcher_main()
-    state["patcher"] = {"success": success}
+    if not state.get("language"):
+        raise ValueError("language missing from state")
+
+    if not state.get("project_name"):
+        raise ValueError("project_name missing from state")
+
+    if not state.get("finder_output"):
+        raise ValueError("finder_output missing from state")
+
+    # if not state.get("exploiter"):
+        # raise ValueError("exploiter output missing from state")
+
+    # state["exploiter"]["pov_logic"]
+
+    # TODO: update with exploiter pov_logic when accessible
+    pov_logic = "Example PoV logic from exploiter report"
+
+    success, run_dir = patcher_main(
+            language=state["language"], 
+            cwe_id=state['finder_output']['cwe_id'], 
+            vulnerability_list=state['finder_output']['vulnerabilities'], 
+            project_name=state["project_name"], 
+            pov_logic=pov_logic,
+            save_prompt=True,
+        )
+    
+    state["patcher"] = {"success": success, "artifact_path": run_dir}
 
     return state
 
@@ -252,14 +284,41 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
         update=new_state
     )
 
+# ====== Project Variants ======
+class ProjectVariant(Enum):
+    CODEHAUS_2018 = {
+        "name": "codehaus-plexus__plexus-archiver_CVE-2018-1002200_3.5",
+        "cwe_id": "cwe-022"
+    }
+    CODEHAUS_2017 = {
+        "name": "codehaus-plexus__plexus-utils_CVE-2017-1000487_3.0.15",
+        "cwe_id": "cwe-078"
+    }
+    NAHSRA = {
+        "name": "nahsra__antisamy_CVE-2016-10006_1.5.3",
+        "cwe_id": "cwe-079"
+    }
+    PERWENDEL_2018 = {
+        "name": "perwendel__spark_CVE-2018-9159_2.7.1",
+        "cwe_id": "cwe-022"
+    }
+
+    @property
+    def project_name(self) -> str:
+        return self.value["name"]
+
+    @property
+    def cwe_id(self) -> str:
+        return self.value["cwe_id"]
 
 # ====== Execute workflow =====
 def pipeline_main():
+    SELECTED_PROJECT = ProjectVariant.CODEHAUS_2018
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
-        "project_name": "spring-cloud__spring-cloud-gateway_CVE-2022-22947_3.0.6",
-        "vuln_id": "cwe-094",
-        "language": "Java",
+        "project_name": SELECTED_PROJECT.project_name,
+        "vuln_id": SELECTED_PROJECT.cwe_id,
+        "language": "java",
     }
 
     workflow = _build_workflow()
@@ -268,6 +327,8 @@ def pipeline_main():
     final_state = workflow.invoke(initial_state)
 
     print("\n====== STATE DUMP ======")
+    print(final_state)
+    print("======^==========^======\n")
     print(json.dumps(final_state, indent=2))
     print("======^==========^======\n")
 

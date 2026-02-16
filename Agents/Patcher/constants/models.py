@@ -2,10 +2,11 @@ from enum import Enum
 
 class Model(Enum):
     QWEN3 = "qwen/qwen3-235b-a22b:free"
-    DEEPSEEK = "deepseek/deepseek-chat-v3.1:free"
+    DEEPSEEK = "deepseek/deepseek-chat-v3.1:free" 
     LLAMA3 = "meta-llama/llama-3.3-70b-instruct:free"
-    # GROK = "x-ai/grok-4.1-fast:free" 
+    NEMOTRON = "nvidia/nemotron-3-nano-30b-a3b:free" 
     KAT_CODER = "kwaipilot/kat-coder-pro:free"
+    GPT5_NANO_PAID = "openai/gpt-5-nano"
 
 """
 Notes on model selection:
