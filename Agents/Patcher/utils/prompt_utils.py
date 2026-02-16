@@ -1,146 +1,72 @@
-# Patcher//utils/prompt_utils.py
+# Agents/Patcher/utils/prompt_utils.py
 import json
-from typing import (
-    Any,
-    Dict,
-    Union,
-    List,
-    Iterable,
-    Tuple,
-    Mapping,
-)
+from typing import Any, Dict, List, Union
 
-# local imports
-from ..config import (
-    DEFAULT_CONTEXT_LIMIT,
-    MODEL_CONTEXT_LIMITS
-)
-from ..core import (
-    AgentFields,
-    FileSnippetBundle
-)
+from ..config import DEFAULT_CONTEXT_LIMIT, MODEL_CONTEXT_LIMITS
+from ..core.types import VulnerabilitySpec, FileSnippetBundle
 
-# ================== Multi-task USER message builder ==================
-def build_user_msg_multi(
-    tasks: Iterable[Tuple[int, AgentFields, Union[str, FileSnippetBundle]]]
+
+def build_patch_prompt(
+    task_id: int,
+    spec: VulnerabilitySpec,
+    snippet_payload: Union[str, FileSnippetBundle],
 ) -> str:
     """
-    Build a composite USER message listing multiple patch tasks.
+    Build a USER message for exactly ONE vulnerability patch task.
 
-    Each item = (task_id, AgentFields, snippet_payload)
-    snippet_payload can be:
-        - str (single snippet)
-        - {"by_file": {...}} (multi-file data-flow bundle)
-
-    Output:
-        YAML-like list of patch tasks, used as USER prompt to the Patcher.
-
-    The Patcher LLM must output:
-        patches: [
-          {
-            "patch_id": <task_id>,
-            "plan": [...],
-            "cwe_matches": [...],
-            ...
-          }
-        ]
+    This prompt is Finder-aligned and must remain stable:
+    - One prompt per VulnerabilitySpec (unique vulnerability instance)
+    - Includes ALL traces + derived sink + exploiter pov_logic
+    - Includes extracted snippets for all referenced files
     """
+    fields: Dict[str, Any] = spec.to_dict()
+
     text_lines: List[str] = []
     text_lines.append(
-        "You will receive one or more independent PATCH TASKS.\n"
-        "For each task, generate exactly one patch object.\n"
+        "You will receive exactly ONE independent PATCH TASK.\n"
+        "Generate exactly ONE patch object.\n"
         "The patch's `patch_id` MUST equal the provided `task_id`.\n"
     )
-    text_lines.append("tasks:\n")
 
-    for task_id, agent_fields, snippet_payload in tasks:
-        fields: Mapping[str, object] = agent_fields.to_dict()
+    text_lines.append("task:\n")
+    text_lines.append(f"  task_id: {task_id}")
+    text_lines.append(f"  language: {json.dumps(fields['language'], ensure_ascii=False)}")
+    text_lines.append(f"  cwe_id: {json.dumps(fields['cwe_id'], ensure_ascii=False)}")
+    text_lines.append(f"  project_name: {json.dumps(fields['project_name'], ensure_ascii=False)}")
+    text_lines.append("  constraints: " + json.dumps(fields["constraints"], ensure_ascii=False))
 
-        # --- Metadata header
-        text_lines.append(f"- task_id: {task_id}")
-        text_lines.append(f"  language: {json.dumps(fields['language'], ensure_ascii=False)}")
-        text_lines.append(f"  function: {json.dumps(fields['function'], ensure_ascii=False)}")
-        text_lines.append(f"  CWE: {json.dumps(fields['CWE'], ensure_ascii=False)}")
-        text_lines.append("  constraints: " + json.dumps(fields["constraints"], ensure_ascii=False))
-        text_lines.append(f"  vuln_title: {json.dumps(fields['vuln_title'], ensure_ascii=False)}")
+    # Finder-aligned: traces + sink
+    text_lines.append("  traces: " + json.dumps(fields["traces"], ensure_ascii=False))
+    text_lines.append("  sink: " + json.dumps(fields["sink"], ensure_ascii=False))
 
-        # --- Always include data-flow + PoV
-        text_lines.append("  data_flow:")
-        text_lines.append("    sink: " + json.dumps(fields["sink"], ensure_ascii=False))
-        text_lines.append("    flow: " + json.dumps(fields["flow"], ensure_ascii=False))
-        text_lines.append("  pov_tests: " + json.dumps(fields["pov_tests"], ensure_ascii=False))
+    # Exploiter context (PoV)
+    text_lines.append(f"  pov_logic: {json.dumps(fields.get('pov_logic', ''), ensure_ascii=False)}")
 
-        # --- Snippet payload (either single or multi-file)
-        language_tag = str(fields["language"]).lower()
+    # Guidance that matches your new rules
+    text_lines.append(
+        "  patch_rules: |\n"
+        "    - Fix ONLY this vulnerability instance.\n"
+        "    - Prefer a single-file fix whenever possible.\n"
+        "    - Patch multiple files ONLY if it cannot be resolved in a single file.\n"
+        "    - Keep changes minimal while fully mitigating all trace paths.\n"
+        "    - Respect constraints (no new deps if no_new_deps=true; keep signature if keep_signature=true).\n"
+    )
 
-        if isinstance(snippet_payload, dict) and "by_file" in snippet_payload:
-            text_lines.append("  vulnerable_snippets:")
-            for path_key, code_text in snippet_payload["by_file"].items():
-                text_lines.append(f"  - path: {json.dumps(path_key)}")
-                text_lines.append("    code: |")
-                for line in code_text.splitlines():
-                    text_lines.append(f"      {line}")
-            text_lines.append("")
-        else:
-            snippet_text = str(snippet_payload).strip()
-            text_lines.append("  vulnerable_snippet:")
-            text_lines.append(f"  ```{language_tag}")
-            text_lines.append("\n".join("  " + line for line in snippet_text.splitlines()))
-            text_lines.append("  ```\n")
+    # Snippets
+    if isinstance(snippet_payload, dict) and "by_file" in snippet_payload:
+        text_lines.append("  vulnerable_snippets:")
+        for path_key, code_text in snippet_payload["by_file"].items():
+            text_lines.append(f"  - path: {json.dumps(path_key, ensure_ascii=False)}")
+            text_lines.append("    code: |")
+            for line in str(code_text).splitlines():
+                text_lines.append(f"      {line}")
+        text_lines.append("")
+    else:
+        snippet_text = str(snippet_payload).strip()
+        text_lines.append("  vulnerable_snippet:")
+        text_lines.append("    code: |")
+        for line in snippet_text.splitlines():
+            text_lines.append(f"      {line}")
+        text_lines.append("")
 
     return "\n".join(text_lines)
-
-
-def estimate_prompt_tokens(messages: List[Dict[str, Any]]) -> int:
-    """
-    Very rough token estimate: tokens ≈ total_characters / 4.
-
-    This doesn't need to be exact; it just keeps us inside the model's
-    context window when we set max_tokens for the completion.
-    """
-    total_chars = 0
-    for msg in messages:
-        content = msg.get("content", "")
-        if isinstance(content, str):
-            total_chars += len(content)
-        else:
-            # In case of non-string content (tools, etc.), stringify.
-            total_chars += len(str(content))
-    # Avoid zero tokens, always at least a small positive number
-    return max(1, total_chars // 4)
-
-
-def determine_max_tokens(model_name: str, prompt_tokens: int) -> int:
-    """
-    Decide a max_tokens value based on:
-      - estimated prompt_tokens
-      - an approximate context limit per model
-
-    Strategy:
-      - max_ctx = context limit (prompt + completion)
-      - reserve a small safety margin (e.g., 256 tokens)
-      - max_tokens = max_ctx - prompt_tokens - margin
-      - clamp to a reasonable [min_out, max_out] range
-    """
-    max_ctx = MODEL_CONTEXT_LIMITS.get(model_name, DEFAULT_CONTEXT_LIMIT)
-
-    # Margin to avoid hitting hard context limit (tooling, small errors, etc.)
-    SAFETY_MARGIN = 256
-
-    # Floor and ceiling for response size. You can tune this depending on how
-    # large your patches typically are.
-    MIN_OUT = 512     # don't go lower than this unless we absolutely must
-    MAX_OUT = 6000    # arbitrary ceiling to avoid insane completions
-
-    available = max_ctx - prompt_tokens - SAFETY_MARGIN
-    if available <= 0:
-        # Worst case: prompt already uses (or slightly exceeds) the window.
-        # Still request a small number of tokens; model/host will truncate if needed.
-        return MIN_OUT
-
-    # Clamp available to our [MIN_OUT, MAX_OUT] band
-    if available < MIN_OUT:
-        return available
-    if available > MAX_OUT:
-        return MAX_OUT
-    return available

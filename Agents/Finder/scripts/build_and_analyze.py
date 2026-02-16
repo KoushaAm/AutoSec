@@ -15,12 +15,12 @@ THIS_SCRIPT_DIR = Path(__file__).parent
 ROOT_DIR = THIS_SCRIPT_DIR.parent
 sys.path.append(str(ROOT_DIR))
 
-from src.config import DATA_DIR
+from src.config import DATA_DIR, PROJECT_SOURCE_CODE_DIR
 
 
 # unzip project if specified to output folder
 def unzip_folder(zip_path, project_name):
-    target_dir = Path(DATA_DIR) / "project-sources" / project_name
+    target_dir = Path(PROJECT_SOURCE_CODE_DIR) / project_name
     target_dir.mkdir(parents=True, exist_ok=True)
 
     with zipfile.ZipFile(zip_path, "r") as zip_ref:

@@ -1,7 +1,6 @@
 {
    "recommendations": [
-      // MongoDB
-      "mongodb.mongodb-vscode",
+      "ms-vscode-remote.remote-containers",
 
       // Code formatting and linting
       "esbenp.prettier-vscode",

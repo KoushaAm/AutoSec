@@ -6,9 +6,9 @@ Agents/
 └── Patcher/
     ├── constants/
     │   ├── __init__.py             
-    │   ├── models.py               # LLM model enums
-    │   ├── prompts.py              # System + developer prompts
-    │   └── vuln_info.py            # Vulnerability definitions (CWE)
+    │   ├── models.py               
+    │   ├── prompts.py              
+    │   └── vuln_experiments.py
     ├── core/
     │   ├── method_locator/         # Tree-sitter method boundary detection/
     │   │   ├── __init__.py
@@ -29,3 +29,11 @@ Agents/
     ├── patcher.py                  # Main CLI entrypoint
     └── readme.md
 ```
+
+### Run Patcher Only
+- Static Module Check: `python3 -m Agents.Patcher.patcher --help`
+- Prompt-only dry-run: `python3 Agents/Patcher/patcher.py --save-prompt`
+- *Deprecated* Test with Experiments: `python3 Agents/Patcher/patcher.py --use-experiments`
+
+### Remove old output artifacts
+- `rm -rf Agents/Patcher/output/*`
