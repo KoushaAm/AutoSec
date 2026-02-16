@@ -12,7 +12,7 @@ from pathlib import Path
 # from Agents.Exploiter.data.primevul.setup import project_slug
 # local imports
 from . import logger
-from Agents.Patcher import patcher_main
+# from Agents.Patcher import patcher_main
 from Agents.Finder.src.types import FinderOutput
 from Agents.Finder.src.output_converter import sarif_to_finder_output
 
@@ -85,37 +85,37 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
     ]
 
     logger.info(f"Running IRIS inside Docker for project {project_name}")
-
-    # 2. Run IRIS analysis
-    try:
-        subprocess.run(docker_cmd, check=True, text=True)
-
-    # analysis failed for some reason
-    except subprocess.CalledProcessError as e:
-            print("Finder failed with an error")
-            print("Return code:", e.returncode)
-            print("stdout:", e.stdout)
-            print("stderr:", e.stderr)
-
-            state["finder_output"] = None
-            state["vuln"] = None
-            return state
-
-    # 3. Load IRIS output
-    sarif_path = f"./Agents/Finder/output/{project_name}/test/{query}-posthoc-filter/results.sarif"
-    try:
-        with open(sarif_path) as f:
-            findings = json.load(f)
-
-        # 4. Save results into pipeline state
-        state["finder_output"] = sarif_to_finder_output(findings, cwe_id=state["vuln_id"])
-        state["vuln"] = findings # keep oringial json dump just in case its needed
-
-    # no vulnerabilites were found
-    except FileNotFoundError:
-        print("Finder found no vulnerabilites")
-        state["finder_output"] = None
-        state["vuln"] = None
+    #
+    # # 2. Run IRIS analysis
+    # try:
+    #     subprocess.run(docker_cmd, check=True, text=True)
+    #
+    # # analysis failed for some reason
+    # except subprocess.CalledProcessError as e:
+    #         print("Finder failed with an error")
+    #         print("Return code:", e.returncode)
+    #         print("stdout:", e.stdout)
+    #         print("stderr:", e.stderr)
+    #
+    #         state["finder_output"] = None
+    #         state["vuln"] = None
+    #         return state
+    #
+    # # 3. Load IRIS output
+    # sarif_path = f"./Agents/Finder/output/{project_name}/test/{query}-posthoc-filter/results.sarif"
+    # try:
+    #     with open(sarif_path) as f:
+    #         findings = json.load(f)
+    #
+    #     # 4. Save results into pipeline state
+    #     state["finder_output"] = sarif_to_finder_output(findings, cwe_id=state["vuln_id"])
+    #     state["vuln"] = findings # keep oringial json dump just in case its needed
+    #
+    # # no vulnerabilites were found
+    # except FileNotFoundError:
+    #     print("Finder found no vulnerabilites")
+    #     state["finder_output"] = None
+    #     state["vuln"] = None
 
     return state
 
@@ -257,9 +257,9 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 def pipeline_main():
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
-        "project_name": "perwendel__spark_CVE-2018-9159_2.7.1",
-        "vuln_id": "cwe-022",
-        "language": "python",
+        "project_name": "spring-cloud__spring-cloud-gateway_CVE-2022-22947_3.0.6",
+        "vuln_id": "cwe-094",
+        "language": "Java",
     }
 
     workflow = _build_workflow()
