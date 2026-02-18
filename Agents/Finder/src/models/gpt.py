@@ -10,9 +10,12 @@ _model_name_map = {
     "gpt-4": "gpt-4-0125-preview",
     "gpt-3.5": "gpt-3.5-turbo-0125",
     "gpt-4-1106": "gpt-4-1106-preview",
-    "gpt-4-0613": "gpt-4-0613"
+    "gpt-4-0613": "gpt-4-0613",
+    "gpt-5-mini": "gpt-5-mini",
+    "gpt-5-nano": "gpt-5-nano",
+    "gpt-5": "gpt-5",
 }
-_OPENAI_DEFAULT_PARAMS = {"temperature": 0, "n": 1, "max_tokens": 4096, "stop": "", "seed": 345 }
+_OPENAI_DEFAULT_PARAMS = {"temperature": 0, "n": 1, "max_tokens": 8000, "stop": "", "seed": 345 }
 
 class GPTModel(LLM):
     def __init__(self, model_name, logger: MyLogger, **kwargs):
@@ -41,31 +44,49 @@ class GPTModel(LLM):
 
     def _predict(self, main_prompt, expect_json=False):
         # assuming 0 is system and 1 is user
-        system_prompt = main_prompt[0]['content']
-        user_prompt = main_prompt[1]['content']
-        prompt = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
-        if 'logprobs' in self.kwargs:
-            _OPENAI_DEFAULT_PARAMS['logprobs']=self.kwargs["logprobs"]
-        if 'top_logprobs' in self.kwargs:
-             _OPENAI_DEFAULT_PARAMS['top_logprobs']=self.kwargs["top_logprobs"]
+        system_prompt = main_prompt[0]["content"]
+        user_prompt = main_prompt[1]["content"]
+        prompt = [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt},
+        ]
+
+        params = dict(_OPENAI_DEFAULT_PARAMS)
+
+        if "logprobs" in self.kwargs:
+            params["logprobs"] = self.kwargs["logprobs"]
+        if "top_logprobs" in self.kwargs:
+            params["top_logprobs"] = self.kwargs["top_logprobs"]
+        if params.get("stop") == "":
+            params.pop("stop", None)
+
+        # GPT-5* use different params - adjust them here
+        if self.model_id.startswith("gpt-5"):
+            if "max_tokens" in params:
+                params["max_completion_tokens"] = params.pop("max_tokens")
+            if "temperature" in params:
+                    params.pop("temperature")
+
         if expect_json:
             response = self.client.chat.completions.create(
                 model=self.model_id,
                 messages=prompt,
                 response_format={"type": "json_object"},
-                **_OPENAI_DEFAULT_PARAMS)
+                **params,
+            )
         else:
             response = self.client.chat.completions.create(
-                            model=self.model_id,
-            messages=prompt,
-            **_OPENAI_DEFAULT_PARAMS)
-        if response.choices[0].logprobs != None:
-            self.logprobs=response.choices[0].logprobs.content
-        else:
-            self.logprobs=None
-        response=response.choices[0].message.content
+                model=self.model_id,
+                messages=prompt,
+                **params,  # <-- CHANGED
+            )
 
-        return response
+        if response.choices[0].logprobs is not None:
+            self.logprobs = response.choices[0].logprobs.content
+        else:
+            self.logprobs = None
+
+        return response.choices[0].message.content
 
 
 if __name__ == '__main__':
