@@ -46,8 +46,9 @@ export OPENAI_KEY_FAULTLINE="your_api_key_here"
 ```bash
 python3 main.py
 
-# Save the Patcher Agent prompt
-python3 main.py <-sp|--save-prompt>
+# Customize the Patcher agent code extraction limit
+PATCHER_SNIPPET_MAX_LINES=800 python main.py
+
 
 # For all possible arguments without running main
 python3 main.py <-h|--help>

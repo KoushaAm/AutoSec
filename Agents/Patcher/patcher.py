@@ -1,28 +1,26 @@
-# Patcher/patcher.py
+# Agents/Patcher/patcher.py
 import argparse
 import sys
 from os import getenv
 from dotenv import load_dotenv
 from openai import OpenAI
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 from datetime import datetime, timezone
 
-from .config import OUTPUT_PATH, VULNERABILITIES, MODEL_NAME, MODEL_VALUE
-from .constants import VulnerabilityInfo, SYSTEM_MESSAGE, DEVELOPER_MESSAGE
-from .core import (
-    AgentFields,
-    ConstraintDict,
-    SinkDict,
-    FlowStepDict,
-    PoVTestDict,
-    build_method_flow_snippets,
-)
+from .config import OUTPUT_PATH, MODEL_NAME, MODEL_VALUE
+from .constants import SYSTEM_MESSAGE, DEVELOPER_MESSAGE
+
+# Finder-aligned core types
+from .core.types import ConstraintDict, Trace, VulnerabilitySpec, FileSnippetBundle
+
+# Trace-driven extractor
+from .core.code_extractor import extract_snippets_for_vuln
+
+# Prompt + LLM IO helpers
 from .utils import (
     combine_prompt_messages,
-    build_user_msg_single,
-    estimate_prompt_tokens,
-    determine_max_tokens,
+    build_patch_prompt,
     process_llm_output_single,
     write_run_manifest,
 )
@@ -39,19 +37,19 @@ def _save_prompt_debug(
     messages: List[Dict[str, str]],
     model_name: str,
     *,
+    run_dir: Path,
     task_id: Optional[int] = None,
-    cwe: Optional[str] = None,
+    cwe_id: Optional[str] = None,
 ) -> None:
     """
     Save the exact prompt text sent to the LLM for debugging and reproducibility.
 
     Writes to:
-        output/prompts/task-XXX_CWE-YYY_<timestamp>.txt
+        <run_dir>/prompts/task-XXX_cwe-022_<timestamp>.txt
 
     One file per prompt invocation (never overwritten).
     """
-    output_root = Path(OUTPUT_PATH)
-    prompts_dir = output_root / "prompts"
+    prompts_dir = Path(run_dir) / "prompts"
     prompts_dir.mkdir(parents=True, exist_ok=True)
 
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
@@ -59,9 +57,9 @@ def _save_prompt_debug(
     parts: List[str] = []
     if task_id is not None:
         parts.append(f"task-{task_id:03d}")
-    if cwe:
-        safe_cwe = cwe.replace("/", "_")
-        parts.append(f"CWE-{safe_cwe}")
+    if cwe_id:
+        safe_cwe = cwe_id.replace("/", "_")
+        parts.append(safe_cwe)
     parts.append(timestamp)
 
     filename = "_".join(parts) + ".txt"
@@ -73,8 +71,8 @@ def _save_prompt_debug(
     debug_lines.append(f"Timestamp: {timestamp}")
     if task_id is not None:
         debug_lines.append(f"Task ID: {task_id}")
-    if cwe:
-        debug_lines.append(f"CWE: {cwe}")
+    if cwe_id:
+        debug_lines.append(f"cwe_id: {cwe_id}")
     debug_lines.append("=" * 80)
 
     for msg in messages:
@@ -87,44 +85,107 @@ def _save_prompt_debug(
     print(f"[debug] Saved prompt to {debug_path.resolve()}")
 
 
-def mk_agent_fields(vuln_class: VulnerabilityInfo) -> AgentFields:
-    language: str = vuln_class.LANGUAGE
-    function_name: str = vuln_class.FUNC_NAME
-    cwe_id: str = vuln_class.CWE
-    constraints: ConstraintDict = vuln_class.CONSTRAINTS
-    sink_meta: SinkDict = vuln_class.SINK
-    flow_meta: List[FlowStepDict] = vuln_class.FLOW or []
-    pov_tests_meta: List[PoVTestDict] = vuln_class.POV_TESTS or []
-    vuln_title: str = getattr(vuln_class, "VULN_TITLE", "")
+# TODO: refactor to specify constraints per CWE instance
+def _constraints_for_cwe(cwe_id: str) -> ConstraintDict:
+    """
+    Placeholder: all CWEs share the same constraints for now.
+    Later you can map per-cwe here.
+    """
+    return {
+        "max_lines": 30,
+        "max_hunks": 2,
+        "no_new_deps": True,
+        "keep_signature": True,
+    }
 
-    return AgentFields(
+
+def populate_vulnerability_specs(
+    *,
+    language: str,
+    cwe_id: str,
+    vulnerabilities: List[Dict[str, Any]],
+    project_name: str,
+    pov_logic: str,
+) -> List[VulnerabilitySpec]:
+    """
+    Convert pipeline-provided vulnerabilities into VulnerabilitySpec list.
+
+    One spec per unique vulnerability instance.
+    Each instance may contain multiple traces.
+
+    Fail-fast behavior:
+      - Empty vulnerabilities or empty traces will raise via VulnerabilitySpec.__post_init__.
+    """
+    specs: List[VulnerabilitySpec] = []
+    constraints = _constraints_for_cwe(cwe_id)
+
+    for v in vulnerabilities:
+        traces: List[Trace] = v.get("traces", [])
+        specs.append(
+            VulnerabilitySpec(
+                language=language.lower(),
+                cwe_id=cwe_id,
+                project_name=project_name,
+                constraints=constraints,
+                traces=traces,
+                pov_logic=pov_logic,
+            )
+        )
+
+    return specs
+
+
+def _detect_repo_root() -> Path:
+    """
+    Best-effort repo root detection.
+
+    In devcontainer, we often have /workspaces/autosec.
+    Fallback to walking up from this file.
+    """
+    preferred = Path("/workspaces/autosec")
+    if preferred.exists():
+        return preferred
+    return Path(__file__).resolve().parents[2]
+
+
+# =============== Main entrypoint for Patcher agent ===============
+
+def patcher_main(
+    *,
+    language: str,
+    cwe_id: str,
+    vulnerability_list: List[Dict[str, Any]],
+    project_name: str,
+    pov_logic: str = "",
+    save_prompt: bool = False,
+) -> Tuple[bool, str]:
+    """
+    Pipeline-safe entrypoint (no argparse).
+
+    Returns:
+      (success: bool, run_dir_path: str)
+
+    Inputs are provided by pipeline.py:
+      - language
+      - cwe_id
+      - vulnerability_list (Finder vulnerabilities list; each element contains traces)
+      - project_name
+      - pov_logic (Exploiter context)
+    """
+    repo_root = _detect_repo_root()
+
+    specs = populate_vulnerability_specs(
         language=language,
-        function=function_name,
-        CWE=cwe_id,
-        constraints=constraints,
-        sink=sink_meta,
-        flow=flow_meta,
-        pov_tests=pov_tests_meta,
-        vuln_title=vuln_title,
+        cwe_id=cwe_id,
+        vulnerabilities=vulnerability_list,
+        project_name=project_name,
+        pov_logic=pov_logic,
     )
-
-
-def patcher_main() -> bool:
-    parser = argparse.ArgumentParser(description="Patcher tool")
-    parser.add_argument(
-        "-sp",
-        "--save-prompt",
-        action="store_true",
-        help="Save each generated Patcher prompt to output/prompts/ for debugging",
-    )
-    args = parser.parse_args()
-
-    REPO_ROOT = Path(__file__).resolve().parents[2]
 
     # Create ONE run dir for the whole patcher execution
     dt = datetime.now(timezone.utc)
-    run_ts = dt.strftime("%Y%m%dT%H%M%SZ")
-    run_id = f"patcher_{run_ts}"
+    run_timestamp = dt.strftime("%Y%m%dT%H%M%SZ")
+    run_id = f"patcher_{run_timestamp}"
     run_timestamp_iso = dt.isoformat().replace("+00:00", "Z")
 
     output_root = Path(OUTPUT_PATH)
@@ -132,34 +193,34 @@ def patcher_main() -> bool:
     run_dir.mkdir(parents=True, exist_ok=True)
 
     manifest_patches: List[Dict[str, Any]] = []
-    all_ok = True
+    patcher_success = True
 
-    for task_index, Vulnerability in enumerate(VULNERABILITIES, start=1):
-        agent_fields = mk_agent_fields(Vulnerability)
-
-        bundle = build_method_flow_snippets(
-            repo_root=REPO_ROOT,
-            language=agent_fields.language,
-            sink=agent_fields.sink,
-            flow=agent_fields.flow,
+    for task_index, spec in enumerate(specs, start=1):
+        # 1) Extract code context from all trace steps (dedup/merge inside extractor)
+        snippets: FileSnippetBundle = extract_snippets_for_vuln(
+            spec=spec,
+            repo_root=repo_root,
         )
 
-        user_msg = build_user_msg_single(task_index, agent_fields, bundle)
+        # 2) Build exactly one prompt per vulnerability instance
+        user_msg: str = build_patch_prompt(
+            task_id=task_index,
+            spec=spec,
+            snippet_payload=snippets,
+        )
+
+        # 3) Assemble messages
         messagesArray = combine_prompt_messages(SYSTEM_MESSAGE, DEVELOPER_MESSAGE, user_msg)
 
-        prompt_tokens = estimate_prompt_tokens(messagesArray)
-        max_tokens = determine_max_tokens(MODEL_NAME, prompt_tokens)
+        print(f"\n=== Task {task_index}: cwe_id={spec.cwe_id} ===")
 
-        print(f"\n=== Task {task_index}: CWE={agent_fields.CWE} func={agent_fields.function} ===")
-        print(f"[debug] Estimated prompt tokens: {prompt_tokens}")
-        print(f"[debug] Using max_tokens={max_tokens} for model '{MODEL_VALUE}'")
-
-        if args.save_prompt:
+        if save_prompt:
             _save_prompt_debug(
                 messagesArray,
                 MODEL_NAME,
+                run_dir=run_dir,
                 task_id=task_index,
-                cwe=agent_fields.CWE,
+                cwe_id=spec.cwe_id,
             )
 
         print(f"====== Sending request to OpenRouter with '{MODEL_VALUE}' ======")
@@ -168,45 +229,55 @@ def patcher_main() -> bool:
                 model=MODEL_VALUE,
                 messages=messagesArray,
                 temperature=0.0,
-                max_tokens=max_tokens,
+                max_tokens=8000, # TODO: programmatically determine this based on model context and prompt size?
             )
         except Exception as e:
-            all_ok = False
+            patcher_success = False
             print(f"[error] OpenRouter error on task {task_index}: {e}", file=sys.stderr)
             continue
 
         llm_output = completion.choices[0].message.content or ""
         if not llm_output.strip():
-            all_ok = False
-            print(f"[error] No output from LLM for task {task_index}", file=sys.stderr)
+            patcher_success = False
+            print(f"[error] No output from LLM for task {task_index}\n", file=sys.stderr)
+            print(f"[debug] Full completion response: {completion}\n", file=sys.stderr)
+            print(f"[debug] Full LLM response: {llm_output}\n", file=sys.stderr)
             continue
 
+        # 4) Persist artifact JSON + update manifest
         try:
             manifest_entry, _artifact_path = process_llm_output_single(
                 llm_output,
                 MODEL_VALUE,
                 run_dir=run_dir,
                 run_id=run_id,
+                run_timestamp=run_timestamp,
                 run_timestamp_iso=run_timestamp_iso,
                 task_id=task_index,
             )
             manifest_patches.append(manifest_entry)
         except Exception as exc:
-            all_ok = False
+            patcher_success = False
             print(f"[fatal] Failed to process LLM output for task {task_index}: {exc}", file=sys.stderr)
             continue
 
     write_run_manifest(
         run_dir=run_dir,
         run_id=run_id,
+        run_timestamp=run_timestamp,
         model_name=MODEL_VALUE,
         run_timestamp_iso=run_timestamp_iso,
         manifest_patches=manifest_patches,
     )
 
     print(f"\n=== Patcher completed: {len(manifest_patches)} patches written to {run_dir.resolve()} ===")
-    return all_ok
+    return patcher_success, str(run_dir.resolve())
 
 
 if __name__ == "__main__":
-    patcher_main()
+    parser = argparse.ArgumentParser(description="Patcher tool (standalone)")
+    parser.add_argument("--save-prompt", action="store_true", help="Save prompts to output/prompts/")
+    parser.add_argument("--use-experiments", action="store_true", help="(legacy) run experiment vulns (deprecated)")
+    args = parser.parse_args()
+
+    raise SystemExit("Standalone mode is deprecated. Call patcher_main(...) from pipeline with Finder output.")

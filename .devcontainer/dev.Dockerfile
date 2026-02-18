@@ -1,5 +1,5 @@
 # .devcontainer/dev.Dockerfile
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash", "-c"]
@@ -23,46 +23,49 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     tree \
     docker.io \
     zsh \
-    # needed for add-apt-repository / PPAs
     gnupg \
-    gpg-agent \
     dirmngr \
-    # build deps for common Python wheels
     build-essential \
     pkg-config \
-    # keep system python tooling happy
+    # Python 3.12 is the default on Ubuntu 24.04
     python3 \
     python3-venv \
+    python3-dev \
     python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
-# ---- Python 3.12 (Patcher requirement) ----
-# IMPORTANT: do NOT change /usr/bin/python3 (apt tooling depends on system python3-apt)
-RUN add-apt-repository ppa:deadsnakes/ppa \
+# Optional convenience: make `python` point to Python 3.12 (leave `python3` alone)
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+
+# ---- Java toolchains: Temurin 8/11/17 (recommended for Ubuntu 24.04) ----
+# Ubuntu 24.04 doesn't ship OpenJDK 8 cleanly; use Adoptium repo.
+RUN mkdir -p /etc/apt/keyrings \
+    && curl -fsSL https://packages.adoptium.net/artifactory/api/gpg/key/public \
+      | gpg --dearmor -o /etc/apt/keyrings/adoptium.gpg \
+    && echo "deb [signed-by=/etc/apt/keyrings/adoptium.gpg] https://packages.adoptium.net/artifactory/deb $(. /etc/os-release && echo $VERSION_CODENAME) main" \
+      > /etc/apt/sources.list.d/adoptium.list \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
-       python3.12 \
-       python3.12-venv \
-       python3.12-dev \
+       temurin-8-jdk \
+       temurin-11-jdk \
+       temurin-17-jdk \
     && rm -rf /var/lib/apt/lists/*
 
-# Ensure pip exists for Python 3.12 (separate from system pip)
-RUN python3.12 -m ensurepip --upgrade \
-    && python3.12 -m pip install --no-cache-dir --upgrade pip setuptools wheel
+# Set default Java to 17 (you can switch in-container with update-alternatives if needed)
+#RUN update-alternatives --set java /usr/lib/jvm/temurin-17-jdk-amd64/bin/java || true
+#ENV JAVA_HOME=/usr/lib/jvm/temurin-17-jdk-amd64
+#ENV PATH=${JAVA_HOME}/bin:${PATH}
+RUN set -eux; \
+    update-alternatives --set java "$(ls -1 /usr/lib/jvm/temurin-17-jdk*/bin/java | head -n1)"; \
+    JAVA_BIN="$(readlink -f "$(command -v java)")"; \
+    JAVA_HOME_REAL="$(dirname "$(dirname "$JAVA_BIN")")"; \
+    ln -sfn "$JAVA_HOME_REAL" /usr/lib/jvm/default-java; \
+    echo "export JAVA_HOME=/usr/lib/jvm/default-java" >/etc/profile.d/java_home.sh; \
+    echo 'export PATH="$JAVA_HOME/bin:$PATH"' >>/etc/profile.d/java_home.sh
 
-# Optional convenience: make `python` be Python 3.12 (leave `python3` alone!)
-RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.12 1
+ENV JAVA_HOME=/usr/lib/jvm/default-java
+ENV PATH=${JAVA_HOME}/bin:${PATH}
 
-# ---- Java toolchains (dev convenience) ----
-RUN add-apt-repository ppa:openjdk-r/ppa \
-    && apt-get update \
-    && apt-get install -y --no-install-recommends \
-       openjdk-8-jdk \
-       openjdk-11-jdk \
-       openjdk-17-jdk \
-    && rm -rf /var/lib/apt/lists/*
-
-ENV JAVA_HOME=/usr/lib/jvm/java-1.17.0-openjdk-amd64
 
 # ---- Maven (multiple versions) ----
 ENV MAVEN_DIR=/opt/maven
@@ -90,23 +93,28 @@ RUN mkdir -p "${GRADLE_DIR}" && \
 ENV GRADLE_HOME=${GRADLE_DIR}/gradle-8.9
 ENV PATH=${GRADLE_HOME}/bin:${PATH}
 
-# ---- Create a non-root dev user ----
-ARG USERNAME=vscode
-ARG USER_UID=1000
-ARG USER_GID=1000
-
-RUN groupadd --gid "${USER_GID}" "${USERNAME}" \
-    && useradd --uid "${USER_UID}" --gid "${USER_GID}" -m "${USERNAME}" -s /bin/bash \
-    && usermod -aG sudo,docker "${USERNAME}" \
-    && echo "${USERNAME} ALL=(ALL) NOPASSWD:ALL" >/etc/sudoers.d/${USERNAME} \
-    && chmod 0440 /etc/sudoers.d/${USERNAME}
+# ---- Create vscode user (no UID/GID pinning; Dev Containers will remap as needed) ----
+RUN set -eux; \
+    getent group docker >/dev/null || groupadd docker; \
+    id -u vscode >/dev/null 2>&1 || useradd -m -s /bin/bash vscode; \
+    usermod -aG sudo,docker vscode; \
+    echo "vscode ALL=(ALL) NOPASSWD:ALL" >/etc/sudoers.d/vscode; \
+    chmod 0440 /etc/sudoers.d/vscode
 
 # Quick sanity checks
-RUN python3 --version && python3.12 --version && python --version && \
-    python3.12 -m pip --version && \
-    java -version && mvn -version && gradle --version && docker --version
+#RUN python3 --version && python --version && \
+#    python3 -m pip --version && \
+#    java -version && \
+#    /usr/lib/jvm/temurin-8-jdk-amd64/bin/java -version && \
+#    /usr/lib/jvm/temurin-11-jdk-amd64/bin/java -version && \
+#    mvn -version && gradle --version && docker --version
+RUN python3 --version && python --version && \
+    python3 -m pip --version && \
+    java -version && \
+    /usr/lib/jvm/temurin-8-jdk*/bin/java -version && \
+    /usr/lib/jvm/temurin-11-jdk*/bin/java -version && \
+    mvn -version && gradle --version && docker --version
+
 
 WORKDIR /workspaces/autosec
-USER ${USERNAME}
-
 CMD ["/bin/bash"]
