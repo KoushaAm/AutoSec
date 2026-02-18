@@ -28,6 +28,8 @@ class AutoSecState(TypedDict, total=False):
     language: Optional[str]
     vuln_id: Optional[str]
     vuln: Optional[Dict[str, Any]]
+    finder_model: Optional[str]
+    finder_reanalyze: Optional[bool]
     finder_output: Optional[List[FinderOutput]]
     artifacts: Optional[Dict[str, str]]
     exploiter: Optional[Dict[str, Any]]
@@ -43,7 +45,7 @@ def _build_workflow() -> Any:
 
     # linear edges
     graph.add_edge(START, "finder")
-    graph.add_edge("finder", "exploiter")
+    # graph.add_edge("finder", "exploiter")
     graph.add_edge("finder", "patcher")
     graph.add_edge("patcher", "verifier")
 
@@ -75,8 +77,19 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         raise RuntimeError("HOST_WORKSPACE env var not set. Add it in devcontainer.json.")
     host_ws = host_ws.replace("\\", "/") # for windows compatibility
 
+    # get relevant args from autosecstate
     project_name = state["project_name"]
     query = state["vuln_id"] + "wLLM"
+    model = state["finder_model"]
+
+    # setup args for build_and_analyze.py script. make sure project if project is reanalyzed, use --overwrite and no need to unzip folder
+    build_and_analyze_args = f"--project-name {project_name} --query {query} --model {model} "
+    if state["finder_reanalyze"]:
+        build_and_analyze_args += f"--overwrite"
+    else:
+        build_and_analyze_args += f"--zip-path /workspace/Projects/Zipped/{project_name}.zip"
+
+    print(f"\n---- ARGS: {build_and_analyze_args} ----\n")
 
     # 1. setup command to have IRIS inside docker container
     docker_cmd = [
@@ -89,10 +102,7 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         "iris:latest",
         "bash", "-lc",
         "source /opt/conda/etc/profile.d/conda.sh && conda activate iris && "
-        "python3 ./scripts/build_and_analyze.py "
-        f"--project-name {project_name} "
-        f"--zip-path /workspace/Projects/Zipped/{project_name}.zip "
-        f"--query {query}"
+        "python3 ./scripts/build_and_analyze.py " + build_and_analyze_args
     ]
 
     logger.info(f"Running IRIS inside Docker for project {project_name}")
@@ -110,6 +120,7 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
             state["finder_output"] = None
             state["vuln"] = None
+            state["finder_reanalyze"] = False
             return state
 
     # 3. Load IRIS output
@@ -128,6 +139,7 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         state["finder_output"] = None
         state["vuln"] = None
 
+    state["finder_reanalyze"] = False
     return state
 
 
@@ -140,11 +152,11 @@ def _exploiter_node(state: AutoSecState) -> Command:
 
     # TODO: UNCOMMENT THIS WHEN FINDER IS RUNNING AND stat["vuln"] exists
     # vuln_data = state.get("vuln", None)
-    
+
     # if not vuln_data:
     #     logger.error("Vulnerability data not found")
     #     return Command(goto=END, update=state)
-    
+
     # with open(raw_vuln_dir, "w") as f:
     #     f.write(json.dumps(vuln_data))
 
@@ -222,6 +234,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
 
     if not exploitable:
         logger.warning("Exploiter ran but did not find an exploitable PoV.")
+        new_state["finder_reanalyze"] = True
         return Command(goto="finder", update=new_state)
 
     logger.info("Vulnerability exploited! Continuing to patcher.")
@@ -253,14 +266,14 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
     pov_logic = "Example PoV logic from exploiter report"
 
     success, run_dir = patcher_main(
-            language=state["language"], 
-            cwe_id=state['finder_output']['cwe_id'], 
-            vulnerability_list=state['finder_output']['vulnerabilities'], 
-            project_name=state["project_name"], 
+            language=state["language"],
+            cwe_id=state['finder_output']['cwe_id'],
+            vulnerability_list=state['finder_output']['vulnerabilities'],
+            project_name=state["project_name"],
             pov_logic=pov_logic,
             save_prompt=True,
         )
-    
+
     state["patcher"] = {"success": success, "artifact_path": run_dir}
 
     return state
@@ -273,6 +286,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
     new_state = dict(state)
 
     if retry_finder:
+        new_state["finder_reanalyze"] = True
         return Command(
             goto="finder",
             update=new_state
@@ -286,17 +300,9 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 
 # ====== Project Variants ======
 class ProjectVariant(Enum):
-    ESAPI = {
-        "name": "ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1",
-        "cwe_id": "cwe-022"
-    }
     CODEHAUS_2018 = {
         "name": "codehaus-plexus__plexus-archiver_CVE-2018-1002200_3.5",
         "cwe_id": "cwe-022"
-    }
-    PERFECTO = {
-        "name" : "jenkinsci__perfecto-plugin_CVE-2020-2261_1.17",
-        "cwe_id": "cwe-078"
     }
     CODEHAUS_2017 = {
         "name": "codehaus-plexus__plexus-utils_CVE-2017-1000487_3.0.15",
@@ -310,14 +316,6 @@ class ProjectVariant(Enum):
         "name": "perwendel__spark_CVE-2018-9159_2.7.1",
         "cwe_id": "cwe-022"
     }
-    SPRING = {
-        "name" : "spring-cloud__spring-cloud-gateway_CVE-2022-22947_3.0.6",
-        "cwe_id": "cwe-094"
-    }
-    DSPACE = {
-        "name" : "DSpace__DSpace_CVE-2016-10726_4.4",
-        "cwe_id": "cwe-022"
-    }
 
     @property
     def project_name(self) -> str:
@@ -329,12 +327,14 @@ class ProjectVariant(Enum):
 
 # ====== Execute workflow =====
 def pipeline_main():
-    SELECTED_PROJECT = ProjectVariant.DSPACE
+    SELECTED_PROJECT = ProjectVariant.CODEHAUS_2018
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
         "project_name": SELECTED_PROJECT.project_name,
         "vuln_id": SELECTED_PROJECT.cwe_id,
         "language": "java",
+        "finder_model": "qwen2.5-32b",
+        "finder_reanalyze": False,
     }
 
     workflow = _build_workflow()
