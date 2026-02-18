@@ -1,3 +1,4 @@
+from enum import Enum
 from typing import TypedDict, Dict, Any, Optional, List
 import json
 import subprocess
@@ -16,6 +17,7 @@ from Agents.Patcher import patcher_main
 from Agents.Verifier import verifier_main
 from Agents.Finder.src.types import FinderOutput
 from Agents.Finder.src.output_converter import sarif_to_finder_output
+from datetime import datetime
 
 # relative path information
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,6 +29,8 @@ class AutoSecState(TypedDict, total=False):
     language: Optional[str]
     vuln_id: Optional[str]
     vuln: Optional[Dict[str, Any]]
+    finder_model: Optional[str]
+    finder_reanalyze: Optional[bool]
     finder_output: Optional[List[FinderOutput]]
     artifacts: Optional[Dict[str, str]]
     exploiter: Optional[Dict[str, Any]]
@@ -42,7 +46,8 @@ def _build_workflow() -> Any:
 
     # linear edges
     graph.add_edge(START, "finder")
-    graph.add_edge("finder", "exploiter")
+    # graph.add_edge("finder", "exploiter")
+    graph.add_edge("finder", "patcher")
     graph.add_edge("patcher", "verifier")
 
     # conditional edges
@@ -73,8 +78,19 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         raise RuntimeError("HOST_WORKSPACE env var not set. Add it in devcontainer.json.")
     host_ws = host_ws.replace("\\", "/") # for windows compatibility
 
+    # get relevant args from autosecstate
     project_name = state["project_name"]
     query = state["vuln_id"] + "wLLM"
+    model = state["finder_model"]
+
+    # setup args for build_and_analyze.py script. make sure project if project is reanalyzed, use --overwrite and no need to unzip folder
+    build_and_analyze_args = f"--project-name {project_name} --query {query} --model {model} "
+    if state["finder_reanalyze"]:
+        build_and_analyze_args += f"--overwrite"
+    else:
+        build_and_analyze_args += f"--zip-path /workspace/Projects/Zipped/{project_name}.zip"
+
+    print(f"\n---- ARGS: {build_and_analyze_args} ----\n")
 
     # 1. setup command to have IRIS inside docker container
     docker_cmd = [
@@ -87,10 +103,7 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         "iris:latest",
         "bash", "-lc",
         "source /opt/conda/etc/profile.d/conda.sh && conda activate iris && "
-        "python3 ./scripts/build_and_analyze.py "
-        f"--project-name {project_name} "
-        f"--zip-path /workspace/Projects/Zipped/{project_name}.zip "
-        f"--query {query}"
+        "python3 ./scripts/build_and_analyze.py " + build_and_analyze_args
     ]
 
     logger.info(f"Running IRIS inside Docker for project {project_name}")
@@ -108,6 +121,7 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
             state["finder_output"] = None
             state["vuln"] = None
+            state["finder_reanalyze"] = False
             return state
 
     # 3. Load IRIS output
@@ -126,8 +140,8 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         state["finder_output"] = None
         state["vuln"] = None
 
+    state["finder_reanalyze"] = False
     return state
-
 
 
 def _exploiter_node(state: AutoSecState) -> Command:
@@ -139,11 +153,11 @@ def _exploiter_node(state: AutoSecState) -> Command:
 
     # TODO: UNCOMMENT THIS WHEN FINDER IS RUNNING AND stat["vuln"] exists
     # vuln_data = state.get("vuln", None)
-    #
+
     # if not vuln_data:
     #     logger.error("Vulnerability data not found")
     #     return Command(goto=END, update=state)
-    #
+
     # with open(raw_vuln_dir, "w") as f:
     #     f.write(json.dumps(vuln_data))
 
@@ -221,31 +235,47 @@ def _exploiter_node(state: AutoSecState) -> Command:
 
     if not exploitable:
         logger.warning("Exploiter ran but did not find an exploitable PoV.")
+        new_state["finder_reanalyze"] = True
         return Command(goto="finder", update=new_state)
 
     logger.info("Vulnerability exploited! Continuing to patcher.")
     state["exploiter"] = new_state
 
-    print(state["exploiter"])
+    # print(state["exploiter"])
 
     return Command(goto="patcher", update=new_state)
-
-
-
 
 
 def _patcher_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node - patcher started")
 
-    print(f"=== Patcher invoked for {state['project_name']} ===")
-    # print first output of finder_output for debugging
-    if state.get("finder_output"):
-        print(f"finder_output (cwe): {state['finder_output']['cwe_id']}")
-        print(f"finder_output (vulns): {state['finder_output']['vulnerabilities'][0]}")
+    if not state.get("language"):
+        raise ValueError("language missing from state")
 
-    # TODO: implement patcher integration
-    # success = patcher_main()
-    # state["patcher"] = {"success": success}
+    if not state.get("project_name"):
+        raise ValueError("project_name missing from state")
+
+    if not state.get("finder_output"):
+        raise ValueError("finder_output missing from state")
+
+    # if not state.get("exploiter"):
+        # raise ValueError("exploiter output missing from state")
+
+    # state["exploiter"]["pov_logic"]
+
+    # TODO: update with exploiter pov_logic when accessible
+    pov_logic = "Example PoV logic from exploiter report"
+
+    success, run_dir = patcher_main(
+            language=state["language"],
+            cwe_id=state['finder_output']['cwe_id'],
+            vulnerability_list=state['finder_output']['vulnerabilities'],
+            project_name=state["project_name"],
+            pov_logic=pov_logic,
+            save_prompt=True,
+        )
+
+    state["patcher"] = {"success": success, "artifact_path": run_dir}
 
     return state
 
@@ -347,14 +377,43 @@ def _verifier_node(state: AutoSecState) -> Command:
         }
         return Command(goto=END, update=new_state)
 
+# ====== Project Variants ======
+class ProjectVariant(Enum):
+    CODEHAUS_2018 = {
+        "name": "codehaus-plexus__plexus-archiver_CVE-2018-1002200_3.5",
+        "cwe_id": "cwe-022"
+    }
+    CODEHAUS_2017 = {
+        "name": "codehaus-plexus__plexus-utils_CVE-2017-1000487_3.0.15",
+        "cwe_id": "cwe-078"
+    }
+    NAHSRA = {
+        "name": "nahsra__antisamy_CVE-2016-10006_1.5.3",
+        "cwe_id": "cwe-079"
+    }
+    PERWENDEL_2018 = {
+        "name": "perwendel__spark_CVE-2018-9159_2.7.1",
+        "cwe_id": "cwe-022"
+    }
+
+    @property
+    def project_name(self) -> str:
+        return self.value["name"]
+
+    @property
+    def cwe_id(self) -> str:
+        return self.value["cwe_id"]
 
 # ====== Execute workflow =====
 def pipeline_main():
+    SELECTED_PROJECT = ProjectVariant.CODEHAUS_2018
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
-        "project_name": "perwendel__spark_CVE-2018-9159_2.7.1",
-        "vuln_id": "cwe-022",
+        "project_name": SELECTED_PROJECT.project_name,
+        "vuln_id": SELECTED_PROJECT.cwe_id,
         "language": "java",
+        "finder_model": "qwen2.5-32b",
+        "finder_reanalyze": False,
     }
 
     workflow = _build_workflow()
@@ -362,9 +421,11 @@ def pipeline_main():
     # Execute the graph
     final_state = workflow.invoke(initial_state)
 
-    # print("\n====== STATE DUMP ======")
-    # print(json.dumps(final_state, indent=2))
-    # print("======^==========^======\n")
+    print("\n====== STATE DUMP ======")
+    print(final_state)
+    print("======^==========^======\n")
+    print(json.dumps(final_state, indent=2))
+    print("======^==========^======\n")
 
 
 # standalone execution
