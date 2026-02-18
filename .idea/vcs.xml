@@ -15,6 +15,7 @@
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/workdir/codehaus-plexus__plexus-archiver_CVE-2018-1002200_3.5" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/workdir/codehaus-plexus__plexus-utils_CVE-2017-1000487_3.0.15" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/workdir/nahsra__antisamy_CVE-2016-10006_1.5.3" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/workdir_no_branch/project-sources/codehaus-plexus__plexus-archiver_CVE-2018-1002200_3.5" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/workdir_no_branch/project-sources/perwendel__spark_CVE-2018-9159_2.7.1" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/workdir_no_branch/project-sources/xuxueli__xxl-job_CVE-2020-29204_2.2.0" vcs="Git" />
   </component>
