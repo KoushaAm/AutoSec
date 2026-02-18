@@ -52,9 +52,20 @@ RUN mkdir -p /etc/apt/keyrings \
     && rm -rf /var/lib/apt/lists/*
 
 # Set default Java to 17 (you can switch in-container with update-alternatives if needed)
-RUN update-alternatives --set java /usr/lib/jvm/temurin-17-jdk-amd64/bin/java || true
-ENV JAVA_HOME=/usr/lib/jvm/temurin-17-jdk-amd64
+#RUN update-alternatives --set java /usr/lib/jvm/temurin-17-jdk-amd64/bin/java || true
+#ENV JAVA_HOME=/usr/lib/jvm/temurin-17-jdk-amd64
+#ENV PATH=${JAVA_HOME}/bin:${PATH}
+RUN set -eux; \
+    update-alternatives --set java "$(ls -1 /usr/lib/jvm/temurin-17-jdk*/bin/java | head -n1)"; \
+    JAVA_BIN="$(readlink -f "$(command -v java)")"; \
+    JAVA_HOME_REAL="$(dirname "$(dirname "$JAVA_BIN")")"; \
+    ln -sfn "$JAVA_HOME_REAL" /usr/lib/jvm/default-java; \
+    echo "export JAVA_HOME=/usr/lib/jvm/default-java" >/etc/profile.d/java_home.sh; \
+    echo 'export PATH="$JAVA_HOME/bin:$PATH"' >>/etc/profile.d/java_home.sh
+
+ENV JAVA_HOME=/usr/lib/jvm/default-java
 ENV PATH=${JAVA_HOME}/bin:${PATH}
+
 
 # ---- Maven (multiple versions) ----
 ENV MAVEN_DIR=/opt/maven
@@ -91,12 +102,19 @@ RUN set -eux; \
     chmod 0440 /etc/sudoers.d/vscode
 
 # Quick sanity checks
+#RUN python3 --version && python --version && \
+#    python3 -m pip --version && \
+#    java -version && \
+#    /usr/lib/jvm/temurin-8-jdk-amd64/bin/java -version && \
+#    /usr/lib/jvm/temurin-11-jdk-amd64/bin/java -version && \
+#    mvn -version && gradle --version && docker --version
 RUN python3 --version && python --version && \
     python3 -m pip --version && \
     java -version && \
-    /usr/lib/jvm/temurin-8-jdk-amd64/bin/java -version && \
-    /usr/lib/jvm/temurin-11-jdk-amd64/bin/java -version && \
+    /usr/lib/jvm/temurin-8-jdk*/bin/java -version && \
+    /usr/lib/jvm/temurin-11-jdk*/bin/java -version && \
     mvn -version && gradle --version && docker --version
+
 
 WORKDIR /workspaces/autosec
 CMD ["/bin/bash"]

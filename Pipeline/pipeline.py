@@ -13,7 +13,7 @@ from pathlib import Path
 # from Agents.Exploiter.data.primevul.setup import project_slug
 # local imports
 from . import logger
-from Agents.Patcher import patcher_main
+# from Agents.Patcher import patcher_main
 from Agents.Finder.src.types import FinderOutput
 from Agents.Finder.src.output_converter import sarif_to_finder_output
 from datetime import datetime
@@ -38,14 +38,14 @@ def _build_workflow() -> Any:
     graph = StateGraph(AutoSecState)
     graph.add_node("finder", _finder_node)
     graph.add_node("exploiter", _exploiter_node)
-    graph.add_node("patcher", _patcher_node)
-    graph.add_node("verifier", _verifier_node)
+    # graph.add_node("patcher", _patcher_node)
+    # graph.add_node("verifier", _verifier_node)
 
     # linear edges
     graph.add_edge(START, "finder")
-    # graph.add_edge("finder", "exploiter")
-    graph.add_edge("finder", "patcher")
-    graph.add_edge("patcher", "verifier")
+    graph.add_edge("finder", "exploiter")
+    # graph.add_edge("finder", "patcher")
+    # graph.add_edge("patcher", "verifier")
 
     # conditional edges
     # exploiter -> finder OR exploiter -> patcher
@@ -98,19 +98,19 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
     logger.info(f"Running IRIS inside Docker for project {project_name}")
 
     # 2. Run IRIS analysis
-    try:
-        subprocess.run(docker_cmd, check=True, text=True)
-
-    # analysis failed for some reason
-    except subprocess.CalledProcessError as e:
-            print("Finder failed with an error")
-            print("Return code:", e.returncode)
-            print("stdout:", e.stdout)
-            print("stderr:", e.stderr)
-
-            state["finder_output"] = None
-            state["vuln"] = None
-            return state
+    # try:
+    #     subprocess.run(docker_cmd, check=True, text=True)
+    #
+    # # analysis failed for some reason
+    # except subprocess.CalledProcessError as e:
+    #         print("Finder failed with an error")
+    #         print("Return code:", e.returncode)
+    #         print("stdout:", e.stdout)
+    #         print("stderr:", e.stderr)
+    #
+    #         state["finder_output"] = None
+    #         state["vuln"] = None
+    #         return state
 
     # 3. Load IRIS output
     sarif_path = f"./Agents/Finder/output/{project_name}/test/{query}-posthoc-filter/results.sarif"
@@ -286,9 +286,17 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 
 # ====== Project Variants ======
 class ProjectVariant(Enum):
+    ESAPI = {
+        "name": "ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1",
+        "cwe_id": "cwe-022"
+    }
     CODEHAUS_2018 = {
         "name": "codehaus-plexus__plexus-archiver_CVE-2018-1002200_3.5",
         "cwe_id": "cwe-022"
+    }
+    PERFECTO = {
+        "name" : "jenkinsci__perfecto-plugin_CVE-2020-2261_1.17",
+        "cwe_id": "cwe-078"
     }
     CODEHAUS_2017 = {
         "name": "codehaus-plexus__plexus-utils_CVE-2017-1000487_3.0.15",
@@ -302,6 +310,10 @@ class ProjectVariant(Enum):
         "name": "perwendel__spark_CVE-2018-9159_2.7.1",
         "cwe_id": "cwe-022"
     }
+    SPRING = {
+        "name" : "spring-cloud__spring-cloud-gateway_CVE-2022-22947_3.0.6",
+        "cwe_id": "cwe-094"
+    }
 
     @property
     def project_name(self) -> str:
@@ -313,7 +325,7 @@ class ProjectVariant(Enum):
 
 # ====== Execute workflow =====
 def pipeline_main():
-    SELECTED_PROJECT = ProjectVariant.CODEHAUS_2018
+    SELECTED_PROJECT = ProjectVariant.PERFECTO
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
         "project_name": SELECTED_PROJECT.project_name,
