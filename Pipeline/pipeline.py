@@ -13,7 +13,7 @@ from pathlib import Path
 # from Agents.Exploiter.data.primevul.setup import project_slug
 # local imports
 from . import logger
-# from Agents.Patcher import patcher_main
+from Agents.Patcher import patcher_main
 from Agents.Finder.src.types import FinderOutput
 from Agents.Finder.src.output_converter import sarif_to_finder_output
 from datetime import datetime
@@ -38,14 +38,14 @@ def _build_workflow() -> Any:
     graph = StateGraph(AutoSecState)
     graph.add_node("finder", _finder_node)
     graph.add_node("exploiter", _exploiter_node)
-    # graph.add_node("patcher", _patcher_node)
-    # graph.add_node("verifier", _verifier_node)
+    graph.add_node("patcher", _patcher_node)
+    graph.add_node("verifier", _verifier_node)
 
     # linear edges
     graph.add_edge(START, "finder")
     graph.add_edge("finder", "exploiter")
-    # graph.add_edge("finder", "patcher")
-    # graph.add_edge("patcher", "verifier")
+    graph.add_edge("finder", "patcher")
+    graph.add_edge("patcher", "verifier")
 
     # conditional edges
     # exploiter -> finder OR exploiter -> patcher
@@ -98,19 +98,19 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
     logger.info(f"Running IRIS inside Docker for project {project_name}")
 
     # 2. Run IRIS analysis
-    # try:
-    #     subprocess.run(docker_cmd, check=True, text=True)
-    #
-    # # analysis failed for some reason
-    # except subprocess.CalledProcessError as e:
-    #         print("Finder failed with an error")
-    #         print("Return code:", e.returncode)
-    #         print("stdout:", e.stdout)
-    #         print("stderr:", e.stderr)
-    #
-    #         state["finder_output"] = None
-    #         state["vuln"] = None
-    #         return state
+    try:
+        subprocess.run(docker_cmd, check=True, text=True)
+
+    # analysis failed for some reason
+    except subprocess.CalledProcessError as e:
+            print("Finder failed with an error")
+            print("Return code:", e.returncode)
+            print("stdout:", e.stdout)
+            print("stderr:", e.stderr)
+
+            state["finder_output"] = None
+            state["vuln"] = None
+            return state
 
     # 3. Load IRIS output
     sarif_path = f"./Agents/Finder/output/{project_name}/test/{query}-posthoc-filter/results.sarif"
@@ -314,6 +314,10 @@ class ProjectVariant(Enum):
         "name" : "spring-cloud__spring-cloud-gateway_CVE-2022-22947_3.0.6",
         "cwe_id": "cwe-094"
     }
+    DSPACE = {
+        "name" : "DSpace__DSpace_CVE-2016-10726_4.4",
+        "cwe_id": "cwe-022"
+    }
 
     @property
     def project_name(self) -> str:
@@ -325,7 +329,7 @@ class ProjectVariant(Enum):
 
 # ====== Execute workflow =====
 def pipeline_main():
-    SELECTED_PROJECT = ProjectVariant.PERFECTO
+    SELECTED_PROJECT = ProjectVariant.DSPACE
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
         "project_name": SELECTED_PROJECT.project_name,
