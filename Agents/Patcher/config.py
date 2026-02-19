@@ -12,7 +12,7 @@ SCRIPT_DIR = Path(__file__).parent
 OUTPUT_PATH = SCRIPT_DIR / "output" # Agents/Patcher/output
 
 # Select OpenRouter model
-CURRENT_MODEL = Model.GPT5_NANO_PAID
+CURRENT_MODEL = Model.GPT5_MINI_PAID
 MODEL_NAME = CURRENT_MODEL.name
 MODEL_VALUE = CURRENT_MODEL.value
 
@@ -33,5 +33,6 @@ MODEL_CONTEXT_LIMITS: Dict[str, int] = {
     Model.QWEN3.name: 16384,
     Model.KAT_CODER.name: 8192,
     Model.GPT5_NANO_PAID.name: 8192,
+    Model.GPT5_MINI_PAID.name: 8192,
     MODEL_NAME: DEFAULT_CONTEXT_LIMIT,  # keep at least this one valid
 }
