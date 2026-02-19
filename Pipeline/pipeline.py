@@ -14,7 +14,7 @@ from dotenv import load_dotenv
 # from Agents.Exploiter.data.primevul.setup import project_slug
 # local imports
 from . import logger
-from Agents.Patcher import patcher_main
+# from Agents.Patcher import patcher_main
 from Agents.Finder.src.types import FinderOutput
 from Agents.Finder.src.output_converter import sarif_to_finder_output
 from datetime import datetime
@@ -251,35 +251,35 @@ def _exploiter_node(state: AutoSecState) -> Command:
 
 
 def _patcher_node(state: AutoSecState) -> AutoSecState:
-    logger.info("Node - patcher started")
+    # logger.info("Node - patcher started")
 
-    if not state.get("language"):
-        raise ValueError("language missing from state")
+    # if not state.get("language"):
+    #     raise ValueError("language missing from state")
 
-    if not state.get("project_name"):
-        raise ValueError("project_name missing from state")
+    # if not state.get("project_name"):
+    #     raise ValueError("project_name missing from state")
 
-    if not state.get("finder_output"):
-        raise ValueError("finder_output missing from state")
+    # if not state.get("finder_output"):
+    #     raise ValueError("finder_output missing from state")
 
-    # if not state.get("exploiter"):
-        # raise ValueError("exploiter output missing from state")
+    # # if not state.get("exploiter"):
+    #     # raise ValueError("exploiter output missing from state")
 
-    # state["exploiter"]["pov_logic"]
+    # # state["exploiter"]["pov_logic"]
 
-    # TODO: update with exploiter pov_logic when accessible
-    pov_logic = "Example PoV logic from exploiter report"
+    # # TODO: update with exploiter pov_logic when accessible
+    # pov_logic = "Example PoV logic from exploiter report"
 
-    success, run_dir = patcher_main(
-            language=state["language"],
-            cwe_id=state['finder_output']['cwe_id'],
-            vulnerability_list=state['finder_output']['vulnerabilities'],
-            project_name=state["project_name"],
-            pov_logic=pov_logic,
-            save_prompt=True,
-        )
+    # success, run_dir = patcher_main(
+    #         language=state["language"],
+    #         cwe_id=state['finder_output']['cwe_id'],
+    #         vulnerability_list=state['finder_output']['vulnerabilities'],
+    #         project_name=state["project_name"],
+    #         pov_logic=pov_logic,
+    #         save_prompt=True,
+    #     )
 
-    state["patcher"] = {"success": success, "artifact_path": run_dir}
+    # state["patcher"] = {"success": success, "artifact_path": run_dir}
 
     return state
 
@@ -334,7 +334,8 @@ class ProjectVariant(Enum):
         "cwe_id": "cwe-078",
     }
     DSPACE_2022 = {
-
+        "name": "DSpace__DSpace_CVE-2022-31192_5.10",
+        "cwe_id": "cwe-079",
     }
 
     @property
@@ -349,14 +350,14 @@ class ProjectVariant(Enum):
 def pipeline_main():
     load_dotenv()
 
-    SELECTED_PROJECT = ProjectVariant.PERFECTO_2020
+    SELECTED_PROJECT = ProjectVariant.DSPACE_2022
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
         "project_name": SELECTED_PROJECT.project_name,
         "vuln_id": SELECTED_PROJECT.cwe_id,
         "language": "java",
         "finder_model": "gpt-5-mini",
-        "finder_reanalyze": True,
+        "finder_reanalyze": False,
     }
 
     workflow = _build_workflow()
