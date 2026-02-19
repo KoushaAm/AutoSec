@@ -15,7 +15,7 @@ _model_name_map = {
     "gpt-5-nano": "gpt-5-nano",
     "gpt-5": "gpt-5",
 }
-_OPENAI_DEFAULT_PARAMS = {"temperature": 0, "n": 1, "max_tokens": 8000, "stop": "", "seed": 345 }
+_OPENAI_DEFAULT_PARAMS = {"temperature": 0, "n": 1, "max_tokens": 4096, "stop": "", "seed": 345 }
 
 class GPTModel(LLM):
     def __init__(self, model_name, logger: MyLogger, **kwargs):
@@ -60,12 +60,16 @@ class GPTModel(LLM):
         if params.get("stop") == "":
             params.pop("stop", None)
 
-        # GPT-5* use different params - adjust them here
+        # GPT-5 use different params - adjust them here
         if self.model_id.startswith("gpt-5"):
             if "max_tokens" in params:
-                params["max_completion_tokens"] = params.pop("max_tokens")
+                # params["max_completion_tokens"] = params.pop("max_tokens")
+                params.pop("max_tokens")
+                params["max_completion_tokens"] = 8000
             if "temperature" in params:
                     params.pop("temperature")
+            # option to put reasoning effort - is medium by default
+            # params["reasoning_effort"] = "high"
 
         if expect_json:
             response = self.client.chat.completions.create(
