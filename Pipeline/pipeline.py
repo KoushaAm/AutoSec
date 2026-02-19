@@ -1,3 +1,4 @@
+from enum import Enum
 from typing import TypedDict, Dict, Any, Optional, List
 import json
 import subprocess
@@ -21,6 +22,7 @@ from Agents.Patcher import patcher_main
 from Agents.Verifier import verifier_main
 from Agents.Finder.src.types import FinderOutput
 from Agents.Finder.src.output_converter import sarif_to_finder_output
+from datetime import datetime
 
 # relative path information
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -48,11 +50,10 @@ def _build_workflow() -> Any:
     graph.add_node("verifier", _verifier_node)
 
     # linear edges
-    # graph.add_edge(START, "finder")
-    # graph.add_edge("finder", "exploiter")
-    # graph.add_edge("finder", "patcher")
-    graph.add_edge(START, "patcher")
-    graph.add_edge("patcher", "verifier")
+    graph.add_edge(START, "finder")
+    graph.add_edge("finder", "exploiter")
+    graph.add_edge("finder", "patcher")
+    # graph.add_edge("patcher", "verifier")
 
     # conditional edges
     # exploiter -> finder OR exploiter -> patcher
@@ -116,37 +117,37 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
     logger.info(f"Running IRIS inside Docker for project {project_name}")
 
-    # 2. Run IRIS analysis
-    try:
-        subprocess.run(docker_cmd, check=True, text=True)
-
-    # analysis failed for some reason
-    except subprocess.CalledProcessError as e:
-            print("Finder failed with an error")
-            print("Return code:", e.returncode)
-            print("stdout:", e.stdout)
-            print("stderr:", e.stderr)
-
-            state["finder_output"] = None
-            state["vuln"] = None
-            state["finder_reanalyze"] = False
-            return state
-
-    # 3. Load IRIS output
-    sarif_path = f"./Agents/Finder/output/{project_name}/test/{query}-posthoc-filter/results.sarif"
-    try:
-        with open(sarif_path) as f:
-            findings = json.load(f)
-
-        # 4. Save results into pipeline state
-        state["finder_output"] = sarif_to_finder_output(findings, cwe_id=state["vuln_id"])
-        state["vuln"] = findings # keep oringial json dump just in case its needed
-
-    # no vulnerabilites were found
-    except FileNotFoundError:
-        print("Finder found no vulnerabilites")
-        state["finder_output"] = None
-        state["vuln"] = None
+    # # 2. Run IRIS analysis
+    # try:
+    #     subprocess.run(docker_cmd, check=True, text=True)
+    #
+    # # analysis failed for some reason
+    # except subprocess.CalledProcessError as e:
+    #         print("Finder failed with an error")
+    #         print("Return code:", e.returncode)
+    #         print("stdout:", e.stdout)
+    #         print("stderr:", e.stderr)
+    #
+    #         state["finder_output"] = None
+    #         state["vuln"] = None
+    #         state["finder_reanalyze"] = False
+    #         return state
+    #
+    # # 3. Load IRIS output
+    # sarif_path = f"./Agents/Finder/output/{project_name}/test/{query}-posthoc-filter/results.sarif"
+    # try:
+    #     with open(sarif_path) as f:
+    #         findings = json.load(f)
+    #
+    #     # 4. Save results into pipeline state
+    #     state["finder_output"] = sarif_to_finder_output(findings, cwe_id=state["vuln_id"])
+    #     state["vuln"] = findings # keep oringial json dump just in case its needed
+    #
+    # # no vulnerabilites were found
+    # except FileNotFoundError:
+    #     print("Finder found no vulnerabilites")
+    #     state["finder_output"] = None
+    #     state["vuln"] = None
 
     state["finder_reanalyze"] = False
     return state
@@ -276,12 +277,11 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
             cwe_id=state['finder_output']['cwe_id'],
             vulnerability_list=state['finder_output']['vulnerabilities'],
             project_name=state["project_name"],
-            pov_logic=state["exploiter"]["pov_logic"],
+            pov_logic=pov_logic,
             save_prompt=True,
         )
 
     state["patcher"] = {"success": success, "artifact_path": run_dir}
-    print(f"Patcher completed with success={success}, artifacts at: {run_dir}")
 
     return state
 
@@ -331,7 +331,7 @@ def pipeline_main():
         "project_name": SELECTED_PROJECT.project_name,
         "vuln_id": SELECTED_PROJECT.cwe_id,
         "language": "java",
-        "finder_model": "gpt-5-mini",
+        "finder_model": "qwen2.5-32b",
         "finder_reanalyze": False,
         # Dummy inputs for development & experiments
         "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
