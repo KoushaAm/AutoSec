@@ -45,7 +45,7 @@ def _build_workflow() -> Any:
 
     # linear edges
     graph.add_edge(START, "finder")
-    graph.add_edge("finder", "exploiter")
+    # graph.add_edge("finder", "exploiter")
     graph.add_edge("finder", "patcher")
     # graph.add_edge("patcher", "verifier")
 
@@ -139,6 +139,35 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
     #     state["finder_output"] = None
     #     state["vuln"] = None
 
+    # analysis failed for some reason
+    except subprocess.CalledProcessError as e:
+            print("Finder failed with an error")
+            print("Return code:", e.returncode)
+            print("stdout:", e.stdout)
+            print("stderr:", e.stderr)
+
+            state["finder_output"] = None
+            state["vuln"] = None
+            state["finder_reanalyze"] = False
+            return state
+
+    # 3. Load IRIS output
+    sarif_path = f"./Agents/Finder/output/{project_name}/test/{query}-posthoc-filter/results.sarif"
+    try:
+        with open(sarif_path) as f:
+            findings = json.load(f)
+
+        # 4. Save results into pipeline state
+        state["finder_output"] = sarif_to_finder_output(findings, cwe_id=state["vuln_id"])
+        state["vuln"] = findings # keep oringial json dump just in case its needed
+
+    # no vulnerabilites were found
+    except FileNotFoundError:
+        print("Finder found no vulnerabilites")
+        state["finder_output"] = None
+        state["vuln"] = None
+
+    state["finder_reanalyze"] = False
     state["finder_reanalyze"] = False
     return state
 
@@ -333,6 +362,7 @@ class ProjectVariant(Enum):
 # ====== Execute workflow =====
 def pipeline_main():
     SELECTED_PROJECT = ProjectVariant.WHITESOURCE
+    SELECTED_PROJECT = ProjectVariant.CODEHAUS_2018
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
         "project_name": SELECTED_PROJECT.project_name,
