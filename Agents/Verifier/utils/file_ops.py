@@ -13,6 +13,7 @@ class ArtifactManager:
     def __init__(self, output_dir: pathlib.Path):
         self.output_dir = output_dir
         self.output_dir.mkdir(exist_ok=True)
+        self.base_output_dir = output_dir 
     
     def create_session_directory(self, fixer_input_path: str) -> pathlib.Path:
         """Create a timestamped session directory (temp)"""
@@ -268,9 +269,13 @@ class ConfigManager:
         self._set_defaults()
     
     def _set_defaults(self):
+        # Get absolute path to Verifier/output directory
+        verifier_root = pathlib.Path(__file__).parent.parent
+        output_dir = verifier_root / "output"
+        
         defaults = {
             "verification_timeout": 600,  # 10 minutes
-            "output_directory": "verifier/verifier_output",
+            "output_directory": str(output_dir),  # Use absolute path
             "preserve_artifacts": True,
             "verbose_logging": True
         }

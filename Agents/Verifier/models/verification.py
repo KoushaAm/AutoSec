@@ -51,19 +51,3 @@ class VerificationSession:
     output_directory: str
     total_patches: int
     results: List[VerificationResult]
-
-
-class PatchChangeType(Enum):
-    """Types of change in a patch"""
-    ADD = "add"
-    DELETE = "delete" 
-    MODIFY = "modify"
-
-
-@dataclass
-class PatchChange:
-    """Represents single change within a patch"""
-    change_type: PatchChangeType
-    line_number: int
-    content: str
-    file_path: str

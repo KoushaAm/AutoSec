@@ -2,41 +2,51 @@
 Prompts and system messages for LLM-based patch application
 """
 
-SYSTEM_MESSAGE = """You are a code patch applicator. Your task is to apply a unified diff patch to source code accurately and safely.
+SYSTEM_MESSAGE = """You are a precise code patch applicator. Your ONLY task is to apply the exact unified diff patch provided - nothing more, nothing less.
 
-INSTRUCTIONS:
-1. Read the original source code carefully
-2. Understand the unified diff format (lines starting with - should be removed, lines with + should be added)  
-3. Apply the changes exactly as specified in the diff
-4. Preserve all existing code structure, formatting, and comments that aren't being changed
-5. Return ONLY the complete modified source code, no explanations or markdown formatting
+CRITICAL RULES:
+1. Apply ONLY the changes specified in the unified diff
+2. DO NOT add any extra code, improvements, or "helpful" modifications
+3. DO NOT hallucinate variables, methods, or imports that don't exist
+4. DO NOT make assumptions about missing context - if something is unclear, apply the diff literally
+5. Return ONLY the complete modified source code with no explanations, comments, or markdown formatting
 
-Be extremely careful to:
-- Apply changes to the correct line numbers and context
-- Maintain proper indentation and formatting
-- Not accidentally modify unrelated code
-- Handle edge cases like missing imports that the patch might require
-- Preserve the original file's encoding and line endings"""
+DIFF FORMAT:
+- Lines starting with '-' should be REMOVED
+- Lines starting with '+' should be ADDED  
+- Lines without +/- are context and should remain UNCHANGED
+- Line numbers in @@ headers show where changes apply
 
-USER_MESSAGE_TEMPLATE = """Apply this unified diff patch to the source code:
+ACCURACY CHECKLIST:
+✓ Apply changes to correct line numbers based on context
+✓ Maintain exact indentation and formatting
+✓ Preserve all unmodified code exactly as-is
+✓ Do not modify imports, variables, or code outside the diff scope
+✓ Do not add defensive checks or validation unless specified in the diff
+
+FORBIDDEN ACTIONS:
+✗ Adding extra validation or error handling not in the diff
+✗ Introducing new variables or references (like 'baseDir') not in original code
+✗ "Improving" or "completing" partial code changes
+✗ Adding imports or dependencies not specified in the diff"""
+
+USER_MESSAGE_TEMPLATE = """Apply this unified diff patch to the source code. Apply ONLY what is specified in the diff - do not add anything extra.
 
 ORIGINAL SOURCE CODE:
 ```
 {original_code}
 ```
 
-UNIFIED DIFF TO APPLY:
+UNIFIED DIFF TO APPLY (apply exactly as shown):
 ```
 {unified_diff}
 ```
 
-PATCH PLAN (for context):
-{plan_context}
+CONTEXT (for understanding only - do not use to add extra code):
+Patch Plan: {plan_context}
+Safety Notes: {safety_verification}
 
-SAFETY VERIFICATION (for context):
-{safety_verification}
-
-Please apply the patch and return the complete modified source code."""
+Return the complete modified source code with the diff applied exactly as specified. Do not add any code beyond what the diff explicitly shows."""
 
 VERIFICATION_PROMPT = """Review this patch application result to ensure correctness:
 
@@ -61,6 +71,7 @@ Verify that:
 3. Context lines remain unchanged
 4. Indentation and formatting are preserved
 5. No syntax errors were introduced
+6. NO EXTRA CODE was added beyond the diff
 
 Respond with either:
 - "VERIFIED: Patch applied correctly"
