@@ -6,10 +6,12 @@ class Model(Enum):
     LLAMA3 = "meta-llama/llama-3.3-70b-instruct:free"
     KAT_CODER = "kwaipilot/kat-coder-pro:free"
     GPT4O_MINI = "openai/gpt-4o-mini"  
-    GPT5_NANO = "openai/gpt-5-nano"  
+    GPT5_NANO = "openai/gpt-5-nano"
+    GPT5_MINI = "openai/gpt-5-mini"
 
 """
 Notes on model selection for patch application:
+- GPT5_MINI: Latest GPT-5 mini model - best for production (paid)
 - GPT5_NANO: Latest GPT-5 nano model - best for production (paid)
 - GPT4O_MINI: Best for production - fast, reliable, no rate limits (paid)
 - DEEPSEEK: Recommended for free tier - efficient with tokens and reliable for code-related tasks.

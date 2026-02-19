@@ -3,8 +3,12 @@ from typing import Dict
 from pathlib import Path
 from constants.models import Model
 
+class Config:
+    # Default LLM model to use
+    DEFAULT_MODEL = Model.GPT5_MINI
+
 # Select OpenRouter model for patch application
-CURRENT_MODEL = Model.GPT5_NANO  # Changed to GPT-5 nano for production use
+CURRENT_MODEL = Model.GPT5_MINI  # Changed to GPT-5 mini
 
 # ===== Expose for use in other modules =====
 MODEL_NAME = CURRENT_MODEL.name
@@ -23,6 +27,7 @@ MODEL_CONTEXT_LIMITS: Dict[str, int] = {
     Model.KAT_CODER.name: 8192,
     Model.GPT4O_MINI.name: 128000,  # GPT-4o mini has 128K context window
     Model.GPT5_NANO.name: 128000,  # GPT-5 nano has 128K context window
+    Model.GPT5_MINI.name: 128000,  # GPT-5 mini has 128K context window
     MODEL_NAME: DEFAULT_CONTEXT_LIMIT,  # keep at least this one valid
 }
 
