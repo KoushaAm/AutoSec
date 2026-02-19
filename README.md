@@ -18,10 +18,11 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 3. Add Your OpenRouter API Key
+### 3. Add Your OpenRouter API Key and OPENai KEY
 Create `.env` in root directory:
 ```env
 OPENROUTER_API_KEY=your_api_key_here
+OPENAI_API_KEY=your_api_key_here
 ```
 
 ### 4. Create the docker container for Finder
@@ -34,7 +35,12 @@ docker build --platform linux/amd64 -t iris:latest -f Agents/Finder/Dockerfile A
 docker build -f Dockerfile --platform linux/amd64 -t iris:latest .
 
 docker run --platform=linux/amd64 -it iris:latest
+
+# in the cli of the iris docker container
+run conda activate iris
 ```
+
+
 
 ### 5. Make sure to have an OpenAI key for the Exploiter Module
 Export your OpenAI API key as OPENAI_KEY_FAULTLINE on your OS

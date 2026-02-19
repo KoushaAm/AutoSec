@@ -9,6 +9,7 @@ import sys
 from langgraph.graph import StateGraph, END, START
 from langgraph.types import Command
 from pathlib import Path
+from dotenv import load_dotenv
 
 # from Agents.Exploiter.data.primevul.setup import project_slug
 # local imports
@@ -47,7 +48,7 @@ def _build_workflow() -> Any:
     graph.add_edge(START, "finder")
     # graph.add_edge("finder", "exploiter")
     graph.add_edge("finder", "patcher")
-    # graph.add_edge("patcher", "verifier")
+    graph.add_edge("patcher", "verifier")
 
     # conditional edges
     # exploiter -> finder OR exploiter -> patcher
@@ -91,11 +92,15 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
     print(f"\n---- ARGS: {build_and_analyze_args} ----\n")
 
+    if model.startswith("gpt"):
+        os.getenv("OPEN_AI_KEY")
+
     # 1. setup command to have IRIS inside docker container
     docker_cmd = [
         "docker", "run",
         "--platform=linux/amd64",
         "--rm",
+        "-e", "OPENAI_API_KEY",
         "-v", f"{host_ws}/Projects:/workspace/Projects",
         "-v", f"{host_ws}/Agents:/workspace/Agents",
         "-w", "/workspace/Agents/Finder",
@@ -107,37 +112,9 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
     logger.info(f"Running IRIS inside Docker for project {project_name}")
 
-    # # 2. Run IRIS analysis
-    # try:
-    #     subprocess.run(docker_cmd, check=True, text=True)
-    #
-    # # analysis failed for some reason
-    # except subprocess.CalledProcessError as e:
-    #         print("Finder failed with an error")
-    #         print("Return code:", e.returncode)
-    #         print("stdout:", e.stdout)
-    #         print("stderr:", e.stderr)
-    #
-    #         state["finder_output"] = None
-    #         state["vuln"] = None
-    #         state["finder_reanalyze"] = False
-    #         return state
-    #
-    # # 3. Load IRIS output
-    # sarif_path = f"./Agents/Finder/output/{project_name}/test/{query}-posthoc-filter/results.sarif"
-    # try:
-    #     with open(sarif_path) as f:
-    #         findings = json.load(f)
-    #
-    #     # 4. Save results into pipeline state
-    #     state["finder_output"] = sarif_to_finder_output(findings, cwe_id=state["vuln_id"])
-    #     state["vuln"] = findings # keep oringial json dump just in case its needed
-    #
-    # # no vulnerabilites were found
-    # except FileNotFoundError:
-    #     print("Finder found no vulnerabilites")
-    #     state["finder_output"] = None
-    #     state["vuln"] = None
+    # 2. Run IRIS analysis
+    try:
+        subprocess.run(docker_cmd, check=True, text=True)
 
     # analysis failed for some reason
     except subprocess.CalledProcessError as e:
@@ -167,7 +144,6 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         state["finder_output"] = None
         state["vuln"] = None
 
-    state["finder_reanalyze"] = False
     state["finder_reanalyze"] = False
     return state
 
@@ -275,35 +251,35 @@ def _exploiter_node(state: AutoSecState) -> Command:
 
 
 def _patcher_node(state: AutoSecState) -> AutoSecState:
-    logger.info("Node - patcher started")
+    # logger.info("Node - patcher started")
 
-    if not state.get("language"):
-        raise ValueError("language missing from state")
+    # if not state.get("language"):
+    #     raise ValueError("language missing from state")
 
-    if not state.get("project_name"):
-        raise ValueError("project_name missing from state")
+    # if not state.get("project_name"):
+    #     raise ValueError("project_name missing from state")
 
-    if not state.get("finder_output"):
-        raise ValueError("finder_output missing from state")
+    # if not state.get("finder_output"):
+    #     raise ValueError("finder_output missing from state")
 
-    # if not state.get("exploiter"):
-        # raise ValueError("exploiter output missing from state")
+    # # if not state.get("exploiter"):
+    #     # raise ValueError("exploiter output missing from state")
 
-    # state["exploiter"]["pov_logic"]
+    # # state["exploiter"]["pov_logic"]
 
-    # TODO: update with exploiter pov_logic when accessible
-    pov_logic = "Example PoV logic from exploiter report"
+    # # TODO: update with exploiter pov_logic when accessible
+    # pov_logic = "Example PoV logic from exploiter report"
 
-    success, run_dir = patcher_main(
-            language=state["language"],
-            cwe_id=state['finder_output']['cwe_id'],
-            vulnerability_list=state['finder_output']['vulnerabilities'],
-            project_name=state["project_name"],
-            pov_logic=pov_logic,
-            save_prompt=True,
-        )
+    # success, run_dir = patcher_main(
+    #         language=state["language"],
+    #         cwe_id=state['finder_output']['cwe_id'],
+    #         vulnerability_list=state['finder_output']['vulnerabilities'],
+    #         project_name=state["project_name"],
+    #         pov_logic=pov_logic,
+    #         save_prompt=True,
+    #     )
 
-    state["patcher"] = {"success": success, "artifact_path": run_dir}
+    # state["patcher"] = {"success": success, "artifact_path": run_dir}
 
     return state
 
@@ -345,10 +321,21 @@ class ProjectVariant(Enum):
         "name": "perwendel__spark_CVE-2018-9159_2.7.1",
         "cwe_id": "cwe-022"
     }
-
-    WHITESOURCE = {
+    YAMCS_2023 = {
+        "name": "yamcs__yamcs_CVE-2023-45277_5.8.6",
+        "cwe_id": "cwe-022",
+    }
+    WHITESOURCE_2022 = {
         "name": "whitesource__curekit_CVE-2022-23082_1.1.3",
-        "cwe_id": "cwe-022"
+        "cwe_id": "cwe-022",
+    }
+    PERFECTO_2020 = {
+        "name": "jenkinsci__perfecto-plugin_CVE-2020-2261_1.17",
+        "cwe_id": "cwe-078",
+    }
+    DSPACE_2022 = {
+        "name": "DSpace__DSpace_CVE-2022-31192_5.10",
+        "cwe_id": "cwe-079",
     }
 
     @property
@@ -361,14 +348,15 @@ class ProjectVariant(Enum):
 
 # ====== Execute workflow =====
 def pipeline_main():
-    SELECTED_PROJECT = ProjectVariant.WHITESOURCE
-    SELECTED_PROJECT = ProjectVariant.CODEHAUS_2018
+    load_dotenv()
+
+    SELECTED_PROJECT = ProjectVariant.DSPACE_2022
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
         "project_name": SELECTED_PROJECT.project_name,
         "vuln_id": SELECTED_PROJECT.cwe_id,
         "language": "java",
-        "finder_model": "qwen2.5-32b",
+        "finder_model": "gpt-5-mini",
         "finder_reanalyze": False,
     }
 
