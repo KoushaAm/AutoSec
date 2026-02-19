@@ -78,6 +78,7 @@ def run_iris_analysis(project_name, query, run_id, model, overwrite):
     if (overwrite):
         print("Overwriting previous finder analysis.")
         build_cmd.append("--overwrite")
+        build_cmd.append("--overwrite-llm-cache")
 
     subprocess.run(build_cmd, check=True)
 
