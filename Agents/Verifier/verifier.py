@@ -61,7 +61,7 @@ def verify_patcher_output(patcher_output_dir: str):
     output_dir = VERIFIER_ROOT / "output" / "patcher_verification" / f"run_{timestamp}"
     output_dir.mkdir(parents=True, exist_ok=True)
     
-    patch_applicator = LLMPatchApplicator(model=Model.LLAMA3)
+    patch_applicator = LLMPatchApplicator(model=Model.GPT5_MINI)
     build_runner = DockerBuildRunner()
     
     results_summary = {
@@ -437,7 +437,7 @@ Examples:
         help="List available projects in Projects/Sources/"
     )
     
-    args = parser.parse_args()
+    args = argparse.ArgumentParser()
     
     # list projects
     if args.list:
