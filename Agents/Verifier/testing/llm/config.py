@@ -12,7 +12,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from constants.models import Model
 
 # ===== Model Configuration =====
-CURRENT_MODEL = Model.LLAMA3  # Using same model as patch application for consistency
+CURRENT_MODEL = Model.GPT5_NANO 
 
 # LLM Settings for test generation
 TEST_GENERATION_SETTINGS = {

@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
-import json
 import sys
-import datetime
 from pathlib import Path
 from typing import Dict, Any, List
 from os import getenv
@@ -21,13 +19,9 @@ load_dotenv()
 class LLMPatchApplicator:
     """Applies patches using LLM to understand and modify code intelligently"""
     
-    def __init__(self, model: Model = None, output_base_dir: Path = None):
+    def __init__(self, model: Model = None):
         """Initialize with OpenRouter client and model selection"""
         self.model = model or config.CURRENT_MODEL
-        self.output_base_dir = Path(__file__).parent.parent / "output"
-        
-        # Create output directory if it doesn't exist
-        self.output_base_dir.mkdir(parents=True, exist_ok=True)
         
         # Initialize OpenRouter client
         api_key = getenv("OPENROUTER_API_KEY")
@@ -44,13 +38,12 @@ class LLMPatchApplicator:
         
         print(f"Initialized LLM Patch Applicator")
         print(f"   Model: {self.model.value}")
-        print(f"   Output Base Dir: {self.output_base_dir}")
         print(f"   Version: {config.TOOL_VERSION}")
     
     def apply_patch(self, patch_info: dict) -> Dict[str, Any]:
         """
-        Apply a patch to a file and replace it with {original_name}_patched.java.
-        The original file in Projects/Sources/... is deleted after patching.
+        Apply a patch to a file and OVERWRITE it in place.
+        The original file in Projects/Sources/... is replaced with the patched version.
         
         Args:
             patch_info: Patch information containing:
@@ -95,25 +88,17 @@ class LLMPatchApplicator:
             )
             print("✓")
             
-            # Create patched file with _patched suffix
-            original_stem = file_path.stem  # e.g., "MyClass"
-            patched_filename = f"{original_stem}_patched.java"
-            patched_file_path = file_path.parent / patched_filename
-            
-            print(f"   Creating patched file: {patched_filename}")
-            patched_file_path.write_text(modified_code, encoding='utf-8')
-            
-            # Delete original file
-            print(f"   Deleting original file: {file_path.name}")
-            file_path.unlink()
+            # Overwrite the original file in place (no _patched suffix)
+            print(f"   Overwriting file: {file_path.name}")
+            file_path.write_text(modified_code, encoding='utf-8')
             
             return {
                 "status": "success",
                 "original_file": str(file_path),
-                "patched_file": str(patched_file_path),
+                "patched_file": str(file_path),  # Same file, now patched
                 "patch_applied": True,
                 "model_used": self.model.value,
-                "operation": "replace_with_patched_suffix"
+                "operation": "overwrite_in_place"
             }
             
         except Exception as e:
@@ -176,148 +161,3 @@ class LLMPatchApplicator:
                     continue
                 else:
                     raise RuntimeError(f"OpenRouter API error after {self.patch_settings['retry_attempts']} attempts: {e}")
-    
-    def save_results(self, results: List[Dict[str, Any]], session_name: str = None) -> Path:
-        """Save patch application results to output directory"""
-        if not session_name:
-            timestamp = datetime.datetime.now().strftime("%Y%m%dT%H%M%SZ")
-            session_name = f"patch_application_{timestamp}"
-        
-        session_dir = self.output_base_dir / session_name
-        session_dir.mkdir(parents=True, exist_ok=True)
-        
-        # Save detailed results
-        results_file = session_dir / "results.json"
-        with open(results_file, 'w') as f:
-            json.dump(results, f, indent=2, default=str)
-        
-        # Save summary
-        summary = self._generate_summary(results)
-        summary_file = session_dir / "summary.json"
-        with open(summary_file, 'w') as f:
-            json.dump(summary, f, indent=2)
-        
-        print(f"Results saved to: {session_dir}")
-        return session_dir
-    
-    def _generate_summary(self, results: List[Dict[str, Any]]) -> Dict[str, Any]:
-        """Generate summary statistics from results"""
-        successful = sum(1 for r in results if r.get("status") == "success")
-        failed = sum(1 for r in results if r.get("status") == "error")
-        
-        return {
-            "timestamp": datetime.datetime.now().isoformat(),
-            "model_used": self.model.value,
-            "total_patches": len(results),
-            "successful": successful,
-            "failed": failed,
-            "success_rate": successful / len(results) if results else 0,
-            "results": results
-        }
-
-
-def apply_latest_patcher_output(model: Model = None) -> List[Dict[str, Any]]:
-    """Convenience function to apply patches from the latest Patcher output"""
-    patcher_output_dir = config.LATEST_PATCHER_OUTPUT
-    
-    if not patcher_output_dir.exists():
-        print(f"Patcher output directory not found: {patcher_output_dir}")
-        return []
-    
-    print(f"Using Patcher output from: {patcher_output_dir}")
-    
-    applicator = LLMPatchApplicator(model=model)
-    results = []
-    
-    for patch_file in patcher_output_dir.glob("patch_*.json"):
-        try:
-            with open(patch_file, 'r') as f:
-                patch_info = json.load(f)
-            
-            result = applicator.apply_patch(patch_info)
-            results.append(result)
-        except Exception as e:
-            print(f"Failed to process {patch_file}: {e}")
-    
-    # Save results
-    session_name = f"from_patcher_{patcher_output_dir.name}"
-    applicator.save_results(results, session_name)
-    
-    return results
-
-
-def main():
-    """CLI interface for patch application"""
-    import argparse
-    
-    parser = argparse.ArgumentParser(
-        description="Apply patches using LLM",
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog=f"""
-Examples:
-  # Apply patches from latest Patcher output
-  python patch_applicator.py
-  
-  # Apply from specific directory
-  python patch_applicator.py --patch-dir /path/to/patches
-  
-  # Use different model
-  python patch_applicator.py --model LLAMA3
-        """
-    )
-    
-    parser.add_argument("--patch-dir", type=Path,
-                       help="Directory containing patch JSON files (default: latest Patcher output)")
-    parser.add_argument("--model", choices=[m.name for m in Model],
-                       help=f"OpenRouter model to use (default: {config.CURRENT_MODEL.name})")
-    
-    args = parser.parse_args()
-    
-    # Initialize applicator
-    try:
-        model = Model[args.model] if args.model else None
-        
-        # Use provided patch dir or default to latest Patcher output
-        if args.patch_dir:
-            if not args.patch_dir.exists():
-                print(f"Patch directory does not exist: {args.patch_dir}")
-                sys.exit(1)
-            
-            print(f"Using specified patch directory: {args.patch_dir}")
-            applicator = LLMPatchApplicator(model=model)
-            results = []
-            
-            for patch_file in args.patch_dir.glob("patch_*.json"):
-                try:
-                    with open(patch_file, 'r') as f:
-                        patch_info = json.load(f)
-                    
-                    result = applicator.apply_patch(patch_info)
-                    results.append(result)
-                except Exception as e:
-                    print(f"Failed to process {patch_file}: {e}")
-            
-            # Save results
-            session_name = f"from_{args.patch_dir.name}"
-            applicator.save_results(results, session_name)
-        else:
-            # Default to latest Patcher output
-            results = apply_latest_patcher_output(model=model)
-        
-    except ValueError as e:
-        print(f"{e}")
-        print("Make sure OPENROUTER_API_KEY is set in your .env file")
-        sys.exit(1)
-    
-    # Summary
-    if results:
-        successful = sum(1 for r in results if r["status"] == "success")
-        failed = sum(1 for r in results if r["status"] == "error")
-        
-        print(f"\nSUMMARY:")
-        print(f"  Successful: {successful}")
-        print(f"  Failed: {failed}")
-
-
-if __name__ == "__main__":
-    main()

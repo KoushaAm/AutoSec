@@ -1,14 +1,43 @@
 import pathlib
 import shutil
 from typing import Dict, Any, List, Optional
-from ..models.verification import PatchInfo, PatchChange, PatchChangeType
+from ..models.verification import PatchInfo
 
 class PatchParser:
-    """Parses unified diff patches into structured data"""
     
     def parse_fixer_patch(self, patch_data: Dict[str, Any]) -> PatchInfo:
+        """
+        Parse patch data from Patcher output
+        
+        Patcher format:
+        {
+          "metadata": {"patch_id": 1, "file_path": "...", ...},
+          "patch": {"unified_diff": "...", "plan": [...], ...}
+        }
+        """
+        # Handle Patcher's nested structure
+        if 'metadata' in patch_data and 'patch' in patch_data:
+            metadata = patch_data['metadata']
+            patch = patch_data['patch']
+            
+            return PatchInfo(
+                patch_id=metadata.get('patch_id', 0),
+                unified_diff=patch.get('unified_diff', ''),
+                touched_files=patch.get('touched_files', []),
+                cwe_matches=patch.get('cwe_matches', []),
+                plan=patch.get('plan', []),
+                confidence=patch.get('confidence', 0),
+                verifier_confidence=patch.get('confidence', 0),  
+                risk_notes=patch.get('risk_notes', ''),
+                assumptions=patch.get('assumptions', ''),
+                behavior_change=patch.get('behavior_change', ''),
+                safety_verification=patch.get('safety_verification', ''),
+                pov_tests=None  # POV tests come from Exploiter separately
+            )
+        
+        # Fallback: handle old flat format (if needed)
         return PatchInfo(
-            patch_id=patch_data['patch_id'],
+            patch_id=patch_data.get('patch_id', 0),
             unified_diff=patch_data.get('unified_diff', ''),
             touched_files=patch_data.get('touched_files', []),
             cwe_matches=patch_data.get('cwe_matches', []),
@@ -18,81 +47,9 @@ class PatchParser:
             risk_notes=patch_data.get('risk_notes', ''),
             assumptions=patch_data.get('assumptions', ''),
             behavior_change=patch_data.get('behavior_change', ''),
-            safety_verification=patch_data.get('safety_verification', '')
+            safety_verification=patch_data.get('safety_verification', ''),
+            pov_tests=None
         )
-    
-    def parse_unified_diff(self, unified_diff: str) -> Dict[str, List[PatchChange]]:
-        lines = unified_diff.split('\n')
-        file_changes = {}
-        current_file = None
-        
-        i = 0
-        while i < len(lines):
-            line = lines[i].strip()
-            
-            if line.startswith('--- '):
-                # Extract file path from Fixer format
-                full_path = line[4:].strip()
-                if full_path.startswith('Experiments/vulnerable/'):
-                    current_file = full_path.replace('Experiments/vulnerable/', '')
-                else:
-                    current_file = pathlib.Path(full_path).name
-                file_changes[current_file] = []
-                
-            elif line.startswith('@@ ') and current_file:
-                # Parse complete hunk - find all lines until next @@ or end
-                hunk_lines = [line]  # Include the @@ header
-                i += 1
-                
-                # Collect all lines in this hunk
-                while i < len(lines):
-                    next_line = lines[i]
-                    if next_line.strip().startswith('@@') or next_line.strip().startswith('---') or next_line.strip().startswith('+++'):
-                        i -= 1  # Back up to process this line in outer loop
-                        break
-                    hunk_lines.append(next_line)
-                    i += 1
-                
-                # Parse this complete hunk
-                hunk_changes = self._parse_fixer_hunk(hunk_lines)
-                file_changes[current_file].extend(hunk_changes)
-            
-            i += 1
-        
-        return file_changes
-    
-    def _parse_fixer_hunk(self, hunk_lines: List[str]) -> List[PatchChange]:
-        changes = []
-        
-        if not hunk_lines or not hunk_lines[0].startswith('@@'):
-            return changes
-        
-        # Process each line in the hunk (skip the @@ header)
-        for line in hunk_lines[1:]:
-            if not line:  # Skip empty lines
-                continue
-                
-            if line.startswith('-'):
-                # Deletion - store the exact content to find and remove
-                content = line[1:]  # Remove '-' prefix
-                changes.append(PatchChange(
-                    change_type=PatchChangeType.DELETE,
-                    line_number=0,  # We'll use content matching instead
-                    content=content,
-                    file_path=""
-                ))
-            elif line.startswith('+'):
-                # Addition - store the exact content to add
-                content = line[1:]  # Remove '+' prefix
-                changes.append(PatchChange(
-                    change_type=PatchChangeType.ADD,
-                    line_number=0,  # We'll use content matching instead
-                    content=content,
-                    file_path=""
-                ))
-            # Skip context lines (lines starting with ' ')
-        
-        return changes
 
 
 class ProjectManager:

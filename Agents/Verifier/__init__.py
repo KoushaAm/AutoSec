@@ -2,70 +2,70 @@
 Verifier Agent Entry Point
 """
 
-import pathlib
-from typing import Dict, Any, Optional
+from pathlib import Path
+from typing import Tuple, Optional
 from .core.engine import create_verifier
-from .config import LATEST_PATCHER_OUTPUT
 
 
-def verifier_main(input_path: Optional[str] = None, use_latest: bool = True) -> Dict[str, Any]:
+def verifier_main(
+    *,
+    patcher_manifest_path: str,
+    project_name: str,
+    exploiter_pov_test_path: Optional[str] = None,
+) -> Tuple[bool, str]:
     """
-    Main entry point for the Verifier agent.
+    Main entry point for Verifier called by Pipeline.
+    
+    Uses the existing VerifierCore engine to verify patches.
     
     Args:
-        input_path: Path to Patcher output JSON file or directory
-        use_latest: If True, use the latest Patcher output
+        patcher_manifest_path: Path to Patcher's manifest JSON (patcher_*.json)
+        project_name: Project name (e.g., "codehaus-plexus__plexus-archiver_CVE-2018-1002200_3.5")
+        exploiter_pov_test_path: path to Exploiter's POV test file
     
     Returns:
-        Dictionary with verification results summary
+        (success: bool, output_dir: str)
     """
+    
+    print(f"\n{'='*80}")
+    print(f"VERIFIER")
+    print(f"{'='*80}")
+    print(f"Project: {project_name}")
+    print(f"Patcher manifest: {patcher_manifest_path}")
+    if exploiter_pov_test_path:
+        print(f"POV tests: {exploiter_pov_test_path}")
+    print(f"{'='*80}\n")
+    
+    # Create verifier instance using existing engine
     verifier = create_verifier()
     
-    # Determine input file
-    if use_latest or input_path is None:
-        target_path = LATEST_PATCHER_OUTPUT
+    # Run verification using existing verify_fixer_output method
+    results = verifier.verify_fixer_output(patcher_manifest_path)
+    
+    # Determine success
+    if not results:
+        print("\n⚠️  No patches were verified (Patcher output may be empty)")
+        success = False
     else:
-        target_path = pathlib.Path(input_path)
+        passed = sum(1 for r in results if r.status.value == "PASS")
+        failed = len(results) - passed
+        
+        print(f"\n{'='*80}")
+        print("VERIFICATION SUMMARY")
+        print(f"{'='*80}")
+        print(f"Total patches: {len(results)}")
+        print(f"✅ Passed: {passed}")
+        print(f"❌ Failed: {failed}")
+        print(f"{'='*80}\n")
+        
+        success = (failed == 0)
     
-    # Find the JSON file
-    if target_path.is_dir():
-        json_files = list(target_path.glob("patch_*.json"))
-        if not json_files:
-            return {
-                "success": False,
-                "error": f"No patch_*.json files found in {target_path}",
-                "patches_verified": 0
-            }
-        input_file = json_files[0]
-    else:
-        input_file = target_path
+    # Get output directory from artifact manager
+    output_dir = verifier.artifact_manager.base_output_dir
     
-    if not input_file.exists():
-        return {
-            "success": False,
-            "error": f"Input file not found: {input_file}",
-            "patches_verified": 0
-        }
+    print(f"📂 Verification results saved to: {output_dir}")
     
-    # Run verification
-    print(f"Running Verifier on: {input_file}")
-    results = verifier.verify_fixer_output(str(input_file))
-    
-    # Summarize results
-    passed = sum(1 for r in results if r.status.value == "PASS")
-    failed = sum(1 for r in results if r.status.value == "FAIL")
-    
-    summary = {
-        "success": True,
-        "patches_verified": len(results),
-        "passed": passed,
-        "failed": failed,
-        "results": results
-    }
-    
-    print(f"\n✅ Verification complete! {passed}/{len(results)} patch(es) passed")
-    
-    return summary
+    return success, str(output_dir)
 
 
 __all__ = ["verifier_main"]

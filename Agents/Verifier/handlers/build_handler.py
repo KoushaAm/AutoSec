@@ -273,3 +273,147 @@ class DockerBuildRunner:
             test_results["test_success_rate"] = test_results["passed_tests"] / test_results["total_tests"]
         
         return test_results
+
+    def run_build_only(self, project_path: pathlib.Path, output_dir: pathlib.Path) -> Dict[str, Any]:
+        """
+        Run ONLY the build step (no tests).
+        
+        Args:
+            project_path: Path to the project in Projects/Sources/
+            output_dir: Directory to save build artifacts
+        
+        Returns:
+            Dictionary with build results and docker image info
+        """
+        # Check Docker availability
+        if not check_docker():
+            return {
+                "success": False,
+                "error": "Docker is not available or not running",
+                "return_code": 2,
+                "duration": 0
+            }
+        
+        artifacts_dir = output_dir / "build"
+        artifacts_dir.mkdir(parents=True, exist_ok=True)
+        
+        self.docker_runner = DockerRunner(cache_dir=artifacts_dir / "build-cache")
+        
+        # Detect project type
+        stack, build_cmd, test_cmd, metadata = detect_java_project(project_path)
+        
+        if not build_cmd:
+            error_msg = metadata.get('error', 'Unknown detection error')
+            return {
+                "success": False,
+                "error": error_msg,
+                "return_code": 2,
+                "duration": 0
+            }
+        
+        # Build in Docker
+        project_id = project_path.name.lower().replace(" ", "-")
+        
+        build_result = self.docker_runner.build_with_retry(
+            stack=stack,
+            build_cmd=build_cmd,
+            worktree=project_path,
+            artifacts=artifacts_dir,
+            timeout=1800,  # 30 minutes
+            project_identifier=project_id,
+            verbose=False
+        )
+        
+        # Return build result with stack info
+        return {
+            "success": build_result["success"],
+            "error": build_result.get("error"),
+            "return_code": build_result["return_code"],
+            "duration": build_result["duration"],
+            "docker_image": build_result.get("image_used"),
+            "stack": stack
+        }
+    
+    def run_tests_only(
+        self, 
+        project_path: pathlib.Path,
+        docker_image: str,
+        stack: str,
+        output_dir: pathlib.Path
+    ) -> Dict[str, Any]:
+        """
+        Run ONLY the tests (assumes project is already built).
+        
+        Args:
+            project_path: Path to the project
+            docker_image: Docker image to use (from build step)
+            stack: Build system (maven/gradle)
+            output_dir: Directory to save test artifacts
+        
+        Returns:
+            Dictionary with test results
+        """
+        artifacts_dir = output_dir / "tests"
+        artifacts_dir.mkdir(parents=True, exist_ok=True)
+        
+        if not self.docker_runner:
+            self.docker_runner = DockerRunner(cache_dir=artifacts_dir / "build-cache")
+        
+        result = {
+            "status": "SKIP",
+            "duration": 0,
+            "test_discovery": {},
+            "test_execution": {}
+        }
+        
+        try:
+            # Discover tests
+            test_discovery = self.test_discovery.discover_tests(project_path, stack)
+            result["test_discovery"] = test_discovery
+            
+            if test_discovery["has_tests"]:
+                # Get test command
+                test_commands = test_discovery.get("test_commands", [])
+                has_wrapper = (project_path / "mvnw").exists() or (project_path / "gradlew").exists()
+                test_cmd = test_commands[0] if has_wrapper else (test_commands[1] if len(test_commands) > 1 else test_commands[0])
+                
+                # Run tests in Docker
+                test_rc, test_duration = self.docker_runner.run_command(
+                    docker_image,
+                    test_cmd,
+                    project_path,
+                    artifacts_dir,
+                    timeout=1200  # 20 minutes
+                )
+                
+                # Parse test results
+                test_results = self._parse_test_results(project_path, stack, test_rc)
+                
+                status = "PASS" if test_rc == 0 and test_results["failed_tests"] == 0 else "FAIL"
+                
+                result["test_execution"] = {
+                    "status": status,
+                    "command": test_cmd,
+                    "return_code": test_rc,
+                    "duration_seconds": round(test_duration, 2),
+                    "test_results": test_results
+                }
+                result["status"] = status
+                result["duration"] = test_duration
+            else:
+                result["status"] = "SKIP"
+                result["test_execution"] = {
+                    "status": "SKIP",
+                    "message": "No tests to execute",
+                    "test_results": {
+                        "total_tests": 0,
+                        "passed_tests": 0,
+                        "failed_tests": 0
+                    }
+                }
+        
+        except Exception as e:
+            result["status"] = "ERROR"
+            result["error"] = str(e)
+        
+        return result
