@@ -3,6 +3,7 @@ import argparse
 import sys
 from os import getenv
 from dotenv import load_dotenv
+from litellm import completion
 from openai import OpenAI
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
@@ -185,7 +186,7 @@ def patcher_main(
     # Create ONE run dir for the whole patcher execution
     dt = datetime.now(timezone.utc)
     run_timestamp = dt.strftime("%Y%m%dT%H%M%SZ")
-    run_id = f"patcher_{run_timestamp}"
+    run_id = f"patcher_{project_name}_datetime_{run_timestamp}"
     run_timestamp_iso = dt.isoformat().replace("+00:00", "Z")
 
     output_root = Path(OUTPUT_PATH)
@@ -229,8 +230,14 @@ def patcher_main(
                 model=MODEL_VALUE,
                 messages=messagesArray,
                 temperature=0.0,
-                max_tokens=8000, # TODO: programmatically determine this based on model context and prompt size?
+                max_tokens=6000, # TODO: programmatically determine this based on model context and prompt size?
+                response_format={"type": "json_object"}
             )
+            if completion.choices[0].finish_reason != "stop":
+                patcher_success = False
+                print(f"[error] Unexpected finish reason: {completion.choices[0].finish_reason}")
+                print("[debug] Content length:", len(completion.choices[0].message.content or ""))
+
         except Exception as e:
             patcher_success = False
             print(f"[error] OpenRouter error on task {task_index}: {e}", file=sys.stderr)
