@@ -1,0 +1,201 @@
+{
+    "cwe_id": "cwe-078",
+    "vulnerabilities": [
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getPlainText(...) : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "apiKey : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 219
+                    },
+                    {
+                        "message": "apiKey : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "apiKey : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "trim(...) : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 163
+                    },
+                    {
+                        "message": "{...} : String[] [[]] : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 163
+                    },
+                    {
+                        "message": "cmdArgs",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 164
+                    }
+                ],
+                [
+                    {
+                        "message": "fromString(...) : Secret",
+                        "uri": "src/main/java/io/plugins/perfecto/credentials/PerfectoCredentials.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "getPassword(...) : Secret",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "getPlainText(...) : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "apiKey : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 219
+                    },
+                    {
+                        "message": "apiKey : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "apiKey : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "trim(...) : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 163
+                    },
+                    {
+                        "message": "{...} : String[] [[]] : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 163
+                    },
+                    {
+                        "message": "cmdArgs",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 164
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getPlainText(...) : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "apiKey : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 219
+                    },
+                    {
+                        "message": "apiKey : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "apiKey : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "trim(...) : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "{...} : String[] [[]] : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "cmdArgs",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 167
+                    }
+                ],
+                [
+                    {
+                        "message": "fromString(...) : Secret",
+                        "uri": "src/main/java/io/plugins/perfecto/credentials/PerfectoCredentials.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "getPassword(...) : Secret",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "getPlainText(...) : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "apiKey : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 219
+                    },
+                    {
+                        "message": "apiKey : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "apiKey : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "trim(...) : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "{...} : String[] [[]] : String",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "cmdArgs",
+                        "uri": "src/main/java/io/plugins/perfecto/PerfectoBuildWrapper.java",
+                        "line": 167
+                    }
+                ]
+            ]
+        }
+    ]
+}
