@@ -7,7 +7,7 @@ class Model(Enum):
     NEMOTRON = "nvidia/nemotron-3-nano-30b-a3b:free" 
     KAT_CODER = "kwaipilot/kat-coder-pro:free"
     GPT5_NANO_PAID = "openai/gpt-5-nano" # $0.05/M input token, $0.40/M output tokens
-    GPT5_MINI_PAID = "openai/gpt-5-mini" # $0.25/M input token, $0.40/M output tokens
+    GPT5_MINI_PAID = "openai/gpt-5-mini" # $0.25/M input token, $2.00/M output tokens
 
 """
 Notes on model selection:
