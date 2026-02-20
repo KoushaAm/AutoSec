@@ -1,0 +1,21 @@
+{
+    "cwe_id": "cwe-022",
+    "vulnerabilities": [
+        {
+            "traces": [
+                [
+                    {
+                        "message": "pathToPropertiesFiles : File",
+                        "uri": "src/main/java/io/whitesource/cure/Encoder.java",
+                        "line": 27
+                    },
+                    {
+                        "message": "pathToPropertiesFiles",
+                        "uri": "src/main/java/io/whitesource/cure/Encoder.java",
+                        "line": 33
+                    }
+                ]
+            ]
+        }
+    ]
+}
