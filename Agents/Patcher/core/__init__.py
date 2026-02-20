@@ -4,7 +4,7 @@ Core package for the Patcher system.
 
 This package contains:
 - types.py          : shared TypedDicts and dataclasses (Finder-aligned)
-- code_extractor.py : code context extraction logic (trace-driven)
+- code_extractor.py : code context extraction logic (trace-driven, fail-fast)
 - method_locator/   : language-specific method boundary discovery (Tree-sitter)
 """
 
@@ -16,8 +16,10 @@ from .types import (
     FileSnippetBundle,
 )
 
-# New extractor entrypoint (to be implemented/updated next)
-from .code_extractor import extract_snippets_for_vuln
+from .code_extractor import (
+    extract_snippets_for_vuln,
+    SnippetExtractionError,
+)
 
 __all__ = [
     "ConstraintDict",
@@ -25,5 +27,6 @@ __all__ = [
     "Trace",
     "VulnerabilitySpec",
     "FileSnippetBundle",
-    "extract_snippets_for_vuln", 
+    "extract_snippets_for_vuln",
+    "SnippetExtractionError",
 ]

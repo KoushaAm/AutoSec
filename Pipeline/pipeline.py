@@ -1,4 +1,3 @@
-from enum import Enum
 from typing import TypedDict, Dict, Any, Optional, List
 import json
 import subprocess
@@ -9,14 +8,17 @@ import sys
 from langgraph.graph import StateGraph, END, START
 from langgraph.types import Command
 from pathlib import Path
+from datetime import datetime
 
 # from Agents.Exploiter.data.primevul.setup import project_slug
 # local imports
 from . import logger
+from .utils import load_dummy_finder_output
+from .project_variants import ProjectVariants
+
 from Agents.Patcher import patcher_main
 from Agents.Finder.src.types import FinderOutput
 from Agents.Finder.src.output_converter import sarif_to_finder_output
-from datetime import datetime
 
 # relative path information
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -44,9 +46,10 @@ def _build_workflow() -> Any:
     graph.add_node("verifier", _verifier_node)
 
     # linear edges
-    graph.add_edge(START, "finder")
+    # graph.add_edge(START, "finder")
     # graph.add_edge("finder", "exploiter")
-    graph.add_edge("finder", "patcher")
+    # graph.add_edge("finder", "patcher")
+    graph.add_edge(START, "patcher")
     graph.add_edge("patcher", "verifier")
 
     # conditional edges
@@ -254,27 +257,25 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
     if not state.get("project_name"):
         raise ValueError("project_name missing from state")
 
+    # TODO: currently using dummy finder_output
     if not state.get("finder_output"):
         raise ValueError("finder_output missing from state")
 
-    # if not state.get("exploiter"):
-        # raise ValueError("exploiter output missing from state")
-
-    # state["exploiter"]["pov_logic"]
-
-    # TODO: update with exploiter pov_logic when accessible
-    pov_logic = "Example PoV logic from exploiter report"
+    # TODO: currently using dummy exploiter pov_logic
+    if not state.get("exploiter"):
+        raise ValueError("exploiter output missing from state")
 
     success, run_dir = patcher_main(
             language=state["language"],
             cwe_id=state['finder_output']['cwe_id'],
             vulnerability_list=state['finder_output']['vulnerabilities'],
             project_name=state["project_name"],
-            pov_logic=pov_logic,
+            pov_logic=state["exploiter"]["pov_logic"],
             save_prompt=True,
         )
 
     state["patcher"] = {"success": success, "artifact_path": run_dir}
+    print(f"Patcher completed with success={success}, artifacts at: {run_dir}")
 
     return state
 
@@ -298,55 +299,32 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
         update=new_state
     )
 
-# ====== Project Variants ======
-class ProjectVariant(Enum):
-    CODEHAUS_2018 = {
-        "name": "codehaus-plexus__plexus-archiver_CVE-2018-1002200_3.5",
-        "cwe_id": "cwe-022"
-    }
-    CODEHAUS_2017 = {
-        "name": "codehaus-plexus__plexus-utils_CVE-2017-1000487_3.0.15",
-        "cwe_id": "cwe-078"
-    }
-    NAHSRA = {
-        "name": "nahsra__antisamy_CVE-2016-10006_1.5.3",
-        "cwe_id": "cwe-079"
-    }
-    PERWENDEL_2018 = {
-        "name": "perwendel__spark_CVE-2018-9159_2.7.1",
-        "cwe_id": "cwe-022"
-    }
-
-    @property
-    def project_name(self) -> str:
-        return self.value["name"]
-
-    @property
-    def cwe_id(self) -> str:
-        return self.value["cwe_id"]
-
 # ====== Execute workflow =====
 def pipeline_main():
-    SELECTED_PROJECT = ProjectVariant.CODEHAUS_2018
+    SELECTED_PROJECT = ProjectVariants.YAMCS
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
         "project_name": SELECTED_PROJECT.project_name,
         "vuln_id": SELECTED_PROJECT.cwe_id,
         "language": "java",
-        "finder_model": "qwen2.5-32b",
+        "finder_model": "gpt-5-mini",
         "finder_reanalyze": False,
+        # Dummy inputs for development & experiments
+        "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
+        "exploiter": {
+            "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
+        }
     }
 
-    workflow = _build_workflow()
+    # print(json.dumps(initial_state, indent=2))
 
     # Execute the graph
+    workflow = _build_workflow()
     final_state = workflow.invoke(initial_state)
 
-    print("\n====== STATE DUMP ======")
-    print(final_state)
-    print("======^==========^======\n")
-    print(json.dumps(final_state, indent=2))
-    print("======^==========^======\n")
+    # print("\n====== STATE DUMP ======")
+    # print(json.dumps(final_state, indent=2))
+    # print("======^==========^======\n")
 
 
 # standalone execution

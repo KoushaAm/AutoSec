@@ -15,7 +15,6 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Dict, List, TypedDict, Any
 
-
 # ================== Constraints ==================
 class ConstraintDict(TypedDict):
     """
@@ -43,22 +42,6 @@ Trace = List[TraceStepDict]
 # ================== Runtime vulnerability spec ==================
 @dataclass
 class VulnerabilitySpec:
-    """
-    Runtime vulnerability specification derived from Finder + Exploiter.
-
-    One instance corresponds to ONE unique vulnerability
-    (i.e., one element inside Finder's "vulnerabilities" list).
-
-    Attributes:
-        language: e.g., "java"
-        cwe_id: Finder-style CWE identifier (e.g., "cwe-022")
-        project_name: project identifier used for path prefixing
-        constraints: patch-generation constraints
-        traces: list of source-to-sink traces (Finder format)
-        sink: explicitly stored sink step (derived from traces[0][-1])
-        pov_logic: contextual PoV explanation from Exploiter
-    """
-
     language: str
     cwe_id: str
     project_name: str
@@ -66,14 +49,13 @@ class VulnerabilitySpec:
     traces: List[Trace] = field(default_factory=list)
     pov_logic: str = ""
 
-    # Derived (guaranteed after __post_init__)
     sink: TraceStepDict = field(init=False)
 
     def __post_init__(self) -> None:
         """
         Enforce structural guarantees immediately after construction:
 
-        - traces must be non-empty
+        - traces must be non-empty (AFTER cleaning)
         - each trace must contain at least one step
         - sink must exist and be consistent across traces
         - each step must include uri/line/message
@@ -81,16 +63,22 @@ class VulnerabilitySpec:
         - cwe_id must follow finder naming (starts with 'cwe-')
         """
         if not self.cwe_id.startswith("cwe-"):
-            raise ValueError(f"cwe_id must be Finder-style like 'cwe-022' (got {self.cwe_id!r})")
+            raise ValueError(
+                f"cwe_id must be Finder-style like 'cwe-022' (got {self.cwe_id!r})"
+            )
 
         if not self.project_name.strip():
             raise ValueError("project_name must be a non-empty string")
+
+        # clean traces before enforcing non-empty
+        self.traces = self._clean_traces(self.traces)
 
         if not self.traces:
             raise ValueError("VulnerabilitySpec.traces must not be empty")
 
         first_trace = self.traces[0]
         if not first_trace:
+            # Shouldn't happen after cleaning, but keep defensive
             raise ValueError("Each trace must contain at least one step")
 
         # Validate step shape + derive sink (last step of first trace)
@@ -120,11 +108,47 @@ class VulnerabilitySpec:
         for k in ("uri", "line", "message"):
             if k not in step:
                 raise ValueError(f"Trace step missing required key: {k}")
-        # coercible to int
-        int(step["line"])
+        int(step["line"])  # coercible to int
+
+    @classmethod
+    def _clean_traces(cls, traces: Any) -> List[Trace]:
+        """
+        Remove empty/invalid traces.
+
+        Rules:
+        - If traces is not a list -> return []
+        - Keep only items that are lists (a Trace)
+        - Drop empty traces
+        - Optionally: drop invalid steps inside traces (if a step is missing keys or line not int-able)
+        - Drop traces that become empty after step filtering
+        """
+        if not isinstance(traces, list):
+            return []
+
+        cleaned: List[Trace] = []
+        for t in traces:
+            if not isinstance(t, list) or not t:
+                continue
+
+            # Filter steps to only valid TraceStepDict-shaped entries
+            valid_steps: Trace = []
+            for step in t:
+                if not isinstance(step, dict):
+                    continue
+                if not all(k in step for k in ("uri", "line", "message")):
+                    continue
+                try:
+                    int(step["line"])
+                except Exception:
+                    continue
+                valid_steps.append(step)  # type: ignore[arg-type]
+
+            if valid_steps:
+                cleaned.append(valid_steps)
+
+        return cleaned
 
     def to_dict(self) -> Dict[str, Any]:
-        """JSON-serializable representation for prompts or logging."""
         return {
             "language": self.language,
             "cwe_id": self.cwe_id,
