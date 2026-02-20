@@ -265,7 +265,6 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
     if not state.get("exploiter"):
         raise ValueError("exploiter output missing from state")
 
-
     success, run_dir = patcher_main(
             language=state["language"],
             cwe_id=state['finder_output']['cwe_id'],
@@ -302,7 +301,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 
 # ====== Execute workflow =====
 def pipeline_main():
-    SELECTED_PROJECT = ProjectVariants.DSPACE
+    SELECTED_PROJECT = ProjectVariants.YAMCS
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
         "project_name": SELECTED_PROJECT.project_name,
@@ -317,9 +316,10 @@ def pipeline_main():
         }
     }
 
-    workflow = _build_workflow()
+    # print(json.dumps(initial_state, indent=2))
 
     # Execute the graph
+    workflow = _build_workflow()
     final_state = workflow.invoke(initial_state)
 
     # print("\n====== STATE DUMP ======")
