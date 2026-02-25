@@ -15,9 +15,9 @@ sys.path.insert(0, str(autosec_root))
 from Agents.Verifier import verifier_main
 
 if __name__ == "__main__":
-    # Test with existing Patcher output for codehaus 2018 project
-    patcher_manifest = autosec_root / "Agents" / "Patcher" / "output" / "patcher_codehaus_2018_output" / "patcher_20260212T100508Z.json"
-    project_name = "codehaus-plexus__plexus-archiver_CVE-2018-1002200_3.5"
+    # Test with existing Patcher output for whitesource curekit project
+    patcher_manifest = autosec_root / "Agents" / "Patcher" / "output" / "patcher_whitesource__curekit_CVE-2022-23082_1.1.3_20260219T083511Z" / "patcher_manifest_20260219T083511Z.json"
+    project_name = "whitesource__curekit_CVE-2022-23082_1.1.3"
     
     print("Testing Verifier with:")
     print(f"  Patcher manifest: {patcher_manifest}")

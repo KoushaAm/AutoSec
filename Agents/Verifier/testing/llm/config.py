@@ -12,7 +12,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from constants.models import Model
 
 # ===== Model Configuration =====
-CURRENT_MODEL = Model.GPT5_NANO 
+CURRENT_MODEL = Model.GPT5_MINI  
 
 # LLM Settings for test generation
 TEST_GENERATION_SETTINGS = {
@@ -59,22 +59,6 @@ REQUIRED_PATTERNS = [
     "assert",  # Must have at least one assertion
     "@Test",   # Must be a JUnit test
 ]
-
-# ===== Docker Execution Settings =====
-
-# Test compilation and execution timeouts
-TEST_COMPILE_TIMEOUT = 120  # seconds
-TEST_EXECUTION_TIMEOUT = 60  # seconds
-
-# ===== Output Directories =====
-
-# Base output directory for generated tests
-TEST_OUTPUT_DIR = Path(__file__).parent.parent / "test_output"
-TEST_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-
-# Directory for test artifacts (compilation logs, execution results)
-TEST_ARTIFACTS_DIR = Path(__file__).parent.parent.parent / "artifacts" / "regression_tests"
-TEST_ARTIFACTS_DIR.mkdir(parents=True, exist_ok=True)
 
 # ===== Logging =====
 VERBOSE = True  # Enable detailed logging
