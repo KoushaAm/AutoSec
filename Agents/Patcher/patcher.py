@@ -14,8 +14,8 @@ from .constants import SYSTEM_MESSAGE, DEVELOPER_MESSAGE
 # Finder-aligned core types
 from .core.types import ConstraintDict, Trace, VulnerabilitySpec, FileSnippetBundle
 
-# Trace-driven extractor
-from .core.code_extractor import extract_snippets_for_vuln
+# Trace-driven extractor (fail-fast capable)
+from .core.code_extractor import extract_snippets_for_vuln, SnippetExtractionError
 
 # Prompt + LLM IO helpers
 from .utils import (
@@ -99,6 +99,16 @@ def _constraints_for_cwe(cwe_id: str) -> ConstraintDict:
     }
 
 
+def _clean_traces(traces: Any) -> List[Trace]:
+    """
+    Keep only non-empty traces (list of steps).
+    Drops: None, non-lists, empty traces.
+    """
+    if not isinstance(traces, list):
+        return []
+    return [t for t in traces if isinstance(t, list) and len(t) > 0]
+
+
 def populate_vulnerability_specs(
     *,
     language: str,
@@ -113,14 +123,23 @@ def populate_vulnerability_specs(
     One spec per unique vulnerability instance.
     Each instance may contain multiple traces.
 
-    Fail-fast behavior:
-      - Empty vulnerabilities or empty traces will raise via VulnerabilitySpec.__post_init__.
+    Behavior:
+      - Vulnerability instances with empty/invalid traces are skipped.
+      - Non-empty traces still validated by VulnerabilitySpec.__post_init__.
     """
     specs: List[VulnerabilitySpec] = []
     constraints = _constraints_for_cwe(cwe_id)
 
+    skipped = 0
+
     for v in vulnerabilities:
-        traces: List[Trace] = v.get("traces", [])
+        raw_traces = v.get("traces", [])
+        traces: List[Trace] = _clean_traces(raw_traces)
+
+        if not traces:
+            skipped += 1
+            continue
+
         specs.append(
             VulnerabilitySpec(
                 language=language.lower(),
@@ -131,6 +150,9 @@ def populate_vulnerability_specs(
                 pov_logic=pov_logic,
             )
         )
+
+    if skipped:
+        print(f"[patcher] Skipped {skipped} vulnerability instance(s) with empty traces for {cwe_id}")
 
     return specs
 
@@ -164,13 +186,6 @@ def patcher_main(
 
     Returns:
       (success: bool, run_dir_path: str)
-
-    Inputs are provided by pipeline.py:
-      - language
-      - cwe_id
-      - vulnerability_list (Finder vulnerabilities list; each element contains traces)
-      - project_name
-      - pov_logic (Exploiter context)
     """
     repo_root = _detect_repo_root()
 
@@ -185,7 +200,7 @@ def patcher_main(
     # Create ONE run dir for the whole patcher execution
     dt = datetime.now(timezone.utc)
     run_timestamp = dt.strftime("%Y%m%dT%H%M%SZ")
-    run_id = f"patcher_{run_timestamp}"
+    run_id = f"patcher_{project_name}_datetime_{run_timestamp}"
     run_timestamp_iso = dt.isoformat().replace("+00:00", "Z")
 
     output_root = Path(OUTPUT_PATH)
@@ -196,13 +211,35 @@ def patcher_main(
     patcher_success = True
 
     for task_index, spec in enumerate(specs, start=1):
-        # 1) Extract code context from all trace steps (dedup/merge inside extractor)
-        snippets: FileSnippetBundle = extract_snippets_for_vuln(
-            spec=spec,
-            repo_root=repo_root,
-        )
+        print(f"\n=== Task {task_index}: cwe_id={spec.cwe_id} ===")
 
-        # 2) Build exactly one prompt per vulnerability instance
+        # 1) Extract code context from all trace steps (dedup/merge inside extractor)
+        try:
+            snippets: FileSnippetBundle = extract_snippets_for_vuln(
+                spec=spec,
+                repo_root=repo_root,
+            )
+        except SnippetExtractionError as e:
+            patcher_success = False
+            print(f"[error] Snippet extraction failed for task {task_index}:\n{e}", file=sys.stderr)
+            # Fail fast: do NOT build prompt, do NOT call LLM
+            continue
+        except Exception as e:
+            patcher_success = False
+            print(f"[error] Unexpected extractor error for task {task_index}: {e}", file=sys.stderr)
+            continue
+
+        # Hard guard: refuse to prompt if bundle is empty for any reason
+        by_file = snippets.get("by_file", {})
+        if not by_file or not any((v or "").strip() for v in by_file.values()):
+            patcher_success = False
+            print(
+                f"[error] Empty snippet bundle for task {task_index}; refusing to call LLM.",
+                file=sys.stderr,
+            )
+            continue
+
+        # 2) Build exactly one prompt per vulnerability instance (only after extraction succeeded)
         user_msg: str = build_patch_prompt(
             task_id=task_index,
             spec=spec,
@@ -211,8 +248,6 @@ def patcher_main(
 
         # 3) Assemble messages
         messagesArray = combine_prompt_messages(SYSTEM_MESSAGE, DEVELOPER_MESSAGE, user_msg)
-
-        print(f"\n=== Task {task_index}: cwe_id={spec.cwe_id} ===")
 
         if save_prompt:
             _save_prompt_debug(
@@ -229,8 +264,14 @@ def patcher_main(
                 model=MODEL_VALUE,
                 messages=messagesArray,
                 temperature=0.0,
-                max_tokens=8000, # TODO: programmatically determine this based on model context and prompt size?
+                max_tokens=6000, # TODO: determine programmatically
+                response_format={"type": "json_object"},
             )
+            if completion.choices[0].finish_reason != "stop":
+                patcher_success = False
+                print(f"[error] Unexpected finish reason: {completion.choices[0].finish_reason}")
+                print("[debug] Content length:", len(completion.choices[0].message.content or ""))
+
         except Exception as e:
             patcher_success = False
             print(f"[error] OpenRouter error on task {task_index}: {e}", file=sys.stderr)

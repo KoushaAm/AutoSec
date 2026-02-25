@@ -14,37 +14,17 @@ from .generic_utils import (
 )
 
 
-# ================== Diff normalization ==================
-def _normalize_unified_diff(patch: Dict[str, Any]) -> str:
-    """
-    Prefer unified_diff_lines (new schema) and join into a single string.
-    Backward compatible with legacy unified_diff (string).
-    """
-    if "unified_diff_lines" in patch:
-        lines = patch.get("unified_diff_lines")
-        if lines is None:
-            return ""
-        if not isinstance(lines, list) or any(not isinstance(x, str) for x in lines):
-            raise ValueError("unified_diff_lines must be a list of strings")
-        return "\n".join(lines)
-
-    # Legacy fallback
-    diff = patch.get("unified_diff", "")
-    if not isinstance(diff, str):
-        raise ValueError("unified_diff must be a string")
-    return diff
-
-
 # ================== Validation (strict schema) ==================
 def _validate_single_patch_schema(patch: Dict[str, Any]) -> None:
     """
     Enforce the strict patch schema expected from the Patcher LLM output.
+    Requires unified_diff as a single string.
     """
     required_keys = [
         "patch_id",
         "plan",
         "cwe_matches",
-        # unified_diff_lines (preferred) OR unified_diff (legacy) validated separately
+        "unified_diff",
         "safety_verification",
         "risk_notes",
         "touched_files",
@@ -52,6 +32,7 @@ def _validate_single_patch_schema(patch: Dict[str, Any]) -> None:
         "behavior_change",
         "confidence",
     ]
+
     for key in required_keys:
         if key not in patch:
             raise ValueError(f"Missing required key in patch: {key}")
@@ -64,23 +45,20 @@ def _validate_single_patch_schema(patch: Dict[str, Any]) -> None:
 
     if not isinstance(patch["touched_files"], list):
         raise ValueError("touched_files must be a list")
+
     if any(not isinstance(x, str) for x in patch["touched_files"]):
         raise ValueError("touched_files must be a list of strings")
 
     if not isinstance(patch["cwe_matches"], list) or len(patch["cwe_matches"]) == 0:
         raise ValueError("cwe_matches must be a non-empty list")
 
-    # Require at least one diff field to exist and be well-formed
-    if "unified_diff_lines" not in patch and "unified_diff" not in patch:
-        raise ValueError("Patch must include unified_diff_lines (preferred) or unified_diff (legacy)")
+    if not isinstance(patch["unified_diff"], str):
+        raise ValueError("unified_diff must be a string")
 
-    # Validate/normalize diff content
-    _ = _normalize_unified_diff(patch)
-
-    # Confidence must be a realistic integer score
     conf = patch.get("confidence")
     if not isinstance(conf, int):
         raise ValueError(f"confidence must be an integer, got {conf!r}")
+
     if conf < 0 or conf > 100:
         raise ValueError(f"confidence must be in [0, 100], got {conf}")
 
@@ -95,10 +73,9 @@ def _parse_and_validate_single(
 ) -> Dict[str, Any]:
     """
     Extract JSON, parse it, then validate that it contains exactly one patch.
-    Returns the single patch object (not the full top-level JSON).
-
-    Invalid JSON dumps are written inside the patcher run artifact folder.
+    Returns the single patch object.
     """
+
     json_text = extract_json_block(
         llm_output,
         run_dir=run_dir,
@@ -152,6 +129,7 @@ def process_llm_output_single(
     Returns:
       (manifest_entry, artifact_path_str)
     """
+
     patch = _parse_and_validate_single(
         llm_output,
         model_name,
@@ -161,13 +139,13 @@ def process_llm_output_single(
     )
 
     patch_id = patch["patch_id"]
+
     if patch_id != task_id:
         raise ValueError(f"patch_id mismatch: expected {task_id}, got {patch_id}")
 
-    # Normalize unified diff to a single string for storage/printing
-    unified_diff = _normalize_unified_diff(patch)
-
+    unified_diff = patch["unified_diff"]
     touched_files = patch.get("touched_files") or []
+
     primary_path = touched_files[0] if touched_files else ""
     primary_name = Path(primary_path).name if primary_path else ""
 
@@ -182,10 +160,7 @@ def process_llm_output_single(
         "patch": {
             "plan": patch.get("plan", []),
             "cwe_matches": patch.get("cwe_matches", []),
-            # Store the joined diff string for downstream compatibility
             "unified_diff": unified_diff,
-            # Also keep the raw list if present (useful for debugging; consumers can ignore)
-            "unified_diff_lines": patch.get("unified_diff_lines", []),
             "safety_verification": patch.get("safety_verification", ""),
             "risk_notes": patch.get("risk_notes", ""),
             "touched_files": touched_files,
@@ -200,13 +175,14 @@ def process_llm_output_single(
     write_patch_artifact(patch_path, patch_artifact)
 
     artifact_path_str = patch_path.as_posix()
+
     manifest_entry = {
         "patch_id": patch_id,
         "cwe_matches": patch.get("cwe_matches", []),
         "artifact_path": artifact_path_str,
     }
 
-    # Human-readable per-patch summary
+    # Human-readable summary
     print(f"\n--- Patch (id={patch_id}) written ---")
     print(f"Artifact: {artifact_path_str}")
     print("Plan:", " / ".join(patch.get("plan", [])) or "(none)")
@@ -235,10 +211,8 @@ def write_run_manifest(
 ) -> Path:
     """
     Write one run-level manifest that indexes all per-task patch artifacts.
-
-    Manifest filename:
-      patcher_manifest_<run_timestamp>.json
     """
+
     manifest = {
         "metadata": {
             "run_id": run_id,
@@ -249,5 +223,6 @@ def write_run_manifest(
         },
         "patches": manifest_patches,
     }
+
     manifest_path = Path(run_dir) / f"patcher_manifest_{run_timestamp}.json"
     return write_manifest(manifest_path, manifest)
