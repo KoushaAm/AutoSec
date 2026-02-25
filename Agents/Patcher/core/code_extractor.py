@@ -6,13 +6,9 @@ Given a VulnerabilitySpec (Finder-aligned traces), returns a FileSnippetBundle
 where each entry is a concatenation of whole methods that participate in the
 traces (including sink), grouped per file.
 
-Key properties:
-- Uses tree-sitter-backed MethodLocator (e.g., JavaMethodLocator).
-- One snippet per method per file (no overlapping method snippets).
-- Minimal context: method bodies only + a small header summarizing trace points.
-- Fallback: if a trace line is not inside any method, emit a single line-window
-  block for that file covering all such points.
-- Dedup: trace points are deduped by (uri, line, message).
+Fail-fast behavior:
+- If any referenced file cannot be read (missing/unreadable), extraction fails
+  and raises SnippetExtractionError (no LLM prompt should be built).
 """
 
 from __future__ import annotations
@@ -23,8 +19,26 @@ from typing import Dict, List, Tuple, Union, Set
 
 from ..config import SNIPPET_MAX_LINES
 
-from .types import VulnerabilitySpec, TraceStepDict, FileSnippetBundle
+from .types import VulnerabilitySpec, FileSnippetBundle
 from .method_locator import get_method_locator, MethodInfo
+
+
+class SnippetExtractionError(RuntimeError):
+    """
+    Raised when snippet extraction cannot provide real code context
+    (e.g., missing/unreadable files, invalid sink, etc.).
+    """
+
+    def __init__(
+        self,
+        message: str,
+        *,
+        missing_files: List[str] | None = None,
+        unreadable_files: List[str] | None = None,
+    ):
+        super().__init__(message)
+        self.missing_files = missing_files or []
+        self.unreadable_files = unreadable_files or []
 
 
 @dataclass(frozen=True)
@@ -50,13 +64,15 @@ def _normalize_repo_root(repo_root: Union[str, Path]) -> Path:
 def _prefix_uri(project_name: str, uri: str) -> str:
     """
     Convert Finder uri (e.g. 'src/main/java/...') into repo-relative path:
-
         Projects/Sources/<project_name>/<uri>
 
-    Finder guarantees no leading '/', but we still sanitize.
+    If uri is already prefixed with Projects/Sources/<project_name>/, keep it.
     """
     clean = uri.lstrip("/").strip()
-    return f"Projects/Sources/{project_name}/{clean}"
+    prefix = f"Projects/Sources/{project_name}/"
+    if clean.startswith(prefix):
+        return clean
+    return prefix + clean
 
 
 def _window_slice(
@@ -84,6 +100,9 @@ def extract_snippets_for_vuln(
     """
     Build a FileSnippetBundle containing minimal, non-overlapping method snippets
     that cover all trace steps (across all traces) plus the derived sink.
+
+    Fail-fast: raises SnippetExtractionError if any referenced file is missing
+    or unreadable, or if sink is invalid.
     """
     # ---- Validate sink ----
     sink_step = spec.sink
@@ -91,7 +110,9 @@ def extract_snippets_for_vuln(
     sink_line = int(sink_step.get("line") or 0)
 
     if not sink_uri or sink_line < 1:
-        raise ValueError(f"Invalid sink in VulnerabilitySpec: uri={sink_uri!r} line={sink_line!r}")
+        raise SnippetExtractionError(
+            f"Invalid sink in VulnerabilitySpec: uri={sink_uri!r} line={sink_line!r}"
+        )
 
     repo_root_path = _normalize_repo_root(repo_root)
     locator = get_method_locator(spec.language, repo_root_path)
@@ -102,9 +123,13 @@ def extract_snippets_for_vuln(
 
     for trace in spec.traces:
         for step in trace:
-            uri = step["uri"]
-            line = int(step["line"])
+            uri = (step.get("uri") or "").strip()
+            line = int(step.get("line") or 0)
             msg = (step.get("message") or "").strip()
+            if not uri or line < 1:
+                # Skip malformed trace step rather than crashing
+                continue
+
             key = (uri, line, msg)
             if key in seen_points:
                 continue
@@ -122,12 +147,52 @@ def extract_snippets_for_vuln(
         _TracePoint(line=sink_line, note=sink_note, kind="sink")
     )
 
-    by_file: Dict[str, str] = {}
-
     # IMPORTANT: spec.constraints["max_lines"] is a PATCH SIZE limit (diff), not a snippet/context limit.
-    # Use a separate, larger context budget.
     per_file_cap = int(SNIPPET_MAX_LINES) if SNIPPET_MAX_LINES else 800
 
+    by_file: Dict[str, str] = {}
+    missing_files: List[str] = []
+    unreadable_files: List[str] = []
+
+    # 2) Preflight: ensure all files exist and are readable BEFORE we build any snippets
+    for rel_path in sorted(points_by_file.keys()):
+        abs_path = (repo_root_path / rel_path).resolve()
+
+        if not abs_path.exists():
+            missing_files.append(rel_path)
+            continue
+
+        # Must be a file
+        if not abs_path.is_file():
+            unreadable_files.append(rel_path)
+            continue
+
+        # Try a small read to catch permission errors early
+        try:
+            with abs_path.open("rb") as f:
+                f.read(1)
+        except Exception:
+            unreadable_files.append(rel_path)
+            continue
+
+    if missing_files or unreadable_files:
+        parts: List[str] = ["Snippet extraction failed; referenced source files are not accessible."]
+        if missing_files:
+            preview = "\n  - ".join(missing_files[:25])
+            more = f"\n  ...and {len(missing_files) - 25} more" if len(missing_files) > 25 else ""
+            parts.append(f"Missing ({len(missing_files)}):\n  - {preview}{more}")
+        if unreadable_files:
+            preview = "\n  - ".join(unreadable_files[:25])
+            more = f"\n  ...and {len(unreadable_files) - 25} more" if len(unreadable_files) > 25 else ""
+            parts.append(f"Unreadable ({len(unreadable_files)}):\n  - {preview}{more}")
+
+        raise SnippetExtractionError(
+            "\n".join(parts),
+            missing_files=missing_files,
+            unreadable_files=unreadable_files,
+        )
+
+    # 3) Build snippets now that we know files are accessible
     for rel_path in sorted(points_by_file.keys()):
         file_points = points_by_file[rel_path]
         abs_path = (repo_root_path / rel_path).resolve()
@@ -150,12 +215,20 @@ def extract_snippets_for_vuln(
             bucket = methods_for_file.setdefault(key, {"info": mi, "points": []})
             bucket["points"].append(tp)  # type: ignore[assignment]
 
+        # Full read (may still fail for encoding, etc.)
         try:
             source_text = abs_path.read_text(encoding="utf-8")
             lines = source_text.splitlines()
-        except FileNotFoundError:
-            by_file[rel_path] = f"// FILE MISSING: {rel_path}\n"
-            continue
+        except UnicodeDecodeError as e:
+            raise SnippetExtractionError(
+                f"Unreadable (non-UTF8) source file: {rel_path} ({e})",
+                unreadable_files=[rel_path],
+            )
+        except Exception as e:
+            raise SnippetExtractionError(
+                f"Failed to read source file: {rel_path} ({e})",
+                unreadable_files=[rel_path],
+            )
 
         snippets: List[str] = []
         used_line_budget = 0
@@ -193,7 +266,6 @@ def extract_snippets_for_vuln(
                 continue
 
             # ---- Window fallback (method too large) ----
-            # Include a tight window around the trace points so the LLM still has real code.
             pt_lines = [p.line for p in points_sorted] if points_sorted else [mi.start_line]
             center_min = max(1, min(pt_lines))
             center_max = min(len(lines), max(pt_lines))
@@ -247,9 +319,14 @@ def extract_snippets_for_vuln(
 
         by_file[rel_path] = "\n".join(snippets).rstrip() + "\n"
 
+    # Defensive: ensure we actually produced code
+    if not by_file or not any(v.strip() for v in by_file.values()):
+        raise SnippetExtractionError("Snippet extraction produced an empty bundle (no usable code).")
+
     return {"by_file": by_file}
 
 
 __all__ = [
     "extract_snippets_for_vuln",
+    "SnippetExtractionError",
 ]
