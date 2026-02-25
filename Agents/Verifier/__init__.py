@@ -16,12 +16,18 @@ def verifier_main(
     """
     Main entry point for Verifier called by Pipeline.
     
-    Uses the existing VerifierCore engine to verify patches.
+    Workflow:
+        1. Apply patches 
+        2. Check code diff 
+        3. Build in Docker
+        4. Run all tests (project's tests + POV)
+    
+    temp: POV tests are manually placed 
     
     Args:
         patcher_manifest_path: Path to Patcher's manifest JSON (patcher_*.json)
         project_name: Project name (e.g., "codehaus-plexus__plexus-archiver_CVE-2018-1002200_3.5")
-        exploiter_pov_test_path: path to Exploiter's POV test file
+        exploiter_pov_test_path: Deprecated — POV tests are now manually placed. Ignored.
     
     Returns:
         (success: bool, output_dir: str)
@@ -47,7 +53,8 @@ def verifier_main(
         print("\n⚠️  No patches were verified (Patcher output may be empty)")
         success = False
     else:
-        passed = sum(1 for r in results if r.status.value == "PASS")
+        # Status is a string, not an Enum
+        passed = sum(1 for r in results if r.status == "APPROVED")
         failed = len(results) - passed
         
         print(f"\n{'='*80}")

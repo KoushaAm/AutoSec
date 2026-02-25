@@ -3,6 +3,7 @@ import pathlib
 import datetime
 import sys
 import shutil
+import difflib
 from typing import Dict, Any, List, Optional
 
 from ..models.verification import VerificationResult, PatchInfo
@@ -29,20 +30,18 @@ class VerifierCore:
         self.project_manager = ProjectManager()
         self.build_runner = DockerBuildRunner()
     
-    def verify_fixer_output(self, fixer_json_path: str, pov_tests: Optional[List[Dict[str, Any]]] = None) -> List[VerificationResult]:
+    def verify_fixer_output(self, fixer_json_path: str) -> List[VerificationResult]:
         """
-        Apply patches → Build → Add tests → Run tests
+        Workflow:
         
-        1. Apply all patches to Projects/Sources/<project>/
-        2. Build the project (verify patches compile)
-        3. Copy POV tests from Exploiter to Projects/Sources/<project>/
-        4. Generate LLM tests next to vulnerable files in Projects/Sources/<project>/
-        5. Run `mvn test` (Maven auto-compiles tests and runs them)
-        6. Return simple pass/fail
+        1. Apply all patches to Projects/Sources/<project>/ 
+        2. Check code diff (with logging)
+        3. Build the project in Docker (verify patches compile)
+        4. Run all tests (project's tests + POV)
+        5. Log: build/test results, Docker stdout/stderr, LLM I/O, file paths
         
         Args:
             fixer_json_path: Path to Patcher's output manifest
-            pov_tests: POV tests from state['exploiter']['pov_tests'] (optional temp)
         """
         with open(fixer_json_path, 'r') as f:
             fixer_data = json.load(f)
@@ -90,7 +89,7 @@ class VerifierCore:
             return []
         
         # Verify all patches together
-        result = self._verify_all_patches_simple(patch_infos, session_dir, pov_tests or [])
+        result = self._verify_all_patches_simple(patch_infos, session_dir)
         
         # Save session results
         self.artifact_manager.save_session_summary([result], session_dir, fixer_json_path)
@@ -101,18 +100,30 @@ class VerifierCore:
         self, 
         patch_infos: List[PatchInfo], 
         session_dir: pathlib.Path,
-        pov_tests: List[Dict[str, Any]]
     ) -> VerificationResult:
         """
-        Simple verification: Apply patches → Build → Add tests → Run tests
+        Verification workflow:
+        1. Apply patches 
+        2. Check code diff (compare before/after)  
+        3. Build in Docker
+        4. Run all tests 
+        
+        All stages produce structured logs saved to session_dir
         """
         start_time = datetime.datetime.now()
+        
+        # Structured log accumulator — saved to verification_results.json at end
+        verification_log = {
+            "session_dir": str(session_dir),
+            "start_time": start_time.isoformat(),
+            "stages": {},
+        }
         
         print("="*80)
         print("VERIFICATION WORKFLOW")
         print("="*80)
         
-        # Determine project root from first patch
+        # Determine project root
         first_patch_file = patch_infos[0].touched_files[0]
         try:
             project_root = self.project_manager.find_project_root(first_patch_file)
@@ -121,14 +132,16 @@ class VerifierCore:
         
         print(f"Project: {project_root.name}")
         print(f"Patches to apply: {len(patch_infos)}")
-        print(f"POV tests to add: {len(pov_tests)}")
         print()
         
-        # STEP 1: Apply ALL patches
+        # 1: Apply patches
         print(f"[1/4] Applying all {len(patch_infos)} patches...")
+        stage1_log = {"patches": [], "applied": 0, "failed": 0}
         applied_patches = []
+        
         for i, patch_info in enumerate(patch_infos, 1):
-            print(f"   [{i}/{len(patch_infos)}] Applying patch {patch_info.patch_id} to {pathlib.Path(patch_info.touched_files[0]).name}...", end=" ", flush=True)
+            file_name = pathlib.Path(patch_info.touched_files[0]).name
+            print(f"   [{i}/{len(patch_infos)}] Applying patch {patch_info.patch_id} to {file_name}...", end=" ", flush=True)
             
             # Convert to absolute path
             actual_file_path = pathlib.Path(patch_info.touched_files[0])
@@ -138,9 +151,19 @@ class VerifierCore:
             
             if not actual_file_path.exists():
                 print(f"✗ File not found: {actual_file_path}")
+                stage1_log["patches"].append({
+                    "patch_id": patch_info.patch_id,
+                    "file": str(actual_file_path),
+                    "status": "error",
+                    "error": "File not found",
+                })
+                stage1_log["failed"] += 1
                 continue
             
-            # Apply patch
+            # Read original code before applying patch (for diff logging)
+            original_code = actual_file_path.read_text(encoding='utf-8')
+            
+            # Apply patch via LLM
             patch_info_dict = {
                 "file_path": str(actual_file_path),
                 "unified_diff": patch_info.unified_diff,
@@ -152,27 +175,130 @@ class VerifierCore:
             
             if patch_result["status"] != "success":
                 print(f"✗ Failed: {patch_result.get('error', 'Unknown error')}")
+                stage1_log["patches"].append({
+                    "patch_id": patch_info.patch_id,
+                    "file": str(actual_file_path),
+                    "status": "error",
+                    "error": patch_result.get("error", "Unknown error"),
+                })
+                stage1_log["failed"] += 1
                 continue
             
             print("✓")
+            stage1_log["applied"] += 1
+            
+            # Build patch log entry with LLM I/O
+            patch_log_entry = {
+                "patch_id": patch_info.patch_id,
+                "file": str(actual_file_path),
+                "status": "success",
+                "model_used": patch_result.get("model_used", ""),
+            }
+            
+            # Save LLM I/O to separate file for detailed inspection
+            llm_io = patch_result.get("llm_io", {})
+            if llm_io:
+                llm_log_file = session_dir / f"llm_patch_{patch_info.patch_id:03d}.json"
+                try:
+                    with open(llm_log_file, 'w') as f:
+                        json.dump(llm_io, f, indent=2)
+                    patch_log_entry["llm_io_log"] = str(llm_log_file)
+                except Exception as e:
+                    patch_log_entry["llm_io_log_error"] = str(e)
+            
+            stage1_log["patches"].append(patch_log_entry)
             applied_patches.append({
                 "patch_info": patch_info,
                 "patch_result": patch_result,
-                "file_path": actual_file_path
+                "file_path": actual_file_path,
+                "original_code": original_code,
             })
+        
+        verification_log["stages"]["1_apply_patches"] = stage1_log
         
         if not applied_patches:
             print("✗ No patches were successfully applied")
+            self._save_verification_log(verification_log, session_dir, start_time)
             return ErrorHandler.create_error_result(0, "Failed to apply any patches", start_time)
         
         print(f"✓ Successfully applied {len(applied_patches)}/{len(patch_infos)} patches\n")
         
-        # STEP 2: Build the project FIRST (verify patches compile)
-        print(f"[2/4] Building project to verify patches compile...")
+        # 2: Check code diff (compare original vs patched)
+        print(f"[2/4] Checking code changes...")
+        stage2_log = {"diffs": []}
+        
+        for ap in applied_patches:
+            file_path = ap["file_path"]
+            original_code = ap["original_code"]
+            patched_code = ap["patch_result"].get("patched_code", "")
+            
+            # Generate unified diff
+            original_lines = original_code.splitlines(keepends=True)
+            patched_lines = patched_code.splitlines(keepends=True)
+            diff_lines = list(difflib.unified_diff(
+                original_lines, patched_lines,
+                fromfile=f"a/{file_path.name}",
+                tofile=f"b/{file_path.name}",
+            ))
+            diff_text = "".join(diff_lines)
+            
+            added = sum(1 for l in diff_lines if l.startswith('+') and not l.startswith('+++'))
+            removed = sum(1 for l in diff_lines if l.startswith('-') and not l.startswith('---'))
+            
+            print(f"   {file_path.name}: +{added} -{removed} lines changed")
+            
+            diff_entry = {
+                "file": str(file_path),
+                "lines_added": added,
+                "lines_removed": removed,
+            }
+            
+            # Save diff to file
+            diff_file = session_dir / f"diff_patch_{ap['patch_info'].patch_id:03d}.diff"
+            try:
+                diff_file.write_text(diff_text, encoding='utf-8')
+                diff_entry["diff_file"] = str(diff_file)
+            except Exception as e:
+                diff_entry["diff_file_error"] = str(e)
+            
+            stage2_log["diffs"].append(diff_entry)
+        
+        verification_log["stages"]["2_code_diff"] = stage2_log
+        print(f"✓ Code diff logged\n")
+        
+        # 3: Build the project in Docker
+        print(f"[3/4] Building project to verify patches compile...")
         build_result = self.build_runner.run_build_only(project_root, session_dir)
         
+        # Collect Docker log paths
+        build_artifacts_dir = session_dir / "build"
+        docker_stdout_path = build_artifacts_dir / "docker_stdout.log"
+        docker_stderr_path = build_artifacts_dir / "docker_stderr.log"
+        
+        stage3_log = {
+            "success": build_result.get("success", False),
+            "return_code": build_result.get("return_code"),
+            "duration_seconds": build_result.get("duration", 0),
+            "docker_image": build_result.get("docker_image", ""),
+            "stack": build_result.get("stack", ""),
+            "error": build_result.get("error"),
+            "docker_logs": {
+                "stdout": str(docker_stdout_path) if docker_stdout_path.exists() else None,
+                "stderr": str(docker_stderr_path) if docker_stderr_path.exists() else None,
+            },
+        }
+        verification_log["stages"]["3_build"] = stage3_log
+        
         if not build_result.get("success"):
-            print(f"✗ Build failed - patches broke compilation\n")
+            print(f"✗ Build failed — patches broke compilation")
+            
+            # Log stderr snippet for quick debugging
+            if docker_stderr_path.exists():
+                stderr_content = docker_stderr_path.read_text(encoding='utf-8', errors='replace')
+                last_lines = "\n".join(stderr_content.strip().splitlines()[-20:])
+                print(f"\n--- Last 20 lines of Docker stderr ---")
+                print(last_lines)
+                print(f"--- Full log: {docker_stderr_path} ---\n")
             
             failure_result = VerificationResult(
                 patch_id=0,
@@ -181,50 +307,75 @@ class VerifierCore:
                 test_success=False,
                 reasoning=f"Build failed: {build_result.get('error', 'Unknown error')}",
                 confidence_score=0.0,
-                start_time=start_time,
-                end_time=datetime.datetime.now(),
+                patcher_feedback={},
                 verification_time=(datetime.datetime.now() - start_time).total_seconds()
             )
             
-            self._save_simple_artifacts(applied_patches, session_dir, build_result, None, failure_result)
+            verification_log["stages"]["4_tests"] = {"skipped": True, "reason": "Build failed"}
+            self._save_verification_log(verification_log, session_dir, start_time, failure_result)
             return failure_result
         
-        print(f"✓ Build succeeded - patches compile cleanly\n")
+        print(f"✓ Build succeeded — patches compile cleanly\n")
         
-        # STEP 3: Now add POV tests (build succeeded, so safe to add tests)
-        print(f"[3/4] Adding tests to project...")
-        print(f"   Copying POV tests from Exploiter...")
-        pov_copied = self._copy_pov_tests(project_root, pov_tests)
-        print(f"   ✓ Copied {pov_copied} POV test(s)")
-        
-        print(f"   Generating LLM security tests...")
-        llm_generated = self._generate_llm_tests(project_root, applied_patches[0]["patch_info"])
-        print(f"   ✓ Generated {llm_generated} LLM test(s)\n")
-        
-        # STEP 4: Run ALL tests (Maven auto-compiles and runs tests)
-        print(f"[4/4] Running all tests (existing + POV + LLM)...")
+        # 4: Run all tests 
+        print(f"[4/4] Running all tests (existing + POV)...")
         docker_image = build_result.get("docker_image")
         stack = build_result.get("stack")
         
         test_result = self.build_runner.run_tests_only(project_root, docker_image, stack, session_dir)
         
-        # Simple evaluation: did tests pass or fail?
+        # Collect test Docker log paths
+        test_artifacts_dir = session_dir / "tests"
+        test_stdout_path = test_artifacts_dir / "docker_stdout.log"
+        test_stderr_path = test_artifacts_dir / "docker_stderr.log"
+        
         test_success = test_result.get("status") == "PASS"
+        test_exec = test_result.get("test_execution", {})
+        test_results_data = test_exec.get("test_results", {})
+        
+        stage4_log = {
+            "status": test_result.get("status"),
+            "test_discovery": test_result.get("test_discovery", {}),
+            "test_execution": test_exec,
+            "docker_logs": {
+                "stdout": str(test_stdout_path) if test_stdout_path.exists() else None,
+                "stderr": str(test_stderr_path) if test_stderr_path.exists() else None,
+            },
+        }
+        verification_log["stages"]["4_tests"] = stage4_log
         
         if test_success:
             status = "APPROVED"
-            reasoning = "✓ Build successful; ✓ All tests passed (existing + POV + LLM)"
+            passed_count = test_results_data.get("passed_tests", 0)
+            total_count = test_results_data.get("total_tests", 0)
+            reasoning = f"✓ Build successful; ✓ All tests passed ({passed_count}/{total_count})"
             confidence = 0.9
             print(f"✓ All tests passed\n")
         else:
             status = "REJECTED"
-            test_exec = test_result.get("test_execution", {})
-            test_results = test_exec.get("test_results", {})
-            failed = test_results.get("failed_tests", 0)
-            total = test_results.get("total_tests", 0)
+            failed = test_results_data.get("failed_tests", 0)
+            total = test_results_data.get("total_tests", 0)
             reasoning = f"✓ Build successful; ✗ Tests failed ({failed}/{total} failures)"
             confidence = 0.3
-            print(f"✗ Tests failed ({failed}/{total} failures)\n")
+            print(f"✗ Tests failed ({failed}/{total} failures)")
+            
+            # Print failed test details
+            failed_details = test_results_data.get("failed_test_details", [])
+            if failed_details:
+                print(f"\n--- Failed tests ---")
+                for fd in failed_details[:10]:  # Show first 10
+                    print(f"   {fd.get('test_name', '?')}: {fd.get('failure_message', '?')[:120]}")
+                if len(failed_details) > 10:
+                    print(f"   ... and {len(failed_details) - 10} more")
+                print()
+            
+            # Log stderr snippet
+            if test_stderr_path.exists():
+                stderr_content = test_stderr_path.read_text(encoding='utf-8', errors='replace')
+                last_lines = "\n".join(stderr_content.strip().splitlines()[-15:])
+                print(f"--- Last 15 lines of test stderr ---")
+                print(last_lines)
+                print(f"--- Full log: {test_stderr_path} ---\n")
         
         verification_result = VerificationResult(
             patch_id=0,
@@ -233,215 +384,52 @@ class VerifierCore:
             test_success=test_success,
             reasoning=reasoning,
             confidence_score=confidence,
-            start_time=start_time,
-            end_time=datetime.datetime.now(),
+            patcher_feedback={},
             verification_time=(datetime.datetime.now() - start_time).total_seconds()
         )
         
-        self._save_simple_artifacts(applied_patches, session_dir, build_result, test_result, verification_result)
+        self._save_verification_log(verification_log, session_dir, start_time, verification_result)
         
         print("="*80)
         print(f"VERIFICATION RESULT: {status}")
         print(f"Reasoning: {reasoning}")
+        print(f"Logs: {session_dir}")
         print("="*80)
         
         return verification_result
     
-    def _copy_pov_tests(self, project_root: pathlib.Path, pov_tests: List[Dict[str, Any]]) -> int:
-        """
-        Copy POV tests from Exploiter's output to the working project.
-        
-        Args:
-            project_root: Root of the project in Projects/Sources/
-            pov_tests: List of POV test info from state['exploiter']['pov_tests']
-                       Each has 'pov_test_path' pointing to the test file location (relative path)
-        
-        Returns:
-            Number of POV tests successfully copied
-        """
-        if not pov_tests:
-            return 0
-        
-        copied = 0
-        autosec_root = pathlib.Path(__file__).parent.parent.parent.parent
-        
-        # Extract project name from project_root (e.g., "nahsra__antisamy_CVE-2016-10006_1.5.3")
-        project_name = project_root.name
-        
-        # Hardcoded exploiter workdir path
-        exploiter_workdir = autosec_root / "Agents" / "Exploiter" / "data" / "cwe-bench-java" / "workdir_no_branch" / "project-sources" / project_name
-        
-        for pov_test in pov_tests:
-            pov_test_paths = pov_test.get("pov_test_path", [])
-            if not pov_test_paths:
-                continue
-            
-            # Use the first path provided (this is a relative path)
-            relative_pov_path = pov_test_paths[0]
-            
-            # Construct the full absolute path in the Exploiter workdir
-            source_path = exploiter_workdir / relative_pov_path
-            
-            if not source_path.exists():
-                print(f"      Warning: POV test not found: {source_path}")
-                continue
-            
-            # find target path (keep the same relative structure)
-            # Example: If source is .../project-sources/<project>/src/test/java/Foo.java
-            # Copy to Projects/Sources/<project>/src/test/java/Foo.java
-            
-            # Find 'src' in the source path
-            try:
-                parts = source_path.parts
-                src_index = parts.index('src')
-                relative_path = pathlib.Path(*parts[src_index:])
-                target_path = project_root / relative_path
-                
-                # Create parent directories
-                target_path.parent.mkdir(parents=True, exist_ok=True)
-                
-                # Copy the test file
-                shutil.copy2(source_path, target_path)
-                copied += 1
-                print(f"      ✓ Copied {source_path.name} → {relative_path}")
-                
-            except (ValueError, IndexError):
-                print(f"      Warning: Could not determine target path for {source_path}")
-                continue
-        
-        return copied
-    
-    def _generate_llm_tests(self, project_root: pathlib.Path, patch_info: PatchInfo) -> int:
-        """
-        Generate LLM security tests and place them next to the vulnerable file.
-        
-        Args:
-            project_root: Root of the project in Projects/Sources/
-            patch_info: Patch information (contains vulnerable file and CWE info)
-        
-        Returns:
-            Number of LLM tests successfully generated
-        """
-        try:
-            # Import test generator
-            from ..testing.llm.test_generator import TestGenerationClient
-            
-            test_generator = TestGenerationClient(verbose=True)
-            
-            # Get the vulnerable file
-            vulnerable_file = pathlib.Path(patch_info.touched_files[0])
-            if not vulnerable_file.is_absolute():
-                autosec_root = pathlib.Path(__file__).parent.parent.parent.parent
-                vulnerable_file = autosec_root / vulnerable_file
-            
-            if not vulnerable_file.exists():
-                print(f"      Warning: Vulnerable file not found: {vulnerable_file}")
-                return 0
-            
-            # Read the patched code
-            patched_code = vulnerable_file.read_text(encoding='utf-8')
-            
-            # Extract CWE info
-            cwe_id = patch_info.cwe_matches[0]['cwe_id'] if patch_info.cwe_matches else 'Unknown'
-            vulnerability_desc = (
-                patch_info.cwe_matches[0].get('description', 'Security vulnerability')
-                if patch_info.cwe_matches else 'Security vulnerability'
-            )
-            
-            # Generate tests
-            print(f"      Generating tests for {vulnerable_file.name} (CWE-{cwe_id})...")
-            generated_test_code = test_generator.generate_tests(
-                patched_code=patched_code,
-                cwe_id=cwe_id,
-                vulnerability_description=vulnerability_desc,
-                patch_plan=patch_info.plan,
-                security_notes=patch_info.safety_verification,
-                num_tests=3
-            )
-            
-            if not generated_test_code:
-                print(f"      Warning: Failed to generate LLM tests")
-                return 0
-            
-            # Determine test file location
-            # If vulnerable file is src/main/java/com/example/Foo.java
-            # Test should go to src/test/java/com/example/FooSecurityTest.java
-            
-            parts = vulnerable_file.parts
-            if 'src' in parts and 'main' in parts:
-                src_index = parts.index('src')
-                main_index = parts.index('main')
-                
-                # Replace 'main' with 'test'
-                test_parts = list(parts[:main_index]) + ['test'] + list(parts[main_index + 1:])
-                
-                # Change filename to *SecurityTest.java
-                base_name = vulnerable_file.stem
-                test_parts[-1] = f"{base_name}SecurityTest.java"
-                
-                test_file_path = project_root / pathlib.Path(*test_parts[src_index:])
-                
-                # Create parent directories
-                test_file_path.parent.mkdir(parents=True, exist_ok=True)
-                
-                # Write test file
-                test_file_path.write_text(generated_test_code, encoding='utf-8')
-                
-                print(f"      ✓ Generated {test_file_path.relative_to(project_root)}")
-                return 1
-            else:
-                print(f"      Warning: Could not determine test file location for {vulnerable_file}")
-                return 0
-                
-        except Exception as e:
-            print(f"      Warning: LLM test generation failed: {e}")
-            return 0
-    
-    def _save_simple_artifacts(
+    def _save_verification_log(
         self,
-        applied_patches: List[Dict[str, Any]],
+        verification_log: Dict[str, Any],
         session_dir: pathlib.Path,
-        build_result: Dict[str, Any],
-        test_result: Optional[Dict[str, Any]],
-        verification_result: VerificationResult
+        start_time: datetime.datetime,
+        verification_result: Optional[VerificationResult] = None,
     ):
-        """Save simple verification artifacts"""
+        """Save comprehensive verification log to session directory."""
         try:
-            results_file = session_dir / "verification_results.json"
-            results_data = {
-                "patches_applied": [
-                    {
-                        "patch_id": p["patch_info"].patch_id,
-                        "file": str(p["file_path"]),
-                        "status": p["patch_result"]["status"]
-                    }
-                    for p in applied_patches
-                ],
-                "build": {
-                    "success": build_result.get("success", False),
-                    "duration": build_result.get("duration", 0),
-                    "docker_image": build_result.get("docker_image", ""),
-                    "stack": build_result.get("stack", "")
-                },
-                "tests": test_result or {},
-                "final_decision": {
+            end_time = datetime.datetime.now()
+            verification_log["end_time"] = end_time.isoformat()
+            verification_log["total_duration_seconds"] = (end_time - start_time).total_seconds()
+            
+            if verification_result:
+                verification_log["final_decision"] = {
                     "status": verification_result.status,
                     "reasoning": verification_result.reasoning,
                     "confidence": verification_result.confidence_score,
-                    "verification_time": verification_result.verification_time,
                     "build_success": verification_result.build_success,
-                    "test_success": verification_result.test_success
+                    "test_success": verification_result.test_success,
+                    "verification_time": verification_result.verification_time,
                 }
-            }
             
+            results_file = session_dir / "verification_results.json"
             with open(results_file, 'w') as f:
-                json.dump(results_data, f, indent=2)
+                json.dump(verification_log, f, indent=2)
             
             print(f"📂 Results saved to: {session_dir}\n")
             
         except Exception as e:
-            print(f"⚠️  Failed to save artifacts: {e}")
-
+            print(f"⚠️  Failed to save verification log: {e}")
+    
 
 def create_verifier(config: Optional[Dict[str, Any]] = None) -> VerifierCore:
     """Factory function to create a configured verifier instance"""

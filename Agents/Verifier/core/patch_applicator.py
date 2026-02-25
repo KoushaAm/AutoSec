@@ -80,11 +80,16 @@ class LLMPatchApplicator:
             original_code = file_path.read_text(encoding='utf-8')
             
             print(f"   Applying patch using {self.model.value}...", end=" ", flush=True)
-            modified_code = self._apply_patch_with_llm(
+            
+            unified_diff = patch_info.get("unified_diff", "")
+            plan = patch_info.get("plan", [])
+            safety_verification = patch_info.get("safety_verification", "")
+            
+            modified_code, llm_io = self._apply_patch_with_llm(
                 original_code,
-                patch_info.get("unified_diff", ""),
-                patch_info.get("plan", []),
-                patch_info.get("safety_verification", "")
+                unified_diff,
+                plan,
+                safety_verification
             )
             print("✓")
             
@@ -98,7 +103,10 @@ class LLMPatchApplicator:
                 "patched_file": str(file_path),  # Same file, now patched
                 "patch_applied": True,
                 "model_used": self.model.value,
-                "operation": "overwrite_in_place"
+                "operation": "overwrite_in_place",
+                "original_code": original_code,
+                "patched_code": modified_code,
+                "llm_io": llm_io,
             }
             
         except Exception as e:
@@ -109,8 +117,14 @@ class LLMPatchApplicator:
             }
     
     def _apply_patch_with_llm(self, original_code: str, unified_diff: str, 
-                              plan: List[str], safety_verification: str) -> str:
-        """Use LLM to intelligently apply the unified diff to the original code"""
+                              plan: List[str], safety_verification: str) -> tuple:
+        """
+        Use LLM to apply the unified diff to the original code.
+        
+        Returns:
+            Tuple of (modified_code: str, llm_io: dict) where llm_io contains
+            the full prompt, response, model, and attempt metadata for logging.
+        """
         
         # Format plan context
         plan_context = "\n".join(f"- {step}" for step in plan) if plan else "No plan provided"
@@ -128,8 +142,18 @@ class LLMPatchApplicator:
             {"role": "user", "content": user_message}
         ]
         
-        # Send request to OpenRouter with retry logic
+        # track LLM interaction for logging
+        llm_io = {
+            "model": self.model.value,
+            "system_prompt": SYSTEM_MESSAGE,
+            "user_prompt": user_message,
+            "raw_response": None,
+            "attempts": [],
+        }
+        
+        # send request to OpenRouter with retry logic
         for attempt in range(self.patch_settings["retry_attempts"]):
+            attempt_info = {"attempt": attempt + 1, "status": None, "error": None}
             try:
                 completion = self.client.chat.completions.create(
                     model=self.model.value,
@@ -140,6 +164,7 @@ class LLMPatchApplicator:
                 )
                 
                 modified_code = completion.choices[0].message.content or ""
+                llm_io["raw_response"] = modified_code
                 
                 if not modified_code.strip():
                     raise ValueError("LLM returned empty response")
@@ -153,9 +178,15 @@ class LLMPatchApplicator:
                         lines = lines[:-1]
                     modified_code = '\n'.join(lines)
                 
-                return modified_code.strip()
+                attempt_info["status"] = "success"
+                llm_io["attempts"].append(attempt_info)
+                return modified_code.strip(), llm_io
                 
             except Exception as e:
+                attempt_info["status"] = "failed"
+                attempt_info["error"] = str(e)
+                llm_io["attempts"].append(attempt_info)
+                
                 if attempt < self.patch_settings["retry_attempts"] - 1:
                     print(f"Attempt {attempt + 1} failed, retrying: {e}")
                     continue

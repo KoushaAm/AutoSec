@@ -86,6 +86,11 @@ class TestGenerationClient:
         
         for attempt in range(config.TEST_GENERATION_SETTINGS["retry_attempts"]):
             try:
+                if self.verbose:
+                    print(f"[TestGen] Attempt {attempt + 1}/{config.TEST_GENERATION_SETTINGS['retry_attempts']}...")
+                    print(f"[TestGen] Model: {self.model.value}")
+                    print(f"[TestGen] Message length: {len(user_message)} chars")
+                
                 completion = self.client.chat.completions.create(
                     model=self.model.value,
                     messages=messages,
@@ -93,6 +98,18 @@ class TestGenerationClient:
                     max_tokens=config.TEST_GENERATION_SETTINGS["max_tokens"],
                     timeout=config.TEST_GENERATION_SETTINGS["timeout"]
                 )
+                
+                # Debug: Print the raw response
+                if self.verbose:
+                    print(f"[TestGen] Raw API response received")
+                    print(f"[TestGen] Choices count: {len(completion.choices)}")
+                    if completion.choices:
+                        print(f"[TestGen] Message content type: {type(completion.choices[0].message.content)}")
+                        print(f"[TestGen] Message content is None: {completion.choices[0].message.content is None}")
+                        if completion.choices[0].message.content:
+                            print(f"[TestGen] Message length: {len(completion.choices[0].message.content)}")
+                            print(f"[TestGen] Message repr: {repr(completion.choices[0].message.content[:500])}")
+                            print(f"[TestGen] First 200 chars: {completion.choices[0].message.content[:200]}")
                 
                 test_code = completion.choices[0].message.content or ""
                 
@@ -108,6 +125,10 @@ class TestGenerationClient:
                 return test_code
                 
             except Exception as e:
+                if self.verbose:
+                    print(f"[TestGen] Error type: {type(e).__name__}")
+                    print(f"[TestGen] Error message: {str(e)}")
+                
                 if attempt < config.TEST_GENERATION_SETTINGS["retry_attempts"] - 1:
                     if self.verbose:
                         print(f"[TestGen] Attempt {attempt + 1} failed, retrying: {e}")
