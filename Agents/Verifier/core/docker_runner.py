@@ -10,6 +10,7 @@ import subprocess
 import pathlib
 import time
 import json
+import os
 from typing import Dict, Any, Tuple, Optional
 
 
@@ -85,6 +86,19 @@ class DockerRunner:
         self.cache_dir = cache_dir or pathlib.Path("./build-cache")
         self.cache_dir.mkdir(parents=True, exist_ok=True)
     
+    @staticmethod
+    def _to_host_path(container_path: pathlib.Path) -> str:
+        """
+        Convert a container path to a host path using HOST_WORKSPACE, 
+        so Docker volume mounts resolve correctly.
+        """
+        host_ws = os.environ.get("HOST_WORKSPACE", "")
+        container_ws = "/workspaces/autosec"
+        p = str(container_path)
+        if host_ws and p.startswith(container_ws):
+            return host_ws + p[len(container_ws):]
+        return p
+
     def run_command(
         self, 
         image: str, 
@@ -96,11 +110,15 @@ class DockerRunner:
         """Execute a command in a Docker container."""
         worktree_abs = worktree.resolve()
         artifacts_abs = artifacts.resolve()
+
+        # translate to host paths for Docker-outside-of-Docker
+        worktree_host = self._to_host_path(worktree_abs)
+        artifacts_host = self._to_host_path(artifacts_abs)
         
         docker_cmd = [
             "docker", "run", "--rm",
-            "-v", f"{worktree_abs}:/workspace",
-            "-v", f"{artifacts_abs}:/artifacts",
+            "-v", f"{worktree_host}:/workspace",
+            "-v", f"{artifacts_host}:/artifacts",
             "-w", "/workspace",
             image,
             "sh", "-c", command
