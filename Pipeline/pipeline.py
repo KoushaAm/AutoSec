@@ -281,103 +281,40 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
     return state
 
 
-def _verifier_node(state: AutoSecState) -> Command:
+def _verifier_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node: verifier started")
-    
-    new_state = dict(state)
-    
-    try:
-        patcher_data = state.get("patcher", {})
-        patcher_artifact_path = patcher_data.get("artifact_path")
-        
-        if not patcher_artifact_path:
-            logger.error("No patcher artifact_path in state")
-            new_state["verifier"] = {
-                "success": False,
-                "error": "Patcher artifact_path not provided in state",
-                "patches_verified": 0
-            }
-            return Command(goto=END, update=new_state)
-        
-        project_name = state.get("project_name")
-        if not project_name:
-            logger.error("No project_name in state")
-            new_state["verifier"] = {
-                "success": False,
-                "error": "project_name not provided in state",
-                "patches_verified": 0
-            }
-            return Command(goto=END, update=new_state)
-        
-        # get Exploiter's POV test path (if available)
-        exploiter_data = state.get("exploiter", {})
-        pov_test_path = None
-        
-        if exploiter_data.get("success"):
-            # path to POV test
-            # format: Agents/Exploiter/data/cwe-bench-java/workdir_no_branch/project-sources/{project_name}/src/test/java/...
-            exploiter_project_dir = AGENTS_DIR / "Exploiter" / "data" / "cwe-bench-java" / "workdir_no_branch" / "project-sources" / project_name
-            
-            # find the POV test file (usually named *Test.java in src/test/java)
-            test_dir = exploiter_project_dir / "src" / "test" / "java"
-            if test_dir.exists():
-                # find first test file
-                test_files = list(test_dir.rglob("*Test.java"))
-                if test_files:
-                    pov_test_path = str(test_files[0])
-                    logger.info(f"Found POV test: {test_files[0].name}")
-        
-        # find Patcher manifest file
-        patcher_dir = Path(patcher_artifact_path)
-        
-        if patcher_dir.is_dir():
-            # find patcher_*.json manifest
-            manifest_files = list(patcher_dir.glob("patcher_*.json"))
-            if not manifest_files:
-                logger.error(f"No patcher manifest found in {patcher_dir}")
-                new_state["verifier"] = {
-                    "success": False,
-                    "error": f"No patcher manifest found in {patcher_dir}",
-                    "patches_verified": 0
-                }
-                return Command(goto=END, update=new_state)
-            manifest_path = str(manifest_files[0])
-        else:
-            manifest_path = patcher_artifact_path
-        
-        logger.info(f"Running Verifier on: {manifest_path}")
-        
-        # run Verifier
-        success, output_dir = verifier_main(
-            patcher_manifest_path=manifest_path,
-            project_name=project_name,
-            exploiter_pov_test_path=pov_test_path,
-        )
-        
-        new_state["verifier"] = {
-            "success": success,
-            "output_dir": output_dir
-        }
-        
-        if success:
-            logger.info(f"Verifier completed successfully. Output: {output_dir}")
-        else:
-            logger.warning(f"Verifier completed with issues. Output: {output_dir}")
-        
-        # TODO: Implement feedback loops based on verification results
-        # For now, just end the pipeline
-        return Command(goto=END, update=new_state)
-        
-    except Exception as e:
-        logger.error(f"Verifier node encountered exception: {e}")
-        import traceback
-        traceback.print_exc()
-        new_state["verifier"] = {
-            "success": False,
-            "error": str(e),
-            "patches_verified": 0
-        }
-        return Command(goto=END, update=new_state)
+
+    patcher_state = state.get("patcher", {})
+    patcher_artifact_path = patcher_state.get("artifact_path", "")
+    project_name = state.get("project_name", "")
+
+    if not patcher_artifact_path:
+        logger.error("No patcher artifact_path in state — skipping verifier")
+        state["verifier"] = {"success": False, "error": "No patcher output"}
+        return state
+
+    run_dir = Path(patcher_artifact_path)
+    manifest_files = sorted(run_dir.glob("patcher_manifest_*.json"))
+
+    if not manifest_files:
+        logger.error(f"No patcher manifest found in {run_dir}")
+        state["verifier"] = {"success": False, "error": f"No manifest in {run_dir}"}
+        return state
+
+    manifest_path = str(manifest_files[0])
+    logger.info(f"Using patcher manifest: {manifest_path}")
+
+    success, output_dir = verifier_main(
+        patcher_manifest_path=manifest_path,
+        project_name=project_name,
+    )
+
+    state["verifier"] = {
+        "success": success,
+        "output_dir": output_dir,
+    }
+
+    return state
 
 # ====== Execute workflow =====
 def pipeline_main():

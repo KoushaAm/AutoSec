@@ -70,7 +70,7 @@ class ArtifactManager:
             # Save only the verification decision (not full stdout/stderr)
             result_data = {
                 "patch_id": verification_result.patch_id,
-                "decision": "SAFE" if verification_result.status.value == "patch_valid" else "VULNERABLE",
+                "decision": "SAFE" if verification_result.status in ("APPROVED", "patch_valid") else "VULNERABLE",
                 "reasoning": verification_result.reasoning,
                 "build_success": verification_result.build_success,
                 "requires_revision": verification_result.patcher_feedback.get('requires_revision', False)
@@ -100,7 +100,7 @@ class ArtifactManager:
                 "patches": [
                     {
                         "patch_id": r.patch_id,
-                        "status": r.status.value,
+                        "status": r.status if isinstance(r.status, str) else r.status.value,
                         "build_success": r.build_success,
                         "requires_revision": r.patcher_feedback.get('requires_revision', False),
                         "cwe_id": r.patcher_feedback.get('cwe_matches', [{}])[0].get('cwe_id', 'Unknown')
@@ -170,7 +170,7 @@ class ArtifactManager:
         """VerificationResult to dictionary for JSON serialization"""
         return {
             "patch_id": result.patch_id,
-            "status": result.status.value,
+            "status": result.status if isinstance(result.status, str) else result.status.value,
             "reasoning": result.reasoning,
             "confidence_score": result.confidence_score,
             "build_success": result.build_success,
