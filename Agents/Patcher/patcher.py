@@ -7,6 +7,7 @@ from openai import OpenAI
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 from datetime import datetime, timezone
+import logging
 
 from .config import OUTPUT_PATH, MODEL_NAME, MODEL_VALUE
 from .constants import SYSTEM_MESSAGE, DEVELOPER_MESSAGE
@@ -23,6 +24,7 @@ from .utils import (
     build_patch_prompt,
     process_llm_output_single,
     write_run_manifest,
+    setup_run_logger,
 )
 
 # Initialize OpenRouter client
@@ -40,6 +42,7 @@ def _save_prompt_debug(
     run_dir: Path,
     task_id: Optional[int] = None,
     cwe_id: Optional[str] = None,
+    logger: logging.Logger,
 ) -> None:
     """
     Save the exact prompt text sent to the LLM for debugging and reproducibility.
@@ -82,7 +85,7 @@ def _save_prompt_debug(
         debug_lines.append("-" * 80)
 
     debug_path.write_text("\n".join(debug_lines), encoding="utf-8")
-    print(f"[debug] Saved prompt to {debug_path.resolve()}")
+    logger.info("[debug] Saved prompt to %s", debug_path.resolve())
 
 
 # TODO: refactor to specify constraints per CWE instance
@@ -116,6 +119,7 @@ def populate_vulnerability_specs(
     vulnerabilities: List[Dict[str, Any]],
     project_name: str,
     pov_logic: str,
+    logger: logging.Logger,
 ) -> List[VulnerabilitySpec]:
     """
     Convert pipeline-provided vulnerabilities into VulnerabilitySpec list.
@@ -152,7 +156,11 @@ def populate_vulnerability_specs(
         )
 
     if skipped:
-        print(f"[patcher] Skipped {skipped} vulnerability instance(s) with empty traces for {cwe_id}")
+        logger.warning(
+            "Skipped %s vulnerability instance(s) with empty traces for %s",
+            skipped,
+            cwe_id,
+        )
 
     return specs
 
@@ -189,14 +197,6 @@ def patcher_main(
     """
     repo_root = _detect_repo_root()
 
-    specs = populate_vulnerability_specs(
-        language=language,
-        cwe_id=cwe_id,
-        vulnerabilities=vulnerability_list,
-        project_name=project_name,
-        pov_logic=pov_logic,
-    )
-
     # Create ONE run dir for the whole patcher execution
     dt = datetime.now(timezone.utc)
     run_timestamp = dt.strftime("%Y%m%dT%H%M%SZ")
@@ -207,11 +207,31 @@ def patcher_main(
     run_dir = output_root / run_id
     run_dir.mkdir(parents=True, exist_ok=True)
 
+    # Required structure: <run_dir>/output/logs/run.log (+ per-patch logs)
+    output_dir = run_dir / "output"
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    run_logger = setup_run_logger(output_dir, level="INFO")
+    run_logger.info("Patcher logger has started")
+    run_logger.info("run_id=%s", run_id)
+    run_logger.info("repo_root=%s", repo_root)
+    run_logger.info("run_dir=%s", run_dir.resolve())
+    run_logger.info("output_dir=%s", output_dir.resolve())
+
+    specs = populate_vulnerability_specs(
+        language=language,
+        cwe_id=cwe_id,
+        vulnerabilities=vulnerability_list,
+        project_name=project_name,
+        pov_logic=pov_logic,
+        logger=run_logger,
+    )
+
     manifest_patches: List[Dict[str, Any]] = []
     patcher_success = True
 
     for task_index, spec in enumerate(specs, start=1):
-        print(f"\n=== Task {task_index}: cwe_id={spec.cwe_id} ===")
+        run_logger.info("=== Task %s: cwe_id=%s ===", task_index, spec.cwe_id)
 
         # 1) Extract code context from all trace steps (dedup/merge inside extractor)
         try:
@@ -221,22 +241,19 @@ def patcher_main(
             )
         except SnippetExtractionError as e:
             patcher_success = False
-            print(f"[error] Snippet extraction failed for task {task_index}:\n{e}", file=sys.stderr)
+            run_logger.error("Snippet extraction failed for task %s: %s", task_index, e)
             # Fail fast: do NOT build prompt, do NOT call LLM
             continue
-        except Exception as e:
+        except Exception:
             patcher_success = False
-            print(f"[error] Unexpected extractor error for task {task_index}: {e}", file=sys.stderr)
+            run_logger.exception("Unexpected extractor error for task %s", task_index)
             continue
 
         # Hard guard: refuse to prompt if bundle is empty for any reason
         by_file = snippets.get("by_file", {})
         if not by_file or not any((v or "").strip() for v in by_file.values()):
             patcher_success = False
-            print(
-                f"[error] Empty snippet bundle for task {task_index}; refusing to call LLM.",
-                file=sys.stderr,
-            )
+            run_logger.error("Empty snippet bundle for task %s; refusing to call LLM.", task_index)
             continue
 
         # 2) Build exactly one prompt per vulnerability instance (only after extraction succeeded)
@@ -253,39 +270,44 @@ def patcher_main(
             _save_prompt_debug(
                 messagesArray,
                 MODEL_NAME,
-                run_dir=run_dir,
+                run_dir=output_dir,
                 task_id=task_index,
                 cwe_id=spec.cwe_id,
+                logger=run_logger,
             )
 
-        print(f"====== Sending request to OpenRouter with '{MODEL_VALUE}' ======")
+        run_logger.info("Sending request to OpenRouter | model=%s | task=%s", MODEL_VALUE, task_index)
+
         try:
             completion = client.chat.completions.create(
                 model=MODEL_VALUE,
                 messages=messagesArray,
                 temperature=0.0,
-                max_tokens=6000, # TODO: determine programmatically
+                max_tokens=6000,  # TODO: determine programmatically?
                 response_format={"type": "json_object"},
             )
             if completion.choices[0].finish_reason != "stop":
                 patcher_success = False
-                print(f"[error] Unexpected finish reason: {completion.choices[0].finish_reason}")
-                print("[debug] Content length:", len(completion.choices[0].message.content or ""))
+                run_logger.error("Unexpected finish reason: %s", completion.choices[0].finish_reason)
+                run_logger.info(
+                    "[debug] Content length: %s",
+                    len(completion.choices[0].message.content or ""),
+                )
 
-        except Exception as e:
+        except Exception:
             patcher_success = False
-            print(f"[error] OpenRouter error on task {task_index}: {e}", file=sys.stderr)
+            run_logger.exception("OpenRouter error on task %s", task_index)
             continue
 
         llm_output = completion.choices[0].message.content or ""
         if not llm_output.strip():
             patcher_success = False
-            print(f"[error] No output from LLM for task {task_index}\n", file=sys.stderr)
-            print(f"[debug] Full completion response: {completion}\n", file=sys.stderr)
-            print(f"[debug] Full LLM response: {llm_output}\n", file=sys.stderr)
+            run_logger.error("No output from LLM for task %s", task_index)
+            run_logger.error("[debug] Full completion response: %s", completion)
+            run_logger.error("[debug] Full LLM response: %s", llm_output)
             continue
 
-        # 4) Persist artifact JSON + update manifest
+        # 4) Persist artifact JSON + update manifest (logging required inside output_utils)
         try:
             manifest_entry, _artifact_path = process_llm_output_single(
                 llm_output,
@@ -295,13 +317,16 @@ def patcher_main(
                 run_timestamp=run_timestamp,
                 run_timestamp_iso=run_timestamp_iso,
                 task_id=task_index,
+                output_dir=output_dir,   # REQUIRED
+                run_logger=run_logger,   # REQUIRED
             )
             manifest_patches.append(manifest_entry)
-        except Exception as exc:
+        except Exception:
             patcher_success = False
-            print(f"[fatal] Failed to process LLM output for task {task_index}: {exc}", file=sys.stderr)
+            run_logger.exception("Failed to process LLM output for task %s", task_index)
             continue
 
+    # Required: run_logger passed through
     write_run_manifest(
         run_dir=run_dir,
         run_id=run_id,
@@ -309,16 +334,16 @@ def patcher_main(
         model_name=MODEL_VALUE,
         run_timestamp_iso=run_timestamp_iso,
         manifest_patches=manifest_patches,
+        run_logger=run_logger,   # REQUIRED
     )
 
-    print(f"\n=== Patcher completed: {len(manifest_patches)} patches written to {run_dir.resolve()} ===")
+    run_logger.info("Patcher completed: %s patches written to %s", len(manifest_patches), run_dir.resolve())
     return patcher_success, str(run_dir.resolve())
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Patcher tool (standalone)")
     parser.add_argument("--save-prompt", action="store_true", help="Save prompts to output/prompts/")
-    parser.add_argument("--use-experiments", action="store_true", help="(legacy) run experiment vulns (deprecated)")
     args = parser.parse_args()
 
     raise SystemExit("Standalone mode is deprecated. Call patcher_main(...) from pipeline with Finder output.")
