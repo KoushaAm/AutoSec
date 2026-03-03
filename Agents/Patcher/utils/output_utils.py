@@ -1,6 +1,6 @@
 # Patcher/utils/output_utils.py
-import sys
 import json
+import logging
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
@@ -12,6 +12,7 @@ from .generic_utils import (
     write_manifest,
     prettify_unified_diff,
 )
+from .logging_utils import get_patch_logger
 
 
 # ================== Validation (strict schema) ==================
@@ -70,18 +71,19 @@ def _parse_and_validate_single(
     run_dir: Path,
     run_timestamp: str,
     task_id: int,
+    run_logger: logging.Logger,
 ) -> Dict[str, Any]:
     """
     Extract JSON, parse it, then validate that it contains exactly one patch.
     Returns the single patch object.
     """
-
     json_text = extract_json_block(
         llm_output,
         run_dir=run_dir,
         run_timestamp=run_timestamp,
         stage="extract_json_block",
         task_id=task_id,
+        logger=run_logger,
     )
 
     try:
@@ -94,11 +96,13 @@ def _parse_and_validate_single(
             run_timestamp=run_timestamp,
             stage="json_parse",
             task_id=task_id,
+            logger=run_logger,
         )
-        print(
-            f"[error] Failed to parse JSON for model '{model_name}'. "
-            f"Raw output saved to: {debug_path}",
-            file=sys.stderr,
+        run_logger.error(
+            "Failed to parse JSON | model=%s | task_id=%s | debug_path=%s",
+            model_name,
+            task_id,
+            str(debug_path),
         )
         raise
 
@@ -122,26 +126,34 @@ def process_llm_output_single(
     run_timestamp: str,
     run_timestamp_iso: str,
     task_id: int,
+    output_dir: Path,
+    run_logger: logging.Logger,
 ) -> Tuple[Dict[str, Any], str]:
     """
     Parse a single-task LLM output, validate it, write one patch artifact file.
 
+    Logging is REQUIRED:
+      - run_logger: run-level lifecycle/errors
+      - patch logger (derived from output_dir + patch_id): full human-readable patch summary
+
     Returns:
       (manifest_entry, artifact_path_str)
     """
-
     patch = _parse_and_validate_single(
         llm_output,
         model_name,
         run_dir=run_dir,
         run_timestamp=run_timestamp,
         task_id=task_id,
+        run_logger=run_logger,
     )
 
     patch_id = patch["patch_id"]
 
     if patch_id != task_id:
         raise ValueError(f"patch_id mismatch: expected {task_id}, got {patch_id}")
+
+    patch_logger = get_patch_logger(output_dir, str(patch_id), level="INFO")
 
     unified_diff = patch["unified_diff"]
     touched_files = patch.get("touched_files") or []
@@ -172,7 +184,7 @@ def process_llm_output_single(
 
     patch_filename = f"patch_{patch_id:03d}.json"
     patch_path = Path(run_dir) / patch_filename
-    write_patch_artifact(patch_path, patch_artifact)
+    write_patch_artifact(patch_path, patch_artifact, logger=patch_logger)
 
     artifact_path_str = patch_path.as_posix()
 
@@ -182,20 +194,20 @@ def process_llm_output_single(
         "artifact_path": artifact_path_str,
     }
 
-    # Human-readable summary
-    print(f"\n--- Patch (id={patch_id}) written ---")
-    print(f"Artifact: {artifact_path_str}")
-    print("Plan:", " / ".join(patch.get("plan", [])) or "(none)")
-    print("\n=== Safety & Verification ===")
-    print(patch.get("safety_verification", ""))
-    print("\n=== Risk Notes ===")
-    print(patch.get("risk_notes", ""))
-    print("\n=== Unified Diff ===")
-    print(prettify_unified_diff(unified_diff))
-    print("\nTouched files:", ", ".join(touched_files))
-    print("Assumptions:", patch.get("assumptions", ""))
-    print("Behavior change:", patch.get("behavior_change", ""))
-    print("Confidence:", patch.get("confidence", 0))
+    # Run logger: concise
+    run_logger.info("Patch artifact written | patch_id=%s | artifact=%s", patch_id, artifact_path_str)
+
+    # Patch logger: full summary
+    patch_logger.info("--- Patch (id=%s) written ---", patch_id)
+    patch_logger.info("Artifact: %s", artifact_path_str)
+    patch_logger.info("Plan: %s", " / ".join(patch.get("plan", [])) or "(none)")
+    patch_logger.info("=== Safety & Verification ===\n%s", patch.get("safety_verification", ""))
+    patch_logger.info("=== Risk Notes ===\n%s", patch.get("risk_notes", ""))
+    patch_logger.info("=== Unified Diff ===\n%s", prettify_unified_diff(unified_diff))
+    patch_logger.info("Touched files: %s", ", ".join(touched_files))
+    patch_logger.info("Assumptions: %s", patch.get("assumptions", ""))
+    patch_logger.info("Behavior change: %s", patch.get("behavior_change", ""))
+    patch_logger.info("Confidence: %s", patch.get("confidence", 0))
 
     return manifest_entry, artifact_path_str
 
@@ -208,11 +220,12 @@ def write_run_manifest(
     model_name: str,
     run_timestamp_iso: str,
     manifest_patches: List[Dict[str, Any]],
+    run_logger: logging.Logger,
 ) -> Path:
     """
     Write one run-level manifest that indexes all per-task patch artifacts.
+    Logging is REQUIRED.
     """
-
     manifest = {
         "metadata": {
             "run_id": run_id,
@@ -225,4 +238,4 @@ def write_run_manifest(
     }
 
     manifest_path = Path(run_dir) / f"patcher_manifest_{run_timestamp}.json"
-    return write_manifest(manifest_path, manifest)
+    return write_manifest(manifest_path, manifest, logger=run_logger)
