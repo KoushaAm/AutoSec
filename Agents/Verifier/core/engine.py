@@ -88,8 +88,33 @@ class VerifierCore:
             self.artifact_manager.save_session_summary([], session_dir, fixer_json_path)
             return []
         
-        # Verify all patches together
-        result = self._verify_all_patches_simple(patch_infos, session_dir)
+        # target file does not exist check
+        autosec_root = pathlib.Path(__file__).parent.parent.parent.parent
+        valid_patches = []
+        rejected_count = 0
+        
+        for pi in patch_infos:
+            file_path = pi.touched_files[0] if pi.touched_files else ""
+            abs_path = pathlib.Path(file_path) if pathlib.Path(file_path).is_absolute() else autosec_root / file_path
+            
+            if not abs_path.exists():
+                print(f"   ✗ Rejected patch {pi.patch_id}: file not found → {file_path}")
+                rejected_count += 1
+            else:
+                valid_patches.append(pi)
+        
+        if rejected_count:
+            print(f"\n⚠️  Rejected {rejected_count}/{len(patch_infos)} patch(es) with invalid file paths")
+        
+        if not valid_patches:
+            print("❌ All patches rejected — no valid file paths")
+            self.artifact_manager.save_session_summary([], session_dir, fixer_json_path)
+            return []
+        
+        print(f"✓ {len(valid_patches)} patch(es) passed file-path validation\n")
+        
+        # verify all valid patches together
+        result = self._verify_all_patches_simple(valid_patches, session_dir)
         
         # Save session results
         self.artifact_manager.save_session_summary([result], session_dir, fixer_json_path)
