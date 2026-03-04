@@ -1,0 +1,40 @@
+from dataclasses import dataclass
+from enum import Enum
+from typing import Dict, Any, List
+
+
+class VerificationStatus(Enum):
+    """Status outcomes for patch verification"""
+    PATCH_VALID = "patch_valid"
+    PATCH_BREAKS_BUILD = "patch_breaks_build"
+    PATCH_BREAKS_TESTS = "patch_breaks_tests"
+    VERIFICATION_ERROR = "verification_error"
+
+
+@dataclass
+class VerificationResult:
+    """Result of verifying single patch"""
+    patch_id: int
+    status: VerificationStatus
+    reasoning: str
+    confidence_score: float
+    build_success: bool
+    test_success: bool
+    patcher_feedback: Dict[str, Any]
+    verification_time: float
+
+
+@dataclass
+class PatchInfo:
+    """Information about a patch to be verified"""
+    patch_id: int
+    unified_diff: str
+    touched_files: List[str]
+    cwe_matches: List[Dict[str, Any]]
+    plan: List[str]
+    confidence: int
+    verifier_confidence: int
+    risk_notes: str
+    assumptions: str
+    behavior_change: str
+    safety_verification: str

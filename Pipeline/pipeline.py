@@ -17,6 +17,7 @@ from .utils import load_dummy_finder_output
 from .project_variants import ProjectVariants
 
 from Agents.Patcher import patcher_main
+from Agents.Verifier import verifier_main
 from Agents.Finder.src.types import FinderOutput
 from Agents.Finder.src.output_converter import sarif_to_finder_output
 
@@ -283,25 +284,41 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
 def _verifier_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node: verifier started")
 
-    retry_finder = False
-    new_state = dict(state)
+    patcher_state = state.get("patcher", {})
+    patcher_artifact_path = patcher_state.get("artifact_path", "")
+    project_name = state.get("project_name", "")
 
-    if retry_finder:
-        new_state["finder_reanalyze"] = True
-        return Command(
-            goto="finder",
-            update=new_state
-        )
+    if not patcher_artifact_path:
+        logger.error("No patcher artifact_path in state — skipping verifier")
+        state["verifier"] = {"success": False, "error": "No patcher output"}
+        return state
 
-    # finish pipeline
-    return Command(
-        goto=END,
-        update=new_state
+    run_dir = Path(patcher_artifact_path)
+    manifest_files = sorted(run_dir.glob("patcher_manifest_*.json"))
+
+    if not manifest_files:
+        logger.error(f"No patcher manifest found in {run_dir}")
+        state["verifier"] = {"success": False, "error": f"No manifest in {run_dir}"}
+        return state
+
+    manifest_path = str(manifest_files[0])
+    logger.info(f"Using patcher manifest: {manifest_path}")
+
+    success, output_dir = verifier_main(
+        patcher_manifest_path=manifest_path,
+        project_name=project_name,
     )
+
+    state["verifier"] = {
+        "success": success,
+        "output_dir": output_dir,
+    }
+
+    return state
 
 # ====== Execute workflow =====
 def pipeline_main():
-    SELECTED_PROJECT = ProjectVariants.KUBERNETES_CLIENT
+    SELECTED_PROJECT = ProjectVariants.YAMCS
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
         "project_name": SELECTED_PROJECT.project_name,
