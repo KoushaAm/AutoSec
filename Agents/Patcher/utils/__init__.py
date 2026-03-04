@@ -11,9 +11,16 @@ from .output_utils import (
     write_run_manifest,
 )
 
+from .logging_utils import (
+    setup_run_logger,
+    get_patch_logger,
+)
+
 __all__ = [
     "combine_prompt_messages",
     "build_patch_prompt",
     "process_llm_output_single",
     "write_run_manifest",
+    "setup_run_logger",
+    "get_patch_logger",
 ]
