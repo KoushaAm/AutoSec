@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 from enum import Enum
 from typing import Dict, Any, List
-import datetime
 
 
 class VerificationStatus(Enum):
@@ -39,15 +38,3 @@ class PatchInfo:
     assumptions: str
     behavior_change: str
     safety_verification: str
-    pov_tests: List[Dict[str, Any]] = None
-
-
-@dataclass
-class VerificationSession:
-    """Information about a verification session"""
-    session_id: str
-    timestamp: datetime.datetime
-    fixer_input_path: str
-    output_directory: str
-    total_patches: int
-    results: List[VerificationResult]

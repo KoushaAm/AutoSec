@@ -47,32 +47,3 @@ Patch Plan: {plan_context}
 Safety Notes: {safety_verification}
 
 Return the complete modified source code with the diff applied exactly as specified. Do not add any code beyond what the diff explicitly shows."""
-
-VERIFICATION_PROMPT = """Review this patch application result to ensure correctness:
-
-ORIGINAL CODE:
-```
-{original_code}
-```
-
-PATCH APPLIED:
-```
-{unified_diff}
-```
-
-RESULT CODE:
-```
-{modified_code}
-```
-
-Verify that:
-1. All additions (+) were applied correctly
-2. All deletions (-) were removed properly
-3. Context lines remain unchanged
-4. Indentation and formatting are preserved
-5. No syntax errors were introduced
-6. NO EXTRA CODE was added beyond the diff
-
-Respond with either:
-- "VERIFIED: Patch applied correctly"
-- "ERROR: [specific issue found]" """
