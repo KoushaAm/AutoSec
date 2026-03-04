@@ -1,5 +1,4 @@
 import pathlib
-import shutil
 from typing import Dict, Any, List, Optional
 from ..models.verification import PatchInfo
 
@@ -32,7 +31,6 @@ class PatchParser:
                 assumptions=patch.get('assumptions', ''),
                 behavior_change=patch.get('behavior_change', ''),
                 safety_verification=patch.get('safety_verification', ''),
-                pov_tests=None  # POV tests come from Exploiter separately
             )
         
         # Fallback: handle old flat format (if needed)
@@ -48,26 +46,11 @@ class PatchParser:
             assumptions=patch_data.get('assumptions', ''),
             behavior_change=patch_data.get('behavior_change', ''),
             safety_verification=patch_data.get('safety_verification', ''),
-            pov_tests=None
-        )
+            )
 
 
 class ProjectManager:
-    """Manages project copying and file operations"""
-    
-    @staticmethod
-    def create_patched_copy(original_path: pathlib.Path, output_path: pathlib.Path, target_files: List[str] = None) -> bool:
-        try:
-            if output_path.exists():
-                shutil.rmtree(output_path)
-            output_path.mkdir(parents=True)
-            
-            # Copy entire project directory
-            shutil.copytree(original_path, output_path, dirs_exist_ok=True)
-            return True
-        except Exception as e:
-            print(f"      Error creating project copy: {e}")
-            return False
+    """Manages project file operations"""
     
     @staticmethod
     def find_project_root(file_path: str) -> pathlib.Path:
@@ -108,28 +91,3 @@ class ProjectManager:
             f"Invalid file path format: {file_path}\n"
             f"Expected format: 'Projects/Sources/project_name/src/...'"
         )
-    
-    @staticmethod
-    def extract_relative_file_path(patcher_file_path: str) -> str:
-        """
-        Extract the relative file path within the project.
-        
-        Input: "Projects/Sources/project_name/src/main/File.java"
-        Output: "src/main/File.java"
-        """
-        path_obj = pathlib.Path(patcher_file_path)
-        
-        # Find "Sources" in the path and get everything after the project name
-        if "Projects" in path_obj.parts and "Sources" in path_obj.parts:
-            parts = path_obj.parts
-            try:
-                sources_idx = parts.index("Sources")
-                # Everything after Sources/project_name/ is the relative path
-                if sources_idx + 2 < len(parts):
-                    relative_parts = parts[sources_idx + 2:]
-                    return str(pathlib.Path(*relative_parts))
-            except (ValueError, IndexError):
-                pass
-        
-        # Fallback: just return the filename
-        return path_obj.name
