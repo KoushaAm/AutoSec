@@ -30,7 +30,7 @@ class VerifierCore:
         self.project_manager = ProjectManager()
         self.build_runner = DockerBuildRunner()
     
-    def verify_fixer_output(self, fixer_json_path: str) -> List[VerificationResult]:
+    def verify_fixer_output(self, fixer_json_path: str, project_name: str = "") -> List[VerificationResult]:
         """
         Workflow:
         
@@ -46,7 +46,7 @@ class VerifierCore:
         with open(fixer_json_path, 'r') as f:
             fixer_data = json.load(f)
         
-        session_dir = self.artifact_manager.create_session_directory(fixer_json_path)
+        session_dir = self.artifact_manager.create_session_directory(fixer_json_path, project_name=project_name)
         
         # Check if Patcher output is empty
         patches = fixer_data.get('patches', [])

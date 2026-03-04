@@ -46,7 +46,7 @@ def verifier_main(
     verifier = create_verifier()
     
     # Run verification using existing verify_fixer_output method
-    results = verifier.verify_fixer_output(patcher_manifest_path)
+    results = verifier.verify_fixer_output(patcher_manifest_path, project_name=project_name)
     
     # Determine success
     if not results:

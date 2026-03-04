@@ -14,10 +14,11 @@ class ArtifactManager:
         self.output_dir.mkdir(exist_ok=True)
         self.base_output_dir = output_dir 
     
-    def create_session_directory(self, fixer_input_path: str) -> pathlib.Path:
-        """Create a timestamped session directory (temp)"""
+    def create_session_directory(self, fixer_input_path: str, project_name: str = "") -> pathlib.Path:
+        """Create a timestamped session directory with project name"""
         timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-        session_dir = self.output_dir / f"session_{timestamp}"
+        label = f"{project_name}_{timestamp}" if project_name else timestamp
+        session_dir = self.output_dir / f"session_{label}"
         session_dir.mkdir(exist_ok=True)
         return session_dir
     
