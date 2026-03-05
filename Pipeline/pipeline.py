@@ -301,7 +301,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 
 # ====== Execute workflow =====
 def pipeline_main():
-    SELECTED_PROJECT = ProjectVariants.KUBERNETES_CLIENT
+    SELECTED_PROJECT = ProjectVariants.YAMCS
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
         "project_name": SELECTED_PROJECT.project_name,
