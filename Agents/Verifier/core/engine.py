@@ -11,7 +11,6 @@ from ..handlers.patch_parser import PatchParser, ProjectManager
 from ..handlers.build_handler import DockerBuildRunner
 from ..utils.file_ops import ArtifactManager, ErrorHandler, ConfigManager
 
-# Import LLM patch applicator from within the module
 from .patch_applicator import LLMPatchApplicator
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.parent))
 from constants.models import Model
@@ -113,7 +112,6 @@ class VerifierCore:
         
         print(f"✓ {len(valid_patches)} patch(es) passed file-path validation\n")
         
-        # verify all valid patches together
         result = self._verify_all_patches_simple(valid_patches, session_dir)
         
         # Save session results
@@ -430,7 +428,7 @@ class VerifierCore:
         start_time: datetime.datetime,
         verification_result: Optional[VerificationResult] = None,
     ):
-        """Save comprehensive verification log to session directory."""
+
         try:
             end_time = datetime.datetime.now()
             verification_log["end_time"] = end_time.isoformat()
@@ -457,5 +455,4 @@ class VerifierCore:
     
 
 def create_verifier(config: Optional[Dict[str, Any]] = None) -> VerifierCore:
-    """Factory function to create a configured verifier instance"""
     return VerifierCore(config)

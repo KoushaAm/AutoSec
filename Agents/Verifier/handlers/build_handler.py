@@ -3,19 +3,15 @@ import sys
 from typing import Dict, Any, Optional
 from ..models.verification import PatchInfo
 
-# Add paths for dependencies
 VERIFIER_PATH = pathlib.Path(__file__).parent.parent
 
-# Import Docker runner from core (unified location)
 from ..core.docker_runner import DockerRunner, check_docker
 from ..core.project_detector import detect_java_project
 
-# Import test discovery
 from ..testing.test_discovery import TestDiscovery
 
 
 class DockerBuildRunner:
-    """Handles build verification and testing using Docker"""
     
     def __init__(self):
         self.verifier_path = VERIFIER_PATH
@@ -24,7 +20,6 @@ class DockerBuildRunner:
         self._ensure_verifier_path()
     
     def _ensure_verifier_path(self):
-        """Ensure the verifier path is added to sys.path"""
         if str(self.verifier_path) not in sys.path:
             sys.path.insert(0, str(self.verifier_path))
     
@@ -135,7 +130,6 @@ class DockerBuildRunner:
         artifacts_dir: pathlib.Path,
         patch_info: Optional[PatchInfo] = None
     ) -> Dict[str, Any]:
-        """Run tests in Docker container"""
         result = {
             "status": "SKIP",
             "duration": 0,
@@ -268,7 +262,7 @@ class DockerBuildRunner:
                     print(f"      [Test Parser] Warning: Failed to parse {xml_file.name}: {e}")
                     continue
         
-        # Calculate success rate
+        # Success rate
         if test_results["total_tests"] > 0:
             test_results["test_success_rate"] = test_results["passed_tests"] / test_results["total_tests"]
         
@@ -367,17 +361,14 @@ class DockerBuildRunner:
         }
         
         try:
-            # Discover tests
             test_discovery = self.test_discovery.discover_tests(project_path, stack)
             result["test_discovery"] = test_discovery
             
             if test_discovery["has_tests"]:
-                # Get test command
                 test_commands = test_discovery.get("test_commands", [])
                 has_wrapper = (project_path / "mvnw").exists() or (project_path / "gradlew").exists()
                 test_cmd = test_commands[0] if has_wrapper else (test_commands[1] if len(test_commands) > 1 else test_commands[0])
                 
-                # Run tests in Docker
                 test_rc, test_duration = self.docker_runner.run_command(
                     docker_image,
                     test_cmd,
@@ -386,7 +377,6 @@ class DockerBuildRunner:
                     timeout=1200  # 20 minutes
                 )
                 
-                # Parse test results
                 test_results = self._parse_test_results(project_path, stack, test_rc)
                 
                 status = "PASS" if test_rc == 0 and test_results["failed_tests"] == 0 else "FAIL"

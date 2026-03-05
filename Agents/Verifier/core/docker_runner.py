@@ -107,7 +107,6 @@ class DockerRunner:
         artifacts: pathlib.Path, 
         timeout: int
     ) -> Tuple[int, float]:
-        """Execute a command in a Docker container."""
         worktree_abs = worktree.resolve()
         artifacts_abs = artifacts.resolve()
 

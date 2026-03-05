@@ -42,10 +42,7 @@ def verifier_main(
         print(f"POV tests: {exploiter_pov_test_path}")
     print(f"{'='*80}\n")
     
-    # Create verifier instance using existing engine
     verifier = create_verifier()
-    
-    # Run verification using existing verify_fixer_output method
     results = verifier.verify_fixer_output(patcher_manifest_path, project_name=project_name)
     
     # Determine success

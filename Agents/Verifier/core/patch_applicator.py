@@ -17,7 +17,6 @@ import config
 load_dotenv()
 
 class LLMPatchApplicator:
-    """Applies patches using LLM to understand and modify code intelligently"""
     
     def __init__(self, model: Model = None):
         """Initialize with OpenRouter client and model selection"""
@@ -93,7 +92,7 @@ class LLMPatchApplicator:
             )
             print("✓")
             
-            # Overwrite the original file in place (no _patched suffix)
+            # Overwrite the original file in place 
             print(f"   Overwriting file: {file_path.name}")
             file_path.write_text(modified_code, encoding='utf-8')
             
@@ -126,10 +125,8 @@ class LLMPatchApplicator:
             the full prompt, response, model, and attempt metadata for logging.
         """
         
-        # Format plan context
         plan_context = "\n".join(f"- {step}" for step in plan) if plan else "No plan provided"
         
-        # Build user message from template
         user_message = USER_MESSAGE_TEMPLATE.format(
             original_code=original_code,
             unified_diff=unified_diff,

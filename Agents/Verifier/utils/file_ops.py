@@ -6,7 +6,6 @@ from ..models.verification import VerificationResult, PatchInfo
 
 
 class ArtifactManager:
-    """Manages saving and organizing verification artifacts"""
     # TODO: db integration may require change for final output?
     
     def __init__(self, output_dir: pathlib.Path):
@@ -28,7 +27,6 @@ class ArtifactManager:
         session_dir: pathlib.Path,
         fixer_input_path: str
     ):
-        """Save consolidated verification results"""
         try:
             summary = {
                 "session_timestamp": datetime.datetime.now().isoformat(),
@@ -54,7 +52,6 @@ class ArtifactManager:
             print(f"Warning: Could not save verification summary: {e}")
     
     def _generate_results_summary(self, results: List[VerificationResult]) -> Dict[str, int]:
-        """Summary by status"""
         from ..models.verification import VerificationStatus
         
         return {
@@ -66,7 +63,6 @@ class ArtifactManager:
 
 
 class ErrorHandler:
-    """Main error handling and reporting"""
     
     @staticmethod
     def create_error_result(
@@ -97,14 +93,12 @@ class ErrorHandler:
 
 
 class ConfigManager:
-    """Manages configuration and settings"""
     
     def __init__(self, config: Dict[str, Any] = None):
         self.config = config or {}
         self._set_defaults()
     
     def _set_defaults(self):
-        # Get absolute path to Verifier/output directory
         verifier_root = pathlib.Path(__file__).parent.parent
         output_dir = verifier_root / "output"
         
