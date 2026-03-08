@@ -2,8 +2,8 @@
 """
 LLM-based Patch Applicator
 
-Applies patches from Patcher JSON output files using OpenRouter LLM.
-Replaces manual diff parsing with intelligent LLM-based code modification.
+Applies patches from Patcher output files using OpenRouter LLM.
+Replaces manual diff parsing with LLM-based code modification.
 """
 
 import json
@@ -18,7 +18,7 @@ from openai import OpenAI
 # Local imports - use module's config and constants
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 from constants import Model, SYSTEM_MESSAGE, USER_MESSAGE_TEMPLATE
-from pipeline_verifier import config
+from pipeline import config
 
 # Load environment variables
 load_dotenv()
