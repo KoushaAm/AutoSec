@@ -9,6 +9,7 @@ from langgraph.graph import StateGraph, END, START
 from langgraph.types import Command
 from pathlib import Path
 from datetime import datetime
+from dotenv import load_dotenv
 
 # from Agents.Exploiter.data.primevul.setup import project_slug
 # local imports
@@ -95,11 +96,15 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
     print(f"\n---- ARGS: {build_and_analyze_args} ----\n")
 
+    if model.startswith("gpt"):
+        os.getenv("OPEN_AI_KEY")
+
     # 1. setup command to have IRIS inside docker container
     docker_cmd = [
         "docker", "run",
         "--platform=linux/amd64",
         "--rm",
+        "-e", "OPENAI_API_KEY",
         "-v", f"{host_ws}/Projects:/workspace/Projects",
         "-v", f"{host_ws}/Agents:/workspace/Agents",
         "-w", "/workspace/Agents/Finder",
@@ -318,6 +323,8 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 
 # ====== Execute workflow =====
 def pipeline_main():
+    load_dotenv()
+
     SELECTED_PROJECT = ProjectVariants.YAMCS
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
