@@ -5,6 +5,7 @@ Will add support to input github repo links as alternative input in the future (
 """
 
 import sys
+import shutil
 import argparse
 import zipfile
 import subprocess
@@ -21,6 +22,10 @@ from src.config import DATA_DIR, PROJECT_SOURCE_CODE_DIR
 # unzip project if specified to output folder
 def unzip_folder(zip_path, project_name):
     target_dir = Path(PROJECT_SOURCE_CODE_DIR) / project_name
+
+    if target_dir.exists():
+        shutil.rmtree(target_dir)
+
     target_dir.mkdir(parents=True, exist_ok=True)
 
     with zipfile.ZipFile(zip_path, "r") as zip_ref:
