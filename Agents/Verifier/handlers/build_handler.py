@@ -56,7 +56,7 @@ class DockerBuildRunner:
         
         self.docker_runner = DockerRunner(cache_dir=artifacts_dir / "build-cache")
         
-        # Phase 1: Detect project type and get build commands
+        # 1: Detect project type and get build commands
         print(f"      [1/3] Detecting project type...")
         stack, build_cmd, test_cmd, metadata = detect_java_project(project_path)
         
@@ -72,7 +72,7 @@ class DockerBuildRunner:
         
         print(f"      ✓ Detected {stack} project")
         
-        # Phase 2: Build in Docker with retry
+        # 2: Build in Docker with retry
         print(f"      [2/3] Building in Docker...")
         project_id = project_path.name.lower().replace(" ", "-")
         
@@ -98,7 +98,7 @@ class DockerBuildRunner:
         
         print(f"      ✓ Build passed (using {build_result['image_used']})")
         
-        # Phase 3: Run existing tests in Docker
+        # 3: Run existing tests in Docker
         print(f"      [3/3] Running tests in Docker...")
         test_result = self._run_tests_in_docker(
             project_path, 
@@ -162,7 +162,12 @@ class DockerBuildRunner:
                 # Parse test results
                 test_results = self._parse_test_results(project_path, stack, test_rc)
                 
-                status = "PASS" if test_rc == 0 and test_results["failed_tests"] == 0 else "FAIL"
+                if test_rc == 0 and test_results["failed_tests"] == 0:
+                    status = "PASS"
+                elif test_results.get("no_reports"):
+                    status = "ERROR"
+                else:
+                    status = "FAIL"
                 
                 result["test_execution"] = {
                     "status": status,
@@ -176,6 +181,8 @@ class DockerBuildRunner:
                 
                 if status == "PASS":
                     print(f"      ✓ Tests passed ({test_results['passed_tests']}/{test_results['total_tests']})")
+                elif status == "ERROR":
+                    print(f"      ⚠ Test runner crashed (exit code {test_rc}, no test reports generated)")
                 else:
                     print(f"      ✗ Tests failed ({test_results['failed_tests']} failures)")
             else:
@@ -261,6 +268,10 @@ class DockerBuildRunner:
                 except Exception as e:
                     print(f"      [Test Parser] Warning: Failed to parse {xml_file.name}: {e}")
                     continue
+        
+        # Flag when exit code was non-zero but no reports were generated
+        if return_code != 0 and test_results["total_tests"] == 0:
+            test_results["no_reports"] = True
         
         # Success rate
         if test_results["total_tests"] > 0:
@@ -379,7 +390,12 @@ class DockerBuildRunner:
                 
                 test_results = self._parse_test_results(project_path, stack, test_rc)
                 
-                status = "PASS" if test_rc == 0 and test_results["failed_tests"] == 0 else "FAIL"
+                if test_rc == 0 and test_results["failed_tests"] == 0:
+                    status = "PASS"
+                elif test_results.get("no_reports"):
+                    status = "ERROR"
+                else:
+                    status = "FAIL"
                 
                 result["test_execution"] = {
                     "status": status,

@@ -318,7 +318,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 
 # ====== Execute workflow =====
 def pipeline_main():
-    SELECTED_PROJECT = ProjectVariants.YAMCS
+    SELECTED_PROJECT = ProjectVariants.PERFECTO_PLUGIN
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
         "project_name": SELECTED_PROJECT.project_name,

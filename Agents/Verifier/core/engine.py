@@ -112,7 +112,46 @@ class VerifierCore:
         
         print(f"✓ {len(valid_patches)} patch(es) passed file-path validation\n")
         
-        result = self._verify_all_patches_simple(valid_patches, session_dir)
+        # Group patches by target file, merge diffs for same-file patches
+        # so the LLM sees one combined diff per file (avoids stale-context hallucinations)
+        from collections import OrderedDict
+        file_groups: OrderedDict[str, List[PatchInfo]] = OrderedDict()
+        for pi in valid_patches:
+            key = pi.touched_files[0]
+            file_groups.setdefault(key, []).append(pi)
+        
+        merged_patches: List[PatchInfo] = []
+        for file_path, group in file_groups.items():
+            if len(group) == 1:
+                merged_patches.append(group[0])
+            else:
+                # Merge: concatenate diffs, combine plans, keep metadata from first patch
+                combined_diff = "\n".join(p.unified_diff for p in group)
+                combined_plan = []
+                for p in group:
+                    combined_plan.extend(p.plan)
+                patch_ids = [p.patch_id for p in group]
+                
+                merged = PatchInfo(
+                    patch_id=group[0].patch_id,  # use first patch_id as representative
+                    unified_diff=combined_diff,
+                    touched_files=[file_path],
+                    cwe_matches=[m for p in group for m in p.cwe_matches],
+                    plan=combined_plan,
+                    confidence=min(p.confidence for p in group),
+                    verifier_confidence=min(p.verifier_confidence for p in group),
+                    risk_notes=" | ".join(p.risk_notes for p in group if p.risk_notes),
+                    assumptions=" | ".join(p.assumptions for p in group if p.assumptions),
+                    behavior_change=" | ".join(p.behavior_change for p in group if p.behavior_change),
+                    safety_verification=" | ".join(p.safety_verification for p in group if p.safety_verification),
+                )
+                merged_patches.append(merged)
+                print(f"   Merged {len(group)} patches (IDs {patch_ids}) for {pathlib.Path(file_path).name}")
+        
+        if len(merged_patches) < len(valid_patches):
+            print(f"✓ Consolidated {len(valid_patches)} patches → {len(merged_patches)} file group(s)\n")
+        
+        result = self._verify_all_patches_simple(merged_patches, session_dir)
         
         # Save session results
         self.artifact_manager.save_session_summary([result], session_dir, fixer_json_path)
@@ -154,34 +193,23 @@ class VerifierCore:
             return ErrorHandler.create_error_result(0, f"Failed to find project root: {e}", start_time)
         
         print(f"Project: {project_root.name}")
-        print(f"Patches to apply: {len(patch_infos)}")
+        print(f"File(s) to patch: {len(patch_infos)}")
         print()
         
-        # 1: Apply patches
-        print(f"[1/4] Applying all {len(patch_infos)} patches...")
+        # 1: Apply merged patches (one LLM call per file)
+        print(f"[1/4] Applying patches ({len(patch_infos)} file(s))...")
         stage1_log = {"patches": [], "applied": 0, "failed": 0}
         applied_patches = []
         
         for i, patch_info in enumerate(patch_infos, 1):
             file_name = pathlib.Path(patch_info.touched_files[0]).name
-            print(f"   [{i}/{len(patch_infos)}] Applying patch {patch_info.patch_id} to {file_name}...", end=" ", flush=True)
+            print(f"   [{i}/{len(patch_infos)}] Applying merged diff to {file_name}...", end=" ", flush=True)
             
             # Convert to absolute path
             actual_file_path = pathlib.Path(patch_info.touched_files[0])
             if not actual_file_path.is_absolute():
                 autosec_root = pathlib.Path(__file__).parent.parent.parent.parent
                 actual_file_path = autosec_root / actual_file_path
-            
-            if not actual_file_path.exists():
-                print(f"✗ File not found: {actual_file_path}")
-                stage1_log["patches"].append({
-                    "patch_id": patch_info.patch_id,
-                    "file": str(actual_file_path),
-                    "status": "error",
-                    "error": "File not found",
-                })
-                stage1_log["failed"] += 1
-                continue
             
             # Read original code before applying patch (for diff logging)
             original_code = actual_file_path.read_text(encoding='utf-8')
@@ -244,7 +272,7 @@ class VerifierCore:
             self._save_verification_log(verification_log, session_dir, start_time)
             return ErrorHandler.create_error_result(0, "Failed to apply any patches", start_time)
         
-        print(f"✓ Successfully applied {len(applied_patches)}/{len(patch_infos)} patches\n")
+        print(f"✓ Successfully applied patches to {len(applied_patches)}/{len(patch_infos)} file(s)\n")
         
         # 2: Check code diff (compare original vs patched)
         print(f"[2/4] Checking code changes...")
@@ -367,18 +395,26 @@ class VerifierCore:
         }
         verification_log["stages"]["4_tests"] = stage4_log
         
+        test_status = test_result.get("status")
+        
         if test_success:
             status = "APPROVED"
             passed_count = test_results_data.get("passed_tests", 0)
             total_count = test_results_data.get("total_tests", 0)
-            reasoning = f"✓ Build successful; ✓ All tests passed ({passed_count}/{total_count})"
+            reasoning = f"Build successful; All tests passed ({passed_count}/{total_count})"
             confidence = 0.9
             print(f"✓ All tests passed\n")
+        elif test_status == "ERROR":
+            status = "INCONCLUSIVE"
+            rc = test_exec.get("return_code", "?")
+            reasoning = f"Build successful; Test infrastructure error (exit code {rc}, no test reports generated)"
+            confidence = 0.5
+            print(f"⚠ Test runner crashed — no test reports generated (exit code {rc})")
         else:
             status = "REJECTED"
             failed = test_results_data.get("failed_tests", 0)
             total = test_results_data.get("total_tests", 0)
-            reasoning = f"✓ Build successful; ✗ Tests failed ({failed}/{total} failures)"
+            reasoning = f"Build successful; Tests failed ({failed}/{total} failures)"
             confidence = 0.3
             print(f"✗ Tests failed ({failed}/{total} failures)")
             
