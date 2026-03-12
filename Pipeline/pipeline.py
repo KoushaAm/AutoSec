@@ -117,9 +117,37 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
     logger.info(f"Running IRIS inside Docker for project {project_name}")
 
-    # # 2. Run IRIS analysis
+    # 2. Run IRIS analysis
     try:
         subprocess.run(docker_cmd, check=True, text=True)
+
+    # analysis failed for some reason
+    except subprocess.CalledProcessError as e:
+            print("Finder failed with an error")
+            print("Return code:", e.returncode)
+            print("stdout:", e.stdout)
+            print("stderr:", e.stderr)
+
+            state["finder_output"] = None
+            state["vuln"] = None
+            state["finder_reanalyze"] = False
+            return state
+
+    # 3. Load IRIS output
+    sarif_path = f"./Agents/Finder/output/{project_name}/test/{query}-posthoc-filter/results.sarif"
+    try:
+        with open(sarif_path) as f:
+            findings = json.load(f)
+
+        # 4. Save results into pipeline state
+        state["finder_output"] = sarif_to_finder_output(findings, cwe_id=state["vuln_id"])
+        state["vuln"] = findings # keep oringial json dump just in case its needed
+
+    # no vulnerabilites were found
+    except FileNotFoundError:
+        print("Finder found no vulnerabilites")
+        state["finder_output"] = None
+        state["vuln"] = None
 
     state["finder_reanalyze"] = False
     return state
