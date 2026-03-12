@@ -321,6 +321,39 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 
     return state
 
+
+# ====== Project Variants ======
+class ProjectVariant(Enum):
+    CODEHAUS_2018 = {
+        "name": "codehaus-plexus__plexus-archiver_CVE-2018-1002200_3.5",
+        "cwe_id": "cwe-022"
+    }
+    CODEHAUS_2017 = {
+        "name": "codehaus-plexus__plexus-utils_CVE-2017-1000487_3.0.15",
+        "cwe_id": "cwe-078"
+    }
+    NAHSRA = {
+        "name": "nahsra__antisamy_CVE-2016-10006_1.5.3",
+        "cwe_id": "cwe-079"
+    }
+    PERWENDEL_2018 = {
+        "name": "perwendel__spark_CVE-2018-9159_2.7.1",
+        "cwe_id": "cwe-022"
+    }
+
+    WHITESOURCE = {
+        "name": "whitesource__curekit_CVE-2022-23082_1.1.3",
+        "cwe_id": "cwe-022"
+    }
+
+    @property
+    def project_name(self) -> str:
+        return self.value["name"]
+
+    @property
+    def cwe_id(self) -> str:
+        return self.value["cwe_id"]
+
 # ====== Execute workflow =====
 def pipeline_main():
     load_dotenv()
