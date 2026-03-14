@@ -118,10 +118,10 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
     logger.info(f"Running IRIS inside Docker for project {project_name}")
 
     # # 2. Run IRIS analysis
-    try:
-        subprocess.run(docker_cmd, check=True, text=True)
-
-    state["finder_reanalyze"] = False
+    # try:
+    #     subprocess.run(docker_cmd, check=True, text=True)
+    #
+    # state["finder_reanalyze"] = False
     return state
 
 
@@ -317,6 +317,11 @@ class ProjectVariant(Enum):
         "cwe_id": "cwe-022"
     }
 
+    KUBERNETES = {
+        "name":"kubernetes-client__java_CVE-2020-8570_client-java-parent-9.0.1",
+        "cwe_id": "cwe-022"
+    }
+
     @property
     def project_name(self) -> str:
         return self.value["name"]
@@ -329,7 +334,7 @@ class ProjectVariant(Enum):
 def pipeline_main():
     load_dotenv()
 
-    SELECTED_PROJECT = ProjectVariants.YAMCS
+    SELECTED_PROJECT = ProjectVariants.KUBERNETES_CLIENT
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
         "project_name": SELECTED_PROJECT.project_name,
