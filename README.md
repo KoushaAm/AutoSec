@@ -61,6 +61,32 @@ python3 main.py <-h|--help>
 ```
 
 
+## Getting the .Zip file of the projects
+To get other IRIS/Faultine projects into the zipped directory:
+
+- Navigate to the Agents/Finder directory
+```
+cd /workspaces/autosec/Agents/Finder
+```
+- Run the the fetch_one.py script to download the project at the commit that contains the specific CVE vulnerability
+```
+python scripts/fetch_one.py <name_of_project>
+// ex: python scripts/fetch_one.py jenkinsci__workflow-cps-plugin_CVE-2022-25173_2646.v6ed3b5b01ff1
+```
+- The project will now exist in /workspaces/autosec/Agents/Finder/data/project-sources. Navigate to that directory, zip it up, and move it to the  /workspaces/autosec/Projects/Zipped directory
+```
+cd /workspaces/autosec/Agents/Finder/data/project-sources/<project_name>
+// ex: cd /workspaces/autosec/Agents/Finder/data/project-sources/jenkinsci__workflow-cps-plugin_CVE-2022-25173_2646.v6ed3b5b01ff1/
+
+zip -r <name_of_project.zip> ./
+// ex: zip -r jenkinsci__workflow-cps-plugin_CVE-2022-25173_2646.v6ed3b5b01ff1.zip ./
+
+mv ./<name_of_project> /workspaces/autosec/Projects/Zipped
+// ex: mv ./jenkinsci__workflow-cps-plugin_CVE-2022-25173_2646.v6ed3b5b01ff1.zip  /workspaces/autosec/Projects/Zipped
+
+```
+
+
 ## Project Structure
 - Only files relevant to the primary AutoSec Pipeline have been listed
 ```
