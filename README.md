@@ -21,8 +21,14 @@ pip install -r requirements.txt
 ### 3. Add Your OpenRouter API Key and OPENai KEY
 Create `.env` in root directory:
 ```env
-OPENROUTER_API_KEY=your_api_key_here
-OPENAI_API_KEY=your_api_key_here
+# Patcher openrouter key
+OPENROUTER_API_KEY="your_api_key_here"
+
+# Finder OpenAI Key
+OPENAI_API_KEY="your_api_key_here"
+
+# Exploiter OpenAI Key
+OPENAI_KEY_FAULTLINE="your_api_key_here"
 ```
 
 ### 4. Create the docker container for Finder

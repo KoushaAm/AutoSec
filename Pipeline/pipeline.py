@@ -48,11 +48,11 @@ def _build_workflow() -> Any:
     graph.add_node("verifier", _verifier_node)
 
     # linear edges
-    # graph.add_edge(START, "finder")
+    graph.add_edge(START, "finder")
     # graph.add_edge("finder", "exploiter")
     # graph.add_edge("finder", "patcher")
-    graph.add_edge(START, "patcher")
-    graph.add_edge("patcher", "verifier")
+    # graph.add_edge("patcher", "verifier")
+    graph.add_edge("finder", END)
 
     # conditional edges
     # exploiter -> finder OR exploiter -> patcher
@@ -325,19 +325,19 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 def pipeline_main():
     load_dotenv()
 
-    SELECTED_PROJECT = ProjectVariants.YAMCS
+    SELECTED_PROJECT = ProjectVariants.KUBERNETES_CLIENT
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
         "project_name": SELECTED_PROJECT.project_name,
         "vuln_id": SELECTED_PROJECT.cwe_id,
         "language": "java",
         "finder_model": "gpt-5-mini",
-        "finder_reanalyze": False,
+        "finder_reanalyze": True,
         # Dummy inputs for development & experiments
-        "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
-        "exploiter": {
-            "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
-        }
+        # "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
+        # "exploiter": {
+        #     "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
+        # }
     }
 
     # print(json.dumps(initial_state, indent=2))
@@ -346,9 +346,9 @@ def pipeline_main():
     workflow = _build_workflow()
     final_state = workflow.invoke(initial_state)
 
-    # print("\n====== STATE DUMP ======")
-    # print(json.dumps(final_state, indent=2))
-    # print("======^==========^======\n")
+    print("\n====== STATE DUMP ======")
+    print(json.dumps(final_state, indent=2))
+    print("======^==========^======\n")
 
 
 # standalone execution
