@@ -1,3 +1,4 @@
+from enum import Enum
 from typing import TypedDict, Dict, Any, Optional, List
 import json
 import subprocess
@@ -21,6 +22,7 @@ from Agents.Patcher import patcher_main
 from Agents.Verifier import verifier_main
 from Agents.Finder.src.types import FinderOutput
 from Agents.Finder.src.output_converter import sarif_to_finder_output
+from datetime import datetime
 
 # relative path information
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -276,12 +278,11 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
             cwe_id=state['finder_output']['cwe_id'],
             vulnerability_list=state['finder_output']['vulnerabilities'],
             project_name=state["project_name"],
-            pov_logic=state["exploiter"]["pov_logic"],
+            pov_logic=pov_logic,
             save_prompt=True,
         )
 
     state["patcher"] = {"success": success, "artifact_path": run_dir}
-    print(f"Patcher completed with success={success}, artifacts at: {run_dir}")
 
     return state
 
@@ -320,6 +321,39 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
     }
 
     return state
+
+
+# ====== Project Variants ======
+class ProjectVariant(Enum):
+    CODEHAUS_2018 = {
+        "name": "codehaus-plexus__plexus-archiver_CVE-2018-1002200_3.5",
+        "cwe_id": "cwe-022"
+    }
+    CODEHAUS_2017 = {
+        "name": "codehaus-plexus__plexus-utils_CVE-2017-1000487_3.0.15",
+        "cwe_id": "cwe-078"
+    }
+    NAHSRA = {
+        "name": "nahsra__antisamy_CVE-2016-10006_1.5.3",
+        "cwe_id": "cwe-079"
+    }
+    PERWENDEL_2018 = {
+        "name": "perwendel__spark_CVE-2018-9159_2.7.1",
+        "cwe_id": "cwe-022"
+    }
+
+    WHITESOURCE = {
+        "name": "whitesource__curekit_CVE-2022-23082_1.1.3",
+        "cwe_id": "cwe-022"
+    }
+
+    @property
+    def project_name(self) -> str:
+        return self.value["name"]
+
+    @property
+    def cwe_id(self) -> str:
+        return self.value["cwe_id"]
 
 # ====== Execute workflow =====
 def pipeline_main():
