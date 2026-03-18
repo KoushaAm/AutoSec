@@ -1,0 +1,2783 @@
+{
+    "cwe_id": "cwe-022",
+    "vulnerabilities": [
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "f",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 142
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "f",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 142
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "getParentFile(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "parent",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 147
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "getParentFile(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "parent",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 147
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "f",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 150
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "srcPath : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 178
+                    },
+                    {
+                        "message": "srcPath : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 193
+                    },
+                    {
+                        "message": "toUri(...) : URI",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 193
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 193
+                    },
+                    {
+                        "message": "srcFile",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 197
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getenv(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "kubeConfigEnv : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "kubeConfigEnv : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 138
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 138
+                    },
+                    {
+                        "message": "kubeConfigPath : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "parseKubeConfigPath(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "kubeConfigPath : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 125
+                    },
+                    {
+                        "message": "findConfigFromEnv(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 96
+                    },
+                    {
+                        "message": "kubeConfig",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 102
+                    }
+                ],
+                [
+                    {
+                        "message": "getenv(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "envHome : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "config : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 155
+                    },
+                    {
+                        "message": "findHomeDir(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 182
+                    },
+                    {
+                        "message": "homeDir : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "config : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 186
+                    },
+                    {
+                        "message": "findConfigInHomeDir(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "config : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 87
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 96
+                    },
+                    {
+                        "message": "kubeConfig",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 102
+                    }
+                ],
+                [
+                    {
+                        "message": "getenv(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 159
+                    },
+                    {
+                        "message": "homeDrive : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "homeDir : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 167
+                    },
+                    {
+                        "message": "findHomeDir(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 182
+                    },
+                    {
+                        "message": "homeDir : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "config : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 186
+                    },
+                    {
+                        "message": "findConfigInHomeDir(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "config : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 87
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 96
+                    },
+                    {
+                        "message": "kubeConfig",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 102
+                    }
+                ],
+                [
+                    {
+                        "message": "getenv(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "homePath : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "homeDir : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 167
+                    },
+                    {
+                        "message": "findHomeDir(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 182
+                    },
+                    {
+                        "message": "homeDir : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "config : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 186
+                    },
+                    {
+                        "message": "findConfigInHomeDir(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "config : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 87
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 96
+                    },
+                    {
+                        "message": "kubeConfig",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 102
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getenv(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "kubeConfigEnv : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "kubeConfigEnv : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 138
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 138
+                    },
+                    {
+                        "message": "kubeConfigPath : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "parseKubeConfigPath(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "kubeConfigPath : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "kubeConfig",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 124
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getenv(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "envHome : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "config : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 155
+                    },
+                    {
+                        "message": "findHomeDir(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 182
+                    },
+                    {
+                        "message": "homeDir : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "config",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 185
+                    }
+                ],
+                [
+                    {
+                        "message": "getenv(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 159
+                    },
+                    {
+                        "message": "homeDrive : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "homeDir : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 167
+                    },
+                    {
+                        "message": "findHomeDir(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 182
+                    },
+                    {
+                        "message": "homeDir : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "config",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 185
+                    }
+                ],
+                [
+                    {
+                        "message": "getenv(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "homePath : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "homeDir : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 167
+                    },
+                    {
+                        "message": "findHomeDir(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 182
+                    },
+                    {
+                        "message": "homeDir : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "config",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 185
+                    }
+                ],
+                [
+                    {
+                        "message": "getenv(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "userProfile : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 172
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 172
+                    },
+                    {
+                        "message": "profileDir : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 174
+                    },
+                    {
+                        "message": "findHomeDir(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 182
+                    },
+                    {
+                        "message": "homeDir : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "config",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 185
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getenv(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "kubeConfigEnv : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "kubeConfigEnv : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 138
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 138
+                    },
+                    {
+                        "message": "kubeConfigPath : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "parseKubeConfigPath(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "kubeConfigPath : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 125
+                    },
+                    {
+                        "message": "findConfigFromEnv(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 96
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 105
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/FilePersister.java",
+                        "line": 29
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/FilePersister.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "this [post update] : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/FilePersister.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "new FilePersister(...) : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 105
+                    },
+                    {
+                        "message": "persister : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 362
+                    },
+                    {
+                        "message": "persister : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 363
+                    },
+                    {
+                        "message": "this [post update] : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 363
+                    },
+                    {
+                        "message": "kc [post update] : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 105
+                    },
+                    {
+                        "message": "kc : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "config : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 255
+                    },
+                    {
+                        "message": "config : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 276
+                    },
+                    {
+                        "message": "config : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/credentials/KubeconfigAuthentication.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "config : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/credentials/KubeconfigAuthentication.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 201
+                    },
+                    {
+                        "message": "this <.field> : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "persister : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "parameter this : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/FilePersister.java",
+                        "line": 33
+                    },
+                    {
+                        "message": "this <.field> : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/FilePersister.java",
+                        "line": 52
+                    },
+                    {
+                        "message": "configFile",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/FilePersister.java",
+                        "line": 52
+                    }
+                ],
+                [
+                    {
+                        "message": "getenv(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "envHome : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "config : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 155
+                    },
+                    {
+                        "message": "findHomeDir(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 182
+                    },
+                    {
+                        "message": "homeDir : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "config : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 186
+                    },
+                    {
+                        "message": "findConfigInHomeDir(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "config : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 87
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 96
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 105
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/FilePersister.java",
+                        "line": 29
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/FilePersister.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "this [post update] : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/FilePersister.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "new FilePersister(...) : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 105
+                    },
+                    {
+                        "message": "persister : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 362
+                    },
+                    {
+                        "message": "persister : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 363
+                    },
+                    {
+                        "message": "this [post update] : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 363
+                    },
+                    {
+                        "message": "kc [post update] : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 105
+                    },
+                    {
+                        "message": "kc : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "config : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 255
+                    },
+                    {
+                        "message": "config : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 276
+                    },
+                    {
+                        "message": "config : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/credentials/KubeconfigAuthentication.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "config : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/credentials/KubeconfigAuthentication.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 201
+                    },
+                    {
+                        "message": "this <.field> : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "persister : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "parameter this : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/FilePersister.java",
+                        "line": 33
+                    },
+                    {
+                        "message": "this <.field> : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/FilePersister.java",
+                        "line": 52
+                    },
+                    {
+                        "message": "configFile",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/FilePersister.java",
+                        "line": 52
+                    }
+                ],
+                [
+                    {
+                        "message": "getenv(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 159
+                    },
+                    {
+                        "message": "homeDrive : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "homeDir : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 167
+                    },
+                    {
+                        "message": "findHomeDir(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 182
+                    },
+                    {
+                        "message": "homeDir : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "config : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 186
+                    },
+                    {
+                        "message": "findConfigInHomeDir(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "config : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 87
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 96
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 105
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/FilePersister.java",
+                        "line": 29
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/FilePersister.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "this [post update] : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/FilePersister.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "new FilePersister(...) : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 105
+                    },
+                    {
+                        "message": "persister : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 362
+                    },
+                    {
+                        "message": "persister : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 363
+                    },
+                    {
+                        "message": "this [post update] : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 363
+                    },
+                    {
+                        "message": "kc [post update] : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 105
+                    },
+                    {
+                        "message": "kc : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "config : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 255
+                    },
+                    {
+                        "message": "config : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 276
+                    },
+                    {
+                        "message": "config : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/credentials/KubeconfigAuthentication.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "config : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/credentials/KubeconfigAuthentication.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 201
+                    },
+                    {
+                        "message": "this <.field> : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "persister : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "parameter this : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/FilePersister.java",
+                        "line": 33
+                    },
+                    {
+                        "message": "this <.field> : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/FilePersister.java",
+                        "line": 52
+                    },
+                    {
+                        "message": "configFile",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/FilePersister.java",
+                        "line": 52
+                    }
+                ],
+                [
+                    {
+                        "message": "getenv(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "homePath : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "homeDir : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 167
+                    },
+                    {
+                        "message": "findHomeDir(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 182
+                    },
+                    {
+                        "message": "homeDir : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "config : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 186
+                    },
+                    {
+                        "message": "findConfigInHomeDir(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "config : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 87
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 96
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 105
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/FilePersister.java",
+                        "line": 29
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/FilePersister.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "this [post update] : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/FilePersister.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "new FilePersister(...) : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 105
+                    },
+                    {
+                        "message": "persister : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 362
+                    },
+                    {
+                        "message": "persister : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 363
+                    },
+                    {
+                        "message": "this [post update] : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 363
+                    },
+                    {
+                        "message": "kc [post update] : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 105
+                    },
+                    {
+                        "message": "kc : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "config : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 255
+                    },
+                    {
+                        "message": "config : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 276
+                    },
+                    {
+                        "message": "config : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/credentials/KubeconfigAuthentication.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "config : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/credentials/KubeconfigAuthentication.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 201
+                    },
+                    {
+                        "message": "this <.field> : KubeConfig [persister, configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "persister : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "parameter this : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/FilePersister.java",
+                        "line": 33
+                    },
+                    {
+                        "message": "this <.field> : FilePersister [configFile] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/FilePersister.java",
+                        "line": 52
+                    },
+                    {
+                        "message": "configFile",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/FilePersister.java",
+                        "line": 52
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 371
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 372
+                    },
+                    {
+                        "message": "this [post update] : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 372
+                    },
+                    {
+                        "message": "kc [post update] : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "kc : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 255
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 276
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/credentials/KubeconfigAuthentication.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/credentials/KubeconfigAuthentication.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 201
+                    },
+                    {
+                        "message": "this <.method> : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 258
+                    },
+                    {
+                        "message": "this <.method> : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 269
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "this <.field> : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "toPath(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "getParent(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "resolve(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "normalize(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "resolvedCommand",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 305
+                    }
+                ],
+                [
+                    {
+                        "message": "getenv(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "kubeConfigEnv : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "kubeConfigEnv : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 138
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 138
+                    },
+                    {
+                        "message": "kubeConfigPath : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "parseKubeConfigPath(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "kubeConfigPath : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 125
+                    },
+                    {
+                        "message": "findConfigFromEnv(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 96
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 371
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 372
+                    },
+                    {
+                        "message": "this [post update] : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 372
+                    },
+                    {
+                        "message": "kc [post update] : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "kc : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 255
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 276
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/credentials/KubeconfigAuthentication.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/credentials/KubeconfigAuthentication.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 201
+                    },
+                    {
+                        "message": "this <.method> : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 258
+                    },
+                    {
+                        "message": "this <.method> : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 269
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "this <.field> : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "toPath(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "getParent(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "resolve(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "normalize(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "resolvedCommand",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 305
+                    }
+                ],
+                [
+                    {
+                        "message": "getenv(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "envHome : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "config : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 155
+                    },
+                    {
+                        "message": "findHomeDir(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 182
+                    },
+                    {
+                        "message": "homeDir : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "config : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 186
+                    },
+                    {
+                        "message": "findConfigInHomeDir(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "config : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 87
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 96
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 371
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 372
+                    },
+                    {
+                        "message": "this [post update] : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 372
+                    },
+                    {
+                        "message": "kc [post update] : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "kc : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 255
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 276
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/credentials/KubeconfigAuthentication.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/credentials/KubeconfigAuthentication.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 201
+                    },
+                    {
+                        "message": "this <.method> : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 258
+                    },
+                    {
+                        "message": "this <.method> : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 269
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "this <.field> : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "toPath(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "getParent(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "resolve(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "normalize(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "resolvedCommand",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 305
+                    }
+                ],
+                [
+                    {
+                        "message": "getenv(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 159
+                    },
+                    {
+                        "message": "homeDrive : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "homeDir : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 167
+                    },
+                    {
+                        "message": "findHomeDir(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 182
+                    },
+                    {
+                        "message": "homeDir : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "config : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 186
+                    },
+                    {
+                        "message": "findConfigInHomeDir(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "config : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 87
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 96
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 371
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 372
+                    },
+                    {
+                        "message": "this [post update] : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 372
+                    },
+                    {
+                        "message": "kc [post update] : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "kc : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 255
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 276
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/credentials/KubeconfigAuthentication.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/credentials/KubeconfigAuthentication.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 201
+                    },
+                    {
+                        "message": "this <.method> : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 258
+                    },
+                    {
+                        "message": "this <.method> : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 269
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "this <.field> : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "toPath(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "getParent(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "resolve(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "normalize(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "resolvedCommand",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 305
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 371
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 372
+                    },
+                    {
+                        "message": "this [post update] : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 372
+                    },
+                    {
+                        "message": "kc [post update] : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "kc : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 255
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 276
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/credentials/KubeconfigAuthentication.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/credentials/KubeconfigAuthentication.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 201
+                    },
+                    {
+                        "message": "this <.method> : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 258
+                    },
+                    {
+                        "message": "this <.method> : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 269
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "this <.field> : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "toPath(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "getParent(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "resolve(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "normalize(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "resolvedCommand : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 311
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 311
+                    },
+                    {
+                        "message": "argv [post update] : ArrayList [<element>] : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 311
+                    },
+                    {
+                        "message": "argv : ArrayList [<element>] : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 318
+                    },
+                    {
+                        "message": "argv : ArrayList",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 318
+                    },
+                    {
+                        "message": "new ProcessBuilder(...) : ProcessBuilder",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 318
+                    },
+                    {
+                        "message": "pb",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 326
+                    }
+                ],
+                [
+                    {
+                        "message": "getenv(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "kubeConfigEnv : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "kubeConfigEnv : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 138
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 138
+                    },
+                    {
+                        "message": "kubeConfigPath : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "parseKubeConfigPath(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "kubeConfigPath : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 125
+                    },
+                    {
+                        "message": "findConfigFromEnv(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 96
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 371
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 372
+                    },
+                    {
+                        "message": "this [post update] : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 372
+                    },
+                    {
+                        "message": "kc [post update] : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "kc : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 255
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 276
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/credentials/KubeconfigAuthentication.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/credentials/KubeconfigAuthentication.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 201
+                    },
+                    {
+                        "message": "this <.method> : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 258
+                    },
+                    {
+                        "message": "this <.method> : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 269
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "this <.field> : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "toPath(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "getParent(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "resolve(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "normalize(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "resolvedCommand : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 311
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 311
+                    },
+                    {
+                        "message": "argv [post update] : ArrayList [<element>] : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 311
+                    },
+                    {
+                        "message": "argv : ArrayList [<element>] : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 318
+                    },
+                    {
+                        "message": "argv : ArrayList",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 318
+                    },
+                    {
+                        "message": "new ProcessBuilder(...) : ProcessBuilder",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 318
+                    },
+                    {
+                        "message": "pb",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 326
+                    }
+                ],
+                [
+                    {
+                        "message": "getenv(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "envHome : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "config : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 155
+                    },
+                    {
+                        "message": "findHomeDir(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 182
+                    },
+                    {
+                        "message": "homeDir : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "config : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 186
+                    },
+                    {
+                        "message": "findConfigInHomeDir(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "config : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 87
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 96
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 371
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 372
+                    },
+                    {
+                        "message": "this [post update] : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 372
+                    },
+                    {
+                        "message": "kc [post update] : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "kc : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 255
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 276
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/credentials/KubeconfigAuthentication.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/credentials/KubeconfigAuthentication.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 201
+                    },
+                    {
+                        "message": "this <.method> : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 258
+                    },
+                    {
+                        "message": "this <.method> : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 269
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "this <.field> : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "toPath(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "getParent(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "resolve(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "normalize(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "resolvedCommand : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 311
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 311
+                    },
+                    {
+                        "message": "argv [post update] : ArrayList [<element>] : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 311
+                    },
+                    {
+                        "message": "argv : ArrayList [<element>] : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 318
+                    },
+                    {
+                        "message": "argv : ArrayList",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 318
+                    },
+                    {
+                        "message": "new ProcessBuilder(...) : ProcessBuilder",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 318
+                    },
+                    {
+                        "message": "pb",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 326
+                    }
+                ],
+                [
+                    {
+                        "message": "getenv(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 159
+                    },
+                    {
+                        "message": "homeDrive : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "homeDir : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 167
+                    },
+                    {
+                        "message": "findHomeDir(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 182
+                    },
+                    {
+                        "message": "homeDir : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "config : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 186
+                    },
+                    {
+                        "message": "findConfigInHomeDir(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "config : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 87
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 96
+                    },
+                    {
+                        "message": "kubeConfig : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 371
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 372
+                    },
+                    {
+                        "message": "this [post update] : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 372
+                    },
+                    {
+                        "message": "kc [post update] : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "kc : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 255
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/ClientBuilder.java",
+                        "line": 276
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/credentials/KubeconfigAuthentication.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "config : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/credentials/KubeconfigAuthentication.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 201
+                    },
+                    {
+                        "message": "this <.method> : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 258
+                    },
+                    {
+                        "message": "this <.method> : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 269
+                    },
+                    {
+                        "message": "parameter this : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "this <.field> : KubeConfig [file] : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "toPath(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "getParent(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "resolve(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "normalize(...) : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "resolvedCommand : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 311
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 311
+                    },
+                    {
+                        "message": "argv [post update] : ArrayList [<element>] : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 311
+                    },
+                    {
+                        "message": "argv : ArrayList [<element>] : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 318
+                    },
+                    {
+                        "message": "argv : ArrayList",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 318
+                    },
+                    {
+                        "message": "new ProcessBuilder(...) : ProcessBuilder",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 318
+                    },
+                    {
+                        "message": "pb",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/KubeConfig.java",
+                        "line": 326
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        }
+    ]
+}

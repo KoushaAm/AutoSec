@@ -1,0 +1,201 @@
+{
+    "cwe_id": "cwe-022",
+    "vulnerabilities": [
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "f",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 142
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "getParentFile(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "parent",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 147
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "f",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 150
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "srcPath : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 178
+                    },
+                    {
+                        "message": "srcPath : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 193
+                    },
+                    {
+                        "message": "toUri(...)",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 193
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "srcPath : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 178
+                    },
+                    {
+                        "message": "srcPath : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 193
+                    },
+                    {
+                        "message": "toUri(...) : URI",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 193
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 193
+                    },
+                    {
+                        "message": "srcFile",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 197
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "srcPath : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 178
+                    },
+                    {
+                        "message": "srcPath : Path",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 193
+                    },
+                    {
+                        "message": "toUri(...) : URI",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 193
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 193
+                    },
+                    {
+                        "message": "srcFile",
+                        "uri": "util/src/main/java/io/kubernetes/client/Copy.java",
+                        "line": 198
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "filename : String",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/FilePersister.java",
+                        "line": 25
+                    },
+                    {
+                        "message": "filename",
+                        "uri": "util/src/main/java/io/kubernetes/client/util/FilePersister.java",
+                        "line": 26
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        }
+    ]
+}
