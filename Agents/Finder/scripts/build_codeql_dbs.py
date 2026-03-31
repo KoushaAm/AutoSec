@@ -59,17 +59,24 @@ def create_codeql_database(project_slug, env, db_base_path, sources_base_path):
     
     database_path = os.path.abspath(os.path.join(db_base_path, project_slug))
     source_path = os.path.abspath(os.path.join(sources_base_path, project_slug))
-    
+    print("project_slug: ", project_slug)
     Path(database_path).parent.mkdir(parents=True, exist_ok=True)
     
+    # command = [
+    #     "codeql", "database", "create",
+    #     database_path,
+    #     "--source-root", source_path,
+    #     "--language", "java",
+    #     "--overwrite"
+    # ]
     command = [
         "codeql", "database", "create",
         database_path,
         "--source-root", source_path,
         "--language", "java",
-        "--overwrite"
+        "--overwrite",
+        "--command", "mvn clean compile -DskipTests -T1 -Dmaven.compiler.fork=false -Dmaven.daemon=false"
     ]
-    
     try:
         print(f"Creating database at: {database_path}")
         print(f"Using source path: {source_path}")
