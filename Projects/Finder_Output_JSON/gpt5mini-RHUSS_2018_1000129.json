@@ -1,0 +1,756 @@
+{
+    "cwe_id": "cwe-079",
+    "vulnerabilities": [
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getParameter(...) : String",
+                        "uri": "agent/core/src/main/java/org/jolokia/http/AgentServlet.java",
+                        "line": 472
+                    },
+                    {
+                        "message": "callback : String",
+                        "uri": "agent/core/src/main/java/org/jolokia/http/AgentServlet.java",
+                        "line": 485
+                    },
+                    {
+                        "message": "callback : String",
+                        "uri": "agent/core/src/main/java/org/jolokia/http/AgentServlet.java",
+                        "line": 495
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "agent/core/src/main/java/org/jolokia/http/AgentServlet.java",
+                        "line": 500
+                    },
+                    {
+                        "message": "getBytes(...) : byte[]",
+                        "uri": "agent/core/src/main/java/org/jolokia/http/AgentServlet.java",
+                        "line": 500
+                    },
+                    {
+                        "message": "response",
+                        "uri": "agent/core/src/main/java/org/jolokia/http/AgentServlet.java",
+                        "line": 503
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getParameter(...) : String",
+                        "uri": "agent/core/src/main/java/org/jolokia/http/AgentServlet.java",
+                        "line": 472
+                    },
+                    {
+                        "message": "callback : String",
+                        "uri": "agent/core/src/main/java/org/jolokia/http/AgentServlet.java",
+                        "line": 481
+                    },
+                    {
+                        "message": "pCallback : String",
+                        "uri": "agent/core/src/main/java/org/jolokia/http/AgentServlet.java",
+                        "line": 490
+                    },
+                    {
+                        "message": "pCallback : String",
+                        "uri": "agent/core/src/main/java/org/jolokia/http/AgentServlet.java",
+                        "line": 492
+                    },
+                    {
+                        "message": "callback : String",
+                        "uri": "agent/core/src/main/java/org/jolokia/util/IoUtil.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "callback",
+                        "uri": "agent/core/src/main/java/org/jolokia/util/IoUtil.java",
+                        "line": 36
+                    }
+                ],
+                [
+                    {
+                        "message": "getQuery(...) : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 62
+                    },
+                    {
+                        "message": "qs : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "qs : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 120
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 120
+                    },
+                    {
+                        "message": "pair : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 130
+                    },
+                    {
+                        "message": "pair : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "substring(...) : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "decode(...) : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "value : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 135
+                    },
+                    {
+                        "message": "{...} : String[] [[]] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 135
+                    },
+                    {
+                        "message": "values : String[] [[]] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 136
+                    },
+                    {
+                        "message": "ret [post update] : TreeMap [<map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 136
+                    },
+                    {
+                        "message": "ret : TreeMap [<map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "parseQuery(...) : TreeMap [<map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 62
+                    },
+                    {
+                        "message": "this <.field> [post update] : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 62
+                    },
+                    {
+                        "message": "new ParsedUri(...) : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "parsedUri : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 243
+                    },
+                    {
+                        "message": "pParsedUri : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 329
+                    },
+                    {
+                        "message": "pParsedUri : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 333
+                    },
+                    {
+                        "message": "pParsedUri : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 341
+                    },
+                    {
+                        "message": "pParsedUri : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 345
+                    },
+                    {
+                        "message": "parameter this : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "this <.field> : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "parameters : TreeMap [<map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "get(...) : String[] [[]] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "values : String[] [[]] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 102
+                    },
+                    {
+                        "message": "...[...] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 102
+                    },
+                    {
+                        "message": "getParameter(...) : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 345
+                    },
+                    {
+                        "message": "callback : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 348
+                    },
+                    {
+                        "message": "callback : String",
+                        "uri": "agent/core/src/main/java/org/jolokia/util/IoUtil.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "callback",
+                        "uri": "agent/core/src/main/java/org/jolokia/util/IoUtil.java",
+                        "line": 36
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getFirst(...) : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 285
+                    },
+                    {
+                        "message": "pOrigin : String",
+                        "uri": "agent/core/src/main/java/org/jolokia/http/HttpRequestHandler.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "...?...:... : String",
+                        "uri": "agent/core/src/main/java/org/jolokia/http/HttpRequestHandler.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "ret [post update] : HashMap [<map.value>] : String",
+                        "uri": "agent/core/src/main/java/org/jolokia/http/HttpRequestHandler.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "ret : HashMap [<map.value>] : String",
+                        "uri": "agent/core/src/main/java/org/jolokia/http/HttpRequestHandler.java",
+                        "line": 167
+                    },
+                    {
+                        "message": "handleCorsPreflightRequest(...) : HashMap [<map.value>] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 285
+                    },
+                    {
+                        "message": "respHeaders : HashMap [<map.value>] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 288
+                    },
+                    {
+                        "message": "entrySet(...) : Set [<element>, <map.value>] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 288
+                    },
+                    {
+                        "message": "entry : Entry [<map.value>] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "entry : Entry [<map.value>] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValue(...)",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 289
+                    }
+                ],
+                [
+                    {
+                        "message": "getFirst(...) : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 286
+                    },
+                    {
+                        "message": "pRequestHeaders : String",
+                        "uri": "agent/core/src/main/java/org/jolokia/http/HttpRequestHandler.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "pRequestHeaders : String",
+                        "uri": "agent/core/src/main/java/org/jolokia/http/HttpRequestHandler.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "ret [post update] : HashMap [<map.value>] : String",
+                        "uri": "agent/core/src/main/java/org/jolokia/http/HttpRequestHandler.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "ret : HashMap [<map.value>] : String",
+                        "uri": "agent/core/src/main/java/org/jolokia/http/HttpRequestHandler.java",
+                        "line": 167
+                    },
+                    {
+                        "message": "handleCorsPreflightRequest(...) : HashMap [<map.value>] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 285
+                    },
+                    {
+                        "message": "respHeaders : HashMap [<map.value>] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 288
+                    },
+                    {
+                        "message": "entrySet(...) : Set [<element>, <map.value>] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 288
+                    },
+                    {
+                        "message": "entry : Entry [<map.value>] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "entry : Entry [<map.value>] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValue(...)",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 289
+                    }
+                ],
+                [
+                    {
+                        "message": "entrySet(...) : Set",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 288
+                    },
+                    {
+                        "message": "entry : Entry",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValue(...)",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 289
+                    }
+                ],
+                [
+                    {
+                        "message": "entrySet(...) : Set",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 288
+                    },
+                    {
+                        "message": "entry : Entry",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "entry : Entry",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValue(...)",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 289
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getFirst(...) : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 294
+                    },
+                    {
+                        "message": "pOrigin : String",
+                        "uri": "agent/core/src/main/java/org/jolokia/http/HttpRequestHandler.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "pOrigin : String",
+                        "uri": "agent/core/src/main/java/org/jolokia/http/HttpRequestHandler.java",
+                        "line": 302
+                    },
+                    {
+                        "message": "replaceAll(...) : String",
+                        "uri": "agent/core/src/main/java/org/jolokia/http/HttpRequestHandler.java",
+                        "line": 302
+                    },
+                    {
+                        "message": "...?...:... : String",
+                        "uri": "agent/core/src/main/java/org/jolokia/http/HttpRequestHandler.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "extractCorsOrigin(...) : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 294
+                    },
+                    {
+                        "message": "origin",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 297
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getQuery(...) : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 62
+                    },
+                    {
+                        "message": "qs : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "qs : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 120
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 120
+                    },
+                    {
+                        "message": "pair : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 130
+                    },
+                    {
+                        "message": "pair : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "substring(...) : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "decode(...) : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "value : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 135
+                    },
+                    {
+                        "message": "{...} : String[] [[]] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 135
+                    },
+                    {
+                        "message": "values : String[] [[]] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 136
+                    },
+                    {
+                        "message": "ret [post update] : TreeMap [<map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 136
+                    },
+                    {
+                        "message": "ret : TreeMap [<map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "parseQuery(...) : TreeMap [<map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 62
+                    },
+                    {
+                        "message": "this <.field> [post update] : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 62
+                    },
+                    {
+                        "message": "new ParsedUri(...) : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "parsedUri : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 243
+                    },
+                    {
+                        "message": "pParsedUri : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 329
+                    },
+                    {
+                        "message": "pParsedUri : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 337
+                    },
+                    {
+                        "message": "pParsedUri : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 355
+                    },
+                    {
+                        "message": "pParsedUri : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 362
+                    },
+                    {
+                        "message": "parameter this : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "this <.field> : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "parameters : TreeMap [<map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "get(...) : String[] [[]] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "values : String[] [[]] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 102
+                    },
+                    {
+                        "message": "...[...] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 102
+                    },
+                    {
+                        "message": "getParameter(...) : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 362
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 364
+                    },
+                    {
+                        "message": "getBytes(...) : byte[]",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 364
+                    },
+                    {
+                        "message": "response",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 367
+                    }
+                ],
+                [
+                    {
+                        "message": "getQuery(...) : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 62
+                    },
+                    {
+                        "message": "qs : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "qs : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 120
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 120
+                    },
+                    {
+                        "message": "pair : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 130
+                    },
+                    {
+                        "message": "pair : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "substring(...) : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "decode(...) : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "value : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 143
+                    },
+                    {
+                        "message": "newValues [post update] : String[] [[]] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 143
+                    },
+                    {
+                        "message": "newValues : String[] [[]] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 144
+                    },
+                    {
+                        "message": "ret [post update] : TreeMap [<map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 144
+                    },
+                    {
+                        "message": "ret : TreeMap [<map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "parseQuery(...) : TreeMap [<map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 62
+                    },
+                    {
+                        "message": "this <.field> [post update] : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 62
+                    },
+                    {
+                        "message": "new ParsedUri(...) : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "parsedUri : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 243
+                    },
+                    {
+                        "message": "pParsedUri : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 329
+                    },
+                    {
+                        "message": "pParsedUri : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 337
+                    },
+                    {
+                        "message": "pParsedUri : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 355
+                    },
+                    {
+                        "message": "pParsedUri : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 362
+                    },
+                    {
+                        "message": "parameter this : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "this <.field> : ParsedUri [parameters, <map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "parameters : TreeMap [<map.value>, []] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "get(...) : String[] [[]] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "values : String[] [[]] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 102
+                    },
+                    {
+                        "message": "...[...] : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/ParsedUri.java",
+                        "line": 102
+                    },
+                    {
+                        "message": "getParameter(...) : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 362
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 364
+                    },
+                    {
+                        "message": "getBytes(...) : byte[]",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 364
+                    },
+                    {
+                        "message": "response",
+                        "uri": "agent/jvm/src/main/java/org/jolokia/jvmagent/handler/JolokiaHttpHandler.java",
+                        "line": 367
+                    }
+                ]
+            ]
+        }
+    ]
+}

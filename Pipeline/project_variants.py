@@ -49,22 +49,37 @@ class ProjectVariants(Enum):
         "dummy_finder_output": "Projects/Finder_Output_JSON/finder_output_yamcs.json",
         "dummy_exploiter_pov_logic": "No PoV Logic available yet" # TODO: add PoV logic when accessible
     }
+    # Finder experiments below
     NAHSRA_2022_29577 = {
         "name": "nahsra__antisamy_CVE-2022-29577_1.6.6.1",
         "cwe_id": "cwe-079",
-        "NIST_LINK": "https://nvd.nist.gov/vuln/detail/cve-2022-29577"
     }
     RHUSS_2018_1000129 = {
         "name": "rhuss__jolokia_CVE-2018-1000129_1.4.0",
         "cwe_id": "cwe-079",
-        "NIST_LINK": "https://nvd.nist.gov/vuln/detail/cve-2018-1000129"
     }
     DIFFPLUG_2022_26049 = {
         "name": "diffplug__goomph_CVE-2022-26049_3.37.1",
         "cwe_id": "cwe-022",
-        "NIST_LINK": "https://nvd.nist.gov/vuln/detail/CVE-2022-26049"
     }
-
+    FF4J_2022_44262 = {
+        "name": "ff4j__ff4j_CVE-2022-44262_1.8.13",
+        "cwe_id": "cwe-094",
+    }
+    RETROFIT_2018_1000850 = {
+        "name": "square__retrofit_CVE-2018-1000850_2.4.0",
+        "cwe_id": "cwe-022",
+    }
+    # build errors below
+    HAPIFHIR_2023_24057 = {
+        "name": "hapifhir__org.hl7.fhir.core_CVE-2023-24057_5.6.91",
+        "cwe_id": "cwe-022",
+    }
+    GRAYLOG2_2023_41044 = {
+        "name": "Graylog2__graylog2-server_CVE-2023-41044_5.1.2",
+        "cwe_id": "cwe-022",
+    }
+    # python Pipeline/convert_to_finder_output.py hapifhir__org.hl7.fhir.core_CVE-2023-24057_5.6.91 cwe-022 gpt5mini_HAPIFHIR_2023_24057.json
 
     @property
     def project_name(self) -> str:

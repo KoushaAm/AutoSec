@@ -91,6 +91,8 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
     if model.startswith("gpt"):
         os.getenv("OPEN_AI_KEY")
+    elif model.startswith("gemini"):
+        os.getenv("GOOGLE_API_KEY")
 
     # 1. setup command to have IRIS inside docker container
     docker_cmd = [
@@ -98,6 +100,7 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         "--platform=linux/amd64",
         "--rm",
         "-e", "OPENAI_API_KEY",
+        "-e", "GOOGLE_API_KEY",
         "-v", f"{host_ws}/Projects:/workspace/Projects",
         "-v", f"{host_ws}/Agents:/workspace/Agents",
         "-w", "/workspace/Agents/Finder",
@@ -317,13 +320,13 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 def pipeline_main():
     load_dotenv()
 
-    SELECTED_PROJECT = ProjectVariants.DIFFPLUG_2022_26049
+    SELECTED_PROJECT = ProjectVariants.GRAYLOG2_2023_41044
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
         "project_name": SELECTED_PROJECT.project_name,
         "vuln_id": SELECTED_PROJECT.cwe_id,
         "language": "java",
-        "finder_model": "gpt-5-mini",
+        "finder_model": "gpt-5-mini", # gemini-2.5-pro
         "finder_reanalyze": True,
         # Dummy inputs for development & experiments
         # "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),

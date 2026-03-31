@@ -29,7 +29,8 @@
             "eamodio.gitlens",
             "aaron-bond.better-comments",
             "streetsidesoftware.code-spell-checker",
-            "vscode-icons-team.vscode-icons"
+            "vscode-icons-team.vscode-icons",
+            "mechatroner.rainbow-csv"
          ],
          "settings": {
             "terminal.integrated.defaultProfile.linux": "bash",
