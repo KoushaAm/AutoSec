@@ -4,7 +4,8 @@ from enum import Enum
 class ProjectVariants(Enum):
     CODEHAUS_2018 = {
         "name": "codehaus-plexus__plexus-archiver_CVE-2018-1002200_3.5",
-        "cwe_id": "cwe-022"
+        "cwe_id": "cwe-022",
+        "dummy_finder_output": "Projects/Finder_Output_JSON/finder_output_codehaus_2018.json",
     }
     CODEHAUS_2017 = {
         "name": "codehaus-plexus__plexus-utils_CVE-2017-1000487_3.0.15",
@@ -16,6 +17,10 @@ class ProjectVariants(Enum):
     }
     PERWENDEL_2018 = {
         "name": "perwendel__spark_CVE-2018-9159_2.7.1",
+        "cwe_id": "cwe-022"
+    }
+    PERWENDEL_2016 = {
+        "name": "perwendel__spark_CVE-2016-9177_2.5.1",
         "cwe_id": "cwe-022"
     }
     # Primary 5 Experiments below
@@ -48,6 +53,26 @@ class ProjectVariants(Enum):
         "cwe_id": "cwe-022",
         "dummy_finder_output": "Projects/Finder_Output_JSON/finder_output_yamcs.json",
         "dummy_exploiter_pov_logic": "No PoV Logic available yet" # TODO: add PoV logic when accessible
+    }
+    SCRIPT_SECURITY_PLUGIN = {
+        "name": "jenkinsci__script-security-plugin_CVE-2023-24422_1228.vd93135a_2fb_25",
+        "cwe_id": "cwe-078",
+        "dummy_finder_output": "Projects/Finder_Output_JSON/finder_output_security_plugin.json",
+    }
+    WORKFLOW_CPS = {
+        "name": "jenkinsci__workflow-cps-plugin_CVE-2022-25173_2646.v6ed3b5b01ff1",
+        "cwe_id": "cwe-078",
+        "dummy_finder_output": "Projects/Finder_Output_JSON/finder_output_workflow_cps.json",
+    }
+    XWIKI_COMMONS = {
+        "name": "xwiki__xwiki-commons_CVE-2023-29528_14.9-rc-1",
+        "cwe_id": "cwe-079",
+        "dummy_finder_output": "Projects/Finder_Output_JSON/finder_output_xwiki_commons.json",
+    }
+    HIBERNATE_VALIDATOR = {
+        "name": "hibernate__hibernate-validator_CVE-2019-10219_6.0.17.Final",
+        "cwe_id": "cwe-079",
+        "dummy_finder_output": "Projects/Finder_Output_JSON/finder_output_hibernate_validator.json",
     }
 
 

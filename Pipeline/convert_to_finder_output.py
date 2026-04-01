@@ -15,12 +15,19 @@ def main():
     parser.add_argument("project_name", help="Project folder name under Agents/Finder/output")
     parser.add_argument("cwe_id", help="CWE id like cwe-022")
     parser.add_argument("output_json", help="Output JSON filename")
+    parser.add_argument("--post_filter", action="store_true", help="post filter or not")
 
     args = parser.parse_args()
 
     project_name = args.project_name
     cwe_id = args.cwe_id
     output_json = args.output_json
+    is_post_filter = args.post_filter
+
+    if is_post_filter:
+        sarif_folder = f"{cwe_id}wLLM-posthoc-filter"
+    else:
+        sarif_folder = f"{cwe_id}wLLM"
 
     sarif_path = (
         ROOT_DIR
@@ -29,7 +36,7 @@ def main():
         / "output"
         / args.project_name
         / "test"
-        / f"{args.cwe_id}wLLM-posthoc-filter"
+        / sarif_folder
         / "results.sarif"
     )
 
