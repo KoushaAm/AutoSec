@@ -51,9 +51,10 @@ def _build_workflow() -> Any:
 
     # linear edges
     graph.add_edge(START, "finder")
-    graph.add_edge("finder", "exploiter")
+    # graph.add_edge("finder", "exploiter")
     # graph.add_edge("finder", "patcher")
     # graph.add_edge("patcher", "verifier")
+    graph.add_edge("finder", END)
 
     # conditional edges
     # exploiter -> finder OR exploiter -> patcher
@@ -61,15 +62,6 @@ def _build_workflow() -> Any:
 
     workflow = graph.compile()
     return workflow
-
-def get_db() -> dict:
-    # function to pull vulnerabilities from database
-    return [] # returns json object
-
-def push_db() -> tuple[int, str]:
-    # function to push vulnerabilities into the database
-    return (400, "Failed")
-
 
 
 def _finder_node(state: AutoSecState) -> AutoSecState:
@@ -99,6 +91,8 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
     if model.startswith("gpt"):
         os.getenv("OPEN_AI_KEY")
+    elif model.startswith("gemini"):
+        os.getenv("GOOGLE_API_KEY")
 
     # 1. setup command to have IRIS inside docker container
     docker_cmd = [
@@ -106,6 +100,7 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         "--platform=linux/amd64",
         "--rm",
         "-e", "OPENAI_API_KEY",
+        "-e", "GOOGLE_API_KEY",
         "-v", f"{host_ws}/Projects:/workspace/Projects",
         "-v", f"{host_ws}/Agents:/workspace/Agents",
         "-w", "/workspace/Agents/Finder",
@@ -321,56 +316,23 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 
     return state
 
-
-# ====== Project Variants ======
-class ProjectVariant(Enum):
-    CODEHAUS_2018 = {
-        "name": "codehaus-plexus__plexus-archiver_CVE-2018-1002200_3.5",
-        "cwe_id": "cwe-022"
-    }
-    CODEHAUS_2017 = {
-        "name": "codehaus-plexus__plexus-utils_CVE-2017-1000487_3.0.15",
-        "cwe_id": "cwe-078"
-    }
-    NAHSRA = {
-        "name": "nahsra__antisamy_CVE-2016-10006_1.5.3",
-        "cwe_id": "cwe-079"
-    }
-    PERWENDEL_2018 = {
-        "name": "perwendel__spark_CVE-2018-9159_2.7.1",
-        "cwe_id": "cwe-022"
-    }
-
-    WHITESOURCE = {
-        "name": "whitesource__curekit_CVE-2022-23082_1.1.3",
-        "cwe_id": "cwe-022"
-    }
-
-    @property
-    def project_name(self) -> str:
-        return self.value["name"]
-
-    @property
-    def cwe_id(self) -> str:
-        return self.value["cwe_id"]
-
 # ====== Execute workflow =====
 def pipeline_main():
     load_dotenv()
 
-    SELECTED_PROJECT = ProjectVariants.YAMCS
+    SELECTED_PROJECT = ProjectVariants.GRAYLOG2_2023_41044
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
         "project_name": SELECTED_PROJECT.project_name,
         "vuln_id": SELECTED_PROJECT.cwe_id,
         "language": "java",
-        "finder_model": "qwen2.5-32b",
-        "finder_reanalyze": False,
+        "finder_model": "gpt-5-mini", # gemini-2.5-pro
+        "finder_reanalyze": True,
         # Dummy inputs for development & experiments
-        "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
-        "exploiter": {
-            "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
-        }
+        # "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
+        # "exploiter": {
+        #     "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
+        # }
     }
 
     # print(json.dumps(initial_state, indent=2))
@@ -379,9 +341,9 @@ def pipeline_main():
     workflow = _build_workflow()
     final_state = workflow.invoke(initial_state)
 
-    # print("\n====== STATE DUMP ======")
-    # print(json.dumps(final_state, indent=2))
-    # print("======^==========^======\n")
+    print("\n====== STATE DUMP ======")
+    print(json.dumps(final_state, indent=2))
+    print("======^==========^======\n")
 
 
 # standalone execution
