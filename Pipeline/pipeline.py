@@ -18,7 +18,7 @@ from . import logger
 from .utils import load_dummy_finder_output
 from .project_variants import ProjectVariants
 
-from Agents.Patcher import patcher_main
+# from Agents.Patcher import patcher_main
 from Agents.Verifier import verifier_main
 from Agents.Finder.src.types import FinderOutput
 from Agents.Finder.src.output_converter import sarif_to_finder_output
@@ -46,7 +46,7 @@ def _build_workflow() -> Any:
     graph = StateGraph(AutoSecState)
     graph.add_node("finder", _finder_node)
     graph.add_node("exploiter", _exploiter_node)
-    graph.add_node("patcher", _patcher_node)
+    # graph.add_node("patcher", _patcher_node)
     graph.add_node("verifier", _verifier_node)
 
     # linear edges
@@ -293,48 +293,12 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 
     return state
 
-# ====== Project Variants ======
-class ProjectVariant(Enum):
-    CODEHAUS_2018 = {
-        "name": "codehaus-plexus__plexus-archiver_CVE-2018-1002200_3.5",
-        "cwe_id": "cwe-022"
-    }
-    CODEHAUS_2017 = {
-        "name": "codehaus-plexus__plexus-utils_CVE-2017-1000487_3.0.15",
-        "cwe_id": "cwe-078"
-    }
-    NAHSRA = {
-        "name": "nahsra__antisamy_CVE-2016-10006_1.5.3",
-        "cwe_id": "cwe-079"
-    }
-    PERWENDEL_2018 = {
-        "name": "perwendel__spark_CVE-2018-9159_2.7.1",
-        "cwe_id": "cwe-022"
-    }
-
-    WHITESOURCE = {
-        "name": "whitesource__curekit_CVE-2022-23082_1.1.3",
-        "cwe_id": "cwe-022"
-    }
-
-    KUBERNETES = {
-        "name":"kubernetes-client__java_CVE-2020-8570_client-java-parent-9.0.1",
-        "cwe_id": "cwe-022"
-    }
-
-    @property
-    def project_name(self) -> str:
-        return self.value["name"]
-
-    @property
-    def cwe_id(self) -> str:
-        return self.value["cwe_id"]
 
 # ====== Execute workflow =====
 def pipeline_main():
     load_dotenv()
 
-    SELECTED_PROJECT = ProjectVariants.KUBERNETES_CLIENT
+    SELECTED_PROJECT = ProjectVariants.PERWENDEL_2016
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
         "project_name": SELECTED_PROJECT.project_name,
@@ -343,10 +307,10 @@ def pipeline_main():
         "finder_model": "qwen2.5-32b",
         "finder_reanalyze": False,
         # Dummy inputs for development & experiments
-        "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
-        "exploiter": {
-            "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
-        }
+        # "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
+        # "exploiter": {
+        #     "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
+        # }
     }
 
     # print(json.dumps(initial_state, indent=2))
