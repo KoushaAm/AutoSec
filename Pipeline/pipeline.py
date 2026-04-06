@@ -30,7 +30,7 @@ PROJECTS_DIR = (BASE_DIR / "Projects").resolve()
 AGENTS_DIR   = (BASE_DIR / "Agents").resolve()
 
 class AutoSecState(TypedDict, total=False):
-    project_name: Optional[str]         # ex: jenkinsci__perfecto-plugin_CVE
+    project_name: Optional[str]
     language: Optional[str]
     vuln_id: Optional[str]
     vuln: Optional[Dict[str, Any]]
@@ -51,9 +51,10 @@ def _build_workflow() -> Any:
 
     # linear edges
     graph.add_edge(START, "finder")
-    graph.add_edge("finder", "exploiter")
+    # graph.add_edge("finder", "exploiter")
     # graph.add_edge("finder", "patcher")
     # graph.add_edge("patcher", "verifier")
+    graph.add_edge("finder", END)
 
     # conditional edges
     # exploiter -> finder OR exploiter -> patcher
@@ -61,15 +62,6 @@ def _build_workflow() -> Any:
 
     workflow = graph.compile()
     return workflow
-
-def get_db() -> dict:
-    # function to pull vulnerabilities from database
-    return [] # returns json object
-
-def push_db() -> tuple[int, str]:
-    # function to push vulnerabilities into the database
-    return (400, "Failed")
-
 
 
 def _finder_node(state: AutoSecState) -> AutoSecState:
@@ -99,6 +91,8 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
     if model.startswith("gpt"):
         os.getenv("OPEN_AI_KEY")
+    elif model.startswith("gemini"):
+        os.getenv("GOOGLE_API_KEY")
 
     # 1. setup command to have IRIS inside docker container
     docker_cmd = [
@@ -106,6 +100,7 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         "--platform=linux/amd64",
         "--rm",
         "-e", "OPENAI_API_KEY",
+        "-e", "GOOGLE_API_KEY",
         "-v", f"{host_ws}/Projects:/workspace/Projects",
         "-v", f"{host_ws}/Agents:/workspace/Agents",
         "-w", "/workspace/Agents/Finder",
@@ -117,11 +112,39 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
     logger.info(f"Running IRIS inside Docker for project {project_name}")
 
-    # # 2. Run IRIS analysis
-    # try:
-    #     subprocess.run(docker_cmd, check=True, text=True)
-    #
-    # state["finder_reanalyze"] = False
+    # 2. Run IRIS analysis
+    try:
+        subprocess.run(docker_cmd, check=True, text=True)
+
+    # analysis failed for some reason
+    except subprocess.CalledProcessError as e:
+            print("Finder failed with an error")
+            print("Return code:", e.returncode)
+            print("stdout:", e.stdout)
+            print("stderr:", e.stderr)
+
+            state["finder_output"] = None
+            state["vuln"] = None
+            state["finder_reanalyze"] = False
+            return state
+
+    # 3. Load IRIS output
+    sarif_path = f"./Agents/Finder/output/{project_name}/test/{query}-posthoc-filter/results.sarif"
+    try:
+        with open(sarif_path) as f:
+            findings = json.load(f)
+
+        # 4. Save results into pipeline state
+        state["finder_output"] = sarif_to_finder_output(findings, cwe_id=state["vuln_id"])
+        state["vuln"] = findings # keep oringial json dump just in case its needed
+
+    # no vulnerabilites were found
+    except FileNotFoundError:
+        print("Finder found no vulnerabilites")
+        state["finder_output"] = None
+        state["vuln"] = None
+
+    state["finder_reanalyze"] = False
     return state
 
 
@@ -298,30 +321,29 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 def pipeline_main():
     load_dotenv()
 
-    SELECTED_PROJECT = ProjectVariants.PERWENDEL_2016
+    SELECTED_PROJECT = ProjectVariants.CODEHAUS_CVE_2018_1002200
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
         "project_name": SELECTED_PROJECT.project_name,
         "vuln_id": SELECTED_PROJECT.cwe_id,
         "language": "java",
-        "finder_model": "qwen2.5-32b",
-        "finder_reanalyze": False,
+        "finder_model": "gpt-5-mini",
+        "finder_reanalyze": True,
         # Dummy inputs for development & experiments
         # "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
         # "exploiter": {
         #     "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
         # }
     }
-
     # print(json.dumps(initial_state, indent=2))
 
     # Execute the graph
     workflow = _build_workflow()
     final_state = workflow.invoke(initial_state)
 
-    # print("\n====== STATE DUMP ======")
-    # print(json.dumps(final_state, indent=2))
-    # print("======^==========^======\n")
+    print("\n====== STATE DUMP ======")
+    print(json.dumps(final_state, indent=2))
+    print("======^==========^======\n")
 
 
 # standalone execution

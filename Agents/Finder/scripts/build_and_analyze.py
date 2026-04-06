@@ -69,7 +69,7 @@ def build_project(project_name):
     # Ensure build-info directory exists
     Path(f"{DATA_DIR}/build-info").mkdir(parents=True, exist_ok=True)
 
-    build_cmd = ["python3", f"{ROOT_DIR}/scripts/build_one.py", project_name, "--try_all"]
+    build_cmd = ["python3", f"{ROOT_DIR}/scripts/build_one.py", project_name]
     subprocess.run(build_cmd, check=True)
 
 # build codeql (db using build_codeql.dbs.py)
