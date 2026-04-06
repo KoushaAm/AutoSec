@@ -30,7 +30,7 @@ PROJECTS_DIR = (BASE_DIR / "Projects").resolve()
 AGENTS_DIR   = (BASE_DIR / "Agents").resolve()
 
 class AutoSecState(TypedDict, total=False):
-    project_name: Optional[str]         # ex: jenkinsci__perfecto-plugin_CVE
+    project_name: Optional[str]
     language: Optional[str]
     vuln_id: Optional[str]
     vuln: Optional[Dict[str, Any]]
@@ -320,13 +320,13 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 def pipeline_main():
     load_dotenv()
 
-    SELECTED_PROJECT = ProjectVariants.GRAYLOG2_2023_41044
+    SELECTED_PROJECT = ProjectVariants.CODEHAUS_CVE_2018_1002200
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
         "project_name": SELECTED_PROJECT.project_name,
         "vuln_id": SELECTED_PROJECT.cwe_id,
         "language": "java",
-        "finder_model": "gpt-5-mini", # gemini-2.5-pro
+        "finder_model": "gpt-5-mini",
         "finder_reanalyze": True,
         # Dummy inputs for development & experiments
         # "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
@@ -334,7 +334,6 @@ def pipeline_main():
         #     "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
         # }
     }
-
     # print(json.dumps(initial_state, indent=2))
 
     # Execute the graph
