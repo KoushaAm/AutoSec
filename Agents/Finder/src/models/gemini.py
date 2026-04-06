@@ -12,9 +12,11 @@ _model_name_map = {
     "gemini-1.5-flash": "gemini-1.5-flash-latest",
     "gemini-pro": "gemini-pro",
     "gemini-pro-vision": "gemini-pro-vision",
-    "gemini-1.0-pro-vision": "gemini-1.0-pro-vision-latest"
+    "gemini-1.0-pro-vision": "gemini-1.0-pro-vision-latest",
+    "gemini-2.5-flash": "gemini-2.5-flash",
+    "gemini-2.5-pro": "gemini-2.5-pro"
 }
-_GEMINI_DEFAULT_PARAMS = {"temperature": 0.4, "top_p": 1, "top_k": 32, "max_tokens": 2048 }
+_GEMINI_DEFAULT_PARAMS = {"temperature": 0.0, "top_p": 1, "top_k": 32, "max_tokens": 2048 }
 
 class GeminiModel(LLM):
     def __init__(self, model_name, logger: MyLogger, **kwargs):
