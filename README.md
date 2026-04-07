@@ -58,7 +58,7 @@ export OPENAI_KEY_FAULTLINE="your_api_key_here"
 In the directory [cwe-bench-java](Agents/Exploiter/data/cwe-bench-java/) create a new folder called java-env. The folder can be empty 
 since we are using Docker to build these projects.
 
-### 5.3 Input setup (only for Independent runs)
+#### 5.3 Input setup (only for Independent runs)
 In order to run Exploiter Independently you need to provide this the file result.json in the location Agents/Exploiter/vuln_agent/modules/data/traces/result.json
 
 ### 6. Run the Pipeline
