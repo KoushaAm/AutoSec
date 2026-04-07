@@ -1,0 +1,6 @@
+
+name: iris
+version: 1.0.0
+dependencies:
+  codeql/java-all: "*"
+  codeql/java-queries: "*"

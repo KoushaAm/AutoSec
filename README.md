@@ -46,12 +46,28 @@ docker run --platform=linux/amd64 -it iris:latest
 run conda activate iris
 ```
 
-### 5. Run the Pipeline
+
+
+### 5. Exploiter Setup
+#### 5.1 API_KEY - temporarily a different api key is used for the Exploiter
+Export your OpenAI API key as OPENAI_KEY_FAULTLINE on your OS
+```
+export OPENAI_KEY_FAULTLINE="your_api_key_here"
+```
+#### 5.2 SetUp CWE-Bench-Java
+In the directory [cwe-bench-java](Agents/Exploiter/data/cwe-bench-java/) create a new folder called java-env. The folder can be empty 
+since we are using Docker to build these projects.
+
+### 5.3 Input setup (only for Independent runs)
+In order to run Exploiter Independently you need to provide this the file result.json in the location Agents/Exploiter/vuln_agent/modules/data/traces/result.json
+
+### 6. Run the Pipeline
 ```bash
 python3 main.py
 
 # Customize the Patcher agent code extraction limit
 PATCHER_SNIPPET_MAX_LINES=800 python main.py
+
 
 # For all possible arguments without running main
 python3 main.py <-h|--help>
