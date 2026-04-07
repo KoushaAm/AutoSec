@@ -320,7 +320,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 def pipeline_main():
     load_dotenv()
 
-    SELECTED_PROJECT = ProjectVariants.CODEHAUS_CVE_2018_1002200
+    SELECTED_PROJECT = ProjectVariants.KUBERNETES_CLIENT_CVE_2020_8570
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
         "project_name": SELECTED_PROJECT.project_name,

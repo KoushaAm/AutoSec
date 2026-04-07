@@ -1,0 +1,2076 @@
+{
+    "cwe_id": "cwe-022",
+    "vulnerabilities": [
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "destFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 667
+                    },
+                    {
+                        "message": "destFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 673
+                    },
+                    {
+                        "message": "getParentFile(...)",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 673
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarUnArchiver.java",
+                        "line": 113
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 309
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 309
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 313
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarUnArchiver.java",
+                        "line": 113
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 309
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 309
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 319
+                    },
+                    {
+                        "message": "getParentFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 319
+                    },
+                    {
+                        "message": "dirF",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 322
+                    }
+                ],
+                [
+                    {
+                        "message": "new String(...) : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/AbstractZipUnArchiver.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "...?...:... : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/AbstractZipUnArchiver.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/AbstractZipUnArchiver.java",
+                        "line": 178
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/AbstractZipUnArchiver.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/AbstractZipUnArchiver.java",
+                        "line": 222
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 309
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 309
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 319
+                    },
+                    {
+                        "message": "getParentFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 319
+                    },
+                    {
+                        "message": "dirF",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 322
+                    }
+                ],
+                [
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/AbstractZipUnArchiver.java",
+                        "line": 95
+                    },
+                    {
+                        "message": "...?...:... : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/AbstractZipUnArchiver.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/AbstractZipUnArchiver.java",
+                        "line": 178
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/AbstractZipUnArchiver.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/AbstractZipUnArchiver.java",
+                        "line": 222
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 309
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 309
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 319
+                    },
+                    {
+                        "message": "getParentFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 319
+                    },
+                    {
+                        "message": "dirF",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 322
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarUnArchiver.java",
+                        "line": 113
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 309
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 309
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 319
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 327
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getLinkName(...) : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarUnArchiver.java",
+                        "line": 112
+                    },
+                    {
+                        "message": "symlinkDestination : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarUnArchiver.java",
+                        "line": 114
+                    },
+                    {
+                        "message": "symlinkDestination : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 305
+                    },
+                    {
+                        "message": "symlinkDestination : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 327
+                    },
+                    {
+                        "message": "new File(...)",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 327
+                    }
+                ],
+                [
+                    {
+                        "message": "getUnixSymlink(...) : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/AbstractZipUnArchiver.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "resolveSymlink(...) : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/AbstractZipUnArchiver.java",
+                        "line": 181
+                    },
+                    {
+                        "message": "symlinkDestination : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/AbstractZipUnArchiver.java",
+                        "line": 219
+                    },
+                    {
+                        "message": "symlinkDestination : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/AbstractZipUnArchiver.java",
+                        "line": 222
+                    },
+                    {
+                        "message": "symlinkDestination : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 305
+                    },
+                    {
+                        "message": "symlinkDestination : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 327
+                    },
+                    {
+                        "message": "new File(...)",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 327
+                    }
+                ],
+                [
+                    {
+                        "message": "getUnixSymlink(...) : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/AbstractZipUnArchiver.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "resolveSymlink(...) : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/AbstractZipUnArchiver.java",
+                        "line": 253
+                    },
+                    {
+                        "message": "symlinkDestination : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/AbstractZipUnArchiver.java",
+                        "line": 219
+                    },
+                    {
+                        "message": "symlinkDestination : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/AbstractZipUnArchiver.java",
+                        "line": 222
+                    },
+                    {
+                        "message": "symlinkDestination : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 305
+                    },
+                    {
+                        "message": "symlinkDestination : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 327
+                    },
+                    {
+                        "message": "new File(...)",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 327
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarUnArchiver.java",
+                        "line": 113
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 309
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 309
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 319
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 331
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarUnArchiver.java",
+                        "line": 113
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 309
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 309
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 319
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 338
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarUnArchiver.java",
+                        "line": 113
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 309
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 309
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 319
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractUnArchiver.java",
+                        "line": 350
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "readLine(...) : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/DotDirectiveArchiveFinalizer.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "line : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/DotDirectiveArchiveFinalizer.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/DotDirectiveArchiveFinalizer.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "...[...] : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/DotDirectiveArchiveFinalizer.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/DotDirectiveArchiveFinalizer.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/DotDirectiveArchiveFinalizer.java",
+                        "line": 67
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/diags/TrackingArchiver.java",
+                        "line": 62
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/diags/TrackingArchiver.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "resource : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/diags/TrackingArchiver.java",
+                        "line": 347
+                    },
+                    {
+                        "message": "(...)...",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/diags/TrackingArchiver.java",
+                        "line": 362
+                    }
+                ],
+                [
+                    {
+                        "message": "readLine(...) : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/DotDirectiveArchiveFinalizer.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "line : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/DotDirectiveArchiveFinalizer.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/DotDirectiveArchiveFinalizer.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "...[...] : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/DotDirectiveArchiveFinalizer.java",
+                        "line": 71
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/DotDirectiveArchiveFinalizer.java",
+                        "line": 71
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/DotDirectiveArchiveFinalizer.java",
+                        "line": 77
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/diags/TrackingArchiver.java",
+                        "line": 69
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/diags/TrackingArchiver.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "resource : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/diags/TrackingArchiver.java",
+                        "line": 347
+                    },
+                    {
+                        "message": "(...)...",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/diags/TrackingArchiver.java",
+                        "line": 362
+                    }
+                ],
+                [
+                    {
+                        "message": "readLine(...) : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/DotDirectiveArchiveFinalizer.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "line : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/DotDirectiveArchiveFinalizer.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/DotDirectiveArchiveFinalizer.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "...[...] : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/DotDirectiveArchiveFinalizer.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/DotDirectiveArchiveFinalizer.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/DotDirectiveArchiveFinalizer.java",
+                        "line": 67
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/diags/TrackingArchiver.java",
+                        "line": 62
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/diags/TrackingArchiver.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "resource : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/diags/TrackingArchiver.java",
+                        "line": 347
+                    },
+                    {
+                        "message": "(...)...",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/diags/TrackingArchiver.java",
+                        "line": 362
+                    }
+                ],
+                [
+                    {
+                        "message": "readLine(...) : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/DotDirectiveArchiveFinalizer.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "line : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/DotDirectiveArchiveFinalizer.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/DotDirectiveArchiveFinalizer.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "...[...] : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/DotDirectiveArchiveFinalizer.java",
+                        "line": 71
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/DotDirectiveArchiveFinalizer.java",
+                        "line": 71
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/DotDirectiveArchiveFinalizer.java",
+                        "line": 77
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/diags/TrackingArchiver.java",
+                        "line": 69
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/diags/TrackingArchiver.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "resource : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/diags/TrackingArchiver.java",
+                        "line": 347
+                    },
+                    {
+                        "message": "(...)...",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/diags/TrackingArchiver.java",
+                        "line": 362
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getSymlinkDestination(...) : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/dir/DirectoryArchiver.java",
+                        "line": 92
+                    },
+                    {
+                        "message": "dest : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/dir/DirectoryArchiver.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/dir/DirectoryArchiver.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "target",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/dir/DirectoryArchiver.java",
+                        "line": 94
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "compressFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "compressFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 43
+                    },
+                    {
+                        "message": "this [post update] : Compressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 43
+                    },
+                    {
+                        "message": "compressor [post update] : GZipCompressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/gzip/GZipArchiver.java",
+                        "line": 52
+                    },
+                    {
+                        "message": "compressor : GZipCompressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/gzip/GZipArchiver.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "parameter this : GZipCompressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/gzip/GZipCompressor.java",
+                        "line": 37
+                    },
+                    {
+                        "message": "this <.method> : GZipCompressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/gzip/GZipCompressor.java",
+                        "line": 42
+                    },
+                    {
+                        "message": "parameter this : GZipCompressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "this <.field> : GZipCompressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "destFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "getDestFile(...)",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/gzip/GZipCompressor.java",
+                        "line": 42
+                    }
+                ],
+                [
+                    {
+                        "message": "compressFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "compressFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 43
+                    },
+                    {
+                        "message": "this [post update] : Compressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 43
+                    },
+                    {
+                        "message": "compressor [post update] : GZipCompressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/gzip/GZipArchiver.java",
+                        "line": 52
+                    },
+                    {
+                        "message": "this <.field> [post update] : GZipArchiver [compressor, destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/gzip/GZipArchiver.java",
+                        "line": 52
+                    },
+                    {
+                        "message": "this <.field> : GZipArchiver [compressor, destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/gzip/GZipArchiver.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "compressor : GZipCompressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/gzip/GZipArchiver.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "parameter this : GZipCompressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/gzip/GZipCompressor.java",
+                        "line": 37
+                    },
+                    {
+                        "message": "this <.method> : GZipCompressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/gzip/GZipCompressor.java",
+                        "line": 42
+                    },
+                    {
+                        "message": "parameter this : GZipCompressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "this <.field> : GZipCompressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "destFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "getDestFile(...)",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/gzip/GZipCompressor.java",
+                        "line": 42
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 382
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 386
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 259
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 263
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 263
+                    },
+                    {
+                        "message": "symlinkFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualSymlinkResource.java",
+                        "line": 32
+                    },
+                    {
+                        "message": "symlinkFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualSymlinkResource.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualFileResource.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualFileResource.java",
+                        "line": 40
+                    }
+                ],
+                [
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 373
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 378
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 382
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 386
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 259
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 263
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 263
+                    },
+                    {
+                        "message": "symlinkFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualSymlinkResource.java",
+                        "line": 32
+                    },
+                    {
+                        "message": "symlinkFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualSymlinkResource.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualFileResource.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualFileResource.java",
+                        "line": 40
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 382
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 386
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 259
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 263
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 263
+                    },
+                    {
+                        "message": "symlinkFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualSymlinkResource.java",
+                        "line": 32
+                    },
+                    {
+                        "message": "symlinkFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualSymlinkResource.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualFileResource.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualFileResource.java",
+                        "line": 40
+                    }
+                ],
+                [
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 373
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 378
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 382
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 386
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 259
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 263
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 263
+                    },
+                    {
+                        "message": "symlinkFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualSymlinkResource.java",
+                        "line": 32
+                    },
+                    {
+                        "message": "symlinkFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualSymlinkResource.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualFileResource.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualFileResource.java",
+                        "line": 40
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 382
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 386
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 259
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 263
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 263
+                    },
+                    {
+                        "message": "symlinkFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualSymlinkResource.java",
+                        "line": 32
+                    },
+                    {
+                        "message": "symlinkFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualSymlinkResource.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualFileResource.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualFileResource.java",
+                        "line": 40
+                    }
+                ],
+                [
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 373
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 378
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 382
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 386
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 259
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 263
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 263
+                    },
+                    {
+                        "message": "symlinkFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualSymlinkResource.java",
+                        "line": 32
+                    },
+                    {
+                        "message": "symlinkFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualSymlinkResource.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualFileResource.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualFileResource.java",
+                        "line": 40
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 382
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 386
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 259
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 263
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 263
+                    },
+                    {
+                        "message": "symlinkFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualSymlinkResource.java",
+                        "line": 32
+                    },
+                    {
+                        "message": "symlinkFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualSymlinkResource.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualFileResource.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualFileResource.java",
+                        "line": 40
+                    }
+                ],
+                [
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 373
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 378
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 382
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 386
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 259
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 263
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 263
+                    },
+                    {
+                        "message": "symlinkFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualSymlinkResource.java",
+                        "line": 32
+                    },
+                    {
+                        "message": "symlinkFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualSymlinkResource.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualFileResource.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualFileResource.java",
+                        "line": 40
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 382
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/AbstractArchiver.java",
+                        "line": 386
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 259
+                    },
+                    {
+                        "message": "symlinkName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 263
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 263
+                    },
+                    {
+                        "message": "symlinkFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualSymlinkResource.java",
+                        "line": 32
+                    },
+                    {
+                        "message": "symlinkFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualSymlinkResource.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "this <constr(this)> [post update] : PlexusIoVirtualSymlinkResource [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualSymlinkResource.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "new PlexusIoVirtualSymlinkResource(...) : PlexusIoVirtualSymlinkResource [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 263
+                    },
+                    {
+                        "message": "resource : PlexusIoVirtualSymlinkResource [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 67
+                    },
+                    {
+                        "message": "resource : PlexusIoVirtualSymlinkResource [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/ArchiveEntry.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "parameter this : PlexusIoVirtualSymlinkResource [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualFileResource.java",
+                        "line": 92
+                    },
+                    {
+                        "message": "this <.method> : PlexusIoVirtualSymlinkResource [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualFileResource.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "parameter this : PlexusIoVirtualSymlinkResource [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualFileResource.java",
+                        "line": 52
+                    },
+                    {
+                        "message": "this <.field> : PlexusIoVirtualSymlinkResource [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualFileResource.java",
+                        "line": 54
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualFileResource.java",
+                        "line": 54
+                    },
+                    {
+                        "message": "getFile(...)",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/resources/PlexusIoVirtualFileResource.java",
+                        "line": 94
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/BZip2TarFile.java",
+                        "line": 17
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/BZip2TarFile.java",
+                        "line": 19
+                    },
+                    {
+                        "message": "this <constr(this)> [post update] : BZip2TarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/BZip2TarFile.java",
+                        "line": 19
+                    },
+                    {
+                        "message": "new BZip2TarFile(...) : BZip2TarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/PlexusIoTarBZip2FileResourceCollection.java",
+                        "line": 12
+                    },
+                    {
+                        "message": "newTarFile(...) : BZip2TarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/PlexusIoTarFileResourceCollection.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "tarFile : BZip2TarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/PlexusIoTarFileResourceCollection.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "parameter this : BZip2TarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "this <.method> : BZip2TarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "parameter this : BZip2TarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 188
+                    },
+                    {
+                        "message": "this <.field> : BZip2TarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 152
+                    }
+                ],
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/BZip2TarFile.java",
+                        "line": 17
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/BZip2TarFile.java",
+                        "line": 19
+                    },
+                    {
+                        "message": "this <constr(this)> [post update] : BZip2TarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/BZip2TarFile.java",
+                        "line": 19
+                    },
+                    {
+                        "message": "new BZip2TarFile(...) : BZip2TarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/PlexusIoTarBZip2FileResourceCollection.java",
+                        "line": 12
+                    },
+                    {
+                        "message": "newTarFile(...) : BZip2TarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/PlexusIoTarFileResourceCollection.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "this <.field> [post update] : PlexusIoTarFileResourceCollection [tarFile, file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/PlexusIoTarFileResourceCollection.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "this <.field> : PlexusIoTarFileResourceCollection [tarFile, file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/PlexusIoTarFileResourceCollection.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "tarFile : BZip2TarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/PlexusIoTarFileResourceCollection.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "parameter this : BZip2TarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "this <.method> : BZip2TarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "parameter this : BZip2TarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 188
+                    },
+                    {
+                        "message": "this <.field> : BZip2TarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/BZip2TarFile.java",
+                        "line": 23
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/BZip2TarFile.java",
+                        "line": 26
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 152
+                    }
+                ],
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/GZipTarFile.java",
+                        "line": 19
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/GZipTarFile.java",
+                        "line": 21
+                    },
+                    {
+                        "message": "this <constr(this)> [post update] : GZipTarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/GZipTarFile.java",
+                        "line": 21
+                    },
+                    {
+                        "message": "new GZipTarFile(...) : GZipTarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/PlexusIoTarGZipFileResourceCollection.java",
+                        "line": 12
+                    },
+                    {
+                        "message": "newTarFile(...) : GZipTarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/PlexusIoTarFileResourceCollection.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "tarFile : GZipTarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/PlexusIoTarFileResourceCollection.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "parameter this : GZipTarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "this <.method> : GZipTarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "parameter this : GZipTarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 188
+                    },
+                    {
+                        "message": "this <.field> : GZipTarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 152
+                    }
+                ],
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 52
+                    },
+                    {
+                        "message": "this [post update] : TarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 52
+                    },
+                    {
+                        "message": "new TarFile(...) : TarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/PlexusIoTarFileResourceCollection.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "newTarFile(...) : TarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/PlexusIoTarFileResourceCollection.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "tarFile : TarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/PlexusIoTarFileResourceCollection.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "parameter this : TarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "this <.method> : TarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "parameter this : TarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 188
+                    },
+                    {
+                        "message": "this <.field> : TarFile [file] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/tar/TarFile.java",
+                        "line": 152
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "compressFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "compressFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 43
+                    },
+                    {
+                        "message": "this [post update] : Compressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 43
+                    },
+                    {
+                        "message": "compressor [post update] : BZip2Compressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/bzip2/BZip2Archiver.java",
+                        "line": 52
+                    },
+                    {
+                        "message": "compressor : BZip2Compressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/bzip2/BZip2Archiver.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "parameter this : BZip2Compressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/bzip2/BZip2Compressor.java",
+                        "line": 36
+                    },
+                    {
+                        "message": "this <.method> : BZip2Compressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/bzip2/BZip2Compressor.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "parameter this : BZip2Compressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "this <.field> : BZip2Compressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "destFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "getDestFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/bzip2/BZip2Compressor.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Streams.java",
+                        "line": 77
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Streams.java",
+                        "line": 80
+                    }
+                ],
+                [
+                    {
+                        "message": "compressFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "compressFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 43
+                    },
+                    {
+                        "message": "this [post update] : Compressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 43
+                    },
+                    {
+                        "message": "compressor [post update] : SnappyCompressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/snappy/SnappyArchiver.java",
+                        "line": 55
+                    },
+                    {
+                        "message": "compressor : SnappyCompressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/snappy/SnappyArchiver.java",
+                        "line": 56
+                    },
+                    {
+                        "message": "parameter this : SnappyCompressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/snappy/SnappyCompressor.java",
+                        "line": 39
+                    },
+                    {
+                        "message": "this <.method> : SnappyCompressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/snappy/SnappyCompressor.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "parameter this : SnappyCompressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "this <.field> : SnappyCompressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "destFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "getDestFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/snappy/SnappyCompressor.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Streams.java",
+                        "line": 77
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Streams.java",
+                        "line": 80
+                    }
+                ],
+                [
+                    {
+                        "message": "compressFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "compressFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 43
+                    },
+                    {
+                        "message": "this [post update] : Compressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 43
+                    },
+                    {
+                        "message": "compressor [post update] : XZCompressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/xz/XZArchiver.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "compressor : XZCompressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/xz/XZArchiver.java",
+                        "line": 58
+                    },
+                    {
+                        "message": "parameter this : XZCompressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/xz/XZCompressor.java",
+                        "line": 39
+                    },
+                    {
+                        "message": "this <.method> : XZCompressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/xz/XZCompressor.java",
+                        "line": 43
+                    },
+                    {
+                        "message": "parameter this : XZCompressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "this <.field> : XZCompressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "destFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "getDestFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/xz/XZCompressor.java",
+                        "line": 43
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Streams.java",
+                        "line": 77
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Streams.java",
+                        "line": 80
+                    }
+                ],
+                [
+                    {
+                        "message": "compressFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "compressFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 43
+                    },
+                    {
+                        "message": "this [post update] : Compressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 43
+                    },
+                    {
+                        "message": "compressor [post update] : BZip2Compressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/bzip2/BZip2Archiver.java",
+                        "line": 52
+                    },
+                    {
+                        "message": "this <.field> [post update] : BZip2Archiver [compressor, destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/bzip2/BZip2Archiver.java",
+                        "line": 52
+                    },
+                    {
+                        "message": "this <.field> : BZip2Archiver [compressor, destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/bzip2/BZip2Archiver.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "compressor : BZip2Compressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/bzip2/BZip2Archiver.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "parameter this : BZip2Compressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/bzip2/BZip2Compressor.java",
+                        "line": 36
+                    },
+                    {
+                        "message": "this <.method> : BZip2Compressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/bzip2/BZip2Compressor.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "parameter this : BZip2Compressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "this <.field> : BZip2Compressor [destFile] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "destFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Compressor.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "getDestFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/bzip2/BZip2Compressor.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Streams.java",
+                        "line": 77
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/util/Streams.java",
+                        "line": 80
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "zipArchiveEntry : ZipArchiveEntry",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/ConcurrentJarCreator.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "zipArchiveEntry : ZipArchiveEntry",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/ConcurrentJarCreator.java",
+                        "line": 161
+                    },
+                    {
+                        "message": "createZipArchiveEntryRequest(...)",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/ConcurrentJarCreator.java",
+                        "line": 161
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "zipArchiveEntry : ZipArchiveEntry",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/ConcurrentJarCreator.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "zipArchiveEntry : ZipArchiveEntry",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/ConcurrentJarCreator.java",
+                        "line": 173
+                    },
+                    {
+                        "message": "createZipArchiveEntryRequest(...)",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/ConcurrentJarCreator.java",
+                        "line": 173
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "zipArchiveEntry : ZipArchiveEntry",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/ConcurrentJarCreator.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "zipArchiveEntry : ZipArchiveEntry",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/ConcurrentJarCreator.java",
+                        "line": 185
+                    },
+                    {
+                        "message": "createZipArchiveEntryRequest(...)",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/ConcurrentJarCreator.java",
+                        "line": 185
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "zipArchiveEntry : ZipArchiveEntry",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/ConcurrentJarCreator.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "zipArchiveEntry : ZipArchiveEntry",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/ConcurrentJarCreator.java",
+                        "line": 196
+                    },
+                    {
+                        "message": "zipArchiveEntry : ZipArchiveEntry",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/ConcurrentJarCreator.java",
+                        "line": 264
+                    },
+                    {
+                        "message": "zipArchiveEntry : ZipArchiveEntry",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/ConcurrentJarCreator.java",
+                        "line": 271
+                    },
+                    {
+                        "message": "createZipArchiveEntryRequest(...) : ZipArchiveEntryRequest",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/ConcurrentJarCreator.java",
+                        "line": 271
+                    },
+                    {
+                        "message": "createEntry(...)",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/ConcurrentJarCreator.java",
+                        "line": 196
+                    }
+                ],
+                [
+                    {
+                        "message": "zipArchiveEntry : ZipArchiveEntry",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/ConcurrentJarCreator.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "zipArchiveEntry : ZipArchiveEntry",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/ConcurrentJarCreator.java",
+                        "line": 196
+                    },
+                    {
+                        "message": "zipArchiveEntry : ZipArchiveEntry",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/ConcurrentJarCreator.java",
+                        "line": 264
+                    },
+                    {
+                        "message": "zipArchiveEntry : ZipArchiveEntry",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/ConcurrentJarCreator.java",
+                        "line": 288
+                    },
+                    {
+                        "message": "createZipArchiveEntryRequest(...) : ZipArchiveEntryRequest",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/ConcurrentJarCreator.java",
+                        "line": 288
+                    },
+                    {
+                        "message": "createEntry(...)",
+                        "uri": "src/main/java/org/codehaus/plexus/archiver/zip/ConcurrentJarCreator.java",
+                        "line": 196
+                    }
+                ]
+            ]
+        }
+    ]
+}
