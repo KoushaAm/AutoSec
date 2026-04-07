@@ -18,7 +18,7 @@ from . import logger
 from .utils import load_dummy_finder_output
 from .project_variants import ProjectVariants
 
-from Agents.Patcher import patcher_main
+# from Agents.Patcher import patcher_main
 from Agents.Verifier import verifier_main
 from Agents.Finder.src.types import FinderOutput
 from Agents.Finder.src.output_converter import sarif_to_finder_output
@@ -29,8 +29,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 PROJECTS_DIR = (BASE_DIR / "Projects").resolve()
 AGENTS_DIR   = (BASE_DIR / "Agents").resolve()
 
+MAX_EXPLOITER_RETRIES = 1
+
 class AutoSecState(TypedDict, total=False):
-    project_name: Optional[str]
+    project_name: Optional[str]         # ex: jenkinsci__perfecto-plugin_CVE
     language: Optional[str]
     vuln_id: Optional[str]
     vuln: Optional[Dict[str, Any]]
@@ -39,6 +41,7 @@ class AutoSecState(TypedDict, total=False):
     finder_output: Optional[List[FinderOutput]]
     artifacts: Optional[Dict[str, str]]
     exploiter: Optional[Dict[str, Any]]
+    exploiter_retries: Optional[int]    # tracks finder→exploiter retry cycles
     patcher: Optional[Dict[str, Any]]
     verifier: Optional[Dict[str, Any]]
 
@@ -46,12 +49,12 @@ def _build_workflow() -> Any:
     graph = StateGraph(AutoSecState)
     graph.add_node("finder", _finder_node)
     graph.add_node("exploiter", _exploiter_node)
-    graph.add_node("patcher", _patcher_node)
+    # graph.add_node("patcher", _patcher_node)
     graph.add_node("verifier", _verifier_node)
 
     # linear edges
     graph.add_edge(START, "finder")
-    # graph.add_edge("finder", "exploiter")
+    graph.add_edge("finder", "exploiter")
     # graph.add_edge("finder", "patcher")
     # graph.add_edge("patcher", "verifier")
     graph.add_edge("finder", END)
@@ -148,22 +151,31 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
     return state
 
 
+def _parse_exploiter_report(report_data) -> tuple[bool, list[str]]:
+    """Return (exploitable, pov_test_paths) from a loaded report.json."""
+    if isinstance(report_data, dict):
+        entries = [report_data]
+    elif isinstance(report_data, list):
+        entries = report_data
+    else:
+        raise TypeError(f"Unexpected report.json top-level type: {type(report_data)}")
+
+    exploitable = any(isinstance(e, dict) and e.get("exploitable") for e in entries)
+
+    pov_test_paths: list[str] = []
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+        paths = entry.get("pov_test_path", [])
+        if isinstance(paths, str):
+            paths = [paths]
+        pov_test_paths.extend(p for p in paths if isinstance(p, str))
+
+    return exploitable, pov_test_paths
+
+
 def _exploiter_node(state: AutoSecState) -> Command:
     logger.info("Node: exploiter started")
-
-    # saving vulnerabilities json into result.json in exploiter's project directory
-    raw_vuln_dir = os.path.join(os.getcwd(), "Agents", "Exploiter", "vuln_agent", "modules", "data", "raw", "result.json")
-    print("raw_vuln_dir", raw_vuln_dir)
-
-    # TODO: UNCOMMENT THIS WHEN FINDER IS RUNNING AND stat["vuln"] exists
-    # vuln_data = state.get("vuln", None)
-
-    # if not vuln_data:
-    #     logger.error("Vulnerability data not found")
-    #     return Command(goto=END, update=state)
-
-    # with open(raw_vuln_dir, "w") as f:
-    #     f.write(json.dumps(vuln_data))
 
     # taking a copy of the state
     new_state = dict(state)
@@ -172,6 +184,45 @@ def _exploiter_node(state: AutoSecState) -> Command:
         raise ValueError("project_name missing from state")
 
     exploiter_dir = os.path.join(os.getcwd(), "Agents", "Exploiter")
+
+    report_path = os.path.join(
+        exploiter_dir,
+        "data",
+        "cwe-bench-java",
+        "workdir_no_branch",
+        "project-sources",
+        project_name,
+        "report.json",
+    )
+
+    # ── Cache check ──────────────────────────────────────────────────────────
+    # If a report.json already exists from a previous run, skip re-running the
+    # exploiter and reuse the cached result + generated test files.
+    # If the cached result is not exploitable we go straight to END — there is
+    # no point looping back to finder because the exploiter cache would just
+    # return the same result again on the next iteration.
+    if os.path.exists(report_path):
+        logger.info(f"Cache hit: exploiter report found at {report_path}, skipping exploitation.")
+        with open(report_path, "r") as f:
+            report_data = json.load(f)
+
+        exploitable, pov_test_paths = _parse_exploiter_report(report_data)
+
+        new_state["exploiter"] = {
+            "success": exploitable,
+            "report_path": report_path,
+            "pov_test_paths": pov_test_paths,
+            "from_cache": True,
+        }
+
+        if not exploitable:
+            logger.warning("Cached report shows vulnerability was not exploitable — ending pipeline.")
+            return Command(goto=END, update=new_state)
+
+        logger.info("Cached report shows vulnerability exploited! Continuing to patcher.")
+        return Command(goto="patcher", update=new_state)
+    # ─────────────────────────────────────────────────────────────────────────
+
     exploiter_main = os.path.join(exploiter_dir, "main.py")
 
     if not os.path.exists(exploiter_main):
@@ -196,17 +247,6 @@ def _exploiter_node(state: AutoSecState) -> Command:
         logger.error(f"Exploiter subprocess failed (exit={e.returncode}).")
         return Command(goto=END, update=new_state)
 
-    # opening exploiter report to decide what to do next
-    report_path = os.path.join(
-        exploiter_dir,
-        "data",
-        "cwe-bench-java",
-        "workdir_no_branch",
-        "project-sources",
-        project_name,
-        "report.json",
-    )
-
     if not os.path.exists(report_path):
         logger.error(f"Exploiter report not found: {report_path}")
         return Command(goto=END, update=new_state)
@@ -214,39 +254,26 @@ def _exploiter_node(state: AutoSecState) -> Command:
     with open(report_path, "r") as f:
         report_data = json.load(f)
 
-    # here we check if vulnerability exploitation was successful
-    if isinstance(report_data, dict):
-        exploitable = bool(report_data.get("exploitable", False))
-    elif isinstance(report_data, list):
-        # try last entry as "final report"
-        exploitable = False
-        if report_data and isinstance(report_data[-1], dict) and "exploitable" in report_data[-1]:
-            exploitable = bool(report_data[-1].get("exploitable", False))
-        else:
-            # fallback: any entry marks exploitable
-            exploitable = any(isinstance(x, dict) and x.get("exploitable") for x in report_data)
-    else:
-        raise TypeError(f"Unexpected report.json top-level type: {type(report_data)}")
+    exploitable, pov_test_paths = _parse_exploiter_report(report_data)
 
-    try :
-        new_state["exploiter"] = {
-            "success": exploitable,
-            "report_path": report_path,
-        }
-
-    except Exception as e:
-        logger.error(f"Exploiter subprocess failed (exit={e.returncode}).")
+    new_state["exploiter"] = {
+        "success": exploitable,
+        "report_path": report_path,
+        "pov_test_paths": pov_test_paths,
+        "from_cache": False,
+    }
 
     if not exploitable:
-        logger.warning("Exploiter ran but did not find an exploitable PoV.")
+        retries = new_state.get("exploiter_retries", 0) + 1
+        new_state["exploiter_retries"] = retries
+        if retries >= MAX_EXPLOITER_RETRIES:
+            logger.warning(f"Exploiter did not find an exploitable PoV after {retries} attempt(s) — ending pipeline.")
+            return Command(goto=END, update=new_state)
+        logger.warning(f"Exploiter did not find an exploitable PoV (attempt {retries}/{MAX_EXPLOITER_RETRIES}), re-running finder.")
         new_state["finder_reanalyze"] = True
         return Command(goto="finder", update=new_state)
 
     logger.info("Vulnerability exploited! Continuing to patcher.")
-    state["exploiter"] = new_state
-
-    # print(state["exploiter"])
-
     return Command(goto="patcher", update=new_state)
 
 
@@ -316,11 +343,12 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 
     return state
 
+
 # ====== Execute workflow =====
 def pipeline_main():
     load_dotenv()
 
-    SELECTED_PROJECT = ProjectVariants.CODEHAUS_CVE_2018_1002200
+    SELECTED_PROJECT = ProjectVariants.RHUSS
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
         "project_name": SELECTED_PROJECT.project_name,
@@ -334,6 +362,7 @@ def pipeline_main():
         #     "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
         # }
     }
+
     # print(json.dumps(initial_state, indent=2))
 
     # Execute the graph
