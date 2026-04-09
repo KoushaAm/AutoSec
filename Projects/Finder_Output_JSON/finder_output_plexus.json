@@ -1,0 +1,4408 @@
+{
+    "cwe_id": "cwe-022",
+    "vulnerabilities": [
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 252
+                    },
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 254
+                    },
+                    {
+                        "message": "this [post update] : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 254
+                    },
+                    {
+                        "message": "parameter this [Return] : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 252
+                    },
+                    {
+                        "message": "scanner [post update] : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1928
+                    },
+                    {
+                        "message": "scanner : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1942
+                    },
+                    {
+                        "message": "parameter this : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "this <.field> : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 302
+                    },
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 302
+                    },
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 350
+                    },
+                    {
+                        "message": "dir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 412
+                    },
+                    {
+                        "message": "dir",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 414
+                    }
+                ],
+                [
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1805
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1808
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1822
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1825
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1848
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1851
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1865
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1869
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1921
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1928
+                    },
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 252
+                    },
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 254
+                    },
+                    {
+                        "message": "this [post update] : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 254
+                    },
+                    {
+                        "message": "parameter this [Return] : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 252
+                    },
+                    {
+                        "message": "scanner [post update] : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1928
+                    },
+                    {
+                        "message": "scanner : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1942
+                    },
+                    {
+                        "message": "parameter this : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "this <.field> : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 302
+                    },
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 302
+                    },
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 350
+                    },
+                    {
+                        "message": "dir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 412
+                    },
+                    {
+                        "message": "dir",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 414
+                    }
+                ],
+                [
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1822
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1825
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1848
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1851
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1865
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1869
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1921
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1928
+                    },
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 252
+                    },
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 254
+                    },
+                    {
+                        "message": "this [post update] : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 254
+                    },
+                    {
+                        "message": "parameter this [Return] : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 252
+                    },
+                    {
+                        "message": "scanner [post update] : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1928
+                    },
+                    {
+                        "message": "scanner : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1942
+                    },
+                    {
+                        "message": "parameter this : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "this <.field> : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 302
+                    },
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 302
+                    },
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 350
+                    },
+                    {
+                        "message": "dir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 412
+                    },
+                    {
+                        "message": "dir",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 414
+                    }
+                ],
+                [
+                    {
+                        "message": "sourceDirectory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2039
+                    },
+                    {
+                        "message": "sourceDirectory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2065
+                    },
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 252
+                    },
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 254
+                    },
+                    {
+                        "message": "this [post update] : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 254
+                    },
+                    {
+                        "message": "parameter this [Return] : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 252
+                    },
+                    {
+                        "message": "scanner [post update] : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2065
+                    },
+                    {
+                        "message": "scanner : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2082
+                    },
+                    {
+                        "message": "parameter this : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "this <.field> : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 302
+                    },
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 302
+                    },
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 350
+                    },
+                    {
+                        "message": "dir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 412
+                    },
+                    {
+                        "message": "dir",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 414
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 252
+                    },
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 254
+                    },
+                    {
+                        "message": "this [post update] : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 254
+                    },
+                    {
+                        "message": "parameter this [Return] : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 252
+                    },
+                    {
+                        "message": "scanner [post update] : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1928
+                    },
+                    {
+                        "message": "scanner : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1942
+                    },
+                    {
+                        "message": "parameter this : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "this <.field> : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 302
+                    },
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 302
+                    },
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 350
+                    },
+                    {
+                        "message": "dir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 412
+                    },
+                    {
+                        "message": "dir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 453
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 453
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 454
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 252
+                    },
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 254
+                    },
+                    {
+                        "message": "this [post update] : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 254
+                    },
+                    {
+                        "message": "parameter this [Return] : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 252
+                    },
+                    {
+                        "message": "scanner [post update] : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1928
+                    },
+                    {
+                        "message": "scanner : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1942
+                    },
+                    {
+                        "message": "parameter this : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "this <.field> : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 302
+                    },
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 302
+                    },
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 350
+                    },
+                    {
+                        "message": "dir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 412
+                    },
+                    {
+                        "message": "dir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 483
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 483
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 484
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 252
+                    },
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 254
+                    },
+                    {
+                        "message": "this [post update] : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 254
+                    },
+                    {
+                        "message": "parameter this [Return] : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 252
+                    },
+                    {
+                        "message": "scanner [post update] : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1928
+                    },
+                    {
+                        "message": "scanner : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1942
+                    },
+                    {
+                        "message": "parameter this : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "this <.field> : DirectoryScanner [basedir] : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 302
+                    },
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 302
+                    },
+                    {
+                        "message": "basedir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 350
+                    },
+                    {
+                        "message": "dir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 412
+                    },
+                    {
+                        "message": "dir : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 483
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 483
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/DirectoryScanner.java",
+                        "line": 534
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "baseFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1367
+                    },
+                    {
+                        "message": "baseFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "getAbsoluteFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1428
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1435
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 156
+                    }
+                ],
+                [
+                    {
+                        "message": "baseFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1367
+                    },
+                    {
+                        "message": "baseFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "getAbsoluteFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1428
+                    },
+                    {
+                        "message": "getCanonicalFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1428
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1435
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 156
+                    }
+                ],
+                [
+                    {
+                        "message": "filename : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1367
+                    },
+                    {
+                        "message": "filenm : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1383
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1383
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1387
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1394
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 156
+                    }
+                ],
+                [
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "filename : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1367
+                    },
+                    {
+                        "message": "filenm : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1383
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1383
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1387
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1394
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 156
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "baseFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1367
+                    },
+                    {
+                        "message": "baseFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "getAbsoluteFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1428
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1435
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 158
+                    }
+                ],
+                [
+                    {
+                        "message": "baseFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1367
+                    },
+                    {
+                        "message": "baseFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "getAbsoluteFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1428
+                    },
+                    {
+                        "message": "getCanonicalFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1428
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1435
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 158
+                    }
+                ],
+                [
+                    {
+                        "message": "filename : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1367
+                    },
+                    {
+                        "message": "filenm : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1383
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1383
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1387
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1394
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 158
+                    }
+                ],
+                [
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "filename : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1367
+                    },
+                    {
+                        "message": "filenm : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1383
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1383
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1387
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1394
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 158
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "baseFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1367
+                    },
+                    {
+                        "message": "baseFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "getAbsoluteFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1428
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1435
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "getParentFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "dirF",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 165
+                    }
+                ],
+                [
+                    {
+                        "message": "baseFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1367
+                    },
+                    {
+                        "message": "baseFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "getAbsoluteFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1428
+                    },
+                    {
+                        "message": "getCanonicalFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1428
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1435
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "getParentFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "dirF",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 165
+                    }
+                ],
+                [
+                    {
+                        "message": "filename : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1367
+                    },
+                    {
+                        "message": "filenm : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1383
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1383
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1387
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1394
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "getParentFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "dirF",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 165
+                    }
+                ],
+                [
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "filename : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1367
+                    },
+                    {
+                        "message": "filenm : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1383
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1383
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1387
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1394
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "getParentFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "dirF",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 165
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "baseFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1367
+                    },
+                    {
+                        "message": "baseFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "getAbsoluteFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1428
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1435
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 169
+                    }
+                ],
+                [
+                    {
+                        "message": "baseFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1367
+                    },
+                    {
+                        "message": "baseFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "getAbsoluteFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1428
+                    },
+                    {
+                        "message": "getCanonicalFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1428
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1435
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 169
+                    }
+                ],
+                [
+                    {
+                        "message": "filename : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1367
+                    },
+                    {
+                        "message": "filenm : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1383
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1383
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1387
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1394
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 169
+                    }
+                ],
+                [
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "filename : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1367
+                    },
+                    {
+                        "message": "filenm : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1383
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1383
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1387
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1394
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 169
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "baseFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1367
+                    },
+                    {
+                        "message": "baseFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "getAbsoluteFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1428
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1435
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 178
+                    }
+                ],
+                [
+                    {
+                        "message": "baseFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1367
+                    },
+                    {
+                        "message": "baseFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "getAbsoluteFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1428
+                    },
+                    {
+                        "message": "getCanonicalFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1428
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1435
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 178
+                    }
+                ],
+                [
+                    {
+                        "message": "filename : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1367
+                    },
+                    {
+                        "message": "filenm : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1383
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1383
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1387
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1394
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 178
+                    }
+                ],
+                [
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "filename : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1367
+                    },
+                    {
+                        "message": "filenm : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1383
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1383
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1387
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1394
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 178
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "baseFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1367
+                    },
+                    {
+                        "message": "baseFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "getAbsoluteFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1428
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1435
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 204
+                    }
+                ],
+                [
+                    {
+                        "message": "baseFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1367
+                    },
+                    {
+                        "message": "baseFile : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "getAbsoluteFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1424
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1428
+                    },
+                    {
+                        "message": "getCanonicalFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1428
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1435
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 204
+                    }
+                ],
+                [
+                    {
+                        "message": "filename : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1367
+                    },
+                    {
+                        "message": "filenm : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1383
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1383
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1387
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1394
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 204
+                    }
+                ],
+                [
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "entryName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "filename : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1367
+                    },
+                    {
+                        "message": "filenm : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1383
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1383
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1387
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1394
+                    },
+                    {
+                        "message": "resolveFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/codehaus/plexus/util/Expand.java",
+                        "line": 204
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 323
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 325
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 325
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 326
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 336
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 339
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 348
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 351
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 351
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 373
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 384
+                    }
+                ],
+                [
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 348
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 351
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 351
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 373
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 384
+                    }
+                ],
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 361
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 364
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 373
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 384
+                    }
+                ],
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 373
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 384
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 336
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 339
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 348
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 351
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 351
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 373
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 388
+                    }
+                ],
+                [
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 348
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 351
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 351
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 373
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 388
+                    }
+                ],
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 361
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 364
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 373
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 388
+                    }
+                ],
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 373
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 388
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 415
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 418
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 429
+                    },
+                    {
+                        "message": "fileName",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 435
+                    }
+                ],
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 429
+                    },
+                    {
+                        "message": "fileName",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 435
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 461
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 464
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 475
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 478
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 478
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 479
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 506
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 512
+                    }
+                ],
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 475
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 478
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 478
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 479
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 506
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 512
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 536
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 538
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 538
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 551
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 562
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 564
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 564
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 574
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 578
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "directory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 623
+                    },
+                    {
+                        "message": "directory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 627
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 627
+                    },
+                    {
+                        "message": "currentDir",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 629
+                    }
+                ],
+                [
+                    {
+                        "message": "directory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 623
+                    },
+                    {
+                        "message": "directory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 627
+                    },
+                    {
+                        "message": "currentFileName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 639
+                    },
+                    {
+                        "message": "currentFileName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 652
+                    },
+                    {
+                        "message": "directory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 623
+                    },
+                    {
+                        "message": "directory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 627
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 627
+                    },
+                    {
+                        "message": "currentDir",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 629
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "directory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 623
+                    },
+                    {
+                        "message": "directory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 627
+                    },
+                    {
+                        "message": "currentFileName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 639
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 639
+                    },
+                    {
+                        "message": "currentFile",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 641
+                    }
+                ],
+                [
+                    {
+                        "message": "directory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 623
+                    },
+                    {
+                        "message": "directory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 627
+                    },
+                    {
+                        "message": "currentFileName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 639
+                    },
+                    {
+                        "message": "currentFileName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 652
+                    },
+                    {
+                        "message": "directory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 623
+                    },
+                    {
+                        "message": "directory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 627
+                    },
+                    {
+                        "message": "currentFileName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 639
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 639
+                    },
+                    {
+                        "message": "currentFile",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 641
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "dir : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 722
+                    },
+                    {
+                        "message": "dir : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 724
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 724
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 733
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "dir : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 722
+                    },
+                    {
+                        "message": "dir : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 724
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 724
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 735
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "source : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 970
+                    },
+                    {
+                        "message": "source : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 973
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 973
+                    },
+                    {
+                        "message": "source : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1007
+                    },
+                    {
+                        "message": "source : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1015
+                    },
+                    {
+                        "message": "source : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1078
+                    },
+                    {
+                        "message": "source : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1096
+                    },
+                    {
+                        "message": "source : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1105
+                    },
+                    {
+                        "message": "source",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1114
+                    }
+                ],
+                [
+                    {
+                        "message": "source : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 989
+                    },
+                    {
+                        "message": "source : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 992
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 992
+                    },
+                    {
+                        "message": "source : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1031
+                    },
+                    {
+                        "message": "source : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1039
+                    },
+                    {
+                        "message": "source : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1156
+                    },
+                    {
+                        "message": "source : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1161
+                    },
+                    {
+                        "message": "source : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1078
+                    },
+                    {
+                        "message": "source : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1096
+                    },
+                    {
+                        "message": "source : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1105
+                    },
+                    {
+                        "message": "source",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1114
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "source : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1031
+                    },
+                    {
+                        "message": "source : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1039
+                    },
+                    {
+                        "message": "source : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1156
+                    },
+                    {
+                        "message": "source",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1159
+                    }
+                ],
+                [
+                    {
+                        "message": "source : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1156
+                    },
+                    {
+                        "message": "source",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1159
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "destination : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1184
+                    },
+                    {
+                        "message": "destination : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1187
+                    },
+                    {
+                        "message": "destination : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1206
+                    },
+                    {
+                        "message": "destination",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1217
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "destination : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1184
+                    },
+                    {
+                        "message": "destination : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1187
+                    },
+                    {
+                        "message": "destination : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1206
+                    },
+                    {
+                        "message": "destination : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1210
+                    },
+                    {
+                        "message": "destination : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1231
+                    },
+                    {
+                        "message": "destination",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1235
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "destinationDirectory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 970
+                    },
+                    {
+                        "message": "destinationDirectory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 973
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 973
+                    },
+                    {
+                        "message": "destinationDirectory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1007
+                    },
+                    {
+                        "message": "destinationDirectory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1015
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1015
+                    },
+                    {
+                        "message": "destination : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1078
+                    },
+                    {
+                        "message": "destination : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1094
+                    },
+                    {
+                        "message": "destination : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1242
+                    },
+                    {
+                        "message": "destination : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1245
+                    },
+                    {
+                        "message": "getParentFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1245
+                    },
+                    {
+                        "message": "parentFile",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1248
+                    }
+                ],
+                [
+                    {
+                        "message": "destinationDirectory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 989
+                    },
+                    {
+                        "message": "destinationDirectory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 992
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 992
+                    },
+                    {
+                        "message": "destinationDirectory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1031
+                    },
+                    {
+                        "message": "destinationDirectory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1039
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1039
+                    },
+                    {
+                        "message": "destination : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1156
+                    },
+                    {
+                        "message": "destination : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1161
+                    },
+                    {
+                        "message": "destination : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1078
+                    },
+                    {
+                        "message": "destination : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1094
+                    },
+                    {
+                        "message": "destination : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1242
+                    },
+                    {
+                        "message": "destination : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1245
+                    },
+                    {
+                        "message": "getParentFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1245
+                    },
+                    {
+                        "message": "parentFile",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1248
+                    }
+                ],
+                [
+                    {
+                        "message": "destinationDirectory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1007
+                    },
+                    {
+                        "message": "destinationDirectory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1015
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1015
+                    },
+                    {
+                        "message": "destination : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1078
+                    },
+                    {
+                        "message": "destination : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1094
+                    },
+                    {
+                        "message": "destination : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1242
+                    },
+                    {
+                        "message": "destination : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1245
+                    },
+                    {
+                        "message": "getParentFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1245
+                    },
+                    {
+                        "message": "parentFile",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1248
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1444
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1456
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1459
+                    }
+                ],
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1456
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1459
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1444
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1456
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1469
+                    },
+                    {
+                        "message": "getCanonicalFile(...)",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1469
+                    }
+                ],
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1456
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1469
+                    },
+                    {
+                        "message": "getCanonicalFile(...)",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1469
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1444
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1456
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1469
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1470
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1486
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1489
+                    }
+                ],
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1456
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1469
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1470
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1486
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1489
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1444
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1456
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1469
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1470
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1486
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1494
+                    }
+                ],
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1456
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1469
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1470
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1486
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1494
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1444
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1456
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1469
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1470
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1486
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1505
+                    }
+                ],
+                [
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1444
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1456
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1469
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1470
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1486
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1498
+                    },
+                    {
+                        "message": "getCanonicalFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1498
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1505
+                    }
+                ],
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1456
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1469
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1470
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1486
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1505
+                    }
+                ],
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1456
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1469
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1470
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1486
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1498
+                    },
+                    {
+                        "message": "getCanonicalFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1498
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1505
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1444
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1456
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1469
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1470
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1486
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1509
+                    }
+                ],
+                [
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1444
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1456
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1469
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1470
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1486
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1498
+                    },
+                    {
+                        "message": "getCanonicalFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1498
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1509
+                    }
+                ],
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1456
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1469
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1470
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1486
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1509
+                    }
+                ],
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1456
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1469
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1470
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1486
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1498
+                    },
+                    {
+                        "message": "getCanonicalFile(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1498
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1509
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1611
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1624
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1611
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1635
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1444
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1456
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1461
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1661
+                    },
+                    {
+                        "message": "directory",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1664
+                    }
+                ],
+                [
+                    {
+                        "message": "directory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1649
+                    },
+                    {
+                        "message": "directory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1652
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1652
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1661
+                    },
+                    {
+                        "message": "directory",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1664
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1444
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1456
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1461
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1661
+                    },
+                    {
+                        "message": "directory",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1672
+                    }
+                ],
+                [
+                    {
+                        "message": "directory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1649
+                    },
+                    {
+                        "message": "directory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1652
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1652
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1661
+                    },
+                    {
+                        "message": "directory",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1672
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1444
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1456
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1461
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1661
+                    },
+                    {
+                        "message": "directory",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1678
+                    }
+                ],
+                [
+                    {
+                        "message": "directory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1649
+                    },
+                    {
+                        "message": "directory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1652
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1652
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1661
+                    },
+                    {
+                        "message": "directory",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1678
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1444
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1456
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1461
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1661
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1677
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1703
+                    },
+                    {
+                        "message": "directory",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1720
+                    }
+                ],
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1456
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1461
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1661
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1677
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1703
+                    },
+                    {
+                        "message": "directory",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1720
+                    }
+                ],
+                [
+                    {
+                        "message": "directory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1649
+                    },
+                    {
+                        "message": "directory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1652
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1652
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1661
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1677
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1703
+                    },
+                    {
+                        "message": "directory",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1720
+                    }
+                ],
+                [
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1661
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1677
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1703
+                    },
+                    {
+                        "message": "directory",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1720
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1444
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1456
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1461
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1661
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1677
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1703
+                    },
+                    {
+                        "message": "directory",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1706
+                    }
+                ],
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1456
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1461
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1661
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1677
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1703
+                    },
+                    {
+                        "message": "directory",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1706
+                    }
+                ],
+                [
+                    {
+                        "message": "directory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1649
+                    },
+                    {
+                        "message": "directory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1652
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1652
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1661
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1677
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1703
+                    },
+                    {
+                        "message": "directory",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1706
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1444
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1447
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1456
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1461
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1661
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1677
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1703
+                    },
+                    {
+                        "message": "directory",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1712
+                    }
+                ],
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1456
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1461
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1661
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1677
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1703
+                    },
+                    {
+                        "message": "directory",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1712
+                    }
+                ],
+                [
+                    {
+                        "message": "directory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1649
+                    },
+                    {
+                        "message": "directory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1652
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1652
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1661
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1677
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1703
+                    },
+                    {
+                        "message": "directory",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1712
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "directory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1751
+                    },
+                    {
+                        "message": "directory : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1753
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1753
+                    },
+                    {
+                        "message": "directory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1762
+                    },
+                    {
+                        "message": "directory",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 1778
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "destinationDirectory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2039
+                    },
+                    {
+                        "message": "destinationDirectory : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2094
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2094
+                    },
+                    {
+                        "message": "destination",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2095
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "prefix : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2269
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2285
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2285
+                    },
+                    {
+                        "message": "result",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2287
+                    }
+                ],
+                [
+                    {
+                        "message": "suffix : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2269
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2285
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2285
+                    },
+                    {
+                        "message": "result",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2287
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "from : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2302
+                    },
+                    {
+                        "message": "from : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2305
+                    },
+                    {
+                        "message": "from : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2325
+                    },
+                    {
+                        "message": "from",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2342
+                    }
+                ],
+                [
+                    {
+                        "message": "from : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2325
+                    },
+                    {
+                        "message": "from",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2342
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "to : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2302
+                    },
+                    {
+                        "message": "to : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2305
+                    },
+                    {
+                        "message": "to : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2325
+                    },
+                    {
+                        "message": "to",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2344
+                    }
+                ],
+                [
+                    {
+                        "message": "to : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2325
+                    },
+                    {
+                        "message": "to",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2344
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "to : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2302
+                    },
+                    {
+                        "message": "to : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2305
+                    },
+                    {
+                        "message": "to : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2325
+                    },
+                    {
+                        "message": "to",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2371
+                    }
+                ],
+                [
+                    {
+                        "message": "to : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2325
+                    },
+                    {
+                        "message": "to",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2371
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "from : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2302
+                    },
+                    {
+                        "message": "from : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2305
+                    },
+                    {
+                        "message": "from : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2325
+                    },
+                    {
+                        "message": "from",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2371
+                    }
+                ],
+                [
+                    {
+                        "message": "from : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2325
+                    },
+                    {
+                        "message": "from",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 2371
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 536
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 538
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 538
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/FileUtils.java",
+                        "line": 543
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/NioFiles.java",
+                        "line": 130
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/NioFiles.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "toPath(...)",
+                        "uri": "src/main/java/org/codehaus/plexus/util/NioFiles.java",
+                        "line": 133
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/ReaderFactory.java",
+                        "line": 115
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/ReaderFactory.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/xml/XmlStreamReader.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/xml/XmlStreamReader.java",
+                        "line": 67
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/xml/XmlReader.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/xml/XmlReader.java",
+                        "line": 124
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/WriterFactory.java",
+                        "line": 114
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/WriterFactory.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/org/codehaus/plexus/util/xml/XmlStreamWriter.java",
+                        "line": 56
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/org/codehaus/plexus/util/xml/XmlStreamWriter.java",
+                        "line": 59
+                    }
+                ]
+            ]
+        }
+    ]
+}

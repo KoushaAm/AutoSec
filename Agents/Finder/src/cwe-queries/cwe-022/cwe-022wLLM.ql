@@ -14,22 +14,16 @@
  */
 
 import java
-import semmle.code.java.security.PathCreation
 import MyTaintedPathQuery
 import MyTaintedPathFlow::PathGraph
 
 /**
  * Gets the data-flow node at which to report a path ending at `sink`.
- *
- * Previously this query flagged alerts exclusively at `PathCreation` sites,
- * so to avoid perturbing existing alerts, where a `PathCreation` exists we
- * continue to report there; otherwise we report directly at `sink`.
+ * PathCreation was removed in newer codeql/java-all; report directly at sink.
  */
 DataFlow::Node getReportingNode(DataFlow::Node sink) {
   MyTaintedPathFlow::flowTo(sink) and
-  if exists(PathCreation pc | pc.getAnInput() = sink.asExpr())
-  then result.asExpr() = any(PathCreation pc | pc.getAnInput() = sink.asExpr())
-  else result = sink
+  result = sink
 }
 
 bindingset[src]

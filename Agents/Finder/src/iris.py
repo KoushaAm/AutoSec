@@ -272,6 +272,8 @@ dependencies:
         with open(qlpack_path, 'w') as f:
             f.write(qlpack_content)
 
+        sp.run([CODEQL, "pack", "install"], cwd=self.custom_codeql_root, check=True)
+
     def get_model(self):
         if self.model is None:
             self.model = LLM.get_llm(model_name=self.llm, logger=self.project_logger, kwargs={"seed": self.seed, "max_new_tokens": 2048})

@@ -1,0 +1,354 @@
+{
+    "cwe_id": "cwe-079",
+    "vulnerabilities": [
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getQualifiedName(...) : Name",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/internal/util/ClassRef.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/internal/util/ClassRef.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "packageName : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/internal/util/ClassRef.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "binaryName : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/internal/util/ClassRef.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "binaryName : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/internal/util/ClassRef.java",
+                        "line": 33
+                    },
+                    {
+                        "message": "binaryName : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/internal/util/ClassRef.java",
+                        "line": 42
+                    },
+                    {
+                        "message": "replace(...) : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/internal/util/ClassRef.java",
+                        "line": 42
+                    },
+                    {
+                        "message": "canonicalName : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/internal/util/ClassRef.java",
+                        "line": 43
+                    },
+                    {
+                        "message": "canonicalName : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/internal/util/ClassRef.java",
+                        "line": 25
+                    },
+                    {
+                        "message": "canonicalName : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/internal/util/ClassRef.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "this [post update] : ClassRef [canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/internal/util/ClassRef.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "new ClassRef(...) : ClassRef [canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/internal/util/ClassRef.java",
+                        "line": 43
+                    },
+                    {
+                        "message": "ofBinaryName(...) : ClassRef [canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/internal/util/ClassRef.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "of(...) : ClassRef [canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/internal/util/ClassRef.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "of(...) : ClassRef [canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 650
+                    },
+                    {
+                        "message": "rendererClassRef : ClassRef [canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 651
+                    },
+                    {
+                        "message": "resolveRendererClassRef(...) : ClassRef [canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 601
+                    },
+                    {
+                        "message": "rendererClassRef : ClassRef [canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 609
+                    },
+                    {
+                        "message": "rendererClassRef : ClassRef [canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 514
+                    },
+                    {
+                        "message": "rendererClassRef : ClassRef [canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 514
+                    },
+                    {
+                        "message": "this [post update] : RendererModel [rendererClassRef, canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 514
+                    },
+                    {
+                        "message": "new RendererModel(...) : RendererModel [rendererClassRef, canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 606
+                    },
+                    {
+                        "message": "model : RendererModel [rendererClassRef, canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 621
+                    },
+                    {
+                        "message": "model(...) : RendererModel [rendererClassRef, canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 768
+                    },
+                    {
+                        "message": "model : RendererModel [rendererClassRef, canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 810
+                    },
+                    {
+                        "message": "rendererClassRef(...) : ClassRef [canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 810
+                    },
+                    {
+                        "message": "classRef : ClassRef [canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 831
+                    },
+                    {
+                        "message": "classRef : ClassRef [canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 831
+                    },
+                    {
+                        "message": "this [post update] : JStacheRef [classRef, canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 831
+                    },
+                    {
+                        "message": "new JStacheRef(...) : JStacheRef [classRef, canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 810
+                    },
+                    {
+                        "message": "writeRenderableAdapterClass(...) : JStacheRef [classRef, canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 229
+                    },
+                    {
+                        "message": "ref : JStacheRef [classRef, canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "rendererClasses [post update] : Set [<element>, classRef, canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "this <.field> [post update] : GenerateRendererProcessor [rendererClasses, <element>, classRef, canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "this <.method> : GenerateRendererProcessor [rendererClasses, <element>, classRef, canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 240
+                    },
+                    {
+                        "message": "parameter this : GenerateRendererProcessor [rendererClasses, <element>, classRef, canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 247
+                    },
+                    {
+                        "message": "this <.field> : GenerateRendererProcessor [rendererClasses, <element>, classRef, canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 250
+                    },
+                    {
+                        "message": "this <.field> : GenerateRendererProcessor [rendererClasses, <element>, classRef, canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 254
+                    },
+                    {
+                        "message": "rendererClasses : Set [<element>, classRef, canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 254
+                    },
+                    {
+                        "message": "stream(...) : Stream [<element>, classRef, canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 254
+                    },
+                    {
+                        "message": "filter(...) : Stream [<element>, classRef, canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 254
+                    },
+                    {
+                        "message": "map(...) : Stream [<element>, canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 254
+                    },
+                    {
+                        "message": "toList(...) : List [<element>, canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 254
+                    },
+                    {
+                        "message": "templateClasses : List [<element>, canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/CatalogClassWriter.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "templateClasses : List [<element>, canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/CatalogClassWriter.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "tc : ClassRef [canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/CatalogClassWriter.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "parameter this : ClassRef [canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/internal/util/ClassRef.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "this <.field> : ClassRef [canonicalName] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/internal/util/ClassRef.java",
+                        "line": 95
+                    },
+                    {
+                        "message": "canonicalName : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/internal/util/ClassRef.java",
+                        "line": 95
+                    },
+                    {
+                        "message": "getCanonicalName(...) : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/CatalogClassWriter.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "this.templateClassNames [post update] : TreeSet [<element>] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/CatalogClassWriter.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "this [post update] : CatalogClassWriter [templateClassNames, <element>] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/CatalogClassWriter.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "cw [post update] : CatalogClassWriter [templateClassNames, <element>] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 254
+                    },
+                    {
+                        "message": "cw : CatalogClassWriter [templateClassNames, <element>] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/GenerateRendererProcessor.java",
+                        "line": 257
+                    },
+                    {
+                        "message": "parameter this : CatalogClassWriter [templateClassNames, <element>] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/CatalogClassWriter.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "this <.method> : CatalogClassWriter [templateClassNames, <element>] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/CatalogClassWriter.java",
+                        "line": 69
+                    },
+                    {
+                        "message": "parameter this : CatalogClassWriter [templateClassNames, <element>] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/CatalogClassWriter.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "this <.method> : CatalogClassWriter [templateClassNames, <element>] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/CatalogClassWriter.java",
+                        "line": 60
+                    },
+                    {
+                        "message": "parameter this : CatalogClassWriter [templateClassNames, <element>] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/CatalogClassWriter.java",
+                        "line": 78
+                    },
+                    {
+                        "message": "this <.field> : CatalogClassWriter [templateClassNames, <element>] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/CatalogClassWriter.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "templateClassNames : TreeSet [<element>] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/CatalogClassWriter.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "stream(...) : Stream [<element>] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/CatalogClassWriter.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "map(...) : Stream [<element>] : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/CatalogClassWriter.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "collect(...) : String",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/CatalogClassWriter.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "listTemplates(...)",
+                        "uri": "compiler/apt/src/main/java/io/jstach/apt/CatalogClassWriter.java",
+                        "line": 60
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        }
+    ]
+}

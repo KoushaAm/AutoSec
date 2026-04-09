@@ -1,0 +1,2255 @@
+{
+    "cwe_id": "cwe-094",
+    "vulnerabilities": [
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getValue(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/ThreadSafePropertyEditor.java",
+                        "line": 78
+                    },
+                    {
+                        "message": "setAsText(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/PropertyEditorCapableConverter.java",
+                        "line": 42
+                    },
+                    {
+                        "message": "fromString(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/SingleValueConverterWrapper.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "fromString(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/SingleValueConverterWrapper.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "unmarshal(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "convert(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "convertAnother(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "convertAnother(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeMapConverter.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "(...)... : Comparator",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeMapConverter.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "comparator : Comparator",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeMapConverter.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "unmarshalComparator(...) : Comparator",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeMapConverter.java",
+                        "line": 74
+                    },
+                    {
+                        "message": "comparator : Comparator",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeMapConverter.java",
+                        "line": 78
+                    },
+                    {
+                        "message": "comparator : Comparator",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeMapConverter.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "comparator",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeMapConverter.java",
+                        "line": 119
+                    }
+                ],
+                [
+                    {
+                        "message": "getValue(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/ThreadSafePropertyEditor.java",
+                        "line": 78
+                    },
+                    {
+                        "message": "setAsText(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/PropertyEditorCapableConverter.java",
+                        "line": 42
+                    },
+                    {
+                        "message": "fromString(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ISO8601GregorianCalendarConverter.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "fromString(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/SingleValueConverterWrapper.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "fromString(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/SingleValueConverterWrapper.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "unmarshal(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ThrowableConverter.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "unmarshal(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "convert(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/AbstractReferenceUnmarshaller.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "result : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/AbstractReferenceUnmarshaller.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "convert(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "convertAnother(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "convertAnother(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeMapConverter.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "(...)... : Comparator",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeMapConverter.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "comparator : Comparator",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeMapConverter.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "unmarshalComparator(...) : Comparator",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeSetConverter.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "unmarshalledComparator : Comparator",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeSetConverter.java",
+                        "line": 92
+                    },
+                    {
+                        "message": "comparator : Comparator",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeMapConverter.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "comparator",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeMapConverter.java",
+                        "line": 119
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getValue(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/ThreadSafePropertyEditor.java",
+                        "line": 78
+                    },
+                    {
+                        "message": "setAsText(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/PropertyEditorCapableConverter.java",
+                        "line": 42
+                    },
+                    {
+                        "message": "fromString(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/SingleValueConverterWrapper.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "fromString(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/SingleValueConverterWrapper.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "unmarshal(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "convert(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "convertAnother(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "convertAnother(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeMapConverter.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "(...)... : Comparator",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeMapConverter.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "comparator : Comparator",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeMapConverter.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "unmarshalComparator(...) : Comparator",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeMapConverter.java",
+                        "line": 74
+                    },
+                    {
+                        "message": "comparator : Comparator",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeMapConverter.java",
+                        "line": 78
+                    },
+                    {
+                        "message": "comparator : Comparator",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeMapConverter.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "comparator",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeMapConverter.java",
+                        "line": 125
+                    }
+                ],
+                [
+                    {
+                        "message": "getValue(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/ThreadSafePropertyEditor.java",
+                        "line": 78
+                    },
+                    {
+                        "message": "setAsText(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/PropertyEditorCapableConverter.java",
+                        "line": 42
+                    },
+                    {
+                        "message": "fromString(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ISO8601GregorianCalendarConverter.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "fromString(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/SingleValueConverterWrapper.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "fromString(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/SingleValueConverterWrapper.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "unmarshal(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ThrowableConverter.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "unmarshal(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "convert(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/AbstractReferenceUnmarshaller.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "result : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/AbstractReferenceUnmarshaller.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "convert(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "convertAnother(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "convertAnother(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeMapConverter.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "(...)... : Comparator",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeMapConverter.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "comparator : Comparator",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeMapConverter.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "unmarshalComparator(...) : Comparator",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeSetConverter.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "unmarshalledComparator : Comparator",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeSetConverter.java",
+                        "line": 92
+                    },
+                    {
+                        "message": "comparator : Comparator",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeMapConverter.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "comparator",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/collections/TreeMapConverter.java",
+                        "line": 125
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getText(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/Dom4JReader.java",
+                        "line": 76
+                    },
+                    {
+                        "message": "getValue(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/JavaFieldConverter.java",
+                        "line": 88
+                    },
+                    {
+                        "message": "methodName : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/JavaFieldConverter.java",
+                        "line": 97
+                    },
+                    {
+                        "message": "serialized : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/DefaultMapper.java",
+                        "line": 143
+                    },
+                    {
+                        "message": "serialized : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/DefaultMapper.java",
+                        "line": 144
+                    },
+                    {
+                        "message": "realMember(...)",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/JavaFieldConverter.java",
+                        "line": 97
+                    }
+                ],
+                [
+                    {
+                        "message": "getData(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/DomReader.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "textBuffer [post update] : StringBuffer",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/DomReader.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "textBuffer : StringBuffer",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/DomReader.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/DomReader.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "getValue(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/JavaFieldConverter.java",
+                        "line": 88
+                    },
+                    {
+                        "message": "methodName : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/JavaFieldConverter.java",
+                        "line": 97
+                    },
+                    {
+                        "message": "serialized : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/DefaultMapper.java",
+                        "line": 143
+                    },
+                    {
+                        "message": "serialized : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/DefaultMapper.java",
+                        "line": 144
+                    },
+                    {
+                        "message": "realMember(...)",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/JavaFieldConverter.java",
+                        "line": 97
+                    }
+                ],
+                [
+                    {
+                        "message": "getText(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/JDom2Reader.java",
+                        "line": 74
+                    },
+                    {
+                        "message": "getValue(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/JavaFieldConverter.java",
+                        "line": 88
+                    },
+                    {
+                        "message": "methodName : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/JavaFieldConverter.java",
+                        "line": 97
+                    },
+                    {
+                        "message": "serialized : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/DefaultMapper.java",
+                        "line": 143
+                    },
+                    {
+                        "message": "serialized : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/DefaultMapper.java",
+                        "line": 144
+                    },
+                    {
+                        "message": "realMember(...)",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/JavaFieldConverter.java",
+                        "line": 97
+                    }
+                ],
+                [
+                    {
+                        "message": "getText(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/JDomReader.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "getValue(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/JavaFieldConverter.java",
+                        "line": 88
+                    },
+                    {
+                        "message": "methodName : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/JavaFieldConverter.java",
+                        "line": 97
+                    },
+                    {
+                        "message": "serialized : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/DefaultMapper.java",
+                        "line": 143
+                    },
+                    {
+                        "message": "serialized : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/DefaultMapper.java",
+                        "line": 144
+                    },
+                    {
+                        "message": "realMember(...)",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/JavaFieldConverter.java",
+                        "line": 97
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getText(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/Dom4JReader.java",
+                        "line": 76
+                    },
+                    {
+                        "message": "getValue(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/JavaMethodConverter.java",
+                        "line": 113
+                    },
+                    {
+                        "message": "methodName",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/JavaMethodConverter.java",
+                        "line": 129
+                    }
+                ],
+                [
+                    {
+                        "message": "getData(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/DomReader.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "textBuffer [post update] : StringBuffer",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/DomReader.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "textBuffer : StringBuffer",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/DomReader.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/DomReader.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "getValue(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/JavaMethodConverter.java",
+                        "line": 113
+                    },
+                    {
+                        "message": "methodName",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/JavaMethodConverter.java",
+                        "line": 129
+                    }
+                ],
+                [
+                    {
+                        "message": "getText(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/JDom2Reader.java",
+                        "line": 74
+                    },
+                    {
+                        "message": "getValue(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/JavaMethodConverter.java",
+                        "line": 113
+                    },
+                    {
+                        "message": "methodName",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/JavaMethodConverter.java",
+                        "line": 129
+                    }
+                ],
+                [
+                    {
+                        "message": "getText(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/JDomReader.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "getValue(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/JavaMethodConverter.java",
+                        "line": 113
+                    },
+                    {
+                        "message": "methodName",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/JavaMethodConverter.java",
+                        "line": 129
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ISO8601DateConverter.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ISO8601DateConverter.java",
+                        "line": 36
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ISO8601GregorianCalendarConverter.java",
+                        "line": 60
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ISO8601GregorianCalendarConverter.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ToStringConverter.java",
+                        "line": 45
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ToStringConverter.java",
+                        "line": 47
+                    },
+                    {
+                        "message": "{...} : Object[] [[]] : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ToStringConverter.java",
+                        "line": 47
+                    },
+                    {
+                        "message": "new Object[]",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ToStringConverter.java",
+                        "line": 47
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 2208
+                    },
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 2209
+                    },
+                    {
+                        "message": "{...} : Class[] [[]] : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 2209
+                    },
+                    {
+                        "message": "new Class<>[] : Class[] [[]] : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 2209
+                    },
+                    {
+                        "message": "types : Class[] [[]] : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 2194
+                    },
+                    {
+                        "message": "types : Class[] [[]] : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 2198
+                    },
+                    {
+                        "message": "initialTypes : Class[] [[]] : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 155
+                    },
+                    {
+                        "message": "initialTypes : Class[] [[]] : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 162
+                    },
+                    {
+                        "message": "initialType : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 163
+                    },
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 603
+                    },
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 614
+                    },
+                    {
+                        "message": "super [post update] : UnprocessedTypesSet [<element>] : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 614
+                    },
+                    {
+                        "message": "parameter this [Return] : UnprocessedTypesSet [<element>] : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 603
+                    },
+                    {
+                        "message": "types [post update] : UnprocessedTypesSet [<element>] : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 163
+                    },
+                    {
+                        "message": "types : UnprocessedTypesSet [<element>] : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "types : UnprocessedTypesSet [<element>] : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 178
+                    },
+                    {
+                        "message": "types : UnprocessedTypesSet [<element>] : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 180
+                    },
+                    {
+                        "message": "iterator(...) : Iterator [<element>] : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 180
+                    },
+                    {
+                        "message": "iter : Iterator [<element>] : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 181
+                    },
+                    {
+                        "message": "next(...) : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 181
+                    },
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 195
+                    },
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 288
+                    },
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/javabean/JavaBeanConverter.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/javabean/JavaBeanConverter.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/javabean/BeanProvider.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/javabean/BeanProvider.java",
+                        "line": 142
+                    },
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/javabean/BeanProvider.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "type",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/javabean/BeanProvider.java",
+                        "line": 69
+                    }
+                ],
+                [
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/basic/StringConverter.java",
+                        "line": 87
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/basic/StringConverter.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "fromString(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/SingleValueConverterWrapper.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "fromString(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/SingleValueConverterWrapper.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "unmarshal(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "convert(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "convertAnother(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "convertAnother(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 134
+                    },
+                    {
+                        "message": "result : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "start(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/AbstractTreeMarshallingStrategy.java",
+                        "line": 32
+                    },
+                    {
+                        "message": "unmarshal(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1409
+                    },
+                    {
+                        "message": "unmarshal(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "unmarshal(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1273
+                    },
+                    {
+                        "message": "fromXML(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1264
+                    },
+                    {
+                        "message": "fromXML(...) : String",
+                        "uri": "xstream-jmh/src/java/com/thoughtworks/xstream/benchmark/jmh/NameCoderBenchmark.java",
+                        "line": 335
+                    },
+                    {
+                        "message": "obj : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1202
+                    },
+                    {
+                        "message": "obj : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1204
+                    },
+                    {
+                        "message": "obj : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1214
+                    },
+                    {
+                        "message": "obj : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1217
+                    },
+                    {
+                        "message": "obj : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1243
+                    },
+                    {
+                        "message": "obj : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1244
+                    },
+                    {
+                        "message": "obj : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1254
+                    },
+                    {
+                        "message": "obj : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1255
+                    },
+                    {
+                        "message": "obj : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/AbstractTreeMarshallingStrategy.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "obj : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/AbstractTreeMarshallingStrategy.java",
+                        "line": 37
+                    },
+                    {
+                        "message": "item : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeMarshaller.java",
+                        "line": 74
+                    },
+                    {
+                        "message": "item : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeMarshaller.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "item : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeMarshaller.java",
+                        "line": 42
+                    },
+                    {
+                        "message": "item : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeMarshaller.java",
+                        "line": 43
+                    },
+                    {
+                        "message": "item : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeMarshaller.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "item : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeMarshaller.java",
+                        "line": 58
+                    },
+                    {
+                        "message": "item : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/AbstractReferenceMarshaller.java",
+                        "line": 47
+                    },
+                    {
+                        "message": "item : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/AbstractReferenceMarshaller.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "source : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/enums/EnumMapConverter.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "source : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/enums/EnumMapConverter.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "instance : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/Fields.java",
+                        "line": 80
+                    },
+                    {
+                        "message": "instance : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/Fields.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "get(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/Fields.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "read(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/enums/EnumMapConverter.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "(...)... : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/enums/EnumMapConverter.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/enums/EnumMapConverter.java",
+                        "line": 52
+                    },
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 124
+                    },
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 126
+                    },
+                    {
+                        "message": "initialType : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 168
+                    },
+                    {
+                        "message": "initialType : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 174
+                    },
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 603
+                    },
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 614
+                    },
+                    {
+                        "message": "super [post update] : UnprocessedTypesSet [<element>] : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 614
+                    },
+                    {
+                        "message": "parameter this [Return] : UnprocessedTypesSet [<element>] : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 603
+                    },
+                    {
+                        "message": "types [post update] : UnprocessedTypesSet [<element>] : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 174
+                    },
+                    {
+                        "message": "types : UnprocessedTypesSet [<element>] : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 175
+                    },
+                    {
+                        "message": "types : UnprocessedTypesSet [<element>] : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 178
+                    },
+                    {
+                        "message": "types : UnprocessedTypesSet [<element>] : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 180
+                    },
+                    {
+                        "message": "iterator(...) : Iterator [<element>] : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 180
+                    },
+                    {
+                        "message": "iter : Iterator [<element>] : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 181
+                    },
+                    {
+                        "message": "next(...) : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 181
+                    },
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 195
+                    },
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 288
+                    },
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/AnnotationMapper.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/javabean/JavaBeanConverter.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/javabean/JavaBeanConverter.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/javabean/BeanProvider.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/javabean/BeanProvider.java",
+                        "line": 142
+                    },
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/javabean/BeanProvider.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "type",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/javabean/BeanProvider.java",
+                        "line": 69
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "name : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/JVM.java",
+                        "line": 306
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/JVM.java",
+                        "line": 307
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/JVM.java",
+                        "line": 326
+                    },
+                    {
+                        "message": "name",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/JVM.java",
+                        "line": 328
+                    }
+                ],
+                [
+                    {
+                        "message": "name : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/JVM.java",
+                        "line": 326
+                    },
+                    {
+                        "message": "name",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/JVM.java",
+                        "line": 328
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/DependencyInjectionFactory.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/DependencyInjectionFactory.java",
+                        "line": 47
+                    },
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/DependencyInjectionFactory.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "type",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/DependencyInjectionFactory.java",
+                        "line": 214
+                    }
+                ],
+                [
+                    {
+                        "message": "type : Class",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/DependencyInjectionFactory.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "type",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/DependencyInjectionFactory.java",
+                        "line": 214
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/reflection/SerializableConverter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/Fields.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "name",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/Fields.java",
+                        "line": 52
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/basic/DateConverter.java",
+                        "line": 207
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/basic/DateConverter.java",
+                        "line": 210
+                    },
+                    {
+                        "message": "date : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/ThreadSafeSimpleDateFormat.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "date : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/ThreadSafeSimpleDateFormat.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "parse(...) : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/ThreadSafeSimpleDateFormat.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "parse(...) : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/basic/DateConverter.java",
+                        "line": 210
+                    },
+                    {
+                        "message": "fromString(...) : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/SingleValueConverterWrapper.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "fromString(...) : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/SingleValueConverterWrapper.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "unmarshal(...) : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "convert(...) : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "convertAnother(...) : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "convertAnother(...) : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 134
+                    },
+                    {
+                        "message": "result : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "start(...) : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/AbstractTreeMarshallingStrategy.java",
+                        "line": 32
+                    },
+                    {
+                        "message": "unmarshal(...) : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1409
+                    },
+                    {
+                        "message": "unmarshal(...) : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "unmarshal(...) : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1273
+                    },
+                    {
+                        "message": "fromXML(...) : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1264
+                    },
+                    {
+                        "message": "fromXML(...) : Date",
+                        "uri": "xstream-jmh/src/java/com/thoughtworks/xstream/benchmark/jmh/NameCoderBenchmark.java",
+                        "line": 335
+                    },
+                    {
+                        "message": "obj : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1202
+                    },
+                    {
+                        "message": "obj : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1204
+                    },
+                    {
+                        "message": "obj : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1214
+                    },
+                    {
+                        "message": "obj : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1217
+                    },
+                    {
+                        "message": "obj : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1243
+                    },
+                    {
+                        "message": "obj : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1244
+                    },
+                    {
+                        "message": "obj : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1254
+                    },
+                    {
+                        "message": "obj : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1255
+                    },
+                    {
+                        "message": "obj : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/AbstractTreeMarshallingStrategy.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "obj : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/AbstractTreeMarshallingStrategy.java",
+                        "line": 37
+                    },
+                    {
+                        "message": "item : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeMarshaller.java",
+                        "line": 74
+                    },
+                    {
+                        "message": "item : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeMarshaller.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "item : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeMarshaller.java",
+                        "line": 42
+                    },
+                    {
+                        "message": "item : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeMarshaller.java",
+                        "line": 43
+                    },
+                    {
+                        "message": "item : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeMarshaller.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "item : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeMarshaller.java",
+                        "line": 58
+                    },
+                    {
+                        "message": "item : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/AbstractReferenceMarshaller.java",
+                        "line": 47
+                    },
+                    {
+                        "message": "item : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/AbstractReferenceMarshaller.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "source : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ToAttributedValueConverter.java",
+                        "line": 132
+                    },
+                    {
+                        "message": "source : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ToAttributedValueConverter.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "object : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/reflection/PureJavaReflectionProvider.java",
+                        "line": 142
+                    },
+                    {
+                        "message": "object : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/reflection/PureJavaReflectionProvider.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "instance : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/Fields.java",
+                        "line": 80
+                    },
+                    {
+                        "message": "instance : Date",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/Fields.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "get(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/Fields.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "read(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/reflection/PureJavaReflectionProvider.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "value : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/reflection/PureJavaReflectionProvider.java",
+                        "line": 150
+                    },
+                    {
+                        "message": "value : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ToAttributedValueConverter.java",
+                        "line": 142
+                    },
+                    {
+                        "message": "value : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ToAttributedValueConverter.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "obj : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/FileConverter.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "(...)... : File",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/FileConverter.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "getPath(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/FileConverter.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ToAttributedValueConverter.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ToAttributedValueConverter.java",
+                        "line": 183
+                    },
+                    {
+                        "message": "value : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/StaxWriter.java",
+                        "line": 136
+                    },
+                    {
+                        "message": "value",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/StaxWriter.java",
+                        "line": 138
+                    }
+                ],
+                [
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/basic/StringConverter.java",
+                        "line": 87
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/basic/StringConverter.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "fromString(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/SingleValueConverterWrapper.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "fromString(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/SingleValueConverterWrapper.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "unmarshal(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "convert(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "convertAnother(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "convertAnother(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 134
+                    },
+                    {
+                        "message": "result : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "start(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/AbstractTreeMarshallingStrategy.java",
+                        "line": 32
+                    },
+                    {
+                        "message": "unmarshal(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1409
+                    },
+                    {
+                        "message": "unmarshal(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "unmarshal(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1273
+                    },
+                    {
+                        "message": "fromXML(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1264
+                    },
+                    {
+                        "message": "fromXML(...) : String",
+                        "uri": "xstream-jmh/src/java/com/thoughtworks/xstream/benchmark/jmh/NameCoderBenchmark.java",
+                        "line": 335
+                    },
+                    {
+                        "message": "obj : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1202
+                    },
+                    {
+                        "message": "obj : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1204
+                    },
+                    {
+                        "message": "obj : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1214
+                    },
+                    {
+                        "message": "obj : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1217
+                    },
+                    {
+                        "message": "obj : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1243
+                    },
+                    {
+                        "message": "obj : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1244
+                    },
+                    {
+                        "message": "obj : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1254
+                    },
+                    {
+                        "message": "obj : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1255
+                    },
+                    {
+                        "message": "obj : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/AbstractTreeMarshallingStrategy.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "obj : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/AbstractTreeMarshallingStrategy.java",
+                        "line": 37
+                    },
+                    {
+                        "message": "item : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeMarshaller.java",
+                        "line": 74
+                    },
+                    {
+                        "message": "item : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeMarshaller.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "item : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeMarshaller.java",
+                        "line": 42
+                    },
+                    {
+                        "message": "item : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeMarshaller.java",
+                        "line": 43
+                    },
+                    {
+                        "message": "item : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeMarshaller.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "item : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeMarshaller.java",
+                        "line": 58
+                    },
+                    {
+                        "message": "item : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/AbstractReferenceMarshaller.java",
+                        "line": 47
+                    },
+                    {
+                        "message": "item : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/AbstractReferenceMarshaller.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "source : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ToAttributedValueConverter.java",
+                        "line": 132
+                    },
+                    {
+                        "message": "source : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ToAttributedValueConverter.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "object : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/reflection/PureJavaReflectionProvider.java",
+                        "line": 142
+                    },
+                    {
+                        "message": "object : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/reflection/PureJavaReflectionProvider.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "instance : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/Fields.java",
+                        "line": 80
+                    },
+                    {
+                        "message": "instance : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/Fields.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "get(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/Fields.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "read(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/reflection/PureJavaReflectionProvider.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "value : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/reflection/PureJavaReflectionProvider.java",
+                        "line": 150
+                    },
+                    {
+                        "message": "value : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ToAttributedValueConverter.java",
+                        "line": 142
+                    },
+                    {
+                        "message": "value : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ToAttributedValueConverter.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "obj : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/FileConverter.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "(...)... : File",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/FileConverter.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "getPath(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/FileConverter.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ToAttributedValueConverter.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ToAttributedValueConverter.java",
+                        "line": 183
+                    },
+                    {
+                        "message": "value : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/StaxWriter.java",
+                        "line": 136
+                    },
+                    {
+                        "message": "value",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/StaxWriter.java",
+                        "line": 138
+                    }
+                ],
+                [
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/enums/EnumSingleValueConverter.java",
+                        "line": 45
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/enums/EnumSingleValueConverter.java",
+                        "line": 47
+                    },
+                    {
+                        "message": "valueOf(...) : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/enums/EnumSingleValueConverter.java",
+                        "line": 47
+                    },
+                    {
+                        "message": "result : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/enums/EnumSingleValueConverter.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "fromString(...) : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/SingleValueConverterWrapper.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "fromString(...) : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/SingleValueConverterWrapper.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "unmarshal(...) : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "convert(...) : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "convertAnother(...) : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "convertAnother(...) : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 134
+                    },
+                    {
+                        "message": "result : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeUnmarshaller.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "start(...) : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/AbstractTreeMarshallingStrategy.java",
+                        "line": 32
+                    },
+                    {
+                        "message": "unmarshal(...) : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1409
+                    },
+                    {
+                        "message": "unmarshal(...) : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "unmarshal(...) : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1273
+                    },
+                    {
+                        "message": "fromXML(...) : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1264
+                    },
+                    {
+                        "message": "fromXML(...) : Enum",
+                        "uri": "xstream-jmh/src/java/com/thoughtworks/xstream/benchmark/jmh/NameCoderBenchmark.java",
+                        "line": 335
+                    },
+                    {
+                        "message": "obj : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1202
+                    },
+                    {
+                        "message": "obj : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1204
+                    },
+                    {
+                        "message": "obj : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1214
+                    },
+                    {
+                        "message": "obj : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1217
+                    },
+                    {
+                        "message": "obj : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1243
+                    },
+                    {
+                        "message": "obj : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1244
+                    },
+                    {
+                        "message": "obj : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1254
+                    },
+                    {
+                        "message": "obj : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1255
+                    },
+                    {
+                        "message": "obj : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/AbstractTreeMarshallingStrategy.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "obj : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/AbstractTreeMarshallingStrategy.java",
+                        "line": 37
+                    },
+                    {
+                        "message": "item : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeMarshaller.java",
+                        "line": 74
+                    },
+                    {
+                        "message": "item : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeMarshaller.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "item : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeMarshaller.java",
+                        "line": 42
+                    },
+                    {
+                        "message": "item : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeMarshaller.java",
+                        "line": 43
+                    },
+                    {
+                        "message": "item : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeMarshaller.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "item : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/TreeMarshaller.java",
+                        "line": 58
+                    },
+                    {
+                        "message": "item : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/AbstractReferenceMarshaller.java",
+                        "line": 47
+                    },
+                    {
+                        "message": "item : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/AbstractReferenceMarshaller.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "source : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ToAttributedValueConverter.java",
+                        "line": 132
+                    },
+                    {
+                        "message": "source : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ToAttributedValueConverter.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "object : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/reflection/PureJavaReflectionProvider.java",
+                        "line": 142
+                    },
+                    {
+                        "message": "object : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/reflection/PureJavaReflectionProvider.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "instance : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/Fields.java",
+                        "line": 80
+                    },
+                    {
+                        "message": "instance : Enum",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/Fields.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "get(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/core/util/Fields.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "read(...) : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/reflection/PureJavaReflectionProvider.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "value : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/reflection/PureJavaReflectionProvider.java",
+                        "line": 150
+                    },
+                    {
+                        "message": "value : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ToAttributedValueConverter.java",
+                        "line": 142
+                    },
+                    {
+                        "message": "value : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ToAttributedValueConverter.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "obj : Object",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/FileConverter.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "(...)... : File",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/FileConverter.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "getPath(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/FileConverter.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ToAttributedValueConverter.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ToAttributedValueConverter.java",
+                        "line": 183
+                    },
+                    {
+                        "message": "value : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/StaxWriter.java",
+                        "line": 136
+                    },
+                    {
+                        "message": "value",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/io/xml/StaxWriter.java",
+                        "line": 138
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ISO8601DateConverter.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ISO8601DateConverter.java",
+                        "line": 36
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ISO8601GregorianCalendarConverter.java",
+                        "line": 60
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ISO8601GregorianCalendarConverter.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/JavaClassConverter.java",
+                        "line": 67
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/JavaClassConverter.java",
+                        "line": 69
+                    },
+                    {
+                        "message": "elementName : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/DefaultMapper.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "elementName",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/DefaultMapper.java",
+                        "line": 79
+                    }
+                ],
+                [
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ISO8601GregorianCalendarConverter.java",
+                        "line": 60
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ISO8601GregorianCalendarConverter.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/JavaClassConverter.java",
+                        "line": 67
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/JavaClassConverter.java",
+                        "line": 69
+                    },
+                    {
+                        "message": "elementName : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/DefaultMapper.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "elementName",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/DefaultMapper.java",
+                        "line": 79
+                    }
+                ],
+                [
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ISO8601SqlTimestampConverter.java",
+                        "line": 33
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ISO8601SqlTimestampConverter.java",
+                        "line": 43
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ISO8601DateConverter.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ISO8601DateConverter.java",
+                        "line": 36
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ISO8601GregorianCalendarConverter.java",
+                        "line": 60
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/ISO8601GregorianCalendarConverter.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/JavaClassConverter.java",
+                        "line": 67
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/converters/extended/JavaClassConverter.java",
+                        "line": 69
+                    },
+                    {
+                        "message": "elementName : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/DefaultMapper.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "elementName",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/DefaultMapper.java",
+                        "line": 79
+                    }
+                ],
+                [
+                    {
+                        "message": "elementName : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/SecurityMapper.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "elementName : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/SecurityMapper.java",
+                        "line": 71
+                    },
+                    {
+                        "message": "elementName : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/MapperWrapper.java",
+                        "line": 124
+                    },
+                    {
+                        "message": "elementName : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/MapperWrapper.java",
+                        "line": 125
+                    },
+                    {
+                        "message": "elementName : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/DefaultMapper.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "elementName",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/DefaultMapper.java",
+                        "line": 79
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "fieldName : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1868
+                    },
+                    {
+                        "message": "fieldName : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/XStream.java",
+                        "line": 1875
+                    },
+                    {
+                        "message": "fieldName : String",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/ImplicitCollectionMapper.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "fieldName",
+                        "uri": "xstream/src/java/com/thoughtworks/xstream/mapper/ImplicitCollectionMapper.java",
+                        "line": 109
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        }
+    ]
+}

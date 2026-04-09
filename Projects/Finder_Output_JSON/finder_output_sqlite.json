@@ -1,0 +1,343 @@
+{
+    "cwe_id": "cwe-094",
+    "vulnerabilities": [
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "url : String",
+                        "uri": "src/main/java/org/sqlite/JDBC.java",
+                        "line": 99
+                    },
+                    {
+                        "message": "url : String",
+                        "uri": "src/main/java/org/sqlite/JDBC.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "trim(...) : String",
+                        "uri": "src/main/java/org/sqlite/JDBC.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "url : String",
+                        "uri": "src/main/java/org/sqlite/JDBC.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "url : String",
+                        "uri": "src/main/java/org/sqlite/JDBC.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "url : String",
+                        "uri": "src/main/java/org/sqlite/JDBC.java",
+                        "line": 87
+                    },
+                    {
+                        "message": "substring(...) : String",
+                        "uri": "src/main/java/org/sqlite/JDBC.java",
+                        "line": 87
+                    },
+                    {
+                        "message": "extractAddress(...) : String",
+                        "uri": "src/main/java/org/sqlite/JDBC.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "src/main/java/org/sqlite/jdbc4/JDBC4Connection.java",
+                        "line": 18
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "src/main/java/org/sqlite/jdbc4/JDBC4Connection.java",
+                        "line": 19
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "src/main/java/org/sqlite/jdbc3/JDBC3Connection.java",
+                        "line": 27
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "src/main/java/org/sqlite/jdbc3/JDBC3Connection.java",
+                        "line": 28
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "origFileName : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "origFileName : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 224
+                    },
+                    {
+                        "message": "filename : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 511
+                    },
+                    {
+                        "message": "filename : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 520
+                    },
+                    {
+                        "message": "filename : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 523
+                    },
+                    {
+                        "message": "substring(...) : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 523
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 523
+                    },
+                    {
+                        "message": "...[...] : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 526
+                    },
+                    {
+                        "message": "trim(...) : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 526
+                    },
+                    {
+                        "message": "parameter : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 533
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 533
+                    },
+                    {
+                        "message": "...[...] : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 541
+                    },
+                    {
+                        "message": "trim(...) : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 541
+                    },
+                    {
+                        "message": "value : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 553
+                    },
+                    {
+                        "message": "prop [post update] : Properties [<map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 553
+                    },
+                    {
+                        "message": "prop [Return] : Properties [<map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 511
+                    },
+                    {
+                        "message": "newProps [post update] : Properties [<map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 224
+                    },
+                    {
+                        "message": "newProps : Properties [<map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 225
+                    },
+                    {
+                        "message": "prop : Properties [<map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConfig.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "prop : Properties [<map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConfig.java",
+                        "line": 73
+                    },
+                    {
+                        "message": "this [post update] : SQLiteConfig [pragmaTable, <map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConfig.java",
+                        "line": 73
+                    },
+                    {
+                        "message": "parameter this [Return] : SQLiteConfig [pragmaTable, <map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConfig.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "new SQLiteConfig(...) : SQLiteConfig [pragmaTable, <map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 225
+                    },
+                    {
+                        "message": "config : SQLiteConfig [pragmaTable, <map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 280
+                    },
+                    {
+                        "message": "config : SQLiteConfig [pragmaTable, <map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/core/NativeDB.java",
+                        "line": 54
+                    },
+                    {
+                        "message": "config : SQLiteConfig [pragmaTable, <map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/core/NativeDB.java",
+                        "line": 55
+                    },
+                    {
+                        "message": "config : SQLiteConfig [pragmaTable, <map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/core/DB.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "config : SQLiteConfig [pragmaTable, <map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/core/DB.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "this [post update] : DB [config, pragmaTable, <map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/core/DB.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "parameter this [Return] : DB [config, pragmaTable, <map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/core/DB.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "this <constr(this)> [post update] : NativeDB [config, pragmaTable, <map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/core/NativeDB.java",
+                        "line": 55
+                    },
+                    {
+                        "message": "parameter this [Return] : NativeDB [config, pragmaTable, <map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/core/NativeDB.java",
+                        "line": 54
+                    },
+                    {
+                        "message": "new NativeDB(...) : NativeDB [config, pragmaTable, <map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 280
+                    },
+                    {
+                        "message": "db : NativeDB [config, pragmaTable, <map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 287
+                    },
+                    {
+                        "message": "open(...) : NativeDB [config, pragmaTable, <map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "this.db : NativeDB [config, pragmaTable, <map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 67
+                    },
+                    {
+                        "message": "parameter this : NativeDB [config, pragmaTable, <map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/core/DB.java",
+                        "line": 77
+                    },
+                    {
+                        "message": "this <.field> : NativeDB [config, pragmaTable, <map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/core/DB.java",
+                        "line": 78
+                    },
+                    {
+                        "message": "config : SQLiteConfig [pragmaTable, <map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/core/DB.java",
+                        "line": 78
+                    },
+                    {
+                        "message": "getConfig(...) : SQLiteConfig [pragmaTable, <map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 67
+                    },
+                    {
+                        "message": "config : SQLiteConfig [pragmaTable, <map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConnection.java",
+                        "line": 69
+                    },
+                    {
+                        "message": "parameter this : SQLiteConfig [pragmaTable, <map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConfig.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "this <.field> : SQLiteConfig [pragmaTable, <map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConfig.java",
+                        "line": 217
+                    },
+                    {
+                        "message": "pragmaTable : Properties [<map.value>] : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConfig.java",
+                        "line": 217
+                    },
+                    {
+                        "message": "getProperty(...) : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConfig.java",
+                        "line": 217
+                    },
+                    {
+                        "message": "value : String",
+                        "uri": "src/main/java/org/sqlite/SQLiteConfig.java",
+                        "line": 219
+                    },
+                    {
+                        "message": "format(...)",
+                        "uri": "src/main/java/org/sqlite/SQLiteConfig.java",
+                        "line": 219
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        }
+    ]
+}
