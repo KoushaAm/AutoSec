@@ -18,7 +18,7 @@ from . import logger
 from .utils import load_dummy_finder_output
 from .project_variants import ProjectVariants
 
-# from Agents.Patcher import patcher_main
+from Agents.Patcher import patcher_main
 from Agents.Verifier import verifier_main
 from Agents.Finder.src.types import FinderOutput
 from Agents.Finder.src.output_converter import sarif_to_finder_output
@@ -49,15 +49,19 @@ def _build_workflow() -> Any:
     graph = StateGraph(AutoSecState)
     graph.add_node("finder", _finder_node)
     graph.add_node("exploiter", _exploiter_node)
-    # graph.add_node("patcher", _patcher_node)
+    graph.add_node("patcher", _patcher_node)
     graph.add_node("verifier", _verifier_node)
 
     # linear edges
-    graph.add_edge(START, "finder")
-    graph.add_edge("finder", "exploiter")
-    # graph.add_edge("finder", "patcher")
+    # graph.add_edge(START, "finder")
+    # graph.add_edge("finder", "exploiter")
+    # graph.add_edge("exploiter", "patcher")
     # graph.add_edge("patcher", "verifier")
-    graph.add_edge("finder", END)
+    # graph.add_edge("verifier", END)
+
+    # TODO: remove once running full pipeline
+    graph.add_edge(START, "patcher")
+    graph.add_edge("patcher", END)
 
     # conditional edges
     # exploiter -> finder OR exploiter -> patcher
@@ -297,7 +301,7 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
             cwe_id=state['finder_output']['cwe_id'],
             vulnerability_list=state['finder_output']['vulnerabilities'],
             project_name=state["project_name"],
-            pov_logic=pov_logic,
+            pov_logic=state['exploiter']['pov_logic'],
             save_prompt=True,
         )
 
@@ -345,23 +349,22 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 # ====== Execute workflow =====
 def pipeline_main():
     load_dotenv()
+    # TODO once `pov_logic` is added to CODEHAUS-2017
+    SELECTED_PROJECT = ProjectVariants.CODEHAUS_CVE_2017_1000487
 
-    SELECTED_PROJECT = ProjectVariants.KUBERNETES_CLIENT_CVE_2020_8570
-    
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
         "project_name": SELECTED_PROJECT.project_name,
         "vuln_id": SELECTED_PROJECT.cwe_id,
         "language": "java",
         "finder_model": "gpt-5-mini",
-        "finder_reanalyze": True,
-        # Dummy inputs for development & experiments
-        # "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
-        # "exploiter": {
-        #     "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
-        # }
+        "finder_reanalyze": False,
+        # Manual inputs for development & experiments
+        "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
+        "exploiter": {
+            "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
+        }
     }
-
     # print(json.dumps(initial_state, indent=2))
 
     # Execute the graph
