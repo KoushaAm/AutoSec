@@ -1,0 +1,808 @@
+{
+    "cwe_id": "cwe-022",
+    "vulnerabilities": [
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/CSSCodec.java",
+                        "line": 39
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/CSSCodec.java",
+                        "line": 42
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 58
+                    },
+                    {
+                        "message": "matcher(...) : Matcher",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 58
+                    },
+                    {
+                        "message": "matcher : Matcher",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "group(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "replaceContent : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "replacedContentList [post update] : ArrayList [<element>] : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "this <.field> [post update] : EncodingPatternPreservation [replacedContentList, <element>] : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "tripletCheck [post update] : EncodingPatternPreservation [replacedContentList, <element>] : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/CSSCodec.java",
+                        "line": 42
+                    },
+                    {
+                        "message": "tripletCheck : EncodingPatternPreservation [replacedContentList, <element>] : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/CSSCodec.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "parameter this : EncodingPatternPreservation [replacedContentList, <element>] : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 78
+                    },
+                    {
+                        "message": "this <.field> : EncodingPatternPreservation [replacedContentList, <element>] : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "replacedContentList : ArrayList [<element>] : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "remove(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "origValue : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "replaceFirst(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "result : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 85
+                    },
+                    {
+                        "message": "restoreOriginalContent(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/CSSCodec.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "encode(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultEncoder.java",
+                        "line": 285
+                    },
+                    {
+                        "message": "encodeForOS(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultExecutor.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "params [post update] : List [<element>] : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultExecutor.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "params : List [<element>] : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultExecutor.java",
+                        "line": 139
+                    },
+                    {
+                        "message": "params : List",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultExecutor.java",
+                        "line": 139
+                    },
+                    {
+                        "message": "new ProcessBuilder(...) : ProcessBuilder",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultExecutor.java",
+                        "line": 139
+                    },
+                    {
+                        "message": "pb",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultExecutor.java",
+                        "line": 153
+                    }
+                ],
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 78
+                    },
+                    {
+                        "message": "result : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 85
+                    },
+                    {
+                        "message": "restoreOriginalContent(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/CSSCodec.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "encode(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultEncoder.java",
+                        "line": 285
+                    },
+                    {
+                        "message": "encodeForOS(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultExecutor.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "params [post update] : List [<element>] : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultExecutor.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "params : List [<element>] : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultExecutor.java",
+                        "line": 139
+                    },
+                    {
+                        "message": "params : List",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultExecutor.java",
+                        "line": 139
+                    },
+                    {
+                        "message": "new ProcessBuilder(...) : ProcessBuilder",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultExecutor.java",
+                        "line": 139
+                    },
+                    {
+                        "message": "pb",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultExecutor.java",
+                        "line": 153
+                    }
+                ],
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 58
+                    },
+                    {
+                        "message": "matcher(...) : Matcher",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 58
+                    },
+                    {
+                        "message": "matcher : Matcher",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "group(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "replaceContent : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "replacedContentList [post update] : ArrayList [<element>] : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "this <.field> [post update] : EncodingPatternPreservation [replacedContentList, <element>] : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "tripletCheck [post update] : EncodingPatternPreservation [replacedContentList, <element>] : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/CSSCodec.java",
+                        "line": 42
+                    },
+                    {
+                        "message": "tripletCheck : EncodingPatternPreservation [replacedContentList, <element>] : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/CSSCodec.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "parameter this : EncodingPatternPreservation [replacedContentList, <element>] : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 78
+                    },
+                    {
+                        "message": "this <.field> : EncodingPatternPreservation [replacedContentList, <element>] : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "replacedContentList : ArrayList [<element>] : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "remove(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "origValue : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "replaceFirst(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "result : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/ref/EncodingPatternPreservation.java",
+                        "line": 85
+                    },
+                    {
+                        "message": "restoreOriginalContent(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/codecs/CSSCodec.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "encode(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultEncoder.java",
+                        "line": 285
+                    },
+                    {
+                        "message": "encodeForOS(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultExecutor.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "params [post update] : List [<element>] : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultExecutor.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "params : List [<element>] : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultExecutor.java",
+                        "line": 139
+                    },
+                    {
+                        "message": "params : List",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultExecutor.java",
+                        "line": 139
+                    },
+                    {
+                        "message": "new ProcessBuilder(...) : ProcessBuilder",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultExecutor.java",
+                        "line": 139
+                    },
+                    {
+                        "message": "pb",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultExecutor.java",
+                        "line": 153
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "new String(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/crypto/PlainText.java",
+                        "line": 78
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/crypto/ReferenceEncryptedProperties.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "getProperty(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 1179
+                    },
+                    {
+                        "message": "value : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 1184
+                    },
+                    {
+                        "message": "getESAPIProperty(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 1139
+                    },
+                    {
+                        "message": "dir : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 1141
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 1141
+                    },
+                    {
+                        "message": "getWorkingDirectory(...) : File",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultExecutor.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "workdir : File",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultExecutor.java",
+                        "line": 85
+                    },
+                    {
+                        "message": "workdir : File",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultExecutor.java",
+                        "line": 97
+                    },
+                    {
+                        "message": "workdir",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultExecutor.java",
+                        "line": 142
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "webRootDir : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 95
+                    },
+                    {
+                        "message": "webRootDir : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 101
+                    },
+                    {
+                        "message": "webRootDir : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/configuration/ConfigurationParser.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/configuration/ConfigurationParser.java",
+                        "line": 546
+                    },
+                    {
+                        "message": "fileLocation : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/BeanShellRule.java",
+                        "line": 47
+                    },
+                    {
+                        "message": "fileLocation : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/BeanShellRule.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "filename : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 548
+                    },
+                    {
+                        "message": "filename : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 560
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 560
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 561
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getPath(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 577
+                    },
+                    {
+                        "message": "fileLocation : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 578
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 578
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 579
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "webRootDir : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 95
+                    },
+                    {
+                        "message": "webRootDir : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 101
+                    },
+                    {
+                        "message": "webRootDir : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/configuration/ConfigurationParser.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/configuration/ConfigurationParser.java",
+                        "line": 546
+                    },
+                    {
+                        "message": "fileLocation : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/BeanShellRule.java",
+                        "line": 47
+                    },
+                    {
+                        "message": "fileLocation : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/BeanShellRule.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "filename : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 548
+                    },
+                    {
+                        "message": "filename : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 560
+                    },
+                    {
+                        "message": "filename : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 602
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 602
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 603
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "webRootDir : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 95
+                    },
+                    {
+                        "message": "webRootDir : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 101
+                    },
+                    {
+                        "message": "webRootDir : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/configuration/ConfigurationParser.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/configuration/ConfigurationParser.java",
+                        "line": 546
+                    },
+                    {
+                        "message": "fileLocation : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/BeanShellRule.java",
+                        "line": 47
+                    },
+                    {
+                        "message": "fileLocation : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/BeanShellRule.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "filename : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 548
+                    },
+                    {
+                        "message": "filename : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 560
+                    },
+                    {
+                        "message": "filename : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 602
+                    },
+                    {
+                        "message": "filename : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 608
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 608
+                    },
+                    {
+                        "message": "f",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 609
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getPath(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 577
+                    },
+                    {
+                        "message": "fileLocation : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 578
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 578
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 580
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultSecurityConfiguration.java",
+                        "line": 581
+                    },
+                    {
+                        "message": "getResourceFile(...) : File",
+                        "uri": "src/main/java/org/owasp/esapi/reference/FileBasedAuthenticator.java",
+                        "line": 443
+                    },
+                    {
+                        "message": "this <.field> [post update] : FileBasedAuthenticator [userDB] : File",
+                        "uri": "src/main/java/org/owasp/esapi/reference/FileBasedAuthenticator.java",
+                        "line": 443
+                    },
+                    {
+                        "message": "this <.field> : FileBasedAuthenticator [userDB] : File",
+                        "uri": "src/main/java/org/owasp/esapi/reference/FileBasedAuthenticator.java",
+                        "line": 460
+                    },
+                    {
+                        "message": "this <.method> : FileBasedAuthenticator [userDB] : File",
+                        "uri": "src/main/java/org/owasp/esapi/reference/FileBasedAuthenticator.java",
+                        "line": 465
+                    },
+                    {
+                        "message": "parameter this : FileBasedAuthenticator [userDB] : File",
+                        "uri": "src/main/java/org/owasp/esapi/reference/FileBasedAuthenticator.java",
+                        "line": 472
+                    },
+                    {
+                        "message": "this <.field> : FileBasedAuthenticator [userDB] : File",
+                        "uri": "src/main/java/org/owasp/esapi/reference/FileBasedAuthenticator.java",
+                        "line": 479
+                    },
+                    {
+                        "message": "userDB",
+                        "uri": "src/main/java/org/owasp/esapi/reference/FileBasedAuthenticator.java",
+                        "line": 479
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "outFile : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/crypto/EncryptedPropertiesUtils.java",
+                        "line": 185
+                    },
+                    {
+                        "message": "outFile : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/crypto/EncryptedPropertiesUtils.java",
+                        "line": 188
+                    },
+                    {
+                        "message": "new File(...)",
+                        "uri": "src/main/java/org/owasp/esapi/reference/crypto/EncryptedPropertiesUtils.java",
+                        "line": 188
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "policyFilePath : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 95
+                    },
+                    {
+                        "message": "policyFilePath : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "new File(...)",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 100
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        }
+    ]
+}

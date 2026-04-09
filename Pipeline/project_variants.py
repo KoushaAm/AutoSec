@@ -4,32 +4,45 @@ from enum import Enum
 class ProjectVariants(Enum):
     CODEHAUS_2018 = {
         "name": "codehaus-plexus__plexus-archiver_CVE-2018-1002200_3.5",
-        "cwe_id": "cwe-022"
+        "cwe_id": "cwe-022",
+        "dummy_finder_output": "Projects/Finder_Output/CODEHAUS_CVE_2018_1002200.json",
+        "dummy_exploiter_pov_logic": "..."
     }
     CODEHAUS_2017 = {
         "name": "codehaus-plexus__plexus-utils_CVE-2017-1000487_3.0.15",
-        "cwe_id": "cwe-078"
+        "cwe_id": "cwe-078",
+        "dummy_finder_output": "Projects/Finder_Output/CODEHAUS_CVE_2017_1000487.json",
+        "dummy_exploiter_pov_logic": "..."
     }
-    NAHSRA = {
-        "name": "nahsra__antisamy_CVE-2016-10006_1.5.3",
-        "cwe_id": "cwe-079"
+    ESAPI_CVE_2022_23457 = {
+        "name": "ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1",
+        "cwe_id": "cwe-022",
+        "dummy_finder_output": "Projects/Finder_Output/ESAPI_CVE_2022_23457.json",
+        "dummy_exploiter_pov_logic": "..."
     }
-    PERWENDEL_2018 = {
-        "name": "perwendel__spark_CVE-2018-9159_2.7.1",
-        "cwe_id": "cwe-022"
-    }
-    # Primary 5 Experiments below
-    DSPACE = {
-        "name": "DSpace__DSpace_CVE-2022-31192_5.10",
-        "cwe_id": "cwe-079",
-        "dummy_finder_output": "Projects/Finder_Output_JSON/finder_output_dspace.json",
-        "dummy_exploiter_pov_logic": "The PoV set the configured export base dir to /tmp/export, created an external sentinel file at /tmp/secret_outside/secret_1.zip, constructed an EPerson with an id (100) and invoked ItemExport.getExportDownloadInputStream(...) with a traversal payload \"../../secret_outside/secret_1.zip\". The method concatenates the attacker-controlled filename onto the configured directory without normalization and opened a FileInputStream on the resulting File. The test read the external sentinel contents, printed the required marker (AUTOSEC_POV_TRIGGERED) and failed the test, demonstrating an end-to-end exploit of the path traversal vulnerability"
-    }
-    KUBERNETES_CLIENT = {
+    KUBERNETES_CLIENT_CVE_2020_8570 = {
         "name": "kubernetes-client__java_CVE-2020-8570_client-java-parent-9.0.1",
-        "cwe_id": "cwe-022", # multiple CWEs possible based on SARIF
-        "dummy_finder_output": "Projects/Finder_Output_JSON/finder_output_kubernetes.json",
-        "dummy_exploiter_pov_logic": "A JUnit PoV was created that constructs a base64-encoded gzipped tar containing malicious entries (absolute path and deep '../' traversal). The test overrides Copy.exec(...) to return a Process whose stdout is the crafted archive (matching the exec path the library uses), then calls copy.copyDirectoryFromPod(...). After extraction the test checks for creation of /tmp/AUTOSEC_POV_TRIGGERED.txt and would print and fail with the required marker if observed. The PoV could not be confirmed: Maven test compilation failed initially with a missing-symbol error for a helper method; the helper was later added under autosec/tests but the container test run continued to report the same compile error and the run did not produce the AUTOSEC_POV_TRIGGERED marker. Therefore exploitability in this repository/version was not verified at runtime."
+        "cwe_id": "cwe-022", # Both CWE-22 & CWE-23
+        "dummy_finder_output": "Projects/Finder_Output/KUBERNETES_CLIENT_CVE_2020_8570.json",
+        "dummy_exploiter_pov_logic": "..."
+    }
+    PERWENDEL_CVE_2016_9177 = {
+        "name": "perwendel__spark_CVE-2016-9177_2.5.1",
+        "cwe_id": "cwe-022",
+        "dummy_finder_output": "Projects/Finder_Output/PERWENDEL_CVE_2016_9177.json",
+        "dummy_exploiter_pov_logic": "..."
+    }
+    RHUSS_CVE_2018_1000129 = {
+        "name": "rhuss__jolokia_CVE-2018-1000129_1.4.0",
+        "cwe_id": "cwe-079",
+        "dummy_finder_output": "Projects/Finder_Output/RHUSS_CVE_2018_1000129.json",
+        "dummy_exploiter_pov_logic": "..."
+    }
+    SPRING_CLOUD_CVE_2022_22947 = {
+        "name": "spring-cloud__spring-cloud-gateway_CVE-2022-22947_3.0.6",
+        "cwe_id": "cwe-094", # Both CWE-94 & CWE-917
+        "dummy_finder_output": "Projects/Finder_Output/SPRING_CLOUD_CVE_2022_22947.json",
+        "dummy_exploiter_pov_logic": "..."
     }
     PERFECTO_PLUGIN = {
         "name": "jenkinsci__perfecto-plugin_CVE-2020-2261_1.17",
@@ -40,16 +53,17 @@ class ProjectVariants(Enum):
     WHITESOURCE = {
         "name": "whitesource__curekit_CVE-2022-23082_1.1.3",
         "cwe_id": "cwe-022",
-        "dummy_finder_output": "Projects/Finder_Output_JSON/finder_output_whitesource.json",
-        "dummy_exploiter_pov_logic": "The PoV creates two directories: /tmp/cure_base (intended base) and /tmp/cure_base_trick (an outside directory whose path begins with the base's pathname). A file is placed in /tmp/cure_base_trick/outside.txt and passed as filePath while baseDir is /tmp/cure_base. Because the implementation uses startsWith on the canonical paths, \"/tmp/cure_base_trick\".startsWith(\"/tmp/cure_base\") evaluates to true, causing isFileOutsideDir to return false (i.e. treated as inside) even though the file is outside. The test prints \"AUTOSEC_POV_TRIGGERED\" and fails when this incorrect behavior is observed, proving the vulnerability is exploitable."
+        "dummy_finder_output": "Projects/Finder_Output/WHITESOURCE_CVE_2022_23082.json",
+        "dummy_exploiter_pov_logic": "..."
     }
-    YAMCS = {
-        "name": "yamcs__yamcs_CVE-2023-45277_5.8.6",
-        "cwe_id": "cwe-022",
-        "dummy_finder_output": "Projects/Finder_Output_JSON/finder_output_yamcs.json",
-        "dummy_exploiter_pov_logic": "No PoV Logic available yet" # TODO: add PoV logic when accessible
+    XUXUELI_CVE_2020_29204 = {
+        "name": "xuxueli__xxl-job_CVE-2020-29204_2.2.0",
+        "cwe_id": "cwe-079",
+        "dummy_finder_output": "Projects/Finder_Output/XUXUELI_CVE_2020_29204.json",
+        "dummy_exploiter_pov_logic": "..."
     }
-
+    # sudo python scripts/fetch_one.py <project name>
+    # sudo python Pipeline/convert_to_finder_output.py kubernetes-client__java_CVE-2020-8570_client-java-parent-9.0.1 cwe-022 KUBERNETES_CLIENT_CVE_2020_8570.json
 
     @property
     def project_name(self) -> str:

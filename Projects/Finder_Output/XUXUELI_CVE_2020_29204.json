@@ -1,0 +1,306 @@
+{
+    "cwe_id": "cwe-079",
+    "vulnerabilities": [
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "fromJson(...) : Object",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/GsonTool.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "fromJson(...) : ReturnT",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/XxlJobRemotingUtil.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "returnT : ReturnT",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/XxlJobRemotingUtil.java",
+                        "line": 132
+                    },
+                    {
+                        "message": "postBody(...) : ReturnT",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/biz/client/ExecutorBizClient.java",
+                        "line": 33
+                    },
+                    {
+                        "message": "beat(...) : ReturnT",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/server/EmbedServer.java",
+                        "line": 195
+                    },
+                    {
+                        "message": "process(...) : ReturnT",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/server/EmbedServer.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "responseObj : ReturnT",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/server/EmbedServer.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "src : ReturnT",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/GsonTool.java",
+                        "line": 28
+                    },
+                    {
+                        "message": "src : ReturnT",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/GsonTool.java",
+                        "line": 29
+                    },
+                    {
+                        "message": "toJson(...) : String",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/GsonTool.java",
+                        "line": 29
+                    },
+                    {
+                        "message": "toJson(...) : String",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/server/EmbedServer.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "responseJson : String",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/server/EmbedServer.java",
+                        "line": 172
+                    },
+                    {
+                        "message": "responseJson : String",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/server/EmbedServer.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "responseJson : String",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/server/EmbedServer.java",
+                        "line": 222
+                    },
+                    {
+                        "message": "copiedBuffer(...) : ByteBuf",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/server/EmbedServer.java",
+                        "line": 222
+                    },
+                    {
+                        "message": "new DefaultFullHttpResponse(...) : DefaultFullHttpResponse",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/server/EmbedServer.java",
+                        "line": 222
+                    },
+                    {
+                        "message": "response : DefaultFullHttpResponse",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/server/EmbedServer.java",
+                        "line": 223
+                    },
+                    {
+                        "message": "response : DefaultFullHttpResponse",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/server/EmbedServer.java",
+                        "line": 224
+                    },
+                    {
+                        "message": "response : DefaultFullHttpResponse",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/server/EmbedServer.java",
+                        "line": 224
+                    },
+                    {
+                        "message": "response",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/server/EmbedServer.java",
+                        "line": 228
+                    }
+                ],
+                [
+                    {
+                        "message": "getInputStream(...) : InputStream",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/XxlJobRemotingUtil.java",
+                        "line": 121
+                    },
+                    {
+                        "message": "new InputStreamReader(...) : InputStreamReader",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/XxlJobRemotingUtil.java",
+                        "line": 121
+                    },
+                    {
+                        "message": "new BufferedReader(...) : BufferedReader",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/XxlJobRemotingUtil.java",
+                        "line": 121
+                    },
+                    {
+                        "message": "bufferedReader : BufferedReader",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/XxlJobRemotingUtil.java",
+                        "line": 124
+                    },
+                    {
+                        "message": "readLine(...) : String",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/XxlJobRemotingUtil.java",
+                        "line": 124
+                    },
+                    {
+                        "message": "line : String",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/XxlJobRemotingUtil.java",
+                        "line": 125
+                    },
+                    {
+                        "message": "result [post update] : StringBuilder",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/XxlJobRemotingUtil.java",
+                        "line": 125
+                    },
+                    {
+                        "message": "result : StringBuilder",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/XxlJobRemotingUtil.java",
+                        "line": 127
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/XxlJobRemotingUtil.java",
+                        "line": 127
+                    },
+                    {
+                        "message": "resultJson : String",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/XxlJobRemotingUtil.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "fromJson(...) : ReturnT",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/XxlJobRemotingUtil.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "returnT : ReturnT",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/XxlJobRemotingUtil.java",
+                        "line": 132
+                    },
+                    {
+                        "message": "postBody(...) : ReturnT",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/biz/client/ExecutorBizClient.java",
+                        "line": 33
+                    },
+                    {
+                        "message": "beat(...) : ReturnT",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/server/EmbedServer.java",
+                        "line": 195
+                    },
+                    {
+                        "message": "process(...) : ReturnT",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/server/EmbedServer.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "responseObj : ReturnT",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/server/EmbedServer.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "src : ReturnT",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/GsonTool.java",
+                        "line": 28
+                    },
+                    {
+                        "message": "src : ReturnT",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/GsonTool.java",
+                        "line": 29
+                    },
+                    {
+                        "message": "toJson(...) : String",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/GsonTool.java",
+                        "line": 29
+                    },
+                    {
+                        "message": "toJson(...) : String",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/server/EmbedServer.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "responseJson : String",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/server/EmbedServer.java",
+                        "line": 172
+                    },
+                    {
+                        "message": "responseJson : String",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/server/EmbedServer.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "responseJson : String",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/server/EmbedServer.java",
+                        "line": 222
+                    },
+                    {
+                        "message": "copiedBuffer(...) : ByteBuf",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/server/EmbedServer.java",
+                        "line": 222
+                    },
+                    {
+                        "message": "new DefaultFullHttpResponse(...) : DefaultFullHttpResponse",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/server/EmbedServer.java",
+                        "line": 222
+                    },
+                    {
+                        "message": "response : DefaultFullHttpResponse",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/server/EmbedServer.java",
+                        "line": 223
+                    },
+                    {
+                        "message": "response : DefaultFullHttpResponse",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/server/EmbedServer.java",
+                        "line": 224
+                    },
+                    {
+                        "message": "response : DefaultFullHttpResponse",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/server/EmbedServer.java",
+                        "line": 224
+                    },
+                    {
+                        "message": "response",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/server/EmbedServer.java",
+                        "line": 228
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getInputStream(...) : InputStream",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/ScriptUtil.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "inputStream : InputStream",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/ScriptUtil.java",
+                        "line": 141
+                    },
+                    {
+                        "message": "inputStream : InputStream",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/ScriptUtil.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "buffer [post update] : byte[]",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/ScriptUtil.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "buffer : byte[]",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/ScriptUtil.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "buffer",
+                        "uri": "xxl-job-core/src/main/java/com/xxl/job/core/util/ScriptUtil.java",
+                        "line": 152
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        }
+    ]
+}

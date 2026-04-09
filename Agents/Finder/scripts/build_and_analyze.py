@@ -5,6 +5,7 @@ Will add support to input github repo links as alternative input in the future (
 """
 
 import sys
+import shutil
 import argparse
 import zipfile
 import subprocess
@@ -21,6 +22,10 @@ from src.config import DATA_DIR, PROJECT_SOURCE_CODE_DIR
 # unzip project if specified to output folder
 def unzip_folder(zip_path, project_name):
     target_dir = Path(PROJECT_SOURCE_CODE_DIR) / project_name
+
+    if target_dir.exists():
+        shutil.rmtree(target_dir)
+
     target_dir.mkdir(parents=True, exist_ok=True)
 
     with zipfile.ZipFile(zip_path, "r") as zip_ref:
@@ -64,7 +69,7 @@ def build_project(project_name):
     # Ensure build-info directory exists
     Path(f"{DATA_DIR}/build-info").mkdir(parents=True, exist_ok=True)
 
-    build_cmd = ["python3", f"{ROOT_DIR}/scripts/build_one.py", project_name, "--try_all"]
+    build_cmd = ["python3", f"{ROOT_DIR}/scripts/build_one.py", project_name]
     subprocess.run(build_cmd, check=True)
 
 # build codeql (db using build_codeql.dbs.py)
@@ -78,6 +83,7 @@ def run_iris_analysis(project_name, query, run_id, model, overwrite):
     if (overwrite):
         print("Overwriting previous finder analysis.")
         build_cmd.append("--overwrite")
+        build_cmd.append("--overwrite-llm-cache")
 
     subprocess.run(build_cmd, check=True)
 

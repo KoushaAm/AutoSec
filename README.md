@@ -18,10 +18,17 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 3. Add Your OpenRouter API Key
+### 3. Add Your OpenRouter API Key and OPENai KEY
 Create `.env` in root directory:
 ```env
-OPENROUTER_API_KEY=your_api_key_here
+# Patcher openrouter key
+OPENROUTER_API_KEY="your_api_key_here"
+
+# Finder OpenAI Key
+OPENAI_API_KEY="your_api_key_here"
+
+# Exploiter OpenAI Key
+OPENAI_KEY_FAULTLINE="your_api_key_here"
 ```
 
 ### 4. Create the docker container for Finder
@@ -34,13 +41,25 @@ docker build --platform linux/amd64 -t iris:latest -f Agents/Finder/Dockerfile A
 docker build -f Dockerfile --platform linux/amd64 -t iris:latest .
 
 docker run --platform=linux/amd64 -it iris:latest
+
+# in the cli of the iris docker container
+run conda activate iris
 ```
 
-### 5. Make sure to have an OpenAI key for the Exploiter Module
+
+
+### 5. Exploiter Setup
+#### 5.1 API_KEY - temporarily a different api key is used for the Exploiter
 Export your OpenAI API key as OPENAI_KEY_FAULTLINE on your OS
 ```
 export OPENAI_KEY_FAULTLINE="your_api_key_here"
 ```
+#### 5.2 SetUp CWE-Bench-Java
+In the directory [cwe-bench-java](Agents/Exploiter/data/cwe-bench-java/) create a new folder called java-env. The folder can be empty 
+since we are using Docker to build these projects.
+
+#### 5.3 Input setup (only for Independent runs)
+In order to run Exploiter Independently you need to provide this the file result.json in the location Agents/Exploiter/vuln_agent/modules/data/traces/result.json
 
 ### 6. Run the Pipeline
 ```bash
@@ -54,6 +73,41 @@ PATCHER_SNIPPET_MAX_LINES=800 python main.py
 python3 main.py <-h|--help>
 ```
 
+
+## Getting the .Zip file of the projects
+To get other IRIS/Faultine projects into the zipped directory:
+
+- Navigate to the Agents/Finder directory
+```bash
+cd /workspaces/autosec/Agents/Finder
+```
+- Run the the fetch_one.py script to download the project at the commit that contains the specific CVE vulnerability
+```bash
+python scripts/fetch_one.py <name_of_project>
+# ex: python scripts/fetch_one.py jenkinsci__workflow-cps-plugin_CVE-2022-25173_2646.v6ed3b5b01ff1
+```
+- The project will now exist in /workspaces/autosec/Agents/Finder/data/project-sources. Navigate to that directory, zip it up, and move it to the  /workspaces/autosec/Projects/Zipped directory
+```bash
+cd /workspaces/autosec/Agents/Finder/data/project-sources/<project_name>
+# ex: cd /workspaces/autosec/Agents/Finder/data/project-sources/jenkinsci__workflow-cps-plugin_CVE-2022-25173_2646.v6ed3b5b01ff1/
+
+zip -r <name_of_project.zip> ./
+# ex: zip -r jenkinsci__workflow-cps-plugin_CVE-2022-25173_2646.v6ed3b5b01ff1.zip ./
+
+mv ./<name_of_project> /workspaces/autosec/Projects/Zipped
+# ex: mv ./jenkinsci__workflow-cps-plugin_CVE-2022-25173_2646.v6ed3b5b01ff1.zip  /workspaces/autosec/Projects/Zipped
+```
+
+## Convert Finder SARIF output to JSON
+1. Run analysis on the desired project, the `Finder` agent will have generated a `.sarif` file of results
+2. After finder analysis run the following command from the project root:
+```bash
+python Pipeline/convert_to_finder_output.py <project_name> <cwe_id> <json_name>.json
+
+# example: 
+# python Pipeline/convert_to_finder_output.py perwendel__spark_CVE-2018-9159_2.7.1 cwe-022 finder_output_perwendel.json
+```
+3. This will create a `json` file in `/Projects/Finder_Output_JSON`
 
 ## Project Structure
 - Only files relevant to the primary AutoSec Pipeline have been listed
