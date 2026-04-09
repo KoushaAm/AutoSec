@@ -60,8 +60,8 @@ def _build_workflow() -> Any:
     # graph.add_edge("verifier", END)
 
     # TODO: remove once running full pipeline
-    graph.add_edge(START, "patcher")
-    graph.add_edge("patcher", END)
+    graph.add_edge(START, "verifier")
+    graph.add_edge("verifier", END)
 
     # conditional edges
     # exploiter -> finder OR exploiter -> patcher
@@ -349,8 +349,15 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 # ====== Execute workflow =====
 def pipeline_main():
     load_dotenv()
-    # TODO once `pov_logic` is added to CODEHAUS-2017
-    SELECTED_PROJECT = ProjectVariants.CODEHAUS_CVE_2017_1000487
+    SELECTED_PROJECT = ProjectVariants.CODEHAUS_CVE_2018_1002200
+
+    # Finding Patcher output
+    patcher_output_base = AGENTS_DIR / "Patcher" / "output"
+    patcher_dirs = sorted(patcher_output_base.glob(f"patcher_{SELECTED_PROJECT.project_name}_datetime_*"))
+    if not patcher_dirs:
+        raise FileNotFoundError(f"No patcher output found for {SELECTED_PROJECT.project_name} in {patcher_output_base}")
+    patcher_artifact_path = str(patcher_dirs[-1])  # latest run
+    print(f"Using patcher output: {patcher_artifact_path}")
 
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
@@ -363,6 +370,10 @@ def pipeline_main():
         "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
         "exploiter": {
             "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
+        },
+        "patcher": {
+            "success": True,
+            "artifact_path": patcher_artifact_path
         }
     }
     # print(json.dumps(initial_state, indent=2))
