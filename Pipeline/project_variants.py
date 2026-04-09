@@ -2,13 +2,13 @@
 from enum import Enum
 
 class ProjectVariants(Enum):
-    CODEHAUS_CVE_2018_1002200 = {
+    CODEHAUS_2018 = {
         "name": "codehaus-plexus__plexus-archiver_CVE-2018-1002200_3.5",
         "cwe_id": "cwe-022",
         "dummy_finder_output": "Projects/Finder_Output/CODEHAUS_CVE_2018_1002200.json",
         "dummy_exploiter_pov_logic": "..."
     }
-    CODEHAUS_CVE_2017_1000487 = {
+    CODEHAUS_2017 = {
         "name": "codehaus-plexus__plexus-utils_CVE-2017-1000487_3.0.15",
         "cwe_id": "cwe-078",
         "dummy_finder_output": "Projects/Finder_Output/CODEHAUS_CVE_2017_1000487.json",
@@ -44,7 +44,13 @@ class ProjectVariants(Enum):
         "dummy_finder_output": "Projects/Finder_Output/SPRING_CLOUD_CVE_2022_22947.json",
         "dummy_exploiter_pov_logic": "..."
     }
-    WHITESOURCE_CVE_2022_23082 = {
+    PERFECTO_PLUGIN = {
+        "name": "jenkinsci__perfecto-plugin_CVE-2020-2261_1.17",
+        "cwe_id": "cwe-078",
+        "dummy_finder_output": "Projects/Finder_Output_JSON/finder_output_perfecto.json",
+        "dummy_exploiter_pov_logic": "No PoV Logic available yet" # TODO: add PoV logic when accessible
+    }
+    WHITESOURCE = {
         "name": "whitesource__curekit_CVE-2022-23082_1.1.3",
         "cwe_id": "cwe-022",
         "dummy_finder_output": "Projects/Finder_Output/WHITESOURCE_CVE_2022_23082.json",
