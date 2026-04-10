@@ -24,22 +24,25 @@ class DockerRunner:
     # Uses multi-arch images that work on both Intel (x86-64) and Apple Silicon (ARM64)
     BUILD_ATTEMPTS = {
         "maven": [
-            # Attempt 1: Java 8 + Maven 3.9 (Temurin supports ARM64)
-            {"image": "maven:3.9-eclipse-temurin-8", "jdk": "8", "tool": "3.9"},
+            # Attempt 1: Java 8 + Maven 3.5 
+            {"image": "maven:3.5-jdk-8", "jdk": "8", "tool": "3.5"},
             
-            # Attempt 2: Java 17 + Maven 3.9 (modern default)
+            # Attempt 2: Java 17 + Maven 3.9 
             {"image": "maven:3.9-eclipse-temurin-17", "jdk": "17", "tool": "3.9"},
             
-            # Attempt 3: Java 11 + Maven 3.8
-            {"image": "maven:3.8-openjdk-11", "jdk": "11", "tool": "3.8"},
+            # Attempt 3: Java 8 + Maven 3.9 
+            {"image": "maven:3.9-eclipse-temurin-8", "jdk": "8", "tool": "3.9"},
             
-            # Attempt 4: Java 8 + Maven 3.8 (Temurin)
-            {"image": "maven:3.8-eclipse-temurin-8", "jdk": "8", "tool": "3.8"},
+            # Attempt 4: Java 11 + Maven 3.8
+            {"image": "maven:3.8-openjdk-11", "jdk": "11", "tool": "3.8"},
             
             # Attempt 5: Java 17 + Maven 3.8
             {"image": "maven:3.8-eclipse-temurin-17", "jdk": "17", "tool": "3.8"},
             
-            # Attempt 6: Java 21 + Maven 3.9 (very modern projects)
+            # Attempt 6: Java 7 + Maven 3.5 
+            {"image": "maven:3.5-jdk-7", "jdk": "7", "tool": "3.5"},
+            
+            # Attempt 7: Java 21 + Maven 3.9 
             {"image": "maven:3.9-eclipse-temurin-21", "jdk": "21", "tool": "3.9"},
         ],
         
@@ -105,9 +108,9 @@ class DockerRunner:
         command: str, 
         worktree: pathlib.Path, 
         artifacts: pathlib.Path, 
-        timeout: int
+        timeout: int,
+        attempt_label: str = ""
     ) -> Tuple[int, float]:
-        """Execute a command in a Docker container."""
         worktree_abs = worktree.resolve()
         artifacts_abs = artifacts.resolve()
 
@@ -136,14 +139,28 @@ class DockerRunner:
             )
             duration = time.time() - start_time
             
-            # Save output to artifacts
+            # Save output to artifacts (latest attempt overwrites main log)
             (artifacts_abs / "docker_stdout.log").write_text(result.stdout, encoding='utf-8')
             (artifacts_abs / "docker_stderr.log").write_text(result.stderr, encoding='utf-8')
+            
+            # Also save per-attempt logs for retry diagnostics
+            if attempt_label:
+                retry_dir = artifacts_abs / "retry_logs"
+                retry_dir.mkdir(parents=True, exist_ok=True)
+                safe_label = attempt_label.replace(":", "_").replace("/", "_")
+                (retry_dir / f"stdout_{safe_label}.log").write_text(result.stdout, encoding='utf-8')
+                (retry_dir / f"stderr_{safe_label}.log").write_text(result.stderr, encoding='utf-8')
+                (retry_dir / f"rc_{safe_label}.txt").write_text(f"{result.returncode}\n", encoding='utf-8')
             
             return result.returncode, duration
             
         except subprocess.TimeoutExpired:
             duration = time.time() - start_time
+            if attempt_label:
+                retry_dir = artifacts_abs / "retry_logs"
+                retry_dir.mkdir(parents=True, exist_ok=True)
+                safe_label = attempt_label.replace(":", "_").replace("/", "_")
+                (retry_dir / f"rc_{safe_label}.txt").write_text("124 (timeout)\n", encoding='utf-8')
             return 124, duration  # Timeout exit code
         except Exception as e:
             duration = time.time() - start_time
@@ -202,7 +219,8 @@ class DockerRunner:
                     build_cmd, 
                     worktree, 
                     artifacts, 
-                    timeout
+                    timeout,
+                    attempt_label=f"cached_{cached_config['image']}"
                 )
                 
                 # Validate tests if provided
@@ -213,7 +231,8 @@ class DockerRunner:
                         test_cmd,
                         worktree,
                         artifacts,
-                        timeout
+                        timeout,
+                        attempt_label=f"cached_{cached_config['image']}_test"
                     )
                     test_passed = (test_rc == 0)
                     duration += test_duration
@@ -243,14 +262,16 @@ class DockerRunner:
             if verbose:
                 print(f"[Build] Attempt {attempt_num}/{len(attempts)}: {image} (JDK {jdk}, {stack.title()} {tool_version})...")
             
-            rc, duration = self.run_command(image, build_cmd, worktree, artifacts, timeout)
+            rc, duration = self.run_command(image, build_cmd, worktree, artifacts, timeout,
+                                            attempt_label=f"attempt{attempt_num}_{image}")
             
             # If build succeeded but we have tests, validate them too. 
             test_passed = True
             if rc == 0 and test_cmd:
                 if verbose:
                     print(f"[Build] Build succeeded, validating tests...")
-                test_rc, test_duration = self.run_command(image, test_cmd, worktree, artifacts, timeout)
+                test_rc, test_duration = self.run_command(image, test_cmd, worktree, artifacts, timeout,
+                                                          attempt_label=f"attempt{attempt_num}_{image}_test")
                 test_passed = (test_rc == 0)
                 duration += test_duration
                 

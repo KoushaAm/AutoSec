@@ -52,7 +52,7 @@ def _build_workflow() -> Any:
     graph.add_node("patcher", _patcher_node)
     graph.add_node("verifier", _verifier_node)
 
-    # # linear edges
+    # linear edges
     graph.add_edge(START, "finder")
     graph.add_edge("finder", "exploiter")
     graph.add_edge("exploiter", "patcher")
@@ -345,8 +345,15 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 # ====== Execute workflow =====
 def pipeline_main():
     load_dotenv()
-    # TODO once `pov_logic` is added to CODEHAUS-2017
     SELECTED_PROJECT = ProjectVariants.WHITESOURCE_CVE_2022_23082
+
+    #! Finding Dummy Patcher output
+    # patcher_output_base = AGENTS_DIR / "Patcher" / "output"
+    # patcher_dirs = sorted(patcher_output_base.glob(f"patcher_{SELECTED_PROJECT.project_name}_datetime_*"))
+    # if not patcher_dirs:
+    #     raise FileNotFoundError(f"No patcher output found for {SELECTED_PROJECT.project_name} in {patcher_output_base}")
+    # patcher_artifact_path = str(patcher_dirs[-1])  # latest run
+    # print(f"Using patcher output: {patcher_artifact_path}")
 
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
@@ -355,11 +362,15 @@ def pipeline_main():
         "language": "java",
         "finder_model": "gpt-5-mini",
         "finder_reanalyze": False,
-        # Manual inputs for development & experiments
-        "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
-        "exploiter": {
-            "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
-        }
+        #! Manual inputs for development & experiments
+        # "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
+        # "exploiter": {
+        #     "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
+        # },
+        # "patcher": {
+        #     "success": True,
+        #     "artifact_path": patcher_artifact_path
+        # }
     }
     # print(json.dumps(initial_state, indent=2))
 
