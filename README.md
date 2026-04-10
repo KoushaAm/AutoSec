@@ -65,9 +65,8 @@ In order to run Exploiter Independently you need to provide this the file result
 ```bash
 python3 main.py
 
-# Customize the Patcher agent code extraction limit
+# Optional: Customize the Patcher agent code extraction limit
 PATCHER_SNIPPET_MAX_LINES=800 python main.py
-
 
 # For all possible arguments without running main
 python3 main.py <-h|--help>
