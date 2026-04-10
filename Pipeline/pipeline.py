@@ -52,16 +52,12 @@ def _build_workflow() -> Any:
     graph.add_node("patcher", _patcher_node)
     graph.add_node("verifier", _verifier_node)
 
-    # linear edges
-    # graph.add_edge(START, "finder")
-    # graph.add_edge("finder", "exploiter")
-    # graph.add_edge("exploiter", "patcher")
-    # graph.add_edge("patcher", "verifier")
-    # graph.add_edge("verifier", END)
-
-    # TODO: remove once running full pipeline
-    graph.add_edge(START, "patcher")
-    graph.add_edge("patcher", END)
+    # # linear edges
+    graph.add_edge(START, "finder")
+    graph.add_edge("finder", "exploiter")
+    graph.add_edge("exploiter", "patcher")
+    graph.add_edge("patcher", "verifier")
+    graph.add_edge("verifier", END)
 
     # conditional edges
     # exploiter -> finder OR exploiter -> patcher
@@ -350,7 +346,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 def pipeline_main():
     load_dotenv()
     # TODO once `pov_logic` is added to CODEHAUS-2017
-    SELECTED_PROJECT = ProjectVariants.CODEHAUS_CVE_2017_1000487
+    SELECTED_PROJECT = ProjectVariants.WHITESOURCE_CVE_2022_23082
 
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
