@@ -2,7 +2,7 @@
 import json
 from typing import Any, Dict, List, Union
 
-from ..config import DEFAULT_CONTEXT_LIMIT, MODEL_CONTEXT_LIMITS
+from ..config import DEFAULT_CONTEXT_LIMIT
 from ..core.types import VulnerabilitySpec, FileSnippetBundle
 
 

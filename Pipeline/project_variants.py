@@ -12,7 +12,7 @@ class ProjectVariants(Enum):
         "name": "codehaus-plexus__plexus-utils_CVE-2017-1000487_3.0.15",
         "cwe_id": "cwe-078",
         "dummy_finder_output": "Projects/Finder_Output/CODEHAUS_CVE_2017_1000487.json",
-        "dummy_exploiter_pov_logic": "..."
+        "dummy_exploiter_pov_logic": "The proof-of-violation JUnit test constructs a Commandline using BourneShell, sets the executable to crafted inputs (payloads that include backticks, $(), or strings that start/end with quote characters) and calls Commandline.execute(). Because the vulnerable code path appends the executable into a single shell command string using StringUtils.quoteAndEscape, certain crafted inputs are not properly escaped/quoted and reach the shell interpreter. The test verifies exploitation by observing a side-effect: creation of a file (touch pwned_by_exploit.txt). If the file is created the test prints and fails with the required marker \"AUTOSEC_POV_TRIGGERED\" — demonstrating command injection at runtime."
     }
     ESAPI_CVE_2022_23457 = {
         "name": "ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1",
