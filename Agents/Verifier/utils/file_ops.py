@@ -6,7 +6,6 @@ from ..models.verification import VerificationResult, PatchInfo
 
 
 class ArtifactManager:
-    """Manages saving and organizing verification artifacts"""
     # TODO: db integration may require change for final output?
     
     def __init__(self, output_dir: pathlib.Path):
@@ -14,10 +13,11 @@ class ArtifactManager:
         self.output_dir.mkdir(exist_ok=True)
         self.base_output_dir = output_dir 
     
-    def create_session_directory(self, fixer_input_path: str) -> pathlib.Path:
-        """Create a timestamped session directory (temp)"""
+    def create_session_directory(self, fixer_input_path: str, project_name: str = "") -> pathlib.Path:
+        """Create a timestamped session directory with project name"""
         timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-        session_dir = self.output_dir / f"session_{timestamp}"
+        label = f"{project_name}_{timestamp}" if project_name else timestamp
+        session_dir = self.output_dir / f"session_{label}"
         session_dir.mkdir(exist_ok=True)
         return session_dir
     
@@ -27,7 +27,6 @@ class ArtifactManager:
         session_dir: pathlib.Path,
         fixer_input_path: str
     ):
-        """Save consolidated verification results"""
         try:
             summary = {
                 "session_timestamp": datetime.datetime.now().isoformat(),
@@ -53,7 +52,6 @@ class ArtifactManager:
             print(f"Warning: Could not save verification summary: {e}")
     
     def _generate_results_summary(self, results: List[VerificationResult]) -> Dict[str, int]:
-        """Summary by status"""
         from ..models.verification import VerificationStatus
         
         return {
@@ -65,7 +63,6 @@ class ArtifactManager:
 
 
 class ErrorHandler:
-    """Main error handling and reporting"""
     
     @staticmethod
     def create_error_result(
@@ -96,14 +93,12 @@ class ErrorHandler:
 
 
 class ConfigManager:
-    """Manages configuration and settings"""
     
     def __init__(self, config: Dict[str, Any] = None):
         self.config = config or {}
         self._set_defaults()
     
     def _set_defaults(self):
-        # Get absolute path to Verifier/output directory
         verifier_root = pathlib.Path(__file__).parent.parent
         output_dir = verifier_root / "output"
         

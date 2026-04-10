@@ -43,7 +43,7 @@ def main():
 
     finder_output = sarif_to_finder_output(findings, cwe_id=cwe_id)
 
-    output_dir = ROOT_DIR / "Projects" / "Finder_Output_JSON"
+    output_dir = ROOT_DIR / "Projects" / "Finder_Output"
     output_dir.mkdir(parents=True, exist_ok=True)
 
     output_path = output_dir / args.output_json

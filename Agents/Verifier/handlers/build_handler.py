@@ -3,19 +3,15 @@ import sys
 from typing import Dict, Any, Optional
 from ..models.verification import PatchInfo
 
-# Add paths for dependencies
 VERIFIER_PATH = pathlib.Path(__file__).parent.parent
 
-# Import Docker runner from core (unified location)
 from ..core.docker_runner import DockerRunner, check_docker
 from ..core.project_detector import detect_java_project
 
-# Import test discovery
 from ..testing.test_discovery import TestDiscovery
 
 
 class DockerBuildRunner:
-    """Handles build verification and testing using Docker"""
     
     def __init__(self):
         self.verifier_path = VERIFIER_PATH
@@ -24,7 +20,6 @@ class DockerBuildRunner:
         self._ensure_verifier_path()
     
     def _ensure_verifier_path(self):
-        """Ensure the verifier path is added to sys.path"""
         if str(self.verifier_path) not in sys.path:
             sys.path.insert(0, str(self.verifier_path))
     
@@ -61,7 +56,7 @@ class DockerBuildRunner:
         
         self.docker_runner = DockerRunner(cache_dir=artifacts_dir / "build-cache")
         
-        # Phase 1: Detect project type and get build commands
+        # 1: Detect project type and get build commands
         print(f"      [1/3] Detecting project type...")
         stack, build_cmd, test_cmd, metadata = detect_java_project(project_path)
         
@@ -77,7 +72,7 @@ class DockerBuildRunner:
         
         print(f"      ✓ Detected {stack} project")
         
-        # Phase 2: Build in Docker with retry
+        # 2: Build in Docker with retry
         print(f"      [2/3] Building in Docker...")
         project_id = project_path.name.lower().replace(" ", "-")
         
@@ -103,7 +98,7 @@ class DockerBuildRunner:
         
         print(f"      ✓ Build passed (using {build_result['image_used']})")
         
-        # Phase 3: Run existing tests in Docker
+        # 3: Run existing tests in Docker
         print(f"      [3/3] Running tests in Docker...")
         test_result = self._run_tests_in_docker(
             project_path, 
@@ -135,7 +130,6 @@ class DockerBuildRunner:
         artifacts_dir: pathlib.Path,
         patch_info: Optional[PatchInfo] = None
     ) -> Dict[str, Any]:
-        """Run tests in Docker container"""
         result = {
             "status": "SKIP",
             "duration": 0,
@@ -168,7 +162,12 @@ class DockerBuildRunner:
                 # Parse test results
                 test_results = self._parse_test_results(project_path, stack, test_rc)
                 
-                status = "PASS" if test_rc == 0 and test_results["failed_tests"] == 0 else "FAIL"
+                if test_rc == 0 and test_results["failed_tests"] == 0:
+                    status = "PASS"
+                elif test_results.get("no_reports"):
+                    status = "ERROR"
+                else:
+                    status = "FAIL"
                 
                 result["test_execution"] = {
                     "status": status,
@@ -182,6 +181,8 @@ class DockerBuildRunner:
                 
                 if status == "PASS":
                     print(f"      ✓ Tests passed ({test_results['passed_tests']}/{test_results['total_tests']})")
+                elif status == "ERROR":
+                    print(f"      ⚠ Test runner crashed (exit code {test_rc}, no test reports generated)")
                 else:
                     print(f"      ✗ Tests failed ({test_results['failed_tests']} failures)")
             else:
@@ -268,7 +269,11 @@ class DockerBuildRunner:
                     print(f"      [Test Parser] Warning: Failed to parse {xml_file.name}: {e}")
                     continue
         
-        # Calculate success rate
+        # Flag when exit code was non-zero but no reports were generated
+        if return_code != 0 and test_results["total_tests"] == 0:
+            test_results["no_reports"] = True
+        
+        # Success rate
         if test_results["total_tests"] > 0:
             test_results["test_success_rate"] = test_results["passed_tests"] / test_results["total_tests"]
         
@@ -367,17 +372,14 @@ class DockerBuildRunner:
         }
         
         try:
-            # Discover tests
             test_discovery = self.test_discovery.discover_tests(project_path, stack)
             result["test_discovery"] = test_discovery
             
             if test_discovery["has_tests"]:
-                # Get test command
                 test_commands = test_discovery.get("test_commands", [])
                 has_wrapper = (project_path / "mvnw").exists() or (project_path / "gradlew").exists()
                 test_cmd = test_commands[0] if has_wrapper else (test_commands[1] if len(test_commands) > 1 else test_commands[0])
                 
-                # Run tests in Docker
                 test_rc, test_duration = self.docker_runner.run_command(
                     docker_image,
                     test_cmd,
@@ -386,10 +388,14 @@ class DockerBuildRunner:
                     timeout=1200  # 20 minutes
                 )
                 
-                # Parse test results
                 test_results = self._parse_test_results(project_path, stack, test_rc)
                 
-                status = "PASS" if test_rc == 0 and test_results["failed_tests"] == 0 else "FAIL"
+                if test_rc == 0 and test_results["failed_tests"] == 0:
+                    status = "PASS"
+                elif test_results.get("no_reports"):
+                    status = "ERROR"
+                else:
+                    status = "FAIL"
                 
                 result["test_execution"] = {
                     "status": status,
