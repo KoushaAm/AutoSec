@@ -53,14 +53,8 @@ def _build_workflow() -> Any:
     graph.add_node("verifier", _verifier_node)
 
     # linear edges
-    # graph.add_edge(START, "finder")
-    # graph.add_edge("finder", "exploiter")
-    # graph.add_edge("exploiter", "patcher")
-    # graph.add_edge("patcher", "verifier")
-    # graph.add_edge("verifier", END)
-
-    # TODO: testing edges
-    graph.add_edge(START, "exploiter")
+    graph.add_edge(START, "finder")
+    graph.add_edge("finder", "exploiter")
     graph.add_edge("exploiter", "patcher")
     graph.add_edge("patcher", "verifier")
     graph.add_edge("verifier", END)
@@ -361,7 +355,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 # ====== Execute workflow =====
 def pipeline_main():
     load_dotenv()
-    SELECTED_PROJECT = ProjectVariants.WHITESOURCE_CVE_2022_23082
+    SELECTED_PROJECT = ProjectVariants.SPRING_CLOUD_CVE_2022_22947
 
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
@@ -371,7 +365,7 @@ def pipeline_main():
         "finder_model": "gpt-5-mini",
         "finder_reanalyze": False,
         #! Manual inputs for development & experiments
-        "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
+        # "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
         # "exploiter": {
         #     "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
         # },
