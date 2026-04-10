@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 # from Agents.Exploiter.data.primevul.setup import project_slug
 # local imports
 from . import logger
-from .utils import load_dummy_finder_output
+from .utils import load_dummy_finder_output, load_dummy_patcher_output, save_state_dump
 from .project_variants import ProjectVariants
 
 from Agents.Patcher import patcher_main
@@ -53,8 +53,14 @@ def _build_workflow() -> Any:
     graph.add_node("verifier", _verifier_node)
 
     # linear edges
-    graph.add_edge(START, "finder")
-    graph.add_edge("finder", "exploiter")
+    # graph.add_edge(START, "finder")
+    # graph.add_edge("finder", "exploiter")
+    # graph.add_edge("exploiter", "patcher")
+    # graph.add_edge("patcher", "verifier")
+    # graph.add_edge("verifier", END)
+
+    # TODO: testing edges
+    graph.add_edge(START, "exploiter")
     graph.add_edge("exploiter", "patcher")
     graph.add_edge("patcher", "verifier")
     graph.add_edge("verifier", END)
@@ -151,8 +157,8 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
     return state
 
 
-def _parse_exploiter_report(report_data) -> tuple[bool, list[str]]:
-    """Return (exploitable, pov_test_paths) from a loaded report.json."""
+def _parse_exploiter_report(report_data) -> tuple[bool, list[str], str]:
+    """Return (exploitable, pov_test_paths, pov_logic) from a loaded report.json."""
     if isinstance(report_data, dict):
         entries = [report_data]
     elif isinstance(report_data, list):
@@ -171,7 +177,15 @@ def _parse_exploiter_report(report_data) -> tuple[bool, list[str]]:
             paths = [paths]
         pov_test_paths.extend(p for p in paths if isinstance(p, str))
 
-    return exploitable, pov_test_paths
+    pov_logic = ""
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+        logic = entry.get("pov_logic", "")
+        if isinstance(logic, str):
+            pov_logic = logic
+
+    return exploitable, pov_test_paths, pov_logic
 
 
 def _exploiter_node(state: AutoSecState) -> Command:
@@ -206,12 +220,13 @@ def _exploiter_node(state: AutoSecState) -> Command:
         with open(report_path, "r") as f:
             report_data = json.load(f)
 
-        exploitable, pov_test_paths = _parse_exploiter_report(report_data)
+        exploitable, pov_test_paths, pov_logic = _parse_exploiter_report(report_data)
 
         new_state["exploiter"] = {
             "success": exploitable,
             "report_path": report_path,
             "pov_test_paths": pov_test_paths,
+            "pov_logic": pov_logic,
             "from_cache": True,
         }
 
@@ -254,12 +269,13 @@ def _exploiter_node(state: AutoSecState) -> Command:
     with open(report_path, "r") as f:
         report_data = json.load(f)
 
-    exploitable, pov_test_paths = _parse_exploiter_report(report_data)
+    exploitable, pov_test_paths, pov_logic = _parse_exploiter_report(report_data)
 
     new_state["exploiter"] = {
         "success": exploitable,
         "report_path": report_path,
         "pov_test_paths": pov_test_paths,
+        "pov_logic": pov_logic,
         "from_cache": False,
     }
 
@@ -289,7 +305,7 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
     if not state.get("finder_output"):
         raise ValueError("finder_output missing from state")
 
-    if not state.get("exploiter"):
+    if not state.get("exploiter") or not state.get("exploiter").get("pov_logic"):
         raise ValueError("exploiter output missing from state")
 
     success, run_dir = patcher_main(
@@ -347,14 +363,6 @@ def pipeline_main():
     load_dotenv()
     SELECTED_PROJECT = ProjectVariants.WHITESOURCE_CVE_2022_23082
 
-    #! Finding Dummy Patcher output
-    # patcher_output_base = AGENTS_DIR / "Patcher" / "output"
-    # patcher_dirs = sorted(patcher_output_base.glob(f"patcher_{SELECTED_PROJECT.project_name}_datetime_*"))
-    # if not patcher_dirs:
-    #     raise FileNotFoundError(f"No patcher output found for {SELECTED_PROJECT.project_name} in {patcher_output_base}")
-    # patcher_artifact_path = str(patcher_dirs[-1])  # latest run
-    # print(f"Using patcher output: {patcher_artifact_path}")
-
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
         "project_name": SELECTED_PROJECT.project_name,
@@ -363,13 +371,13 @@ def pipeline_main():
         "finder_model": "gpt-5-mini",
         "finder_reanalyze": False,
         #! Manual inputs for development & experiments
-        # "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
+        "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
         # "exploiter": {
         #     "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
         # },
         # "patcher": {
         #     "success": True,
-        #     "artifact_path": patcher_artifact_path
+        #     "artifact_path": load_dummy_patcher_output(AGENTS_DIR, SELECTED_PROJECT)
         # }
     }
     # print(json.dumps(initial_state, indent=2))
@@ -378,9 +386,10 @@ def pipeline_main():
     workflow = _build_workflow()
     final_state = workflow.invoke(initial_state)
 
-    print("\n====== STATE DUMP ======")
-    print(json.dumps(final_state, indent=2))
-    print("======^==========^======\n")
+    # Save to file
+    file_path = save_state_dump(final_state)
+    if file_path:
+        print(f"[Pipeline] State dump saved to: {file_path}")
 
 
 # standalone execution
