@@ -70,6 +70,10 @@ class ProjectVariants(Enum):
         "cwe_id": "cwe-022"
     }
 
+    ESAPI = {
+        "name" : "ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1",
+        "cwe_id": "cwe-022"
+    }
 
     @property
     def project_name(self) -> str:
