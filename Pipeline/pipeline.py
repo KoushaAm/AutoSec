@@ -175,15 +175,28 @@ def _parse_exploiter_report(report_data) -> tuple[bool, list[str]]:
     return exploitable, pov_test_paths
 
 
+
+
 def _exploiter_node(state: AutoSecState) -> Command:
     logger.info("Node: exploiter started")
-    RUNNING_FINDER = False
+    RUNNING_FINDER = True
 
     # Taking a copy of the state
     new_state = dict(state)
     project_name = new_state.get("project_name")
     if not project_name:
         raise ValueError("project_name missing from state")
+
+    # Check if any vulnerability was found: if it wasn't we go to the end of the pipeline no need to continue
+    vuln = new_state["finder_output"]["vulnerabilities"]
+    found = False
+    if len(vuln) > 0:
+        found = True
+
+    if not found:
+        logger.info(f"Node: exploiter found no vulnerabilities. Execution ends.")
+        return Command(goto=END, update=new_state)
+
 
     exploiter_dir = os.path.join(os.getcwd(), "Agents", "Exploiter")
 
@@ -347,6 +360,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
     return Command(goto="patcher", update=new_state)
 
 
+
 def _patcher_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node - patcher started")
 
@@ -418,7 +432,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 def pipeline_main():
     load_dotenv()
 
-    SELECTED_PROJECT = ProjectVariants.ESAPI
+    SELECTED_PROJECT = ProjectVariants.WHITESOURCE
 
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
@@ -426,9 +440,9 @@ def pipeline_main():
         "vuln_id": SELECTED_PROJECT.cwe_id,
         "language": "java",
         "finder_model": "gpt-5-mini",
-        "finder_reanalyze": True
+        "finder_reanalyze": True,
         # Dummy inputs for development & experiments
-        # "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
+        "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
         # "exploiter": {
         #     "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
         # }
