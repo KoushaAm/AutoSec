@@ -1,3 +1,4 @@
+import shutil
 from enum import Enum
 from typing import TypedDict, Dict, Any, Optional, List
 import json
@@ -182,14 +183,28 @@ def _parse_exploiter_report(report_data) -> tuple[bool, list[str], str]:
     return exploitable, pov_test_paths, pov_logic
 
 
+
+
 def _exploiter_node(state: AutoSecState) -> Command:
     logger.info("Node: exploiter started")
+    RUNNING_FINDER = True
 
-    # taking a copy of the state
+    # Taking a copy of the state
     new_state = dict(state)
     project_name = new_state.get("project_name")
     if not project_name:
         raise ValueError("project_name missing from state")
+
+    # Check if any vulnerability was found: if it wasn't we go to the end of the pipeline no need to continue
+    vuln = new_state["finder_output"]["vulnerabilities"]
+    found = False
+    if len(vuln) > 0:
+        found = True
+
+    if not found:
+        logger.info(f"Node: exploiter found no vulnerabilities. Execution ends.")
+        return Command(goto=END, update=new_state)
+
 
     exploiter_dir = os.path.join(os.getcwd(), "Agents", "Exploiter")
 
@@ -203,12 +218,49 @@ def _exploiter_node(state: AutoSecState) -> Command:
         "report.json",
     )
 
-    # ── Cache check ──────────────────────────────────────────────────────────
+    finder_output_path = os.path.join(
+        exploiter_dir,
+        "vuln_agent",
+        "modules",
+        "data",
+        "traces",
+        "result.json"
+    )
+
+    fetch_one_location = os.path.join(
+        exploiter_dir,
+        "data",
+        "cwe-bench-java",
+        "scripts",
+        "fetch_one.py"
+    )
+
+    project_directory = os.path.join(
+        exploiter_dir,
+        "data",
+        "cwe-bench-java",
+        "project-sources",
+        project_name
+    )
+
+    working_directory = os.path.join(
+        exploiter_dir,
+        "data",
+        "cwe-bench-java",
+        "workdir_no_branch",
+        "project-sources",
+        project_name
+    )
+
+    dockerfiles = os.path.join(
+        exploiter_dir,
+        "data",
+        "cwe-bench-java",
+        "Dockerfiles",
+    )
+
+    # CACHE CHECK
     # If a report.json already exists from a previous run, skip re-running the
-    # exploiter and reuse the cached result + generated test files.
-    # If the cached result is not exploitable we go straight to END — there is
-    # no point looping back to finder because the exploiter cache would just
-    # return the same result again on the next iteration.
     if os.path.exists(report_path):
         logger.info(f"Cache hit: exploiter report found at {report_path}, skipping exploitation.")
         with open(report_path, "r") as f:
@@ -230,12 +282,39 @@ def _exploiter_node(state: AutoSecState) -> Command:
 
         logger.info("Cached report shows vulnerability exploited! Continuing to patcher.")
         return Command(goto="patcher", update=new_state)
-    # ─────────────────────────────────────────────────────────────────────────
 
     exploiter_main = os.path.join(exploiter_dir, "main.py")
 
     if not os.path.exists(exploiter_main):
         raise FileNotFoundError(f"Exploiter entrypoint not found: {exploiter_main}")
+
+    # if directory exists but report.json (meaning the output) isn't present we delete the project
+    # and start again
+    if os.path.exists(working_directory):
+        shutil.rmtree(working_directory)
+
+    # ####  ENVIRONMENT SETUP FOR CWE-BENCH PROJECT ####
+
+    # load finder output and save it to the directory exploiter uses
+    if RUNNING_FINDER:
+        try :
+            with open(finder_output_path, "w") as file:
+                json.dump(new_state["finder_output"], file)
+        except FileNotFoundError:
+            logger.error(f"Exploiter finder output file not found: {finder_output_path}")
+            return Command(goto=END, update=new_state)
+
+    # prepare the project in the Exploiter's directory
+    # check if they exist they do no need to fetch it anymore
+    if not os.path.exists(project_directory):
+        try:
+            subprocess.run([sys.executable, fetch_one_location, project_name], check=True)
+        except subprocess.CalledProcessError as e:
+            logger.error(f"Exploiter subprocess failed (exit={e.returncode}).")
+            return Command(goto=END, update=new_state)
+
+        # copy over the dockerfile from dockerfiles directory
+        shutil.copy2(os.path.join(dockerfiles, project_name, "Dockerfile.vuln"), project_directory)
 
     # Execution
     run_cmd = [
@@ -245,17 +324,21 @@ def _exploiter_node(state: AutoSecState) -> Command:
         "--project", project_name,
         "--model", "gpt5",
         "--budget", "5.0",
-        "--timeout", "3600",
+        "--timeout", "1800",
         "--no_branch",
         "--verbose",
     ]
 
+    # STARTING EXPLOITATION
     try:
+        logger.info("Loading the project: " + project_name)
+        logger.info(f"Running command: {run_cmd}")
         subprocess.run(run_cmd, cwd=exploiter_dir, check=True)
     except subprocess.CalledProcessError as e:
         logger.error(f"Exploiter subprocess failed (exit={e.returncode}).")
         return Command(goto=END, update=new_state)
 
+    # checking if result produced properly
     if not os.path.exists(report_path):
         logger.error(f"Exploiter report not found: {report_path}")
         return Command(goto=END, update=new_state)
@@ -285,6 +368,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
 
     logger.info("Vulnerability exploited! Continuing to patcher.")
     return Command(goto="patcher", update=new_state)
+
 
 
 def _patcher_node(state: AutoSecState) -> AutoSecState:
@@ -355,7 +439,8 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 # ====== Execute workflow =====
 def pipeline_main():
     load_dotenv()
-    SELECTED_PROJECT = ProjectVariants.SPRING_CLOUD_CVE_2022_22947
+
+    SELECTED_PROJECT = ProjectVariants.ESAPI
 
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {

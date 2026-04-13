@@ -50,6 +50,12 @@ class ProjectVariants(Enum):
         "dummy_finder_output": "Projects/Finder_Output/WHITESOURCE_CVE_2022_23082.json",
         "dummy_exploiter_pov_logic": "The PoV creates two sibling directories in the system temp directory: a legitimate base directory and an 'evil' directory whose pathname begins with the base directory's name (prefix collision). It writes a file into the evil directory and calls FileSecurityUtils.isFileOutsideDir(filePath, baseDirPath). Because the implementation uses String.startsWith on canonical paths without ensuring a path separator boundary, the evil file's canonical path will share the base directory string prefix, causing startsWith to return true and the method to incorrectly report the file as inside the base dir. The PoV fails the test and prints AUTOSEC_POV_TRIGGERED when this incorrect behavior is observed."
     }
+
+    ESAPI = {
+        "name" : "ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1",
+        "cwe_id": "cwe-022",
+        "dummy_finder_output": "Projects/Finder_Output_JSON/ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1_new_output_2.json"
+    }
     XUXUELI_CVE_2020_29204 = {
         "name": "xuxueli__xxl-job_CVE-2020-29204_2.2.0",
         "cwe_id": "cwe-079",
