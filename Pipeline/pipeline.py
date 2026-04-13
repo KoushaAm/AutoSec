@@ -432,7 +432,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 def pipeline_main():
     load_dotenv()
 
-    SELECTED_PROJECT = ProjectVariants.WHITESOURCE
+    SELECTED_PROJECT = ProjectVariants.ESAPI
 
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
@@ -442,7 +442,7 @@ def pipeline_main():
         "finder_model": "gpt-5-mini",
         "finder_reanalyze": True,
         # Dummy inputs for development & experiments
-        "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
+        # "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
         # "exploiter": {
         #     "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
         # }
