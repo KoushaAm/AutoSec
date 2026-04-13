@@ -1,5 +1,9 @@
 import json
 from typing import TypedDict, List, Any, Dict
+from pathlib import Path
+from datetime import datetime, timezone
+
+from Pipeline.project_variants import ProjectVariants
 
 
 # TypedDict Definitions
@@ -35,6 +39,14 @@ def load_dummy_finder_output(json_path: str) -> FinderOutput:
 
     return data  # type: ignore
 
+def load_dummy_patcher_output(AGENTS_DIR: Path, SELECTED_PROJECT: ProjectVariants) -> str:
+    patcher_output_base = AGENTS_DIR / "Patcher" / "output"
+    patcher_dirs = sorted(patcher_output_base.glob(f"patcher_{SELECTED_PROJECT.project_name}_datetime_*"))
+    if not patcher_dirs:
+        raise FileNotFoundError(f"No patcher output found for {SELECTED_PROJECT.project_name} in {patcher_output_base}")
+    patcher_artifact_path = str(patcher_dirs[-1])  # latest run
+    print(f"Using patcher output: {patcher_artifact_path}")
+    return patcher_artifact_path
 
 # Internal Validation
 def _validate_finder_output(data: Dict[str, Any]) -> None:
@@ -70,3 +82,35 @@ def _validate_finder_output(data: Dict[str, Any]) -> None:
 
                 if "message" not in step or not isinstance(step["message"], str):
                     raise ValueError("TraceStep missing or invalid 'message'.")
+
+
+def save_state_dump(state: Dict[str, Any], output_dir: str = "Pipeline/output") -> str:
+    """
+    Save the pipeline final state to a timestamped JSON file.
+
+    Args:
+        state: The final pipeline state
+        output_dir: Directory to store dumps
+
+    Returns:
+        Path to the saved file (string)
+    """
+    print("\n====== STATE DUMP ======")
+    print(json.dumps(state, indent=2, default=str))
+    print("======^==========^======\n")
+
+    try:
+        output_path = Path(output_dir)
+        output_path.mkdir(parents=True, exist_ok=True)
+
+        timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+        file_path = output_path / f"state_dump_{timestamp}.json"
+
+        with open(file_path, "w", encoding="utf-8") as f:
+            json.dump(state, f, indent=2, default=str)
+
+        return str(file_path)
+
+    except Exception as e:
+        print(f"[utils.save_state_dump] Failed to save state: {e}")
+        return ""

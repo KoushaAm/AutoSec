@@ -17,7 +17,6 @@ import config
 load_dotenv()
 
 class LLMPatchApplicator:
-    """Applies patches using LLM to understand and modify code intelligently"""
     
     def __init__(self, model: Model = None):
         """Initialize with OpenRouter client and model selection"""
@@ -93,7 +92,7 @@ class LLMPatchApplicator:
             )
             print("✓")
             
-            # Overwrite the original file in place (no _patched suffix)
+            # Overwrite the original file in place 
             print(f"   Overwriting file: {file_path.name}")
             file_path.write_text(modified_code, encoding='utf-8')
             
@@ -126,10 +125,8 @@ class LLMPatchApplicator:
             the full prompt, response, model, and attempt metadata for logging.
         """
         
-        # Format plan context
         plan_context = "\n".join(f"- {step}" for step in plan) if plan else "No plan provided"
         
-        # Build user message from template
         user_message = USER_MESSAGE_TEMPLATE.format(
             original_code=original_code,
             unified_diff=unified_diff,
@@ -164,10 +161,19 @@ class LLMPatchApplicator:
                 )
                 
                 modified_code = completion.choices[0].message.content or ""
+                finish_reason = completion.choices[0].finish_reason
                 llm_io["raw_response"] = modified_code
                 
                 if not modified_code.strip():
                     raise ValueError("LLM returned empty response")
+                
+                # Detect truncated output from the API
+                if finish_reason == "length":
+                    raise ValueError(
+                        f"LLM output truncated (finish_reason='length'). "
+                        f"Response ended at {len(modified_code)} chars. "
+                        f"Increase max_tokens (currently {self.patch_settings['max_tokens']})."
+                    )
                 
                 # Clean up any markdown formatting that might have been added
                 if modified_code.startswith("```") and modified_code.endswith("```"):
@@ -177,6 +183,9 @@ class LLMPatchApplicator:
                     if lines[-1] == "```":
                         lines = lines[:-1]
                     modified_code = '\n'.join(lines)
+                
+                # Structural integrity check: brace balance
+                self._check_brace_balance(original_code, modified_code)
                 
                 attempt_info["status"] = "success"
                 llm_io["attempts"].append(attempt_info)
@@ -192,3 +201,22 @@ class LLMPatchApplicator:
                     continue
                 else:
                     raise RuntimeError(f"OpenRouter API error after {self.patch_settings['retry_attempts']} attempts: {e}")
+    
+    @staticmethod
+    def _check_brace_balance(original: str, patched: str) -> None:
+        """Verify patched code has matching brace balance vs. original.
+        A large deficit (more closing braces lost than gained) strongly
+        indicates the LLM truncated its output."""
+        def _balance(code: str) -> int:
+            return code.count('{') - code.count('}')
+        
+        orig_bal = _balance(original)
+        patch_bal = _balance(patched)
+        
+        # Mismatch indicates LLM likely truncated its output
+        if patch_bal != orig_bal:
+            deficit = patch_bal - orig_bal
+            raise ValueError(
+                f"Brace balance mismatch — original: {orig_bal}, patched: {patch_bal} "
+                f"(delta {deficit:+d}). LLM likely truncated the output."
+            )

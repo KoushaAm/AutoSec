@@ -4,7 +4,6 @@ from typing import List, Dict, Any
 
 
 class TestDiscovery:
-    """Discovers and analyzes existing tests in Java projects"""
     
     TEST_PATTERNS = {
         "maven": {

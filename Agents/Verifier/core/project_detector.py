@@ -5,12 +5,10 @@ from typing import Optional, Tuple, Dict, Any
 
 
 def has_files(project_path: pathlib.Path, *filenames) -> bool:
-    """Check if any of the specified files exist in the project path"""
     return any((project_path / filename).exists() for filename in filenames)
 
 
 def count_java_files(project_path: pathlib.Path) -> int:
-    """Count all Java source files in the project recursively"""
     return len(list(project_path.rglob("*.java")))
 
 
@@ -136,6 +134,5 @@ class JavaProjectDetector:
 
 
 def detect_java_project(project_path: pathlib.Path) -> Tuple[Optional[str], Optional[str], Optional[str], Dict[str, Any]]:
-    """Convenience function that maintains backward compatibility"""
     detector = JavaProjectDetector()
     return detector.detect_project(project_path)

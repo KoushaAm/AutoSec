@@ -39,7 +39,6 @@ def verify_patcher_output(patcher_output_dir: str):
         print(f"❌ Patcher output directory not found: {patcher_path}")
         return
     
-    # find the manifest file (patcher_*.json)
     manifest_files = list(patcher_path.glob("patcher_*.json"))
     if not manifest_files:
         print(f"❌ No patcher manifest (patcher_*.json) found in {patcher_path}")
@@ -55,7 +54,6 @@ def verify_patcher_output(patcher_output_dir: str):
     total_patches = manifest["metadata"]["total_patches"]
     print(f"Found {total_patches} patch(es) to verify\n")
     
-    # create output directory for this verification run
     autosec_root = VERIFIER_ROOT.parent.parent
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
     output_dir = VERIFIER_ROOT / "output" / "patcher_verification" / f"run_{timestamp}"
@@ -179,8 +177,7 @@ def verify_patcher_output(patcher_output_dir: str):
             risk_notes=patch_content["risk_notes"],
             assumptions=patch_content["assumptions"],
             behavior_change=patch_content["behavior_change"],
-            safety_verification=patch_content["safety_verification"],
-            pov_tests=None
+            safety_verification=patch_content["safety_verification"]
         )
         
         print(f"\n[2/3] 🏗️  Building patched project...")
@@ -311,18 +308,15 @@ def test_project_build(project_name: str, file_path: str = None):
         risk_notes="Local testing only",
         assumptions="Project builds successfully",
         behavior_change="None - testing only",
-        safety_verification="Safe - no code changes",
-        pov_tests=None
+        safety_verification="Safe - no code changes"
     )
     
     print("\n[1/2] 🏗️  Building project and discovering tests...")
     print("-" * 80)
     
-    # initialize build handler
     build_runner = DockerBuildRunner()
     
     try:
-        # run build and test
         result = build_runner.run_verification(
             project_path,
             patch_info,
@@ -332,7 +326,6 @@ def test_project_build(project_name: str, file_path: str = None):
         print("\n[2/2] 📊 Results Summary")
         print("=" * 80)
         
-        # display results
         if result.get("success"):
             print("✅ BUILD: SUCCESS")
         else:
@@ -343,7 +336,6 @@ def test_project_build(project_name: str, file_path: str = None):
         print(f"🐳 Docker image: {result.get('docker_image', 'N/A')}")
         print(f"📦 Build system: {result.get('stack', 'N/A')}")
         
-        # test discovery
         test_discovery = result.get("test_discovery", {})
         if test_discovery.get("has_tests"):
             print(f"\n🧪 Tests discovered: {test_discovery.get('test_count', 0)}")
@@ -351,7 +343,6 @@ def test_project_build(project_name: str, file_path: str = None):
         else:
             print(f"\n⚠️  No tests discovered: {test_discovery.get('message', 'Unknown')}")
         
-        # test execution results
         test_execution = result.get("test_execution", {})
         if test_execution.get("status") != "SKIP":
             test_results = test_execution.get("test_results", {})
@@ -368,7 +359,6 @@ def test_project_build(project_name: str, file_path: str = None):
                 success_rate = (passed / total) * 100
                 print(f"   Success rate: {success_rate:.1f}%")
         
-        # save detailed results
         results_file = output_dir / "build_test_results.json"
         with open(results_file, "w") as f:
             json.dump(result, f, indent=2)
@@ -376,7 +366,6 @@ def test_project_build(project_name: str, file_path: str = None):
         print(f"\n💾 Detailed results saved to:")
         print(f"   {results_file}")
         
-        # show log locations
         print(f"\n📄 Build logs:")
         if (output_dir / "docker_stdout.log").exists():
             print(f"   stdout: {output_dir / 'docker_stdout.log'}")
@@ -455,7 +444,7 @@ Examples:
         print("=" * 80)
         sys.exit(0)
     
-    # verify Patcher output (full workflow: apply patches + build + test)
+    # verify Patcher output 
     if args.patcher_output:
         verify_patcher_output(args.patcher_output)
     
