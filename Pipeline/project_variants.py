@@ -58,6 +58,8 @@ class ProjectVariants(Enum):
     }
     # sudo python scripts/fetch_one.py <project name>
     # sudo python Pipeline/convert_to_finder_output.py kubernetes-client__java_CVE-2020-8570_client-java-parent-9.0.1 cwe-022 KUBERNETES_CLIENT_CVE_2020_8570.json
+    # chmod -R u+w Projects/Sources/spring-cloud__spring-cloud-gateway_CVE-2022-22947_3.0.6/
+    # cd Agents/Exploiter/data/cwe-bench-java/workdir_no_branch/project-sources/
 
     @property
     def project_name(self) -> str:
