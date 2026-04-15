@@ -103,8 +103,9 @@ def save_state_dump(state: Dict[str, Any], output_dir: str = "Pipeline/output") 
         output_path = Path(output_dir)
         output_path.mkdir(parents=True, exist_ok=True)
 
+        project_name = state.get("project_name")
         timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-        file_path = output_path / f"state_dump_{timestamp}.json"
+        file_path = output_path / f"{project_name}_state_dump_{timestamp}.json"
 
         with open(file_path, "w", encoding="utf-8") as f:
             json.dump(state, f, indent=2, default=str)

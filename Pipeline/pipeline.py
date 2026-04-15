@@ -358,7 +358,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 # ====== Execute workflow =====
 def pipeline_main():
     load_dotenv()
-    SELECTED_PROJECT = ProjectVariants.SPRING_CLOUD_CVE_2022_22947
+    SELECTED_PROJECT = ProjectVariants.KUBERNETES_CLIENT_CVE_2020_8570
 
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
