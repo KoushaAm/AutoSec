@@ -298,16 +298,19 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
 
     if not state.get("finder_output"):
         raise ValueError("finder_output missing from state")
-
-    if not state.get("exploiter") or not state.get("exploiter").get("pov_logic"):
-        raise ValueError("exploiter output missing from state")
+    
+    pov_logic = "no pov_logic provided"
+    if state.get("exploiter") and state.get("exploiter").get("pov_logic"):
+        pov_logic = state['exploiter']['pov_logic']
+    else:
+        logger.warning("pov_logic missing from exploiter output")
 
     success, run_dir = patcher_main(
             language=state["language"],
             cwe_id=state['finder_output']['cwe_id'],
             vulnerability_list=state['finder_output']['vulnerabilities'],
             project_name=state["project_name"],
-            pov_logic=state['exploiter']['pov_logic'],
+            pov_logic=pov_logic,
             save_prompt=True,
         )
 
