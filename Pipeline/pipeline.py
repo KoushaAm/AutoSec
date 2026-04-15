@@ -302,6 +302,13 @@ def _exploiter_node(state: AutoSecState) -> Command:
                 json.dump(new_state["finder_output"], file)
         except FileNotFoundError:
             logger.error(f"Exploiter finder output file not found: {finder_output_path}")
+            new_state["exploiter"] = {
+                "success": False,
+                "report_path": None,
+                "pov_test_paths": None,
+                "pov_logic": None,
+                "from_cache": False,
+            }
             return Command(goto=END, update=new_state)
 
     # prepare the project in the Exploiter's directory
@@ -311,6 +318,13 @@ def _exploiter_node(state: AutoSecState) -> Command:
             subprocess.run([sys.executable, fetch_one_location, project_name], check=True)
         except subprocess.CalledProcessError as e:
             logger.error(f"Exploiter subprocess failed (exit={e.returncode}).")
+            new_state["exploiter"] = {
+                "success": False,
+                "report_path": None,
+                "pov_test_paths": None,
+                "pov_logic": None,
+                "from_cache": False,
+            }
             return Command(goto=END, update=new_state)
 
         # copy over the dockerfile from dockerfiles directory
@@ -336,6 +350,13 @@ def _exploiter_node(state: AutoSecState) -> Command:
         subprocess.run(run_cmd, cwd=exploiter_dir, check=True)
     except subprocess.CalledProcessError as e:
         logger.error(f"Exploiter subprocess failed (exit={e.returncode}).")
+        new_state["exploiter"] = {
+            "success": False,
+            "report_path": None,
+            "pov_test_paths": None,
+            "pov_logic": None,
+            "from_cache": False,
+        }
         return Command(goto=END, update=new_state)
 
     # checking if result produced properly

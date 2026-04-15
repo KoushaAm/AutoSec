@@ -65,6 +65,7 @@ class ProjectVariants(Enum):
     # sudo python scripts/fetch_one.py <project name>
     # sudo python Pipeline/convert_to_finder_output.py kubernetes-client__java_CVE-2020-8570_client-java-parent-9.0.1 cwe-022 KUBERNETES_CLIENT_CVE_2020_8570.json
 
+
     @property
     def project_name(self) -> str:
         return self.value["name"]
