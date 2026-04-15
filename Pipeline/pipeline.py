@@ -50,7 +50,7 @@ def _build_workflow() -> Any:
     graph = StateGraph(AutoSecState)
     graph.add_node("finder", _finder_node)
     graph.add_node("exploiter", _exploiter_node)
-    graph.add_node("patcher", _patcher_node)
+    # graph.add_node("patcher", _patcher_node)
     graph.add_node("verifier", _verifier_node)
 
     # linear edges
@@ -401,10 +401,12 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
     if not state.get("project_name"):
         raise ValueError("project_name missing from state")
 
+    # TODO: currently using dummy finder_output
     if not state.get("finder_output"):
         raise ValueError("finder_output missing from state")
 
-    if not state.get("exploiter") or not state.get("exploiter").get("pov_logic"):
+    # TODO: currently using dummy exploiter pov_logic
+    if not state.get("exploiter"):
         raise ValueError("exploiter output missing from state")
 
     success, run_dir = patcher_main(
@@ -412,7 +414,7 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
             cwe_id=state['finder_output']['cwe_id'],
             vulnerability_list=state['finder_output']['vulnerabilities'],
             project_name=state["project_name"],
-            pov_logic=state['exploiter']['pov_logic'],
+            pov_logic=pov_logic,
             save_prompt=True,
         )
 
@@ -474,22 +476,18 @@ def pipeline_main():
         # "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
         # "exploiter": {
         #     "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
-        # },
-        # "patcher": {
-        #     "success": True,
-        #     "artifact_path": load_dummy_patcher_output(AGENTS_DIR, SELECTED_PROJECT)
         # }
     }
+
     # print(json.dumps(initial_state, indent=2))
 
     # Execute the graph
     workflow = _build_workflow()
     final_state = workflow.invoke(initial_state)
 
-    # Save to file
-    file_path = save_state_dump(final_state)
-    if file_path:
-        print(f"[Pipeline] State dump saved to: {file_path}")
+    print("\n====== STATE DUMP ======")
+    print(json.dumps(final_state, indent=2))
+    print("======^==========^======\n")
 
 
 # standalone execution
