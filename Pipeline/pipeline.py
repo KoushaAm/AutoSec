@@ -50,7 +50,7 @@ def _build_workflow() -> Any:
     graph = StateGraph(AutoSecState)
     graph.add_node("finder", _finder_node)
     graph.add_node("exploiter", _exploiter_node)
-    # graph.add_node("patcher", _patcher_node)
+    graph.add_node("patcher", _patcher_node)
     graph.add_node("verifier", _verifier_node)
 
     # linear edges
@@ -70,6 +70,11 @@ def _build_workflow() -> Any:
 
 def _finder_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node - finder started")
+
+    # Skip finder if output was already injected (e.g. dummy/cached output)
+    if state.get("finder_output") is not None:
+        logger.info("Node - finder skipped (finder_output already set)")
+        return state
 
     # make sure Project/Sources folder exists
     Path(PROJECTS_DIR / "Sources").mkdir(exist_ok=True)
@@ -327,8 +332,9 @@ def _exploiter_node(state: AutoSecState) -> Command:
             }
             return Command(goto=END, update=new_state)
 
-        # copy over the dockerfile from dockerfiles directory
-        shutil.copy2(os.path.join(dockerfiles, project_name, "Dockerfile.vuln"), project_directory)
+    # copy over the dockerfile from dockerfiles directory (always, in case it changed)
+    logger.info(f"copying docker {os.path.join(dockerfiles, project_name, 'Dockerfile.vuln')} into project path: {project_directory}" )
+    shutil.copy2(os.path.join(dockerfiles, project_name, "Dockerfile.vuln"), project_directory)
 
     # Execution
     run_cmd = [
@@ -472,8 +478,8 @@ def pipeline_main():
         "language": "java",
         "finder_model": "gpt-5-mini",
         "finder_reanalyze": False,
-        #! Manual inputs for development & experiments
-        # "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
+        # Dummy inputs for development & experiments
+        "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
         # "exploiter": {
         #     "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
         # }
