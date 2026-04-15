@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     wget \
     git \
+    zip \
     unzip \
     tar \
     sudo \
@@ -102,17 +103,12 @@ RUN set -eux; \
     chmod 0440 /etc/sudoers.d/vscode
 
 # Quick sanity checks
-#RUN python3 --version && python --version && \
-#    python3 -m pip --version && \
-#    java -version && \
-#    /usr/lib/jvm/temurin-8-jdk-amd64/bin/java -version && \
-#    /usr/lib/jvm/temurin-11-jdk-amd64/bin/java -version && \
-#    mvn -version && gradle --version && docker --version
 RUN python3 --version && python --version && \
     python3 -m pip --version && \
     java -version && \
     /usr/lib/jvm/temurin-8-jdk*/bin/java -version && \
     /usr/lib/jvm/temurin-11-jdk*/bin/java -version && \
+    zip -v && unzip -v && \
     mvn -version && gradle --version && docker --version
 
 
