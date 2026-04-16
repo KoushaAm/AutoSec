@@ -62,6 +62,13 @@ class ProjectVariants(Enum):
         "dummy_finder_output": "Projects/Finder_Output/XUXUELI_CVE_2020_29204.json",
         "dummy_exploiter_pov_logic": "The PoV exercises the actual controller code path: send an HTTP POST to /user/add with a username containing a script payload that satisfies the controller's length check (4-20 chars). The controller trims and validates the username and persists it via the DAO. A subsequent GET to /user/pageList returns the persisted XxlJobUser objects inside the 'data' JSON field. The client-side user.index.1.js populates table cells from that JSON without escaping, so a stored payload in username will be inserted into the page DOM and executed. The test attempts to trigger this by mocking the DAO to capture the saved user and returning it from pageList, then failing the test (and printing AUTOSEC_POV_TRIGGERED) if the raw script payload is present in the /user/pageList JSON response."
     }
+
+    # nahsra__antisamy_CVE-2022-29577_1.6.6.1
+    NAHSRA_2022_29577 = {
+        "name" : "nahsra__antisamy_CVE-2022-29577_1.6.6.1",
+        "cwe_id": "cwe-079",
+        "dummy_finder_output" : "Projects/Finder_Output/NAHSRA_CVE_2022_29577.json"
+    }
     # sudo python scripts/fetch_one.py <project name>
     # sudo python Pipeline/convert_to_finder_output.py kubernetes-client__java_CVE-2020-8570_client-java-parent-9.0.1 cwe-022 KUBERNETES_CLIENT_CVE_2020_8570.json
 
