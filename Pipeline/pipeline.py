@@ -71,6 +71,11 @@ def _build_workflow() -> Any:
 def _finder_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node - finder started")
 
+    # Skip finder if output was already injected (e.g. dummy/cached output)
+    if state.get("finder_output") is not None:
+        logger.info("Node - finder skipped (finder_output already set)")
+        return state
+
     # make sure Project/Sources folder exists
     Path(PROJECTS_DIR / "Sources").mkdir(exist_ok=True)
 
@@ -278,7 +283,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
 
         if not exploitable:
             logger.warning("Cached report shows vulnerability was not exploitable — ending pipeline.")
-            return Command(goto=END, update=new_state)
+            return Command(goto="patcher", update=new_state)
 
         logger.info("Cached report shows vulnerability exploited! Continuing to patcher.")
         return Command(goto="patcher", update=new_state)
@@ -302,7 +307,14 @@ def _exploiter_node(state: AutoSecState) -> Command:
                 json.dump(new_state["finder_output"], file)
         except FileNotFoundError:
             logger.error(f"Exploiter finder output file not found: {finder_output_path}")
-            return Command(goto=END, update=new_state)
+            new_state["exploiter"] = {
+                "success": False,
+                "report_path": None,
+                "pov_test_paths": None,
+                "pov_logic": None,
+                "from_cache": False,
+            }
+            return Command(goto="patcher", update=new_state)
 
     # prepare the project in the Exploiter's directory
     # check if they exist they do no need to fetch it anymore
@@ -311,12 +323,22 @@ def _exploiter_node(state: AutoSecState) -> Command:
             subprocess.run([sys.executable, fetch_one_location, project_name], check=True)
         except subprocess.CalledProcessError as e:
             logger.error(f"Exploiter subprocess failed (exit={e.returncode}).")
-            return Command(goto=END, update=new_state)
+            new_state["exploiter"] = {
+                "success": False,
+                "report_path": None,
+                "pov_test_paths": None,
+                "pov_logic": None,
+                "from_cache": False,
+            }
+            return Command(goto="patcher", update=new_state)
 
-        # copy over the dockerfile from dockerfiles directory
-        shutil.copy2(os.path.join(dockerfiles, project_name, "Dockerfile.vuln"), project_directory)
+    # copy over the dockerfile from dockerfiles directory (always, in case it changed)
+    logger.info(f"copying docker {os.path.join(dockerfiles, project_name, 'Dockerfile.vuln')} into project path: {project_directory}" )
+    shutil.copy2(os.path.join(dockerfiles, project_name, "Dockerfile.vuln"), project_directory)
 
     # Execution
+    EXPLOITER_TIMEOUT = 2700
+
     run_cmd = [
         sys.executable,
         "main.py",
@@ -324,7 +346,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
         "--project", project_name,
         "--model", "gpt5",
         "--budget", "5.0",
-        "--timeout", "1800",
+        "--timeout", str(EXPLOITER_TIMEOUT),
         "--no_branch",
         "--verbose",
     ]
@@ -333,15 +355,35 @@ def _exploiter_node(state: AutoSecState) -> Command:
     try:
         logger.info("Loading the project: " + project_name)
         logger.info(f"Running command: {run_cmd}")
-        subprocess.run(run_cmd, cwd=exploiter_dir, check=True)
+        subprocess.run(run_cmd, cwd=exploiter_dir, check=True, timeout=EXPLOITER_TIMEOUT + 60)
+    except subprocess.TimeoutExpired:
+        logger.error(f"Exploiter timed out after {EXPLOITER_TIMEOUT + 60}s.")
+        new_state["exploiter"] = {
+            "success": False,
+            "report_path": None,
+            "pov_test_paths": None,
+            "pov_logic": None,
+            "from_cache": False,
+        }
+        return Command(goto="patcher", update=new_state)
+
     except subprocess.CalledProcessError as e:
         logger.error(f"Exploiter subprocess failed (exit={e.returncode}).")
-        return Command(goto=END, update=new_state)
+        new_state["exploiter"] = {
+            "success": False,
+            "report_path": None,
+            "pov_test_paths": None,
+            "pov_logic": None,
+            "from_cache": False,
+        }
+
+        return Command(goto="patcher", update=new_state)
 
     # checking if result produced properly
     if not os.path.exists(report_path):
         logger.error(f"Exploiter report not found: {report_path}")
-        return Command(goto=END, update=new_state)
+
+        return Command(goto="patcher", update=new_state)
 
     with open(report_path, "r") as f:
         report_data = json.load(f)
@@ -361,7 +403,8 @@ def _exploiter_node(state: AutoSecState) -> Command:
         new_state["exploiter_retries"] = retries
         if retries >= MAX_EXPLOITER_RETRIES:
             logger.warning(f"Exploiter did not find an exploitable PoV after {retries} attempt(s) — ending pipeline.")
-            return Command(goto=END, update=new_state)
+
+            return Command(goto="patcher", update=new_state)
         logger.warning(f"Exploiter did not find an exploitable PoV (attempt {retries}/{MAX_EXPLOITER_RETRIES}), re-running finder.")
         new_state["finder_reanalyze"] = True
         return Command(goto="finder", update=new_state)
@@ -380,10 +423,12 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
     if not state.get("project_name"):
         raise ValueError("project_name missing from state")
 
+    # TODO: currently using dummy finder_output
     if not state.get("finder_output"):
         raise ValueError("finder_output missing from state")
 
-    if not state.get("exploiter") or not state.get("exploiter").get("pov_logic"):
+    # TODO: currently using dummy exploiter pov_logic
+    if not state.get("exploiter"):
         raise ValueError("exploiter output missing from state")
 
     success, run_dir = patcher_main(
@@ -391,7 +436,7 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
             cwe_id=state['finder_output']['cwe_id'],
             vulnerability_list=state['finder_output']['vulnerabilities'],
             project_name=state["project_name"],
-            pov_logic=state['exploiter']['pov_logic'],
+            pov_logic=pov_logic,
             save_prompt=True,
         )
 
@@ -440,7 +485,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 def pipeline_main():
     load_dotenv()
 
-    SELECTED_PROJECT = ProjectVariants.ESAPI
+    SELECTED_PROJECT = ProjectVariants.NAHSRA_2022_29577
 
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
@@ -449,26 +494,22 @@ def pipeline_main():
         "language": "java",
         "finder_model": "gpt-5-mini",
         "finder_reanalyze": False,
-        #! Manual inputs for development & experiments
-        # "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
+        # Dummy inputs for development & experiments
+        "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
         # "exploiter": {
         #     "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
-        # },
-        # "patcher": {
-        #     "success": True,
-        #     "artifact_path": load_dummy_patcher_output(AGENTS_DIR, SELECTED_PROJECT)
         # }
     }
+
     # print(json.dumps(initial_state, indent=2))
 
     # Execute the graph
     workflow = _build_workflow()
     final_state = workflow.invoke(initial_state)
 
-    # Save to file
-    file_path = save_state_dump(final_state)
-    if file_path:
-        print(f"[Pipeline] State dump saved to: {file_path}")
+    print("\n====== STATE DUMP ======")
+    print(json.dumps(final_state, indent=2))
+    print("======^==========^======\n")
 
 
 # standalone execution
