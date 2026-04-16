@@ -349,7 +349,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 # ====== Execute workflow =====
 def pipeline_main():
     load_dotenv()
-    SELECTED_PROJECT = ProjectVariants.CODEHAUS_CVE_2018_1002200
+    SELECTED_PROJECT = ProjectVariants.CODEHAUS_CVE_2017_1000487
 
     # Finding Patcher output
     patcher_output_base = AGENTS_DIR / "Patcher" / "output"
