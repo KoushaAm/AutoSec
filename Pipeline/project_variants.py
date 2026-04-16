@@ -82,6 +82,7 @@ class ProjectVariants(Enum):
         "dummy_finder_output": "Projects/Finder_Output_JSON/ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1_new_output_2.json"
     }
 
+
     @property
     def project_name(self) -> str:
         return self.value["name"]
