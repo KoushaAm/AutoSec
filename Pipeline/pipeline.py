@@ -558,7 +558,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 # ====== Execute workflow =====
 def pipeline_main():
     load_dotenv()
-    SELECTED_PROJECT = ProjectVariants.ASF_TAPESTRY_CVE_2019_0207
+    SELECTED_PROJECT = ProjectVariants.CODEHAUS_CVE_2017_1000487
 
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
@@ -574,7 +574,7 @@ def pipeline_main():
         },
         "patcher": {
             "success": True,
-            "artifact_path": patcher_artifact_path
+            "artifact_path": load_dummy_patcher_output(AGENTS_DIR, SELECTED_PROJECT)
         }
     }
     # print(json.dumps(initial_state, indent=2))
