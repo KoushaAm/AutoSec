@@ -197,6 +197,8 @@ def _exploiter_node(state: AutoSecState) -> Command:
     # Taking a copy of the state
     new_state = dict(state)
     project_name = new_state.get("project_name")
+
+    # this must fail pipeline can't continue without project name
     if not project_name:
         raise ValueError("project_name missing from state")
 
@@ -208,6 +210,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
 
     if not found:
         logger.info(f"Node: exploiter found no vulnerabilities. Execution ends.")
+
         return Command(goto=END, update=new_state)
 
 
@@ -282,7 +285,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
         }
 
         if not exploitable:
-            logger.warning("Cached report shows vulnerability was not exploitable — ending pipeline.")
+            logger.warning("Cached report shows vulnerability was not exploitable - ending pipeline.")
             return Command(goto="patcher", update=new_state)
 
         logger.info("Cached report shows vulnerability exploited! Continuing to patcher.")
@@ -290,6 +293,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
 
     exploiter_main = os.path.join(exploiter_dir, "main.py")
 
+    # this is an implementation issue it must fail
     if not os.path.exists(exploiter_main):
         raise FileNotFoundError(f"Exploiter entrypoint not found: {exploiter_main}")
 
