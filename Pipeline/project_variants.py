@@ -69,6 +69,26 @@ class ProjectVariants(Enum):
         "dummy_exploiter_pov_logic": "..."
     }
 
+    DIFFPLUG_CVE_2022_26049 = {
+        "name": "diffplug__goomph_CVE-2022-26049_3.37.1",
+        "cwe_id": "cwe-022",
+        "dummy_finder_output": "Projects/Finder_Output/DIFFPLUG_CVE_2022_26049.json",
+        "dummy_exploiter_pov_logic": "..."
+    }
+    FF4J_CVE_2022_44262 = {
+        "name": "ff4j__ff4j_CVE-2022-44262_1.8.13",
+        "cwe_id": "cwe-094",
+        "dummy_finder_output": "Projects/Finder_Output/FF4J_CVE_2022_44262.json",
+        "dummy_exploiter_pov_logic": "..."
+    }
+    SQUARE_RETROFIT_CVE_2018_1000850 = {
+        "name": "square__retrofit_CVE-2018-1000850_2.4.0",
+        "cwe_id": "cwe-022",
+        "dummy_finder_output": "Projects/Finder_Output/SQUARE_RETROFIT_CVE_2018_1000850.json",
+        "dummy_exploiter_pov_logic": "..."
+    }
+
+
     # TODO: delete scripts below after experimentation complete
     # sudo python scripts/fetch_one.py <project name>
     # sudo python Pipeline/convert_to_finder_output.py kubernetes-client__java_CVE-2020-8570_client-java-parent-9.0.1 cwe-022 KUBERNETES_CLIENT_CVE_2020_8570.json
