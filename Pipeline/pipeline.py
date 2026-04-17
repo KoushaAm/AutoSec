@@ -16,7 +16,7 @@ from dotenv import load_dotenv
 # from Agents.Exploiter.data.primevul.setup import project_slug
 # local imports
 from . import logger
-from .utils import load_dummy_finder_output, load_dummy_patcher_output, save_state_dump
+from .utils import save_state_dump, load_dummy_finder_output, load_dummy_patcher_output
 from .project_variants import ProjectVariants
 
 from Agents.Patcher import patcher_main
@@ -482,12 +482,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 # ====== Execute workflow =====
 def pipeline_main():
     load_dotenv()
-<<<<<<< HEAD
-    SELECTED_PROJECT = ProjectVariants.KUBERNETES_CLIENT_CVE_2020_8570
-=======
-
-    SELECTED_PROJECT = ProjectVariants.NAHSRA_2022_29577
->>>>>>> origin/main
+    SELECTED_PROJECT = ProjectVariants.WHITESOURCE_CVE_2022_23082
 
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
@@ -496,14 +491,14 @@ def pipeline_main():
         "language": "java",
         "finder_model": "gpt-5-mini",
         "finder_reanalyze": False,
-<<<<<<< HEAD
         #! Manual inputs for development & experiments
-=======
-        # Dummy inputs for development & experiments
->>>>>>> origin/main
         "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
         # "exploiter": {
         #     "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
+        # }
+        # "patcher": {
+        #     "success": True,
+        #     "artifact_path": load_dummy_patcher_output(AGENTS_DIR, SELECTED_PROJECT)
         # }
     }
 
