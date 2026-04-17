@@ -33,7 +33,7 @@ AGENTS_DIR   = (BASE_DIR / "Agents").resolve()
 MAX_EXPLOITER_RETRIES = 1
 
 class AutoSecState(TypedDict, total=False):
-    project_name: Optional[str]         # ex: jenkinsci__perfecto-plugin_CVE
+    project_name: Optional[str] # ex: jenkinsci__perfecto-plugin_CVE
     language: Optional[str]
     vuln_id: Optional[str]
     vuln: Optional[Dict[str, Any]]
@@ -42,7 +42,7 @@ class AutoSecState(TypedDict, total=False):
     finder_output: Optional[List[FinderOutput]]
     artifacts: Optional[Dict[str, str]]
     exploiter: Optional[Dict[str, Any]]
-    exploiter_retries: Optional[int]    # tracks finder→exploiter retry cycles
+    exploiter_retries: Optional[int] # tracks finder -> exploiter retry cycles
     patcher: Optional[Dict[str, Any]]
     verifier: Optional[Dict[str, Any]]
 
@@ -53,10 +53,10 @@ def _build_workflow() -> Any:
     graph.add_node("patcher", _patcher_node)
     graph.add_node("verifier", _verifier_node)
 
-    # linear edges
+    # static linear edges
     graph.add_edge(START, "finder")
     graph.add_edge("finder", "exploiter")
-    graph.add_edge("exploiter", "patcher")
+    # `exploiter -> patcher` edge not needed since exploiter routes dynamically
     graph.add_edge("patcher", "verifier")
     graph.add_edge("verifier", END)
 
@@ -157,6 +157,32 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
     return state
 
 
+def _has_actionable_vulnerabilities(finder_output: Optional[Dict[str, Any]]) -> bool:
+    """
+    Returns True if finder_output contains at least one vulnerability
+    with non-empty traces. Otherwise returns False.
+
+    Handles:
+    - finder_output is None
+    - vulnerabilities missing
+    - empty vulnerabilities list
+    - vulnerabilities with empty or invalid traces
+    """
+    if not finder_output:
+        return False
+
+    vulnerabilities = finder_output.get("vulnerabilities")
+    if not isinstance(vulnerabilities, list) or len(vulnerabilities) == 0:
+        return False
+
+    return any(
+        isinstance(vuln, dict)
+        and isinstance(vuln.get("traces"), list)
+        and len(vuln["traces"]) > 0
+        for vuln in vulnerabilities
+    )
+
+
 def _parse_exploiter_report(report_data) -> tuple[bool, list[str], str]:
     """Return (exploitable, pov_test_paths, pov_logic) from a loaded report.json."""
     if isinstance(report_data, dict):
@@ -198,17 +224,49 @@ def _exploiter_node(state: AutoSecState) -> Command:
     if not project_name:
         raise ValueError("project_name missing from state")
 
-    # Check if any vulnerability was found: if it wasn't we go to the end of the pipeline no need to continue
-    vuln = new_state["finder_output"]["vulnerabilities"]
-    found = False
-    if len(vuln) > 0:
-        found = True
+    # Stop the pipeline if finder found no actionable vulnerabilities
+    finder_output = new_state.get("finder_output")
 
-    if not found:
-        logger.info(f"Node: exploiter found no vulnerabilities. Execution ends.")
+    if not _has_actionable_vulnerabilities(finder_output):
+        logger.info("Node: exploiter found no actionable vulnerabilities. Execution ends.")
+
+        vulnerabilities = []
+        if finder_output:
+            vulnerabilities = finder_output.get("vulnerabilities", [])
+
+        reason = (
+            "No vulnerabilities found in finder output."
+            if not vulnerabilities
+            else "Vulnerabilities were present, but none had traces for exploitation."
+        )
+
+        new_state["exploiter"] = {
+            "success": False,
+            "report_path": None,
+            "pov_test_paths": None,
+            "pov_logic": None,
+            "from_cache": False,
+            "skipped": True,
+            "reason": reason,
+        }
+
+        new_state["patcher"] = {
+            "success": False,
+            "artifact_path": None,
+            "skipped": True,
+            "reason": reason,
+        }
+
+        new_state["verifier"] = {
+            "success": False,
+            "output_dir": None,
+            "skipped": True,
+            "reason": reason,
+        }
+
         return Command(goto=END, update=new_state)
-
-
+    
+    # setup paths for exploiter
     exploiter_dir = os.path.join(os.getcwd(), "Agents", "Exploiter")
 
     report_path = os.path.join(
@@ -482,7 +540,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 # ====== Execute workflow =====
 def pipeline_main():
     load_dotenv()
-    SELECTED_PROJECT = ProjectVariants.WHITESOURCE_CVE_2022_23082
+    SELECTED_PROJECT = ProjectVariants.SPRING_CLOUD_CVE_2022_22947
 
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
@@ -502,15 +560,15 @@ def pipeline_main():
         # }
     }
 
-    # print(json.dumps(initial_state, indent=2))
-
     # Execute the graph
     workflow = _build_workflow()
     final_state = workflow.invoke(initial_state)
 
-    print("\n====== STATE DUMP ======")
-    print(json.dumps(final_state, indent=2))
-    print("======^==========^======\n")
+    # Save to file
+    file_path = save_state_dump(final_state)
+    if file_path:
+        print(f"[Pipeline] State dump saved to: {file_path}")
+
 
 
 # standalone execution
