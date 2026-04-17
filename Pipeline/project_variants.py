@@ -75,14 +75,6 @@ class ProjectVariants(Enum):
     # chmod -R u+w Projects/Sources/spring-cloud__spring-cloud-gateway_CVE-2022-22947_3.0.6/
     # cd Agents/Exploiter/data/cwe-bench-java/workdir_no_branch/project-sources/
 
-    # Other Projects & Repeats
-    ESAPI = {
-        "name" : "ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1",
-        "cwe_id": "cwe-022",
-        "dummy_finder_output": "Projects/Finder_Output_JSON/ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1_new_output_2.json"
-    }
-
-
     @property
     def project_name(self) -> str:
         return self.value["name"]
