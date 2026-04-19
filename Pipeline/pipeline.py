@@ -489,7 +489,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 def pipeline_main():
     load_dotenv()
 
-    SELECTED_PROJECT = ProjectVariants.NAHSRA_2022_29577
+    SELECTED_PROJECT = ProjectVariants.FF4J
 
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {

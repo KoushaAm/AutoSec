@@ -69,6 +69,14 @@ class ProjectVariants(Enum):
         "cwe_id": "cwe-079",
         "dummy_finder_output" : "Projects/Finder_Output/NAHSRA_CVE_2022_29577.json"
     }
+
+    FF4J = {
+        "name" : "ff4j__ff4j_CVE-2022-44262_1.8.13",
+        "cwe_id": "cwe-022",
+        "dummy_finder_output": "Projects/Finder_Output/NAHSRA_CVE_2022_29577.json"
+
+    }
+
     # sudo python scripts/fetch_one.py <project name>
     # sudo python Pipeline/convert_to_finder_output.py kubernetes-client__java_CVE-2020-8570_client-java-parent-9.0.1 cwe-022 KUBERNETES_CLIENT_CVE_2020_8570.json
 
