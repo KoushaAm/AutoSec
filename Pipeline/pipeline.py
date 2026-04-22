@@ -487,6 +487,7 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
     else:
         logger.warning("pov_logic missing from exploiter output")
 
+    # copy PoV tests from Exploiter's working dir into Projects/Sources
     project_name = state["project_name"]
     pov_test_paths = (state.get("exploiter") or {}).get("pov_test_paths") or []
     exploiter_project_root = (
