@@ -487,6 +487,23 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
     else:
         logger.warning("pov_logic missing from exploiter output")
 
+    project_name = state["project_name"]
+    pov_test_paths = (state.get("exploiter") or {}).get("pov_test_paths") or []
+    exploiter_project_root = (
+        AGENTS_DIR / "Exploiter" / "data" / "cwe-bench-java"
+        / "workdir_no_branch" / "project-sources" / project_name
+    )
+    sources_project_root = PROJECTS_DIR / "Sources" / project_name
+    for rel_path in pov_test_paths:
+        src = exploiter_project_root / rel_path
+        dst = sources_project_root / rel_path
+        if src.exists():
+            dst.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(src, dst)
+            logger.info(f"Copied PoV test: {rel_path} → Projects/Sources/{project_name}/{rel_path}")
+        else:
+            logger.warning(f"PoV test file not found in exploiter workdir: {src}")
+
     success, run_dir = patcher_main(
             language=state["language"],
             cwe_id=state['finder_output']['cwe_id'],
