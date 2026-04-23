@@ -1,4 +1,0 @@
-openai
-python-dotenv
-tree-sitter
-tree-sitter-java
