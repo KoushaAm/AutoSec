@@ -88,6 +88,17 @@ class ProjectVariants(Enum):
         "dummy_exploiter_pov_logic": "..."
     }
 
+    XERIAL_SQLITE_CVE_2023_32697 = {
+        "name" : "xerial__sqlite-jdbc_CVE-2023-32697_3.41.2.1",
+        "cwe_id" : "cwe-094",
+        "dummy_finder_output" : "Projects/Finder_Output/XERIAL_SQLITE_CVE-2023-32697_3.41.2.1.json"
+    }
+
+    ZERO_TURNAROUND__CVE_2018_1002201= {
+        "name": "zeroturnaround__zt-zip_CVE-2018-1002201_1.12",
+        "cwe_id" : "cwe-022",
+        "dummy_finder_output": "Projects/Finder_Output/ZERO_TURNAROUND__CVE-2018_1002201.json"
+    }
 
     # TODO: delete scripts below after experimentation complete
     # sudo python scripts/fetch_one.py <project name>
