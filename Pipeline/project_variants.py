@@ -100,6 +100,14 @@ class ProjectVariants(Enum):
         "dummy_finder_output": "Projects/Finder_Output/ZERO_TURNAROUND__CVE-2018_1002201.json"
     }
 
+    ASF_TAPESTRY_CVE_2019_0207 = {
+        "name": "asf__tapestry-5_CVE-2019-0207_5.4.4",
+        "cwe_id": "cwe-022",
+        "dummy_finder_output": "Projects/Finder_Output/ASF_TAPESTRY_CVE_2019_0207.json"
+    }
+
+
+
     # TODO: delete scripts below after experimentation complete
     # sudo python scripts/fetch_one.py <project name>
     # sudo python Pipeline/convert_to_finder_output.py kubernetes-client__java_CVE-2020-8570_client-java-parent-9.0.1 cwe-022 KUBERNETES_CLIENT_CVE_2020_8570.json

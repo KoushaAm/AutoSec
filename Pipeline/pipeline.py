@@ -393,7 +393,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
     shutil.copy2(os.path.join(dockerfiles, project_name, "Dockerfile.vuln"), project_directory)
 
     # Execution
-    EXPLOITER_TIMEOUT = 2700
+    EXPLOITER_TIMEOUT = 1800
 
     run_cmd = [
         sys.executable,
@@ -558,7 +558,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 # ====== Execute workflow =====
 def pipeline_main():
     load_dotenv()
-    SELECTED_PROJECT = ProjectVariants.CODEHAUS_CVE_2017_1000487
+    SELECTED_PROJECT = ProjectVariants.ASF_TAPESTRY_CVE_2019_0207
 
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
