@@ -265,7 +265,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
         }
 
         return Command(goto=END, update=new_state)
-    
+
     # setup paths for exploiter
     exploiter_dir = os.path.join(os.getcwd(), "Agents", "Exploiter")
 
@@ -480,7 +480,7 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
 
     if not state.get("finder_output"):
         raise ValueError("finder_output missing from state")
-    
+
     pov_logic = "no pov_logic provided"
     if state.get("exploiter") and state.get("exploiter").get("pov_logic"):
         pov_logic = state['exploiter']['pov_logic']
@@ -556,9 +556,21 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 
 
 # ====== Execute workflow =====
-def pipeline_main():
+def pipeline_main(project_name: str | None = None):
     load_dotenv()
     SELECTED_PROJECT = ProjectVariants.SPRING_CLOUD_CVE_2022_22947
+
+    # default project
+    SELECTED_PROJECT = ProjectVariants.APACHE_SLING
+
+    # get correct num from project name
+    if project_name:
+        for project in ProjectVariants:
+            if project.project_name == project_name:
+                SELECTED_PROJECT = project
+                break
+        else:
+            print(f"Unknown project name: {project_name}. Using default project: {SELECTED_PROJECT.project_name}")
 
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {

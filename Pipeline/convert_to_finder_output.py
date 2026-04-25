@@ -15,6 +15,7 @@ def main():
     parser.add_argument("project_name", help="Project folder name under Agents/Finder/output")
     parser.add_argument("cwe_id", help="CWE id like cwe-022")
     parser.add_argument("output_json", help="Output JSON filename")
+    parser.add_argument("--post_filter", action="store_true")
 
     args = parser.parse_args()
 
@@ -22,16 +23,37 @@ def main():
     cwe_id = args.cwe_id
     output_json = args.output_json
 
-    sarif_path = (
-        ROOT_DIR
-        / "Agents"
-        / "Finder"
-        / "output"
-        / args.project_name
-        / "test"
-        / f"{args.cwe_id}wLLM-posthoc-filter"
-        / "results.sarif"
-    )
+    if args.post_filter:
+        sarif_path = (
+            ROOT_DIR
+            / "Agents"
+            / "Finder"
+            / "output"
+            / args.project_name
+            / "test"
+            / f"{args.cwe_id}wLLM-posthoc-filter"
+            / "results.sarif"
+        )
+    else:
+        sarif_path = (
+            ROOT_DIR
+            / "Agents"
+            / "Finder"
+            / "output"
+            / args.project_name
+            / "test"
+            / f"{args.cwe_id}wLLM"
+            / "results.sarif"
+        )
+
+    # sarif_path = (
+    #     ROOT_DIR
+    #     / "Projects"
+    #     / "codeql-baselines"
+    #     / args.project_name
+    #     / f"{args.cwe_id}.sarif"
+    # )
+
 
     if not sarif_path.exists():
         print(f"ERROR: SARIF file not found: {sarif_path}")

@@ -10,6 +10,7 @@ Children modules:
 
 """
 import logging
+import argparse
 # local imports
 from Pipeline import pipeline_main
 
@@ -19,10 +20,15 @@ logger = logging.getLogger(__name__)
 
 # ====== Execute AutoSec =====
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--project",
+        help="Project name to run, e.g. rhuss__jolokia_CVE-2018-1000129_1.4.0",
+    )
+    args = parser.parse_args()
+
     logger.info("Running AutoSec...")
-
-    pipeline_main()
-
+    pipeline_main(project_name=args.project)
     logger.info("AutoSec run complete.")
 
 

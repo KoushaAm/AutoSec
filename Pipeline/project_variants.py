@@ -74,6 +74,55 @@ class ProjectVariants(Enum):
     # sudo python Pipeline/convert_to_finder_output.py kubernetes-client__java_CVE-2020-8570_client-java-parent-9.0.1 cwe-022 KUBERNETES_CLIENT_CVE_2020_8570.json
     # chmod -R u+w Projects/Sources/spring-cloud__spring-cloud-gateway_CVE-2022-22947_3.0.6/
     # cd Agents/Exploiter/data/cwe-bench-java/workdir_no_branch/project-sources/
+    WILDFLY_2018 = {
+        "name" : "wildfly__wildfly_CVE-2018-1047_11.0.0.Final",
+        "cwe_id": "cwe-022"
+    }
+
+    APACHE_MYFACES = {
+        "name": "apache__myfaces_CVE-2011-4367_2.0.11",
+        "cwe_id": "cwe-022"
+    }
+
+    APACHE_SLING = {
+        "name": "apache__sling-org-apache-sling-servlets-resolver_CVE-2024-23673_2.10.0",
+        "cwe_id": "cwe-022"
+    }
+
+    XERIAL_SQLITE = {
+        "name": "xerial__sqlite-jdbc_CVE-2023-32697_3.41.2.1",
+        "cwe_id": "cwe-094"
+    }
+
+    ASF_CXF = {
+        "name": "asf__cxf_CVE-2016-6812_3.0.11",
+        "cwe_id": "cwe-079"
+    }
+
+    APACHE_MINA = {
+        "name": "apache__mina-sshd_CVE-2023-35887_2.9.2",
+        "cwe_id": "cwe-022"
+    }
+
+    ASF_TAPESTRY = {
+        "name": "asf__tapestry-5_CVE-2019-0207_5.4.4",
+        "cwe_id": "cwe-022"
+    }
+
+    APACHE_TIKA = {
+        "name": "apache__tika_CVE-2018-11762_1.18",
+        "cwe_id": "cwe-022"
+    }
+
+    ZERO_TURNAROUND = {
+        "name": "zeroturnaround__zt-zip_CVE-2018-1002201_1.12",
+        "cwe_id": "cwe-022"
+    }
+
+    DIFFPLUG_GOOMPH = {
+        "name": "diffplug__goomph_CVE-2022-26049_3.37.1",
+        "cwe_id": "cwe-022"
+    }
 
     @property
     def project_name(self) -> str:
