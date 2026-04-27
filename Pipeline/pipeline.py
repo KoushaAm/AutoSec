@@ -265,7 +265,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
         }
 
         return Command(goto=END, update=new_state)
-    
+
     # setup paths for exploiter
     exploiter_dir = os.path.join(os.getcwd(), "Agents", "Exploiter")
 
@@ -393,7 +393,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
     shutil.copy2(os.path.join(dockerfiles, project_name, "Dockerfile.vuln"), project_directory)
 
     # Execution
-    EXPLOITER_TIMEOUT = 2700
+    EXPLOITER_TIMEOUT = 1800
 
     run_cmd = [
         sys.executable,
@@ -480,7 +480,7 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
 
     if not state.get("finder_output"):
         raise ValueError("finder_output missing from state")
-    
+
     pov_logic = "no pov_logic provided"
     if state.get("exploiter") and state.get("exploiter").get("pov_logic"):
         pov_logic = state['exploiter']['pov_logic']
@@ -558,7 +558,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 # ====== Execute workflow =====
 def pipeline_main():
     load_dotenv()
-    SELECTED_PROJECT = ProjectVariants.SPRING_CLOUD_CVE_2022_22947
+    SELECTED_PROJECT = ProjectVariants.ASF_TAPESTRY_CVE_2019_0207
 
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
@@ -569,14 +569,15 @@ def pipeline_main():
         "finder_reanalyze": False,
         #! Manual inputs for development & experiments
         "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
-        # "exploiter": {
-        #     "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
-        # }
-        # "patcher": {
-        #     "success": True,
-        #     "artifact_path": load_dummy_patcher_output(AGENTS_DIR, SELECTED_PROJECT)
-        # }
+        "exploiter": {
+            "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
+        },
+        "patcher": {
+            "success": True,
+            "artifact_path": patcher_artifact_path
+        }
     }
+    # print(json.dumps(initial_state, indent=2))
 
     # Execute the graph
     workflow = _build_workflow()

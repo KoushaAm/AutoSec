@@ -69,6 +69,45 @@ class ProjectVariants(Enum):
         "dummy_exploiter_pov_logic": "..."
     }
 
+    DIFFPLUG_CVE_2022_26049 = {
+        "name": "diffplug__goomph_CVE-2022-26049_3.37.1",
+        "cwe_id": "cwe-022",
+        "dummy_finder_output": "Projects/Finder_Output/DIFFPLUG_CVE_2022_26049.json",
+        "dummy_exploiter_pov_logic": "..."
+    }
+    FF4J_CVE_2022_44262 = {
+        "name": "ff4j__ff4j_CVE-2022-44262_1.8.13",
+        "cwe_id": "cwe-094",
+        "dummy_finder_output": "Projects/Finder_Output/FF4J_CVE_2022_44262.json",
+        "dummy_exploiter_pov_logic": "..."
+    }
+    SQUARE_RETROFIT_CVE_2018_1000850 = {
+        "name": "square__retrofit_CVE-2018-1000850_2.4.0",
+        "cwe_id": "cwe-022",
+        "dummy_finder_output": "Projects/Finder_Output/SQUARE_RETROFIT_CVE_2018_1000850.json",
+        "dummy_exploiter_pov_logic": "..."
+    }
+
+    XERIAL_SQLITE_CVE_2023_32697 = {
+        "name" : "xerial__sqlite-jdbc_CVE-2023-32697_3.41.2.1",
+        "cwe_id" : "cwe-094",
+        "dummy_finder_output" : "Projects/Finder_Output/XERIAL_SQLITE_CVE-2023-32697_3.41.2.1.json"
+    }
+
+    ZERO_TURNAROUND__CVE_2018_1002201= {
+        "name": "zeroturnaround__zt-zip_CVE-2018-1002201_1.12",
+        "cwe_id" : "cwe-022",
+        "dummy_finder_output": "Projects/Finder_Output/ZERO_TURNAROUND__CVE-2018_1002201.json"
+    }
+
+    ASF_TAPESTRY_CVE_2019_0207 = {
+        "name": "asf__tapestry-5_CVE-2019-0207_5.4.4",
+        "cwe_id": "cwe-022",
+        "dummy_finder_output": "Projects/Finder_Output/ASF_TAPESTRY_CVE_2019_0207.json"
+    }
+
+
+
     # TODO: delete scripts below after experimentation complete
     # sudo python scripts/fetch_one.py <project name>
     # sudo python Pipeline/convert_to_finder_output.py kubernetes-client__java_CVE-2020-8570_client-java-parent-9.0.1 cwe-022 KUBERNETES_CLIENT_CVE_2020_8570.json
