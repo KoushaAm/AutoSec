@@ -1,4 +1,4 @@
-# AutoSec -- Automated Multi-Agent Code Remediation & Security Pipeline
+# AutoSec: Automated Multi-Agent Code Remediation & Security Pipeline
 Autosec is a multi-agent pipeline designed to detect, confirm, fix,
 and validate security vulnerabilities for Java projects. AutoSec is
 divided into 4 stages: *Finder*, *Exploiter*, *Patcher*, and *Verifier*, each
