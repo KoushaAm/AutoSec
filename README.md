@@ -101,28 +101,43 @@ python3 main.py <-h|--help>
 ```
 
 
-## Getting the .Zip file of the projects
-To get other IRIS/Faultine projects into the zipped directory:
+## Getting the Source/Zip file of the projects
+To get other IRIS/Faultine projects into the sources & zipped directory:
 
-- Navigate to the Agents/Finder directory
+0. Run the `prepare_project.sh` script to skip steps 1 through 4
+```bash
+chmod +x Pipeline/scripts/prepare_project.sh # first time: make it executable
+./Pipeline/scripts/prepare_project.sh <project_name>
+```
+1. Navigate to the Agents/Finder directory: 
 ```bash
 cd /workspaces/autosec/Agents/Finder
 ```
-- Run the the fetch_one.py script to download the project at the commit that contains the specific CVE vulnerability
+2. Run the the `fetch_one.py` script to download the project at the commit that contains the specific CVE vulnerability
 ```bash
 python scripts/fetch_one.py <name_of_project>
-# ex: python scripts/fetch_one.py jenkinsci__workflow-cps-plugin_CVE-2022-25173_2646.v6ed3b5b01ff1
+# example: 
+python scripts/fetch_one.py yamcs__yamcs_CVE-2023-45278_5.8.6
 ```
-- The project will now exist in /workspaces/autosec/Agents/Finder/data/project-sources. Navigate to that directory, zip it up, and move it to the  /workspaces/autosec/Projects/Zipped directory
+3. The project will now exist in `/workspaces/autosec/Agents/Finder/data/project-sources`. Navigate to that directory and move it to `Projects/Sources`
 ```bash
-cd /workspaces/autosec/Agents/Finder/data/project-sources/<project_name>
-# ex: cd /workspaces/autosec/Agents/Finder/data/project-sources/jenkinsci__workflow-cps-plugin_CVE-2022-25173_2646.v6ed3b5b01ff1/
+cd /workspaces/autosec/Agents/Finder/data/project-sources
+mv ./<name_of_project> /workspaces/autosec/Projects/Sources
 
-zip -r <name_of_project.zip> ./
-# ex: zip -r jenkinsci__workflow-cps-plugin_CVE-2022-25173_2646.v6ed3b5b01ff1.zip ./
+# example:
+cd /workspaces/autosec/Agents/Finder/data/project-sources
+mv ./yamcs__yamcs_CVE-2023-45278_5.8.6 /workspaces/autosec/Projects/Sources
+```
+4. Zip the project and move the Zipped file to `Projects/Zipped`
+```bash
+cd /workspaces/autosec/Projects/Sources/<project_name>
+zip -r <name_of_project>.zip ./
+mv ./<name_of_project>.zip /workspaces/autosec/Projects/Zipped
 
-mv ./<name_of_project> /workspaces/autosec/Projects/Zipped
-# ex: mv ./jenkinsci__workflow-cps-plugin_CVE-2022-25173_2646.v6ed3b5b01ff1.zip  /workspaces/autosec/Projects/Zipped
+# example:
+cd /workspaces/autosec/Projects/Sources/yamcs__yamcs_CVE-2023-45278_5.8.6
+zip -r yamcs__yamcs_CVE-2023-45278_5.8.6.zip ./
+mv ./yamcs__yamcs_CVE-2023-45278_5.8.6.zip /workspaces/autosec/Projects/Zipped
 ```
 
 

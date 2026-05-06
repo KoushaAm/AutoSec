@@ -66,6 +66,10 @@ def _build_workflow() -> Any:
     graph.add_edge("patcher", "verifier")
     graph.add_edge("verifier", END)
 
+    # # TODO: remove after finder experiments done
+    # graph.add_edge(START, "finder")
+    # graph.add_edge("finder", END)
+
     # conditional edges
     # exploiter -> finder OR exploiter -> patcher
     # verifier -> finder OR verifier -> end
@@ -508,8 +512,9 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 # ====== Execute workflow =====
 def pipeline_main():
     load_dotenv()
-    SELECTED_PROJECT = ProjectVariants.XUXUELI_XXL_JOB_CVE_2020_29204
-
+    # TODO: parameterize these via argparse/env vars
+    SELECTED_PROJECT = ProjectVariants.XWIKI_XWIKI_RENDERING_CVE_2023_37908
+    
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
         "project_name": SELECTED_PROJECT.project_name,
@@ -518,7 +523,8 @@ def pipeline_main():
         "finder_model": "gpt-5-mini",
         "finder_reanalyze": False,
         #! Manual inputs for development & experiments
-        "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
+        # TODO: parameterize these via argparse/env vars
+        # "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
         # "exploiter": {
         #     "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
         # },
