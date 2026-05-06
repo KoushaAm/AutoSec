@@ -512,7 +512,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 # ====== Execute workflow =====
 def pipeline_main():
     load_dotenv()
-    SELECTED_PROJECT = ProjectVariants.YAMCS_YAMCS_CVE_2023_45278
+    SELECTED_PROJECT = ProjectVariants.XWIKI_XWIKI_RENDERING_CVE_2023_37908
     
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {

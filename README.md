@@ -102,7 +102,13 @@ python3 main.py <-h|--help>
 
 
 ## Getting the Source/Zip file of the projects
-To get other IRIS/Faultine projects into the zipped directory:
+To get other IRIS/Faultine projects into the sources & zipped directory:
+
+0. Run the `prepare_project.sh` script to skip steps 1 through 4
+```bash
+chmod +x Pipeline/scripts/prepare_project.sh # first time: make it executable
+./Pipeline/scripts/prepare_project.sh <project_name>
+```
 1. Navigate to the Agents/Finder directory: 
 ```bash
 cd /workspaces/autosec/Agents/Finder
