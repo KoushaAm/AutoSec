@@ -3,8 +3,11 @@ import sys
 from pathlib import Path
 import argparse
 
-ROOT_DIR = Path(__file__).resolve().parent.parent
-sys.path.append(str(ROOT_DIR))
+from pathlib import Path
+import sys
+
+ROOT_DIR = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT_DIR))
 
 from Agents.Finder.src.output_converter import sarif_to_finder_output
 

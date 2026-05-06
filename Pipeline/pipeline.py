@@ -513,7 +513,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 def pipeline_main():
     load_dotenv()
     SELECTED_PROJECT = ProjectVariants.YAMCS_YAMCS_CVE_2023_45278
-
+    
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
         "project_name": SELECTED_PROJECT.project_name,
@@ -523,7 +523,7 @@ def pipeline_main():
         "finder_reanalyze": True,
         #! Manual inputs for development & experiments
         # TODO: allow for argument parsing to specify these manually instead of hardcoding
-        "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
+        # "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
         # "exploiter": {
         #     "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
         # },
