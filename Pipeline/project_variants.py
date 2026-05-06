@@ -68,7 +68,6 @@ class ProjectVariants(Enum):
         "dummy_finder_output": "Projects/Finder_Output/NAHSRA_CVE_2022_29577.json",
         "dummy_exploiter_pov_logic": "..."
     }
-
     DIFFPLUG_CVE_2022_26049 = {
         "name": "diffplug__goomph_CVE-2022-26049_3.37.1",
         "cwe_id": "cwe-022",
@@ -109,9 +108,9 @@ class ProjectVariants(Enum):
 
 
     # TODO: delete scripts below after experimentation complete
-    # sudo python scripts/fetch_one.py <project name>
-    # sudo python Pipeline/convert_to_finder_output.py kubernetes-client__java_CVE-2020-8570_client-java-parent-9.0.1 cwe-022 KUBERNETES_CLIENT_CVE_2020_8570.json
-    # chmod -R u+w Projects/Sources/spring-cloud__spring-cloud-gateway_CVE-2022-22947_3.0.6/
+    # sudo python scripts/fetch_one.py <project_name> 
+    # unzip <project_name>.zip -d ../Sources/<project_name>
+    # sudo python Pipeline/convert_to_finder_output.py <project_name> cwe-022 <PROJECT_NAME>-CVE-<CVE_ID>.json
     # cd Agents/Exploiter/data/cwe-bench-java/workdir_no_branch/project-sources/
 
     @property
