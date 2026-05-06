@@ -1,5 +1,5 @@
 import json
-from typing import TypedDict, List, Any, Dict
+from typing import TypedDict, List, Any, Dict, Optional
 from pathlib import Path
 from datetime import datetime, timezone
 
@@ -21,7 +21,64 @@ class FinderOutput(TypedDict):
     cwe_id: str
     vulnerabilities: List[VulnerabilityInstance]
 
+#* =============== Exploiter Utilities =============== *#
+def has_actionable_vulnerabilities(finder_output: Optional[Dict[str, Any]]) -> bool:
+    """
+    Returns True if finder_output contains at least one vulnerability
+    with non-empty traces. Otherwise returns False.
 
+    Handles:
+    - finder_output is None
+    - vulnerabilities missing
+    - empty vulnerabilities list
+    - vulnerabilities with empty or invalid traces
+    """
+    if not finder_output:
+        return False
+
+    vulnerabilities = finder_output.get("vulnerabilities")
+    if not isinstance(vulnerabilities, list) or len(vulnerabilities) == 0:
+        return False
+
+    return any(
+        isinstance(vuln, dict)
+        and isinstance(vuln.get("traces"), list)
+        and len(vuln["traces"]) > 0
+        for vuln in vulnerabilities
+    )
+
+
+def parse_exploiter_report(report_data) -> tuple[bool, list[str], str]:
+    """Return (exploitable, pov_test_paths, pov_logic) from a loaded report.json."""
+    if isinstance(report_data, dict):
+        entries = [report_data]
+    elif isinstance(report_data, list):
+        entries = report_data
+    else:
+        raise TypeError(f"Unexpected report.json top-level type: {type(report_data)}")
+
+    exploitable = any(isinstance(e, dict) and e.get("exploitable") for e in entries)
+
+    pov_test_paths: list[str] = []
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+        paths = entry.get("pov_test_path", [])
+        if isinstance(paths, str):
+            paths = [paths]
+        pov_test_paths.extend(p for p in paths if isinstance(p, str))
+
+    pov_logic = ""
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+        logic = entry.get("pov_logic", "")
+        if isinstance(logic, str):
+            pov_logic = logic
+
+    return exploitable, pov_test_paths, pov_logic
+
+#* =============== Dummy Data Loaders & Validators =============== *#
 # Loader + Validator
 def load_dummy_finder_output(json_path: str) -> FinderOutput:
     """
@@ -39,6 +96,7 @@ def load_dummy_finder_output(json_path: str) -> FinderOutput:
 
     return data  # type: ignore
 
+
 def load_dummy_patcher_output(AGENTS_DIR: Path, SELECTED_PROJECT: ProjectVariants) -> str:
     patcher_output_base = AGENTS_DIR / "Patcher" / "output"
     patcher_dirs = sorted(patcher_output_base.glob(f"patcher_{SELECTED_PROJECT.project_name}_datetime_*"))
@@ -47,6 +105,7 @@ def load_dummy_patcher_output(AGENTS_DIR: Path, SELECTED_PROJECT: ProjectVariant
     patcher_artifact_path = str(patcher_dirs[-1])  # latest run
     print(f"Using patcher output: {patcher_artifact_path}")
     return patcher_artifact_path
+
 
 # Internal Validation
 def _validate_finder_output(data: Dict[str, Any]) -> None:
