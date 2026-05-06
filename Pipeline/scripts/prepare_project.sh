@@ -15,6 +15,7 @@ fi
 
 PROJECT_NAME="$1"
 
+# All paths are relative to devcontainer root
 ROOT_DIR="/workspaces/autosec"
 FINDER_DIR="$ROOT_DIR/Agents/Finder"
 FINDER_PROJECT_SOURCES="$FINDER_DIR/data/project-sources"
@@ -30,16 +31,16 @@ echo "=============== Move Project to Sources ==============="
 mkdir -p "$PROJECTS_SOURCES"
 
 if [ ! -d "$FINDER_PROJECT_SOURCES/$PROJECT_NAME" ]; then
-  echo "Error: fetched project not found at:"
-  echo "$FINDER_PROJECT_SOURCES/$PROJECT_NAME"
-  exit 1
+    echo "Error: fetched project not found at:"
+    echo "$FINDER_PROJECT_SOURCES/$PROJECT_NAME"
+    exit 1
 fi
 
 if [ -d "$PROJECTS_SOURCES/$PROJECT_NAME" ]; then
-  echo "Error: project already exists in:"
-  echo "$PROJECTS_SOURCES/$PROJECT_NAME"
-  echo "Remove it first if you want to replace it."
-  exit 1
+    echo "Error: project already exists in:"
+    echo "$PROJECTS_SOURCES/$PROJECT_NAME"
+    echo "Remove it first if you want to replace it."
+    exit 1
 fi
 
 mv "$FINDER_PROJECT_SOURCES/$PROJECT_NAME" "$PROJECTS_SOURCES"
@@ -51,6 +52,13 @@ mkdir -p "$PROJECTS_ZIPPED"
 cd "$PROJECTS_SOURCES/$PROJECT_NAME"
 
 ZIP_NAME="$PROJECT_NAME.zip"
+
+if [ -e "$PROJECTS_ZIPPED/$ZIP_NAME" ]; then
+    echo "Error: project zip already exists in:"
+    echo "$PROJECTS_ZIPPED/$ZIP_NAME"
+    echo "Remove it first if you want to replace it."
+    exit 1
+fi
 
 zip -r "$ZIP_NAME" ./
 

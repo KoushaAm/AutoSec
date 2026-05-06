@@ -60,15 +60,15 @@ def _build_workflow() -> Any:
     graph.add_node("verifier", _verifier_node)
 
     # static linear edges
-    # graph.add_edge(START, "finder")
-    # graph.add_edge("finder", "exploiter")
-    # # `exploiter -> patcher` edge not needed since exploiter routes dynamically
-    # graph.add_edge("patcher", "verifier")
-    # graph.add_edge("verifier", END)
-
-    # TODO: remove after finder experiments done
     graph.add_edge(START, "finder")
-    graph.add_edge("finder", END)
+    graph.add_edge("finder", "exploiter")
+    # `exploiter -> patcher` edge not needed since exploiter routes dynamically
+    graph.add_edge("patcher", "verifier")
+    graph.add_edge("verifier", END)
+
+    # # TODO: remove after finder experiments done
+    # graph.add_edge(START, "finder")
+    # graph.add_edge("finder", END)
 
     # conditional edges
     # exploiter -> finder OR exploiter -> patcher
@@ -512,6 +512,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 # ====== Execute workflow =====
 def pipeline_main():
     load_dotenv()
+    # TODO: parameterize these via argparse/env vars
     SELECTED_PROJECT = ProjectVariants.XWIKI_XWIKI_RENDERING_CVE_2023_37908
     
     # INITIAL INPUT STATE
@@ -520,9 +521,9 @@ def pipeline_main():
         "vuln_id": SELECTED_PROJECT.cwe_id,
         "language": "java",
         "finder_model": "gpt-5-mini",
-        "finder_reanalyze": True,
+        "finder_reanalyze": False,
         #! Manual inputs for development & experiments
-        # TODO: allow for argument parsing to specify these manually instead of hardcoding
+        # TODO: parameterize these via argparse/env vars
         # "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
         # "exploiter": {
         #     "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic

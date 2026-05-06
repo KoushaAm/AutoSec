@@ -131,12 +131,12 @@ mv ./yamcs__yamcs_CVE-2023-45278_5.8.6 /workspaces/autosec/Projects/Sources
 4. Zip the project and move the Zipped file to `Projects/Zipped`
 ```bash
 cd /workspaces/autosec/Projects/Sources/<project_name>
-zip -r <name_of_project.zip> ./
+zip -r <name_of_project>.zip ./
 mv ./<name_of_project>.zip /workspaces/autosec/Projects/Zipped
 
 # example:
 cd /workspaces/autosec/Projects/Sources/yamcs__yamcs_CVE-2023-45278_5.8.6
-sudo zip -r yamcs__yamcs_CVE-2023-45278_5.8.6.zip ./
+zip -r yamcs__yamcs_CVE-2023-45278_5.8.6.zip ./
 mv ./yamcs__yamcs_CVE-2023-45278_5.8.6.zip /workspaces/autosec/Projects/Zipped
 ```
 
