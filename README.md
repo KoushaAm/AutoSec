@@ -125,16 +125,33 @@ mv ./<name_of_project> /workspaces/autosec/Projects/Zipped
 # ex: mv ./jenkinsci__workflow-cps-plugin_CVE-2022-25173_2646.v6ed3b5b01ff1.zip  /workspaces/autosec/Projects/Zipped
 ```
 
+
+## Injecting Project Variants CSV
+To streamline the process of loading our dataset we utilize the `generate_project_variants.py` script located in the `Pipeline/scripts` directory. Note that this script **overwrites** the existing `project_variants.py`!
+1. Ensure the `AutoSec_120_Project_Variants.csv` file exists within the `Projects/` directory
+2. Run the following command from the project root:
+```bash
+python Pipeline/scripts/generate_project_variants.py Projects/AutoSec_120_Project_Variants.csv
+
+# You can also load other projects assuming the CSV follows the EXACT format of `AutoSec_120_Project_Variants.csv`
+python Pipeline/scripts/generate_project_variants.py <formatted_csv>.csv
+```
+3. Check if `Pipeline/project_variants.py` has been populated with the given 120 projects listed in the Project Variants CSV
+    - By default the results are saved to `Pipeline/project_variants.py`, however if desired this can be changed using the following
+```bash
+python Pipeline/scripts/generate_project_variants.py AutoSec_120_Project_Variants.csv --output path/to/project_variants.py
+```
+
 ## Convert Finder SARIF output to JSON
 1. Run analysis on the desired project, the `Finder` agent will have generated a `.sarif` file of results
 2. After finder analysis run the following command from the project root:
 ```bash
-python Pipeline/convert_to_finder_output.py <project_name> <cwe_id> <json_name>.json
+python Pipeline/scripts/convert_to_finder_output.py <project_name> <cwe_id> <json_name>.json
 
 # example: 
-# python Pipeline/convert_to_finder_output.py perwendel__spark_CVE-2018-9159_2.7.1 cwe-022 finder_output_perwendel.json
+# python Pipeline/scripts/convert_to_finder_output.py perwendel__spark_CVE-2018-9159_2.7.1 cwe-022 finder_output_perwendel.json
 ```
-3. This will create a `json` file in `/Projects/Finder_Output_JSON`
+3. This will create a `json` file in `Projects/Finder_Output`
 
 ## Project Structure
 - Only files relevant to the primary AutoSec Pipeline have been listed

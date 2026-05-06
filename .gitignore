@@ -20,9 +20,9 @@ cmd-line-exploit.txt
 Agents/Exploiter/logs/*
 
 # Projects
-Projects/*
+Projects/Sources/*
+Projects/Zipped/*
 Experiments/
 Database/
 
 # Files to include
-!Projects/Finder_Output
