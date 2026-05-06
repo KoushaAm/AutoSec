@@ -60,15 +60,11 @@ def _build_workflow() -> Any:
     graph.add_node("verifier", _verifier_node)
 
     # static linear edges
-    # graph.add_edge(START, "finder")
-    # graph.add_edge("finder", "exploiter")
-    # # `exploiter -> patcher` edge not needed since exploiter routes dynamically
-    # graph.add_edge("patcher", "verifier")
-    # graph.add_edge("verifier", END)
-
-    # TODO: remove after finder experiments done
     graph.add_edge(START, "finder")
-    graph.add_edge("finder", END)
+    graph.add_edge("finder", "exploiter")
+    # `exploiter -> patcher` edge not needed since exploiter routes dynamically
+    graph.add_edge("patcher", "verifier")
+    graph.add_edge("verifier", END)
 
     # conditional edges
     # exploiter -> finder OR exploiter -> patcher
@@ -512,7 +508,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 # ====== Execute workflow =====
 def pipeline_main():
     load_dotenv()
-    SELECTED_PROJECT = ProjectVariants.CODEHAUS_CVE_2017_1000487
+    SELECTED_PROJECT = ProjectVariants.XUXUELI_XXL_JOB_CVE_2020_29204
 
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {

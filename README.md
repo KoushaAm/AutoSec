@@ -151,7 +151,7 @@ python Pipeline/scripts/convert_to_finder_output.py <project_name> <cwe_id> <jso
 # example: 
 # python Pipeline/scripts/convert_to_finder_output.py perwendel__spark_CVE-2018-9159_2.7.1 cwe-022 finder_output_perwendel.json
 ```
-3. This will create a `json` file in `/Projects/Finder_Output_JSON`
+3. This will create a `json` file in `Projects/Finder_Output`
 
 ## Project Structure
 - Only files relevant to the primary AutoSec Pipeline have been listed
