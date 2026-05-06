@@ -109,9 +109,13 @@ class ProjectVariants(Enum):
 
     # TODO: delete scripts below after experimentation complete
     # sudo python scripts/fetch_one.py <project_name> 
+    # sudo python scripts/fetch_one.py <project_name> zeroturnaround__zt-zip_CVE-2018-1002201_1.12
+
     # unzip <project_name>.zip -d ../Sources/<project_name>
+    # unzip zeroturnaround__zt-zip_CVE-2018-1002201_1.12.zip -d ../Sources/zeroturnaround__zt-zip_CVE-2018-1002201_1.12
+
     # sudo python Pipeline/convert_to_finder_output.py <project_name> cwe-022 <PROJECT_NAME>-CVE-<CVE_ID>.json
-    # cd Agents/Exploiter/data/cwe-bench-java/workdir_no_branch/project-sources/
+    # sudo python Pipeline/convert_to_finder_output.py zeroturnaround__zt-zip_CVE-2018-1002201_1.12 cwe-022 CODEHAUS_CVE_2018_1002200.json
 
     @property
     def project_name(self) -> str:
