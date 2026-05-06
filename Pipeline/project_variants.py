@@ -68,6 +68,7 @@ class ProjectVariants(Enum):
         "dummy_finder_output": "Projects/Finder_Output/NAHSRA_CVE_2022_29577.json",
         "dummy_exploiter_pov_logic": "..."
     }
+
     DIFFPLUG_CVE_2022_26049 = {
         "name": "diffplug__goomph_CVE-2022-26049_3.37.1",
         "cwe_id": "cwe-022",
@@ -108,14 +109,10 @@ class ProjectVariants(Enum):
 
 
     # TODO: delete scripts below after experimentation complete
-    # sudo python scripts/fetch_one.py <project_name> 
-    # sudo python scripts/fetch_one.py <project_name> zeroturnaround__zt-zip_CVE-2018-1002201_1.12
-
-    # unzip <project_name>.zip -d ../Sources/<project_name>
-    # unzip zeroturnaround__zt-zip_CVE-2018-1002201_1.12.zip -d ../Sources/zeroturnaround__zt-zip_CVE-2018-1002201_1.12
-
-    # sudo python Pipeline/convert_to_finder_output.py <project_name> cwe-022 <PROJECT_NAME>-CVE-<CVE_ID>.json
-    # sudo python Pipeline/convert_to_finder_output.py zeroturnaround__zt-zip_CVE-2018-1002201_1.12 cwe-022 CODEHAUS_CVE_2018_1002200.json
+    # sudo python scripts/fetch_one.py <project name>
+    # sudo python Pipeline/convert_to_finder_output.py kubernetes-client__java_CVE-2020-8570_client-java-parent-9.0.1 cwe-022 KUBERNETES_CLIENT_CVE_2020_8570.json
+    # chmod -R u+w Projects/Sources/spring-cloud__spring-cloud-gateway_CVE-2022-22947_3.0.6/
+    # cd Agents/Exploiter/data/cwe-bench-java/workdir_no_branch/project-sources/
 
     @property
     def project_name(self) -> str:

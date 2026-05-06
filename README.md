@@ -1,32 +1,4 @@
-# AutoSec: Automated Multi-Agent Code Remediation & Security Pipeline
-Autosec is a multi-agent pipeline designed to detect, confirm, fix,
-and validate security vulnerabilities for Java projects. AutoSec is
-divided into 4 stages: *Finder*, *Exploiter*, *Patcher*, and *Verifier*, each
-implemented through an LLM agent. The several stages aim to
-combine and automate the several stages of vulnerability detection
-and patching to one end-to-end pipeline.
-
-Given a target project, the Finder agent first scans the code to
-identify potential vulnerabilities and extracts the relevant code paths
-and context. These candidate vulnerabilities are then passed to the
-Exploiter agent, which attempts to validate them by generating
-proof of vulnerability test cases and filtering out false positives.
-Once a vulnerability is confirmed, the Patcher agent uses the infor-
-mation produced by the Finder and Exploiter to generate a targeted
-patch for the affected code. Finally, the Verifier agent evaluates the
-patched program by rebuilding the project and running validation
-tests to ensure that the vulnerability has been addressed without
-introducing new issues.
-
-To evaluate the AutosSec pipeline as a whole, these key metrics
-were used per project: how many vulnerabilities identified and
-patched were actual vulnerabilities (precision), how many of the
-total vulnerabilities were identified and patched (recall), and the f1
-score (balance of precision and recall).
-By separating the process into specialized agents, AutoSec enables
-a clear and structured end-to-end workflow where each stage can
-be evaluated independently while contributing to an automated
-security remediation pipeline.
+# AutoSec
 
 ## Getting Started
 - All development should be done inside the provided dev container
