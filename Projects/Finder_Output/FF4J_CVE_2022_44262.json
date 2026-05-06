@@ -1,0 +1,3754 @@
+{
+    "cwe_id": "cwe-094",
+    "vulnerabilities": [
+        {
+            "traces": [
+                [
+                    {
+                        "message": "mi : MethodInvocation",
+                        "uri": "ff4j-aop/src/main/java/org/ff4j/aop/FeatureAdvisor.java",
+                        "line": 60
+                    },
+                    {
+                        "message": "mi",
+                        "uri": "ff4j-aop/src/main/java/org/ff4j/aop/FeatureAdvisor.java",
+                        "line": 77
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getProperties(...) : Properties",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 142
+                    },
+                    {
+                        "message": "props : Properties",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 161
+                    },
+                    {
+                        "message": "props : Properties",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "props : Properties",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "getProperty(...) : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "mapProperties [post update] : HashMap [<map.value>] : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "mapProperties : HashMap [<map.value>] : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 167
+                    },
+                    {
+                        "message": "mapProperties : HashMap [<map.value>] : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 173
+                    },
+                    {
+                        "message": "mapProperties : HashMap [<map.value>] : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 185
+                    },
+                    {
+                        "message": "mapConfigProperties : HashMap [<map.value>] : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 213
+                    },
+                    {
+                        "message": "mapConfigProperties : HashMap [<map.value>] : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 226
+                    },
+                    {
+                        "message": "get(...) : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 226
+                    },
+                    {
+                        "message": "optionalType : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 230
+                    },
+                    {
+                        "message": "pType : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/MappingUtil.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "pType : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/MappingUtil.java",
+                        "line": 95
+                    },
+                    {
+                        "message": "pType : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/MappingUtil.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "mapPropertyType(...) : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 230
+                    },
+                    {
+                        "message": "optionalType",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 233
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getProperties(...) : Properties",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 142
+                    },
+                    {
+                        "message": "props : Properties",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 161
+                    },
+                    {
+                        "message": "props : Properties",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "props : Properties",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "getProperty(...) : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "mapProperties [post update] : HashMap [<map.value>] : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "mapProperties : HashMap [<map.value>] : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 167
+                    },
+                    {
+                        "message": "mapProperties : HashMap [<map.value>] : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 173
+                    },
+                    {
+                        "message": "mapProperties : HashMap [<map.value>] : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 185
+                    },
+                    {
+                        "message": "mapConfigProperties : HashMap [<map.value>] : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 213
+                    },
+                    {
+                        "message": "mapConfigProperties : HashMap [<map.value>] : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "get(...) : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "name",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 234
+                    }
+                ],
+                [
+                    {
+                        "message": "getProperties(...) : Properties",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 142
+                    },
+                    {
+                        "message": "props : Properties",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 161
+                    },
+                    {
+                        "message": "props : Properties",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "props : Properties",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "getProperty(...) : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "mapProperties [post update] : HashMap [<map.value>] : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "mapProperties : HashMap [<map.value>] : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 167
+                    },
+                    {
+                        "message": "mapProperties : HashMap [<map.value>] : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 173
+                    },
+                    {
+                        "message": "mapProperties : HashMap [<map.value>] : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 187
+                    },
+                    {
+                        "message": "mapConf : HashMap [<map.value>] : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 276
+                    },
+                    {
+                        "message": "mapConf : HashMap [<map.value>] : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 305
+                    },
+                    {
+                        "message": "mapConfigProperties : HashMap [<map.value>] : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 213
+                    },
+                    {
+                        "message": "mapConfigProperties : HashMap [<map.value>] : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "get(...) : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "name",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 234
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getProperties(...) : Properties",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 142
+                    },
+                    {
+                        "message": "props : Properties",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 161
+                    },
+                    {
+                        "message": "props : Properties",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "props : Properties",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "getProperty(...) : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "mapProperties [post update] : HashMap [<map.value>] : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "mapProperties : HashMap [<map.value>] : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 167
+                    },
+                    {
+                        "message": "mapProperties : HashMap [<map.value>] : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 173
+                    },
+                    {
+                        "message": "mapProperties : HashMap [<map.value>] : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 187
+                    },
+                    {
+                        "message": "mapConf : HashMap [<map.value>] : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 276
+                    },
+                    {
+                        "message": "mapConf : HashMap [<map.value>] : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 307
+                    },
+                    {
+                        "message": "get(...) : String",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 307
+                    },
+                    {
+                        "message": "flipStrategyClass",
+                        "uri": "ff4j-config-properties/src/main/java/org/ff4j/parser/properties/PropertiesParser.java",
+                        "line": 311
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "inputStream : InputStream",
+                        "uri": "ff4j-config-yaml/src/main/java/org/ff4j/parser/yaml/YamlParser.java",
+                        "line": 121
+                    },
+                    {
+                        "message": "inputStream",
+                        "uri": "ff4j-config-yaml/src/main/java/org/ff4j/parser/yaml/YamlParser.java",
+                        "line": 124
+                    }
+                ],
+                [
+                    {
+                        "message": "getResourceAsStream(...) : InputStream",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/FF4j.java",
+                        "line": 185
+                    },
+                    {
+                        "message": "xmlFileResourceAsStream : InputStream",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/FF4j.java",
+                        "line": 190
+                    },
+                    {
+                        "message": "xmlFileResourceAsStream : InputStream",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/FF4j.java",
+                        "line": 197
+                    },
+                    {
+                        "message": "inputStream : InputStream",
+                        "uri": "ff4j-config-yaml/src/main/java/org/ff4j/parser/yaml/YamlParser.java",
+                        "line": 121
+                    },
+                    {
+                        "message": "inputStream",
+                        "uri": "ff4j-config-yaml/src/main/java/org/ff4j/parser/yaml/YamlParser.java",
+                        "line": 124
+                    }
+                ],
+                [
+                    {
+                        "message": "getInputStream(...) : InputStream",
+                        "uri": "ff4j-web/src/main/java/org/ff4j/web/controller/HomeController.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "inputStream : InputStream",
+                        "uri": "ff4j-config-yaml/src/main/java/org/ff4j/parser/yaml/YamlParser.java",
+                        "line": 121
+                    },
+                    {
+                        "message": "inputStream",
+                        "uri": "ff4j-config-yaml/src/main/java/org/ff4j/parser/yaml/YamlParser.java",
+                        "line": 124
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getNodeValue(...) : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/conf/XmlParser.java",
+                        "line": 380
+                    },
+                    {
+                        "message": "optionalType : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/conf/XmlParser.java",
+                        "line": 383
+                    },
+                    {
+                        "message": "pType : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/MappingUtil.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "pType : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/MappingUtil.java",
+                        "line": 95
+                    },
+                    {
+                        "message": "pType : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/MappingUtil.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "mapPropertyType(...) : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/conf/XmlParser.java",
+                        "line": 383
+                    },
+                    {
+                        "message": "optionalType",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/conf/XmlParser.java",
+                        "line": 387
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getNodeValue(...) : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/conf/XmlParser.java",
+                        "line": 442
+                    },
+                    {
+                        "message": "clazzName",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/conf/XmlParser.java",
+                        "line": 443
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "v : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/PropertyClass.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "v",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/PropertyClass.java",
+                        "line": 77
+                    }
+                ],
+                [
+                    {
+                        "message": "value : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyJsonBean.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "value : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyJsonBean.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "fixedValues [post update] : Set [<element>] : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyJsonBean.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "this <.field> [post update] : PropertyJsonBean [fixedValues, <element>] : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyJsonBean.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "pf [post update] : PropertyJsonBean [fixedValues, <element>] : String",
+                        "uri": "ff4j-store-mongodb/src/main/java/org/ff4j/mongo/mapper/MongoPropertyMapper.java",
+                        "line": 71
+                    },
+                    {
+                        "message": "pf : PropertyJsonBean [fixedValues, <element>] : String",
+                        "uri": "ff4j-store-mongodb/src/main/java/org/ff4j/mongo/mapper/MongoPropertyMapper.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "parameter this : PropertyJsonBean [fixedValues, <element>] : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyJsonBean.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "this : PropertyJsonBean [fixedValues, <element>] : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyJsonBean.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "pgb : PropertyJsonBean [fixedValues, <element>] : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 139
+                    },
+                    {
+                        "message": "pgb : PropertyJsonBean [fixedValues, <element>] : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 144
+                    },
+                    {
+                        "message": "parameter this : PropertyJsonBean [fixedValues, <element>] : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/BasePropertyBean.java",
+                        "line": 127
+                    },
+                    {
+                        "message": "this <.field> : PropertyJsonBean [fixedValues, <element>] : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/BasePropertyBean.java",
+                        "line": 128
+                    },
+                    {
+                        "message": "fixedValues : Set [<element>] : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/BasePropertyBean.java",
+                        "line": 128
+                    },
+                    {
+                        "message": "getFixedValues(...) : Set [<element>] : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 144
+                    },
+                    {
+                        "message": "fixedValues : Set [<element>] : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "fixedValues : Set [<element>] : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 168
+                    },
+                    {
+                        "message": "v : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "trim(...) : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "v : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/Property.java",
+                        "line": 126
+                    },
+                    {
+                        "message": "v : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/Property.java",
+                        "line": 127
+                    },
+                    {
+                        "message": "v : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/PropertyClass.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "v",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/PropertyClass.java",
+                        "line": 77
+                    }
+                ],
+                [
+                    {
+                        "message": "json : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "ll : LinkedHashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 227
+                    },
+                    {
+                        "message": "fMap : LinkedHashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "fMap : LinkedHashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 97
+                    },
+                    {
+                        "message": "get(...) : Object",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 97
+                    },
+                    {
+                        "message": "(...)... : Map",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 97
+                    },
+                    {
+                        "message": "propertyMap : Map",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "customPTag : Map",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 113
+                    },
+                    {
+                        "message": "customPTag : Map",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "values(...) : Collection [<element>] : Object",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "property : Object",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "(...)... : HashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "propertyJson : HashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 124
+                    },
+                    {
+                        "message": "get(...) : Object",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 124
+                    },
+                    {
+                        "message": "(...)... : List",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 124
+                    },
+                    {
+                        "message": "listOfFixedValue : List",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 125
+                    },
+                    {
+                        "message": "listOfFixedValue : List",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "v : Object",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 136
+                    },
+                    {
+                        "message": "valueOf(...) : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 136
+                    },
+                    {
+                        "message": "v : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/Property.java",
+                        "line": 126
+                    },
+                    {
+                        "message": "v : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/Property.java",
+                        "line": 127
+                    },
+                    {
+                        "message": "v : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/PropertyClass.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "v",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/PropertyClass.java",
+                        "line": 77
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "query : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/JdbcUtils.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "query : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/JdbcUtils.java",
+                        "line": 124
+                    },
+                    {
+                        "message": "prepareStatement(...) : PreparedStatement",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/JdbcUtils.java",
+                        "line": 124
+                    },
+                    {
+                        "message": "ps : PreparedStatement",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/JdbcUtils.java",
+                        "line": 130
+                    },
+                    {
+                        "message": "buildStatement(...) : PreparedStatement",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/store/JdbcPropertyStore.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "ps",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/store/JdbcPropertyStore.java",
+                        "line": 108
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "query : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/JdbcUtils.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "query : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/JdbcUtils.java",
+                        "line": 124
+                    },
+                    {
+                        "message": "prepareStatement(...) : PreparedStatement",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/JdbcUtils.java",
+                        "line": 124
+                    },
+                    {
+                        "message": "ps : PreparedStatement",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/JdbcUtils.java",
+                        "line": 130
+                    },
+                    {
+                        "message": "buildStatement(...) : PreparedStatement",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/store/JdbcPropertyStore.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "ps",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/store/JdbcPropertyStore.java",
+                        "line": 161
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "query : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/JdbcUtils.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "query : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/JdbcUtils.java",
+                        "line": 124
+                    },
+                    {
+                        "message": "prepareStatement(...) : PreparedStatement",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/JdbcUtils.java",
+                        "line": 124
+                    },
+                    {
+                        "message": "ps : PreparedStatement",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/JdbcUtils.java",
+                        "line": 130
+                    },
+                    {
+                        "message": "buildStatement(...) : PreparedStatement",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/store/JdbcPropertyStore.java",
+                        "line": 215
+                    },
+                    {
+                        "message": "ps",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/store/JdbcPropertyStore.java",
+                        "line": 216
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "query : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/JdbcUtils.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "query : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/JdbcUtils.java",
+                        "line": 124
+                    },
+                    {
+                        "message": "prepareStatement(...) : PreparedStatement",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/JdbcUtils.java",
+                        "line": 124
+                    },
+                    {
+                        "message": "ps : PreparedStatement",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/JdbcUtils.java",
+                        "line": 130
+                    },
+                    {
+                        "message": "buildStatement(...) : PreparedStatement",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/store/JdbcPropertyStore.java",
+                        "line": 234
+                    },
+                    {
+                        "message": "ps",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/store/JdbcPropertyStore.java",
+                        "line": 235
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "type : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/BasePropertyBean.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "type : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/BasePropertyBean.java",
+                        "line": 99
+                    },
+                    {
+                        "message": "this [post update] : BasePropertyBean [type] : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/BasePropertyBean.java",
+                        "line": 99
+                    },
+                    {
+                        "message": "pf [post update] : PropertyJsonBean [type] : String",
+                        "uri": "ff4j-store-mongodb/src/main/java/org/ff4j/mongo/mapper/MongoPropertyMapper.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "pf : PropertyJsonBean [type] : String",
+                        "uri": "ff4j-store-mongodb/src/main/java/org/ff4j/mongo/mapper/MongoPropertyMapper.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "parameter this : PropertyJsonBean [type] : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyJsonBean.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "this : PropertyJsonBean [type] : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyJsonBean.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "pgb : PropertyJsonBean [type] : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 139
+                    },
+                    {
+                        "message": "pgb : PropertyJsonBean [type] : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 142
+                    },
+                    {
+                        "message": "parameter this : PropertyJsonBean [type] : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/BasePropertyBean.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "this <.field> : PropertyJsonBean [type] : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/BasePropertyBean.java",
+                        "line": 90
+                    },
+                    {
+                        "message": "type : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/BasePropertyBean.java",
+                        "line": 90
+                    },
+                    {
+                        "message": "getType(...) : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 142
+                    },
+                    {
+                        "message": "pType : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "pType",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 163
+                    }
+                ],
+                [
+                    {
+                        "message": "json : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "ll : LinkedHashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 227
+                    },
+                    {
+                        "message": "fMap : LinkedHashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "fMap : LinkedHashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 97
+                    },
+                    {
+                        "message": "get(...) : Object",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 97
+                    },
+                    {
+                        "message": "(...)... : Map",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 97
+                    },
+                    {
+                        "message": "propertyMap : Map",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "customPTag : Map",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 113
+                    },
+                    {
+                        "message": "customPTag : Map",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "values(...) : Collection [<element>] : Object",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "property : Object",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "(...)... : HashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "propertyJson : HashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 121
+                    },
+                    {
+                        "message": "get(...) : Object",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 121
+                    },
+                    {
+                        "message": "(...)... : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 121
+                    },
+                    {
+                        "message": "propertyType : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "pType : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 128
+                    },
+                    {
+                        "message": "pType : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 129
+                    },
+                    {
+                        "message": "pType : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "pType",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 163
+                    }
+                ],
+                [
+                    {
+                        "message": "json : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "readValue(...) : HashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "fMap : HashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "fMap : HashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 97
+                    },
+                    {
+                        "message": "get(...) : Object",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 97
+                    },
+                    {
+                        "message": "(...)... : Map",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 97
+                    },
+                    {
+                        "message": "propertyMap : Map",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "customPTag : Map",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 113
+                    },
+                    {
+                        "message": "customPTag : Map",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "values(...) : Collection [<element>] : Object",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "property : Object",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "(...)... : HashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "propertyJson : HashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 121
+                    },
+                    {
+                        "message": "get(...) : Object",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 121
+                    },
+                    {
+                        "message": "(...)... : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 121
+                    },
+                    {
+                        "message": "propertyType : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "pType : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 128
+                    },
+                    {
+                        "message": "pType : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 129
+                    },
+                    {
+                        "message": "pType : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "pType",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 163
+                    }
+                ],
+                [
+                    {
+                        "message": "json : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/PropertyJsonParser.java",
+                        "line": 58
+                    },
+                    {
+                        "message": "propertyJson : HashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/PropertyJsonParser.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "get(...) : Object",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/PropertyJsonParser.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "valueOf(...) : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/PropertyJsonParser.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "propertyType : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/PropertyJsonParser.java",
+                        "line": 71
+                    },
+                    {
+                        "message": "pType : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 128
+                    },
+                    {
+                        "message": "pType : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 129
+                    },
+                    {
+                        "message": "pType : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "pType",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 163
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "properties : Collection",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/FF4j.java",
+                        "line": 580
+                    },
+                    {
+                        "message": "property : Property",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/FF4j.java",
+                        "line": 583
+                    },
+                    {
+                        "message": "value : Property",
+                        "uri": "ff4j-store-commonsconfig/src/main/java/org/ff4j/commonsconf/PropertyStoreCommonsConfig.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "value : Property",
+                        "uri": "ff4j-store-commonsconfig/src/main/java/org/ff4j/commonsconf/PropertyStoreCommonsConfig.java",
+                        "line": 113
+                    },
+                    {
+                        "message": "parameter this : Property",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/Property.java",
+                        "line": 245
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/Property.java",
+                        "line": 246
+                    },
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "ff4j-store-commonsconfig/src/main/java/org/ff4j/commonsconf/PropertyStoreCommonsConfig.java",
+                        "line": 113
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "ff4j-store-commonsconfig/src/main/java/org/ff4j/commonsconf/FF4jConfiguration.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "ff4j-store-commonsconfig/src/main/java/org/ff4j/commonsconf/FF4jConfiguration.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "pName : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "pName : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 90
+                    },
+                    {
+                        "message": "pName : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "pName",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 164
+                    }
+                ],
+                [
+                    {
+                        "message": "prop : Property",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/FF4j.java",
+                        "line": 402
+                    },
+                    {
+                        "message": "prop : Property",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/FF4j.java",
+                        "line": 403
+                    },
+                    {
+                        "message": "value : Property",
+                        "uri": "ff4j-store-commonsconfig/src/main/java/org/ff4j/commonsconf/PropertyStoreCommonsConfig.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "value : Property",
+                        "uri": "ff4j-store-commonsconfig/src/main/java/org/ff4j/commonsconf/PropertyStoreCommonsConfig.java",
+                        "line": 113
+                    },
+                    {
+                        "message": "parameter this : Property",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/Property.java",
+                        "line": 245
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/Property.java",
+                        "line": 246
+                    },
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "ff4j-store-commonsconfig/src/main/java/org/ff4j/commonsconf/PropertyStoreCommonsConfig.java",
+                        "line": 113
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "ff4j-store-commonsconfig/src/main/java/org/ff4j/commonsconf/FF4jConfiguration.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "ff4j-store-commonsconfig/src/main/java/org/ff4j/commonsconf/FF4jConfiguration.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "pName : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "pName : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 90
+                    },
+                    {
+                        "message": "pName : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "pName",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 164
+                    }
+                ],
+                [
+                    {
+                        "message": "properties : Collection",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/cache/FF4jCacheProxy.java",
+                        "line": 513
+                    },
+                    {
+                        "message": "properties : Collection",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/cache/FF4jCacheProxy.java",
+                        "line": 519
+                    },
+                    {
+                        "message": "properties : Collection",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/store/AbstractPropertyStore.java",
+                        "line": 159
+                    },
+                    {
+                        "message": "property : Property",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/store/AbstractPropertyStore.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "value : Property",
+                        "uri": "ff4j-store-commonsconfig/src/main/java/org/ff4j/commonsconf/PropertyStoreCommonsConfig.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "value : Property",
+                        "uri": "ff4j-store-commonsconfig/src/main/java/org/ff4j/commonsconf/PropertyStoreCommonsConfig.java",
+                        "line": 113
+                    },
+                    {
+                        "message": "parameter this : Property",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/Property.java",
+                        "line": 245
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/Property.java",
+                        "line": 246
+                    },
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "ff4j-store-commonsconfig/src/main/java/org/ff4j/commonsconf/PropertyStoreCommonsConfig.java",
+                        "line": 113
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "ff4j-store-commonsconfig/src/main/java/org/ff4j/commonsconf/FF4jConfiguration.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "ff4j-store-commonsconfig/src/main/java/org/ff4j/commonsconf/FF4jConfiguration.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "pName : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "pName : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 90
+                    },
+                    {
+                        "message": "pName : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "pName",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/property/util/PropertyFactory.java",
+                        "line": 164
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "query : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/store/JdbcFeatureStore.java",
+                        "line": 735
+                    },
+                    {
+                        "message": "query : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/store/JdbcFeatureStore.java",
+                        "line": 740
+                    },
+                    {
+                        "message": "query : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/JdbcUtils.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "query : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/JdbcUtils.java",
+                        "line": 124
+                    },
+                    {
+                        "message": "prepareStatement(...) : PreparedStatement",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/JdbcUtils.java",
+                        "line": 124
+                    },
+                    {
+                        "message": "ps : PreparedStatement",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/JdbcUtils.java",
+                        "line": 130
+                    },
+                    {
+                        "message": "buildStatement(...) : PreparedStatement",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/store/JdbcFeatureStore.java",
+                        "line": 740
+                    },
+                    {
+                        "message": "ps",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/store/JdbcFeatureStore.java",
+                        "line": 741
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "entrySet(...) : Set",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 76
+                    },
+                    {
+                        "message": "feat : Entry",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 78
+                    },
+                    {
+                        "message": "getKey(...) : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 78
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 78
+                    },
+                    {
+                        "message": "sb [post update] : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 78
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 80
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 85
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 92
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 95
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 102
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "generateInterfaceConstantsSource(...)",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 114
+                    }
+                ],
+                [
+                    {
+                        "message": "entrySet(...) : Set",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 76
+                    },
+                    {
+                        "message": "feat : Entry",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 77
+                    },
+                    {
+                        "message": "getKey(...) : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 77
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 77
+                    },
+                    {
+                        "message": "sb [post update] : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 77
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 78
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 80
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 85
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 87
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 88
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 90
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 92
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 95
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 97
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 102
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "generateInterfaceConstantsSource(...)",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 114
+                    }
+                ],
+                [
+                    {
+                        "message": "entrySet(...) : Set",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 96
+                    },
+                    {
+                        "message": "prop : Entry",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "getKey(...) : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "sb [post update] : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 102
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "generateInterfaceConstantsSource(...)",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 114
+                    }
+                ],
+                [
+                    {
+                        "message": "entrySet(...) : Set",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 96
+                    },
+                    {
+                        "message": "prop : Entry",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 97
+                    },
+                    {
+                        "message": "getKey(...) : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 97
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 97
+                    },
+                    {
+                        "message": "sb [post update] : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 97
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 102
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "generateInterfaceConstantsSource(...)",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/GeneratorUtils.java",
+                        "line": 114
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "sqlQuery : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/JdbcUtils.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "sqlQuery",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/JdbcUtils.java",
+                        "line": 101
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "className : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/MappingUtil.java",
+                        "line": 181
+                    },
+                    {
+                        "message": "className",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/MappingUtil.java",
+                        "line": 183
+                    }
+                ],
+                [
+                    {
+                        "message": "json : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "ll : LinkedHashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 227
+                    },
+                    {
+                        "message": "fMap : LinkedHashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "fMap : LinkedHashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 95
+                    },
+                    {
+                        "message": "get(...) : Object",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 95
+                    },
+                    {
+                        "message": "(...)... : LinkedHashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 95
+                    },
+                    {
+                        "message": "flipMap : LinkedHashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "flipMap : LinkedHashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "get(...) : Object",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "(...)... : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "classType : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 206
+                    },
+                    {
+                        "message": "className : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/MappingUtil.java",
+                        "line": 181
+                    },
+                    {
+                        "message": "className",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/MappingUtil.java",
+                        "line": 183
+                    }
+                ],
+                [
+                    {
+                        "message": "json : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 179
+                    },
+                    {
+                        "message": "(...)... : HashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "flipMap : HashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "flipMap : HashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "get(...) : Object",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "(...)... : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "classType : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 206
+                    },
+                    {
+                        "message": "className : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/MappingUtil.java",
+                        "line": 181
+                    },
+                    {
+                        "message": "className",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/MappingUtil.java",
+                        "line": 183
+                    }
+                ],
+                [
+                    {
+                        "message": "json : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "readValue(...) : HashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "fMap : HashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "fMap : HashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 95
+                    },
+                    {
+                        "message": "get(...) : Object",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 95
+                    },
+                    {
+                        "message": "(...)... : LinkedHashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 95
+                    },
+                    {
+                        "message": "flipMap : LinkedHashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "flipMap : LinkedHashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "get(...) : Object",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "(...)... : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "classType : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 206
+                    },
+                    {
+                        "message": "className : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/MappingUtil.java",
+                        "line": 181
+                    },
+                    {
+                        "message": "className",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/MappingUtil.java",
+                        "line": 183
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "className : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/MappingUtil.java",
+                        "line": 181
+                    },
+                    {
+                        "message": "className",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/MappingUtil.java",
+                        "line": 183
+                    }
+                ],
+                [
+                    {
+                        "message": "json : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "ll : LinkedHashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 227
+                    },
+                    {
+                        "message": "fMap : LinkedHashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "fMap : LinkedHashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 95
+                    },
+                    {
+                        "message": "get(...) : Object",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 95
+                    },
+                    {
+                        "message": "(...)... : LinkedHashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 95
+                    },
+                    {
+                        "message": "flipMap : LinkedHashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "flipMap : LinkedHashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "get(...) : Object",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "(...)... : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "classType : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 206
+                    },
+                    {
+                        "message": "className : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/MappingUtil.java",
+                        "line": 181
+                    },
+                    {
+                        "message": "className",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/MappingUtil.java",
+                        "line": 183
+                    }
+                ],
+                [
+                    {
+                        "message": "json : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 179
+                    },
+                    {
+                        "message": "(...)... : HashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "flipMap : HashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "flipMap : HashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "get(...) : Object",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "(...)... : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "classType : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 206
+                    },
+                    {
+                        "message": "className : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/MappingUtil.java",
+                        "line": 181
+                    },
+                    {
+                        "message": "className",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/MappingUtil.java",
+                        "line": 183
+                    }
+                ],
+                [
+                    {
+                        "message": "json : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "readValue(...) : HashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "fMap : HashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "fMap : HashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 95
+                    },
+                    {
+                        "message": "get(...) : Object",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 95
+                    },
+                    {
+                        "message": "(...)... : LinkedHashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 95
+                    },
+                    {
+                        "message": "flipMap : LinkedHashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "flipMap : LinkedHashMap",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "get(...) : Object",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "(...)... : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "classType : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 206
+                    },
+                    {
+                        "message": "className : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/MappingUtil.java",
+                        "line": 181
+                    },
+                    {
+                        "message": "className",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/utils/MappingUtil.java",
+                        "line": 183
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getString(...) : String",
+                        "uri": "ff4j-store-gcp-datastore/src/main/java/org/ff4j/gcpdatastore/store/EntityMapper.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "json : String",
+                        "uri": "ff4j-store-gcp-datastore/src/main/java/org/ff4j/gcpdatastore/store/EntityMapper.java",
+                        "line": 168
+                    },
+                    {
+                        "message": "json : String",
+                        "uri": "ff4j-store-gcp-datastore/src/main/java/org/ff4j/gcpdatastore/store/EntityMapper.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "json : String",
+                        "uri": "ff4j-store-gcp-datastore/src/main/java/org/ff4j/gcpdatastore/store/EntityMapper.java",
+                        "line": 178
+                    },
+                    {
+                        "message": "json",
+                        "uri": "ff4j-store-gcp-datastore/src/main/java/org/ff4j/gcpdatastore/store/EntityMapper.java",
+                        "line": 181
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "cachingProviderClassName : String",
+                        "uri": "ff4j-store-jcache/src/main/java/org/ff4j/store/FeatureStoreJCache.java",
+                        "line": 58
+                    },
+                    {
+                        "message": "cachingProviderClassName : String",
+                        "uri": "ff4j-store-jcache/src/main/java/org/ff4j/store/FeatureStoreJCache.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "providerClassName : String",
+                        "uri": "ff4j-store-jcache/src/main/java/org/ff4j/cache/FF4jJCacheManager.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "providerClassName : String",
+                        "uri": "ff4j-store-jcache/src/main/java/org/ff4j/cache/FF4jJCacheManager.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "cachingProviderClassname : String",
+                        "uri": "ff4j-store-jcache/src/main/java/org/ff4j/cache/FF4jJCacheManager.java",
+                        "line": 287
+                    },
+                    {
+                        "message": "cachingProviderClassname",
+                        "uri": "ff4j-store-jcache/src/main/java/org/ff4j/cache/FF4jJCacheManager.java",
+                        "line": 292
+                    }
+                ],
+                [
+                    {
+                        "message": "cachingProviderClassName : String",
+                        "uri": "ff4j-store-jcache/src/main/java/org/ff4j/store/PropertyStoreJCache.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "cachingProviderClassName : String",
+                        "uri": "ff4j-store-jcache/src/main/java/org/ff4j/store/PropertyStoreJCache.java",
+                        "line": 51
+                    },
+                    {
+                        "message": "providerClassName : String",
+                        "uri": "ff4j-store-jcache/src/main/java/org/ff4j/cache/FF4jJCacheManager.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "providerClassName : String",
+                        "uri": "ff4j-store-jcache/src/main/java/org/ff4j/cache/FF4jJCacheManager.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "cachingProviderClassname : String",
+                        "uri": "ff4j-store-jcache/src/main/java/org/ff4j/cache/FF4jJCacheManager.java",
+                        "line": 287
+                    },
+                    {
+                        "message": "cachingProviderClassname",
+                        "uri": "ff4j-store-jcache/src/main/java/org/ff4j/cache/FF4jJCacheManager.java",
+                        "line": 292
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 316
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 259
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 267
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 455
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 457
+                    },
+                    {
+                        "message": "parameter this : Feature",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/core/Feature.java",
+                        "line": 264
+                    },
+                    {
+                        "message": "uid : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/core/Feature.java",
+                        "line": 265
+                    },
+                    {
+                        "message": "getUid(...) : String",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 457
+                    },
+                    {
+                        "message": "queryUpdate : String",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 473
+                    },
+                    {
+                        "message": "createUpdateFlippingStrategy(...)",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 267
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 316
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 259
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 269
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 379
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 380
+                    },
+                    {
+                        "message": "parameter this : Feature",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/core/Feature.java",
+                        "line": 264
+                    },
+                    {
+                        "message": "uid : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/core/Feature.java",
+                        "line": 265
+                    },
+                    {
+                        "message": "getUid(...) : String",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 380
+                    },
+                    {
+                        "message": "fsCreateQuery : String",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 396
+                    },
+                    {
+                        "message": "createQueryFlippingStrategy(...)",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 269
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 312
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 426
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 439
+                    },
+                    {
+                        "message": "parameter this : Feature",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/core/Feature.java",
+                        "line": 359
+                    },
+                    {
+                        "message": "permissions : Set",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/core/Feature.java",
+                        "line": 360
+                    },
+                    {
+                        "message": "getPermissions(...) : Set",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 439
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 443
+                    },
+                    {
+                        "message": "cypherUpdate [post update] : StringBuilder",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 443
+                    },
+                    {
+                        "message": "cypherUpdate : StringBuilder",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 446
+                    },
+                    {
+                        "message": "cypherUpdate : StringBuilder",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 451
+                    },
+                    {
+                        "message": "cypherUpdate : StringBuilder",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "createUpdateCoreFeature(...)",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 312
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "features : Collection",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/cache/FF4jCacheProxy.java",
+                        "line": 523
+                    },
+                    {
+                        "message": "features : Collection",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/cache/FF4jCacheProxy.java",
+                        "line": 529
+                    },
+                    {
+                        "message": "features : Collection",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/store/AbstractFeatureStore.java",
+                        "line": 222
+                    },
+                    {
+                        "message": "feature : Feature",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/store/AbstractFeatureStore.java",
+                        "line": 228
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 478
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 487
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 399
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 404
+                    },
+                    {
+                        "message": "parameter this : Feature",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/core/Feature.java",
+                        "line": 283
+                    },
+                    {
+                        "message": "enable : Boolean",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/core/Feature.java",
+                        "line": 284
+                    },
+                    {
+                        "message": "isEnable(...) : Boolean",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 404
+                    },
+                    {
+                        "message": "cypherCreate [post update] : StringBuilder",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 404
+                    },
+                    {
+                        "message": "cypherCreate : StringBuilder",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 422
+                    },
+                    {
+                        "message": "cypherCreate : StringBuilder",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 423
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 423
+                    },
+                    {
+                        "message": "createQueryNewCoreFeature(...)",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 487
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "features : Collection",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/FF4j.java",
+                        "line": 565
+                    },
+                    {
+                        "message": "features : Collection",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/FF4j.java",
+                        "line": 566
+                    },
+                    {
+                        "message": "features : Collection",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/store/AbstractFeatureStore.java",
+                        "line": 222
+                    },
+                    {
+                        "message": "feature : Feature",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/store/AbstractFeatureStore.java",
+                        "line": 228
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 478
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 491
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 379
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 380
+                    },
+                    {
+                        "message": "parameter this : Feature",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/core/Feature.java",
+                        "line": 264
+                    },
+                    {
+                        "message": "uid : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/core/Feature.java",
+                        "line": 265
+                    },
+                    {
+                        "message": "getUid(...) : String",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 380
+                    },
+                    {
+                        "message": "fsCreateQuery : String",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 396
+                    },
+                    {
+                        "message": "createQueryFlippingStrategy(...)",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 491
+                    }
+                ],
+                [
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/FF4j.java",
+                        "line": 390
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/FF4j.java",
+                        "line": 391
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 478
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 491
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 379
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 380
+                    },
+                    {
+                        "message": "parameter this : Feature",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/core/Feature.java",
+                        "line": 264
+                    },
+                    {
+                        "message": "uid : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/core/Feature.java",
+                        "line": 265
+                    },
+                    {
+                        "message": "getUid(...) : String",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 380
+                    },
+                    {
+                        "message": "fsCreateQuery : String",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 396
+                    },
+                    {
+                        "message": "createQueryFlippingStrategy(...)",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 491
+                    }
+                ],
+                [
+                    {
+                        "message": "features : Collection",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/cache/FF4jCacheProxy.java",
+                        "line": 523
+                    },
+                    {
+                        "message": "features : Collection",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/cache/FF4jCacheProxy.java",
+                        "line": 529
+                    },
+                    {
+                        "message": "features : Collection",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/store/AbstractFeatureStore.java",
+                        "line": 222
+                    },
+                    {
+                        "message": "feature : Feature",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/store/AbstractFeatureStore.java",
+                        "line": 228
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 478
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 491
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 379
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 380
+                    },
+                    {
+                        "message": "parameter this : Feature",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/core/Feature.java",
+                        "line": 264
+                    },
+                    {
+                        "message": "uid : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/core/Feature.java",
+                        "line": 265
+                    },
+                    {
+                        "message": "getUid(...) : String",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 380
+                    },
+                    {
+                        "message": "fsCreateQuery : String",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 396
+                    },
+                    {
+                        "message": "createQueryFlippingStrategy(...)",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 491
+                    }
+                ],
+                [
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/cache/FF4jCacheProxy.java",
+                        "line": 142
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/cache/FF4jCacheProxy.java",
+                        "line": 143
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 478
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 491
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 379
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 380
+                    },
+                    {
+                        "message": "parameter this : Feature",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/core/Feature.java",
+                        "line": 264
+                    },
+                    {
+                        "message": "uid : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/core/Feature.java",
+                        "line": 265
+                    },
+                    {
+                        "message": "getUid(...) : String",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 380
+                    },
+                    {
+                        "message": "fsCreateQuery : String",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 396
+                    },
+                    {
+                        "message": "createQueryFlippingStrategy(...)",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 491
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "features : Collection",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/FF4j.java",
+                        "line": 565
+                    },
+                    {
+                        "message": "features : Collection",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/FF4j.java",
+                        "line": 566
+                    },
+                    {
+                        "message": "features : Collection",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/store/AbstractFeatureStore.java",
+                        "line": 222
+                    },
+                    {
+                        "message": "feature : Feature",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/store/AbstractFeatureStore.java",
+                        "line": 228
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 478
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 496
+                    },
+                    {
+                        "message": "parameter this : Feature",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/core/Feature.java",
+                        "line": 340
+                    },
+                    {
+                        "message": "group : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/core/Feature.java",
+                        "line": 341
+                    },
+                    {
+                        "message": "getGroup(...) : String",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 496
+                    },
+                    {
+                        "message": "groupName : String",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 566
+                    },
+                    {
+                        "message": "createGroup",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 575
+                    }
+                ],
+                [
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/FF4j.java",
+                        "line": 390
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/FF4j.java",
+                        "line": 391
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 478
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 496
+                    },
+                    {
+                        "message": "parameter this : Feature",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/core/Feature.java",
+                        "line": 340
+                    },
+                    {
+                        "message": "group : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/core/Feature.java",
+                        "line": 341
+                    },
+                    {
+                        "message": "getGroup(...) : String",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 496
+                    },
+                    {
+                        "message": "groupName : String",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 566
+                    },
+                    {
+                        "message": "createGroup",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 575
+                    }
+                ],
+                [
+                    {
+                        "message": "features : Collection",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/cache/FF4jCacheProxy.java",
+                        "line": 523
+                    },
+                    {
+                        "message": "features : Collection",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/cache/FF4jCacheProxy.java",
+                        "line": 529
+                    },
+                    {
+                        "message": "features : Collection",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/store/AbstractFeatureStore.java",
+                        "line": 222
+                    },
+                    {
+                        "message": "feature : Feature",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/store/AbstractFeatureStore.java",
+                        "line": 228
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 478
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 496
+                    },
+                    {
+                        "message": "parameter this : Feature",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/core/Feature.java",
+                        "line": 340
+                    },
+                    {
+                        "message": "group : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/core/Feature.java",
+                        "line": 341
+                    },
+                    {
+                        "message": "getGroup(...) : String",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 496
+                    },
+                    {
+                        "message": "groupName : String",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 566
+                    },
+                    {
+                        "message": "createGroup",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 575
+                    }
+                ],
+                [
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/cache/FF4jCacheProxy.java",
+                        "line": 142
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/cache/FF4jCacheProxy.java",
+                        "line": 143
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 478
+                    },
+                    {
+                        "message": "fp : Feature",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 496
+                    },
+                    {
+                        "message": "parameter this : Feature",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/core/Feature.java",
+                        "line": 340
+                    },
+                    {
+                        "message": "group : String",
+                        "uri": "ff4j-core/src/main/java/org/ff4j/core/Feature.java",
+                        "line": 341
+                    },
+                    {
+                        "message": "getGroup(...) : String",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 496
+                    },
+                    {
+                        "message": "groupName : String",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 566
+                    },
+                    {
+                        "message": "createGroup",
+                        "uri": "ff4j-store-neo4j/src/main/java/org/ff4j/neo4j/store/FeatureStoreNeo4J.java",
+                        "line": 575
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "zrangeByScore(...) : Set",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedis.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "evt : String",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedis.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "eventString : String",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedis.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "eventString",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedis.java",
+                        "line": 166
+                    }
+                ],
+                [
+                    {
+                        "message": "zrangeByScore(...) : Set",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedis.java",
+                        "line": 245
+                    },
+                    {
+                        "message": "event : String",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedis.java",
+                        "line": 249
+                    },
+                    {
+                        "message": "eventString : String",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedis.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "eventString",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedis.java",
+                        "line": 166
+                    }
+                ],
+                [
+                    {
+                        "message": "zrangeByScore(...) : Set",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedis.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "events : Set",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedis.java",
+                        "line": 305
+                    },
+                    {
+                        "message": "getEventsFromRedis(...) : Set",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedis.java",
+                        "line": 203
+                    },
+                    {
+                        "message": "event : String",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedis.java",
+                        "line": 206
+                    },
+                    {
+                        "message": "eventString : String",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedis.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "eventString",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedis.java",
+                        "line": 166
+                    }
+                ],
+                [
+                    {
+                        "message": "zrangeByScore(...) : Set",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedis.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "events : Set",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedis.java",
+                        "line": 305
+                    },
+                    {
+                        "message": "getEventsFromRedis(...) : Set",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedis.java",
+                        "line": 223
+                    },
+                    {
+                        "message": "event : String",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedis.java",
+                        "line": 225
+                    },
+                    {
+                        "message": "eventString : String",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedis.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "eventString",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedis.java",
+                        "line": 166
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "zrangebyscore(...) : List",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedisLettuce.java",
+                        "line": 144
+                    },
+                    {
+                        "message": "evt : String",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedisLettuce.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "eventString : String",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedisLettuce.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "eventString",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedisLettuce.java",
+                        "line": 159
+                    }
+                ],
+                [
+                    {
+                        "message": "zrangebyscore(...) : List",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedisLettuce.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "evt : String",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedisLettuce.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "eventString : String",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedisLettuce.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "eventString",
+                        "uri": "ff4j-store-redis/src/main/java/org/ff4j/store/EventRepositoryRedisLettuce.java",
+                        "line": 159
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "json : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/EventJsonParser.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "json",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/EventJsonParser.java",
+                        "line": 128
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "json : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "json",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 66
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getString(...) : String",
+                        "uri": "ff4j-store-gcp-datastore/src/main/java/org/ff4j/gcpdatastore/store/EntityMapper.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "json : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 73
+                    },
+                    {
+                        "message": "json",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 76
+                    }
+                ],
+                [
+                    {
+                        "message": "getValue(...) : byte[]",
+                        "uri": "ff4j-store-hbase/src/main/java/org/ff4j/hbase/mapper/HBaseFeatureMapper.java",
+                        "line": 110
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "ff4j-store-hbase/src/main/java/org/ff4j/hbase/mapper/HBaseFeatureMapper.java",
+                        "line": 110
+                    },
+                    {
+                        "message": "json : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 73
+                    },
+                    {
+                        "message": "json",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 76
+                    }
+                ],
+                [
+                    {
+                        "message": "getValue(...) : byte[]",
+                        "uri": "ff4j-store-hbase/src/main/java/org/ff4j/hbase/mapper/HBasePropertyMapper.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "ff4j-store-hbase/src/main/java/org/ff4j/hbase/mapper/HBasePropertyMapper.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "json : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 73
+                    },
+                    {
+                        "message": "json",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 76
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "readEntity(...) : String",
+                        "uri": "ff4j-webapi-jersey2x/src/main/java/org/ff4j/web/jersey2/store/FeatureStoreHttp.java",
+                        "line": 251
+                    },
+                    {
+                        "message": "(...)... : String",
+                        "uri": "ff4j-webapi-jersey2x/src/main/java/org/ff4j/web/jersey2/store/FeatureStoreHttp.java",
+                        "line": 251
+                    },
+                    {
+                        "message": "resEntity : String",
+                        "uri": "ff4j-webapi-jersey2x/src/main/java/org/ff4j/web/jersey2/store/FeatureStoreHttp.java",
+                        "line": 252
+                    },
+                    {
+                        "message": "json : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "json",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/FeatureJsonParser.java",
+                        "line": 223
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "readEntity(...) : String",
+                        "uri": "ff4j-webapi-jersey2x/src/main/java/org/ff4j/web/jersey2/store/PropertyStoreHttp.java",
+                        "line": 210
+                    },
+                    {
+                        "message": "resEntity : String",
+                        "uri": "ff4j-webapi-jersey2x/src/main/java/org/ff4j/web/jersey2/store/PropertyStoreHttp.java",
+                        "line": 211
+                    },
+                    {
+                        "message": "json : String",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/PropertyJsonParser.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "json",
+                        "uri": "ff4j-utils-json/src/main/java/org/ff4j/utils/json/PropertyJsonParser.java",
+                        "line": 103
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getInitParameter(...) : String",
+                        "uri": "ff4j-web/src/main/java/org/ff4j/web/FF4jServlet.java",
+                        "line": 156
+                    },
+                    {
+                        "message": "className",
+                        "uri": "ff4j-web/src/main/java/org/ff4j/web/FF4jServlet.java",
+                        "line": 158
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getParameter(...) : String",
+                        "uri": "ff4j-web/src/main/java/org/ff4j/web/embedded/ConsoleOperations.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "strategy",
+                        "uri": "ff4j-web/src/main/java/org/ff4j/web/embedded/ConsoleOperations.java",
+                        "line": 107
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        }
+    ]
+}
