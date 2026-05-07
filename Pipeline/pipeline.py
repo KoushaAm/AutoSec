@@ -539,7 +539,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
         with open(report_path, "r", encoding="utf-8") as f:
             report_data = json.load(f)
 
-        exploitable, pov_test_paths, pov_logic = parse_exploiter_report(report_data)
+        exploitable, pov_test_paths, pov_logic = _parse_exploiter_report(report_data)
 
         new_state["exploiter"] = {
             "success": exploitable,
