@@ -21,6 +21,7 @@ logger = logging.getLogger(__name__)
 def main():
     logger.info("Running AutoSec...")
 
+    # CLI args are parsed inside Pipeline.pipeline_main()
     pipeline_main()
 
     logger.info("AutoSec run complete.")

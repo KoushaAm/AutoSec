@@ -128,10 +128,10 @@ zip -r yamcs__yamcs_CVE-2023-45278_5.8.6.zip ./
 mv ./yamcs__yamcs_CVE-2023-45278_5.8.6.zip /workspaces/autosec/Projects/Zipped
 ```
 
-
 ### 7. Run the Pipeline
 ```bash
-python3 main.py
+# project_name based on Project Variants
+python3 main.py --project XWIKI_XWIKI_COMMONS_CVE_2023_31126
 
 # Optional: Customize the Patcher agent code extraction limit
 PATCHER_SNIPPET_MAX_LINES=800 python main.py
@@ -140,6 +140,33 @@ PATCHER_SNIPPET_MAX_LINES=800 python main.py
 python3 main.py <-h|--help>
 ```
 
+## Commands supported
+The following are some commands you can use when running the AutoSec Pipeline
+```bash
+# Default full pipeline with WHITESOURCE_CUREKIT_CVE_2022_23082:
+python3 main.py # `--mode all` is the default --mode selection
+
+# Different project:
+python3 main.py --project <project_name> # ex. whitesource__curekit_CVE-2022-23082_1.1.3
+# OR
+python3 main.py --project <project_enum> # ex. WHITESOURCE_CUREKIT_CVE_2022_23082 
+
+# Finder only:
+python3 main.py --mode finder
+
+# Finder only with reanalysis:
+python3 main.py --mode finder --finder-reanalyze
+
+# Exploiter only with dummy Finder output:
+python3 main.py --mode exploiter --use-dummy finder
+
+# Patcher only:
+python3 main.py --mode patcher --use-dummy finder exploiter
+
+# Verifier only:
+python3 main.py --mode verifier --use-dummy patcher
+```
+- For a full list use the `python3 main.py <-h|--help>` command
 
 ## Injecting Project Variants CSV
 To streamline the process of loading our dataset we utilize the `generate_project_variants.py` script located in the `Pipeline/scripts` directory. Note that this script **overwrites** the existing `project_variants.py`!

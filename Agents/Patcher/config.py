@@ -21,7 +21,7 @@ TOOL_VERSION = "patcher-2.1.0"
 # max lines for extracted snippets (per file), controllable through env var
 # example command: PATCHER_SNIPPET_MAX_LINES=800 python main.py
 SNIPPET_MAX_LINES = int(os.getenv("PATCHER_SNIPPET_MAX_LINES", "400"))
-print(f"[Patcher] Using SNIPPET_MAX_LINES={SNIPPET_MAX_LINES} for code extraction")
+print(f"[Patcher] Using SNIPPET_MAX_LINES={SNIPPET_MAX_LINES} for code extraction, can be set via env var PATCHER_SNIPPET_MAX_LINES")
 
 # Model context limits: approximate context windows per model name,
 # If MODEL_NAME isn't found here, we fall back to DEFAULT_CONTEXT_LIMIT.
