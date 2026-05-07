@@ -6,7 +6,7 @@ set -euo pipefail
 # 2. run: ./Pipeline/scripts/prepare_project.sh <project_name>
 #
 # Example:
-#  ./Pipeline/scripts/prepare_project.sh xwiki__xwiki-rendering_CVE-2023-32070_14.6
+#  ./Pipeline/scripts/prepare_project.sh whitesource__curekit_CVE-2022-23082_1.1.3
 
 if [ "$#" -ne 1 ]; then
   echo "Usage: $0 <project_name>"

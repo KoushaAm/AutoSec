@@ -1,108 +1,297 @@
-import shutil
-from enum import Enum
-from typing import TypedDict, Dict, Any, Optional, List
-import json
-import subprocess
-import os
-import uuid
+# Pipeline/pipeline.py
 import argparse
+import json
+import os
+import shutil
+import subprocess
 import sys
-from langgraph.graph import StateGraph, END, START
-from langgraph.types import Command
+from enum import Enum
 from pathlib import Path
-from datetime import datetime
+from typing import Any, Dict, Optional, TypedDict
+
 from dotenv import load_dotenv
+from langgraph.graph import END, START, StateGraph
+from langgraph.types import Command
 
-# from Agents.Exploiter.data.primevul.setup import project_slug
-# local imports
 from . import logger
-from .utils import (
-    save_state_dump, 
-    load_dummy_finder_output, 
-    load_dummy_patcher_output, 
-    has_actionable_vulnerabilities, 
-    parse_exploiter_report
-)
 from .project_variants import ProjectVariants
+from .utils import (
+    has_actionable_vulnerabilities,
+    load_dummy_finder_output,
+    load_dummy_patcher_output,
+    parse_exploiter_report,
+    save_state_dump,
+)
 
+from Agents.Finder.src.output_converter import sarif_to_finder_output
+from Agents.Finder.src.types import FinderOutput
 from Agents.Patcher import patcher_main
 from Agents.Verifier import verifier_main
-from Agents.Finder.src.types import FinderOutput
-from Agents.Finder.src.output_converter import sarif_to_finder_output
-from datetime import datetime
 
-# relative path information
+
+# Relative path information
 BASE_DIR = Path(__file__).resolve().parent.parent
 PROJECTS_DIR = (BASE_DIR / "Projects").resolve()
-AGENTS_DIR   = (BASE_DIR / "Agents").resolve()
+AGENTS_DIR = (BASE_DIR / "Agents").resolve()
 
 MAX_EXPLOITER_RETRIES = 1
+DEFAULT_PROJECT_VARIANT = ProjectVariants.WHITESOURCE_CUREKIT_CVE_2022_23082.name
+
+
+class PipelineMode(str, Enum):
+    ALL = "all"
+    FINDER = "finder"
+    EXPLOITER = "exploiter"
+    PATCHER = "patcher"
+    VERIFIER = "verifier"
+
 
 class AutoSecState(TypedDict, total=False):
-    project_name: Optional[str] # ex: jenkinsci__perfecto-plugin_CVE
+    project_name: Optional[str]
     language: Optional[str]
     vuln_id: Optional[str]
     vuln: Optional[Dict[str, Any]]
     finder_model: Optional[str]
     finder_reanalyze: Optional[bool]
-    finder_output: Optional[List[FinderOutput]]
+    finder_output: Optional[FinderOutput]
     artifacts: Optional[Dict[str, str]]
     exploiter: Optional[Dict[str, Any]]
-    exploiter_retries: Optional[int] # tracks finder -> exploiter retry cycles
+    exploiter_retries: Optional[int]
     patcher: Optional[Dict[str, Any]]
     verifier: Optional[Dict[str, Any]]
+    pipeline_mode: Optional[str]
 
-def _build_workflow() -> Any:
+
+def _parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Run the AutoSec LangGraph pipeline."
+    )
+
+    parser.add_argument(
+        "--project",
+        default=DEFAULT_PROJECT_VARIANT,
+        help=(
+            "ProjectVariants enum name or project slug. "
+            f"Defaults to {DEFAULT_PROJECT_VARIANT}."
+        ),
+    )  
+
+    parser.add_argument(
+        "--mode",
+        choices=[mode.value for mode in PipelineMode],
+        default=PipelineMode.ALL.value,
+        help="Pipeline mode to run. Defaults to all.",
+    )
+
+    parser.add_argument(
+        "--finder-model",
+        default="gpt-5-mini",
+        help="Finder model to use. Defaults to gpt-5-mini.",
+    )
+
+    parser.add_argument(
+        "--language",
+        default="java",
+        help="Project language. Defaults to java.",
+    )
+
+    parser.add_argument(
+        "--finder-reanalyze",
+        action="store_true",
+        default=False,
+        help="Force Finder reanalysis using --overwrite. Defaults to false.",
+    )
+
+    parser.add_argument(
+        "--use-dummy",
+        nargs="*",
+        choices=["finder", "exploiter", "patcher"],
+        default=[],
+        help=(
+            "Inject dummy state before running. "
+            "Examples: --use-dummy finder, "
+            "--use-dummy finder exploiter, "
+            "--use-dummy patcher"
+        ),
+    )
+
+    return parser.parse_args()
+
+
+def _resolve_project_variant(project_arg: str) -> ProjectVariants:
+    """
+    Resolve a project from either:
+    1. ProjectVariants enum name:
+       XWIKI_XWIKI_COMMONS_CVE_2023_29528
+
+    2. Actual project slug:
+       xwiki__xwiki-commons_CVE-2023-29528_14.9-rc-1
+    """
+    normalized_arg = project_arg.strip()
+
+    # 1. Exact enum name match
+    try:
+        return ProjectVariants[normalized_arg]
+    except KeyError:
+        pass
+
+    # 2. Case-insensitive enum name match
+    upper_arg = normalized_arg.upper()
+    for enum_name, variant in ProjectVariants.__members__.items():
+        if enum_name.upper() == upper_arg:
+            return variant
+
+    # 3. Exact project slug match using ProjectVariants helper
+    try:
+        return ProjectVariants.from_project_slug(normalized_arg)
+    except ValueError:
+        pass
+
+    valid_options = "\n".join(
+        f"{variant.name} -> {variant.project_name}"
+        for variant in ProjectVariants
+    )
+
+    raise ValueError(
+        f"Unknown project: {normalized_arg}\n\n"
+        f"You can pass either the enum name or the project slug.\n\n"
+        f"Valid options are:\n{valid_options}"
+    )
+
+
+def _build_initial_state(
+    selected_project: ProjectVariants,
+    args: argparse.Namespace,
+) -> AutoSecState:
+    initial_state: AutoSecState = {
+        "project_name": selected_project.project_name,
+        "vuln_id": selected_project.cwe_id,
+        "language": args.language,
+        "finder_model": args.finder_model,
+        "finder_reanalyze": args.finder_reanalyze,
+        "pipeline_mode": args.mode,
+    }
+
+    dummy_set = set(args.use_dummy)
+
+    if "finder" in dummy_set:
+        initial_state["finder_output"] = load_dummy_finder_output(
+            selected_project.dummy_finder_output
+        )
+
+    if "exploiter" in dummy_set:
+        initial_state["exploiter"] = {
+            "success": True,
+            "report_path": None,
+            "pov_test_paths": [],
+            "pov_logic": selected_project.dummy_exploiter_pov_logic,
+            "from_cache": False,
+            "dummy": True,
+        }
+
+    if "patcher" in dummy_set:
+        initial_state["patcher"] = {
+            "success": True,
+            "artifact_path": load_dummy_patcher_output(
+                AGENTS_DIR,
+                selected_project,
+            ),
+            "dummy": True,
+        }
+
+    return initial_state
+
+
+def _build_workflow(mode: PipelineMode) -> Any:
     graph = StateGraph(AutoSecState)
+
     graph.add_node("finder", _finder_node)
     graph.add_node("exploiter", _exploiter_node)
     graph.add_node("patcher", _patcher_node)
     graph.add_node("verifier", _verifier_node)
 
-    # static linear edges
-    graph.add_edge(START, "finder")
-    graph.add_edge("finder", "exploiter")
-    # `exploiter -> patcher` edge not needed since exploiter routes dynamically
-    graph.add_edge("patcher", "verifier")
-    graph.add_edge("verifier", END)
+    if mode == PipelineMode.ALL:
+        graph.add_edge(START, "finder")
+        graph.add_edge("finder", "exploiter")
+        # exploiter -> patcher is handled dynamically by Command(...)
+        graph.add_edge("patcher", "verifier")
+        graph.add_edge("verifier", END)
 
-    # # TODO: remove after finder experiments done
-    # graph.add_edge(START, "finder")
-    # graph.add_edge("finder", END)
+    elif mode == PipelineMode.FINDER:
+        graph.add_edge(START, "finder")
+        graph.add_edge("finder", END)
 
-    # conditional edges
-    # exploiter -> finder OR exploiter -> patcher
-    # verifier -> finder OR verifier -> end
+    elif mode == PipelineMode.EXPLOITER:
+        graph.add_edge(START, "exploiter")
+        # exploiter exits to END through next_after_exploiter(...)
 
-    workflow = graph.compile()
-    return workflow
+    elif mode == PipelineMode.PATCHER:
+        graph.add_edge(START, "patcher")
+        graph.add_edge("patcher", END)
 
+    elif mode == PipelineMode.VERIFIER:
+        graph.add_edge(START, "verifier")
+        graph.add_edge("verifier", END)
+
+    else:
+        raise ValueError(f"Unsupported pipeline mode: {mode}")
+
+    return graph.compile()
+
+
+def _route_after_exploiter(state: AutoSecState) -> str:
+    """
+    Route after exploiter.
+
+    In full pipeline mode, continue to patcher.
+    In exploiter-only mode, stop after exploiter.
+    """
+    if state.get("pipeline_mode") == PipelineMode.EXPLOITER.value:
+        return END
+
+    return "patcher"
+
+#* =============== Primary Agent Nodes =============== *#
 
 def _finder_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node - finder started")
 
-    # Skip finder if output was already injected (e.g. dummy/cached output)
+    # Skip finder if output was already injected, e.g. dummy/cached output.
     if state.get("finder_output") is not None:
-        logger.info("Node - finder skipped (finder_output already set)")
+        logger.info("Node - finder skipped because finder_output is already set")
         return state
 
-    # make sure Project/Sources folder exists
     Path(PROJECTS_DIR / "Sources").mkdir(exist_ok=True)
 
     host_ws = os.environ.get("HOST_WORKSPACE")
     if not host_ws:
         raise RuntimeError("HOST_WORKSPACE env var not set. Add it in devcontainer.json.")
-    host_ws = host_ws.replace("\\", "/") # for windows compatibility
 
-    # get relevant args from autosecstate
+    host_ws = host_ws.replace("\\", "/")
+
     project_name = state["project_name"]
-    query = state["vuln_id"] + "wLLM"
+    vuln_id = state["vuln_id"]
     model = state["finder_model"]
 
-    # setup args for build_and_analyze.py script. make sure project if project is reanalyzed, use --overwrite and no need to unzip folder
-    build_and_analyze_args = f"--project-name {project_name} --query {query} --model {model} "
-    if state["finder_reanalyze"]:
-        build_and_analyze_args += f"--overwrite"
+    if not project_name:
+        raise ValueError("project_name missing from state")
+
+    if not vuln_id:
+        raise ValueError("vuln_id missing from state")
+
+    if not model:
+        raise ValueError("finder_model missing from state")
+
+    query = vuln_id + "wLLM"
+
+    build_and_analyze_args = (
+        f"--project-name {project_name} "
+        f"--query {query} "
+        f"--model {model} "
+    )
+
+    if state.get("finder_reanalyze", False):
+        build_and_analyze_args += "--overwrite"
     else:
         build_and_analyze_args += f"--zip-path /workspace/Projects/Zipped/{project_name}.zip"
 
@@ -113,53 +302,61 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
     elif model.startswith("gemini"):
         os.getenv("GOOGLE_API_KEY")
 
-    # 1. setup command to have IRIS inside docker container
     docker_cmd = [
-        "docker", "run",
+        "docker",
+        "run",
         "--platform=linux/amd64",
         "--rm",
-        "-e", "OPENAI_API_KEY",
-        "-e", "GOOGLE_API_KEY",
-        "-v", f"{host_ws}/Projects:/workspace/Projects",
-        "-v", f"{host_ws}/Agents:/workspace/Agents",
-        "-w", "/workspace/Agents/Finder",
+        "-e",
+        "OPENAI_API_KEY",
+        "-e",
+        "GOOGLE_API_KEY",
+        "-v",
+        f"{host_ws}/Projects:/workspace/Projects",
+        "-v",
+        f"{host_ws}/Agents:/workspace/Agents",
+        "-w",
+        "/workspace/Agents/Finder",
         "iris:latest",
-        "bash", "-lc",
+        "bash",
+        "-lc",
         "source /opt/conda/etc/profile.d/conda.sh && conda activate iris && "
-        "python3 ./scripts/build_and_analyze.py " + build_and_analyze_args
+        "python3 ./scripts/build_and_analyze.py " + build_and_analyze_args,
     ]
 
     logger.info(f"Running IRIS inside Docker for project {project_name}")
 
-    # 2. Run IRIS analysis
     try:
         subprocess.run(docker_cmd, check=True, text=True)
 
-    # analysis failed for some reason
     except subprocess.CalledProcessError as e:
-            print("Finder failed with an error")
-            print("Return code:", e.returncode)
-            print("stdout:", e.stdout)
-            print("stderr:", e.stderr)
+        print("Finder failed with an error")
+        print("Return code:", e.returncode)
+        print("stdout:", e.stdout)
+        print("stderr:", e.stderr)
 
-            state["finder_output"] = None
-            state["vuln"] = None
-            state["finder_reanalyze"] = False
-            return state
+        state["finder_output"] = None
+        state["vuln"] = None
+        state["finder_reanalyze"] = False
+        return state
 
-    # 3. Load IRIS output
-    sarif_path = f"./Agents/Finder/output/{project_name}/test/{query}-posthoc-filter/results.sarif"
+    sarif_path = (
+        f"./Agents/Finder/output/{project_name}/test/"
+        f"{query}-posthoc-filter/results.sarif"
+    )
+
     try:
-        with open(sarif_path) as f:
+        with open(sarif_path, encoding="utf-8") as f:
             findings = json.load(f)
 
-        # 4. Save results into pipeline state
-        state["finder_output"] = sarif_to_finder_output(findings, cwe_id=state["vuln_id"])
-        state["vuln"] = findings # keep oringial json dump just in case its needed
+        state["finder_output"] = sarif_to_finder_output(
+            findings,
+            cwe_id=vuln_id,
+        )
+        state["vuln"] = findings
 
-    # no vulnerabilites were found
     except FileNotFoundError:
-        print("Finder found no vulnerabilites")
+        print("Finder found no vulnerabilities")
         state["finder_output"] = None
         state["vuln"] = None
 
@@ -169,15 +366,15 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
 def _exploiter_node(state: AutoSecState) -> Command:
     logger.info("Node: exploiter started")
-    RUNNING_FINDER = True
 
-    # Taking a copy of the state
-    new_state = dict(state)
+    running_finder = True
+
+    new_state: AutoSecState = dict(state)
     project_name = new_state.get("project_name")
+
     if not project_name:
         raise ValueError("project_name missing from state")
 
-    # Stop the pipeline if finder found no actionable vulnerabilities
     finder_output = new_state.get("finder_output")
 
     if not has_actionable_vulnerabilities(finder_output):
@@ -219,7 +416,6 @@ def _exploiter_node(state: AutoSecState) -> Command:
 
         return Command(goto=END, update=new_state)
 
-    # setup paths for exploiter
     exploiter_dir = os.path.join(os.getcwd(), "Agents", "Exploiter")
 
     report_path = os.path.join(
@@ -238,7 +434,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
         "modules",
         "data",
         "traces",
-        "result.json"
+        "result.json",
     )
 
     fetch_one_location = os.path.join(
@@ -246,7 +442,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
         "data",
         "cwe-bench-java",
         "scripts",
-        "fetch_one.py"
+        "fetch_one.py",
     )
 
     project_directory = os.path.join(
@@ -254,7 +450,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
         "data",
         "cwe-bench-java",
         "project-sources",
-        project_name
+        project_name,
     )
 
     working_directory = os.path.join(
@@ -263,7 +459,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
         "cwe-bench-java",
         "workdir_no_branch",
         "project-sources",
-        project_name
+        project_name,
     )
 
     dockerfiles = os.path.join(
@@ -273,11 +469,14 @@ def _exploiter_node(state: AutoSecState) -> Command:
         "Dockerfiles",
     )
 
-    # CACHE CHECK
-    # If a report.json already exists from a previous run, skip re-running the
+    # Cache check
     if os.path.exists(report_path):
-        logger.info(f"Cache hit: exploiter report found at {report_path}, skipping exploitation.")
-        with open(report_path, "r") as f:
+        logger.info(
+            f"Cache hit: exploiter report found at {report_path}, "
+            "skipping exploitation."
+        )
+
+        with open(report_path, "r", encoding="utf-8") as f:
             report_data = json.load(f)
 
         exploitable, pov_test_paths, pov_logic = parse_exploiter_report(report_data)
@@ -291,29 +490,28 @@ def _exploiter_node(state: AutoSecState) -> Command:
         }
 
         if not exploitable:
-            logger.warning("Cached report shows vulnerability was not exploitable — ending pipeline.")
-            return Command(goto="patcher", update=new_state)
+            logger.warning(
+                "Cached report shows vulnerability was not exploitable."
+            )
+            return Command(goto=_route_after_exploiter(new_state), update=new_state)
 
-        logger.info("Cached report shows vulnerability exploited! Continuing to patcher.")
-        return Command(goto="patcher", update=new_state)
+        logger.info("Cached report shows vulnerability exploited.")
+        return Command(goto=_route_after_exploiter(new_state), update=new_state)
 
     exploiter_main = os.path.join(exploiter_dir, "main.py")
 
     if not os.path.exists(exploiter_main):
         raise FileNotFoundError(f"Exploiter entrypoint not found: {exploiter_main}")
 
-    # if directory exists but report.json (meaning the output) isn't present we delete the project
-    # and start again
     if os.path.exists(working_directory):
         shutil.rmtree(working_directory)
 
-    # ####  ENVIRONMENT SETUP FOR CWE-BENCH PROJECT ####
+    if running_finder:
+        try:
+            Path(finder_output_path).parent.mkdir(parents=True, exist_ok=True)
+            with open(finder_output_path, "w", encoding="utf-8") as file:
+                json.dump(new_state["finder_output"], file, indent=2)
 
-    # load finder output and save it to the directory exploiter uses
-    if RUNNING_FINDER:
-        try :
-            with open(finder_output_path, "w") as file:
-                json.dump(new_state["finder_output"], file)
         except FileNotFoundError:
             logger.error(f"Exploiter finder output file not found: {finder_output_path}")
             new_state["exploiter"] = {
@@ -323,15 +521,17 @@ def _exploiter_node(state: AutoSecState) -> Command:
                 "pov_logic": None,
                 "from_cache": False,
             }
-            return Command(goto="patcher", update=new_state)
+            return Command(goto=_route_after_exploiter(new_state), update=new_state)
 
-    # prepare the project in the Exploiter's directory
-    # check if they exist they do no need to fetch it anymore
     if not os.path.exists(project_directory):
         try:
-            subprocess.run([sys.executable, fetch_one_location, project_name], check=True)
+            subprocess.run(
+                [sys.executable, fetch_one_location, project_name],
+                check=True,
+            )
+
         except subprocess.CalledProcessError as e:
-            logger.error(f"Exploiter subprocess failed (exit={e.returncode}).")
+            logger.error(f"Exploiter subprocess failed during fetch_one.py exit={e.returncode}.")
             new_state["exploiter"] = {
                 "success": False,
                 "report_path": None,
@@ -339,32 +539,43 @@ def _exploiter_node(state: AutoSecState) -> Command:
                 "pov_logic": None,
                 "from_cache": False,
             }
-            return Command(goto="patcher", update=new_state)
+            return Command(goto=_route_after_exploiter(new_state), update=new_state)
 
-    # copy over the dockerfile from dockerfiles directory (always, in case it changed)
-    logger.info(f"copying docker {os.path.join(dockerfiles, project_name, 'Dockerfile.vuln')} into project path: {project_directory}" )
-    shutil.copy2(os.path.join(dockerfiles, project_name, "Dockerfile.vuln"), project_directory)
+    dockerfile_src = os.path.join(dockerfiles, project_name, "Dockerfile.vuln")
+    logger.info(
+        f"Copying dockerfile {dockerfile_src} into project path: {project_directory}"
+    )
+    shutil.copy2(dockerfile_src, project_directory)
 
-    # Execution
     EXPLOITER_TIMEOUT = 1800
 
     run_cmd = [
         sys.executable,
         "main.py",
-        "--dataset", "cwe-bench-java",
-        "--project", project_name,
-        "--model", "gpt5",
-        "--budget", "5.0",
-        "--timeout", str(EXPLOITER_TIMEOUT),
+        "--dataset",
+        "cwe-bench-java",
+        "--project",
+        project_name,
+        "--model",
+        "gpt5",
+        "--budget",
+        "5.0",
+        "--timeout",
+        str(EXPLOITER_TIMEOUT),
         "--no_branch",
         "--verbose",
     ]
 
-    # STARTING EXPLOITATION
     try:
-        logger.info("Loading the project: " + project_name)
+        logger.info(f"Loading project: {project_name}")
         logger.info(f"Running command: {run_cmd}")
-        subprocess.run(run_cmd, cwd=exploiter_dir, check=True, timeout=EXPLOITER_TIMEOUT + 60)
+        subprocess.run(
+            run_cmd,
+            cwd=exploiter_dir,
+            check=True,
+            timeout=EXPLOITER_TIMEOUT + 60,
+        )
+
     except subprocess.TimeoutExpired:
         logger.error(f"Exploiter timed out after {EXPLOITER_TIMEOUT + 60}s.")
         new_state["exploiter"] = {
@@ -374,10 +585,10 @@ def _exploiter_node(state: AutoSecState) -> Command:
             "pov_logic": None,
             "from_cache": False,
         }
-        return Command(goto="patcher", update=new_state)
+        return Command(goto=_route_after_exploiter(new_state), update=new_state)
 
     except subprocess.CalledProcessError as e:
-        logger.error(f"Exploiter subprocess failed (exit={e.returncode}).")
+        logger.error(f"Exploiter subprocess failed exit={e.returncode}.")
         new_state["exploiter"] = {
             "success": False,
             "report_path": None,
@@ -385,16 +596,20 @@ def _exploiter_node(state: AutoSecState) -> Command:
             "pov_logic": None,
             "from_cache": False,
         }
+        return Command(goto=_route_after_exploiter(new_state), update=new_state)
 
-        return Command(goto="patcher", update=new_state)
-
-    # checking if result produced properly
     if not os.path.exists(report_path):
         logger.error(f"Exploiter report not found: {report_path}")
+        new_state["exploiter"] = {
+            "success": False,
+            "report_path": None,
+            "pov_test_paths": None,
+            "pov_logic": None,
+            "from_cache": False,
+        }
+        return Command(goto=_route_after_exploiter(new_state), update=new_state)
 
-        return Command(goto="patcher", update=new_state)
-
-    with open(report_path, "r") as f:
+    with open(report_path, "r", encoding="utf-8") as f:
         report_data = json.load(f)
 
     exploitable, pov_test_paths, pov_logic = parse_exploiter_report(report_data)
@@ -410,16 +625,23 @@ def _exploiter_node(state: AutoSecState) -> Command:
     if not exploitable:
         retries = new_state.get("exploiter_retries", 0) + 1
         new_state["exploiter_retries"] = retries
-        if retries >= MAX_EXPLOITER_RETRIES:
-            logger.warning(f"Exploiter did not find an exploitable PoV after {retries} attempt(s) — ending pipeline.")
 
-            return Command(goto="patcher", update=new_state)
-        logger.warning(f"Exploiter did not find an exploitable PoV (attempt {retries}/{MAX_EXPLOITER_RETRIES}), re-running finder.")
+        if retries >= MAX_EXPLOITER_RETRIES:
+            logger.warning(
+                f"Exploiter did not find an exploitable PoV after "
+                f"{retries} attempt(s)."
+            )
+            return Command(goto=_route_after_exploiter(new_state), update=new_state)
+
+        logger.warning(
+            f"Exploiter did not find an exploitable PoV "
+            f"(attempt {retries}/{MAX_EXPLOITER_RETRIES}); re-running finder."
+        )
         new_state["finder_reanalyze"] = True
         return Command(goto="finder", update=new_state)
 
-    logger.info("Vulnerability exploited! Continuing to patcher.")
-    return Command(goto="patcher", update=new_state)
+    logger.info("Vulnerability exploited. Continuing to next pipeline stage.")
+    return Command(goto=_route_after_exploiter(new_state), update=new_state)
 
 
 def _patcher_node(state: AutoSecState) -> AutoSecState:
@@ -435,40 +657,57 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
         raise ValueError("finder_output missing from state")
 
     pov_logic = "no pov_logic provided"
-    if state.get("exploiter") and state.get("exploiter").get("pov_logic"):
-        pov_logic = state['exploiter']['pov_logic']
+
+    exploiter_state = state.get("exploiter") or {}
+    if exploiter_state.get("pov_logic"):
+        pov_logic = exploiter_state["pov_logic"]
     else:
         logger.warning("pov_logic missing from exploiter output")
 
-    # copy PoV tests from Exploiter's working dir into Projects/Sources
     project_name = state["project_name"]
-    pov_test_paths = (state.get("exploiter") or {}).get("pov_test_paths") or []
+    pov_test_paths = exploiter_state.get("pov_test_paths") or []
+
     exploiter_project_root = (
-        AGENTS_DIR / "Exploiter" / "data" / "cwe-bench-java"
-        / "workdir_no_branch" / "project-sources" / project_name
+        AGENTS_DIR
+        / "Exploiter"
+        / "data"
+        / "cwe-bench-java"
+        / "workdir_no_branch"
+        / "project-sources"
+        / project_name
     )
+
     sources_project_root = PROJECTS_DIR / "Sources" / project_name
+
     for rel_path in pov_test_paths:
         src = exploiter_project_root / rel_path
         dst = sources_project_root / rel_path
+
         if src.exists():
             dst.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(src, dst)
-            logger.info(f"Copied PoV test: {rel_path} → Projects/Sources/{project_name}/{rel_path}")
+            logger.info(
+                f"Copied PoV test: {rel_path} "
+                f"→ Projects/Sources/{project_name}/{rel_path}"
+            )
         else:
             logger.warning(f"PoV test file not found in exploiter workdir: {src}")
 
-    # run patcher
-    success, run_dir = patcher_main(
-            language=state["language"],
-            cwe_id=state['finder_output']['cwe_id'],
-            vulnerability_list=state['finder_output']['vulnerabilities'],
-            project_name=state["project_name"],
-            pov_logic=pov_logic,
-            save_prompt=True,
-        )
+    finder_output = state["finder_output"]
 
-    state["patcher"] = {"success": success, "artifact_path": run_dir}
+    success, run_dir = patcher_main(
+        language=state["language"],
+        cwe_id=finder_output["cwe_id"],
+        vulnerability_list=finder_output["vulnerabilities"],
+        project_name=project_name,
+        pov_logic=pov_logic,
+        save_prompt=True,
+    )
+
+    state["patcher"] = {
+        "success": success,
+        "artifact_path": run_dir,
+    }
 
     return state
 
@@ -482,7 +721,10 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 
     if not patcher_artifact_path:
         logger.error("No patcher artifact_path in state — skipping verifier")
-        state["verifier"] = {"success": False, "error": "No patcher output"}
+        state["verifier"] = {
+            "success": False,
+            "error": "No patcher output",
+        }
         return state
 
     run_dir = Path(patcher_artifact_path)
@@ -490,7 +732,10 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 
     if not manifest_files:
         logger.error(f"No patcher manifest found in {run_dir}")
-        state["verifier"] = {"success": False, "error": f"No manifest in {run_dir}"}
+        state["verifier"] = {
+            "success": False,
+            "error": f"No manifest in {run_dir}",
+        }
         return state
 
     manifest_path = str(manifest_files[0])
@@ -509,41 +754,30 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
     return state
 
 
-# ====== Execute workflow =====
-def pipeline_main():
+def pipeline_main() -> None:
     load_dotenv()
-    # TODO: parameterize these via argparse/env vars
-    SELECTED_PROJECT = ProjectVariants.XWIKI_XWIKI_RENDERING_CVE_2023_37908
-    
-    # INITIAL INPUT STATE
-    initial_state: AutoSecState = {
-        "project_name": SELECTED_PROJECT.project_name,
-        "vuln_id": SELECTED_PROJECT.cwe_id,
-        "language": "java",
-        "finder_model": "gpt-5-mini",
-        "finder_reanalyze": False,
-        #! Manual inputs for development & experiments
-        # TODO: parameterize these via argparse/env vars
-        # "finder_output": load_dummy_finder_output(SELECTED_PROJECT.dummy_finder_output),
-        # "exploiter": {
-        #     "pov_logic": SELECTED_PROJECT.dummy_exploiter_pov_logic
-        # },
-        # "patcher": {
-        #     "success": True,
-        #     "artifact_path": load_dummy_patcher_output(AGENTS_DIR, SELECTED_PROJECT)
-        # }
-    }
 
-    # Execute the graph
-    workflow = _build_workflow()
+    args = _parse_args()
+    mode = PipelineMode(args.mode)
+
+    selected_project = _resolve_project_variant(args.project)
+    initial_state = _build_initial_state(selected_project, args)
+
+    logger.info(
+        f"Starting pipeline with "
+        f"mode={mode.value}, "
+        f"project={selected_project.project_name}, "
+        f"use_dummy={args.use_dummy}, "
+        f"finder_reanalyze={args.finder_reanalyze}"
+    )
+
+    workflow = _build_workflow(mode)
     final_state = workflow.invoke(initial_state)
 
-    # Save to file
     file_path = save_state_dump(final_state)
     if file_path:
         print(f"[Pipeline] State dump saved to: {file_path}")
 
 
-# standalone execution
 if __name__ == "__main__":
     pipeline_main()
