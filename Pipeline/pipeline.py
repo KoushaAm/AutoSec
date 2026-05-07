@@ -513,7 +513,7 @@ def _verifier_node(state: AutoSecState) -> AutoSecState:
 def pipeline_main():
     load_dotenv()
     # TODO: parameterize these via argparse/env vars
-    SELECTED_PROJECT = ProjectVariants.XWIKI_XWIKI_RENDERING_CVE_2023_32070
+    SELECTED_PROJECT = ProjectVariants.XWIKI_XWIKI_COMMONS_CVE_2023_36471
     
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {

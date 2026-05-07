@@ -89,19 +89,7 @@ since we are using Docker to build these projects.
 #### 5.3 Input setup (only for Independent runs)
 In order to run Exploiter Independently you need to provide this the file result.json in the location Agents/Exploiter/vuln_agent/modules/data/traces/result.json
 
-### 6. Run the Pipeline
-```bash
-python3 main.py
-
-# Optional: Customize the Patcher agent code extraction limit
-PATCHER_SNIPPET_MAX_LINES=800 python main.py
-
-# For all possible arguments without running main
-python3 main.py <-h|--help>
-```
-
-
-## Getting the Source/Zip file of the projects
+### 6. Getting the Source/Zip file of the projects
 To get other IRIS/Faultine projects into the sources & zipped directory:
 
 0. Run the `prepare_project.sh` script to skip steps 1 through 4
@@ -138,6 +126,18 @@ mv ./<name_of_project>.zip /workspaces/autosec/Projects/Zipped
 cd /workspaces/autosec/Projects/Sources/yamcs__yamcs_CVE-2023-45278_5.8.6
 zip -r yamcs__yamcs_CVE-2023-45278_5.8.6.zip ./
 mv ./yamcs__yamcs_CVE-2023-45278_5.8.6.zip /workspaces/autosec/Projects/Zipped
+```
+
+
+### 7. Run the Pipeline
+```bash
+python3 main.py
+
+# Optional: Customize the Patcher agent code extraction limit
+PATCHER_SNIPPET_MAX_LINES=800 python main.py
+
+# For all possible arguments without running main
+python3 main.py <-h|--help>
 ```
 
 
