@@ -4,12 +4,13 @@
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/project-sources/DSpace__DSpace_CVE-2016-10726_4.4" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/project-sources/ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/project-sources/apache__tika_CVE-2018-11762_1.18" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/project-sources/asf__tapestry-5_CVE-2019-0207_5.4.4" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/project-sources/codehaus-plexus__plexus-archiver_CVE-2018-1002200_3.5" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/project-sources/codehaus-plexus__plexus-utils_CVE-2017-1000487_3.0.15" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/project-sources/nahsra__antisamy_CVE-2016-10006_1.5.3" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/project-sources/nahsra__antisamy_CVE-2022-29577_1.6.6.1" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/project-sources/perwendel__spark_CVE-2016-9177_2.5.1" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/project-sources/perwendel__spark_CVE-2018-9159_2.7.1" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/project-sources/rhuss__jolokia_CVE-2018-1000129_1.4.0" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/project-sources/spring-cloud__spring-cloud-gateway_CVE-2022-22947_3.0.6" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/project-sources/square__retrofit_CVE-2018-1000850_2.4.0" vcs="Git" />
@@ -30,6 +31,8 @@
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/workdir/whitesource__curekit_CVE-2022-23082_1.1.3" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/workdir_no_branch/project-sources/DSpace__DSpace_CVE-2022-31192_5.10" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/workdir_no_branch/project-sources/ESAPI__esapi-java-legacy_CVE-2022-23457_2.2.3.1" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/workdir_no_branch/project-sources/apache__tika_CVE-2018-11762_1.18" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/workdir_no_branch/project-sources/asf__tapestry-5_CVE-2019-0207_5.4.4" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/workdir_no_branch/project-sources/codehaus-plexus__plexus-archiver_CVE-2018-1002200_3.5" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/workdir_no_branch/project-sources/codehaus-plexus__plexus-utils_CVE-2017-1000487_3.0.15" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/workdir_no_branch/project-sources/diffplug__goomph_CVE-2022-26049_3.37.1" vcs="Git" />

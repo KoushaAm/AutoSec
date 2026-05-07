@@ -17,10 +17,10 @@ from dotenv import load_dotenv
 # local imports
 from . import logger
 from .utils import (
-    save_state_dump, 
-    load_dummy_finder_output, 
-    load_dummy_patcher_output, 
-    has_actionable_vulnerabilities, 
+    save_state_dump,
+    load_dummy_finder_output,
+    load_dummy_patcher_output,
+    has_actionable_vulnerabilities,
     parse_exploiter_report
 )
 from .project_variants import ProjectVariants
@@ -167,6 +167,63 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
     return state
 
 
+def _has_actionable_vulnerabilities(finder_output: Optional[Dict[str, Any]]) -> bool:
+    """
+    Returns True if finder_output contains at least one vulnerability
+    with non-empty traces. Otherwise returns False.
+
+    Handles:
+    - finder_output is None
+    - vulnerabilities missing
+    - empty vulnerabilities list
+    - vulnerabilities with empty or invalid traces
+    """
+    if not finder_output:
+        return False
+
+    vulnerabilities = finder_output.get("vulnerabilities")
+    if not isinstance(vulnerabilities, list) or len(vulnerabilities) == 0:
+        return False
+
+    return any(
+        isinstance(vuln, dict)
+        and isinstance(vuln.get("traces"), list)
+        and len(vuln["traces"]) > 0
+        for vuln in vulnerabilities
+    )
+
+
+def _parse_exploiter_report(report_data) -> tuple[bool, list[str], str]:
+    """Return (exploitable, pov_test_paths, pov_logic) from a loaded report.json."""
+    if isinstance(report_data, dict):
+        entries = [report_data]
+    elif isinstance(report_data, list):
+        entries = report_data
+    else:
+        raise TypeError(f"Unexpected report.json top-level type: {type(report_data)}")
+
+    exploitable = any(isinstance(e, dict) and e.get("exploitable") for e in entries)
+
+    pov_test_paths: list[str] = []
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+        paths = entry.get("pov_test_path", [])
+        if isinstance(paths, str):
+            paths = [paths]
+        pov_test_paths.extend(p for p in paths if isinstance(p, str))
+
+    pov_logic = ""
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+        logic = entry.get("pov_logic", "")
+        if isinstance(logic, str):
+            pov_logic = logic
+
+    return exploitable, pov_test_paths, pov_logic
+
+
 def _exploiter_node(state: AutoSecState) -> Command:
     logger.info("Node: exploiter started")
     RUNNING_FINDER = True
@@ -180,7 +237,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
     # Stop the pipeline if finder found no actionable vulnerabilities
     finder_output = new_state.get("finder_output")
 
-    if not has_actionable_vulnerabilities(finder_output):
+    if not _has_actionable_vulnerabilities(finder_output):
         logger.info("Node: exploiter found no actionable vulnerabilities. Execution ends.")
 
         vulnerabilities = []
@@ -280,7 +337,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
         with open(report_path, "r") as f:
             report_data = json.load(f)
 
-        exploitable, pov_test_paths, pov_logic = parse_exploiter_report(report_data)
+        exploitable, pov_test_paths, pov_logic = _parse_exploiter_report(report_data)
 
         new_state["exploiter"] = {
             "success": exploitable,
@@ -397,7 +454,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
     with open(report_path, "r") as f:
         report_data = json.load(f)
 
-    exploitable, pov_test_paths, pov_logic = parse_exploiter_report(report_data)
+    exploitable, pov_test_paths, pov_logic = _parse_exploiter_report(report_data)
 
     new_state["exploiter"] = {
         "success": exploitable,
@@ -514,7 +571,7 @@ def pipeline_main():
     load_dotenv()
     # TODO: parameterize these via argparse/env vars
     SELECTED_PROJECT = ProjectVariants.XWIKI_XWIKI_RENDERING_CVE_2023_37908
-    
+
     # INITIAL INPUT STATE
     initial_state: AutoSecState = {
         "project_name": SELECTED_PROJECT.project_name,
@@ -533,6 +590,7 @@ def pipeline_main():
         #     "artifact_path": load_dummy_patcher_output(AGENTS_DIR, SELECTED_PROJECT)
         # }
     }
+    # print(json.dumps(initial_state, indent=2))
 
     # Execute the graph
     workflow = _build_workflow()
@@ -542,6 +600,7 @@ def pipeline_main():
     file_path = save_state_dump(final_state)
     if file_path:
         print(f"[Pipeline] State dump saved to: {file_path}")
+
 
 
 # standalone execution
