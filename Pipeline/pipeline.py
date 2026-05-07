@@ -61,6 +61,7 @@ class AutoSecState(TypedDict, total=False):
     verifier: Optional[Dict[str, Any]]
     pipeline_mode: Optional[str]
 
+#* =============== Helper Functions =============== *#
 
 def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -122,10 +123,10 @@ def _resolve_project_variant(project_arg: str) -> ProjectVariants:
     """
     Resolve a project from either:
     1. ProjectVariants enum name:
-       XWIKI_XWIKI_COMMONS_CVE_2023_29528
+       WHITESOURCE_CUREKIT_CVE_2022_23082
 
     2. Actual project slug:
-       xwiki__xwiki-commons_CVE-2023-29528_14.9-rc-1
+       whitesource__curekit_CVE-2022-23082_1.1.3
     """
     normalized_arg = project_arg.strip()
 
