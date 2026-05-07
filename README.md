@@ -131,7 +131,7 @@ mv ./yamcs__yamcs_CVE-2023-45278_5.8.6.zip /workspaces/autosec/Projects/Zipped
 ### 7. Run the Pipeline
 ```bash
 # project_name based on Project Variants
-python3 main.py --project XWIKI_XWIKI_COMMONS_CVE_2023_31126
+python3 main.py --project <project_name>
 
 # Optional: Customize the Patcher agent code extraction limit
 PATCHER_SNIPPET_MAX_LINES=800 python main.py
