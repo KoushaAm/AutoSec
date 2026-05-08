@@ -140,6 +140,8 @@ PATCHER_SNIPPET_MAX_LINES=800 python main.py
 python3 main.py <-h|--help>
 ```
 
+By default the pipeline auto-loads a dummy Finder output if one exists at `Projects/Finder_Output/<project_name>.json`, so you don't pay the IRIS analysis cost every run. If no dummy exists for the selected project, Finder runs end-to-end and produces fresh findings. To force a real Finder run even when a dummy is present, pass `--finder-reanalyze` (this also skips re-extracting the source tree, so it's the right flag when the project is already laid out under `Projects/Sources/`).
+
 ## Commands supported
 The following are some commands you can use when running the AutoSec Pipeline
 ```bash
@@ -154,18 +156,19 @@ python3 main.py --project <project_enum> # ex. WHITESOURCE_CUREKIT_CVE_2022_2308
 # Finder only:
 python3 main.py --mode finder
 
-# Finder only with reanalysis:
+# Finder only with reanalysis (ignore the cached dummy, force a real run):
 python3 main.py --mode finder --finder-reanalyze
 
-# Exploiter only with dummy Finder output:
-python3 main.py --mode exploiter --use-dummy finder
+# Exploiter only (the default finder dummy is loaded automatically):
+python3 main.py --mode exploiter
 
-# Patcher only:
-python3 main.py --mode patcher --use-dummy finder exploiter
+# Patcher only (adds exploiter on top of the default finder dummy):
+python3 main.py --mode patcher --use-dummy exploiter
 
-# Verifier only:
+# Verifier only (adds patcher on top of the default finder dummy):
 python3 main.py --mode verifier --use-dummy patcher
 ```
+- `--use-dummy` extends the default `[finder]` set instead of replacing it, so `--use-dummy patcher` gives you `[finder, patcher]`. Pass multiple values to stack them, e.g. `--use-dummy exploiter patcher`.
 - For a full list use the `python3 main.py <-h|--help>` command
 
 ## Injecting Project Variants CSV
@@ -193,7 +196,7 @@ python Pipeline/scripts/convert_to_finder_output.py <project_name> <cwe_id> <jso
 # example: 
 # python Pipeline/scripts/convert_to_finder_output.py perwendel__spark_CVE-2018-9159_2.7.1 cwe-022 finder_output_perwendel.json
 ```
-3. This will create a `json` file in `Projects/Finder_Output`
+3. This will create a `json` file in `Projects/Finder_Output`. Once the file is in place, subsequent runs of the same project will auto-load it as the Finder dummy and skip the IRIS analysis -> Finder stage short-circuits, pipeline starts from Exploiter.
 
 ## Project Structure
 - Only files relevant to the primary AutoSec Pipeline have been listed
