@@ -82,13 +82,17 @@ def parse_exploiter_report(report_data) -> tuple[bool, list[str], str]:
 
 #* =============== Dummy Data Loaders & Validators =============== *#
 # Loader + Validator
-def load_dummy_finder_output(json_path: str) -> FinderOutput:
+def load_dummy_finder_output(json_path: str) -> Optional[FinderOutput]:
     """
     Load a JSON file and validate that it matches the expected FinderOutput schema.
-    
-    Raises:
-        ValueError if structure is invalid.
+
+    Returns None if the file does not exist, so the Finder node can run normally.
+    Raises ValueError if the file exists but its structure is invalid.
     """
+    if not Path(json_path).exists():
+        print(f"====== No injected Finder output at {json_path} — Finder will run ======")
+        return None
+    
     print(f"====== Loading Injected Finder output from: {json_path} ======")
 
     with open(json_path, "r", encoding="utf-8") as f:

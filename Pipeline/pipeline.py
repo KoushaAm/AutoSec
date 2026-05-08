@@ -99,19 +99,23 @@ def _parse_args() -> argparse.Namespace:
         "--finder-reanalyze",
         action="store_true",
         default=False,
-        help="Force Finder reanalysis using --overwrite. Defaults to false.",
+        help=(
+            "Reuse the existing project source tree (skip re-extraction from zip) "
+            "and bypass any cached/dummy Finder output, forcing IRIS to recompute. "
+            "Defaults to false (re-extract source from zip on each run)."
+        ),
     )
 
     parser.add_argument(
         "--use-dummy",
+        action="extend",
         nargs="*",
         choices=["finder", "exploiter", "patcher"],
-        default=[],
+        default=["finder"],
         help=(
-            "Inject dummy state before running. "
-            "Examples: --use-dummy finder, "
-            "--use-dummy finder exploiter, "
-            "--use-dummy patcher"
+            "Add to the default dummy set [finder]. "
+            "Examples: '--use-dummy patcher' -> [finder, patcher]; "
+            "'--use-dummy finder exploiter' -> [finder, exploiter]."
         ),
     )
 
@@ -257,7 +261,8 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node - finder started")
 
     # Skip finder if output was already injected, e.g. dummy/cached output.
-    if state.get("finder_output") is not None:
+    # finder_reanalyze=True overrides the cache to force a real run.
+    if state.get("finder_output") is not None and not state.get("finder_reanalyze"):
         logger.info("Node - finder skipped because finder_output is already set")
         return state
 
@@ -288,11 +293,24 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         f"--project-name {project_name} "
         f"--query {query} "
         f"--model {model} "
+        f"--overwrite "
     )
 
-    if state.get("finder_reanalyze", False):
-        build_and_analyze_args += "--overwrite"
-    else:
+    # finder_reanalyze=True keeps the existing source tree (e.g. Exploiter retry
+    # where the project is already extracted). Default re-extracts from the zip.
+    # Fallback: if the source tree isn't actually on disk (e.g. dummy was used
+    # on the first pass so IRIS never extracted), force re-extraction even when
+    # finder_reanalyze=True — otherwise IRIS's Maven build would have nothing
+    # to compile against.
+    project_source_dir = PROJECTS_DIR / "Sources" / project_name
+    keep_source = state.get("finder_reanalyze", False) and project_source_dir.exists()
+
+    if not keep_source:
+        if state.get("finder_reanalyze") and not project_source_dir.exists():
+            logger.info(
+                f"finder_reanalyze=True but source tree missing at "
+                f"{project_source_dir}; forcing re-extraction from zip."
+            )
         build_and_analyze_args += f"--zip-path /workspace/Projects/Zipped/{project_name}.zip"
 
     print(f"\n---- ARGS: {build_and_analyze_args} ----\n")
