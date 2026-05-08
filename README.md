@@ -166,6 +166,10 @@ python3 main.py --mode patcher --use-dummy finder exploiter
 # Verifier only:
 python3 main.py --mode verifier --use-dummy patcher
 ```
+- Example of **Finder Agent only** run with *reanalyze* enabled: 
+```bash
+python3 main.py --project whitesource__curekit_CVE-2022-23082_1.1.3 --mode finder --finder-reanalyze
+```
 - For a full list use the `python3 main.py <-h|--help>` command
 
 ## Injecting Project Variants CSV
