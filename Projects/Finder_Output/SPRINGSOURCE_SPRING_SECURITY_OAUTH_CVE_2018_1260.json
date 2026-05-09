@@ -1,0 +1,2987 @@
+{
+    "cwe_id": "cwe-094",
+    "vulnerabilities": [
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getForObject(...) : byte[]",
+                        "uri": "samples/oauth/tonr/src/main/java/org/springframework/security/oauth/examples/tonr/impl/GoogleServiceImpl.java",
+                        "line": 29
+                    },
+                    {
+                        "message": "bytes : byte[]",
+                        "uri": "samples/oauth/tonr/src/main/java/org/springframework/security/oauth/examples/tonr/impl/GoogleServiceImpl.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "new ByteArrayInputStream(...) : ByteArrayInputStream",
+                        "uri": "samples/oauth/tonr/src/main/java/org/springframework/security/oauth/examples/tonr/impl/GoogleServiceImpl.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "photosXML",
+                        "uri": "samples/oauth/tonr/src/main/java/org/springframework/security/oauth/examples/tonr/impl/GoogleServiceImpl.java",
+                        "line": 38
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getForObject(...) : byte[]",
+                        "uri": "samples/oauth/tonr/src/main/java/org/springframework/security/oauth/examples/tonr/impl/SparklrServiceImpl.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "new ByteArrayInputStream(...) : ByteArrayInputStream",
+                        "uri": "samples/oauth/tonr/src/main/java/org/springframework/security/oauth/examples/tonr/impl/SparklrServiceImpl.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "photosXML",
+                        "uri": "samples/oauth/tonr/src/main/java/org/springframework/security/oauth/examples/tonr/impl/SparklrServiceImpl.java",
+                        "line": 39
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getForObject(...) : byte[]",
+                        "uri": "samples/oauth2/tonr/src/main/java/org/springframework/security/oauth/examples/tonr/impl/SparklrServiceImpl.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "new ByteArrayInputStream(...) : ByteArrayInputStream",
+                        "uri": "samples/oauth2/tonr/src/main/java/org/springframework/security/oauth/examples/tonr/impl/SparklrServiceImpl.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "photosXML",
+                        "uri": "samples/oauth2/tonr/src/main/java/org/springframework/security/oauth/examples/tonr/impl/SparklrServiceImpl.java",
+                        "line": 43
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "request : HttpServletRequest",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "request : HttpServletRequest",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "determineTargetUrl(...) : String",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "callbackURL : String",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "new StringBuilder(...) : StringBuilder",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "append(...) : StringBuilder",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "append(...) : StringBuilder",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "append(...) : StringBuilder",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "append(...) : StringBuilder",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "append(...) : StringBuilder",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "targetUrl",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 92
+                    }
+                ],
+                [
+                    {
+                        "message": "getAttribute(...) : Object",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "(...)... : String",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "callbackURL : String",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "new StringBuilder(...) : StringBuilder",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "append(...) : StringBuilder",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "append(...) : StringBuilder",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "append(...) : StringBuilder",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "append(...) : StringBuilder",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "append(...) : StringBuilder",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "targetUrl",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 92
+                    }
+                ],
+                [
+                    {
+                        "message": "getAttribute(...) : Object",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 90
+                    },
+                    {
+                        "message": "(...)... : String",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 90
+                    },
+                    {
+                        "message": "verifier : String",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "append(...) : StringBuilder",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "targetUrl",
+                        "uri": "spring-security-oauth/src/main/java/org/springframework/security/oauth/provider/filter/UserAuthorizationSuccessfulAuthenticationHandler.java",
+                        "line": 92
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getBytes(...) : byte[]",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/client/token/JdbcClientTokenServices.java",
+                        "line": 62
+                    },
+                    {
+                        "message": "byteArray : byte[]",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/common/util/SerializationUtils.java",
+                        "line": 37
+                    },
+                    {
+                        "message": "byteArray : byte[]",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/common/util/SerializationUtils.java",
+                        "line": 40
+                    },
+                    {
+                        "message": "new ByteArrayInputStream(...)",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/common/util/SerializationUtils.java",
+                        "line": 40
+                    }
+                ],
+                [
+                    {
+                        "message": "getBytes(...) : byte[]",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/code/JdbcAuthorizationCodeServices.java",
+                        "line": 55
+                    },
+                    {
+                        "message": "byteArray : byte[]",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/common/util/SerializationUtils.java",
+                        "line": 37
+                    },
+                    {
+                        "message": "byteArray : byte[]",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/common/util/SerializationUtils.java",
+                        "line": 40
+                    },
+                    {
+                        "message": "new ByteArrayInputStream(...)",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/common/util/SerializationUtils.java",
+                        "line": 40
+                    }
+                ],
+                [
+                    {
+                        "message": "getBytes(...) : byte[]",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/token/store/JdbcTokenStore.java",
+                        "line": 115
+                    },
+                    {
+                        "message": "token : byte[]",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/token/store/JdbcTokenStore.java",
+                        "line": 396
+                    },
+                    {
+                        "message": "token : byte[]",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/token/store/JdbcTokenStore.java",
+                        "line": 397
+                    },
+                    {
+                        "message": "byteArray : byte[]",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/common/util/SerializationUtils.java",
+                        "line": 37
+                    },
+                    {
+                        "message": "byteArray : byte[]",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/common/util/SerializationUtils.java",
+                        "line": 40
+                    },
+                    {
+                        "message": "new ByteArrayInputStream(...)",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/common/util/SerializationUtils.java",
+                        "line": 40
+                    }
+                ],
+                [
+                    {
+                        "message": "getBytes(...) : byte[]",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/token/store/JdbcTokenStore.java",
+                        "line": 162
+                    },
+                    {
+                        "message": "token : byte[]",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/token/store/JdbcTokenStore.java",
+                        "line": 396
+                    },
+                    {
+                        "message": "token : byte[]",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/token/store/JdbcTokenStore.java",
+                        "line": 397
+                    },
+                    {
+                        "message": "byteArray : byte[]",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/common/util/SerializationUtils.java",
+                        "line": 37
+                    },
+                    {
+                        "message": "byteArray : byte[]",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/common/util/SerializationUtils.java",
+                        "line": 40
+                    },
+                    {
+                        "message": "new ByteArrayInputStream(...)",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/common/util/SerializationUtils.java",
+                        "line": 40
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "requestParameters : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "requestParameters : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 232
+                    },
+                    {
+                        "message": "super [post update] : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 232
+                    },
+                    {
+                        "message": "this <.method> [post update] : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "new AuthorizationRequest(...) : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/request/DefaultOAuth2RequestFactory.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "request : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/request/DefaultOAuth2RequestFactory.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "createAuthorizationRequest(...) : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "parameter this : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/BaseRequest.java",
+                        "line": 88
+                    },
+                    {
+                        "message": "this <.field> : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/BaseRequest.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "requestParameters : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/BaseRequest.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "getRequestParameters(...) : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "get(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "redirectUriParameter : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 74
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "obtainMatchingRedirect(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "resolveRedirect(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "resolvedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 176
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "this [post update] : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "authorizationRequest [post update] : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "samples/oauth2/sparklr/src/main/java/org/springframework/security/oauth/examples/sparklr/oauth/SparklrUserApprovalHandler.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "samples/oauth2/sparklr/src/main/java/org/springframework/security/oauth/examples/sparklr/oauth/SparklrUserApprovalHandler.java",
+                        "line": 92
+                    },
+                    {
+                        "message": "checkForPreApproval(...) : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 252
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 260
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 291
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 325
+                    },
+                    {
+                        "message": "parameter this : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 259
+                    },
+                    {
+                        "message": "this <.field> : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 260
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 260
+                    },
+                    {
+                        "message": "getRedirectUri(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 325
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 400
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 403
+                    },
+                    {
+                        "message": "fromUriString(...) : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 403
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 407
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 437
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "build(...) : UriComponents",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "toUriString(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "append(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 325
+                    },
+                    {
+                        "message": "appendAccessToken(...)",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 260
+                    }
+                ],
+                [
+                    {
+                        "message": "authorizationParameters : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "authorizationParameters : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "requestParameters : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "requestParameters : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 232
+                    },
+                    {
+                        "message": "super [post update] : AuthorizationRequest [requestParameters, <map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 232
+                    },
+                    {
+                        "message": "this <.method> [post update] : AuthorizationRequest [requestParameters, <map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "new AuthorizationRequest(...) : AuthorizationRequest [requestParameters, <map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/request/DefaultOAuth2RequestFactory.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "request : AuthorizationRequest [requestParameters, <map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/request/DefaultOAuth2RequestFactory.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "createAuthorizationRequest(...) : AuthorizationRequest [requestParameters, <map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [requestParameters, <map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "parameter this : AuthorizationRequest [requestParameters, <map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/BaseRequest.java",
+                        "line": 88
+                    },
+                    {
+                        "message": "this <.field> : AuthorizationRequest [requestParameters, <map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/BaseRequest.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "requestParameters : Map [<map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/BaseRequest.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "getRequestParameters(...) : Map [<map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "get(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "redirectUriParameter : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 74
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "obtainMatchingRedirect(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "resolveRedirect(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "resolvedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 176
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "this [post update] : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "authorizationRequest [post update] : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "samples/oauth2/sparklr/src/main/java/org/springframework/security/oauth/examples/sparklr/oauth/SparklrUserApprovalHandler.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "samples/oauth2/sparklr/src/main/java/org/springframework/security/oauth/examples/sparklr/oauth/SparklrUserApprovalHandler.java",
+                        "line": 92
+                    },
+                    {
+                        "message": "checkForPreApproval(...) : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 252
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 260
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 291
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 325
+                    },
+                    {
+                        "message": "parameter this : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 259
+                    },
+                    {
+                        "message": "this <.field> : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 260
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 260
+                    },
+                    {
+                        "message": "getRedirectUri(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 325
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 400
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 403
+                    },
+                    {
+                        "message": "fromUriString(...) : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 403
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 407
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 437
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "build(...) : UriComponents",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "toUriString(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "append(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 325
+                    },
+                    {
+                        "message": "appendAccessToken(...)",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 260
+                    }
+                ],
+                [
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "this [post update] : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "new AuthorizationRequest(...) : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/request/DefaultOAuth2RequestFactory.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "request : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/request/DefaultOAuth2RequestFactory.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "createAuthorizationRequest(...) : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "samples/oauth2/sparklr/src/main/java/org/springframework/security/oauth/examples/sparklr/oauth/SparklrUserApprovalHandler.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "samples/oauth2/sparklr/src/main/java/org/springframework/security/oauth/examples/sparklr/oauth/SparklrUserApprovalHandler.java",
+                        "line": 92
+                    },
+                    {
+                        "message": "checkForPreApproval(...) : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 252
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 260
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 291
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 325
+                    },
+                    {
+                        "message": "parameter this : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 259
+                    },
+                    {
+                        "message": "this <.field> : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 260
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 260
+                    },
+                    {
+                        "message": "getRedirectUri(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 325
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 400
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 403
+                    },
+                    {
+                        "message": "fromUriString(...) : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 403
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 407
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 437
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "build(...) : UriComponents",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "toUriString(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "append(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 325
+                    },
+                    {
+                        "message": "appendAccessToken(...)",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 260
+                    }
+                ],
+                [
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 74
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "obtainMatchingRedirect(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "resolveRedirect(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "resolvedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 176
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "this [post update] : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "authorizationRequest [post update] : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "samples/oauth2/sparklr/src/main/java/org/springframework/security/oauth/examples/sparklr/oauth/SparklrUserApprovalHandler.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "samples/oauth2/sparklr/src/main/java/org/springframework/security/oauth/examples/sparklr/oauth/SparklrUserApprovalHandler.java",
+                        "line": 92
+                    },
+                    {
+                        "message": "checkForPreApproval(...) : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 252
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 260
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 291
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 325
+                    },
+                    {
+                        "message": "parameter this : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 259
+                    },
+                    {
+                        "message": "this <.field> : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 260
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 260
+                    },
+                    {
+                        "message": "getRedirectUri(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 325
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 400
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 403
+                    },
+                    {
+                        "message": "fromUriString(...) : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 403
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 407
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 437
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "build(...) : UriComponents",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "toUriString(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "append(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 325
+                    },
+                    {
+                        "message": "appendAccessToken(...)",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 260
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "requestParameters : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "requestParameters : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 232
+                    },
+                    {
+                        "message": "super [post update] : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 232
+                    },
+                    {
+                        "message": "this <.method> [post update] : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "new AuthorizationRequest(...) : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/request/DefaultOAuth2RequestFactory.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "request : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/request/DefaultOAuth2RequestFactory.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "createAuthorizationRequest(...) : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "parameter this : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/BaseRequest.java",
+                        "line": 88
+                    },
+                    {
+                        "message": "this <.field> : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/BaseRequest.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "requestParameters : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/BaseRequest.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "getRequestParameters(...) : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "get(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "redirectUriParameter : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 74
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "obtainMatchingRedirect(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "resolveRedirect(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "resolvedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 176
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "this [post update] : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "authorizationRequest [post update] : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "samples/oauth2/sparklr/src/main/java/org/springframework/security/oauth/examples/sparklr/oauth/SparklrUserApprovalHandler.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "samples/oauth2/sparklr/src/main/java/org/springframework/security/oauth/examples/sparklr/oauth/SparklrUserApprovalHandler.java",
+                        "line": 92
+                    },
+                    {
+                        "message": "checkForPreApproval(...) : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 252
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 264
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 369
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 392
+                    },
+                    {
+                        "message": "parameter this : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 259
+                    },
+                    {
+                        "message": "this <.field> : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 260
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 260
+                    },
+                    {
+                        "message": "getRedirectUri(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 392
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 396
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 397
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 400
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 403
+                    },
+                    {
+                        "message": "fromUriString(...) : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 403
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 407
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 437
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "build(...) : UriComponents",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "toUriString(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "append(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 397
+                    },
+                    {
+                        "message": "append(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 392
+                    },
+                    {
+                        "message": "getUnsuccessfulRedirect(...)",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 264
+                    }
+                ],
+                [
+                    {
+                        "message": "authorizationParameters : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "authorizationParameters : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "requestParameters : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "requestParameters : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 232
+                    },
+                    {
+                        "message": "super [post update] : AuthorizationRequest [requestParameters, <map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 232
+                    },
+                    {
+                        "message": "this <.method> [post update] : AuthorizationRequest [requestParameters, <map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "new AuthorizationRequest(...) : AuthorizationRequest [requestParameters, <map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/request/DefaultOAuth2RequestFactory.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "request : AuthorizationRequest [requestParameters, <map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/request/DefaultOAuth2RequestFactory.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "createAuthorizationRequest(...) : AuthorizationRequest [requestParameters, <map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [requestParameters, <map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "parameter this : AuthorizationRequest [requestParameters, <map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/BaseRequest.java",
+                        "line": 88
+                    },
+                    {
+                        "message": "this <.field> : AuthorizationRequest [requestParameters, <map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/BaseRequest.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "requestParameters : Map [<map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/BaseRequest.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "getRequestParameters(...) : Map [<map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "get(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "redirectUriParameter : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 74
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "obtainMatchingRedirect(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "resolveRedirect(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "resolvedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 176
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "this [post update] : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "authorizationRequest [post update] : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "samples/oauth2/sparklr/src/main/java/org/springframework/security/oauth/examples/sparklr/oauth/SparklrUserApprovalHandler.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "samples/oauth2/sparklr/src/main/java/org/springframework/security/oauth/examples/sparklr/oauth/SparklrUserApprovalHandler.java",
+                        "line": 92
+                    },
+                    {
+                        "message": "checkForPreApproval(...) : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 252
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 264
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 369
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 392
+                    },
+                    {
+                        "message": "parameter this : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 259
+                    },
+                    {
+                        "message": "this <.field> : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 260
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 260
+                    },
+                    {
+                        "message": "getRedirectUri(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 392
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 396
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 397
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 400
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 403
+                    },
+                    {
+                        "message": "fromUriString(...) : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 403
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 407
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 437
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "build(...) : UriComponents",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "toUriString(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "append(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 397
+                    },
+                    {
+                        "message": "append(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 392
+                    },
+                    {
+                        "message": "getUnsuccessfulRedirect(...)",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 264
+                    }
+                ],
+                [
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "this [post update] : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "new AuthorizationRequest(...) : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/request/DefaultOAuth2RequestFactory.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "request : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/request/DefaultOAuth2RequestFactory.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "createAuthorizationRequest(...) : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "samples/oauth2/sparklr/src/main/java/org/springframework/security/oauth/examples/sparklr/oauth/SparklrUserApprovalHandler.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "samples/oauth2/sparklr/src/main/java/org/springframework/security/oauth/examples/sparklr/oauth/SparklrUserApprovalHandler.java",
+                        "line": 92
+                    },
+                    {
+                        "message": "checkForPreApproval(...) : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 252
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 264
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 369
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 392
+                    },
+                    {
+                        "message": "parameter this : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 259
+                    },
+                    {
+                        "message": "this <.field> : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 260
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 260
+                    },
+                    {
+                        "message": "getRedirectUri(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 392
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 396
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 397
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 400
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 403
+                    },
+                    {
+                        "message": "fromUriString(...) : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 403
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 407
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 437
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "build(...) : UriComponents",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "toUriString(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "append(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 397
+                    },
+                    {
+                        "message": "append(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 392
+                    },
+                    {
+                        "message": "getUnsuccessfulRedirect(...)",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 264
+                    }
+                ],
+                [
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 74
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "obtainMatchingRedirect(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "resolveRedirect(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "resolvedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 176
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "this [post update] : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "authorizationRequest [post update] : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "samples/oauth2/sparklr/src/main/java/org/springframework/security/oauth/examples/sparklr/oauth/SparklrUserApprovalHandler.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "samples/oauth2/sparklr/src/main/java/org/springframework/security/oauth/examples/sparklr/oauth/SparklrUserApprovalHandler.java",
+                        "line": 92
+                    },
+                    {
+                        "message": "checkForPreApproval(...) : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 252
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 264
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 369
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 392
+                    },
+                    {
+                        "message": "parameter this : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 259
+                    },
+                    {
+                        "message": "this <.field> : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 260
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 260
+                    },
+                    {
+                        "message": "getRedirectUri(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 392
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 396
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 397
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 400
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 403
+                    },
+                    {
+                        "message": "fromUriString(...) : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 403
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 407
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 437
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "build(...) : UriComponents",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "toUriString(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "append(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 397
+                    },
+                    {
+                        "message": "append(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 392
+                    },
+                    {
+                        "message": "getUnsuccessfulRedirect(...)",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 264
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "requestParameters : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "requestParameters : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 232
+                    },
+                    {
+                        "message": "super [post update] : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 232
+                    },
+                    {
+                        "message": "this <.method> [post update] : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "new AuthorizationRequest(...) : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/request/DefaultOAuth2RequestFactory.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "request : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/request/DefaultOAuth2RequestFactory.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "createAuthorizationRequest(...) : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "parameter this : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/BaseRequest.java",
+                        "line": 88
+                    },
+                    {
+                        "message": "this <.field> : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/BaseRequest.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "requestParameters : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/BaseRequest.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "getRequestParameters(...) : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "get(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "redirectUriParameter : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 74
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "obtainMatchingRedirect(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "resolveRedirect(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "resolvedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 176
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "this [post update] : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "authorizationRequest [post update] : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "samples/oauth2/sparklr/src/main/java/org/springframework/security/oauth/examples/sparklr/oauth/SparklrUserApprovalHandler.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "samples/oauth2/sparklr/src/main/java/org/springframework/security/oauth/examples/sparklr/oauth/SparklrUserApprovalHandler.java",
+                        "line": 92
+                    },
+                    {
+                        "message": "checkForPreApproval(...) : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 172
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 281
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 283
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 352
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 366
+                    },
+                    {
+                        "message": "parameter this : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 259
+                    },
+                    {
+                        "message": "this <.field> : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 260
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 260
+                    },
+                    {
+                        "message": "getRedirectUri(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 366
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 396
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 397
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 400
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 403
+                    },
+                    {
+                        "message": "fromUriString(...) : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 403
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 407
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 437
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "build(...) : UriComponents",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "toUriString(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "append(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 397
+                    },
+                    {
+                        "message": "append(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 366
+                    },
+                    {
+                        "message": "getSuccessfulRedirect(...)",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 283
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "requestParameters : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "requestParameters : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 232
+                    },
+                    {
+                        "message": "super [post update] : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 232
+                    },
+                    {
+                        "message": "this <.method> [post update] : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "new AuthorizationRequest(...) : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/request/DefaultOAuth2RequestFactory.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "request : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/request/DefaultOAuth2RequestFactory.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "createAuthorizationRequest(...) : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "parameter this : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/BaseRequest.java",
+                        "line": 88
+                    },
+                    {
+                        "message": "this <.field> : AuthorizationRequest [requestParameters] : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/BaseRequest.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "requestParameters : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/BaseRequest.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "getRequestParameters(...) : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "get(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "redirectUriParameter : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 74
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "obtainMatchingRedirect(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "resolveRedirect(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "resolvedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 176
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "this [post update] : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "authorizationRequest [post update] : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "samples/oauth2/sparklr/src/main/java/org/springframework/security/oauth/examples/sparklr/oauth/SparklrUserApprovalHandler.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "samples/oauth2/sparklr/src/main/java/org/springframework/security/oauth/examples/sparklr/oauth/SparklrUserApprovalHandler.java",
+                        "line": 92
+                    },
+                    {
+                        "message": "checkForPreApproval(...) : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 172
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 281
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 287
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 369
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 392
+                    },
+                    {
+                        "message": "parameter this : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 259
+                    },
+                    {
+                        "message": "this <.field> : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 260
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 260
+                    },
+                    {
+                        "message": "getRedirectUri(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 392
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 396
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 397
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 400
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 403
+                    },
+                    {
+                        "message": "fromUriString(...) : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 403
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 407
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 437
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "build(...) : UriComponents",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "toUriString(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "append(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 397
+                    },
+                    {
+                        "message": "append(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 392
+                    },
+                    {
+                        "message": "getUnsuccessfulRedirect(...)",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 287
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "requestParameters : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "requestParameters : Map",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 232
+                    },
+                    {
+                        "message": "super [post update] : AuthorizationRequest [requestParameters, <map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 232
+                    },
+                    {
+                        "message": "this <.method> [post update] : AuthorizationRequest [requestParameters, <map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "new AuthorizationRequest(...) : AuthorizationRequest [requestParameters, <map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/request/DefaultOAuth2RequestFactory.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "request : AuthorizationRequest [requestParameters, <map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/request/DefaultOAuth2RequestFactory.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "createAuthorizationRequest(...) : AuthorizationRequest [requestParameters, <map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 549
+                    },
+                    {
+                        "message": "getAuthorizationRequestForError(...) : AuthorizationRequest [requestParameters, <map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 512
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [requestParameters, <map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 513
+                    },
+                    {
+                        "message": "parameter this : AuthorizationRequest [requestParameters, <map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/BaseRequest.java",
+                        "line": 88
+                    },
+                    {
+                        "message": "this <.field> : AuthorizationRequest [requestParameters, <map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/BaseRequest.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "requestParameters : Map [<map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/BaseRequest.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "getRequestParameters(...) : Map [<map.value>] : Object",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 513
+                    },
+                    {
+                        "message": "get(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 513
+                    },
+                    {
+                        "message": "requestedRedirectParam : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 514
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 74
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "obtainMatchingRedirect(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/DefaultRedirectResolver.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "resolveRedirect(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 514
+                    },
+                    {
+                        "message": "requestedRedirect : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 516
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 176
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "this [post update] : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "authorizationRequest [post update] : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 516
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 517
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 369
+                    },
+                    {
+                        "message": "authorizationRequest : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 392
+                    },
+                    {
+                        "message": "parameter this : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 259
+                    },
+                    {
+                        "message": "this <.field> : AuthorizationRequest [redirectUri] : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 260
+                    },
+                    {
+                        "message": "redirectUri : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/AuthorizationRequest.java",
+                        "line": 260
+                    },
+                    {
+                        "message": "getRedirectUri(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 392
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 396
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 397
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 400
+                    },
+                    {
+                        "message": "base : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 403
+                    },
+                    {
+                        "message": "fromUriString(...) : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 403
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 407
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 437
+                    },
+                    {
+                        "message": "builder : UriComponentsBuilder",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "build(...) : UriComponents",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "toUriString(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 452
+                    },
+                    {
+                        "message": "append(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 397
+                    },
+                    {
+                        "message": "append(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 392
+                    },
+                    {
+                        "message": "getUnsuccessfulRedirect(...) : String",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 517
+                    },
+                    {
+                        "message": "redirect",
+                        "uri": "spring-security-oauth2/src/main/java/org/springframework/security/oauth2/provider/endpoint/AuthorizationEndpoint.java",
+                        "line": 519
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getLocation(...) : URI",
+                        "uri": "tests/annotation/common/src/main/java/sparklr/common/HttpTestUtils.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "tests/annotation/common/src/main/java/sparklr/common/HttpTestUtils.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "location",
+                        "uri": "tests/annotation/common/src/main/java/sparklr/common/HttpTestUtils.java",
+                        "line": 194
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getLocation(...) : URI",
+                        "uri": "tests/xml/common/src/main/java/sparklr/common/HttpTestUtils.java",
+                        "line": 179
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "tests/xml/common/src/main/java/sparklr/common/HttpTestUtils.java",
+                        "line": 179
+                    },
+                    {
+                        "message": "location",
+                        "uri": "tests/xml/common/src/main/java/sparklr/common/HttpTestUtils.java",
+                        "line": 181
+                    }
+                ],
+                [
+                    {
+                        "message": "getHeaders(...) : HttpHeaders",
+                        "uri": "tests/xml/common/src/main/java/sparklr/common/HttpTestUtils.java",
+                        "line": 179
+                    },
+                    {
+                        "message": "getLocation(...) : URI",
+                        "uri": "tests/xml/common/src/main/java/sparklr/common/HttpTestUtils.java",
+                        "line": 179
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "tests/xml/common/src/main/java/sparklr/common/HttpTestUtils.java",
+                        "line": 179
+                    },
+                    {
+                        "message": "location",
+                        "uri": "tests/xml/common/src/main/java/sparklr/common/HttpTestUtils.java",
+                        "line": 181
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        }
+    ]
+}
