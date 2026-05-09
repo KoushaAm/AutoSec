@@ -8,6 +8,8 @@
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/project-sources/asf__tapestry-5_CVE-2019-0207_5.4.4" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/project-sources/codehaus-plexus__plexus-archiver_CVE-2018-1002200_3.5" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/project-sources/codehaus-plexus__plexus-utils_CVE-2017-1000487_3.0.15" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/project-sources/dromara__hutool_CVE-2018-17297_4.1.11" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/project-sources/ff4j__ff4j_CVE-2022-44262_1.8.13" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/project-sources/nahsra__antisamy_CVE-2016-10006_1.5.3" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/project-sources/nahsra__antisamy_CVE-2022-29577_1.6.6.1" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Agents/Exploiter/data/cwe-bench-java/project-sources/perwendel__spark_CVE-2016-9177_2.5.1" vcs="Git" />
@@ -56,5 +58,6 @@
     <mapping directory="$PROJECT_DIR$/Agents/Finder/data/project-sources/perwendel__spark_CVE-2018-9159_2.7.1" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Agents/Finder/data/project-sources/spring-cloud__spring-cloud-config_CVE-2020-5410_2.1.8.RELEASE" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Agents/Finder/data/project-sources/xwiki__xwiki-rendering_CVE-2023-32070_14.6" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Projects/Sources/ff4j__ff4j_CVE-2022-44262_1.8.13" vcs="Git" />
   </component>
 </project>
