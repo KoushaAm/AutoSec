@@ -457,6 +457,12 @@ def _exploiter_node(state: AutoSecState) -> Command:
         "fetch_one.py",
     )
 
+    generate_dockerfiles_location = os.path.join(
+        exploiter_dir,
+        "scripts",
+        "generate_dockerfiles.py",
+    )
+
     project_directory = os.path.join(
         exploiter_dir,
         "data",
@@ -556,6 +562,49 @@ def _exploiter_node(state: AutoSecState) -> Command:
             return Command(goto=_route_after_exploiter(new_state), update=new_state)
 
     dockerfile_src = os.path.join(dockerfiles, project_name, "Dockerfile.vuln")
+
+    # Generate (or regenerate) the Dockerfile if it is missing or still uses the
+    # old single-test format (CWE_ID_*.java discovery instead of AutoSecFlow*Test).
+    def _dockerfile_needs_generation(path: str) -> bool:
+        if not os.path.exists(path):
+            return True
+        try:
+            with open(path, encoding="utf-8") as _f:
+                return "AutoSecFlow" not in _f.read()
+        except OSError:
+            return True
+
+    if _dockerfile_needs_generation(dockerfile_src):
+        vuln_id = new_state.get("vuln_id", "")
+        logger.info(
+            f"Generating Dockerfile for {project_name} (cwe={vuln_id}) "
+            f"at {dockerfile_src}"
+        )
+        try:
+            subprocess.run(
+                [
+                    sys.executable,
+                    generate_dockerfiles_location,
+                    "--project", project_name,
+                    "--cwe", vuln_id,
+                    "--force",
+                ],
+                check=True,
+            )
+        except subprocess.CalledProcessError as e:
+            logger.error(
+                f"Dockerfile generation failed for {project_name} "
+                f"(exit={e.returncode}). Pipeline cannot continue."
+            )
+            new_state["exploiter"] = {
+                "success": False,
+                "report_path": None,
+                "pov_test_paths": None,
+                "pov_logic": None,
+                "from_cache": False,
+            }
+            return Command(goto=_route_after_exploiter(new_state), update=new_state)
+
     logger.info(
         f"Copying dockerfile {dockerfile_src} into project path: {project_directory}"
     )
