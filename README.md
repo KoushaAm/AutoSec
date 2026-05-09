@@ -199,6 +199,27 @@ python Pipeline/scripts/convert_to_finder_output.py <project_name> <cwe_id> <jso
 ```
 3. This will create a `json` file in `Projects/Finder_Output`
 
+## Delete Unwanted Projects
+To mass delete unwanted or previously run projects, use the `delete_projects.sh` script.
+1. Make the script executable (first time only): `chmod +x Pipeline/scripts/delete_projects.sh`
+2. Run the script:
+```bash
+# Params:
+# - One or more directories to delete immediate items from
+# - After "--keep", the item names (files or folders) to preserve
+
+# Single directory (shorthand — one item to keep):
+./Pipeline/scripts/delete_projects.sh <directory> <name_to_keep>
+
+# One or more directories with multiple items to keep:
+./Pipeline/scripts/delete_projects.sh <directory1> <directory2> --keep <item_a> <item_b>
+
+# Example: delete from both Sources & Zipped, keeping a project folder and its zip
+./Pipeline/scripts/delete_projects.sh /workspaces/autosec/Projects/Sources /workspaces/autosec/Projects/Zipped --keep project_a project_a.zip
+```
+
+> **Note:** Only immediate items inside each directory are affected; the script does not recurse deeper.
+
 ## Project Structure
 - Only files relevant to the primary AutoSec Pipeline have been listed
 ```
