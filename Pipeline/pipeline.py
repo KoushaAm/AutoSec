@@ -672,6 +672,13 @@ def _exploiter_node(state: AutoSecState) -> Command:
 def _patcher_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node - patcher started")
 
+    # Skip if dummy patcher data was injected via --use-dummy patcher.
+    # The "dummy" flag is set in _build_initial_state.
+    existing_patcher = state.get("patcher") or {}
+    if existing_patcher.get("dummy"):
+        logger.info("Node - patcher skipped (dummy data injected)")
+        return state
+
     if not state.get("language"):
         raise ValueError("language missing from state")
 
