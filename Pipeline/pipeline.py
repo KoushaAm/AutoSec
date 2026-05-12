@@ -761,7 +761,6 @@ def pipeline_main() -> None:
 
     selected_project = _resolve_project_variant(args.project)
     initial_state = _build_initial_state(selected_project, args)
-    print(f"Initial pipeline state:\n{json.dumps(initial_state, indent=2)}")
 
     logger.info(
         f"Starting pipeline with "
@@ -774,7 +773,6 @@ def pipeline_main() -> None:
     workflow = _build_workflow(mode)
     final_state = workflow.invoke(initial_state)
 
-    # TODO: finder_reanalyze is set to false even when --finder-reanalyze is passed, fix this.
     file_path = save_state_dump(final_state)
     if file_path:
         print(f"[Pipeline] State dump saved to: {file_path}")

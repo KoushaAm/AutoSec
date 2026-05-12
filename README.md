@@ -38,7 +38,7 @@ security remediation pipeline.
 ### 1. Create a Virtual Environment
 ```bash
 python3 -m venv .venv # only first time
-source .venv/bin/activate
+source /workspaces/autosec/.venv/bin/activate
 ```
 
 ### 2. Install Dependencies
