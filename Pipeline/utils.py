@@ -1,26 +1,11 @@
 # Pipeline/utils.py
 import json
-from typing import TypedDict, List, Any, Dict, Optional
+from typing import Any, Dict, Optional
 from pathlib import Path
 from datetime import datetime, timezone
-
+from Agents.Finder.src.types import FinderOutput
 from Pipeline.project_variants import ProjectVariants
 
-
-# TypedDict Definitions
-class TraceStep(TypedDict, total=False):
-    uri: str
-    line: int
-    message: str
-
-Trace = List[TraceStep]
-
-class VulnerabilityInstance(TypedDict):
-    traces: List[Trace]
-
-class FinderOutput(TypedDict):
-    cwe_id: str
-    vulnerabilities: List[VulnerabilityInstance]
 
 #* =============== Exploiter Utilities =============== *#
 def has_actionable_vulnerabilities(finder_output: Optional[Dict[str, Any]]) -> bool:
