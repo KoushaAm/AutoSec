@@ -2,6 +2,7 @@
 import argparse
 import json
 import os
+import shlex
 import shutil
 import subprocess
 import sys
@@ -293,13 +294,6 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
     query = vuln_id + "wLLM"
 
-    build_and_analyze_args = (
-        f"--project-name {project_name} "
-        f"--query {query} "
-        f"--model {model} "
-        f"--overwrite "
-    )
-
     # finder_reanalyze=True keeps the existing source tree (e.g. Exploiter retry
     # where the project is already extracted). Default re-extracts from the zip.
     # Fallback: if the source tree isn't actually on disk (e.g. dummy was used
@@ -309,15 +303,33 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
     project_source_dir = PROJECTS_DIR / "Sources" / project_name
     keep_source = state.get("finder_reanalyze", False) and project_source_dir.exists()
 
+    build_and_analyze_argv = [
+        "python3", "./scripts/build_and_analyze.py",
+        "--project-name", project_name,
+        "--query", query,
+        "--model", model,
+        "--overwrite",
+    ]
+
     if not keep_source:
         if state.get("finder_reanalyze") and not project_source_dir.exists():
             logger.info(
                 f"finder_reanalyze=True but source tree missing at "
                 f"{project_source_dir}; forcing re-extraction from zip."
             )
-        build_and_analyze_args += f"--zip-path /workspace/Projects/Zipped/{project_name}.zip"
+        build_and_analyze_argv += [
+            "--zip-path", f"/workspace/Projects/Zipped/{project_name}.zip",
+        ]
 
-    print(f"\n---- ARGS: {build_and_analyze_args} ----\n")
+    # Shell-quote the python invocation since we have to route through bash -lc
+    # to source conda. shlex.join protects against spaces / metacharacters in
+    # user-supplied values like --finder-model.
+    inner_cmd = (
+        "source /opt/conda/etc/profile.d/conda.sh && conda activate iris && "
+        + shlex.join(build_and_analyze_argv)
+    )
+
+    print(f"\n---- ARGS: {shlex.join(build_and_analyze_argv[2:])} ----\n")
 
     if model.startswith("gpt"):
         os.getenv("OPEN_AI_KEY")
@@ -342,8 +354,7 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         "iris:latest",
         "bash",
         "-lc",
-        "source /opt/conda/etc/profile.d/conda.sh && conda activate iris && "
-        "python3 ./scripts/build_and_analyze.py " + build_and_analyze_args,
+        inner_cmd,
     ]
 
     logger.info(f"Running IRIS inside Docker for project {project_name}")
