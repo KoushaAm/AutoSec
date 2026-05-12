@@ -102,7 +102,8 @@ def _parse_args() -> argparse.Namespace:
         help=(
             "Reuse the existing project source tree (skip re-extraction from zip) "
             "and bypass any cached/dummy Finder output, forcing IRIS to recompute. "
-            "Defaults to false (re-extract source from zip on each run)."
+            "Defaults to false: reuse any injected/cached Finder output if present "
+            "(see --use-dummy); otherwise extract source from zip and run IRIS."
         ),
     )
 
