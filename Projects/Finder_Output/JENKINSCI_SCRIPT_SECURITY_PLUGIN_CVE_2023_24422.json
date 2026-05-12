@@ -1,0 +1,181 @@
+{
+    "cwe_id": "cwe-078",
+    "vulnerabilities": [
+        {
+            "traces": [
+                [
+                    {
+                        "message": "new GroovyCodeSource(...) : GroovyCodeSource",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/sandbox/groovy/GroovySandbox.java",
+                        "line": 193
+                    },
+                    {
+                        "message": "codeSource : GroovyCodeSource",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/sandbox/groovy/GroovySandbox.java",
+                        "line": 194
+                    },
+                    {
+                        "message": "codeSource : GroovyCodeSource",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/sandbox/groovy/GroovySandbox.java",
+                        "line": 162
+                    },
+                    {
+                        "message": "codeSource : GroovyCodeSource",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/sandbox/groovy/GroovySandbox.java",
+                        "line": 163
+                    },
+                    {
+                        "message": "parseClass(...) : Class",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/sandbox/groovy/GroovySandbox.java",
+                        "line": 163
+                    },
+                    {
+                        "message": "scriptClass : Class",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/sandbox/groovy/GroovySandbox.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "scriptClass : Class",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/sandbox/groovy/GroovySandbox.java",
+                        "line": 206
+                    },
+                    {
+                        "message": "scriptClass : Class",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/sandbox/groovy/GroovySandbox.java",
+                        "line": 211
+                    },
+                    {
+                        "message": "newScript(...) : Script",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/sandbox/groovy/GroovySandbox.java",
+                        "line": 211
+                    },
+                    {
+                        "message": "script : Script",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/sandbox/groovy/GroovySandbox.java",
+                        "line": 257
+                    },
+                    {
+                        "message": "checkedCreateScript(...) : Script",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/sandbox/groovy/GroovySandbox.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "script : Script",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/sandbox/groovy/GroovySandbox.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "parse(...) : Script",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/sandbox/groovy/GroovySandbox.java",
+                        "line": 194
+                    },
+                    {
+                        "message": "script",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/sandbox/groovy/GroovySandbox.java",
+                        "line": 195
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "new GroovyCodeSource(...) : GroovyCodeSource",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/sandbox/groovy/GroovySandbox.java",
+                        "line": 193
+                    },
+                    {
+                        "message": "codeSource : GroovyCodeSource",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/sandbox/groovy/GroovySandbox.java",
+                        "line": 194
+                    },
+                    {
+                        "message": "codeSource : GroovyCodeSource",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/sandbox/groovy/GroovySandbox.java",
+                        "line": 162
+                    },
+                    {
+                        "message": "codeSource : GroovyCodeSource",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/sandbox/groovy/GroovySandbox.java",
+                        "line": 163
+                    },
+                    {
+                        "message": "parseClass(...) : Class",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/sandbox/groovy/GroovySandbox.java",
+                        "line": 163
+                    },
+                    {
+                        "message": "scriptClass : Class",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/sandbox/groovy/GroovySandbox.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "scriptClass : Class",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/sandbox/groovy/GroovySandbox.java",
+                        "line": 206
+                    },
+                    {
+                        "message": "scriptClass",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/sandbox/groovy/GroovySandbox.java",
+                        "line": 218
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "script : Script",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/sandbox/groovy/GroovySandbox.java",
+                        "line": 341
+                    },
+                    {
+                        "message": "script",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/sandbox/groovy/GroovySandbox.java",
+                        "line": 347
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "script : String",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/scripts/ScriptApproval.java",
+                        "line": 626
+                    },
+                    {
+                        "message": "script : String",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/scripts/ScriptApproval.java",
+                        "line": 630
+                    },
+                    {
+                        "message": "using(...)",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/sandbox/groovy/SecureGroovyScript.java",
+                        "line": 450
+                    }
+                ],
+                [
+                    {
+                        "message": "script : String",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/scripts/ScriptApproval.java",
+                        "line": 626
+                    },
+                    {
+                        "message": "script : String",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/scripts/ScriptApproval.java",
+                        "line": 637
+                    },
+                    {
+                        "message": "using(...)",
+                        "uri": "src/main/java/org/jenkinsci/plugins/scriptsecurity/sandbox/groovy/SecureGroovyScript.java",
+                        "line": 450
+                    }
+                ]
+            ]
+        }
+    ]
+}
