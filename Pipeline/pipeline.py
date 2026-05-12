@@ -119,9 +119,12 @@ def _parse_args() -> argparse.Namespace:
         choices=["finder", "exploiter", "patcher"],
         default=["finder"],
         help=(
-            "Add to the default dummy set [finder]. "
-            "Examples: '--use-dummy patcher' -> [finder, patcher]; "
-            "'--use-dummy finder exploiter' -> [finder, exploiter]."
+            "Skip the listed agents and populate their state from "
+            "pre-existing dummy data. Added on top of the default set "
+            "[finder]. "
+            "Examples: '--use-dummy patcher' -> skip [finder, patcher]; "
+            "'--use-dummy finder exploiter patcher' -> skip all three, "
+            "leaving only Verifier to run in --mode all."
         ),
     )
 
