@@ -101,8 +101,10 @@ def _parse_args() -> argparse.Namespace:
         action="store_true",
         default=False,
         help=(
-            "Reuse the existing project source tree (skip re-extraction from zip) "
-            "and bypass any cached/dummy Finder output, forcing IRIS to recompute. "
+            "Reuse the existing project source tree under Projects/Sources/<project> "
+            "to skip re-extracting from zip, and bypass any cached/dummy Finder output, "
+            "forcing IRIS to recompute. If the source tree is missing on disk, IRIS falls "
+            "back to re-extracting from the zip so the Maven build has something to compile. "
             "Defaults to false: reuse any injected/cached Finder output if present "
             "(see --use-dummy); otherwise extract source from zip and run IRIS."
         ),
