@@ -201,11 +201,14 @@ python Pipeline/scripts/generate_project_variants.py AutoSec_120_Project_Variant
 2. After finder analysis run the following command from the project root:
 ```bash
 python Pipeline/scripts/convert_to_finder_output.py <project_name> <cwe_id> <output_json>
+# `.json` extension is optional — appended automatically if omitted
 
 # example (auto-load-enabled name — matches ProjectVariants.dummy_finder_output):
 python Pipeline/scripts/convert_to_finder_output.py perwendel__spark_CVE-2018-9159_2.7.1 cwe-022 PERWENDEL_SPARK_CVE_2018_9159.json
+# equivalent, without the extension:
+python Pipeline/scripts/convert_to_finder_output.py perwendel__spark_CVE-2018-9159_2.7.1 cwe-022 PERWENDEL_SPARK_CVE_2018_9159
 ```
-3. This writes the JSON to `Projects/Finder_Output/<output_json>` verbatim. For subsequent runs to auto-load it as the Finder dummy (and short-circuit IRIS so the pipeline starts from Exploiter), the `<output_json>` filename **must** match the selected project's `ProjectVariants.dummy_finder_output` path — that's `<PROJECT_ENUM>.json` (e.g. `PERWENDEL_SPARK_CVE_2018_9159.json`). Arbitrary names like `finder_output_perwendel.json` will be saved but never picked up.
+3. This writes the JSON to `Projects/Finder_Output/<output_json>` (with `.json` appended if you didn't include it). For subsequent runs to auto-load it as the Finder dummy (and short-circuit IRIS so the pipeline starts from Exploiter), the `<output_json>` filename **must** match the selected project's `ProjectVariants.dummy_finder_output` path — that's `<PROJECT_ENUM>.json` (e.g. `PERWENDEL_SPARK_CVE_2018_9159.json`). Arbitrary names like `finder_output_perwendel.json` will be saved but never picked up.
 
 ## Project Structure
 - Only files relevant to the primary AutoSec Pipeline have been listed
