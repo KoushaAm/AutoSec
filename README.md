@@ -144,6 +144,8 @@ PATCHER_SNIPPET_MAX_LINES=800 python main.py
 python3 main.py <-h|--help>
 ```
 
+By default the pipeline auto-loads a dummy Finder output if one exists at the path declared by the selected project's `ProjectVariants` entry — `dummy_finder_output`, which is `Projects/Finder_Output/<PROJECT_ENUM>.json` (e.g. `Projects/Finder_Output/WHITESOURCE_CUREKIT_CVE_2022_23082.json`). The filename must match that exact enum-cased path; arbitrary names in `Projects/Finder_Output/` are not auto-loaded. If no dummy exists for the selected project, Finder runs end-to-end and produces fresh findings. To force a real Finder run even when a dummy is present, pass `--finder-reanalyze`; this also reuses the existing source tree under `Projects/Sources/<project_name>/` to skip re-extraction, falling back to re-extracting from the zip if the tree isn't on disk.
+
 ## Commands supported
 The following are some commands you can use when running the AutoSec Pipeline
 ```bash
@@ -158,18 +160,24 @@ python3 main.py --project <project_enum> # ex. WHITESOURCE_CUREKIT_CVE_2022_2308
 # Finder only:
 python3 main.py --mode finder
 
-# Finder only with reanalysis:
+# Finder only with reanalysis (ignore the cached dummy, force a real run):
 python3 main.py --mode finder --finder-reanalyze
 
-# Exploiter only with dummy Finder output:
-python3 main.py --mode exploiter --use-dummy finder
+# Exploiter only — requires a pre-existing dummy/cached Finder output for the
+# selected project at the path declared by ProjectVariants.dummy_finder_output
+# (i.e. Projects/Finder_Output/<PROJECT_ENUM>.json). In --mode exploiter the
+# workflow starts at the exploiter node, so Finder never runs to produce one;
+# if the file is missing, finder_output is None and exploiter short-circuits
+# as "no actionable vulnerabilities".
+python3 main.py --mode exploiter
 
-# Patcher only:
-python3 main.py --mode patcher --use-dummy finder exploiter
+# Patcher only (adds exploiter on top of the default finder dummy):
+python3 main.py --mode patcher --use-dummy exploiter
 
-# Verifier only:
+# Verifier only (adds patcher on top of the default finder dummy):
 python3 main.py --mode verifier --use-dummy patcher
 ```
+- `--use-dummy` extends the default `[finder]` set instead of replacing it, so `--use-dummy patcher` gives you `[finder, patcher]`. Pass multiple values to stack them, e.g. `--use-dummy exploiter patcher`.
 - For a full list use the `python3 main.py <-h|--help>` command
 
 ## Injecting Project Variants CSV
@@ -192,12 +200,15 @@ python Pipeline/scripts/generate_project_variants.py AutoSec_120_Project_Variant
 1. Run analysis on the desired project, the `Finder` agent will have generated a `.sarif` file of results
 2. After finder analysis run the following command from the project root:
 ```bash
-python Pipeline/scripts/convert_to_finder_output.py <project_name> <cwe_id> <json_name>.json
+python Pipeline/scripts/convert_to_finder_output.py <project_name> <cwe_id> <output_json>
+# `.json` extension is optional — appended automatically if omitted
 
-# example: 
-# python Pipeline/scripts/convert_to_finder_output.py perwendel__spark_CVE-2018-9159_2.7.1 cwe-022 finder_output_perwendel.json
+# example (auto-load-enabled name — matches ProjectVariants.dummy_finder_output):
+python Pipeline/scripts/convert_to_finder_output.py perwendel__spark_CVE-2018-9159_2.7.1 cwe-022 PERWENDEL_SPARK_CVE_2018_9159.json
+# equivalent, without the extension:
+python Pipeline/scripts/convert_to_finder_output.py perwendel__spark_CVE-2018-9159_2.7.1 cwe-022 PERWENDEL_SPARK_CVE_2018_9159
 ```
-3. This will create a `json` file in `Projects/Finder_Output`
+3. This writes the JSON to `Projects/Finder_Output/<output_json>` (with `.json` appended if you didn't include it). For subsequent runs to auto-load it as the Finder dummy (and short-circuit IRIS so the pipeline starts from Exploiter), the `<output_json>` filename **must** match the selected project's `ProjectVariants.dummy_finder_output` path — that's `<PROJECT_ENUM>.json` (e.g. `PERWENDEL_SPARK_CVE_2018_9159.json`). Arbitrary names like `finder_output_perwendel.json` will be saved but never picked up.
 
 ## Project Structure
 - Only files relevant to the primary AutoSec Pipeline have been listed

@@ -2,6 +2,7 @@
 import argparse
 import json
 import os
+import shlex
 import shutil
 import subprocess
 import sys
@@ -99,19 +100,29 @@ def _parse_args() -> argparse.Namespace:
         "--finder-reanalyze",
         action="store_true",
         default=False,
-        help="Force Finder reanalysis using --overwrite. Defaults to false.",
+        help=(
+            "Reuse the existing project source tree under Projects/Sources/<project> "
+            "to skip re-extracting from zip, and bypass any cached/dummy Finder output, "
+            "forcing IRIS to recompute. If the source tree is missing on disk, IRIS falls "
+            "back to re-extracting from the zip so the Maven build has something to compile. "
+            "Defaults to false: reuse any injected/cached Finder output if present "
+            "(see --use-dummy); otherwise extract source from zip and run IRIS."
+        ),
     )
 
     parser.add_argument(
         "--use-dummy",
+        action="extend",
         nargs="*",
         choices=["finder", "exploiter", "patcher"],
-        default=[],
+        default=["finder"],
         help=(
-            "Inject dummy state before running. "
-            "Examples: --use-dummy finder, "
-            "--use-dummy finder exploiter, "
-            "--use-dummy patcher"
+            "Skip the listed agents and populate their state from "
+            "pre-existing dummy data. Added on top of the default set "
+            "[finder]. "
+            "Examples: '--use-dummy patcher' -> skip [finder, patcher]; "
+            "'--use-dummy finder exploiter patcher' -> skip all three, "
+            "leaving only Verifier to run in --mode all."
         ),
     )
 
@@ -257,7 +268,8 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node - finder started")
 
     # Skip finder if output was already injected, e.g. dummy/cached output.
-    if state.get("finder_output") is not None:
+    # finder_reanalyze=True overrides the cache to force a real run.
+    if state.get("finder_output") is not None and not state.get("finder_reanalyze"):
         logger.info("Node - finder skipped because finder_output is already set")
         return state
 
@@ -284,18 +296,42 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
     query = vuln_id + "wLLM"
 
-    build_and_analyze_args = (
-        f"--project-name {project_name} "
-        f"--query {query} "
-        f"--model {model} "
+    # finder_reanalyze=True keeps the existing source tree (e.g. Exploiter retry
+    # where the project is already extracted). Default re-extracts from the zip.
+    # Fallback: if the source tree isn't actually on disk (e.g. dummy was used
+    # on the first pass so IRIS never extracted), force re-extraction even when
+    # finder_reanalyze=True — otherwise IRIS's Maven build would have nothing
+    # to compile against.
+    project_source_dir = PROJECTS_DIR / "Sources" / project_name
+    keep_source = state.get("finder_reanalyze", False) and project_source_dir.exists()
+
+    build_and_analyze_argv = [
+        "python3", "./scripts/build_and_analyze.py",
+        "--project-name", project_name,
+        "--query", query,
+        "--model", model,
+        "--overwrite",
+    ]
+
+    if not keep_source:
+        if state.get("finder_reanalyze") and not project_source_dir.exists():
+            logger.info(
+                f"finder_reanalyze=True but source tree missing at "
+                f"{project_source_dir}; forcing re-extraction from zip."
+            )
+        build_and_analyze_argv += [
+            "--zip-path", f"/workspace/Projects/Zipped/{project_name}.zip",
+        ]
+
+    # Shell-quote the python invocation since we have to route through bash -lc
+    # to source conda. shlex.join protects against spaces / metacharacters in
+    # user-supplied values like --finder-model.
+    inner_cmd = (
+        "source /opt/conda/etc/profile.d/conda.sh && conda activate iris && "
+        + shlex.join(build_and_analyze_argv)
     )
 
-    if state.get("finder_reanalyze", False):
-        build_and_analyze_args += "--overwrite"
-    else:
-        build_and_analyze_args += f"--zip-path /workspace/Projects/Zipped/{project_name}.zip"
-
-    print(f"\n---- ARGS: {build_and_analyze_args} ----\n")
+    print(f"\n---- ARGS: {shlex.join(build_and_analyze_argv[2:])} ----\n")
 
     if model.startswith("gpt"):
         os.getenv("OPEN_AI_KEY")
@@ -320,8 +356,7 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         "iris:latest",
         "bash",
         "-lc",
-        "source /opt/conda/etc/profile.d/conda.sh && conda activate iris && "
-        "python3 ./scripts/build_and_analyze.py " + build_and_analyze_args,
+        inner_cmd,
     ]
 
     logger.info(f"Running IRIS inside Docker for project {project_name}")
@@ -366,6 +401,13 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
 def _exploiter_node(state: AutoSecState) -> Command:
     logger.info("Node: exploiter started")
+
+    # Skip if dummy exploiter data was injected via --use-dummy exploiter.
+    # The "dummy" flag is set in _build_initial_state.
+    existing_exploiter = state.get("exploiter") or {}
+    if existing_exploiter.get("dummy"):
+        logger.info("Node: exploiter skipped (dummy data injected)")
+        return Command(goto=_route_after_exploiter(state), update=state)
 
     running_finder = True
 
@@ -646,6 +688,13 @@ def _exploiter_node(state: AutoSecState) -> Command:
 
 def _patcher_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node - patcher started")
+
+    # Skip if dummy patcher data was injected via --use-dummy patcher.
+    # The "dummy" flag is set in _build_initial_state.
+    existing_patcher = state.get("patcher") or {}
+    if existing_patcher.get("dummy"):
+        logger.info("Node - patcher skipped (dummy data injected)")
+        return state
 
     if not state.get("language"):
         raise ValueError("language missing from state")

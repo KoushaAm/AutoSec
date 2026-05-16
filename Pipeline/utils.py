@@ -1,26 +1,11 @@
 # Pipeline/utils.py
 import json
-from typing import TypedDict, List, Any, Dict, Optional
+from typing import Any, Dict, Optional
 from pathlib import Path
 from datetime import datetime, timezone
-
+from Agents.Finder.src.types import FinderOutput
 from Pipeline.project_variants import ProjectVariants
 
-
-# TypedDict Definitions
-class TraceStep(TypedDict, total=False):
-    uri: str
-    line: int
-    message: str
-
-Trace = List[TraceStep]
-
-class VulnerabilityInstance(TypedDict):
-    traces: List[Trace]
-
-class FinderOutput(TypedDict):
-    cwe_id: str
-    vulnerabilities: List[VulnerabilityInstance]
 
 #* =============== Exploiter Utilities =============== *#
 def has_actionable_vulnerabilities(finder_output: Optional[Dict[str, Any]]) -> bool:
@@ -82,13 +67,17 @@ def parse_exploiter_report(report_data) -> tuple[bool, list[str], str]:
 
 #* =============== Dummy Data Loaders & Validators =============== *#
 # Loader + Validator
-def load_dummy_finder_output(json_path: str) -> FinderOutput:
+def load_dummy_finder_output(json_path: str) -> Optional[FinderOutput]:
     """
     Load a JSON file and validate that it matches the expected FinderOutput schema.
-    
-    Raises:
-        ValueError if structure is invalid.
+
+    Returns None if the file does not exist, so the Finder node can run normally.
+    Raises ValueError if the file exists but its structure is invalid.
     """
+    if not Path(json_path).exists():
+        print(f"====== No injected Finder output at {json_path} — Finder will run ======")
+        return None
+    
     print(f"====== Loading Injected Finder output from: {json_path} ======")
 
     with open(json_path, "r", encoding="utf-8") as f:

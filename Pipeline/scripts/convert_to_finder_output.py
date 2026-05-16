@@ -15,9 +15,12 @@ def main():
 
     parser.add_argument("project_name", help="Project folder name under Agents/Finder/output")
     parser.add_argument("cwe_id", help="CWE id like cwe-022")
-    parser.add_argument("output_json", help="Output JSON filename")
+    parser.add_argument("output_json", help="Output JSON filename (.json appended if omitted)")
 
     args = parser.parse_args()
+
+    if not args.output_json.endswith(".json"):
+        args.output_json += ".json"
 
     project_name = args.project_name
     cwe_id = args.cwe_id
