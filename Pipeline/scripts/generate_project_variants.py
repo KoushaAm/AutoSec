@@ -30,7 +30,7 @@ import re
 from pathlib import Path
 
 
-REQUIRED_COLUMNS = {"Project Slug", "CWE"}
+REQUIRED_COLUMNS = {"Project_Slug", "CWE"}
 
 
 def normalize_primary_cwe(cwe_value: str) -> str:
@@ -99,7 +99,7 @@ def read_project_rows(csv_path: Path) -> list[dict[str, str]]:
         rows: list[dict[str, str]] = []
 
         for line_number, row in enumerate(reader, start=2):
-            project_slug = str(row.get("Project Slug", "")).strip()
+            project_slug = str(row.get("Project_Slug", "")).strip()
             cwe_value = str(row.get("CWE", "")).strip()
 
             if not project_slug:

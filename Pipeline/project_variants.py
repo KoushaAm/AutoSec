@@ -22,7 +22,7 @@ class ProjectVariants(Enum):
 
     APACHE_ACTIVEMQ_CVE_2014_3576 = {
         "name": "apache__activemq_CVE-2014-3576_5.10.2",
-        "cwe_id": "cwe-264",
+        "cwe_id": "cwe-078",
         "dummy_finder_output": "Projects/Finder_Output/APACHE_ACTIVEMQ_CVE_2014_3576.json",
         "dummy_exploiter_pov_logic": "..."
     }
@@ -85,14 +85,14 @@ class ProjectVariants(Enum):
 
     APACHE_DUBBO_CVE_2021_30180 = {
         "name": "apache__dubbo_CVE-2021-30180_2.7.9",
-        "cwe_id": "cwe-444",
+        "cwe_id": "cwe-094",
         "dummy_finder_output": "Projects/Finder_Output/APACHE_DUBBO_CVE_2021_30180.json",
         "dummy_exploiter_pov_logic": "..."
     }
 
     APACHE_FLINK_CVE_2020_17519 = {
         "name": "apache__flink_CVE-2020-17519_1.11.2",
-        "cwe_id": "cwe-552",
+        "cwe_id": "cwe-022",
         "dummy_finder_output": "Projects/Finder_Output/APACHE_FLINK_CVE_2020_17519.json",
         "dummy_exploiter_pov_logic": "..."
     }
@@ -218,7 +218,7 @@ class ProjectVariants(Enum):
 
     APACHE_STRUTS_CVE_2020_17530 = {
         "name": "apache__struts_CVE-2020-17530_2.5.25",
-        "cwe_id": "cwe-917",
+        "cwe_id": "cwe-094",
         "dummy_finder_output": "Projects/Finder_Output/APACHE_STRUTS_CVE_2020_17530.json",
         "dummy_exploiter_pov_logic": "..."
     }
@@ -414,7 +414,7 @@ class ProjectVariants(Enum):
 
     FABRIC8IO_KUBERNETES_CLIENT_CVE_2021_4178 = {
         "name": "fabric8io__kubernetes-client_CVE-2021-4178_5.0.2",
-        "cwe_id": "cwe-502",
+        "cwe_id": "cwe-094",
         "dummy_finder_output": "Projects/Finder_Output/FABRIC8IO_KUBERNETES_CLIENT_CVE_2021_4178.json",
         "dummy_exploiter_pov_logic": "..."
     }
