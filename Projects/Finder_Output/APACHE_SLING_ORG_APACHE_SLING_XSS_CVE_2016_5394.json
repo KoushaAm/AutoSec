@@ -1,0 +1,769 @@
+{
+    "cwe_id": "cwe-079",
+    "vulnerabilities": [
+        {
+            "traces": [
+                [
+                    {
+                        "message": "src : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 45
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "charAt(...) : Number",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "c : Number",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "b [post update] : StringBuilder",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "b : StringBuilder",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "escapeXml(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 45
+                    },
+                    {
+                        "message": "cleaned : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 47
+                    },
+                    {
+                        "message": "filter(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "filter(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "filter(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/JSONUtil.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "xssValue",
+                        "uri": "src/main/java/org/apache/sling/xss/JSONUtil.java",
+                        "line": 87
+                    }
+                ],
+                [
+                    {
+                        "message": "src : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 45
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "charAt(...) : Number",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "c : Number",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "b [post update] : StringBuilder",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "b : StringBuilder",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "b : StringBuilder",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "escapeXml(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 45
+                    },
+                    {
+                        "message": "cleaned : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 47
+                    },
+                    {
+                        "message": "filter(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "filter(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "filter(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/JSONUtil.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "xssValue",
+                        "uri": "src/main/java/org/apache/sling/xss/JSONUtil.java",
+                        "line": 87
+                    }
+                ],
+                [
+                    {
+                        "message": "src : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 45
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "charAt(...) : Number",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "c : Number",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "b [post update] : StringBuilder",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "b : StringBuilder",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "escapeXml(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 45
+                    },
+                    {
+                        "message": "cleaned : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 47
+                    },
+                    {
+                        "message": "filter(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "filter(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "filter(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/JSONUtil.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "xssValue",
+                        "uri": "src/main/java/org/apache/sling/xss/JSONUtil.java",
+                        "line": 87
+                    }
+                ],
+                [
+                    {
+                        "message": "src : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 45
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "charAt(...) : Number",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "c : Number",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "b [post update] : StringBuilder",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "b : StringBuilder",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "b : StringBuilder",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "escapeXml(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 45
+                    },
+                    {
+                        "message": "cleaned : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 47
+                    },
+                    {
+                        "message": "filter(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "filter(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "filter(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/JSONUtil.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "xssValue",
+                        "uri": "src/main/java/org/apache/sling/xss/JSONUtil.java",
+                        "line": 87
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "src : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 45
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "charAt(...) : Number",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "c : Number",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "b [post update] : StringBuilder",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "b : StringBuilder",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "escapeXml(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 45
+                    },
+                    {
+                        "message": "cleaned : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 47
+                    },
+                    {
+                        "message": "filter(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "filter(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "filter(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/JSONUtil.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "xssValue",
+                        "uri": "src/main/java/org/apache/sling/xss/JSONUtil.java",
+                        "line": 107
+                    }
+                ],
+                [
+                    {
+                        "message": "src : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 45
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "charAt(...) : Number",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "c : Number",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "b [post update] : StringBuilder",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "b : StringBuilder",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "b : StringBuilder",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "escapeXml(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 45
+                    },
+                    {
+                        "message": "cleaned : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 47
+                    },
+                    {
+                        "message": "filter(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "filter(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "filter(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/JSONUtil.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "xssValue",
+                        "uri": "src/main/java/org/apache/sling/xss/JSONUtil.java",
+                        "line": 107
+                    }
+                ],
+                [
+                    {
+                        "message": "src : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 45
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "charAt(...) : Number",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "c : Number",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "b [post update] : StringBuilder",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "b : StringBuilder",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "escapeXml(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 45
+                    },
+                    {
+                        "message": "cleaned : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 47
+                    },
+                    {
+                        "message": "filter(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "filter(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "filter(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/JSONUtil.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "xssValue",
+                        "uri": "src/main/java/org/apache/sling/xss/JSONUtil.java",
+                        "line": 107
+                    }
+                ],
+                [
+                    {
+                        "message": "src : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "str : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 45
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "charAt(...) : Number",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "c : Number",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "b [post update] : StringBuilder",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "b : StringBuilder",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "b : StringBuilder",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "escapeXml(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 45
+                    },
+                    {
+                        "message": "cleaned : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/PlainTextToHtmlContentContext.java",
+                        "line": 47
+                    },
+                    {
+                        "message": "filter(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "filter(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/impl/XSSFilterImpl.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "filter(...) : String",
+                        "uri": "src/main/java/org/apache/sling/xss/JSONUtil.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "xssValue",
+                        "uri": "src/main/java/org/apache/sling/xss/JSONUtil.java",
+                        "line": 107
+                    }
+                ]
+            ]
+        }
+    ]
+}
