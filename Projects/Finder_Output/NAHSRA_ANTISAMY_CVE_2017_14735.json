@@ -1,0 +1,327 @@
+{
+    "cwe_id": "cwe-079",
+    "vulnerabilities": [
+        {
+            "traces": [
+                [
+                    {
+                        "message": "taintedHTML : String",
+                        "uri": "src/main/java/org/owasp/validator/html/AntiSamy.java",
+                        "line": 180
+                    },
+                    {
+                        "message": "taintedHTML : String",
+                        "uri": "src/main/java/org/owasp/validator/html/AntiSamy.java",
+                        "line": 185
+                    },
+                    {
+                        "message": "taintedHTML : String",
+                        "uri": "src/main/java/org/owasp/validator/html/AntiSamy.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "taintedHTML : String",
+                        "uri": "src/main/java/org/owasp/validator/html/AntiSamy.java",
+                        "line": 105
+                    },
+                    {
+                        "message": "taintedHTML : String",
+                        "uri": "src/main/java/org/owasp/validator/html/AntiSamy.java",
+                        "line": 120
+                    },
+                    {
+                        "message": "taintedHTML : String",
+                        "uri": "src/main/java/org/owasp/validator/html/AntiSamy.java",
+                        "line": 129
+                    },
+                    {
+                        "message": "html : String",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "html : String",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "html : String",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "html : String",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 179
+                    },
+                    {
+                        "message": "new StringReader(...) : StringReader",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 179
+                    },
+                    {
+                        "message": "reader : StringReader",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 181
+                    },
+                    {
+                        "message": "reader : StringReader",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "reader : StringReader",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "new InputSource(...) : InputSource",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "new SAXSource(...) : SAXSource",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "source",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 235
+                    }
+                ],
+                [
+                    {
+                        "message": "taintedHTML : String",
+                        "uri": "src/main/java/org/owasp/validator/html/AntiSamy.java",
+                        "line": 161
+                    },
+                    {
+                        "message": "taintedHTML : String",
+                        "uri": "src/main/java/org/owasp/validator/html/AntiSamy.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "taintedHTML : String",
+                        "uri": "src/main/java/org/owasp/validator/html/AntiSamy.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "taintedHTML : String",
+                        "uri": "src/main/java/org/owasp/validator/html/AntiSamy.java",
+                        "line": 105
+                    },
+                    {
+                        "message": "taintedHTML : String",
+                        "uri": "src/main/java/org/owasp/validator/html/AntiSamy.java",
+                        "line": 120
+                    },
+                    {
+                        "message": "taintedHTML : String",
+                        "uri": "src/main/java/org/owasp/validator/html/AntiSamy.java",
+                        "line": 129
+                    },
+                    {
+                        "message": "html : String",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "html : String",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "html : String",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "html : String",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 179
+                    },
+                    {
+                        "message": "new StringReader(...) : StringReader",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 179
+                    },
+                    {
+                        "message": "reader : StringReader",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 181
+                    },
+                    {
+                        "message": "reader : StringReader",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "reader : StringReader",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "new InputSource(...) : InputSource",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "new SAXSource(...) : SAXSource",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "source",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 235
+                    }
+                ],
+                [
+                    {
+                        "message": "taintedHTML : String",
+                        "uri": "src/main/java/org/owasp/validator/html/AntiSamy.java",
+                        "line": 120
+                    },
+                    {
+                        "message": "taintedHTML : String",
+                        "uri": "src/main/java/org/owasp/validator/html/AntiSamy.java",
+                        "line": 129
+                    },
+                    {
+                        "message": "html : String",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "html : String",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "html : String",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "html : String",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 179
+                    },
+                    {
+                        "message": "new StringReader(...) : StringReader",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 179
+                    },
+                    {
+                        "message": "reader : StringReader",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 181
+                    },
+                    {
+                        "message": "reader : StringReader",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "reader : StringReader",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "new InputSource(...) : InputSource",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "new SAXSource(...) : SAXSource",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "source",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 235
+                    }
+                ],
+                [
+                    {
+                        "message": "taintedHTML : String",
+                        "uri": "src/main/java/org/owasp/validator/html/AntiSamy.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "taintedHTML : String",
+                        "uri": "src/main/java/org/owasp/validator/html/AntiSamy.java",
+                        "line": 105
+                    },
+                    {
+                        "message": "taintedHTML : String",
+                        "uri": "src/main/java/org/owasp/validator/html/AntiSamy.java",
+                        "line": 120
+                    },
+                    {
+                        "message": "taintedHTML : String",
+                        "uri": "src/main/java/org/owasp/validator/html/AntiSamy.java",
+                        "line": 129
+                    },
+                    {
+                        "message": "html : String",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "html : String",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "html : String",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "html : String",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 179
+                    },
+                    {
+                        "message": "new StringReader(...) : StringReader",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 179
+                    },
+                    {
+                        "message": "reader : StringReader",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 181
+                    },
+                    {
+                        "message": "reader : StringReader",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "reader : StringReader",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "new InputSource(...) : InputSource",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "new SAXSource(...) : SAXSource",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "source",
+                        "uri": "src/main/java/org/owasp/validator/html/scan/AntiSamySAXScanner.java",
+                        "line": 235
+                    }
+                ]
+            ]
+        }
+    ]
+}
