@@ -18,11 +18,6 @@ from langgraph.types import Command
 from . import logger
 from .project_variants import ProjectVariants
 from .utils import (
-    has_actionable_vulnerabilities,
-    load_dummy_finder_output,
-    load_dummy_patcher_output,
-    parse_exploiter_report,
-    save_state_dump,
     save_state_dump,
     load_dummy_finder_output,
     load_dummy_patcher_output,
@@ -286,8 +281,6 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         raise RuntimeError("HOST_WORKSPACE env var not set. Add it in devcontainer.json.")
     host_ws = host_ws.replace("\\", "/") # for windows compatibility
 
-    host_ws = host_ws.replace("\\", "/")
-
     project_name = state["project_name"]
     vuln_id = state["vuln_id"]
     model = state["finder_model"]
@@ -411,8 +404,6 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
 def _exploiter_node(state: AutoSecState) -> Command:
     logger.info("Node: exploiter started")
-    RUNNING_FINDER = True
-
     # Skip if dummy exploiter data was injected via --use-dummy exploiter.
     # The "dummy" flag is set in _build_initial_state.
     existing_exploiter = state.get("exploiter") or {}
@@ -691,7 +682,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
             "pov_logic": None,
             "from_cache": False,
         }
-        return Command(goto="patcher", update=new_state)
+        return Command(goto=_route_after_exploiter(new_state), update=new_state)
 
     except subprocess.CalledProcessError as e:
         logger.error(f"Exploiter subprocess failed exit={e.returncode}.")
@@ -703,8 +694,6 @@ def _exploiter_node(state: AutoSecState) -> Command:
             "from_cache": False,
         }
         return Command(goto=_route_after_exploiter(new_state), update=new_state)
-
-        return Command(goto="patcher", update=new_state)
 
     # checking if result produced properly
     if not os.path.exists(report_path):

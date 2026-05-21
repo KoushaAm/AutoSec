@@ -60,8 +60,8 @@ if [ -e "$PROJECTS_ZIPPED/$ZIP_NAME" ]; then
     exit 1
 fi
 
-python3 -m zipfile -c "$ZIP_NAME" ./
-
+#python3 -m zipfile -c "$ZIP_NAME" ./
+zip -r "$ZIP_NAME" ./
 mv "$ZIP_NAME" "$PROJECTS_ZIPPED"
 
 echo
