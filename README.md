@@ -28,8 +28,8 @@ a clear and structured end-to-end workflow where each stage can
 be evaluated independently while contributing to an automated
 security remediation pipeline.
 
-### The Workflow: 
-<img width="963" height="436" alt="Screenshot 2026-05-11 at 7 44 07 PM" src="https://github.com/user-attachments/assets/53c69493-f8f4-45a3-b9ac-4a30efeb7ada" />
+### Workflow: 
+<img width="963" height="436" alt="AutoSec Diagram" src="https://github.com/user-attachments/assets/53c69493-f8f4-45a3-b9ac-4a30efeb7ada" />
 
 
 ## Getting Started

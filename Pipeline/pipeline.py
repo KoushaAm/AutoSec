@@ -113,7 +113,6 @@ def _parse_args() -> argparse.Namespace:
 
     parser.add_argument(
         "--use-dummy",
-        action="extend",
         nargs="*",
         choices=["finder", "exploiter", "patcher"],
         default=["finder"],
