@@ -1,0 +1,1523 @@
+{
+    "cwe_id": "cwe-022",
+    "vulnerabilities": [
+        {
+            "traces": [
+                [
+                    {
+                        "message": "toExternalForm(...) : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/FacesConfigurator.java",
+                        "line": 238
+                    },
+                    {
+                        "message": "externalForm : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/FacesConfigurator.java",
+                        "line": 240
+                    },
+                    {
+                        "message": "substring(...) : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/FacesConfigurator.java",
+                        "line": 240
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/FacesConfigurator.java",
+                        "line": 240
+                    },
+                    {
+                        "message": "file",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/FacesConfigurator.java",
+                        "line": 242
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getInitParameter(...) : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/context/servlet/ServletExternalContextImplBase.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "getInitParameter(...) : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/DefaultAnnotationProvider.java",
+                        "line": 272
+                    },
+                    {
+                        "message": "scanPackages : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/DefaultAnnotationProvider.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "scanPackages : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/DefaultAnnotationProvider.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "scanPackages : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/DefaultAnnotationProvider.java",
+                        "line": 309
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/DefaultAnnotationProvider.java",
+                        "line": 309
+                    },
+                    {
+                        "message": "scanPackageToken : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/DefaultAnnotationProvider.java",
+                        "line": 312
+                    },
+                    {
+                        "message": "scanPackageToken : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/DefaultAnnotationProvider.java",
+                        "line": 326
+                    },
+                    {
+                        "message": "pckgname : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "pckgname : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 90
+                    },
+                    {
+                        "message": "replace(...) : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 90
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 99
+                    },
+                    {
+                        "message": "getResources(...) : Enumeration",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 99
+                    },
+                    {
+                        "message": "resources : Enumeration",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "nextElement(...) : Object",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "(...)... : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "resource : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 126
+                    },
+                    {
+                        "message": "openConnection(...) : URLConnection",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 126
+                    },
+                    {
+                        "message": "connection : URLConnection",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 174
+                    },
+                    {
+                        "message": "getURL(...) : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 174
+                    },
+                    {
+                        "message": "toURI(...) : URI",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 174
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 174
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 182
+                    },
+                    {
+                        "message": "base : File",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 247
+                    },
+                    {
+                        "message": "base",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 250
+                    }
+                ],
+                [
+                    {
+                        "message": "getInitParameter(...) : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/context/servlet/ServletExternalContextImplBase.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "getInitParameter(...) : String",
+                        "uri": "api/src/main/java/javax/faces/context/ExternalContextWrapper.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "getInitParameter(...) : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/DefaultAnnotationProvider.java",
+                        "line": 272
+                    },
+                    {
+                        "message": "scanPackages : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/DefaultAnnotationProvider.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "scanPackages : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/DefaultAnnotationProvider.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "scanPackages : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/DefaultAnnotationProvider.java",
+                        "line": 309
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/DefaultAnnotationProvider.java",
+                        "line": 309
+                    },
+                    {
+                        "message": "scanPackageToken : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/DefaultAnnotationProvider.java",
+                        "line": 312
+                    },
+                    {
+                        "message": "scanPackageToken : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/DefaultAnnotationProvider.java",
+                        "line": 326
+                    },
+                    {
+                        "message": "pckgname : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "pckgname : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 90
+                    },
+                    {
+                        "message": "replace(...) : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 90
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 99
+                    },
+                    {
+                        "message": "getResources(...) : Enumeration",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 99
+                    },
+                    {
+                        "message": "resources : Enumeration",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "nextElement(...) : Object",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "(...)... : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "resource : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 126
+                    },
+                    {
+                        "message": "openConnection(...) : URLConnection",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 126
+                    },
+                    {
+                        "message": "connection : URLConnection",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 174
+                    },
+                    {
+                        "message": "getURL(...) : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 174
+                    },
+                    {
+                        "message": "toURI(...) : URI",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 174
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 174
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 182
+                    },
+                    {
+                        "message": "base : File",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 247
+                    },
+                    {
+                        "message": "base",
+                        "uri": "impl/src/main/java/org/apache/myfaces/config/annotation/_PackageInfo.java",
+                        "line": 250
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "resourceName : String",
+                        "uri": "api/src/main/java/javax/faces/application/Resource.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "resourceName : String",
+                        "uri": "api/src/main/java/javax/faces/application/Resource.java",
+                        "line": 85
+                    },
+                    {
+                        "message": "this <.field> [post update] : Resource [_resourceName] : String",
+                        "uri": "api/src/main/java/javax/faces/application/Resource.java",
+                        "line": 85
+                    },
+                    {
+                        "message": "this <.method> [post update] : ResourceImpl [_resourceName] : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceImpl.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "new ResourceImpl(...) : ResourceImpl [_resourceName] : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/application/ResourceHandlerImpl.java",
+                        "line": 102
+                    },
+                    {
+                        "message": "resource : ResourceImpl [_resourceName] : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/application/ResourceHandlerImpl.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "createResource(...) : ResourceImpl [_resourceName] : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/application/ResourceHandlerImpl.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "createResource(...) : ResourceImpl [_resourceName] : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/el/unified/resolver/ResourceResolver.java",
+                        "line": 92
+                    },
+                    {
+                        "message": "resource : ResourceImpl [_resourceName] : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/el/unified/resolver/ResourceResolver.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "parameter this : ResourceImpl [_resourceName] : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceImpl.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "this <.method> : ResourceImpl [_resourceName] : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceImpl.java",
+                        "line": 224
+                    },
+                    {
+                        "message": "parameter this : ResourceImpl [_resourceName] : String",
+                        "uri": "api/src/main/java/javax/faces/application/Resource.java",
+                        "line": 60
+                    },
+                    {
+                        "message": "this <.field> : ResourceImpl [_resourceName] : String",
+                        "uri": "api/src/main/java/javax/faces/application/Resource.java",
+                        "line": 62
+                    },
+                    {
+                        "message": "_resourceName : String",
+                        "uri": "api/src/main/java/javax/faces/application/Resource.java",
+                        "line": 62
+                    },
+                    {
+                        "message": "getResourceName(...) : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceImpl.java",
+                        "line": 224
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceImpl.java",
+                        "line": 255
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/application/ViewHandlerImpl.java",
+                        "line": 240
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/application/ViewHandlerImpl.java",
+                        "line": 244
+                    },
+                    {
+                        "message": "getResourceURL(...) : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceImpl.java",
+                        "line": 255
+                    },
+                    {
+                        "message": "getRequestPath(...) : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/el/unified/resolver/ResourceResolver.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "getValue(...) : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/tag/jstl/core/IndexedValueExpression.java",
+                        "line": 60
+                    },
+                    {
+                        "message": "getValue(...) : String",
+                        "uri": "api/src/main/java/javax/faces/component/_DeltaStateHelper.java",
+                        "line": 243
+                    },
+                    {
+                        "message": "eval(...) : String",
+                        "uri": "api/src/main/java/javax/faces/component/UIViewRoot.java",
+                        "line": 690
+                    },
+                    {
+                        "message": "(...)... : String",
+                        "uri": "api/src/main/java/javax/faces/component/UIViewRoot.java",
+                        "line": 690
+                    },
+                    {
+                        "message": "getViewId(...) : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/FaceletViewHandler.java",
+                        "line": 561
+                    },
+                    {
+                        "message": "uri : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 120
+                    },
+                    {
+                        "message": "uri : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 125
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 205
+                    },
+                    {
+                        "message": "new URL(...) : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 205
+                    },
+                    {
+                        "message": "resolveURL(...) : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 125
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 137
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 156
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 162
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 270
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 280
+                    },
+                    {
+                        "message": "src : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/compiler/Compiler.java",
+                        "line": 115
+                    },
+                    {
+                        "message": "src : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/compiler/Compiler.java",
+                        "line": 120
+                    },
+                    {
+                        "message": "src : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/compiler/SAXCompiler.java",
+                        "line": 662
+                    },
+                    {
+                        "message": "src",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/compiler/SAXCompiler.java",
+                        "line": 670
+                    }
+                ],
+                [
+                    {
+                        "message": "getValue(...) : Object",
+                        "uri": "api/src/main/java/javax/faces/component/_DeltaStateHelper.java",
+                        "line": 243
+                    },
+                    {
+                        "message": "eval(...) : Object",
+                        "uri": "api/src/main/java/javax/faces/component/UIViewRoot.java",
+                        "line": 690
+                    },
+                    {
+                        "message": "(...)... : String",
+                        "uri": "api/src/main/java/javax/faces/component/UIViewRoot.java",
+                        "line": 690
+                    },
+                    {
+                        "message": "getViewId(...) : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/FaceletViewHandler.java",
+                        "line": 561
+                    },
+                    {
+                        "message": "uri : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 120
+                    },
+                    {
+                        "message": "uri : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 125
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 205
+                    },
+                    {
+                        "message": "new URL(...) : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 205
+                    },
+                    {
+                        "message": "resolveURL(...) : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 125
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 137
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 156
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 162
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 270
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 280
+                    },
+                    {
+                        "message": "src : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/compiler/Compiler.java",
+                        "line": 115
+                    },
+                    {
+                        "message": "src : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/compiler/Compiler.java",
+                        "line": 120
+                    },
+                    {
+                        "message": "src : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/compiler/SAXCompiler.java",
+                        "line": 662
+                    },
+                    {
+                        "message": "src",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/compiler/SAXCompiler.java",
+                        "line": 670
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "resourceName : String",
+                        "uri": "api/src/main/java/javax/faces/application/Resource.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "resourceName : String",
+                        "uri": "api/src/main/java/javax/faces/application/Resource.java",
+                        "line": 85
+                    },
+                    {
+                        "message": "this <.field> [post update] : Resource [_resourceName] : String",
+                        "uri": "api/src/main/java/javax/faces/application/Resource.java",
+                        "line": 85
+                    },
+                    {
+                        "message": "this <.method> [post update] : ResourceImpl [_resourceName] : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceImpl.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "new ResourceImpl(...) : ResourceImpl [_resourceName] : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/application/ResourceHandlerImpl.java",
+                        "line": 102
+                    },
+                    {
+                        "message": "resource : ResourceImpl [_resourceName] : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/application/ResourceHandlerImpl.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "createResource(...) : ResourceImpl [_resourceName] : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/application/ResourceHandlerImpl.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "createResource(...) : ResourceImpl [_resourceName] : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/el/unified/resolver/ResourceResolver.java",
+                        "line": 92
+                    },
+                    {
+                        "message": "resource : ResourceImpl [_resourceName] : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/el/unified/resolver/ResourceResolver.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "parameter this : ResourceImpl [_resourceName] : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceImpl.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "this <.method> : ResourceImpl [_resourceName] : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceImpl.java",
+                        "line": 224
+                    },
+                    {
+                        "message": "parameter this : ResourceImpl [_resourceName] : String",
+                        "uri": "api/src/main/java/javax/faces/application/Resource.java",
+                        "line": 60
+                    },
+                    {
+                        "message": "this <.field> : ResourceImpl [_resourceName] : String",
+                        "uri": "api/src/main/java/javax/faces/application/Resource.java",
+                        "line": 62
+                    },
+                    {
+                        "message": "_resourceName : String",
+                        "uri": "api/src/main/java/javax/faces/application/Resource.java",
+                        "line": 62
+                    },
+                    {
+                        "message": "getResourceName(...) : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceImpl.java",
+                        "line": 224
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceImpl.java",
+                        "line": 255
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/application/ViewHandlerImpl.java",
+                        "line": 240
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/application/ViewHandlerImpl.java",
+                        "line": 244
+                    },
+                    {
+                        "message": "getResourceURL(...) : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceImpl.java",
+                        "line": 255
+                    },
+                    {
+                        "message": "getRequestPath(...) : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/el/unified/resolver/ResourceResolver.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "getValue(...) : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/tag/jstl/core/IndexedValueExpression.java",
+                        "line": 60
+                    },
+                    {
+                        "message": "getValue(...) : String",
+                        "uri": "api/src/main/java/javax/faces/component/_DeltaStateHelper.java",
+                        "line": 243
+                    },
+                    {
+                        "message": "eval(...) : String",
+                        "uri": "api/src/main/java/javax/faces/component/UIViewRoot.java",
+                        "line": 690
+                    },
+                    {
+                        "message": "(...)... : String",
+                        "uri": "api/src/main/java/javax/faces/component/UIViewRoot.java",
+                        "line": 690
+                    },
+                    {
+                        "message": "getViewId(...) : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/FaceletViewDeclarationLanguage.java",
+                        "line": 2285
+                    },
+                    {
+                        "message": "viewId : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/FaceletViewDeclarationLanguage.java",
+                        "line": 2171
+                    },
+                    {
+                        "message": "viewId : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/FaceletViewDeclarationLanguage.java",
+                        "line": 2177
+                    },
+                    {
+                        "message": "uri : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 359
+                    },
+                    {
+                        "message": "uri : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 364
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 205
+                    },
+                    {
+                        "message": "new URL(...) : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 205
+                    },
+                    {
+                        "message": "resolveURL(...) : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 364
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 376
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 383
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 388
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 394
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 311
+                    },
+                    {
+                        "message": "src : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/compiler/Compiler.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "src : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/compiler/Compiler.java",
+                        "line": 128
+                    },
+                    {
+                        "message": "src : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/compiler/SAXCompiler.java",
+                        "line": 699
+                    },
+                    {
+                        "message": "src",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/compiler/SAXCompiler.java",
+                        "line": 707
+                    }
+                ],
+                [
+                    {
+                        "message": "libraryName : String",
+                        "uri": "api/src/main/java/javax/faces/application/Resource.java",
+                        "line": 74
+                    },
+                    {
+                        "message": "libraryName : String",
+                        "uri": "api/src/main/java/javax/faces/application/Resource.java",
+                        "line": 76
+                    },
+                    {
+                        "message": "this <.field> [post update] : Resource [_libraryName] : String",
+                        "uri": "api/src/main/java/javax/faces/application/Resource.java",
+                        "line": 76
+                    },
+                    {
+                        "message": "this <.method> [post update] : ResourceImpl [_libraryName] : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceImpl.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "new ResourceImpl(...) : ResourceImpl [_libraryName] : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/application/ResourceHandlerImpl.java",
+                        "line": 102
+                    },
+                    {
+                        "message": "resource : ResourceImpl [_libraryName] : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/application/ResourceHandlerImpl.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "createResource(...) : ResourceImpl [_libraryName] : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/application/ResourceHandlerImpl.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "createResource(...) : ResourceImpl [_libraryName] : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/el/unified/resolver/ResourceResolver.java",
+                        "line": 92
+                    },
+                    {
+                        "message": "resource : ResourceImpl [_libraryName] : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/el/unified/resolver/ResourceResolver.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "parameter this : ResourceImpl [_libraryName] : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceImpl.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "this <.method> : ResourceImpl [_libraryName] : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceImpl.java",
+                        "line": 238
+                    },
+                    {
+                        "message": "parameter this : ResourceImpl [_libraryName] : String",
+                        "uri": "api/src/main/java/javax/faces/application/Resource.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "this <.field> : ResourceImpl [_libraryName] : String",
+                        "uri": "api/src/main/java/javax/faces/application/Resource.java",
+                        "line": 55
+                    },
+                    {
+                        "message": "_libraryName : String",
+                        "uri": "api/src/main/java/javax/faces/application/Resource.java",
+                        "line": 55
+                    },
+                    {
+                        "message": "getLibraryName(...) : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceImpl.java",
+                        "line": 238
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceImpl.java",
+                        "line": 255
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/application/ViewHandlerImpl.java",
+                        "line": 240
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/application/ViewHandlerImpl.java",
+                        "line": 244
+                    },
+                    {
+                        "message": "getResourceURL(...) : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceImpl.java",
+                        "line": 255
+                    },
+                    {
+                        "message": "getRequestPath(...) : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/el/unified/resolver/ResourceResolver.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "getValue(...) : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/tag/jstl/core/IndexedValueExpression.java",
+                        "line": 60
+                    },
+                    {
+                        "message": "getValue(...) : String",
+                        "uri": "api/src/main/java/javax/faces/component/_DeltaStateHelper.java",
+                        "line": 243
+                    },
+                    {
+                        "message": "eval(...) : String",
+                        "uri": "api/src/main/java/javax/faces/component/UIViewRoot.java",
+                        "line": 690
+                    },
+                    {
+                        "message": "(...)... : String",
+                        "uri": "api/src/main/java/javax/faces/component/UIViewRoot.java",
+                        "line": 690
+                    },
+                    {
+                        "message": "getViewId(...) : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/FaceletViewDeclarationLanguage.java",
+                        "line": 2285
+                    },
+                    {
+                        "message": "viewId : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/FaceletViewDeclarationLanguage.java",
+                        "line": 2171
+                    },
+                    {
+                        "message": "viewId : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/FaceletViewDeclarationLanguage.java",
+                        "line": 2177
+                    },
+                    {
+                        "message": "uri : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 359
+                    },
+                    {
+                        "message": "uri : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 364
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 205
+                    },
+                    {
+                        "message": "new URL(...) : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 205
+                    },
+                    {
+                        "message": "resolveURL(...) : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 364
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 376
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 383
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 388
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 394
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 311
+                    },
+                    {
+                        "message": "src : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/compiler/Compiler.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "src : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/compiler/Compiler.java",
+                        "line": 128
+                    },
+                    {
+                        "message": "src : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/compiler/SAXCompiler.java",
+                        "line": 699
+                    },
+                    {
+                        "message": "src",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/compiler/SAXCompiler.java",
+                        "line": 707
+                    }
+                ],
+                [
+                    {
+                        "message": "getValue(...) : Object",
+                        "uri": "api/src/main/java/javax/faces/component/_DeltaStateHelper.java",
+                        "line": 243
+                    },
+                    {
+                        "message": "eval(...) : Object",
+                        "uri": "api/src/main/java/javax/faces/component/UIViewRoot.java",
+                        "line": 690
+                    },
+                    {
+                        "message": "(...)... : String",
+                        "uri": "api/src/main/java/javax/faces/component/UIViewRoot.java",
+                        "line": 690
+                    },
+                    {
+                        "message": "getViewId(...) : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/FaceletViewDeclarationLanguage.java",
+                        "line": 2285
+                    },
+                    {
+                        "message": "viewId : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/FaceletViewDeclarationLanguage.java",
+                        "line": 2171
+                    },
+                    {
+                        "message": "viewId : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/FaceletViewDeclarationLanguage.java",
+                        "line": 2177
+                    },
+                    {
+                        "message": "uri : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 359
+                    },
+                    {
+                        "message": "uri : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 364
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 205
+                    },
+                    {
+                        "message": "new URL(...) : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 205
+                    },
+                    {
+                        "message": "resolveURL(...) : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 364
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 376
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 383
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 388
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 394
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "url : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 311
+                    },
+                    {
+                        "message": "src : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/compiler/Compiler.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "src : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/compiler/Compiler.java",
+                        "line": 128
+                    },
+                    {
+                        "message": "src : URL",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/compiler/SAXCompiler.java",
+                        "line": 699
+                    },
+                    {
+                        "message": "src",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/compiler/SAXCompiler.java",
+                        "line": 707
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "resourceName : String",
+                        "uri": "api/src/main/java/javax/faces/application/Resource.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "resourceName : String",
+                        "uri": "api/src/main/java/javax/faces/application/Resource.java",
+                        "line": 85
+                    },
+                    {
+                        "message": "this <.field> [post update] : Resource [_resourceName] : String",
+                        "uri": "api/src/main/java/javax/faces/application/Resource.java",
+                        "line": 85
+                    },
+                    {
+                        "message": "this <.method> [post update] : ResourceImpl [_resourceName] : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceImpl.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "new ResourceImpl(...) : ResourceImpl [_resourceName] : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/application/ResourceHandlerImpl.java",
+                        "line": 102
+                    },
+                    {
+                        "message": "resource : ResourceImpl [_resourceName] : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/application/ResourceHandlerImpl.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "createResource(...) : ResourceImpl [_resourceName] : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/application/ResourceHandlerImpl.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "createResource(...) : ResourceImpl [_resourceName] : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/el/unified/resolver/ResourceResolver.java",
+                        "line": 92
+                    },
+                    {
+                        "message": "resource : ResourceImpl [_resourceName] : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/el/unified/resolver/ResourceResolver.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "parameter this : ResourceImpl [_resourceName] : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceImpl.java",
+                        "line": 218
+                    },
+                    {
+                        "message": "this <.method> : ResourceImpl [_resourceName] : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceImpl.java",
+                        "line": 224
+                    },
+                    {
+                        "message": "parameter this : ResourceImpl [_resourceName] : String",
+                        "uri": "api/src/main/java/javax/faces/application/Resource.java",
+                        "line": 60
+                    },
+                    {
+                        "message": "this <.field> : ResourceImpl [_resourceName] : String",
+                        "uri": "api/src/main/java/javax/faces/application/Resource.java",
+                        "line": 62
+                    },
+                    {
+                        "message": "_resourceName : String",
+                        "uri": "api/src/main/java/javax/faces/application/Resource.java",
+                        "line": 62
+                    },
+                    {
+                        "message": "getResourceName(...) : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceImpl.java",
+                        "line": 224
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceImpl.java",
+                        "line": 255
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/application/ViewHandlerImpl.java",
+                        "line": 240
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/application/ViewHandlerImpl.java",
+                        "line": 244
+                    },
+                    {
+                        "message": "getResourceURL(...) : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceImpl.java",
+                        "line": 255
+                    },
+                    {
+                        "message": "getRequestPath(...) : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/el/unified/resolver/ResourceResolver.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "getValue(...) : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/tag/jstl/core/IndexedValueExpression.java",
+                        "line": 60
+                    },
+                    {
+                        "message": "getValue(...) : String",
+                        "uri": "api/src/main/java/javax/faces/component/_DeltaStateHelper.java",
+                        "line": 243
+                    },
+                    {
+                        "message": "eval(...) : String",
+                        "uri": "api/src/main/java/javax/faces/component/UIViewRoot.java",
+                        "line": 690
+                    },
+                    {
+                        "message": "(...)... : String",
+                        "uri": "api/src/main/java/javax/faces/component/UIViewRoot.java",
+                        "line": 690
+                    },
+                    {
+                        "message": "getViewId(...) : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/FaceletViewHandler.java",
+                        "line": 561
+                    },
+                    {
+                        "message": "uri : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 120
+                    },
+                    {
+                        "message": "uri : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 125
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 196
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultResourceResolver.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultResourceResolver.java",
+                        "line": 42
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/util/Resource.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/util/Resource.java",
+                        "line": 78
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/util/Resource.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "path",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/util/Resource.java",
+                        "line": 100
+                    }
+                ],
+                [
+                    {
+                        "message": "getValue(...) : Object",
+                        "uri": "api/src/main/java/javax/faces/component/_DeltaStateHelper.java",
+                        "line": 243
+                    },
+                    {
+                        "message": "eval(...) : Object",
+                        "uri": "api/src/main/java/javax/faces/component/UIViewRoot.java",
+                        "line": 690
+                    },
+                    {
+                        "message": "(...)... : String",
+                        "uri": "api/src/main/java/javax/faces/component/UIViewRoot.java",
+                        "line": 690
+                    },
+                    {
+                        "message": "getViewId(...) : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/FaceletViewHandler.java",
+                        "line": 561
+                    },
+                    {
+                        "message": "uri : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 120
+                    },
+                    {
+                        "message": "uri : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 125
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultFaceletFactory.java",
+                        "line": 196
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultResourceResolver.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/impl/DefaultResourceResolver.java",
+                        "line": 42
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/util/Resource.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/util/Resource.java",
+                        "line": 78
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/util/Resource.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "path",
+                        "uri": "impl/src/main/java/org/apache/myfaces/view/facelets/util/Resource.java",
+                        "line": 100
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "toExternalForm(...) : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceLoaderUtils.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "externalForm : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceLoaderUtils.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "substring(...) : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceLoaderUtils.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceLoaderUtils.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "file",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/resource/ResourceLoaderUtils.java",
+                        "line": 86
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "resource : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/util/ClassUtils.java",
+                        "line": 286
+                    },
+                    {
+                        "message": "resource",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/util/ClassUtils.java",
+                        "line": 289
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "resource : String",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/util/ClassUtils.java",
+                        "line": 286
+                    },
+                    {
+                        "message": "resource",
+                        "uri": "shared/src/main/java/org/apache/myfaces/shared/util/ClassUtils.java",
+                        "line": 293
+                    }
+                ]
+            ]
+        }
+    ]
+}
