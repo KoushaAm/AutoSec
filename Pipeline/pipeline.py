@@ -113,13 +113,15 @@ def _parse_args() -> argparse.Namespace:
 
     parser.add_argument(
         "--use-dummy",
+        action="extend",
         nargs="*",
         choices=["finder", "exploiter", "patcher"],
         default=["finder"],
         help=(
             "Skip the listed agents and populate their state from "
-            "pre-existing dummy data. Defaults to [finder]. "
-            "Examples: '--use-dummy patcher' -> skip [patcher]; "
+            "pre-existing dummy data. Added on top of the default set "
+            "[finder]. "
+            "Examples: '--use-dummy patcher' -> skip [finder, patcher]; "
             "'--use-dummy finder exploiter patcher' -> skip all three, "
             "leaving only Verifier to run in --mode all."
         ),
@@ -402,6 +404,13 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
 def _exploiter_node(state: AutoSecState) -> Command:
     logger.info("Node: exploiter started")
+    # Skip if dummy exploiter data was injected via --use-dummy exploiter.
+    # The "dummy" flag is set in _build_initial_state.
+    existing_exploiter = state.get("exploiter") or {}
+    if existing_exploiter.get("dummy"):
+        logger.info("Node: exploiter skipped (dummy data injected)")
+        return Command(goto=_route_after_exploiter(state), update=state)
+
     # Skip if dummy exploiter data was injected via --use-dummy exploiter.
     # The "dummy" flag is set in _build_initial_state.
     existing_exploiter = state.get("exploiter") or {}
