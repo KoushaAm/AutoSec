@@ -1,6 +1,7 @@
 # Pipeline/pipeline.py
 import argparse
 import json
+import subprocess
 import os
 import shlex
 import shutil
@@ -17,11 +18,11 @@ from langgraph.types import Command
 from . import logger
 from .project_variants import ProjectVariants
 from .utils import (
-    has_actionable_vulnerabilities,
+    save_state_dump,
     load_dummy_finder_output,
     load_dummy_patcher_output,
-    parse_exploiter_report,
-    save_state_dump,
+    has_actionable_vulnerabilities,
+    parse_exploiter_report
 )
 
 from Agents.Finder.src.output_converter import sarif_to_finder_output
@@ -75,7 +76,7 @@ def _parse_args() -> argparse.Namespace:
             "ProjectVariants enum name or project slug. "
             f"Defaults to {DEFAULT_PROJECT_VARIANT}."
         ),
-    )  
+    )
 
     parser.add_argument(
         "--mode",
@@ -112,7 +113,6 @@ def _parse_args() -> argparse.Namespace:
 
     parser.add_argument(
         "--use-dummy",
-        action="extend",
         nargs="*",
         choices=["finder", "exploiter", "patcher"],
         default=["finder"],
@@ -215,7 +215,6 @@ def _build_initial_state(
 
 def _build_workflow(mode: PipelineMode) -> Any:
     graph = StateGraph(AutoSecState)
-
     graph.add_node("finder", _finder_node)
     graph.add_node("exploiter", _exploiter_node)
     graph.add_node("patcher", _patcher_node)
@@ -273,13 +272,13 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         logger.info("Node - finder skipped because finder_output is already set")
         return state
 
+    # make sure Project/Sources folder exists
     Path(PROJECTS_DIR / "Sources").mkdir(exist_ok=True)
 
     host_ws = os.environ.get("HOST_WORKSPACE")
     if not host_ws:
         raise RuntimeError("HOST_WORKSPACE env var not set. Add it in devcontainer.json.")
-
-    host_ws = host_ws.replace("\\", "/")
+    host_ws = host_ws.replace("\\", "/") # for windows compatibility
 
     project_name = state["project_name"]
     vuln_id = state["vuln_id"]
@@ -338,6 +337,7 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
     elif model.startswith("gemini"):
         os.getenv("GOOGLE_API_KEY")
 
+    # 1. setup command to have IRIS inside docker container
     docker_cmd = [
         "docker",
         "run",
@@ -361,9 +361,11 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
     logger.info(f"Running IRIS inside Docker for project {project_name}")
 
+    # 2. Run IRIS analysis
     try:
         subprocess.run(docker_cmd, check=True, text=True)
 
+    # analysis failed for some reason
     except subprocess.CalledProcessError as e:
         print("Finder failed with an error")
         print("Return code:", e.returncode)
@@ -381,7 +383,7 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
     )
 
     try:
-        with open(sarif_path, encoding="utf-8") as f:
+        with open(sarif_path) as f:
             findings = json.load(f)
 
         state["finder_output"] = sarif_to_finder_output(
@@ -401,6 +403,12 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
 def _exploiter_node(state: AutoSecState) -> Command:
     logger.info("Node: exploiter started")
+    # Skip if dummy exploiter data was injected via --use-dummy exploiter.
+    # The "dummy" flag is set in _build_initial_state.
+    existing_exploiter = state.get("exploiter") or {}
+    if existing_exploiter.get("dummy"):
+        logger.info("Node: exploiter skipped (dummy data injected)")
+        return Command(goto=_route_after_exploiter(state), update=state)
 
     # Skip if dummy exploiter data was injected via --use-dummy exploiter.
     # The "dummy" flag is set in _build_initial_state.
@@ -458,6 +466,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
 
         return Command(goto=END, update=new_state)
 
+    # setup paths for exploiter
     exploiter_dir = os.path.join(os.getcwd(), "Agents", "Exploiter")
 
     report_path = os.path.join(
@@ -485,6 +494,12 @@ def _exploiter_node(state: AutoSecState) -> Command:
         "cwe-bench-java",
         "scripts",
         "fetch_one.py",
+    )
+
+    generate_dockerfiles_location = os.path.join(
+        exploiter_dir,
+        "scripts",
+        "generate_dockerfiles.py",
     )
 
     project_directory = os.path.join(
@@ -521,7 +536,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
         with open(report_path, "r", encoding="utf-8") as f:
             report_data = json.load(f)
 
-        exploitable, pov_test_paths, pov_logic = parse_exploiter_report(report_data)
+        exploitable, pov_test_paths, pov_logic = _parse_exploiter_report(report_data)
 
         new_state["exploiter"] = {
             "success": exploitable,
@@ -565,6 +580,8 @@ def _exploiter_node(state: AutoSecState) -> Command:
             }
             return Command(goto=_route_after_exploiter(new_state), update=new_state)
 
+    # prepare the project in the Exploiter's directory
+    # check if they exist they do no need to fetch it anymore
     if not os.path.exists(project_directory):
         try:
             subprocess.run(
@@ -584,12 +601,55 @@ def _exploiter_node(state: AutoSecState) -> Command:
             return Command(goto=_route_after_exploiter(new_state), update=new_state)
 
     dockerfile_src = os.path.join(dockerfiles, project_name, "Dockerfile.vuln")
+
+    # Generate (or regenerate) the Dockerfile if it is missing or still uses the
+    # old single-test format (CWE_ID_*.java discovery instead of AutoSecFlow*Test).
+    def _dockerfile_needs_generation(path: str) -> bool:
+        if not os.path.exists(path):
+            return True
+        try:
+            with open(path, encoding="utf-8") as _f:
+                return "AutoSecFlow" not in _f.read()
+        except OSError:
+            return True
+
+    if _dockerfile_needs_generation(dockerfile_src):
+        vuln_id = new_state.get("vuln_id", "")
+        logger.info(
+            f"Generating Dockerfile for {project_name} (cwe={vuln_id}) "
+            f"at {dockerfile_src}"
+        )
+        try:
+            subprocess.run(
+                [
+                    sys.executable,
+                    generate_dockerfiles_location,
+                    "--project", project_name,
+                    "--cwe", vuln_id,
+                    "--force",
+                ],
+                check=True,
+            )
+        except subprocess.CalledProcessError as e:
+            logger.error(
+                f"Dockerfile generation failed for {project_name} "
+                f"(exit={e.returncode}). Pipeline cannot continue."
+            )
+            new_state["exploiter"] = {
+                "success": False,
+                "report_path": None,
+                "pov_test_paths": None,
+                "pov_logic": None,
+                "from_cache": False,
+            }
+            return Command(goto=_route_after_exploiter(new_state), update=new_state)
+
     logger.info(
         f"Copying dockerfile {dockerfile_src} into project path: {project_directory}"
     )
     shutil.copy2(dockerfile_src, project_directory)
 
-    EXPLOITER_TIMEOUT = 1800
+    EXPLOITER_TIMEOUT = 2700
 
     run_cmd = [
         sys.executable,
@@ -608,6 +668,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
         "--verbose",
     ]
 
+    # STARTING EXPLOITATION
     try:
         logger.info(f"Loading project: {project_name}")
         logger.info(f"Running command: {run_cmd}")
@@ -640,6 +701,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
         }
         return Command(goto=_route_after_exploiter(new_state), update=new_state)
 
+    # checking if result produced properly
     if not os.path.exists(report_path):
         logger.error(f"Exploiter report not found: {report_path}")
         new_state["exploiter"] = {
@@ -713,9 +775,9 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
     else:
         logger.warning("pov_logic missing from exploiter output")
 
+    # copy PoV tests from Exploiter's working dir into Projects/Sources
     project_name = state["project_name"]
-    pov_test_paths = exploiter_state.get("pov_test_paths") or []
-
+    pov_test_paths = (state.get("exploiter") or {}).get("pov_test_paths") or []
     exploiter_project_root = (
         AGENTS_DIR
         / "Exploiter"
@@ -823,10 +885,12 @@ def pipeline_main() -> None:
     workflow = _build_workflow(mode)
     final_state = workflow.invoke(initial_state)
 
+    # Save to file
     file_path = save_state_dump(final_state)
     if file_path:
         print(f"[Pipeline] State dump saved to: {file_path}")
 
 
+# standalone execution
 if __name__ == "__main__":
     pipeline_main()

@@ -54,13 +54,18 @@ def parse_exploiter_report(report_data) -> tuple[bool, list[str], str]:
             paths = [paths]
         pov_test_paths.extend(p for p in paths if isinstance(p, str))
 
-    pov_logic = ""
+    # Bug fix: when the exploiter produces multiple entries (multiple exploitable flows),
+    # the old code overwrote pov_logic each iteration so only the last entry's logic
+    # reached the patcher. All logic strings are now concatenated so the patcher sees
+    # context for every confirmed flow.
+    pov_logic_parts: list[str] = []
     for entry in entries:
         if not isinstance(entry, dict):
             continue
         logic = entry.get("pov_logic", "")
-        if isinstance(logic, str):
-            pov_logic = logic
+        if isinstance(logic, str) and logic:
+            pov_logic_parts.append(logic)
+    pov_logic = "\n\n".join(pov_logic_parts)
 
     return exploitable, pov_test_paths, pov_logic
 

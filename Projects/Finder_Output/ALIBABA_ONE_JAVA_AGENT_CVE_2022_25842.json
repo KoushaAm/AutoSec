@@ -1,0 +1,170 @@
+{
+    "cwe_id": "cwe-022",
+    "vulnerabilities": [
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getFile(...) : String",
+                        "uri": "one-java-agent-plugin/src/main/java/com/alibaba/oneagent/plugin/OneAgentPlugin.java",
+                        "line": 128
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "one-java-agent-plugin/src/main/java/com/alibaba/oneagent/plugin/OneAgentPlugin.java",
+                        "line": 128
+                    },
+                    {
+                        "message": "instrumentLibDir",
+                        "uri": "one-java-agent-plugin/src/main/java/com/alibaba/oneagent/plugin/OneAgentPlugin.java",
+                        "line": 129
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getFile(...) : String",
+                        "uri": "one-java-agent-plugin/src/main/java/com/alibaba/oneagent/plugin/OneAgentPlugin.java",
+                        "line": 128
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "one-java-agent-plugin/src/main/java/com/alibaba/oneagent/plugin/OneAgentPlugin.java",
+                        "line": 128
+                    },
+                    {
+                        "message": "instrumentLibDir",
+                        "uri": "one-java-agent-plugin/src/main/java/com/alibaba/oneagent/plugin/OneAgentPlugin.java",
+                        "line": 129
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getFile(...) : String",
+                        "uri": "one-java-agent-plugin/src/main/java/com/alibaba/oneagent/plugin/OneAgentPlugin.java",
+                        "line": 128
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "one-java-agent-plugin/src/main/java/com/alibaba/oneagent/plugin/OneAgentPlugin.java",
+                        "line": 128
+                    },
+                    {
+                        "message": "instrumentLibDir",
+                        "uri": "one-java-agent-plugin/src/main/java/com/alibaba/oneagent/plugin/OneAgentPlugin.java",
+                        "line": 130
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getFile(...) : String",
+                        "uri": "one-java-agent-plugin/src/main/java/com/alibaba/oneagent/plugin/TraditionalPlugin.java",
+                        "line": 80
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "one-java-agent-plugin/src/main/java/com/alibaba/oneagent/plugin/TraditionalPlugin.java",
+                        "line": 80
+                    },
+                    {
+                        "message": "agentJarFile",
+                        "uri": "one-java-agent-plugin/src/main/java/com/alibaba/oneagent/plugin/TraditionalPlugin.java",
+                        "line": 98
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getName(...) : String",
+                        "uri": "one-java-agent-plugin/src/main/java/com/alibaba/oneagent/utils/IOUtils.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "currentEntry : String",
+                        "uri": "one-java-agent-plugin/src/main/java/com/alibaba/oneagent/utils/IOUtils.java",
+                        "line": 124
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "one-java-agent-plugin/src/main/java/com/alibaba/oneagent/utils/IOUtils.java",
+                        "line": 124
+                    },
+                    {
+                        "message": "destFile : File",
+                        "uri": "one-java-agent-plugin/src/main/java/com/alibaba/oneagent/utils/IOUtils.java",
+                        "line": 126
+                    },
+                    {
+                        "message": "getParentFile(...) : File",
+                        "uri": "one-java-agent-plugin/src/main/java/com/alibaba/oneagent/utils/IOUtils.java",
+                        "line": 126
+                    },
+                    {
+                        "message": "destinationParent",
+                        "uri": "one-java-agent-plugin/src/main/java/com/alibaba/oneagent/utils/IOUtils.java",
+                        "line": 129
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        }
+    ]
+}

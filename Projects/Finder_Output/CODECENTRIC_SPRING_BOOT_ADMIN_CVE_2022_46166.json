@@ -1,0 +1,2983 @@
+{
+    "cwe_id": "cwe-094",
+    "vulnerabilities": [
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "message : String",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/notify/LetsChatNotifier.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "message",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/notify/LetsChatNotifier.java",
+                        "line": 167
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "themeColor : String",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/notify/MicrosoftTeamsNotifier.java",
+                        "line": 233
+                    },
+                    {
+                        "message": "themeColor",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/notify/MicrosoftTeamsNotifier.java",
+                        "line": 234
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "deregisterActivitySubtitle : String",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/notify/MicrosoftTeamsNotifier.java",
+                        "line": 241
+                    },
+                    {
+                        "message": "deregisterActivitySubtitle",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/notify/MicrosoftTeamsNotifier.java",
+                        "line": 242
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "registerActivitySubtitle : String",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/notify/MicrosoftTeamsNotifier.java",
+                        "line": 250
+                    },
+                    {
+                        "message": "registerActivitySubtitle",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/notify/MicrosoftTeamsNotifier.java",
+                        "line": 251
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "statusActivitySubtitle : String",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/notify/MicrosoftTeamsNotifier.java",
+                        "line": 259
+                    },
+                    {
+                        "message": "statusActivitySubtitle",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/notify/MicrosoftTeamsNotifier.java",
+                        "line": 260
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "message : String",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/notify/SlackNotifier.java",
+                        "line": 186
+                    },
+                    {
+                        "message": "message",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/notify/SlackNotifier.java",
+                        "line": 187
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "build(...) : UriComponents",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "toUri(...) : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this [post update] : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "method(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "headers(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "body(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this.uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this [post update] : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "new ForwardRequest(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "build(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "createForwardRequest(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "fwdRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "...->... : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "parameter this : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "this : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "parameter this : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "this : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "this.uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "getUri(...)",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 93
+                    }
+                ],
+                [
+                    {
+                        "message": "fromPath(...) : UriComponentsBuilder",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "query(...) : UriComponentsBuilder",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "build(...) : UriComponents",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "toUri(...) : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this [post update] : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "method(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "headers(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "body(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this.uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this [post update] : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "new ForwardRequest(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "build(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "createForwardRequest(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "fwdRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "...->... : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "parameter this : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "this : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "parameter this : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "this : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "this.uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "getUri(...)",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 93
+                    }
+                ],
+                [
+                    {
+                        "message": "getRawQuery(...) : String",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "query(...) : UriComponentsBuilder",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "build(...) : UriComponents",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "toUri(...) : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this [post update] : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "method(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "headers(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "body(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this.uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this [post update] : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "new ForwardRequest(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "build(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "createForwardRequest(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "fwdRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "...->... : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "parameter this : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "this : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "parameter this : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "this : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "this.uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "getUri(...)",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 93
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "build(...) : UriComponents",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "toUri(...) : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this [post update] : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "method(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "headers(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "body(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this.uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this [post update] : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "new ForwardRequest(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "build(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "createForwardRequest(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "fwdRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "...->... : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "parameter this : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "this : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "...->... : new Function<ResolveEndpointException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "parameter this : new Function<ResolveEndpointException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "this : new Function<ResolveEndpointException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 105
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 105
+                    },
+                    {
+                        "message": "parameter this : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "this : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "this.uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "getUri(...)",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 105
+                    }
+                ],
+                [
+                    {
+                        "message": "fromPath(...) : UriComponentsBuilder",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "query(...) : UriComponentsBuilder",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "build(...) : UriComponents",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "toUri(...) : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this [post update] : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "method(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "headers(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "body(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this.uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this [post update] : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "new ForwardRequest(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "build(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "createForwardRequest(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "fwdRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "...->... : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "parameter this : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "this : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "...->... : new Function<ResolveEndpointException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "parameter this : new Function<ResolveEndpointException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "this : new Function<ResolveEndpointException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 105
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 105
+                    },
+                    {
+                        "message": "parameter this : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "this : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "this.uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "getUri(...)",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 105
+                    }
+                ],
+                [
+                    {
+                        "message": "getRawQuery(...) : String",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "query(...) : UriComponentsBuilder",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "build(...) : UriComponents",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "toUri(...) : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this [post update] : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "method(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "headers(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "body(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this.uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this [post update] : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "new ForwardRequest(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "build(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "createForwardRequest(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "fwdRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "...->... : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "parameter this : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "this : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "...->... : new Function<ResolveEndpointException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "parameter this : new Function<ResolveEndpointException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "this : new Function<ResolveEndpointException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 105
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 105
+                    },
+                    {
+                        "message": "parameter this : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "this : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "this.uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "getUri(...)",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 105
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "build(...) : UriComponents",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "toUri(...) : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this [post update] : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "method(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "headers(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "body(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this.uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this [post update] : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "new ForwardRequest(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "build(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "createForwardRequest(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "fwdRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "...->... : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "parameter this : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "this : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "...->... : new Function<WebClientRequestException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "parameter this : new Function<WebClientRequestException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "this : new Function<WebClientRequestException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 111
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 111
+                    },
+                    {
+                        "message": "parameter this : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "this : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "this.uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "getUri(...)",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 111
+                    }
+                ],
+                [
+                    {
+                        "message": "fromPath(...) : UriComponentsBuilder",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "query(...) : UriComponentsBuilder",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "build(...) : UriComponents",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "toUri(...) : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this [post update] : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "method(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "headers(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "body(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this.uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this [post update] : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "new ForwardRequest(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "build(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "createForwardRequest(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "fwdRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "...->... : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "parameter this : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "this : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "...->... : new Function<WebClientRequestException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "parameter this : new Function<WebClientRequestException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "this : new Function<WebClientRequestException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 111
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 111
+                    },
+                    {
+                        "message": "parameter this : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "this : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "this.uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "getUri(...)",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 111
+                    }
+                ],
+                [
+                    {
+                        "message": "getRawQuery(...) : String",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "query(...) : UriComponentsBuilder",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "build(...) : UriComponents",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "toUri(...) : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this [post update] : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "method(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "headers(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "body(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this.uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this [post update] : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "new ForwardRequest(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "build(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "createForwardRequest(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "fwdRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "...->... : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "parameter this : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "this : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "...->... : new Function<WebClientRequestException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "parameter this : new Function<WebClientRequestException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "this : new Function<WebClientRequestException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 111
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 111
+                    },
+                    {
+                        "message": "parameter this : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "this : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "this.uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "getUri(...)",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 111
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "build(...) : UriComponents",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "toUri(...) : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this [post update] : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "method(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "headers(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "body(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this.uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this [post update] : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "new ForwardRequest(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "build(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "createForwardRequest(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "fwdRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "...->... : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "parameter this : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "this : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "...->... : new Function<WebClientRequestException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "parameter this : new Function<WebClientRequestException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "this : new Function<WebClientRequestException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "this : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "this.uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "getUri(...)",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 117
+                    }
+                ],
+                [
+                    {
+                        "message": "fromPath(...) : UriComponentsBuilder",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "query(...) : UriComponentsBuilder",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "build(...) : UriComponents",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "toUri(...) : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this [post update] : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "method(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "headers(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "body(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this.uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this [post update] : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "new ForwardRequest(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "build(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "createForwardRequest(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "fwdRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "...->... : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "parameter this : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "this : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "...->... : new Function<WebClientRequestException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "parameter this : new Function<WebClientRequestException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "this : new Function<WebClientRequestException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "this : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "this.uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "getUri(...)",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 117
+                    }
+                ],
+                [
+                    {
+                        "message": "getRawQuery(...) : String",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "query(...) : UriComponentsBuilder",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "build(...) : UriComponents",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "toUri(...) : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 116
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this [post update] : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "method(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "headers(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "body(...) : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this : Builder [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this.uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this [post update] : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "new ForwardRequest(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "build(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "createForwardRequest(...) : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "fwdRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/reactive/InstancesProxyController.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "...->... : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "parameter this : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "this : new Function<Instance,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "...->... : new Function<WebClientRequestException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "parameter this : new Function<WebClientRequestException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "this : new Function<WebClientRequestException,Mono<? extends V>>(...) { ... } [forwardRequest, uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "forwardRequest : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "this : ForwardRequest [uri] : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "this.uri : URI",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "getUri(...)",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/InstanceWebProxy.java",
+                        "line": 117
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "body : Flux",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/client/LegacyEndpointConverter.java",
+                        "line": 42
+                    },
+                    {
+                        "message": "body : Flux",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/client/LegacyEndpointConverter.java",
+                        "line": 43
+                    },
+                    {
+                        "message": "input : Flux",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/client/LegacyEndpointConverters.java",
+                        "line": 144
+                    },
+                    {
+                        "message": "input",
+                        "uri": "spring-boot-admin-server/src/main/java/de/codecentric/boot/admin/server/web/client/LegacyEndpointConverters.java",
+                        "line": 144
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        }
+    ]
+}

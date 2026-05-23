@@ -28,8 +28,8 @@ a clear and structured end-to-end workflow where each stage can
 be evaluated independently while contributing to an automated
 security remediation pipeline.
 
-### The Workflow: 
-<img width="963" height="436" alt="Screenshot 2026-05-11 at 7 44 07 PM" src="https://github.com/user-attachments/assets/53c69493-f8f4-45a3-b9ac-4a30efeb7ada" />
+### Workflow: 
+<img width="963" height="436" alt="AutoSec Diagram" src="https://github.com/user-attachments/assets/53c69493-f8f4-45a3-b9ac-4a30efeb7ada" />
 
 
 ## Getting Started
@@ -58,9 +58,6 @@ OPENROUTER_API_KEY="your_api_key_here"
 
 # Finder OpenAI Key
 OPENAI_API_KEY="your_api_key_here"
-
-# Exploiter OpenAI Key
-OPENAI_KEY_FAULTLINE="your_api_key_here"
 ```
 
 ### 4. Create the docker container for Finder
@@ -81,16 +78,12 @@ run conda activate iris
 
 
 ### 5. Exploiter Setup
-#### 5.1 API_KEY - temporarily a different api key is used for the Exploiter
-Export your OpenAI API key as OPENAI_KEY_FAULTLINE on your OS
-```
-export OPENAI_KEY_FAULTLINE="your_api_key_here"
-```
-#### 5.2 SetUp CWE-Bench-Java
+
+#### 5.1 SetUp CWE-Bench-Java
 In the directory [cwe-bench-java](Agents/Exploiter/data/cwe-bench-java/) create a new folder called java-env. The folder can be empty 
 since we are using Docker to build these projects.
 
-#### 5.3 Input setup (only for Independent runs)
+#### 5.2 Input setup (only for Independent runs)
 In order to run Exploiter Independently you need to provide this the file result.json in the location Agents/Exploiter/vuln_agent/modules/data/traces/result.json
 
 ### 6. Getting the Source/Zip file of the projects
