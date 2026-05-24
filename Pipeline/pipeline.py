@@ -1,6 +1,7 @@
 # Pipeline/pipeline.py
 import argparse
 import json
+import pathlib
 import subprocess
 import os
 import shlex
@@ -536,7 +537,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
         with open(report_path, "r", encoding="utf-8") as f:
             report_data = json.load(f)
 
-        exploitable, pov_test_paths, pov_logic = _parse_exploiter_report(report_data)
+        exploitable, pov_test_paths, pov_logic = parse_exploiter_report(report_data)
 
         new_state["exploiter"] = {
             "success": exploitable,
@@ -790,9 +791,12 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
 
     sources_project_root = PROJECTS_DIR / "Sources" / project_name
 
+    AUTOSEC_TESTS_PREFIX = pathlib.Path("autosec") / "tests"
+
     for rel_path in pov_test_paths:
-        src = exploiter_project_root / rel_path
-        dst = sources_project_root / rel_path
+        rel = pathlib.Path(rel_path)
+        src = exploiter_project_root / rel
+        dst = sources_project_root / rel
 
         if src.exists():
             dst.parent.mkdir(parents=True, exist_ok=True)
@@ -801,6 +805,20 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
                 f"Copied PoV test: {rel_path} "
                 f"→ Projects/Sources/{project_name}/{rel_path}"
             )
+
+            # Also copy into the Maven source tree so `mvn test` can compile it.
+            # autosec/tests/<module>/src/test/java/... -> <module>/src/test/java/...
+            try:
+                maven_rel = rel.relative_to(AUTOSEC_TESTS_PREFIX)
+                maven_dst = sources_project_root / maven_rel
+                maven_dst.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(src, maven_dst)
+                logger.info(
+                    f"Copied PoV test to Maven source tree: "
+                    f"→ Projects/Sources/{project_name}/{maven_rel}"
+                )
+            except ValueError:
+                pass  # rel_path doesn't start with autosec/tests/, skip
         else:
             logger.warning(f"PoV test file not found in exploiter workdir: {src}")
 

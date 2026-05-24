@@ -1,0 +1,1609 @@
+{
+    "cwe_id": "cwe-022",
+    "vulnerabilities": [
+        {
+            "traces": [
+                [
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/helper/AbstractResourceCollector.java",
+                        "line": 286
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/helper/AbstractResourceCollector.java",
+                        "line": 317
+                    },
+                    {
+                        "message": "scriptPath : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "scriptPath : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/MergingServletResourceProvider.java",
+                        "line": 137
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/MergingServletResourceProvider.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProvider.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProvider.java",
+                        "line": 56
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "this [post update] : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "new ServletResource(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProvider.java",
+                        "line": 56
+                    },
+                    {
+                        "message": "getResource(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/MergingServletResourceProvider.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "result : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/MergingServletResourceProvider.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "getResource(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "resource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "resource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "wrap(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "getResource(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/helper/AbstractResourceCollector.java",
+                        "line": 317
+                    },
+                    {
+                        "message": "getResourceOrNull(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 460
+                    },
+                    {
+                        "message": "res : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 461
+                    },
+                    {
+                        "message": "scriptResource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 258
+                    },
+                    {
+                        "message": "scriptResource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 265
+                    },
+                    {
+                        "message": "scriptResource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 272
+                    },
+                    {
+                        "message": "resource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 56
+                    },
+                    {
+                        "message": "resource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "parameter this : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 99
+                    },
+                    {
+                        "message": "this <.field> : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "getPath(...) : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "this [post update] : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "new ScriptResource(...) : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 272
+                    },
+                    {
+                        "message": "parameter this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "parameter this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 67
+                    },
+                    {
+                        "message": "this.path",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 67
+                    }
+                ],
+                [
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "this [post update] : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "new ServletResource(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProvider.java",
+                        "line": 56
+                    },
+                    {
+                        "message": "getResource(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/MergingServletResourceProvider.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "result : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/MergingServletResourceProvider.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "getResource(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "resource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "resource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "wrap(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "getResource(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/helper/AbstractResourceCollector.java",
+                        "line": 317
+                    },
+                    {
+                        "message": "getResourceOrNull(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 460
+                    },
+                    {
+                        "message": "res : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 461
+                    },
+                    {
+                        "message": "scriptResource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 258
+                    },
+                    {
+                        "message": "scriptResource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 265
+                    },
+                    {
+                        "message": "scriptResource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 272
+                    },
+                    {
+                        "message": "resource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 56
+                    },
+                    {
+                        "message": "resource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "parameter this : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 99
+                    },
+                    {
+                        "message": "this <.field> : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "getPath(...) : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "this [post update] : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "new ScriptResource(...) : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 272
+                    },
+                    {
+                        "message": "parameter this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "parameter this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 67
+                    },
+                    {
+                        "message": "this.path",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 67
+                    }
+                ],
+                [
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProvider.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProvider.java",
+                        "line": 56
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "this [post update] : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "new ServletResource(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProvider.java",
+                        "line": 56
+                    },
+                    {
+                        "message": "getResource(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/MergingServletResourceProvider.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "result : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/MergingServletResourceProvider.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "getResource(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "resource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "resource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "wrap(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "getResource(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/helper/AbstractResourceCollector.java",
+                        "line": 317
+                    },
+                    {
+                        "message": "getResourceOrNull(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 460
+                    },
+                    {
+                        "message": "res : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 461
+                    },
+                    {
+                        "message": "scriptResource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 258
+                    },
+                    {
+                        "message": "scriptResource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 265
+                    },
+                    {
+                        "message": "scriptResource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 272
+                    },
+                    {
+                        "message": "resource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 56
+                    },
+                    {
+                        "message": "resource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "parameter this : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 99
+                    },
+                    {
+                        "message": "this <.field> : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "getPath(...) : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "this [post update] : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "new ScriptResource(...) : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 272
+                    },
+                    {
+                        "message": "parameter this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "parameter this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 67
+                    },
+                    {
+                        "message": "this.path",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 67
+                    }
+                ],
+                [
+                    {
+                        "message": "getPath(...) : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "this [post update] : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "new ScriptResource(...) : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 272
+                    },
+                    {
+                        "message": "parameter this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "parameter this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 67
+                    },
+                    {
+                        "message": "this.path",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 67
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/helper/AbstractResourceCollector.java",
+                        "line": 286
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/helper/AbstractResourceCollector.java",
+                        "line": 317
+                    },
+                    {
+                        "message": "scriptPath : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "scriptPath : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/MergingServletResourceProvider.java",
+                        "line": 137
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/MergingServletResourceProvider.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProvider.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProvider.java",
+                        "line": 56
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "this [post update] : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "new ServletResource(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProvider.java",
+                        "line": 56
+                    },
+                    {
+                        "message": "getResource(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/MergingServletResourceProvider.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "result : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/MergingServletResourceProvider.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "getResource(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "resource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "resource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "wrap(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "getResource(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/helper/AbstractResourceCollector.java",
+                        "line": 317
+                    },
+                    {
+                        "message": "getResourceOrNull(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 460
+                    },
+                    {
+                        "message": "res : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 461
+                    },
+                    {
+                        "message": "scriptResource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 258
+                    },
+                    {
+                        "message": "scriptResource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 265
+                    },
+                    {
+                        "message": "scriptResource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 272
+                    },
+                    {
+                        "message": "resource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 56
+                    },
+                    {
+                        "message": "resource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "parameter this : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 99
+                    },
+                    {
+                        "message": "this <.field> : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "getPath(...) : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "this [post update] : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "new ScriptResource(...) : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 272
+                    },
+                    {
+                        "message": "parameter this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "parameter this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 71
+                    },
+                    {
+                        "message": "this.path",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 71
+                    }
+                ],
+                [
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "this [post update] : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "new ServletResource(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProvider.java",
+                        "line": 56
+                    },
+                    {
+                        "message": "getResource(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/MergingServletResourceProvider.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "result : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/MergingServletResourceProvider.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "getResource(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "resource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "resource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "wrap(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "getResource(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/helper/AbstractResourceCollector.java",
+                        "line": 317
+                    },
+                    {
+                        "message": "getResourceOrNull(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 460
+                    },
+                    {
+                        "message": "res : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 461
+                    },
+                    {
+                        "message": "scriptResource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 258
+                    },
+                    {
+                        "message": "scriptResource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 265
+                    },
+                    {
+                        "message": "scriptResource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 272
+                    },
+                    {
+                        "message": "resource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 56
+                    },
+                    {
+                        "message": "resource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "parameter this : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 99
+                    },
+                    {
+                        "message": "this <.field> : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "getPath(...) : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "this [post update] : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "new ScriptResource(...) : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 272
+                    },
+                    {
+                        "message": "parameter this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "parameter this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 71
+                    },
+                    {
+                        "message": "this.path",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 71
+                    }
+                ],
+                [
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProvider.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProvider.java",
+                        "line": 56
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "this [post update] : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "new ServletResource(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProvider.java",
+                        "line": 56
+                    },
+                    {
+                        "message": "getResource(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/MergingServletResourceProvider.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "result : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/MergingServletResourceProvider.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "getResource(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "resource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "resource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "wrap(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "getResource(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/helper/AbstractResourceCollector.java",
+                        "line": 317
+                    },
+                    {
+                        "message": "getResourceOrNull(...) : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 460
+                    },
+                    {
+                        "message": "res : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 461
+                    },
+                    {
+                        "message": "scriptResource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 258
+                    },
+                    {
+                        "message": "scriptResource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 265
+                    },
+                    {
+                        "message": "scriptResource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 272
+                    },
+                    {
+                        "message": "resource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 56
+                    },
+                    {
+                        "message": "resource : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "parameter this : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 99
+                    },
+                    {
+                        "message": "this <.field> : ServletResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "getPath(...) : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "this [post update] : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "new ScriptResource(...) : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 272
+                    },
+                    {
+                        "message": "parameter this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "parameter this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "this : ScriptResource [path] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 71
+                    },
+                    {
+                        "message": "this.path",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 71
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/helper/AbstractResourceCollector.java",
+                        "line": 286
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/helper/AbstractResourceCollector.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "scriptPath : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "scriptPath",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 61
+                    }
+                ],
+                [
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProvider.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProvider.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 85
+                    },
+                    {
+                        "message": "scriptPath : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "scriptPath",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 61
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/helper/AbstractResourceCollector.java",
+                        "line": 286
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/helper/AbstractResourceCollector.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "scriptPath : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "scriptPath : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/MergingServletResourceProvider.java",
+                        "line": 137
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/MergingServletResourceProvider.java",
+                        "line": 141
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "path",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 85
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/helper/AbstractResourceCollector.java",
+                        "line": 286
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/helper/AbstractResourceCollector.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "scriptPath : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "scriptPath : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/MergingServletResourceProvider.java",
+                        "line": 137
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/MergingServletResourceProvider.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProvider.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProvider.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "path",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 132
+                    }
+                ],
+                [
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProvider.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProvider.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "path",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 132
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getResource(...) : Resource",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/bundle/BundledScriptTracker.java",
+                        "line": 629
+                    },
+                    {
+                        "message": "resource : Resource",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/bundle/RequestWrapper.java",
+                        "line": 42
+                    },
+                    {
+                        "message": "resource : Resource",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/bundle/RequestWrapper.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "getRequestDispatcher(...) : RequestDispatcher",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/bundle/RequestWrapper.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "getRequestDispatcher(...) : RequestDispatcher",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/bundle/BundledScriptTracker.java",
+                        "line": 629
+                    },
+                    {
+                        "message": "dispatcher",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/bundle/BundledScriptTracker.java",
+                        "line": 640
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/helper/AbstractResourceCollector.java",
+                        "line": 286
+                    },
+                    {
+                        "message": "path",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/helper/AbstractResourceCollector.java",
+                        "line": 299
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/helper/AbstractResourceCollector.java",
+                        "line": 286
+                    },
+                    {
+                        "message": "path",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/helper/AbstractResourceCollector.java",
+                        "line": 309
+                    }
+                ],
+                [
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProvider.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProvider.java",
+                        "line": 56
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "servletPath : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProviderFactory.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "servletPath : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProviderFactory.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "ensureServletNameExtension(...) : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "this [post update] : ServletResource [resourceType] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "new ServletResource(...) : ServletResource [resourceType] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProvider.java",
+                        "line": 56
+                    },
+                    {
+                        "message": "getResource(...) : ServletResource [resourceType] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/MergingServletResourceProvider.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "result : ServletResource [resourceType] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/MergingServletResourceProvider.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "getResource(...) : ServletResource [resourceType] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "resource : ServletResource [resourceType] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "resource : ServletResource [resourceType] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "wrap(...) : ServletResource [resourceType] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "getResource(...) : ServletResource [resourceType] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 67
+                    },
+                    {
+                        "message": "getActiveResource(...) : ServletResource [resourceType] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "parameter this : ServletResource [resourceType] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "this <.field> : ServletResource [resourceType] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 90
+                    },
+                    {
+                        "message": "resourceType : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 90
+                    },
+                    {
+                        "message": "getResourceType(...) : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "getResourceType(...) : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "resourceType : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 179
+                    },
+                    {
+                        "message": "scriptNameOrResourceType : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 451
+                    },
+                    {
+                        "message": "scriptNameOrResourceType : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 458
+                    },
+                    {
+                        "message": "normalize(...) : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 458
+                    },
+                    {
+                        "message": "scriptPath : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 460
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/helper/AbstractResourceCollector.java",
+                        "line": 286
+                    },
+                    {
+                        "message": "path",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/helper/AbstractResourceCollector.java",
+                        "line": 309
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/helper/AbstractResourceCollector.java",
+                        "line": 286
+                    },
+                    {
+                        "message": "path",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/helper/AbstractResourceCollector.java",
+                        "line": 317
+                    }
+                ],
+                [
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProvider.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProvider.java",
+                        "line": 56
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "servletPath : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProviderFactory.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "servletPath : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProviderFactory.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "ensureServletNameExtension(...) : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "this [post update] : ServletResource [resourceType] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "new ServletResource(...) : ServletResource [resourceType] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResourceProvider.java",
+                        "line": 56
+                    },
+                    {
+                        "message": "getResource(...) : ServletResource [resourceType] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/MergingServletResourceProvider.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "result : ServletResource [resourceType] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/MergingServletResourceProvider.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "getResource(...) : ServletResource [resourceType] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "resource : ServletResource [resourceType] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "resource : ServletResource [resourceType] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "wrap(...) : ServletResource [resourceType] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResourceResolver.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "getResource(...) : ServletResource [resourceType] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 67
+                    },
+                    {
+                        "message": "getActiveResource(...) : ServletResource [resourceType] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "parameter this : ServletResource [resourceType] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "this <.field> : ServletResource [resourceType] : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 90
+                    },
+                    {
+                        "message": "resourceType : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/resource/ServletResource.java",
+                        "line": 90
+                    },
+                    {
+                        "message": "getResourceType(...) : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/ScriptResource.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "getResourceType(...) : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "resourceType : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 179
+                    },
+                    {
+                        "message": "scriptNameOrResourceType : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 451
+                    },
+                    {
+                        "message": "scriptNameOrResourceType : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 458
+                    },
+                    {
+                        "message": "normalize(...) : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 458
+                    },
+                    {
+                        "message": "scriptPath : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/SlingServletResolver.java",
+                        "line": 460
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/helper/AbstractResourceCollector.java",
+                        "line": 286
+                    },
+                    {
+                        "message": "path",
+                        "uri": "src/main/java/org/apache/sling/servlets/resolver/internal/helper/AbstractResourceCollector.java",
+                        "line": 317
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        }
+    ]
+}
