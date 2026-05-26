@@ -1,0 +1,1844 @@
+{
+    "cwe_id": "cwe-022",
+    "vulnerabilities": [
+        {
+            "traces": [
+                [
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-freemarker/src/main/java/io/vertx/ext/web/templ/freemarker/impl/FreeMarkerTemplateEngineImpl.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-freemarker/src/main/java/io/vertx/ext/web/templ/freemarker/impl/FreeMarkerTemplateEngineImpl.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/CachingTemplateEngine.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/CachingTemplateEngine.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "adjustLocation(...)",
+                        "uri": "vertx-template-engines/vertx-web-templ-freemarker/src/main/java/io/vertx/ext/web/templ/freemarker/impl/FreeMarkerTemplateEngineImpl.java",
+                        "line": 70
+                    }
+                ],
+                [
+                    {
+                        "message": "path(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/HttpServerRequestWrapper.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "path(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 216
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "normalizePath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "normalisedPath : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 223
+                    },
+                    {
+                        "message": "normalisedPath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 115
+                    },
+                    {
+                        "message": "...?...:... : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "pathOffset(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-freemarker/src/main/java/io/vertx/ext/web/templ/freemarker/impl/FreeMarkerTemplateEngineImpl.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-freemarker/src/main/java/io/vertx/ext/web/templ/freemarker/impl/FreeMarkerTemplateEngineImpl.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/CachingTemplateEngine.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/CachingTemplateEngine.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "adjustLocation(...)",
+                        "uri": "vertx-template-engines/vertx-web-templ-freemarker/src/main/java/io/vertx/ext/web/templ/freemarker/impl/FreeMarkerTemplateEngineImpl.java",
+                        "line": 70
+                    }
+                ],
+                [
+                    {
+                        "message": "path(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/HttpServerRequestWrapper.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "path(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 216
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "normalizePath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "this <.field> [post update] : RoutingContextImpl [normalisedPath] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "this <.field> : RoutingContextImpl [normalisedPath] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 223
+                    },
+                    {
+                        "message": "normalisedPath : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 223
+                    },
+                    {
+                        "message": "normalisedPath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextDecorator.java",
+                        "line": 180
+                    },
+                    {
+                        "message": "normalisedPath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 115
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "substring(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "...?...:... : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "pathOffset(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-freemarker/src/main/java/io/vertx/ext/web/templ/freemarker/impl/FreeMarkerTemplateEngineImpl.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-freemarker/src/main/java/io/vertx/ext/web/templ/freemarker/impl/FreeMarkerTemplateEngineImpl.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/CachingTemplateEngine.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/CachingTemplateEngine.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "adjustLocation(...)",
+                        "uri": "vertx-template-engines/vertx-web-templ-freemarker/src/main/java/io/vertx/ext/web/templ/freemarker/impl/FreeMarkerTemplateEngineImpl.java",
+                        "line": 70
+                    }
+                ],
+                [
+                    {
+                        "message": "path(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 216
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "normalizePath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "normalisedPath : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 223
+                    },
+                    {
+                        "message": "normalisedPath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 115
+                    },
+                    {
+                        "message": "...?...:... : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "pathOffset(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-freemarker/src/main/java/io/vertx/ext/web/templ/freemarker/impl/FreeMarkerTemplateEngineImpl.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-freemarker/src/main/java/io/vertx/ext/web/templ/freemarker/impl/FreeMarkerTemplateEngineImpl.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/CachingTemplateEngine.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/CachingTemplateEngine.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "adjustLocation(...)",
+                        "uri": "vertx-template-engines/vertx-web-templ-freemarker/src/main/java/io/vertx/ext/web/templ/freemarker/impl/FreeMarkerTemplateEngineImpl.java",
+                        "line": 70
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/CachingTemplateEngine.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/CachingTemplateEngine.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "adjustLocation(...) : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "loc",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 76
+                    }
+                ],
+                [
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/CachingTemplateEngine.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/CachingTemplateEngine.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "adjustLocation(...) : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "loc",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 76
+                    }
+                ],
+                [
+                    {
+                        "message": "path(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/HttpServerRequestWrapper.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "path(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 216
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "normalizePath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "normalisedPath : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 223
+                    },
+                    {
+                        "message": "normalisedPath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 115
+                    },
+                    {
+                        "message": "...?...:... : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "pathOffset(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/CachingTemplateEngine.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/CachingTemplateEngine.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "adjustLocation(...) : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "loc",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 76
+                    }
+                ],
+                [
+                    {
+                        "message": "path(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 216
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "normalizePath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "normalisedPath : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 223
+                    },
+                    {
+                        "message": "normalisedPath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 115
+                    },
+                    {
+                        "message": "...?...:... : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "pathOffset(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/CachingTemplateEngine.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/CachingTemplateEngine.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "adjustLocation(...) : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "loc",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 76
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/CachingTemplateEngine.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/CachingTemplateEngine.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "adjustLocation(...) : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "loc",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 78
+                    }
+                ],
+                [
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/CachingTemplateEngine.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/CachingTemplateEngine.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "adjustLocation(...) : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "loc",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 78
+                    }
+                ],
+                [
+                    {
+                        "message": "path(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/HttpServerRequestWrapper.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "path(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 216
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "normalizePath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "normalisedPath : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 223
+                    },
+                    {
+                        "message": "normalisedPath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 115
+                    },
+                    {
+                        "message": "...?...:... : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "pathOffset(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/CachingTemplateEngine.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/CachingTemplateEngine.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "adjustLocation(...) : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "loc",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 78
+                    }
+                ],
+                [
+                    {
+                        "message": "path(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 216
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "normalizePath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "normalisedPath : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 223
+                    },
+                    {
+                        "message": "normalisedPath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 115
+                    },
+                    {
+                        "message": "...?...:... : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "pathOffset(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/CachingTemplateEngine.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/CachingTemplateEngine.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "adjustLocation(...) : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "loc",
+                        "uri": "vertx-template-engines/vertx-web-templ-mvel/src/main/java/io/vertx/ext/web/templ/mvel/impl/MVELTemplateEngineImpl.java",
+                        "line": 78
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-thymeleaf/src/main/java/io/vertx/ext/web/templ/thymeleaf/impl/ThymeleafTemplateEngineImpl.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "templateFile",
+                        "uri": "vertx-template-engines/vertx-web-templ-thymeleaf/src/main/java/io/vertx/ext/web/templ/thymeleaf/impl/ThymeleafTemplateEngineImpl.java",
+                        "line": 86
+                    }
+                ],
+                [
+                    {
+                        "message": "path(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/HttpServerRequestWrapper.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "path(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 216
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "normalizePath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "normalisedPath : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 223
+                    },
+                    {
+                        "message": "normalisedPath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 115
+                    },
+                    {
+                        "message": "...?...:... : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "pathOffset(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-thymeleaf/src/main/java/io/vertx/ext/web/templ/thymeleaf/impl/ThymeleafTemplateEngineImpl.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "templateFile",
+                        "uri": "vertx-template-engines/vertx-web-templ-thymeleaf/src/main/java/io/vertx/ext/web/templ/thymeleaf/impl/ThymeleafTemplateEngineImpl.java",
+                        "line": 86
+                    }
+                ],
+                [
+                    {
+                        "message": "path(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/HttpServerRequestWrapper.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "path(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 216
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "normalizePath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "this <.field> [post update] : RoutingContextImpl [normalisedPath] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "this <.field> : RoutingContextImpl [normalisedPath] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 223
+                    },
+                    {
+                        "message": "normalisedPath : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 223
+                    },
+                    {
+                        "message": "normalisedPath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextDecorator.java",
+                        "line": 180
+                    },
+                    {
+                        "message": "normalisedPath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 115
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "substring(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "...?...:... : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "pathOffset(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-thymeleaf/src/main/java/io/vertx/ext/web/templ/thymeleaf/impl/ThymeleafTemplateEngineImpl.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "templateFile",
+                        "uri": "vertx-template-engines/vertx-web-templ-thymeleaf/src/main/java/io/vertx/ext/web/templ/thymeleaf/impl/ThymeleafTemplateEngineImpl.java",
+                        "line": 86
+                    }
+                ],
+                [
+                    {
+                        "message": "path(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 216
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "normalizePath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "normalisedPath : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 223
+                    },
+                    {
+                        "message": "normalisedPath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 115
+                    },
+                    {
+                        "message": "...?...:... : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "pathOffset(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/TemplateHandlerImpl.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "templateFileName : String",
+                        "uri": "vertx-web-common/src/main/java/io/vertx/ext/web/common/template/TemplateEngine.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "templateFile : String",
+                        "uri": "vertx-template-engines/vertx-web-templ-thymeleaf/src/main/java/io/vertx/ext/web/templ/thymeleaf/impl/ThymeleafTemplateEngineImpl.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "templateFile",
+                        "uri": "vertx-template-engines/vertx-web-templ-thymeleaf/src/main/java/io/vertx/ext/web/templ/thymeleaf/impl/ThymeleafTemplateEngineImpl.java",
+                        "line": 86
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "path(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/HttpServerRequestWrapper.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "path(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 216
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "normalizePath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "normalisedPath : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 223
+                    },
+                    {
+                        "message": "normalisedPath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "decodeURIComponent(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "removeDots(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 610
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 611
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 115
+                    },
+                    {
+                        "message": "...?...:... : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "pathOffset(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 611
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 613
+                    },
+                    {
+                        "message": "getFile(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "sfile : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 290
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 292
+                    },
+                    {
+                        "message": "...->... : new Callable<FileSystem>(...) { ... } [file] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 292
+                    },
+                    {
+                        "message": "callable : new Callable<FileSystem>(...) { ... } [file] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 272
+                    },
+                    {
+                        "message": "callable : new Callable<FileSystem>(...) { ... } [file] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 275
+                    },
+                    {
+                        "message": "parameter this : new Callable<FileSystem>(...) { ... } [file] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 292
+                    },
+                    {
+                        "message": "this : new Callable<FileSystem>(...) { ... } [file] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 292
+                    },
+                    {
+                        "message": "file",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 292
+                    }
+                ],
+                [
+                    {
+                        "message": "path(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/HttpServerRequestWrapper.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "path(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 216
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "normalizePath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "this <.field> [post update] : RoutingContextImpl [normalisedPath] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "this <.field> : RoutingContextImpl [normalisedPath] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 223
+                    },
+                    {
+                        "message": "normalisedPath : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 223
+                    },
+                    {
+                        "message": "normalisedPath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextDecorator.java",
+                        "line": 180
+                    },
+                    {
+                        "message": "normalisedPath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "decodeURIComponent(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "removeDots(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 610
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 611
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 115
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "substring(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "...?...:... : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "pathOffset(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 611
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 613
+                    },
+                    {
+                        "message": "getFile(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 156
+                    },
+                    {
+                        "message": "sfile : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 290
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 292
+                    },
+                    {
+                        "message": "...->... : new Callable<FileSystem>(...) { ... } [file] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 292
+                    },
+                    {
+                        "message": "callable : new Callable<FileSystem>(...) { ... } [file] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 272
+                    },
+                    {
+                        "message": "callable : new Callable<FileSystem>(...) { ... } [file] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 280
+                    },
+                    {
+                        "message": "parameter this : new Callable<FileSystem>(...) { ... } [file] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 292
+                    },
+                    {
+                        "message": "this : new Callable<FileSystem>(...) { ... } [file] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 292
+                    },
+                    {
+                        "message": "file",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 292
+                    }
+                ],
+                [
+                    {
+                        "message": "path(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 216
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "normalizePath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "normalisedPath : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 223
+                    },
+                    {
+                        "message": "normalisedPath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "decodeURIComponent(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "removeDots(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 610
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 611
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 115
+                    },
+                    {
+                        "message": "...?...:... : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "pathOffset(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 611
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 613
+                    },
+                    {
+                        "message": "getFile(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "sfile : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 290
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 292
+                    },
+                    {
+                        "message": "...->... : new Callable<FileSystem>(...) { ... } [file] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 292
+                    },
+                    {
+                        "message": "callable : new Callable<FileSystem>(...) { ... } [file] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 272
+                    },
+                    {
+                        "message": "callable : new Callable<FileSystem>(...) { ... } [file] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 275
+                    },
+                    {
+                        "message": "parameter this : new Callable<FileSystem>(...) { ... } [file] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 292
+                    },
+                    {
+                        "message": "this : new Callable<FileSystem>(...) { ... } [file] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 292
+                    },
+                    {
+                        "message": "file",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 292
+                    }
+                ],
+                [
+                    {
+                        "message": "path(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 216
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "normalizePath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "this <.field> [post update] : RoutingContextImpl [normalisedPath] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 220
+                    },
+                    {
+                        "message": "this <.field> : RoutingContextImpl [normalisedPath] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 223
+                    },
+                    {
+                        "message": "normalisedPath : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextImpl.java",
+                        "line": 223
+                    },
+                    {
+                        "message": "normalisedPath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/RoutingContextDecorator.java",
+                        "line": 180
+                    },
+                    {
+                        "message": "normalisedPath(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "decodeURIComponent(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "removeDots(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 610
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 611
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 115
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "substring(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "...?...:... : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "pathOffset(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 611
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 613
+                    },
+                    {
+                        "message": "getFile(...) : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 156
+                    },
+                    {
+                        "message": "sfile : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 290
+                    },
+                    {
+                        "message": "file : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 292
+                    },
+                    {
+                        "message": "...->... : new Callable<FileSystem>(...) { ... } [file] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 292
+                    },
+                    {
+                        "message": "callable : new Callable<FileSystem>(...) { ... } [file] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 272
+                    },
+                    {
+                        "message": "callable : new Callable<FileSystem>(...) { ... } [file] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 280
+                    },
+                    {
+                        "message": "parameter this : new Callable<FileSystem>(...) { ... } [file] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 292
+                    },
+                    {
+                        "message": "this : new Callable<FileSystem>(...) { ... } [file] : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 292
+                    },
+                    {
+                        "message": "file",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/StaticHandlerImpl.java",
+                        "line": 292
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "errorTemplateName : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/ErrorHandler.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "errorTemplateName : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/ErrorHandler.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "errorTemplateName : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/ErrorHandler.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "errorTemplateName : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/ErrorHandler.java",
+                        "line": 62
+                    },
+                    {
+                        "message": "errorTemplateName : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/ErrorHandlerImpl.java",
+                        "line": 47
+                    },
+                    {
+                        "message": "errorTemplateName : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/ErrorHandlerImpl.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "errorTemplateName : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/ErrorHandlerImpl.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "resource : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 55
+                    },
+                    {
+                        "message": "resource",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 59
+                    }
+                ],
+                [
+                    {
+                        "message": "errorTemplateName : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/ErrorHandler.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "errorTemplateName : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/ErrorHandler.java",
+                        "line": 62
+                    },
+                    {
+                        "message": "errorTemplateName : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/ErrorHandlerImpl.java",
+                        "line": 47
+                    },
+                    {
+                        "message": "errorTemplateName : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/ErrorHandlerImpl.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "errorTemplateName : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/handler/impl/ErrorHandlerImpl.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "resource : String",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 55
+                    },
+                    {
+                        "message": "resource",
+                        "uri": "vertx-web/src/main/java/io/vertx/ext/web/impl/Utils.java",
+                        "line": 59
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        }
+    ]
+}

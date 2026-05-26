@@ -40,17 +40,17 @@ class JavaProjectDetector:
         return {
             "maven": JavaBuildStack(
                 name="maven",
-                # Use test-compile to catch test framework issues during retry
-                build_cmd_with_wrapper="./mvnw clean test-compile -B",
-                build_cmd_without_wrapper="mvn clean test-compile -B",
+                # compile only — broken PoV test files must not block patch verification
+                build_cmd_with_wrapper="./mvnw clean compile -B",
+                build_cmd_without_wrapper="mvn clean compile -B",
                 test_cmd_with_wrapper="./mvnw test -B",
                 test_cmd_without_wrapper="mvn test -B"
             ),
             "gradle": JavaBuildStack(
                 name="gradle",
-                # Gradle: compile main + test code without running tests
-                build_cmd_with_wrapper="./gradlew compileJava compileTestJava --no-daemon",
-                build_cmd_without_wrapper="gradle compileJava compileTestJava --no-daemon",
+                # compile only — broken PoV test files must not block patch verification
+                build_cmd_with_wrapper="./gradlew compileJava --no-daemon",
+                build_cmd_without_wrapper="gradle compileJava --no-daemon",
                 test_cmd_with_wrapper="./gradlew test --no-daemon",
                 test_cmd_without_wrapper="gradle test --no-daemon"
             ),

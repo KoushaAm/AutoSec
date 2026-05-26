@@ -1,0 +1,356 @@
+{
+    "cwe_id": "cwe-022",
+    "vulnerabilities": [
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getOutputFileNameWithPath(...) : String",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 422
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 422
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 424
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 432
+                    }
+                ],
+                [
+                    {
+                        "message": "getOutputFileNameWithPath(...) : String",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 422
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 422
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 424
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 425
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 432
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getOutputFileNameWithPath(...) : String",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 422
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 422
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 424
+                    },
+                    {
+                        "message": "getParentFile(...)",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 424
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getOutputFileNameWithPath(...) : String",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 422
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 422
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 424
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 425
+                    },
+                    {
+                        "message": "getParentFile(...)",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 425
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getOutputFileNameWithPath(...) : String",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 422
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 422
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 424
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 428
+                    }
+                ],
+                [
+                    {
+                        "message": "getOutputFileNameWithPath(...) : String",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 422
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 422
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 424
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 425
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 428
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getOutputFileNameWithPath(...) : String",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 422
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 422
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 424
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 429
+                    }
+                ],
+                [
+                    {
+                        "message": "getOutputFileNameWithPath(...) : String",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 422
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 422
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 424
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 425
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 429
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getOutputFileNameWithPath(...) : String",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipUtil.java",
+                        "line": 17
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipUtil.java",
+                        "line": 33
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipUtil.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipUtil.java",
+                        "line": 108
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getOutputFileNameWithPath(...) : String",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipUtil.java",
+                        "line": 17
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipUtil.java",
+                        "line": 33
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipUtil.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipUtil.java",
+                        "line": 109
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getOutputFileNameWithPath(...) : String",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipEngine.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipUtil.java",
+                        "line": 17
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/net/lingala/zip4j/unzip/UnzipUtil.java",
+                        "line": 28
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "src/main/java/net/lingala/zip4j/util/Zip4jUtil.java",
+                        "line": 127
+                    },
+                    {
+                        "message": "file",
+                        "uri": "src/main/java/net/lingala/zip4j/util/Zip4jUtil.java",
+                        "line": 131
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        }
+    ]
+}
