@@ -1,0 +1,1765 @@
+{
+    "cwe_id": "cwe-094",
+    "vulnerabilities": [
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "source : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1036
+                    },
+                    {
+                        "message": "source : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1040
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1307
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1308
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1323
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1325
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "midString(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "varName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1433
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1061
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1067
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "substring(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "className : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "className : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "className : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "className",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 95
+                    }
+                ],
+                [
+                    {
+                        "message": "source : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1015
+                    },
+                    {
+                        "message": "source : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1019
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1307
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1308
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1323
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1325
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "midString(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "varName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1433
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1061
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1067
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "substring(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "className : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "className : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "className : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "className",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 95
+                    }
+                ],
+                [
+                    {
+                        "message": "source : StringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 995
+                    },
+                    {
+                        "message": "source : StringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 999
+                    },
+                    {
+                        "message": "append(...) : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 999
+                    },
+                    {
+                        "message": "buf : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1000
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1307
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1308
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1323
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1325
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "midString(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "varName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1433
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1061
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1067
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "substring(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "className : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "className : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "className : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "className",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 95
+                    }
+                ],
+                [
+                    {
+                        "message": "source : StringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 974
+                    },
+                    {
+                        "message": "source : StringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 978
+                    },
+                    {
+                        "message": "source : StringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 995
+                    },
+                    {
+                        "message": "source : StringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 999
+                    },
+                    {
+                        "message": "append(...) : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 999
+                    },
+                    {
+                        "message": "buf : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1000
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1307
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1308
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1323
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1325
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "midString(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "varName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1433
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1061
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1067
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "substring(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "className : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "className : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "className : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "className",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 95
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "source : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1036
+                    },
+                    {
+                        "message": "source : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1040
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1307
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1308
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1323
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1325
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "midString(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "varName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1433
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1061
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1067
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "substring(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "fieldName : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "fieldName",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 150
+                    }
+                ],
+                [
+                    {
+                        "message": "source : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1015
+                    },
+                    {
+                        "message": "source : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1019
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1307
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1308
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1323
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1325
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "midString(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "varName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1433
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1061
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1067
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "substring(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "fieldName : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "fieldName",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 150
+                    }
+                ],
+                [
+                    {
+                        "message": "source : StringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 995
+                    },
+                    {
+                        "message": "source : StringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 999
+                    },
+                    {
+                        "message": "append(...) : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 999
+                    },
+                    {
+                        "message": "buf : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1000
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1307
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1308
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1323
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1325
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "midString(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "varName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1433
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1061
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1067
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "substring(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "fieldName : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "fieldName",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 150
+                    }
+                ],
+                [
+                    {
+                        "message": "source : StringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 974
+                    },
+                    {
+                        "message": "source : StringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 978
+                    },
+                    {
+                        "message": "source : StringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 995
+                    },
+                    {
+                        "message": "source : StringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 999
+                    },
+                    {
+                        "message": "append(...) : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 999
+                    },
+                    {
+                        "message": "buf : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1000
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1307
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1308
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1323
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1325
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "midString(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "varName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1433
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1061
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1067
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "substring(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "fieldName : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "fieldName",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ConstantStringLookup.java",
+                        "line": 150
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "source : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1036
+                    },
+                    {
+                        "message": "source : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1040
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1307
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1308
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1323
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1325
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "midString(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "varName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1433
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1061
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1067
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ScriptStringLookup.java",
+                        "line": 69
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ScriptStringLookup.java",
+                        "line": 73
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ScriptStringLookup.java",
+                        "line": 73
+                    },
+                    {
+                        "message": "script",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ScriptStringLookup.java",
+                        "line": 86
+                    }
+                ],
+                [
+                    {
+                        "message": "source : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1015
+                    },
+                    {
+                        "message": "source : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1019
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1307
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1308
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1323
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1325
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "midString(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "varName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1433
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1061
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1067
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ScriptStringLookup.java",
+                        "line": 69
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ScriptStringLookup.java",
+                        "line": 73
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ScriptStringLookup.java",
+                        "line": 73
+                    },
+                    {
+                        "message": "script",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ScriptStringLookup.java",
+                        "line": 86
+                    }
+                ],
+                [
+                    {
+                        "message": "source : StringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 995
+                    },
+                    {
+                        "message": "source : StringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 999
+                    },
+                    {
+                        "message": "append(...) : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 999
+                    },
+                    {
+                        "message": "buf : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1000
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1307
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1308
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1323
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1325
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "midString(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "varName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1433
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1061
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1067
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ScriptStringLookup.java",
+                        "line": 69
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ScriptStringLookup.java",
+                        "line": 73
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ScriptStringLookup.java",
+                        "line": 73
+                    },
+                    {
+                        "message": "script",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ScriptStringLookup.java",
+                        "line": 86
+                    }
+                ],
+                [
+                    {
+                        "message": "source : StringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 974
+                    },
+                    {
+                        "message": "source : StringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 978
+                    },
+                    {
+                        "message": "source : StringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 995
+                    },
+                    {
+                        "message": "source : StringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 999
+                    },
+                    {
+                        "message": "append(...) : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 999
+                    },
+                    {
+                        "message": "buf : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1000
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1307
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1308
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1323
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1325
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "midString(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "varName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1433
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1061
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1067
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ScriptStringLookup.java",
+                        "line": 69
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ScriptStringLookup.java",
+                        "line": 73
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ScriptStringLookup.java",
+                        "line": 73
+                    },
+                    {
+                        "message": "script",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/ScriptStringLookup.java",
+                        "line": 86
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "source : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1036
+                    },
+                    {
+                        "message": "source : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1040
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1307
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1308
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1323
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1325
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "midString(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "varName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1433
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1061
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1067
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/XmlStringLookup.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/XmlStringLookup.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/XmlStringLookup.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "substringAfter(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/XmlStringLookup.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "xpath",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/XmlStringLookup.java",
+                        "line": 77
+                    }
+                ],
+                [
+                    {
+                        "message": "source : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1015
+                    },
+                    {
+                        "message": "source : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1019
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1307
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1308
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1323
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1325
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "midString(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "varName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1433
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1061
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1067
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/XmlStringLookup.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/XmlStringLookup.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/XmlStringLookup.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "substringAfter(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/XmlStringLookup.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "xpath",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/XmlStringLookup.java",
+                        "line": 77
+                    }
+                ],
+                [
+                    {
+                        "message": "source : StringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 995
+                    },
+                    {
+                        "message": "source : StringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 999
+                    },
+                    {
+                        "message": "append(...) : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 999
+                    },
+                    {
+                        "message": "buf : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1000
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1307
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1308
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1323
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1325
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "midString(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "varName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1433
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1061
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1067
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/XmlStringLookup.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/XmlStringLookup.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/XmlStringLookup.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "substringAfter(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/XmlStringLookup.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "xpath",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/XmlStringLookup.java",
+                        "line": 77
+                    }
+                ],
+                [
+                    {
+                        "message": "source : StringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 974
+                    },
+                    {
+                        "message": "source : StringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 978
+                    },
+                    {
+                        "message": "source : StringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 995
+                    },
+                    {
+                        "message": "source : StringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 999
+                    },
+                    {
+                        "message": "append(...) : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 999
+                    },
+                    {
+                        "message": "buf : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1000
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1307
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1308
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1323
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1325
+                    },
+                    {
+                        "message": "builder : TextStringBuilder",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "midString(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1388
+                    },
+                    {
+                        "message": "varName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1433
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1061
+                    },
+                    {
+                        "message": "variableName : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringSubstitutor.java",
+                        "line": 1067
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/XmlStringLookup.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/XmlStringLookup.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "key : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/XmlStringLookup.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "substringAfter(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/XmlStringLookup.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "xpath",
+                        "uri": "src/main/java/org/apache/commons/text/lookup/XmlStringLookup.java",
+                        "line": 77
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringEscapeUtils.java",
+                        "line": 865
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringEscapeUtils.java",
+                        "line": 866
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/CharSequenceTranslator.java",
+                        "line": 62
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/CharSequenceTranslator.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/CharSequenceTranslator.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/CharSequenceTranslator.java",
+                        "line": 92
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/SinglePassTranslator.java",
+                        "line": 29
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/SinglePassTranslator.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/CsvTranslators.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/CsvTranslators.java",
+                        "line": 58
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/CsvTranslators.java",
+                        "line": 58
+                    },
+                    {
+                        "message": "inputSting",
+                        "uri": "src/main/java/org/apache/commons/text/translate/CsvTranslators.java",
+                        "line": 60
+                    }
+                ],
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringEscapeUtils.java",
+                        "line": 854
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringEscapeUtils.java",
+                        "line": 855
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/CharSequenceTranslator.java",
+                        "line": 62
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/CharSequenceTranslator.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/CharSequenceTranslator.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/CharSequenceTranslator.java",
+                        "line": 92
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/SinglePassTranslator.java",
+                        "line": 29
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/SinglePassTranslator.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/CsvTranslators.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/CsvTranslators.java",
+                        "line": 58
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/CsvTranslators.java",
+                        "line": 58
+                    },
+                    {
+                        "message": "inputSting",
+                        "uri": "src/main/java/org/apache/commons/text/translate/CsvTranslators.java",
+                        "line": 60
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringEscapeUtils.java",
+                        "line": 865
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/StringEscapeUtils.java",
+                        "line": 866
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/CharSequenceTranslator.java",
+                        "line": 62
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/CharSequenceTranslator.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/CharSequenceTranslator.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/CharSequenceTranslator.java",
+                        "line": 92
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/SinglePassTranslator.java",
+                        "line": 29
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/SinglePassTranslator.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/CsvTranslators.java",
+                        "line": 76
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/CsvTranslators.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "subSequence(...) : CharSequence",
+                        "uri": "src/main/java/org/apache/commons/text/translate/CsvTranslators.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/apache/commons/text/translate/CsvTranslators.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "quoteless",
+                        "uri": "src/main/java/org/apache/commons/text/translate/CsvTranslators.java",
+                        "line": 90
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        }
+    ]
+}
