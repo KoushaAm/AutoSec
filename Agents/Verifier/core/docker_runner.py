@@ -24,25 +24,25 @@ class DockerRunner:
     # Uses multi-arch images that work on both Intel (x86-64) and Apple Silicon (ARM64)
     BUILD_ATTEMPTS = {
         "maven": [
-            # Attempt 1: Java 8 + Maven 3.5 
-            {"image": "maven:3.5-jdk-8", "jdk": "8", "tool": "3.5"},
-            
-            # Attempt 2: Java 17 + Maven 3.9 
-            {"image": "maven:3.9-eclipse-temurin-17", "jdk": "17", "tool": "3.9"},
-            
-            # Attempt 3: Java 8 + Maven 3.9 
+            # Attempt 1: Java 8 + Maven 3.9 (matches CWE-Bench Dockerfile.vuln pattern)
             {"image": "maven:3.9-eclipse-temurin-8", "jdk": "8", "tool": "3.9"},
-            
+
+            # Attempt 2: Java 8 + Maven 3.5
+            {"image": "maven:3.5-jdk-8", "jdk": "8", "tool": "3.5"},
+
+            # Attempt 3: Java 17 + Maven 3.9
+            {"image": "maven:3.9-eclipse-temurin-17", "jdk": "17", "tool": "3.9"},
+
             # Attempt 4: Java 11 + Maven 3.8
             {"image": "maven:3.8-openjdk-11", "jdk": "11", "tool": "3.8"},
-            
+
             # Attempt 5: Java 17 + Maven 3.8
             {"image": "maven:3.8-eclipse-temurin-17", "jdk": "17", "tool": "3.8"},
-            
-            # Attempt 6: Java 7 + Maven 3.5 
+
+            # Attempt 6: Java 7 + Maven 3.5
             {"image": "maven:3.5-jdk-7", "jdk": "7", "tool": "3.5"},
-            
-            # Attempt 7: Java 21 + Maven 3.9 
+
+            # Attempt 7: Java 21 + Maven 3.9
             {"image": "maven:3.9-eclipse-temurin-21", "jdk": "21", "tool": "3.9"},
         ],
         
@@ -118,10 +118,15 @@ class DockerRunner:
         worktree_host = self._to_host_path(worktree_abs)
         artifacts_host = self._to_host_path(artifacts_abs)
         
+        m2_cache = artifacts_abs / "m2-cache"
+        m2_cache.mkdir(parents=True, exist_ok=True)
+        m2_cache_host = self._to_host_path(m2_cache)
+
         docker_cmd = [
             "docker", "run", "--rm",
             "-v", f"{worktree_host}:/workspace",
             "-v", f"{artifacts_host}:/artifacts",
+            "-v", f"{m2_cache_host}:/root/.m2",
             "-w", "/workspace",
             image,
             "sh", "-c", command

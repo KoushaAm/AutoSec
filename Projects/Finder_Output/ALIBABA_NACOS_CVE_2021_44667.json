@@ -1,0 +1,1754 @@
+{
+    "cwe_id": "cwe-079",
+    "vulnerabilities": [
+        {
+            "traces": [
+                [
+                    {
+                        "message": "dataId : String",
+                        "uri": "client/src/main/java/com/alibaba/nacos/client/config/NacosConfigService.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "dataId : String",
+                        "uri": "client/src/main/java/com/alibaba/nacos/client/config/NacosConfigService.java",
+                        "line": 101
+                    },
+                    {
+                        "message": "dataId : String",
+                        "uri": "client/src/main/java/com/alibaba/nacos/client/config/impl/ClientWorker.java",
+                        "line": 186
+                    },
+                    {
+                        "message": "dataId : String",
+                        "uri": "client/src/main/java/com/alibaba/nacos/client/config/impl/ClientWorker.java",
+                        "line": 190
+                    },
+                    {
+                        "message": "dataId : String",
+                        "uri": "client/src/main/java/com/alibaba/nacos/client/config/impl/ClientWorker.java",
+                        "line": 354
+                    },
+                    {
+                        "message": "dataId : String",
+                        "uri": "client/src/main/java/com/alibaba/nacos/client/config/impl/ClientWorker.java",
+                        "line": 370
+                    },
+                    {
+                        "message": "dataId : String",
+                        "uri": "client/src/main/java/com/alibaba/nacos/client/config/impl/CacheData.java",
+                        "line": 406
+                    },
+                    {
+                        "message": "dataId : String",
+                        "uri": "client/src/main/java/com/alibaba/nacos/client/config/impl/CacheData.java",
+                        "line": 418
+                    },
+                    {
+                        "message": "dataId : String",
+                        "uri": "client/src/main/java/com/alibaba/nacos/client/config/impl/CacheData.java",
+                        "line": 370
+                    },
+                    {
+                        "message": "dataId : String",
+                        "uri": "client/src/main/java/com/alibaba/nacos/client/config/impl/CacheData.java",
+                        "line": 371
+                    },
+                    {
+                        "message": "dataId : String",
+                        "uri": "client/src/main/java/com/alibaba/nacos/client/config/impl/LocalConfigInfoProcessor.java",
+                        "line": 70
+                    },
+                    {
+                        "message": "dataId : String",
+                        "uri": "client/src/main/java/com/alibaba/nacos/client/config/impl/LocalConfigInfoProcessor.java",
+                        "line": 71
+                    },
+                    {
+                        "message": "dataId : String",
+                        "uri": "client/src/main/java/com/alibaba/nacos/client/config/impl/LocalConfigInfoProcessor.java",
+                        "line": 195
+                    },
+                    {
+                        "message": "dataId : String",
+                        "uri": "client/src/main/java/com/alibaba/nacos/client/config/impl/LocalConfigInfoProcessor.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "client/src/main/java/com/alibaba/nacos/client/config/impl/LocalConfigInfoProcessor.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "getFailoverFile(...) : File",
+                        "uri": "client/src/main/java/com/alibaba/nacos/client/config/impl/LocalConfigInfoProcessor.java",
+                        "line": 71
+                    },
+                    {
+                        "message": "localPath : File",
+                        "uri": "client/src/main/java/com/alibaba/nacos/client/config/impl/LocalConfigInfoProcessor.java",
+                        "line": 77
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "client/src/main/java/com/alibaba/nacos/client/config/impl/LocalConfigInfoProcessor.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "client/src/main/java/com/alibaba/nacos/client/config/impl/LocalConfigInfoProcessor.java",
+                        "line": 112
+                    },
+                    {
+                        "message": "new FileInputStream(...) : FileInputStream",
+                        "uri": "client/src/main/java/com/alibaba/nacos/client/config/impl/LocalConfigInfoProcessor.java",
+                        "line": 112
+                    },
+                    {
+                        "message": "is : FileInputStream",
+                        "uri": "client/src/main/java/com/alibaba/nacos/client/config/impl/LocalConfigInfoProcessor.java",
+                        "line": 113
+                    },
+                    {
+                        "message": "input : FileInputStream",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/IoUtils.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "input : FileInputStream",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/IoUtils.java",
+                        "line": 181
+                    },
+                    {
+                        "message": "new InputStreamReader(...) : InputStreamReader",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/IoUtils.java",
+                        "line": 181
+                    },
+                    {
+                        "message": "reader : InputStreamReader",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/IoUtils.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "reader : InputStreamReader",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/IoUtils.java",
+                        "line": 194
+                    },
+                    {
+                        "message": "input : InputStreamReader",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/IoUtils.java",
+                        "line": 206
+                    },
+                    {
+                        "message": "input : InputStreamReader",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/IoUtils.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "buffer [post update] : char[]",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/IoUtils.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "buffer",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/IoUtils.java",
+                        "line": 210
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "json : String",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/JacksonUtils.java",
+                        "line": 174
+                    },
+                    {
+                        "message": "readValue(...) : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/JacksonUtils.java",
+                        "line": 176
+                    },
+                    {
+                        "message": "toObj(...) : List",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/DistributedDatabaseOperateImpl.java",
+                        "line": 569
+                    },
+                    {
+                        "message": "list : List",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/DistributedDatabaseOperateImpl.java",
+                        "line": 571
+                    },
+                    {
+                        "message": "stream(...) : Stream [<element>] : Object",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/DistributedDatabaseOperateImpl.java",
+                        "line": 571
+                    },
+                    {
+                        "message": "filter(...) : Stream [<element>] : Object",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/DistributedDatabaseOperateImpl.java",
+                        "line": 571
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/DistributedDatabaseOperateImpl.java",
+                        "line": 571
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/DistributedDatabaseOperateImpl.java",
+                        "line": 571
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/NotifyCenter.java",
+                        "line": 278
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/NotifyCenter.java",
+                        "line": 280
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/NotifyCenter.java",
+                        "line": 293
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/NotifyCenter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultPublisher.java",
+                        "line": 141
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultPublisher.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultSharePublisher.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultSharePublisher.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultPublisher.java",
+                        "line": 197
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultPublisher.java",
+                        "line": 205
+                    },
+                    {
+                        "message": "job : new Runnable(...) { ... } [event] : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultPublisher.java",
+                        "line": 205
+                    },
+                    {
+                        "message": "parameter this : new Runnable(...) { ... } [event] : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultPublisher.java",
+                        "line": 201
+                    },
+                    {
+                        "message": "this : new Runnable(...) { ... } [event] : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultPublisher.java",
+                        "line": 201
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultPublisher.java",
+                        "line": 201
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/DumpConfigHandler.java",
+                        "line": 124
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/DumpConfigHandler.java",
+                        "line": 125
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/DumpConfigHandler.java",
+                        "line": 42
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/DumpConfigHandler.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "parameter this : ConfigDumpEvent",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/model/event/ConfigDumpEvent.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/model/event/ConfigDumpEvent.java",
+                        "line": 101
+                    },
+                    {
+                        "message": "getContent(...) : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/DumpConfigHandler.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/DumpConfigHandler.java",
+                        "line": 85
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/ConfigCacheService.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/ConfigCacheService.java",
+                        "line": 114
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/utils/DiskUtil.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "content",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/utils/DiskUtil.java",
+                        "line": 59
+                    }
+                ],
+                [
+                    {
+                        "message": "json : String",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/JacksonUtils.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "readValue(...) : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/JacksonUtils.java",
+                        "line": 159
+                    },
+                    {
+                        "message": "toObj(...) : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/JacksonUtils.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "toObj(...) : Object",
+                        "uri": "consistency/src/main/java/com/alibaba/nacos/consistency/serialize/JacksonSerializer.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "deserialize(...) : List",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/DistributedDatabaseOperateImpl.java",
+                        "line": 353
+                    },
+                    {
+                        "message": "queryMany(...) : List",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/EmbeddedStoragePersistServiceImpl.java",
+                        "line": 1871
+                    },
+                    {
+                        "message": "list : List",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/EmbeddedStoragePersistServiceImpl.java",
+                        "line": 1874
+                    },
+                    {
+                        "message": "list : List",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/EmbeddedStoragePersistServiceImpl.java",
+                        "line": 2305
+                    },
+                    {
+                        "message": "map : Map",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/EmbeddedStoragePersistServiceImpl.java",
+                        "line": 2311
+                    },
+                    {
+                        "message": "get(...) : Object",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/EmbeddedStoragePersistServiceImpl.java",
+                        "line": 2311
+                    },
+                    {
+                        "message": "(...)... : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/EmbeddedStoragePersistServiceImpl.java",
+                        "line": 2311
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/EmbeddedStoragePersistServiceImpl.java",
+                        "line": 2317
+                    },
+                    {
+                        "message": "config [post update] : ConfigInfoWrapper [content] : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/EmbeddedStoragePersistServiceImpl.java",
+                        "line": 2317
+                    },
+                    {
+                        "message": "config : ConfigInfoWrapper [content] : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/EmbeddedStoragePersistServiceImpl.java",
+                        "line": 2319
+                    },
+                    {
+                        "message": "configs [post update] : ArrayList [<element>, content] : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/EmbeddedStoragePersistServiceImpl.java",
+                        "line": 2319
+                    },
+                    {
+                        "message": "configs : ArrayList [<element>, content] : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/EmbeddedStoragePersistServiceImpl.java",
+                        "line": 2321
+                    },
+                    {
+                        "message": "convertChangeConfig(...) : ArrayList [<element>, content] : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/EmbeddedStoragePersistServiceImpl.java",
+                        "line": 1874
+                    },
+                    {
+                        "message": "findChangeConfig(...) : ArrayList [<element>, content] : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/processor/DumpChangeProcessor.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "changeConfigs : ArrayList [<element>, content] : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/processor/DumpChangeProcessor.java",
+                        "line": 88
+                    },
+                    {
+                        "message": "cf : ConfigInfoWrapper [content] : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/processor/DumpChangeProcessor.java",
+                        "line": 90
+                    },
+                    {
+                        "message": "cf : ConfigInfoWrapper [content] : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/processor/DumpChangeProcessor.java",
+                        "line": 90
+                    },
+                    {
+                        "message": "parameter this : ConfigInfoWrapper [content] : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/model/ConfigInfoBase.java",
+                        "line": 85
+                    },
+                    {
+                        "message": "this <.field> : ConfigInfoWrapper [content] : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/model/ConfigInfoBase.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/model/ConfigInfoBase.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "getContent(...) : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/processor/DumpChangeProcessor.java",
+                        "line": 90
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/ConfigCacheService.java",
+                        "line": 234
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/ConfigCacheService.java",
+                        "line": 255
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/utils/DiskUtil.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "content",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/utils/DiskUtil.java",
+                        "line": 59
+                    }
+                ],
+                [
+                    {
+                        "message": "json : byte[]",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/JacksonUtils.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "json : byte[]",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/JacksonUtils.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "bytes : byte[]",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/StringUtils.java",
+                        "line": 52
+                    },
+                    {
+                        "message": "bytes : byte[]",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/StringUtils.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "new String(...) : String",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/StringUtils.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "newStringForUtf8(...) : String",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/JacksonUtils.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "json : String",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/JacksonUtils.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "readValue(...) : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/JacksonUtils.java",
+                        "line": 159
+                    },
+                    {
+                        "message": "toObj(...) : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/JacksonUtils.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "toObj(...) : Object",
+                        "uri": "consistency/src/main/java/com/alibaba/nacos/consistency/serialize/JacksonSerializer.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "deserialize(...) : List",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/DistributedDatabaseOperateImpl.java",
+                        "line": 353
+                    },
+                    {
+                        "message": "queryMany(...) : List",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/EmbeddedStoragePersistServiceImpl.java",
+                        "line": 1871
+                    },
+                    {
+                        "message": "list : List",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/EmbeddedStoragePersistServiceImpl.java",
+                        "line": 1874
+                    },
+                    {
+                        "message": "list : List",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/EmbeddedStoragePersistServiceImpl.java",
+                        "line": 2305
+                    },
+                    {
+                        "message": "map : Map",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/EmbeddedStoragePersistServiceImpl.java",
+                        "line": 2311
+                    },
+                    {
+                        "message": "get(...) : Object",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/EmbeddedStoragePersistServiceImpl.java",
+                        "line": 2311
+                    },
+                    {
+                        "message": "(...)... : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/EmbeddedStoragePersistServiceImpl.java",
+                        "line": 2311
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/EmbeddedStoragePersistServiceImpl.java",
+                        "line": 2317
+                    },
+                    {
+                        "message": "config [post update] : ConfigInfoWrapper [content] : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/EmbeddedStoragePersistServiceImpl.java",
+                        "line": 2317
+                    },
+                    {
+                        "message": "config : ConfigInfoWrapper [content] : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/EmbeddedStoragePersistServiceImpl.java",
+                        "line": 2319
+                    },
+                    {
+                        "message": "configs [post update] : ArrayList [<element>, content] : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/EmbeddedStoragePersistServiceImpl.java",
+                        "line": 2319
+                    },
+                    {
+                        "message": "configs : ArrayList [<element>, content] : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/EmbeddedStoragePersistServiceImpl.java",
+                        "line": 2321
+                    },
+                    {
+                        "message": "convertChangeConfig(...) : ArrayList [<element>, content] : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/EmbeddedStoragePersistServiceImpl.java",
+                        "line": 1874
+                    },
+                    {
+                        "message": "findChangeConfig(...) : ArrayList [<element>, content] : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/processor/DumpChangeProcessor.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "changeConfigs : ArrayList [<element>, content] : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/processor/DumpChangeProcessor.java",
+                        "line": 88
+                    },
+                    {
+                        "message": "cf : ConfigInfoWrapper [content] : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/processor/DumpChangeProcessor.java",
+                        "line": 90
+                    },
+                    {
+                        "message": "cf : ConfigInfoWrapper [content] : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/processor/DumpChangeProcessor.java",
+                        "line": 90
+                    },
+                    {
+                        "message": "parameter this : ConfigInfoWrapper [content] : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/model/ConfigInfoBase.java",
+                        "line": 85
+                    },
+                    {
+                        "message": "this <.field> : ConfigInfoWrapper [content] : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/model/ConfigInfoBase.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/model/ConfigInfoBase.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "getContent(...) : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/processor/DumpChangeProcessor.java",
+                        "line": 90
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/ConfigCacheService.java",
+                        "line": 234
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/ConfigCacheService.java",
+                        "line": 255
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/utils/DiskUtil.java",
+                        "line": 57
+                    },
+                    {
+                        "message": "content",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/utils/DiskUtil.java",
+                        "line": 59
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "json : String",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/JacksonUtils.java",
+                        "line": 174
+                    },
+                    {
+                        "message": "readValue(...) : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/JacksonUtils.java",
+                        "line": 176
+                    },
+                    {
+                        "message": "toObj(...) : List",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/DistributedDatabaseOperateImpl.java",
+                        "line": 569
+                    },
+                    {
+                        "message": "list : List",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/DistributedDatabaseOperateImpl.java",
+                        "line": 571
+                    },
+                    {
+                        "message": "stream(...) : Stream [<element>] : Object",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/DistributedDatabaseOperateImpl.java",
+                        "line": 571
+                    },
+                    {
+                        "message": "filter(...) : Stream [<element>] : Object",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/DistributedDatabaseOperateImpl.java",
+                        "line": 571
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/DistributedDatabaseOperateImpl.java",
+                        "line": 571
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/DistributedDatabaseOperateImpl.java",
+                        "line": 571
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/NotifyCenter.java",
+                        "line": 278
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/NotifyCenter.java",
+                        "line": 280
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/NotifyCenter.java",
+                        "line": 293
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/NotifyCenter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultPublisher.java",
+                        "line": 141
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultPublisher.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultSharePublisher.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultSharePublisher.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultPublisher.java",
+                        "line": 197
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultPublisher.java",
+                        "line": 205
+                    },
+                    {
+                        "message": "job : new Runnable(...) { ... } [event] : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultPublisher.java",
+                        "line": 205
+                    },
+                    {
+                        "message": "parameter this : new Runnable(...) { ... } [event] : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultPublisher.java",
+                        "line": 201
+                    },
+                    {
+                        "message": "this : new Runnable(...) { ... } [event] : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultPublisher.java",
+                        "line": 201
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultPublisher.java",
+                        "line": 201
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/DumpConfigHandler.java",
+                        "line": 124
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/DumpConfigHandler.java",
+                        "line": 125
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/DumpConfigHandler.java",
+                        "line": 42
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/DumpConfigHandler.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "parameter this : ConfigDumpEvent",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/model/event/ConfigDumpEvent.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/model/event/ConfigDumpEvent.java",
+                        "line": 101
+                    },
+                    {
+                        "message": "getContent(...) : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/DumpConfigHandler.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/DumpConfigHandler.java",
+                        "line": 60
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/ConfigCacheService.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/ConfigCacheService.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/utils/DiskUtil.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "content",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/utils/DiskUtil.java",
+                        "line": 67
+                    }
+                ],
+                [
+                    {
+                        "message": "json : String",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/JacksonUtils.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "readValue(...) : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/JacksonUtils.java",
+                        "line": 159
+                    },
+                    {
+                        "message": "toObj(...) : ConfigDumpEvent",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/repository/embedded/DistributedDatabaseOperateImpl.java",
+                        "line": 562
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/NotifyCenter.java",
+                        "line": 278
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/NotifyCenter.java",
+                        "line": 280
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/NotifyCenter.java",
+                        "line": 293
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/NotifyCenter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultPublisher.java",
+                        "line": 141
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultPublisher.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultSharePublisher.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultSharePublisher.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultPublisher.java",
+                        "line": 197
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultPublisher.java",
+                        "line": 205
+                    },
+                    {
+                        "message": "job : new Runnable(...) { ... } [event] : ConfigDumpEvent",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultPublisher.java",
+                        "line": 205
+                    },
+                    {
+                        "message": "parameter this : new Runnable(...) { ... } [event] : ConfigDumpEvent",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultPublisher.java",
+                        "line": 201
+                    },
+                    {
+                        "message": "this : new Runnable(...) { ... } [event] : ConfigDumpEvent",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultPublisher.java",
+                        "line": 201
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/notify/DefaultPublisher.java",
+                        "line": 201
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/DumpConfigHandler.java",
+                        "line": 124
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/DumpConfigHandler.java",
+                        "line": 125
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/DumpConfigHandler.java",
+                        "line": 42
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/DumpConfigHandler.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "parameter this : ConfigDumpEvent",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/model/event/ConfigDumpEvent.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/model/event/ConfigDumpEvent.java",
+                        "line": 101
+                    },
+                    {
+                        "message": "getContent(...) : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/DumpConfigHandler.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/DumpConfigHandler.java",
+                        "line": 60
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/ConfigCacheService.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/ConfigCacheService.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/utils/DiskUtil.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "content",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/utils/DiskUtil.java",
+                        "line": 67
+                    }
+                ],
+                [
+                    {
+                        "message": "event : Event",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/core/v2/event/publisher/NamingEventPublisher.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/core/v2/event/publisher/NamingEventPublisher.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/core/v2/event/publisher/NamingEventPublisher.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/core/v2/event/publisher/NamingEventPublisher.java",
+                        "line": 176
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/core/v2/event/publisher/NamingEventPublisher.java",
+                        "line": 110
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/core/v2/event/publisher/NamingEventPublisher.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "job : new Runnable(...) { ... } [event] : Event",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/core/v2/event/publisher/NamingEventPublisher.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : new Runnable(...) { ... } [event] : Event",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/core/v2/event/publisher/NamingEventPublisher.java",
+                        "line": 114
+                    },
+                    {
+                        "message": "this : new Runnable(...) { ... } [event] : Event",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/core/v2/event/publisher/NamingEventPublisher.java",
+                        "line": 114
+                    },
+                    {
+                        "message": "event : Event",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/core/v2/event/publisher/NamingEventPublisher.java",
+                        "line": 114
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/DumpConfigHandler.java",
+                        "line": 124
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/DumpConfigHandler.java",
+                        "line": 125
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/DumpConfigHandler.java",
+                        "line": 42
+                    },
+                    {
+                        "message": "event : ConfigDumpEvent",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/DumpConfigHandler.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "parameter this : ConfigDumpEvent",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/model/event/ConfigDumpEvent.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/model/event/ConfigDumpEvent.java",
+                        "line": 101
+                    },
+                    {
+                        "message": "getContent(...) : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/DumpConfigHandler.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/dump/DumpConfigHandler.java",
+                        "line": 60
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/ConfigCacheService.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/service/ConfigCacheService.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/utils/DiskUtil.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "content",
+                        "uri": "config/src/main/java/com/alibaba/nacos/config/server/utils/DiskUtil.java",
+                        "line": 67
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "localAddress : String",
+                        "uri": "sys/src/main/java/com/alibaba/nacos/sys/env/EnvUtil.java",
+                        "line": 181
+                    },
+                    {
+                        "message": "localAddress : String",
+                        "uri": "sys/src/main/java/com/alibaba/nacos/sys/env/EnvUtil.java",
+                        "line": 182
+                    },
+                    {
+                        "message": "localAddress : String",
+                        "uri": "sys/src/main/java/com/alibaba/nacos/sys/env/EnvUtil.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "localAddress : String",
+                        "uri": "sys/src/main/java/com/alibaba/nacos/sys/env/EnvUtil.java",
+                        "line": 178
+                    },
+                    {
+                        "message": "getLocalAddress(...) : String",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/core/DistroMapper.java",
+                        "line": 115
+                    },
+                    {
+                        "message": "mapSrv(...) : String",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/web/DistroFilter.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/web/DistroFilter.java",
+                        "line": 131
+                    },
+                    {
+                        "message": "url : String",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/misc/HttpClient.java",
+                        "line": 99
+                    },
+                    {
+                        "message": "url : String",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/misc/HttpClient.java",
+                        "line": 119
+                    },
+                    {
+                        "message": "url : String",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/NacosRestTemplate.java",
+                        "line": 444
+                    },
+                    {
+                        "message": "url : String",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/NacosRestTemplate.java",
+                        "line": 447
+                    },
+                    {
+                        "message": "url : String",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/NacosRestTemplate.java",
+                        "line": 472
+                    },
+                    {
+                        "message": "url : String",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/NacosRestTemplate.java",
+                        "line": 474
+                    },
+                    {
+                        "message": "url : String",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/HttpUtils.java",
+                        "line": 245
+                    },
+                    {
+                        "message": "url : String",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/HttpUtils.java",
+                        "line": 249
+                    },
+                    {
+                        "message": "new URI(...) : URI",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/HttpUtils.java",
+                        "line": 249
+                    },
+                    {
+                        "message": "buildUri(...) : URI",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/NacosRestTemplate.java",
+                        "line": 474
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/NacosRestTemplate.java",
+                        "line": 482
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/request/JdkHttpClientRequest.java",
+                        "line": 80
+                    },
+                    {
+                        "message": "uri : URI",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/request/JdkHttpClientRequest.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "toURL(...) : URL",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/request/JdkHttpClientRequest.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "openConnection(...) : URLConnection",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/request/JdkHttpClientRequest.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "(...)... : HttpURLConnection",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/request/JdkHttpClientRequest.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "conn : HttpURLConnection",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/request/JdkHttpClientRequest.java",
+                        "line": 115
+                    },
+                    {
+                        "message": "conn : HttpURLConnection",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/response/JdkHttpClientResponse.java",
+                        "line": 45
+                    },
+                    {
+                        "message": "conn : HttpURLConnection",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/response/JdkHttpClientResponse.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "this [post update] : JdkHttpClientResponse [conn] : HttpURLConnection",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/response/JdkHttpClientResponse.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "new JdkHttpClientResponse(...) : JdkHttpClientResponse [conn] : HttpURLConnection",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/request/JdkHttpClientRequest.java",
+                        "line": 115
+                    },
+                    {
+                        "message": "execute(...) : JdkHttpClientResponse [conn] : HttpURLConnection",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/NacosRestTemplate.java",
+                        "line": 482
+                    },
+                    {
+                        "message": "response : JdkHttpClientResponse [conn] : HttpURLConnection",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/NacosRestTemplate.java",
+                        "line": 483
+                    },
+                    {
+                        "message": "response : JdkHttpClientResponse [conn] : HttpURLConnection",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/AbstractResponseHandler.java",
+                        "line": 42
+                    },
+                    {
+                        "message": "response : JdkHttpClientResponse [conn] : HttpURLConnection",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/AbstractResponseHandler.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "response : JdkHttpClientResponse [conn] : HttpURLConnection",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/BeanResponseHandler.java",
+                        "line": 36
+                    },
+                    {
+                        "message": "response : JdkHttpClientResponse [conn] : HttpURLConnection",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/BeanResponseHandler.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "parameter this : JdkHttpClientResponse [conn] : HttpURLConnection",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/response/JdkHttpClientResponse.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "this : JdkHttpClientResponse [conn] : HttpURLConnection",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/response/JdkHttpClientResponse.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "this.conn : HttpURLConnection",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/response/JdkHttpClientResponse.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "this.conn : HttpURLConnection",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/response/JdkHttpClientResponse.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "getInputStream(...) : InputStream",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/response/JdkHttpClientResponse.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "this.responseStream : InputStream",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/response/JdkHttpClientResponse.java",
+                        "line": 74
+                    },
+                    {
+                        "message": "getBody(...) : InputStream",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/BeanResponseHandler.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "body : InputStream",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/BeanResponseHandler.java",
+                        "line": 39
+                    },
+                    {
+                        "message": "inputStream : InputStream",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/JacksonUtils.java",
+                        "line": 208
+                    },
+                    {
+                        "message": "readValue(...) : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/JacksonUtils.java",
+                        "line": 210
+                    },
+                    {
+                        "message": "toObj(...) : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/BeanResponseHandler.java",
+                        "line": 39
+                    },
+                    {
+                        "message": "extractBody : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/BeanResponseHandler.java",
+                        "line": 40
+                    },
+                    {
+                        "message": "data : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/HttpRestResult.java",
+                        "line": 36
+                    },
+                    {
+                        "message": "data : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/HttpRestResult.java",
+                        "line": 37
+                    },
+                    {
+                        "message": "this <constr(this)> [post update] : HttpRestResult [data] : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/HttpRestResult.java",
+                        "line": 37
+                    },
+                    {
+                        "message": "new HttpRestResult<T>(...) : HttpRestResult [data] : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/BeanResponseHandler.java",
+                        "line": 40
+                    },
+                    {
+                        "message": "convertResult(...) : HttpRestResult [data] : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/AbstractResponseHandler.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "handle(...) : HttpRestResult [data] : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/NacosRestTemplate.java",
+                        "line": 483
+                    },
+                    {
+                        "message": "execute(...) : HttpRestResult [data] : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/NacosRestTemplate.java",
+                        "line": 447
+                    },
+                    {
+                        "message": "exchange(...) : HttpRestResult [data] : Object",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/misc/HttpClient.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "request(...) : HttpRestResult [data] : Object",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/web/DistroFilter.java",
+                        "line": 130
+                    },
+                    {
+                        "message": "result : HttpRestResult [data] : Object",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/web/DistroFilter.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "getData(...) : String",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/web/DistroFilter.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/web/DistroFilter.java",
+                        "line": 135
+                    },
+                    {
+                        "message": "body : String",
+                        "uri": "core/src/main/java/com/alibaba/nacos/core/utils/WebUtils.java",
+                        "line": 174
+                    },
+                    {
+                        "message": "body",
+                        "uri": "core/src/main/java/com/alibaba/nacos/core/utils/WebUtils.java",
+                        "line": 177
+                    }
+                ],
+                [
+                    {
+                        "message": "getContent(...) : InputStream",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/response/DefaultClientHttpResponse.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "getBody(...) : InputStream",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/BeanResponseHandler.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "body : InputStream",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/BeanResponseHandler.java",
+                        "line": 39
+                    },
+                    {
+                        "message": "inputStream : InputStream",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/JacksonUtils.java",
+                        "line": 208
+                    },
+                    {
+                        "message": "readValue(...) : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/JacksonUtils.java",
+                        "line": 210
+                    },
+                    {
+                        "message": "toObj(...) : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/BeanResponseHandler.java",
+                        "line": 39
+                    },
+                    {
+                        "message": "extractBody : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/BeanResponseHandler.java",
+                        "line": 40
+                    },
+                    {
+                        "message": "data : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/HttpRestResult.java",
+                        "line": 36
+                    },
+                    {
+                        "message": "data : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/HttpRestResult.java",
+                        "line": 37
+                    },
+                    {
+                        "message": "this <constr(this)> [post update] : HttpRestResult [data] : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/HttpRestResult.java",
+                        "line": 37
+                    },
+                    {
+                        "message": "new HttpRestResult<T>(...) : HttpRestResult [data] : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/BeanResponseHandler.java",
+                        "line": 40
+                    },
+                    {
+                        "message": "convertResult(...) : HttpRestResult [data] : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/AbstractResponseHandler.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "handle(...) : HttpRestResult [data] : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/NacosRestTemplate.java",
+                        "line": 483
+                    },
+                    {
+                        "message": "execute(...) : HttpRestResult [data] : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/NacosRestTemplate.java",
+                        "line": 447
+                    },
+                    {
+                        "message": "exchange(...) : HttpRestResult [data] : Object",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/misc/HttpClient.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "request(...) : HttpRestResult [data] : Object",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/web/DistroFilter.java",
+                        "line": 130
+                    },
+                    {
+                        "message": "result : HttpRestResult [data] : Object",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/web/DistroFilter.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "getData(...) : String",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/web/DistroFilter.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/web/DistroFilter.java",
+                        "line": 135
+                    },
+                    {
+                        "message": "body : String",
+                        "uri": "core/src/main/java/com/alibaba/nacos/core/utils/WebUtils.java",
+                        "line": 174
+                    },
+                    {
+                        "message": "body",
+                        "uri": "core/src/main/java/com/alibaba/nacos/core/utils/WebUtils.java",
+                        "line": 177
+                    }
+                ],
+                [
+                    {
+                        "message": "getEntity(...) : HttpEntity",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/response/DefaultClientHttpResponse.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "getContent(...) : InputStream",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/response/DefaultClientHttpResponse.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "getBody(...) : InputStream",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/BeanResponseHandler.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "body : InputStream",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/BeanResponseHandler.java",
+                        "line": 39
+                    },
+                    {
+                        "message": "inputStream : InputStream",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/JacksonUtils.java",
+                        "line": 208
+                    },
+                    {
+                        "message": "readValue(...) : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/JacksonUtils.java",
+                        "line": 210
+                    },
+                    {
+                        "message": "toObj(...) : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/BeanResponseHandler.java",
+                        "line": 39
+                    },
+                    {
+                        "message": "extractBody : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/BeanResponseHandler.java",
+                        "line": 40
+                    },
+                    {
+                        "message": "data : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/HttpRestResult.java",
+                        "line": 36
+                    },
+                    {
+                        "message": "data : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/HttpRestResult.java",
+                        "line": 37
+                    },
+                    {
+                        "message": "this <constr(this)> [post update] : HttpRestResult [data] : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/HttpRestResult.java",
+                        "line": 37
+                    },
+                    {
+                        "message": "new HttpRestResult<T>(...) : HttpRestResult [data] : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/BeanResponseHandler.java",
+                        "line": 40
+                    },
+                    {
+                        "message": "convertResult(...) : HttpRestResult [data] : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/AbstractResponseHandler.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "handle(...) : HttpRestResult [data] : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/NacosRestTemplate.java",
+                        "line": 483
+                    },
+                    {
+                        "message": "execute(...) : HttpRestResult [data] : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/NacosRestTemplate.java",
+                        "line": 447
+                    },
+                    {
+                        "message": "exchange(...) : HttpRestResult [data] : Object",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/misc/HttpClient.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "request(...) : HttpRestResult [data] : Object",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/web/DistroFilter.java",
+                        "line": 130
+                    },
+                    {
+                        "message": "result : HttpRestResult [data] : Object",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/web/DistroFilter.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "getData(...) : String",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/web/DistroFilter.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/web/DistroFilter.java",
+                        "line": 135
+                    },
+                    {
+                        "message": "body : String",
+                        "uri": "core/src/main/java/com/alibaba/nacos/core/utils/WebUtils.java",
+                        "line": 174
+                    },
+                    {
+                        "message": "body",
+                        "uri": "core/src/main/java/com/alibaba/nacos/core/utils/WebUtils.java",
+                        "line": 177
+                    }
+                ],
+                [
+                    {
+                        "message": "getErrorStream(...) : InputStream",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/response/JdkHttpClientResponse.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "this.responseStream : InputStream",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/response/JdkHttpClientResponse.java",
+                        "line": 74
+                    },
+                    {
+                        "message": "getBody(...) : InputStream",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/BeanResponseHandler.java",
+                        "line": 38
+                    },
+                    {
+                        "message": "body : InputStream",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/BeanResponseHandler.java",
+                        "line": 39
+                    },
+                    {
+                        "message": "inputStream : InputStream",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/JacksonUtils.java",
+                        "line": 208
+                    },
+                    {
+                        "message": "readValue(...) : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/utils/JacksonUtils.java",
+                        "line": 210
+                    },
+                    {
+                        "message": "toObj(...) : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/BeanResponseHandler.java",
+                        "line": 39
+                    },
+                    {
+                        "message": "extractBody : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/BeanResponseHandler.java",
+                        "line": 40
+                    },
+                    {
+                        "message": "data : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/HttpRestResult.java",
+                        "line": 36
+                    },
+                    {
+                        "message": "data : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/HttpRestResult.java",
+                        "line": 37
+                    },
+                    {
+                        "message": "this <constr(this)> [post update] : HttpRestResult [data] : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/HttpRestResult.java",
+                        "line": 37
+                    },
+                    {
+                        "message": "new HttpRestResult<T>(...) : HttpRestResult [data] : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/BeanResponseHandler.java",
+                        "line": 40
+                    },
+                    {
+                        "message": "convertResult(...) : HttpRestResult [data] : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/handler/AbstractResponseHandler.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "handle(...) : HttpRestResult [data] : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/NacosRestTemplate.java",
+                        "line": 483
+                    },
+                    {
+                        "message": "execute(...) : HttpRestResult [data] : Object",
+                        "uri": "common/src/main/java/com/alibaba/nacos/common/http/client/NacosRestTemplate.java",
+                        "line": 447
+                    },
+                    {
+                        "message": "exchange(...) : HttpRestResult [data] : Object",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/misc/HttpClient.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "request(...) : HttpRestResult [data] : Object",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/web/DistroFilter.java",
+                        "line": 130
+                    },
+                    {
+                        "message": "result : HttpRestResult [data] : Object",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/web/DistroFilter.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "getData(...) : String",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/web/DistroFilter.java",
+                        "line": 133
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "naming/src/main/java/com/alibaba/nacos/naming/web/DistroFilter.java",
+                        "line": 135
+                    },
+                    {
+                        "message": "body : String",
+                        "uri": "core/src/main/java/com/alibaba/nacos/core/utils/WebUtils.java",
+                        "line": 174
+                    },
+                    {
+                        "message": "body",
+                        "uri": "core/src/main/java/com/alibaba/nacos/core/utils/WebUtils.java",
+                        "line": 177
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        }
+    ]
+}

@@ -19,10 +19,13 @@ cmd-line-exploit.txt
 # exploiter specific
 Agents/Exploiter/logs/*
 
+#Claude 
+.claude/
+
 # Projects
 Projects/Sources/*
 Projects/Zipped/*
 Experiments/
 Database/
-
+.claude
 # Files to include

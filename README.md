@@ -28,6 +28,10 @@ a clear and structured end-to-end workflow where each stage can
 be evaluated independently while contributing to an automated
 security remediation pipeline.
 
+### Workflow: 
+<img width="963" height="436" alt="AutoSec Diagram" src="https://github.com/user-attachments/assets/53c69493-f8f4-45a3-b9ac-4a30efeb7ada" />
+
+
 ## Getting Started
 - All development should be done inside the provided dev container
 - The following is done from the root directory
@@ -54,9 +58,6 @@ OPENROUTER_API_KEY="your_api_key_here"
 
 # Finder OpenAI Key
 OPENAI_API_KEY="your_api_key_here"
-
-# Exploiter OpenAI Key
-OPENAI_KEY_FAULTLINE="your_api_key_here"
 ```
 
 ### 4. Create the docker container for Finder
@@ -77,16 +78,12 @@ run conda activate iris
 
 
 ### 5. Exploiter Setup
-#### 5.1 API_KEY - temporarily a different api key is used for the Exploiter
-Export your OpenAI API key as OPENAI_KEY_FAULTLINE on your OS
-```
-export OPENAI_KEY_FAULTLINE="your_api_key_here"
-```
-#### 5.2 SetUp CWE-Bench-Java
+
+#### 5.1 SetUp CWE-Bench-Java
 In the directory [cwe-bench-java](Agents/Exploiter/data/cwe-bench-java/) create a new folder called java-env. The folder can be empty 
 since we are using Docker to build these projects.
 
-#### 5.3 Input setup (only for Independent runs)
+#### 5.2 Input setup (only for Independent runs)
 In order to run Exploiter Independently you need to provide this the file result.json in the location Agents/Exploiter/vuln_agent/modules/data/traces/result.json
 
 ### 6. Getting the Source/Zip file of the projects
@@ -140,6 +137,8 @@ PATCHER_SNIPPET_MAX_LINES=800 python main.py
 python3 main.py <-h|--help>
 ```
 
+By default the pipeline auto-loads a dummy Finder output if one exists at the path declared by the selected project's `ProjectVariants` entry — `dummy_finder_output`, which is `Projects/Finder_Output/<PROJECT_ENUM>.json` (e.g. `Projects/Finder_Output/WHITESOURCE_CUREKIT_CVE_2022_23082.json`). The filename must match that exact enum-cased path; arbitrary names in `Projects/Finder_Output/` are not auto-loaded. If no dummy exists for the selected project, Finder runs end-to-end and produces fresh findings. To force a real Finder run even when a dummy is present, pass `--finder-reanalyze`; this also reuses the existing source tree under `Projects/Sources/<project_name>/` to skip re-extraction, falling back to re-extracting from the zip if the tree isn't on disk.
+
 ## Commands supported
 The following are some commands you can use when running the AutoSec Pipeline
 ```bash
@@ -154,22 +153,28 @@ python3 main.py --project <project_enum> # ex. WHITESOURCE_CUREKIT_CVE_2022_2308
 # Finder only:
 python3 main.py --mode finder
 
-# Finder only with reanalysis:
+# Finder only with reanalysis (ignore the cached dummy, force a real run):
 python3 main.py --mode finder --finder-reanalyze
 
-# Exploiter only with dummy Finder output:
-python3 main.py --mode exploiter --use-dummy finder
+# Exploiter only — requires a pre-existing dummy/cached Finder output for the
+# selected project at the path declared by ProjectVariants.dummy_finder_output
+# (i.e. Projects/Finder_Output/<PROJECT_ENUM>.json). In --mode exploiter the
+# workflow starts at the exploiter node, so Finder never runs to produce one;
+# if the file is missing, finder_output is None and exploiter short-circuits
+# as "no actionable vulnerabilities".
+python3 main.py --mode exploiter
 
-# Patcher only:
-python3 main.py --mode patcher --use-dummy finder exploiter
+# Patcher only (adds exploiter on top of the default finder dummy):
+python3 main.py --mode patcher --use-dummy exploiter
 
-# Verifier only:
+# Verifier only (adds patcher on top of the default finder dummy):
 python3 main.py --mode verifier --use-dummy patcher
 ```
 - Example of **Finder Agent only** run with *reanalyze* enabled: 
 ```bash
 python3 main.py --project whitesource__curekit_CVE-2022-23082_1.1.3 --mode finder --finder-reanalyze
 ```
+- `--use-dummy` extends the default `[finder]` set instead of replacing it, so `--use-dummy patcher` gives you `[finder, patcher]`. Pass multiple values to stack them, e.g. `--use-dummy exploiter patcher`.
 - For a full list use the `python3 main.py <-h|--help>` command
 
 ## Injecting Project Variants CSV
@@ -192,12 +197,15 @@ python Pipeline/scripts/generate_project_variants.py AutoSec_120_Project_Variant
 1. Run analysis on the desired project, the `Finder` agent will have generated a `.sarif` file of results
 2. After finder analysis run the following command from the project root:
 ```bash
-python Pipeline/scripts/convert_to_finder_output.py <project_name> <cwe_id> <json_name>.json
+python Pipeline/scripts/convert_to_finder_output.py <project_name> <cwe_id> <output_json>
+# `.json` extension is optional — appended automatically if omitted
 
-# example: 
-# python Pipeline/scripts/convert_to_finder_output.py perwendel__spark_CVE-2018-9159_2.7.1 cwe-022 finder_output_perwendel.json
+# example (auto-load-enabled name — matches ProjectVariants.dummy_finder_output):
+python Pipeline/scripts/convert_to_finder_output.py perwendel__spark_CVE-2018-9159_2.7.1 cwe-022 PERWENDEL_SPARK_CVE_2018_9159.json
+# equivalent, without the extension:
+python Pipeline/scripts/convert_to_finder_output.py perwendel__spark_CVE-2018-9159_2.7.1 cwe-022 PERWENDEL_SPARK_CVE_2018_9159
 ```
-3. This will create a `json` file in `Projects/Finder_Output`
+3. This writes the JSON to `Projects/Finder_Output/<output_json>` (with `.json` appended if you didn't include it). For subsequent runs to auto-load it as the Finder dummy (and short-circuit IRIS so the pipeline starts from Exploiter), the `<output_json>` filename **must** match the selected project's `ProjectVariants.dummy_finder_output` path — that's `<PROJECT_ENUM>.json` (e.g. `PERWENDEL_SPARK_CVE_2018_9159.json`). Arbitrary names like `finder_output_perwendel.json` will be saved but never picked up.
 
 ## Delete Unwanted Projects
 To mass delete unwanted or previously run projects, use the `delete_projects.sh` script.

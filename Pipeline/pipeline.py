@@ -1,7 +1,9 @@
 # Pipeline/pipeline.py
 import argparse
 import json
+import subprocess
 import os
+import shlex
 import shutil
 import subprocess
 import sys
@@ -16,11 +18,11 @@ from langgraph.types import Command
 from . import logger
 from .project_variants import ProjectVariants
 from .utils import (
-    has_actionable_vulnerabilities,
+    save_state_dump,
     load_dummy_finder_output,
     load_dummy_patcher_output,
-    parse_exploiter_report,
-    save_state_dump,
+    has_actionable_vulnerabilities,
+    parse_exploiter_report
 )
 
 from Agents.Finder.src.output_converter import sarif_to_finder_output
@@ -75,7 +77,7 @@ def _parse_args() -> argparse.Namespace:
             "ProjectVariants enum name or project slug. "
             f"Defaults to {DEFAULT_PROJECT_VARIANT}."
         ),
-    )  
+    )
 
     parser.add_argument(
         "--mode",
@@ -100,19 +102,28 @@ def _parse_args() -> argparse.Namespace:
         "--finder-reanalyze",
         action="store_true",
         default=False,
-        help="Force Finder reanalysis using --overwrite. Defaults to false.",
+        help=(
+            "Reuse the existing project source tree under Projects/Sources/<project> "
+            "to skip re-extracting from zip, and bypass any cached/dummy Finder output, "
+            "forcing IRIS to recompute. If the source tree is missing on disk, IRIS falls "
+            "back to re-extracting from the zip so the Maven build has something to compile. "
+            "Defaults to false: reuse any injected/cached Finder output if present "
+            "(see --use-dummy); otherwise extract source from zip and run IRIS."
+        ),
     )
 
     parser.add_argument(
         "--use-dummy",
         nargs="*",
         choices=["finder", "exploiter", "patcher"],
-        default=[],
+        default=["finder"],
         help=(
-            "Inject dummy state before running. "
-            "Examples: --use-dummy finder, "
-            "--use-dummy finder exploiter, "
-            "--use-dummy patcher"
+            "Skip the listed agents and populate their state from "
+            "pre-existing dummy data. Added on top of the default set "
+            "[finder]. "
+            "Examples: '--use-dummy patcher' -> skip [finder, patcher]; "
+            "'--use-dummy finder exploiter patcher' -> skip all three, "
+            "leaving only Verifier to run in --mode all."
         ),
     )
 
@@ -205,7 +216,6 @@ def _build_initial_state(
 
 def _build_workflow(mode: PipelineMode) -> Any:
     graph = StateGraph(AutoSecState)
-
     graph.add_node("finder", _finder_node)
     graph.add_node("exploiter", _exploiter_node)
     graph.add_node("patcher", _patcher_node)
@@ -258,17 +268,18 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node - finder started")
 
     # Skip finder if output was already injected, e.g. dummy/cached output.
-    if state.get("finder_output") is not None:
+    # finder_reanalyze=True overrides the cache to force a real run.
+    if state.get("finder_output") is not None and not state.get("finder_reanalyze"):
         logger.info("Node - finder skipped because finder_output is already set")
         return state
 
+    # make sure Project/Sources folder exists
     Path(PROJECTS_DIR / "Sources").mkdir(exist_ok=True)
 
     host_ws = os.environ.get("HOST_WORKSPACE")
     if not host_ws:
         raise RuntimeError("HOST_WORKSPACE env var not set. Add it in devcontainer.json.")
-
-    host_ws = host_ws.replace("\\", "/")
+    host_ws = host_ws.replace("\\", "/") # for windows compatibility
 
     project_name = state["project_name"]
     vuln_id = state["vuln_id"]
@@ -285,24 +296,49 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
     query = vuln_id + "wLLM"
 
-    build_and_analyze_args = (
-        f"--project-name {project_name} "
-        f"--query {query} "
-        f"--model {model} "
+    # finder_reanalyze=True keeps the existing source tree (e.g. Exploiter retry
+    # where the project is already extracted). Default re-extracts from the zip.
+    # Fallback: if the source tree isn't actually on disk (e.g. dummy was used
+    # on the first pass so IRIS never extracted), force re-extraction even when
+    # finder_reanalyze=True — otherwise IRIS's Maven build would have nothing
+    # to compile against.
+    project_source_dir = PROJECTS_DIR / "Sources" / project_name
+    keep_source = state.get("finder_reanalyze", False) and project_source_dir.exists()
+
+    build_and_analyze_argv = [
+        "python3", "./scripts/build_and_analyze.py",
+        "--project-name", project_name,
+        "--query", query,
+        "--model", model,
+        "--overwrite",
+    ]
+
+    if not keep_source:
+        if state.get("finder_reanalyze") and not project_source_dir.exists():
+            logger.info(
+                f"finder_reanalyze=True but source tree missing at "
+                f"{project_source_dir}; forcing re-extraction from zip."
+            )
+        build_and_analyze_argv += [
+            "--zip-path", f"/workspace/Projects/Zipped/{project_name}.zip",
+        ]
+
+    # Shell-quote the python invocation since we have to route through bash -lc
+    # to source conda. shlex.join protects against spaces / metacharacters in
+    # user-supplied values like --finder-model.
+    inner_cmd = (
+        "source /opt/conda/etc/profile.d/conda.sh && conda activate iris && "
+        + shlex.join(build_and_analyze_argv)
     )
 
-    if state.get("finder_reanalyze", False):
-        build_and_analyze_args += "--overwrite"
-    else:
-        build_and_analyze_args += f"--zip-path /workspace/Projects/Zipped/{project_name}.zip"
-
-    print(f"\n---- ARGS: {build_and_analyze_args} ----\n")
+    print(f"\n---- ARGS: {shlex.join(build_and_analyze_argv[2:])} ----\n")
 
     if model.startswith("gpt"):
         os.getenv("OPEN_AI_KEY")
     elif model.startswith("gemini"):
         os.getenv("GOOGLE_API_KEY")
 
+    # 1. setup command to have IRIS inside docker container
     docker_cmd = [
         "docker",
         "run",
@@ -321,15 +357,16 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
         "iris:latest",
         "bash",
         "-lc",
-        "source /opt/conda/etc/profile.d/conda.sh && conda activate iris && "
-        "python3 ./scripts/build_and_analyze.py " + build_and_analyze_args,
+        inner_cmd,
     ]
 
     logger.info(f"Running IRIS inside Docker for project {project_name}")
 
+    # 2. Run IRIS analysis
     try:
         subprocess.run(docker_cmd, check=True, text=True)
 
+    # analysis failed for some reason
     except subprocess.CalledProcessError as e:
         print("Finder failed with an error")
         print("Return code:", e.returncode)
@@ -346,7 +383,7 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
     )
 
     try:
-        with open(sarif_path, encoding="utf-8") as f:
+        with open(sarif_path) as f:
             findings = json.load(f)
 
         state["finder_output"] = sarif_to_finder_output(
@@ -365,6 +402,19 @@ def _finder_node(state: AutoSecState) -> AutoSecState:
 
 def _exploiter_node(state: AutoSecState) -> Command:
     logger.info("Node: exploiter started")
+    # Skip if dummy exploiter data was injected via --use-dummy exploiter.
+    # The "dummy" flag is set in _build_initial_state.
+    existing_exploiter = state.get("exploiter") or {}
+    if existing_exploiter.get("dummy"):
+        logger.info("Node: exploiter skipped (dummy data injected)")
+        return Command(goto=_route_after_exploiter(state), update=state)
+
+    # Skip if dummy exploiter data was injected via --use-dummy exploiter.
+    # The "dummy" flag is set in _build_initial_state.
+    existing_exploiter = state.get("exploiter") or {}
+    if existing_exploiter.get("dummy"):
+        logger.info("Node: exploiter skipped (dummy data injected)")
+        return Command(goto=_route_after_exploiter(state), update=state)
 
     running_finder = True
 
@@ -415,6 +465,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
 
         return Command(goto=END, update=new_state)
 
+    # setup paths for exploiter
     exploiter_dir = os.path.join(os.getcwd(), "Agents", "Exploiter")
 
     report_path = os.path.join(
@@ -442,6 +493,12 @@ def _exploiter_node(state: AutoSecState) -> Command:
         "cwe-bench-java",
         "scripts",
         "fetch_one.py",
+    )
+
+    generate_dockerfiles_location = os.path.join(
+        exploiter_dir,
+        "scripts",
+        "generate_dockerfiles.py",
     )
 
     project_directory = os.path.join(
@@ -478,7 +535,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
         with open(report_path, "r", encoding="utf-8") as f:
             report_data = json.load(f)
 
-        exploitable, pov_test_paths, pov_logic = parse_exploiter_report(report_data)
+        exploitable, pov_test_paths, pov_logic = _parse_exploiter_report(report_data)
 
         new_state["exploiter"] = {
             "success": exploitable,
@@ -522,6 +579,8 @@ def _exploiter_node(state: AutoSecState) -> Command:
             }
             return Command(goto=_route_after_exploiter(new_state), update=new_state)
 
+    # prepare the project in the Exploiter's directory
+    # check if they exist they do no need to fetch it anymore
     if not os.path.exists(project_directory):
         try:
             subprocess.run(
@@ -541,12 +600,55 @@ def _exploiter_node(state: AutoSecState) -> Command:
             return Command(goto=_route_after_exploiter(new_state), update=new_state)
 
     dockerfile_src = os.path.join(dockerfiles, project_name, "Dockerfile.vuln")
+
+    # Generate (or regenerate) the Dockerfile if it is missing or still uses the
+    # old single-test format (CWE_ID_*.java discovery instead of AutoSecFlow*Test).
+    def _dockerfile_needs_generation(path: str) -> bool:
+        if not os.path.exists(path):
+            return True
+        try:
+            with open(path, encoding="utf-8") as _f:
+                return "AutoSecFlow" not in _f.read()
+        except OSError:
+            return True
+
+    if _dockerfile_needs_generation(dockerfile_src):
+        vuln_id = new_state.get("vuln_id", "")
+        logger.info(
+            f"Generating Dockerfile for {project_name} (cwe={vuln_id}) "
+            f"at {dockerfile_src}"
+        )
+        try:
+            subprocess.run(
+                [
+                    sys.executable,
+                    generate_dockerfiles_location,
+                    "--project", project_name,
+                    "--cwe", vuln_id,
+                    "--force",
+                ],
+                check=True,
+            )
+        except subprocess.CalledProcessError as e:
+            logger.error(
+                f"Dockerfile generation failed for {project_name} "
+                f"(exit={e.returncode}). Pipeline cannot continue."
+            )
+            new_state["exploiter"] = {
+                "success": False,
+                "report_path": None,
+                "pov_test_paths": None,
+                "pov_logic": None,
+                "from_cache": False,
+            }
+            return Command(goto=_route_after_exploiter(new_state), update=new_state)
+
     logger.info(
         f"Copying dockerfile {dockerfile_src} into project path: {project_directory}"
     )
     shutil.copy2(dockerfile_src, project_directory)
 
-    EXPLOITER_TIMEOUT = 1800
+    EXPLOITER_TIMEOUT = 2700
 
     run_cmd = [
         sys.executable,
@@ -565,6 +667,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
         "--verbose",
     ]
 
+    # STARTING EXPLOITATION
     try:
         logger.info(f"Loading project: {project_name}")
         logger.info(f"Running command: {run_cmd}")
@@ -597,6 +700,7 @@ def _exploiter_node(state: AutoSecState) -> Command:
         }
         return Command(goto=_route_after_exploiter(new_state), update=new_state)
 
+    # checking if result produced properly
     if not os.path.exists(report_path):
         logger.error(f"Exploiter report not found: {report_path}")
         new_state["exploiter"] = {
@@ -646,6 +750,13 @@ def _exploiter_node(state: AutoSecState) -> Command:
 def _patcher_node(state: AutoSecState) -> AutoSecState:
     logger.info("Node - patcher started")
 
+    # Skip if dummy patcher data was injected via --use-dummy patcher.
+    # The "dummy" flag is set in _build_initial_state.
+    existing_patcher = state.get("patcher") or {}
+    if existing_patcher.get("dummy"):
+        logger.info("Node - patcher skipped (dummy data injected)")
+        return state
+
     if not state.get("language"):
         raise ValueError("language missing from state")
 
@@ -663,9 +774,9 @@ def _patcher_node(state: AutoSecState) -> AutoSecState:
     else:
         logger.warning("pov_logic missing from exploiter output")
 
+    # copy PoV tests from Exploiter's working dir into Projects/Sources
     project_name = state["project_name"]
-    pov_test_paths = exploiter_state.get("pov_test_paths") or []
-
+    pov_test_paths = (state.get("exploiter") or {}).get("pov_test_paths") or []
     exploiter_project_root = (
         AGENTS_DIR
         / "Exploiter"
@@ -773,10 +884,12 @@ def pipeline_main() -> None:
     workflow = _build_workflow(mode)
     final_state = workflow.invoke(initial_state)
 
+    # Save to file
     file_path = save_state_dump(final_state)
     if file_path:
         print(f"[Pipeline] State dump saved to: {file_path}")
 
 
+# standalone execution
 if __name__ == "__main__":
     pipeline_main()
