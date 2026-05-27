@@ -1,0 +1,2164 @@
+{
+    "cwe_id": "cwe-022",
+    "vulnerabilities": [
+        {
+            "traces": [
+                [
+                    {
+                        "message": "credentials : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/authc/SimpleAuthenticationInfo.java",
+                        "line": 105
+                    },
+                    {
+                        "message": "credentials : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/authc/SimpleAuthenticationInfo.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "this [post update] : SimpleAuthenticationInfo [credentials] : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/authc/SimpleAuthenticationInfo.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "new SimpleAuthenticationInfo(...) : SimpleAuthenticationInfo [credentials] : Object",
+                        "uri": "support/cas/src/main/java/org/apache/shiro/cas/CasRealm.java",
+                        "line": 167
+                    },
+                    {
+                        "message": "doGetAuthenticationInfo(...) : SimpleAuthenticationInfo [credentials] : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/realm/AuthenticatingRealm.java",
+                        "line": 571
+                    },
+                    {
+                        "message": "info : SimpleAuthenticationInfo [credentials] : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/realm/AuthenticatingRealm.java",
+                        "line": 581
+                    },
+                    {
+                        "message": "info : SimpleAuthenticationInfo [credentials] : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/realm/AuthenticatingRealm.java",
+                        "line": 597
+                    },
+                    {
+                        "message": "info : SimpleAuthenticationInfo [credentials] : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/realm/AuthenticatingRealm.java",
+                        "line": 600
+                    },
+                    {
+                        "message": "info : SimpleAuthenticationInfo [credentials] : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/authc/credential/HashedCredentialsMatcher.java",
+                        "line": 378
+                    },
+                    {
+                        "message": "info : SimpleAuthenticationInfo [credentials] : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/authc/credential/HashedCredentialsMatcher.java",
+                        "line": 380
+                    },
+                    {
+                        "message": "info : SimpleAuthenticationInfo [credentials] : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/authc/credential/HashedCredentialsMatcher.java",
+                        "line": 344
+                    },
+                    {
+                        "message": "info : SimpleAuthenticationInfo [credentials] : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/authc/credential/HashedCredentialsMatcher.java",
+                        "line": 345
+                    },
+                    {
+                        "message": "parameter this : SimpleAuthenticationInfo [credentials] : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/authc/SimpleAuthenticationInfo.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "this <.field> : SimpleAuthenticationInfo [credentials] : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/authc/SimpleAuthenticationInfo.java",
+                        "line": 141
+                    },
+                    {
+                        "message": "credentials : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/authc/SimpleAuthenticationInfo.java",
+                        "line": 141
+                    },
+                    {
+                        "message": "getCredentials(...) : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/authc/credential/HashedCredentialsMatcher.java",
+                        "line": 345
+                    },
+                    {
+                        "message": "credentials : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/authc/credential/HashedCredentialsMatcher.java",
+                        "line": 347
+                    },
+                    {
+                        "message": "o : Object",
+                        "uri": "lang/src/main/java/org/apache/shiro/codec/CodecSupport.java",
+                        "line": 194
+                    },
+                    {
+                        "message": "(...)... : File",
+                        "uri": "lang/src/main/java/org/apache/shiro/codec/CodecSupport.java",
+                        "line": 208
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "lang/src/main/java/org/apache/shiro/codec/CodecSupport.java",
+                        "line": 244
+                    },
+                    {
+                        "message": "file",
+                        "uri": "lang/src/main/java/org/apache/shiro/codec/CodecSupport.java",
+                        "line": 249
+                    }
+                ],
+                [
+                    {
+                        "message": "credentials : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/authc/SimpleAuthenticationInfo.java",
+                        "line": 73
+                    },
+                    {
+                        "message": "credentials : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/authc/SimpleAuthenticationInfo.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "this [post update] : SimpleAuthenticationInfo [credentials] : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/authc/SimpleAuthenticationInfo.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "new SimpleAuthenticationInfo(...) : SimpleAuthenticationInfo [credentials] : Object",
+                        "uri": "samples/spring-hibernate/src/main/java/org/apache/shiro/samples/sprhib/security/SampleRealm.java",
+                        "line": 61
+                    },
+                    {
+                        "message": "doGetAuthenticationInfo(...) : SimpleAuthenticationInfo [credentials] : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/realm/AuthenticatingRealm.java",
+                        "line": 571
+                    },
+                    {
+                        "message": "info : SimpleAuthenticationInfo [credentials] : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/realm/AuthenticatingRealm.java",
+                        "line": 581
+                    },
+                    {
+                        "message": "info : SimpleAuthenticationInfo [credentials] : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/realm/AuthenticatingRealm.java",
+                        "line": 597
+                    },
+                    {
+                        "message": "info : SimpleAuthenticationInfo [credentials] : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/realm/AuthenticatingRealm.java",
+                        "line": 600
+                    },
+                    {
+                        "message": "info : SimpleAuthenticationInfo [credentials] : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/authc/credential/HashedCredentialsMatcher.java",
+                        "line": 378
+                    },
+                    {
+                        "message": "info : SimpleAuthenticationInfo [credentials] : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/authc/credential/HashedCredentialsMatcher.java",
+                        "line": 380
+                    },
+                    {
+                        "message": "info : SimpleAuthenticationInfo [credentials] : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/authc/credential/HashedCredentialsMatcher.java",
+                        "line": 344
+                    },
+                    {
+                        "message": "info : SimpleAuthenticationInfo [credentials] : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/authc/credential/HashedCredentialsMatcher.java",
+                        "line": 345
+                    },
+                    {
+                        "message": "parameter this : SimpleAuthenticationInfo [credentials] : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/authc/SimpleAuthenticationInfo.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "this <.field> : SimpleAuthenticationInfo [credentials] : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/authc/SimpleAuthenticationInfo.java",
+                        "line": 141
+                    },
+                    {
+                        "message": "credentials : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/authc/SimpleAuthenticationInfo.java",
+                        "line": 141
+                    },
+                    {
+                        "message": "getCredentials(...) : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/authc/credential/HashedCredentialsMatcher.java",
+                        "line": 345
+                    },
+                    {
+                        "message": "credentials : Object",
+                        "uri": "core/src/main/java/org/apache/shiro/authc/credential/HashedCredentialsMatcher.java",
+                        "line": 347
+                    },
+                    {
+                        "message": "o : Object",
+                        "uri": "lang/src/main/java/org/apache/shiro/codec/CodecSupport.java",
+                        "line": 194
+                    },
+                    {
+                        "message": "(...)... : File",
+                        "uri": "lang/src/main/java/org/apache/shiro/codec/CodecSupport.java",
+                        "line": 208
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "lang/src/main/java/org/apache/shiro/codec/CodecSupport.java",
+                        "line": 244
+                    },
+                    {
+                        "message": "file",
+                        "uri": "lang/src/main/java/org/apache/shiro/codec/CodecSupport.java",
+                        "line": 249
+                    }
+                ],
+                [
+                    {
+                        "message": "getArgs(...) : String[]",
+                        "uri": "tools/hasher/src/main/java/org/apache/shiro/tools/hasher/Hasher.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "remainingArgs : String[]",
+                        "uri": "tools/hasher/src/main/java/org/apache/shiro/tools/hasher/Hasher.java",
+                        "line": 195
+                    },
+                    {
+                        "message": "strings : String[]",
+                        "uri": "tools/hasher/src/main/java/org/apache/shiro/tools/hasher/Hasher.java",
+                        "line": 471
+                    },
+                    {
+                        "message": "strings : String[]",
+                        "uri": "tools/hasher/src/main/java/org/apache/shiro/tools/hasher/Hasher.java",
+                        "line": 476
+                    },
+                    {
+                        "message": "array : String[]",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "...[...] : Object",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "sb [post update] : StringBuilder",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 211
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 211
+                    },
+                    {
+                        "message": "toDelimitedString(...) : String",
+                        "uri": "tools/hasher/src/main/java/org/apache/shiro/tools/hasher/Hasher.java",
+                        "line": 476
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "tools/hasher/src/main/java/org/apache/shiro/tools/hasher/Hasher.java",
+                        "line": 195
+                    },
+                    {
+                        "message": "sourceValue : String",
+                        "uri": "tools/hasher/src/main/java/org/apache/shiro/tools/hasher/Hasher.java",
+                        "line": 199
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "tools/hasher/src/main/java/org/apache/shiro/tools/hasher/Hasher.java",
+                        "line": 463
+                    },
+                    {
+                        "message": "resolved : String",
+                        "uri": "tools/hasher/src/main/java/org/apache/shiro/tools/hasher/Hasher.java",
+                        "line": 468
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "tools/hasher/src/main/java/org/apache/shiro/tools/hasher/Hasher.java",
+                        "line": 468
+                    },
+                    {
+                        "message": "toFile(...) : File",
+                        "uri": "tools/hasher/src/main/java/org/apache/shiro/tools/hasher/Hasher.java",
+                        "line": 199
+                    },
+                    {
+                        "message": "source : File",
+                        "uri": "tools/hasher/src/main/java/org/apache/shiro/tools/hasher/Hasher.java",
+                        "line": 227
+                    },
+                    {
+                        "message": "source : File",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/ByteSource.java",
+                        "line": 162
+                    },
+                    {
+                        "message": "(...)... : File",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/ByteSource.java",
+                        "line": 181
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/ByteSource.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/ByteSource.java",
+                        "line": 124
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/SimpleByteSource.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/SimpleByteSource.java",
+                        "line": 95
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/SimpleByteSource.java",
+                        "line": 180
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/SimpleByteSource.java",
+                        "line": 181
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "lang/src/main/java/org/apache/shiro/codec/CodecSupport.java",
+                        "line": 244
+                    },
+                    {
+                        "message": "file",
+                        "uri": "lang/src/main/java/org/apache/shiro/codec/CodecSupport.java",
+                        "line": 249
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "iniResourcePath : String",
+                        "uri": "core/src/main/java/org/apache/shiro/config/IniSecurityManagerFactory.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "iniResourcePath : String",
+                        "uri": "core/src/main/java/org/apache/shiro/config/IniSecurityManagerFactory.java",
+                        "line": 73
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "config/core/src/main/java/org/apache/shiro/config/Ini.java",
+                        "line": 228
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "config/core/src/main/java/org/apache/shiro/config/Ini.java",
+                        "line": 233
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "config/core/src/main/java/org/apache/shiro/config/Ini.java",
+                        "line": 245
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "config/core/src/main/java/org/apache/shiro/config/Ini.java",
+                        "line": 248
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 135
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "path",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 149
+                    }
+                ],
+                [
+                    {
+                        "message": "in : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 176
+                    },
+                    {
+                        "message": "in : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "in : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "out : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "clean(...) : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "clean(...) : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 185
+                    },
+                    {
+                        "message": "this [post update] : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 185
+                    },
+                    {
+                        "message": "this <.method> [post update] : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "this <.method> [post update] : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "this <.method> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 190
+                    },
+                    {
+                        "message": "parameter this : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "this <.method> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 210
+                    },
+                    {
+                        "message": "parameter this : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 241
+                    },
+                    {
+                        "message": "this <.method> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 243
+                    },
+                    {
+                        "message": "parameter this : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "this <.field> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "configPath : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "getConfigPath(...) : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 243
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 245
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 335
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 351
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "config/core/src/main/java/org/apache/shiro/config/Ini.java",
+                        "line": 245
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "config/core/src/main/java/org/apache/shiro/config/Ini.java",
+                        "line": 248
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 135
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "path",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 149
+                    }
+                ],
+                [
+                    {
+                        "message": "in : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "out : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "clean(...) : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "clean(...) : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 185
+                    },
+                    {
+                        "message": "this [post update] : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 185
+                    },
+                    {
+                        "message": "this <.method> [post update] : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "this <.method> [post update] : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "this <.method> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 190
+                    },
+                    {
+                        "message": "parameter this : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "this <.method> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 210
+                    },
+                    {
+                        "message": "parameter this : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 241
+                    },
+                    {
+                        "message": "this <.method> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 243
+                    },
+                    {
+                        "message": "parameter this : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "this <.field> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "configPath : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "getConfigPath(...) : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 243
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 245
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 335
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 351
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "config/core/src/main/java/org/apache/shiro/config/Ini.java",
+                        "line": 245
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "config/core/src/main/java/org/apache/shiro/config/Ini.java",
+                        "line": 248
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 135
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "path",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 149
+                    }
+                ],
+                [
+                    {
+                        "message": "getArgs(...) : String[]",
+                        "uri": "tools/hasher/src/main/java/org/apache/shiro/tools/hasher/Hasher.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "remainingArgs : String[]",
+                        "uri": "tools/hasher/src/main/java/org/apache/shiro/tools/hasher/Hasher.java",
+                        "line": 195
+                    },
+                    {
+                        "message": "strings : String[]",
+                        "uri": "tools/hasher/src/main/java/org/apache/shiro/tools/hasher/Hasher.java",
+                        "line": 471
+                    },
+                    {
+                        "message": "strings : String[]",
+                        "uri": "tools/hasher/src/main/java/org/apache/shiro/tools/hasher/Hasher.java",
+                        "line": 476
+                    },
+                    {
+                        "message": "array : String[]",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "...[...] : Object",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "sb [post update] : StringBuilder",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 211
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 211
+                    },
+                    {
+                        "message": "toDelimitedString(...) : String",
+                        "uri": "tools/hasher/src/main/java/org/apache/shiro/tools/hasher/Hasher.java",
+                        "line": 476
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "tools/hasher/src/main/java/org/apache/shiro/tools/hasher/Hasher.java",
+                        "line": 195
+                    },
+                    {
+                        "message": "sourceValue : String",
+                        "uri": "tools/hasher/src/main/java/org/apache/shiro/tools/hasher/Hasher.java",
+                        "line": 201
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 135
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "path",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 149
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "iniResourcePath : String",
+                        "uri": "core/src/main/java/org/apache/shiro/config/IniSecurityManagerFactory.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "iniResourcePath : String",
+                        "uri": "core/src/main/java/org/apache/shiro/config/IniSecurityManagerFactory.java",
+                        "line": 73
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "config/core/src/main/java/org/apache/shiro/config/Ini.java",
+                        "line": 228
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "config/core/src/main/java/org/apache/shiro/config/Ini.java",
+                        "line": 233
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "config/core/src/main/java/org/apache/shiro/config/Ini.java",
+                        "line": 245
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "config/core/src/main/java/org/apache/shiro/config/Ini.java",
+                        "line": 248
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 126
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 163
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "substring(...) : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "stripPrefix(...) : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 126
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/ClassUtils.java",
+                        "line": 109
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/ClassUtils.java",
+                        "line": 111
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/ClassUtils.java",
+                        "line": 291
+                    },
+                    {
+                        "message": "name",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/ClassUtils.java",
+                        "line": 295
+                    }
+                ],
+                [
+                    {
+                        "message": "in : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 176
+                    },
+                    {
+                        "message": "in : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "in : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "out : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "clean(...) : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "clean(...) : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 185
+                    },
+                    {
+                        "message": "this [post update] : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 185
+                    },
+                    {
+                        "message": "this <.method> [post update] : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "this <.method> [post update] : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "this <.method> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 190
+                    },
+                    {
+                        "message": "parameter this : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "this <.method> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 210
+                    },
+                    {
+                        "message": "parameter this : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 241
+                    },
+                    {
+                        "message": "this <.method> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 243
+                    },
+                    {
+                        "message": "parameter this : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "this <.field> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "configPath : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "getConfigPath(...) : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 243
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 245
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 335
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 351
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "config/core/src/main/java/org/apache/shiro/config/Ini.java",
+                        "line": 245
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "config/core/src/main/java/org/apache/shiro/config/Ini.java",
+                        "line": 248
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 126
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 163
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "substring(...) : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "stripPrefix(...) : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 126
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/ClassUtils.java",
+                        "line": 109
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/ClassUtils.java",
+                        "line": 111
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/ClassUtils.java",
+                        "line": 291
+                    },
+                    {
+                        "message": "name",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/ClassUtils.java",
+                        "line": 295
+                    }
+                ],
+                [
+                    {
+                        "message": "in : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "out : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "clean(...) : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "clean(...) : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 185
+                    },
+                    {
+                        "message": "this [post update] : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 185
+                    },
+                    {
+                        "message": "this <.method> [post update] : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "this <.method> [post update] : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "this <.method> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 190
+                    },
+                    {
+                        "message": "parameter this : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "this <.method> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 210
+                    },
+                    {
+                        "message": "parameter this : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 241
+                    },
+                    {
+                        "message": "this <.method> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 243
+                    },
+                    {
+                        "message": "parameter this : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "this <.field> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "configPath : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "getConfigPath(...) : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 243
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 245
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 335
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 351
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "config/core/src/main/java/org/apache/shiro/config/Ini.java",
+                        "line": 245
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "config/core/src/main/java/org/apache/shiro/config/Ini.java",
+                        "line": 248
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 126
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 163
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "substring(...) : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "stripPrefix(...) : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 126
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/ClassUtils.java",
+                        "line": 109
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/ClassUtils.java",
+                        "line": 111
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/ClassUtils.java",
+                        "line": 291
+                    },
+                    {
+                        "message": "name",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/ClassUtils.java",
+                        "line": 295
+                    }
+                ],
+                [
+                    {
+                        "message": "getArgs(...) : String[]",
+                        "uri": "tools/hasher/src/main/java/org/apache/shiro/tools/hasher/Hasher.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "remainingArgs : String[]",
+                        "uri": "tools/hasher/src/main/java/org/apache/shiro/tools/hasher/Hasher.java",
+                        "line": 195
+                    },
+                    {
+                        "message": "strings : String[]",
+                        "uri": "tools/hasher/src/main/java/org/apache/shiro/tools/hasher/Hasher.java",
+                        "line": 471
+                    },
+                    {
+                        "message": "strings : String[]",
+                        "uri": "tools/hasher/src/main/java/org/apache/shiro/tools/hasher/Hasher.java",
+                        "line": 476
+                    },
+                    {
+                        "message": "array : String[]",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "...[...] : Object",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "sb [post update] : StringBuilder",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 211
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 211
+                    },
+                    {
+                        "message": "toDelimitedString(...) : String",
+                        "uri": "tools/hasher/src/main/java/org/apache/shiro/tools/hasher/Hasher.java",
+                        "line": 476
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "tools/hasher/src/main/java/org/apache/shiro/tools/hasher/Hasher.java",
+                        "line": 195
+                    },
+                    {
+                        "message": "sourceValue : String",
+                        "uri": "tools/hasher/src/main/java/org/apache/shiro/tools/hasher/Hasher.java",
+                        "line": 201
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 122
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 126
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 163
+                    },
+                    {
+                        "message": "resourcePath : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "substring(...) : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 164
+                    },
+                    {
+                        "message": "stripPrefix(...) : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 126
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/io/ResourceUtils.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/ClassUtils.java",
+                        "line": 109
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/ClassUtils.java",
+                        "line": 111
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/ClassUtils.java",
+                        "line": 291
+                    },
+                    {
+                        "message": "name",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/ClassUtils.java",
+                        "line": 295
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "in : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 176
+                    },
+                    {
+                        "message": "in : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "in : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "out : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "clean(...) : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "clean(...) : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 185
+                    },
+                    {
+                        "message": "this [post update] : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 185
+                    },
+                    {
+                        "message": "this <.method> [post update] : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "this <.method> [post update] : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "this <.method> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 190
+                    },
+                    {
+                        "message": "parameter this : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "this <.method> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 210
+                    },
+                    {
+                        "message": "parameter this : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 241
+                    },
+                    {
+                        "message": "this <.method> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 243
+                    },
+                    {
+                        "message": "parameter this : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "this <.field> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "configPath : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "getConfigPath(...) : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 243
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 245
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 335
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 342
+                    },
+                    {
+                        "message": "servletContextPath : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 308
+                    },
+                    {
+                        "message": "servletContextPath : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 309
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/util/WebUtils.java",
+                        "line": 167
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/util/WebUtils.java",
+                        "line": 168
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/util/WebUtils.java",
+                        "line": 183
+                    },
+                    {
+                        "message": "normalized : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/util/WebUtils.java",
+                        "line": 232
+                    },
+                    {
+                        "message": "normalize(...) : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/util/WebUtils.java",
+                        "line": 168
+                    },
+                    {
+                        "message": "normalize(...) : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 309
+                    },
+                    {
+                        "message": "path",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 311
+                    }
+                ],
+                [
+                    {
+                        "message": "in : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 176
+                    },
+                    {
+                        "message": "in : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "in : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "in : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 150
+                    },
+                    {
+                        "message": "trim(...) : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 150
+                    },
+                    {
+                        "message": "out : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "clean(...) : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "clean(...) : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/AbstractFilter.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "getInitParam(...) : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 198
+                    },
+                    {
+                        "message": "configPath : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "configPath : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "configPath : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 185
+                    },
+                    {
+                        "message": "in : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 176
+                    },
+                    {
+                        "message": "in : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "in : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "in : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 150
+                    },
+                    {
+                        "message": "trim(...) : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 150
+                    },
+                    {
+                        "message": "out : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "clean(...) : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "clean(...) : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 185
+                    },
+                    {
+                        "message": "this [post update] : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 185
+                    },
+                    {
+                        "message": "this <.method> [post update] : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "this <.method> [post update] : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "this <.method> [post update] : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/AbstractShiroFilter.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "this <.method> [post update] : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/AbstractFilter.java",
+                        "line": 97
+                    },
+                    {
+                        "message": "filter [post update] : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/filter/mgt/DefaultFilterChainManager.java",
+                        "line": 374
+                    },
+                    {
+                        "message": "filter [post update] : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/filter/mgt/DefaultFilterChainManager.java",
+                        "line": 269
+                    },
+                    {
+                        "message": "filter : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/filter/mgt/DefaultFilterChainManager.java",
+                        "line": 271
+                    },
+                    {
+                        "message": "this.filters [post update] : Map [<map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/filter/mgt/DefaultFilterChainManager.java",
+                        "line": 271
+                    },
+                    {
+                        "message": "this [post update] : DefaultFilterChainManager [filters, <map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/filter/mgt/DefaultFilterChainManager.java",
+                        "line": 271
+                    },
+                    {
+                        "message": "this <.method> [post update] : DefaultFilterChainManager [filters, <map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/filter/mgt/DefaultFilterChainManager.java",
+                        "line": 382
+                    },
+                    {
+                        "message": "this <.method> [post update] : DefaultFilterChainManager [filters, <map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/filter/mgt/DefaultFilterChainManager.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "new DefaultFilterChainManager(...) : DefaultFilterChainManager [filters, <map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/filter/mgt/PathMatchingFilterChainResolver.java",
+                        "line": 56
+                    },
+                    {
+                        "message": "this [post update] : PathMatchingFilterChainResolver [filterChainManager, filters, <map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/filter/mgt/PathMatchingFilterChainResolver.java",
+                        "line": 56
+                    },
+                    {
+                        "message": "new PathMatchingFilterChainResolver(...) : PathMatchingFilterChainResolver [filterChainManager, filters, <map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 101
+                    },
+                    {
+                        "message": "createDefaultInstance(...) : PathMatchingFilterChainResolver [filterChainManager, filters, <map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 87
+                    },
+                    {
+                        "message": "(...)... : PathMatchingFilterChainResolver [filterChainManager, filters, <map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "resolver : PathMatchingFilterChainResolver [filterChainManager, filters, <map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 90
+                    },
+                    {
+                        "message": "parameter this : PathMatchingFilterChainResolver [filterChainManager, filters, <map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/filter/mgt/PathMatchingFilterChainResolver.java",
+                        "line": 88
+                    },
+                    {
+                        "message": "this <.field> : PathMatchingFilterChainResolver [filterChainManager, filters, <map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/filter/mgt/PathMatchingFilterChainResolver.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "filterChainManager : DefaultFilterChainManager [filters, <map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/filter/mgt/PathMatchingFilterChainResolver.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "getFilterChainManager(...) : DefaultFilterChainManager [filters, <map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 90
+                    },
+                    {
+                        "message": "manager : DefaultFilterChainManager [filters, <map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "manager : DefaultFilterChainManager [filters, <map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 105
+                    },
+                    {
+                        "message": "manager : DefaultFilterChainManager [filters, <map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "parameter this : DefaultFilterChainManager [filters, <map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/filter/mgt/DefaultFilterChainManager.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "this <.field> : DefaultFilterChainManager [filters, <map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/filter/mgt/DefaultFilterChainManager.java",
+                        "line": 95
+                    },
+                    {
+                        "message": "filters : Map [<map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/filter/mgt/DefaultFilterChainManager.java",
+                        "line": 95
+                    },
+                    {
+                        "message": "getFilters(...) : Map [<map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "defaultFilters : Map [<map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "defaults [post update] : LinkedHashMap [<map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "defaults : LinkedHashMap [<map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 132
+                    },
+                    {
+                        "message": "defaults : LinkedHashMap [<map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "defaults : LinkedHashMap [<map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "objects : LinkedHashMap [<map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 179
+                    },
+                    {
+                        "message": "objects : LinkedHashMap [<map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "entrySet(...) : Set [<element>, <map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 184
+                    },
+                    {
+                        "message": "entry : Entry [<map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 185
+                    },
+                    {
+                        "message": "entry : Entry [<map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 186
+                    },
+                    {
+                        "message": "getValue(...) : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 186
+                    },
+                    {
+                        "message": "(...)... : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 188
+                    },
+                    {
+                        "message": "filterMap [post update] : LinkedHashMap [<map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 188
+                    },
+                    {
+                        "message": "filterMap : LinkedHashMap [<map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "extractFilters(...) : LinkedHashMap [<map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "filters : LinkedHashMap [<map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 176
+                    },
+                    {
+                        "message": "getFilters(...) : LinkedHashMap [<map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 132
+                    },
+                    {
+                        "message": "filters : LinkedHashMap [<map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 135
+                    },
+                    {
+                        "message": "filters : LinkedHashMap [<map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "filters : LinkedHashMap [<map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 150
+                    },
+                    {
+                        "message": "entrySet(...) : Set [<element>, <map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 150
+                    },
+                    {
+                        "message": "entry : Entry [<map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "entry : Entry [<map.value>, configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "getValue(...) : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "filter : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/config/IniFilterChainResolverFactory.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "filter : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/filter/mgt/DefaultFilterChainManager.java",
+                        "line": 120
+                    },
+                    {
+                        "message": "filter : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/filter/mgt/DefaultFilterChainManager.java",
+                        "line": 121
+                    },
+                    {
+                        "message": "filter : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/filter/mgt/DefaultFilterChainManager.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "filter : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/filter/mgt/DefaultFilterChainManager.java",
+                        "line": 269
+                    },
+                    {
+                        "message": "filter : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/filter/mgt/DefaultFilterChainManager.java",
+                        "line": 367
+                    },
+                    {
+                        "message": "filter : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/filter/mgt/DefaultFilterChainManager.java",
+                        "line": 374
+                    },
+                    {
+                        "message": "parameter this : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/AbstractFilter.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "this <.method> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/AbstractFilter.java",
+                        "line": 97
+                    },
+                    {
+                        "message": "parameter this : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/AbstractShiroFilter.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "this <.method> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/AbstractShiroFilter.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "parameter this : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 188
+                    },
+                    {
+                        "message": "this <.method> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 190
+                    },
+                    {
+                        "message": "parameter this : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "this <.method> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 210
+                    },
+                    {
+                        "message": "parameter this : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 241
+                    },
+                    {
+                        "message": "this <.method> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 243
+                    },
+                    {
+                        "message": "parameter this : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "this <.field> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "configPath : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "getConfigPath(...) : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 243
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 245
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 335
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 342
+                    },
+                    {
+                        "message": "servletContextPath : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 308
+                    },
+                    {
+                        "message": "servletContextPath : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 309
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/util/WebUtils.java",
+                        "line": 167
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/util/WebUtils.java",
+                        "line": 168
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/util/WebUtils.java",
+                        "line": 183
+                    },
+                    {
+                        "message": "normalized : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/util/WebUtils.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "replace(...) : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/util/WebUtils.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "normalized : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/util/WebUtils.java",
+                        "line": 232
+                    },
+                    {
+                        "message": "normalize(...) : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/util/WebUtils.java",
+                        "line": 168
+                    },
+                    {
+                        "message": "normalize(...) : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 309
+                    },
+                    {
+                        "message": "path",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 311
+                    }
+                ],
+                [
+                    {
+                        "message": "in : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "out : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "clean(...) : String",
+                        "uri": "lang/src/main/java/org/apache/shiro/util/StringUtils.java",
+                        "line": 177
+                    },
+                    {
+                        "message": "clean(...) : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 185
+                    },
+                    {
+                        "message": "this [post update] : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 185
+                    },
+                    {
+                        "message": "this <.method> [post update] : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 200
+                    },
+                    {
+                        "message": "this <.method> [post update] : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "this <.method> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 190
+                    },
+                    {
+                        "message": "parameter this : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "this <.method> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 210
+                    },
+                    {
+                        "message": "parameter this : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 241
+                    },
+                    {
+                        "message": "this <.method> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 243
+                    },
+                    {
+                        "message": "parameter this : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "this <.field> : IniShiroFilter [configPath] : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "configPath : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "getConfigPath(...) : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 243
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 245
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 335
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 342
+                    },
+                    {
+                        "message": "servletContextPath : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 308
+                    },
+                    {
+                        "message": "servletContextPath : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 309
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/util/WebUtils.java",
+                        "line": 167
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/util/WebUtils.java",
+                        "line": 168
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/util/WebUtils.java",
+                        "line": 183
+                    },
+                    {
+                        "message": "normalized : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/util/WebUtils.java",
+                        "line": 232
+                    },
+                    {
+                        "message": "normalize(...) : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/util/WebUtils.java",
+                        "line": 168
+                    },
+                    {
+                        "message": "normalize(...) : String",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 309
+                    },
+                    {
+                        "message": "path",
+                        "uri": "web/src/main/java/org/apache/shiro/web/servlet/IniShiroFilter.java",
+                        "line": 311
+                    }
+                ]
+            ]
+        }
+    ]
+}

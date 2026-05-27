@@ -1,0 +1,3572 @@
+{
+    "cwe_id": "cwe-079",
+    "vulnerabilities": [
+        {
+            "traces": [
+                [
+                    {
+                        "message": "uri : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 207
+                    },
+                    {
+                        "message": "uri : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 210
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "charAt(...) : Number",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "c : Number",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "sb [post update] : StringBuilder",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 51
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 51
+                    },
+                    {
+                        "message": "stripControls(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 210
+                    },
+                    {
+                        "message": "safeValue : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 217
+                    },
+                    {
+                        "message": "value : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 175
+                    },
+                    {
+                        "message": "value : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 178
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "charAt(...) : Number",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "c : Number",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "sb [post update] : StringBuilder",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 51
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 51
+                    },
+                    {
+                        "message": "stripControls(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 178
+                    },
+                    {
+                        "message": "strippedValue : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 188
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 188
+                    },
+                    {
+                        "message": "safeValue",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 197
+                    }
+                ],
+                [
+                    {
+                        "message": "value : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 175
+                    },
+                    {
+                        "message": "value : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 178
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "charAt(...) : Number",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "c : Number",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "sb [post update] : StringBuilder",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 51
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 51
+                    },
+                    {
+                        "message": "stripControls(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 178
+                    },
+                    {
+                        "message": "strippedValue : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 188
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 188
+                    },
+                    {
+                        "message": "safeValue",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 197
+                    }
+                ],
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 256
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 258
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 258
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 239
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "cookieName : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 126
+                    },
+                    {
+                        "message": "header : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "createCookieHeader(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "header : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "value : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 175
+                    },
+                    {
+                        "message": "value : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 178
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "charAt(...) : Number",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "c : Number",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "sb [post update] : StringBuilder",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 51
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 51
+                    },
+                    {
+                        "message": "stripControls(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 178
+                    },
+                    {
+                        "message": "strippedValue : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 188
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 188
+                    },
+                    {
+                        "message": "safeValue",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 197
+                    }
+                ],
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 238
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 239
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 256
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 258
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 258
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 239
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "cookieName : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 126
+                    },
+                    {
+                        "message": "header : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "createCookieHeader(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "header : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "value : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 175
+                    },
+                    {
+                        "message": "value : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 178
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "charAt(...) : Number",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "c : Number",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "sb [post update] : StringBuilder",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 51
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 51
+                    },
+                    {
+                        "message": "stripControls(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 178
+                    },
+                    {
+                        "message": "strippedValue : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 188
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 188
+                    },
+                    {
+                        "message": "safeValue",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 197
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "uri : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 207
+                    },
+                    {
+                        "message": "uri : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 210
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "charAt(...) : Number",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "c : Number",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "sb [post update] : StringBuilder",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 51
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 51
+                    },
+                    {
+                        "message": "stripControls(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 210
+                    },
+                    {
+                        "message": "safeValue",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 217
+                    }
+                ],
+                [
+                    {
+                        "message": "uri : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 207
+                    },
+                    {
+                        "message": "uri : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 210
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "charAt(...) : Number",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "c : Number",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "sb [post update] : StringBuilder",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 51
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 51
+                    },
+                    {
+                        "message": "stripControls(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 210
+                    },
+                    {
+                        "message": "safeValue",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 217
+                    }
+                ],
+                [
+                    {
+                        "message": "uri : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 207
+                    },
+                    {
+                        "message": "uri : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 210
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "charAt(...) : Number",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "c : Number",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "sb [post update] : StringBuilder",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 51
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 51
+                    },
+                    {
+                        "message": "stripControls(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 210
+                    },
+                    {
+                        "message": "safeValue",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 217
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 638
+                    },
+                    {
+                        "message": "clean : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 642
+                    },
+                    {
+                        "message": "new StringBuffer(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 642
+                    },
+                    {
+                        "message": "getRequestURL(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "replaceFirst(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "this [post update] : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "ra [post update] : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "ra : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "check(...) : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 282
+                    },
+                    {
+                        "message": "(...)... : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "parameter this : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "this : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "this.url : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "getRedirectURL(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "redirectURL : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 454
+                    },
+                    {
+                        "message": "redirectURL : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 463
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 431
+                    },
+                    {
+                        "message": "location",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 436
+                    }
+                ],
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 638
+                    },
+                    {
+                        "message": "clean : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 642
+                    },
+                    {
+                        "message": "new StringBuffer(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 642
+                    },
+                    {
+                        "message": "getRequestURL(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "replaceFirst(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "this [post update] : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "ra [post update] : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "ra : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "check(...) : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 282
+                    },
+                    {
+                        "message": "(...)... : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "parameter this : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "this : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "this.url : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "getRedirectURL(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "redirectURL : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 454
+                    },
+                    {
+                        "message": "redirectURL : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 463
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 431
+                    },
+                    {
+                        "message": "location",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 436
+                    }
+                ],
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 638
+                    },
+                    {
+                        "message": "clean : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 642
+                    },
+                    {
+                        "message": "new StringBuffer(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 642
+                    },
+                    {
+                        "message": "getRequestURL(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "replaceFirst(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "this [post update] : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "ra [post update] : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "ra : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "check(...) : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 282
+                    },
+                    {
+                        "message": "(...)... : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "parameter this : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "this : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "this.url : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "getRedirectURL(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "redirectURL : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 454
+                    },
+                    {
+                        "message": "redirectURL : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 463
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 431
+                    },
+                    {
+                        "message": "location",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 436
+                    }
+                ],
+                [
+                    {
+                        "message": "getRequestURL(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 634
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 634
+                    },
+                    {
+                        "message": "url : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 638
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 638
+                    },
+                    {
+                        "message": "clean : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 642
+                    },
+                    {
+                        "message": "new StringBuffer(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 642
+                    },
+                    {
+                        "message": "getRequestURL(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "replaceFirst(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "this [post update] : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "ra [post update] : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "ra : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "check(...) : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 282
+                    },
+                    {
+                        "message": "(...)... : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "parameter this : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "this : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "this.url : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "getRedirectURL(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "redirectURL : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 454
+                    },
+                    {
+                        "message": "redirectURL : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 463
+                    },
+                    {
+                        "message": "location : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 431
+                    },
+                    {
+                        "message": "location",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 436
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "value : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 497
+                    },
+                    {
+                        "message": "value : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 500
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "charAt(...) : Number",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 44
+                    },
+                    {
+                        "message": "c : Number",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "sb [post update] : StringBuilder",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 51
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 51
+                    },
+                    {
+                        "message": "stripControls(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 500
+                    },
+                    {
+                        "message": "strippedValue : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 510
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 510
+                    },
+                    {
+                        "message": "safeValue",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 519
+                    }
+                ],
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 510
+                    },
+                    {
+                        "message": "safeValue",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 519
+                    }
+                ],
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 510
+                    },
+                    {
+                        "message": "safeValue",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 519
+                    }
+                ],
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 510
+                    },
+                    {
+                        "message": "safeValue",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperResponse.java",
+                        "line": 519
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 256
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 258
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 258
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 239
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "cookieName : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 198
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 343
+                    },
+                    {
+                        "message": "header : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 363
+                    },
+                    {
+                        "message": "createCookieHeader(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 198
+                    },
+                    {
+                        "message": "header : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 199
+                    },
+                    {
+                        "message": "value : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 236
+                    },
+                    {
+                        "message": "value : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 239
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 32
+                    },
+                    {
+                        "message": "matcher(...) : Matcher",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 32
+                    },
+                    {
+                        "message": "replaceAll(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 32
+                    },
+                    {
+                        "message": "replaceLinearWhiteSpace(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 239
+                    },
+                    {
+                        "message": "strippedValue : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 241
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 241
+                    },
+                    {
+                        "message": "safeValue",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 242
+                    }
+                ],
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 238
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 239
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 256
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 258
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 258
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 239
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "cookieName : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 198
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 343
+                    },
+                    {
+                        "message": "header : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 363
+                    },
+                    {
+                        "message": "createCookieHeader(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 198
+                    },
+                    {
+                        "message": "header : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 199
+                    },
+                    {
+                        "message": "value : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 236
+                    },
+                    {
+                        "message": "value : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 239
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 32
+                    },
+                    {
+                        "message": "matcher(...) : Matcher",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 32
+                    },
+                    {
+                        "message": "replaceAll(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/StringUtilities.java",
+                        "line": 32
+                    },
+                    {
+                        "message": "replaceLinearWhiteSpace(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 239
+                    },
+                    {
+                        "message": "strippedValue : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 241
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 241
+                    },
+                    {
+                        "message": "safeValue",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 242
+                    }
+                ],
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 241
+                    },
+                    {
+                        "message": "safeValue",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 242
+                    }
+                ],
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 241
+                    },
+                    {
+                        "message": "safeValue",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 242
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 891
+                    },
+                    {
+                        "message": "safeValue",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 892
+                    }
+                ],
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 275
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultEncoder.java",
+                        "line": 124
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultEncoder.java",
+                        "line": 130
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultEncoder.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "working : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultEncoder.java",
+                        "line": 201
+                    },
+                    {
+                        "message": "canonicalize(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultEncoder.java",
+                        "line": 130
+                    },
+                    {
+                        "message": "canonicalize(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 275
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 891
+                    },
+                    {
+                        "message": "safeValue",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 892
+                    }
+                ],
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 891
+                    },
+                    {
+                        "message": "safeValue",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 892
+                    }
+                ],
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 891
+                    },
+                    {
+                        "message": "safeValue",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultHTTPUtilities.java",
+                        "line": 892
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "message : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/crypto/EncryptedPropertiesUtils.java",
+                        "line": 185
+                    },
+                    {
+                        "message": "message",
+                        "uri": "src/main/java/org/owasp/esapi/reference/crypto/EncryptedPropertiesUtils.java",
+                        "line": 189
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 638
+                    },
+                    {
+                        "message": "clean : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 642
+                    },
+                    {
+                        "message": "new StringBuffer(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 642
+                    },
+                    {
+                        "message": "getRequestURL(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "replaceFirst(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "this [post update] : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "ra [post update] : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "ra : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "check(...) : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 282
+                    },
+                    {
+                        "message": "(...)... : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "parameter this : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "this : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "this.url : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "getRedirectURL(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "redirectURL : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 454
+                    },
+                    {
+                        "message": "redirectURL",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 460
+                    }
+                ],
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 638
+                    },
+                    {
+                        "message": "clean : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 642
+                    },
+                    {
+                        "message": "new StringBuffer(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 642
+                    },
+                    {
+                        "message": "getRequestURL(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "replaceFirst(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "this [post update] : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "ra [post update] : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "ra : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "check(...) : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 282
+                    },
+                    {
+                        "message": "(...)... : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "parameter this : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "this : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "this.url : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "getRedirectURL(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "redirectURL : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 454
+                    },
+                    {
+                        "message": "redirectURL",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 460
+                    }
+                ],
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 638
+                    },
+                    {
+                        "message": "clean : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 642
+                    },
+                    {
+                        "message": "new StringBuffer(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 642
+                    },
+                    {
+                        "message": "getRequestURL(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "replaceFirst(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "this [post update] : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "ra [post update] : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "ra : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "check(...) : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 282
+                    },
+                    {
+                        "message": "(...)... : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "parameter this : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "this : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "this.url : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "getRedirectURL(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "redirectURL : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 454
+                    },
+                    {
+                        "message": "redirectURL",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 460
+                    }
+                ],
+                [
+                    {
+                        "message": "getRequestURL(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 634
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 634
+                    },
+                    {
+                        "message": "url : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 638
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 638
+                    },
+                    {
+                        "message": "clean : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 642
+                    },
+                    {
+                        "message": "new StringBuffer(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 642
+                    },
+                    {
+                        "message": "getRequestURL(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "replaceFirst(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "this [post update] : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "ra [post update] : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "ra : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "check(...) : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 282
+                    },
+                    {
+                        "message": "(...)... : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "parameter this : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "this : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "this.url : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "getRedirectURL(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "redirectURL : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 454
+                    },
+                    {
+                        "message": "redirectURL",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 460
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 638
+                    },
+                    {
+                        "message": "clean : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 642
+                    },
+                    {
+                        "message": "new StringBuffer(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 642
+                    },
+                    {
+                        "message": "getRequestURL(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "replaceFirst(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "this [post update] : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "ra [post update] : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "ra : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "check(...) : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 282
+                    },
+                    {
+                        "message": "(...)... : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "parameter this : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "this : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "this.url : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "getRedirectURL(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "redirectURL : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 454
+                    },
+                    {
+                        "message": "redirectURL",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 463
+                    }
+                ],
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 638
+                    },
+                    {
+                        "message": "clean : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 642
+                    },
+                    {
+                        "message": "new StringBuffer(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 642
+                    },
+                    {
+                        "message": "getRequestURL(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "replaceFirst(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "this [post update] : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "ra [post update] : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "ra : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "check(...) : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 282
+                    },
+                    {
+                        "message": "(...)... : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "parameter this : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "this : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "this.url : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "getRedirectURL(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "redirectURL : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 454
+                    },
+                    {
+                        "message": "redirectURL",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 463
+                    }
+                ],
+                [
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 638
+                    },
+                    {
+                        "message": "clean : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 642
+                    },
+                    {
+                        "message": "new StringBuffer(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 642
+                    },
+                    {
+                        "message": "getRequestURL(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "replaceFirst(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "this [post update] : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "ra [post update] : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "ra : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "check(...) : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 282
+                    },
+                    {
+                        "message": "(...)... : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "parameter this : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "this : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "this.url : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "getRedirectURL(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "redirectURL : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 454
+                    },
+                    {
+                        "message": "redirectURL",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 463
+                    }
+                ],
+                [
+                    {
+                        "message": "getRequestURL(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 634
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 634
+                    },
+                    {
+                        "message": "url : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 638
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 262
+                    },
+                    {
+                        "message": "input : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 277
+                    },
+                    {
+                        "message": "data : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/validation/StringValidationRule.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "getValid(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 221
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/reference/DefaultValidator.java",
+                        "line": 192
+                    },
+                    {
+                        "message": "getValidInput(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 638
+                    },
+                    {
+                        "message": "clean : String",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 642
+                    },
+                    {
+                        "message": "new StringBuffer(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/filters/SecurityWrapperRequest.java",
+                        "line": 642
+                    },
+                    {
+                        "message": "getRequestURL(...) : StringBuffer",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "replaceFirst(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "this [post update] : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "ra [post update] : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 83
+                    },
+                    {
+                        "message": "ra : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/rules/EnforceHTTPSRule.java",
+                        "line": 84
+                    },
+                    {
+                        "message": "check(...) : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 282
+                    },
+                    {
+                        "message": "(...)... : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "parameter this : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 34
+                    },
+                    {
+                        "message": "this : RedirectAction [url] : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "this.url : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/actions/RedirectAction.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "getRedirectURL(...) : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "redirectURL : String",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 454
+                    },
+                    {
+                        "message": "redirectURL",
+                        "uri": "src/main/java/org/owasp/esapi/waf/ESAPIWebApplicationFirewallFilter.java",
+                        "line": 463
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        }
+    ]
+}

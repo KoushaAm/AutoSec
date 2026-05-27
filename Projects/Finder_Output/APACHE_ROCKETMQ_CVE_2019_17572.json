@@ -1,0 +1,3470 @@
+{
+    "cwe_id": "cwe-022",
+    "vulnerabilities": [
+        {
+            "traces": [
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/common/AclUtils.java",
+                        "line": 307
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/common/AclUtils.java",
+                        "line": 310
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/common/AclUtils.java",
+                        "line": 269
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/common/AclUtils.java",
+                        "line": 273
+                    },
+                    {
+                        "message": "new File(...)",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/common/AclUtils.java",
+                        "line": 273
+                    }
+                ],
+                [
+                    {
+                        "message": "path : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/common/AclUtils.java",
+                        "line": 269
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/common/AclUtils.java",
+                        "line": 273
+                    },
+                    {
+                        "message": "new File(...)",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/common/AclUtils.java",
+                        "line": 273
+                    }
+                ],
+                [
+                    {
+                        "message": "getenv(...) : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "getProperty(...) : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "this <.field> [post update] : PlainPermissionManager [fileHome] : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "this <.method> [post update] : PlainPermissionManager [fileHome] : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "this <.method> : PlainPermissionManager [fileHome] : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "parameter this : PlainPermissionManager [fileHome] : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "this <.field> : PlainPermissionManager [fileHome] : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 73
+                    },
+                    {
+                        "message": "fileHome : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 73
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 73
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/common/AclUtils.java",
+                        "line": 269
+                    },
+                    {
+                        "message": "path : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/common/AclUtils.java",
+                        "line": 273
+                    },
+                    {
+                        "message": "new File(...)",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/common/AclUtils.java",
+                        "line": 273
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "path : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/common/AclUtils.java",
+                        "line": 289
+                    },
+                    {
+                        "message": "path",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/common/AclUtils.java",
+                        "line": 293
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "name : String",
+                        "uri": "broker/src/main/java/org/apache/rocketmq/broker/util/ServiceProvider.java",
+                        "line": 134
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "broker/src/main/java/org/apache/rocketmq/broker/util/ServiceProvider.java",
+                        "line": 135
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "broker/src/main/java/org/apache/rocketmq/broker/util/ServiceProvider.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "name",
+                        "uri": "broker/src/main/java/org/apache/rocketmq/broker/util/ServiceProvider.java",
+                        "line": 91
+                    }
+                ],
+                [
+                    {
+                        "message": "name : String",
+                        "uri": "broker/src/main/java/org/apache/rocketmq/broker/util/ServiceProvider.java",
+                        "line": 97
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "broker/src/main/java/org/apache/rocketmq/broker/util/ServiceProvider.java",
+                        "line": 102
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "broker/src/main/java/org/apache/rocketmq/broker/util/ServiceProvider.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "name",
+                        "uri": "broker/src/main/java/org/apache/rocketmq/broker/util/ServiceProvider.java",
+                        "line": 91
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "name : String",
+                        "uri": "broker/src/main/java/org/apache/rocketmq/broker/util/ServiceProvider.java",
+                        "line": 134
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "broker/src/main/java/org/apache/rocketmq/broker/util/ServiceProvider.java",
+                        "line": 135
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "broker/src/main/java/org/apache/rocketmq/broker/util/ServiceProvider.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "name",
+                        "uri": "broker/src/main/java/org/apache/rocketmq/broker/util/ServiceProvider.java",
+                        "line": 93
+                    }
+                ],
+                [
+                    {
+                        "message": "name : String",
+                        "uri": "broker/src/main/java/org/apache/rocketmq/broker/util/ServiceProvider.java",
+                        "line": 97
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "broker/src/main/java/org/apache/rocketmq/broker/util/ServiceProvider.java",
+                        "line": 102
+                    },
+                    {
+                        "message": "name : String",
+                        "uri": "broker/src/main/java/org/apache/rocketmq/broker/util/ServiceProvider.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "name",
+                        "uri": "broker/src/main/java/org/apache/rocketmq/broker/util/ServiceProvider.java",
+                        "line": 93
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 162
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 162
+                    },
+                    {
+                        "message": "file",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 163
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "tmpFile : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "file",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 166
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 162
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 166
+                    },
+                    {
+                        "message": "new File(...)",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 166
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "tmpFile : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 171
+                    },
+                    {
+                        "message": "getParentFile(...) : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 171
+                    },
+                    {
+                        "message": "fileParent",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 173
+                    }
+                ],
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "bakFile : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 159
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 171
+                    },
+                    {
+                        "message": "getParentFile(...) : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 171
+                    },
+                    {
+                        "message": "fileParent",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 173
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "tmpFile : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 171
+                    },
+                    {
+                        "message": "file",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 178
+                    }
+                ],
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "bakFile : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 159
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 171
+                    },
+                    {
+                        "message": "file",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 178
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 190
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 190
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 194
+                    },
+                    {
+                        "message": "file",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 195
+                    }
+                ],
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 190
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 190
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 194
+                    },
+                    {
+                        "message": "file",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 195
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 190
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 190
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 194
+                    },
+                    {
+                        "message": "file",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 196
+                    }
+                ],
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 190
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 190
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 194
+                    },
+                    {
+                        "message": "file",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 196
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 190
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 190
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 194
+                    },
+                    {
+                        "message": "file",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 201
+                    }
+                ],
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 157
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 190
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 190
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 191
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 194
+                    },
+                    {
+                        "message": "file",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/MixAll.java",
+                        "line": 201
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 568
+                    },
+                    {
+                        "message": "file",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 569
+                    }
+                ],
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 568
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 575
+                    },
+                    {
+                        "message": "listFiles(...) : File[]",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 575
+                    },
+                    {
+                        "message": "file1 : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 577
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 568
+                    },
+                    {
+                        "message": "file",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 569
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 568
+                    },
+                    {
+                        "message": "file",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 572
+                    }
+                ],
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 568
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 575
+                    },
+                    {
+                        "message": "listFiles(...) : File[]",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 575
+                    },
+                    {
+                        "message": "file1 : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 577
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 568
+                    },
+                    {
+                        "message": "file",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 572
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 568
+                    },
+                    {
+                        "message": "file",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 573
+                    }
+                ],
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 568
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 575
+                    },
+                    {
+                        "message": "listFiles(...) : File[]",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 575
+                    },
+                    {
+                        "message": "file1 : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 577
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 568
+                    },
+                    {
+                        "message": "file",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 573
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 568
+                    },
+                    {
+                        "message": "file",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 574
+                    }
+                ],
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 568
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 575
+                    },
+                    {
+                        "message": "listFiles(...) : File[]",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 575
+                    },
+                    {
+                        "message": "file1 : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 577
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 568
+                    },
+                    {
+                        "message": "file",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 574
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 568
+                    },
+                    {
+                        "message": "file",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 575
+                    }
+                ],
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 568
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 575
+                    },
+                    {
+                        "message": "listFiles(...) : File[]",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 575
+                    },
+                    {
+                        "message": "file1 : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 577
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 568
+                    },
+                    {
+                        "message": "file",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 575
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 568
+                    },
+                    {
+                        "message": "file",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 579
+                    }
+                ],
+                [
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 568
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 575
+                    },
+                    {
+                        "message": "listFiles(...) : File[]",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 575
+                    },
+                    {
+                        "message": "file1 : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 577
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 568
+                    },
+                    {
+                        "message": "file",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 579
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getenv(...) : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "getProperty(...) : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "this <.field> [post update] : PlainPermissionManager [fileHome] : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "this <.method> [post update] : PlainPermissionManager [fileHome] : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "this <.method> : PlainPermissionManager [fileHome] : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "parameter this : PlainPermissionManager [fileHome] : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 296
+                    },
+                    {
+                        "message": "this <.field> : PlainPermissionManager [fileHome] : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 298
+                    },
+                    {
+                        "message": "fileHome : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 298
+                    },
+                    {
+                        "message": "watchFilePath : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "{...} : String[] [[]] : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "new String[] : String[] [[]] : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "watchFiles : String[] [[]] : String",
+                        "uri": "srvutil/src/main/java/org/apache/rocketmq/srvutil/FileWatchService.java",
+                        "line": 45
+                    },
+                    {
+                        "message": "watchFiles : String[] [[]] : String",
+                        "uri": "srvutil/src/main/java/org/apache/rocketmq/srvutil/FileWatchService.java",
+                        "line": 52
+                    },
+                    {
+                        "message": "...[...] : String",
+                        "uri": "srvutil/src/main/java/org/apache/rocketmq/srvutil/FileWatchService.java",
+                        "line": 52
+                    },
+                    {
+                        "message": "new File(...)",
+                        "uri": "srvutil/src/main/java/org/apache/rocketmq/srvutil/FileWatchService.java",
+                        "line": 52
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getenv(...) : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "getProperty(...) : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "this <.field> [post update] : PlainPermissionManager [fileHome] : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "this <.method> [post update] : PlainPermissionManager [fileHome] : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "this <.method> : PlainPermissionManager [fileHome] : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "parameter this : PlainPermissionManager [fileHome] : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 296
+                    },
+                    {
+                        "message": "this <.field> : PlainPermissionManager [fileHome] : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 298
+                    },
+                    {
+                        "message": "fileHome : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 298
+                    },
+                    {
+                        "message": "watchFilePath : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "{...} : String[] [[]] : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "new String[] : String[] [[]] : String",
+                        "uri": "acl/src/main/java/org/apache/rocketmq/acl/plain/PlainPermissionManager.java",
+                        "line": 299
+                    },
+                    {
+                        "message": "watchFiles : String[] [[]] : String",
+                        "uri": "srvutil/src/main/java/org/apache/rocketmq/srvutil/FileWatchService.java",
+                        "line": 45
+                    },
+                    {
+                        "message": "watchFiles : String[] [[]] : String",
+                        "uri": "srvutil/src/main/java/org/apache/rocketmq/srvutil/FileWatchService.java",
+                        "line": 54
+                    },
+                    {
+                        "message": "...[...] : String",
+                        "uri": "srvutil/src/main/java/org/apache/rocketmq/srvutil/FileWatchService.java",
+                        "line": 54
+                    },
+                    {
+                        "message": "filePath : String",
+                        "uri": "srvutil/src/main/java/org/apache/rocketmq/srvutil/FileWatchService.java",
+                        "line": 92
+                    },
+                    {
+                        "message": "filePath : String",
+                        "uri": "srvutil/src/main/java/org/apache/rocketmq/srvutil/FileWatchService.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "get(...) : Path",
+                        "uri": "srvutil/src/main/java/org/apache/rocketmq/srvutil/FileWatchService.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "path",
+                        "uri": "srvutil/src/main/java/org/apache/rocketmq/srvutil/FileWatchService.java",
+                        "line": 94
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "rootDir : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/config/StorePathConfigHelper.java",
+                        "line": 39
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/config/StorePathConfigHelper.java",
+                        "line": 40
+                    },
+                    {
+                        "message": "getAbortFile(...) : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 320
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1206
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1207
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1207
+                    },
+                    {
+                        "message": "file",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1208
+                    }
+                ],
+                [
+                    {
+                        "message": "rootDir : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/config/StorePathConfigHelper.java",
+                        "line": 39
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/config/StorePathConfigHelper.java",
+                        "line": 40
+                    },
+                    {
+                        "message": "getAbortFile(...) : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 342
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1206
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1207
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1207
+                    },
+                    {
+                        "message": "file",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1208
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "rootDir : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/config/StorePathConfigHelper.java",
+                        "line": 39
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/config/StorePathConfigHelper.java",
+                        "line": 40
+                    },
+                    {
+                        "message": "getAbortFile(...) : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1216
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1217
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1217
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1218
+                    },
+                    {
+                        "message": "file",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1219
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "rootDir : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/config/StorePathConfigHelper.java",
+                        "line": 39
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/config/StorePathConfigHelper.java",
+                        "line": 40
+                    },
+                    {
+                        "message": "getAbortFile(...) : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1288
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1289
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1289
+                    },
+                    {
+                        "message": "file",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1290
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "rootDir : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/config/StorePathConfigHelper.java",
+                        "line": 23
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/config/StorePathConfigHelper.java",
+                        "line": 24
+                    },
+                    {
+                        "message": "getStorePathConsumeQueue(...) : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1294
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1294
+                    },
+                    {
+                        "message": "dirLogic",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1295
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "rootDir : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/config/StorePathConfigHelper.java",
+                        "line": 23
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/config/StorePathConfigHelper.java",
+                        "line": 24
+                    },
+                    {
+                        "message": "getStorePathConsumeQueue(...) : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1294
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1294
+                    },
+                    {
+                        "message": "dirLogic : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1295
+                    },
+                    {
+                        "message": "listFiles(...) : File[]",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1295
+                    },
+                    {
+                        "message": "fileTopic",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1301
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "dirName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 80
+                    },
+                    {
+                        "message": "dirName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "f",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 83
+                    }
+                ],
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 77
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 144
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this.file : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "getParent(...) : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "dirName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 80
+                    },
+                    {
+                        "message": "dirName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "f",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 83
+                    }
+                ],
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 71
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this.file : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "getParent(...) : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "dirName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 80
+                    },
+                    {
+                        "message": "dirName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "f",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 83
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "dirName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 80
+                    },
+                    {
+                        "message": "dirName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "f",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 84
+                    }
+                ],
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 77
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 144
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this.file : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "getParent(...) : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "dirName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 80
+                    },
+                    {
+                        "message": "dirName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "f",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 84
+                    }
+                ],
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 71
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this.file : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "getParent(...) : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "dirName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 80
+                    },
+                    {
+                        "message": "dirName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "f",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 84
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 77
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 144
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 146
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this.file : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "this.file",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 161
+                    }
+                ],
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 71
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this.file : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "this.file",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 161
+                    }
+                ],
+                [
+                    {
+                        "message": "rootDir : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/config/StorePathConfigHelper.java",
+                        "line": 23
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/config/StorePathConfigHelper.java",
+                        "line": 24
+                    },
+                    {
+                        "message": "getStorePathConsumeQueue(...) : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1313
+                    },
+                    {
+                        "message": "storePath : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "queueDir : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "storePath : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 51
+                    },
+                    {
+                        "message": "storePath : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "this [post update] : MappedFileQueue [storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "new MappedFileQueue(...) : MappedFileQueue [storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "this [post update] : ConsumeQueue [mappedFileQueue, storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "new ConsumeQueue(...) : ConsumeQueue [mappedFileQueue, storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1310
+                    },
+                    {
+                        "message": "logic : ConsumeQueue [mappedFileQueue, storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1317
+                    },
+                    {
+                        "message": "parameter this : ConsumeQueue [mappedFileQueue, storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "this : ConsumeQueue [mappedFileQueue, storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 80
+                    },
+                    {
+                        "message": "this.mappedFileQueue : MappedFileQueue [storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 80
+                    },
+                    {
+                        "message": "parameter this : MappedFileQueue [storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "this : MappedFileQueue [storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "this.storePath : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "dir : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "listFiles(...) : File[]",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "file : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 162
+                    },
+                    {
+                        "message": "getPath(...) : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 162
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 71
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this.file : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 158
+                    },
+                    {
+                        "message": "this.file",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 161
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 71
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this [post update] : MappedFile [file] : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this <.method> [post update] : MappedFile [file] : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "new MappedFile(...) : MappedFile [file] : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/index/IndexFile.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "this [post update] : IndexFile [mappedFile, file] : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/index/IndexFile.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "new IndexFile(...) : IndexFile [mappedFile, file] : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/index/IndexService.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "f : IndexFile [mappedFile, file] : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/index/IndexService.java",
+                        "line": 71
+                    },
+                    {
+                        "message": "parameter this : IndexFile [mappedFile, file] : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/index/IndexFile.java",
+                        "line": 88
+                    },
+                    {
+                        "message": "this : IndexFile [mappedFile, file] : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/index/IndexFile.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "this.mappedFile : MappedFile [file] : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/index/IndexFile.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "parameter this : MappedFile [file] : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 438
+                    },
+                    {
+                        "message": "this : MappedFile [file] : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 447
+                    },
+                    {
+                        "message": "this.file",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 447
+                    }
+                ],
+                [
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/index/IndexFile.java",
+                        "line": 42
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/index/IndexFile.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 71
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 151
+                    },
+                    {
+                        "message": "fileName : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this [post update] : MappedFile [file] : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "this <.method> [post update] : MappedFile [file] : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "new MappedFile(...) : MappedFile [file] : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/index/IndexFile.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "this [post update] : IndexFile [mappedFile, file] : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/index/IndexFile.java",
+                        "line": 46
+                    },
+                    {
+                        "message": "new IndexFile(...) : IndexFile [mappedFile, file] : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/index/IndexService.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "f : IndexFile [mappedFile, file] : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/index/IndexService.java",
+                        "line": 71
+                    },
+                    {
+                        "message": "parameter this : IndexFile [mappedFile, file] : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/index/IndexFile.java",
+                        "line": 88
+                    },
+                    {
+                        "message": "this : IndexFile [mappedFile, file] : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/index/IndexFile.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "this.mappedFile : MappedFile [file] : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/index/IndexFile.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "parameter this : MappedFile [file] : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 438
+                    },
+                    {
+                        "message": "this : MappedFile [file] : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 447
+                    },
+                    {
+                        "message": "this.file",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFile.java",
+                        "line": 447
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "rootDir : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/config/StorePathConfigHelper.java",
+                        "line": 23
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/config/StorePathConfigHelper.java",
+                        "line": 24
+                    },
+                    {
+                        "message": "getStorePathConsumeQueue(...) : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1313
+                    },
+                    {
+                        "message": "storePath : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "queueDir : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "storePath : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 51
+                    },
+                    {
+                        "message": "storePath : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "this [post update] : MappedFileQueue [storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "new MappedFileQueue(...) : MappedFileQueue [storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "this [post update] : ConsumeQueue [mappedFileQueue, storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "new ConsumeQueue(...) : ConsumeQueue [mappedFileQueue, storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1310
+                    },
+                    {
+                        "message": "logic : ConsumeQueue [mappedFileQueue, storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1317
+                    },
+                    {
+                        "message": "parameter this : ConsumeQueue [mappedFileQueue, storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "this : ConsumeQueue [mappedFileQueue, storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 80
+                    },
+                    {
+                        "message": "this.mappedFileQueue : MappedFileQueue [storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 80
+                    },
+                    {
+                        "message": "parameter this : MappedFileQueue [storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "this : MappedFileQueue [storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "this.storePath : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "dir",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 149
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "rootDir : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/config/StorePathConfigHelper.java",
+                        "line": 23
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/config/StorePathConfigHelper.java",
+                        "line": 24
+                    },
+                    {
+                        "message": "getStorePathConsumeQueue(...) : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1313
+                    },
+                    {
+                        "message": "storePath : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "queueDir : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "storePath : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 51
+                    },
+                    {
+                        "message": "storePath : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "this [post update] : MappedFileQueue [storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "new MappedFileQueue(...) : MappedFileQueue [storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "this [post update] : ConsumeQueue [mappedFileQueue, storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "new ConsumeQueue(...) : ConsumeQueue [mappedFileQueue, storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1310
+                    },
+                    {
+                        "message": "logic : ConsumeQueue [mappedFileQueue, storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1317
+                    },
+                    {
+                        "message": "parameter this : ConsumeQueue [mappedFileQueue, storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "this : ConsumeQueue [mappedFileQueue, storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 80
+                    },
+                    {
+                        "message": "this.mappedFileQueue : MappedFileQueue [storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 80
+                    },
+                    {
+                        "message": "parameter this : MappedFileQueue [storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "this : MappedFileQueue [storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "this.storePath : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "dir : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "listFiles(...) : File[]",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "file",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 155
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "rootDir : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/config/StorePathConfigHelper.java",
+                        "line": 23
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/config/StorePathConfigHelper.java",
+                        "line": 24
+                    },
+                    {
+                        "message": "getStorePathConsumeQueue(...) : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1313
+                    },
+                    {
+                        "message": "storePath : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 50
+                    },
+                    {
+                        "message": "queueDir : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "storePath : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 51
+                    },
+                    {
+                        "message": "storePath : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "this [post update] : MappedFileQueue [storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "new MappedFileQueue(...) : MappedFileQueue [storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "this [post update] : ConsumeQueue [mappedFileQueue, storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "new ConsumeQueue(...) : ConsumeQueue [mappedFileQueue, storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1310
+                    },
+                    {
+                        "message": "logic : ConsumeQueue [mappedFileQueue, storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/DefaultMessageStore.java",
+                        "line": 1317
+                    },
+                    {
+                        "message": "parameter this : ConsumeQueue [mappedFileQueue, storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 79
+                    },
+                    {
+                        "message": "this : ConsumeQueue [mappedFileQueue, storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 80
+                    },
+                    {
+                        "message": "this.mappedFileQueue : MappedFileQueue [storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/ConsumeQueue.java",
+                        "line": 80
+                    },
+                    {
+                        "message": "parameter this : MappedFileQueue [storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "this : MappedFileQueue [storePath] : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "this.storePath : String",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "dir : File",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "listFiles(...) : File[]",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 149
+                    },
+                    {
+                        "message": "file",
+                        "uri": "store/src/main/java/org/apache/rocketmq/store/MappedFileQueue.java",
+                        "line": 156
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "properties : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 426
+                    },
+                    {
+                        "message": "properties : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 429
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 429
+                    },
+                    {
+                        "message": "i : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 431
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 431
+                    },
+                    {
+                        "message": "...[...] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 433
+                    },
+                    {
+                        "message": "map [post update] : HashMap [<map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 433
+                    },
+                    {
+                        "message": "map : HashMap [<map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 438
+                    },
+                    {
+                        "message": "string2messageProperties(...) : HashMap [<map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 372
+                    },
+                    {
+                        "message": "map : HashMap [<map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 373
+                    },
+                    {
+                        "message": "msgExt [post update] : MessageExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 373
+                    },
+                    {
+                        "message": "msgExt : MessageExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 385
+                    },
+                    {
+                        "message": "decode(...) : MessageExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "clientDecode(...) : MessageExt [properties, <map.value>] : String",
+                        "uri": "client/src/main/java/org/apache/rocketmq/client/impl/MQClientAPIImpl.java",
+                        "line": 820
+                    },
+                    {
+                        "message": "messageExt : MessageExt [properties, <map.value>] : String",
+                        "uri": "client/src/main/java/org/apache/rocketmq/client/impl/MQClientAPIImpl.java",
+                        "line": 825
+                    },
+                    {
+                        "message": "viewMessage(...) : MessageExt [properties, <map.value>] : String",
+                        "uri": "client/src/main/java/org/apache/rocketmq/client/impl/MQAdminImpl.java",
+                        "line": 264
+                    },
+                    {
+                        "message": "viewMessage(...) : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/admin/DefaultMQAdminExtImpl.java",
+                        "line": 990
+                    },
+                    {
+                        "message": "viewMessage(...) : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/admin/DefaultMQAdminExt.java",
+                        "line": 127
+                    },
+                    {
+                        "message": "viewMessage(...) : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByIdSubCommand.java",
+                        "line": 47
+                    },
+                    {
+                        "message": "msg : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByIdSubCommand.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "msg : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByIdSubCommand.java",
+                        "line": 52
+                    },
+                    {
+                        "message": "msg : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByIdSubCommand.java",
+                        "line": 58
+                    },
+                    {
+                        "message": "msg : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByIdSubCommand.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "msg : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByIdSubCommand.java",
+                        "line": 162
+                    },
+                    {
+                        "message": "parameter this : MessageClientExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientExt.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "this : MessageClientExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientExt.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "msg : MessageClientExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientIDSetter.java",
+                        "line": 135
+                    },
+                    {
+                        "message": "msg : MessageClientExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientIDSetter.java",
+                        "line": 136
+                    },
+                    {
+                        "message": "parameter this : MessageClientExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/Message.java",
+                        "line": 101
+                    },
+                    {
+                        "message": "this : MessageClientExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/Message.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "this.properties : HashMap [<map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/Message.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "get(...) : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/Message.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "getProperty(...) : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientIDSetter.java",
+                        "line": 136
+                    },
+                    {
+                        "message": "getUniqID(...) : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientExt.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "uniqID : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientExt.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "getMsgId(...) : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByIdSubCommand.java",
+                        "line": 162
+                    },
+                    {
+                        "message": "bodyTmpFilePath",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByIdSubCommand.java",
+                        "line": 163
+                    }
+                ],
+                [
+                    {
+                        "message": "new String(...) : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 371
+                    },
+                    {
+                        "message": "propertiesString : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 372
+                    },
+                    {
+                        "message": "properties : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 426
+                    },
+                    {
+                        "message": "properties : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 429
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 429
+                    },
+                    {
+                        "message": "i : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 431
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 431
+                    },
+                    {
+                        "message": "...[...] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 433
+                    },
+                    {
+                        "message": "map [post update] : HashMap [<map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 433
+                    },
+                    {
+                        "message": "map : HashMap [<map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 438
+                    },
+                    {
+                        "message": "string2messageProperties(...) : HashMap [<map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 372
+                    },
+                    {
+                        "message": "map : HashMap [<map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 373
+                    },
+                    {
+                        "message": "msgExt [post update] : MessageExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 373
+                    },
+                    {
+                        "message": "msgExt : MessageExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 385
+                    },
+                    {
+                        "message": "decode(...) : MessageExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "clientDecode(...) : MessageExt [properties, <map.value>] : String",
+                        "uri": "client/src/main/java/org/apache/rocketmq/client/impl/MQClientAPIImpl.java",
+                        "line": 820
+                    },
+                    {
+                        "message": "messageExt : MessageExt [properties, <map.value>] : String",
+                        "uri": "client/src/main/java/org/apache/rocketmq/client/impl/MQClientAPIImpl.java",
+                        "line": 825
+                    },
+                    {
+                        "message": "viewMessage(...) : MessageExt [properties, <map.value>] : String",
+                        "uri": "client/src/main/java/org/apache/rocketmq/client/impl/MQAdminImpl.java",
+                        "line": 264
+                    },
+                    {
+                        "message": "viewMessage(...) : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/admin/DefaultMQAdminExtImpl.java",
+                        "line": 990
+                    },
+                    {
+                        "message": "viewMessage(...) : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/admin/DefaultMQAdminExt.java",
+                        "line": 127
+                    },
+                    {
+                        "message": "viewMessage(...) : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByIdSubCommand.java",
+                        "line": 47
+                    },
+                    {
+                        "message": "msg : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByIdSubCommand.java",
+                        "line": 49
+                    },
+                    {
+                        "message": "msg : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByIdSubCommand.java",
+                        "line": 52
+                    },
+                    {
+                        "message": "msg : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByIdSubCommand.java",
+                        "line": 58
+                    },
+                    {
+                        "message": "msg : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByIdSubCommand.java",
+                        "line": 154
+                    },
+                    {
+                        "message": "msg : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByIdSubCommand.java",
+                        "line": 162
+                    },
+                    {
+                        "message": "parameter this : MessageClientExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientExt.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "this : MessageClientExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientExt.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "msg : MessageClientExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientIDSetter.java",
+                        "line": 135
+                    },
+                    {
+                        "message": "msg : MessageClientExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientIDSetter.java",
+                        "line": 136
+                    },
+                    {
+                        "message": "parameter this : MessageClientExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/Message.java",
+                        "line": 101
+                    },
+                    {
+                        "message": "this : MessageClientExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/Message.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "this.properties : HashMap [<map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/Message.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "get(...) : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/Message.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "getProperty(...) : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientIDSetter.java",
+                        "line": 136
+                    },
+                    {
+                        "message": "getUniqID(...) : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientExt.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "uniqID : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientExt.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "getMsgId(...) : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByIdSubCommand.java",
+                        "line": 162
+                    },
+                    {
+                        "message": "bodyTmpFilePath",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByIdSubCommand.java",
+                        "line": 163
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "properties : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 426
+                    },
+                    {
+                        "message": "properties : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 429
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 429
+                    },
+                    {
+                        "message": "i : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 431
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 431
+                    },
+                    {
+                        "message": "...[...] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 433
+                    },
+                    {
+                        "message": "map [post update] : HashMap [<map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 433
+                    },
+                    {
+                        "message": "map : HashMap [<map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 438
+                    },
+                    {
+                        "message": "string2messageProperties(...) : HashMap [<map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 372
+                    },
+                    {
+                        "message": "map : HashMap [<map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 373
+                    },
+                    {
+                        "message": "msgExt [post update] : MessageExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 373
+                    },
+                    {
+                        "message": "msgExt : MessageExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 385
+                    },
+                    {
+                        "message": "decode(...) : MessageExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "clientDecode(...) : MessageExt [properties, <map.value>] : String",
+                        "uri": "client/src/main/java/org/apache/rocketmq/client/impl/MQClientAPIImpl.java",
+                        "line": 820
+                    },
+                    {
+                        "message": "messageExt : MessageExt [properties, <map.value>] : String",
+                        "uri": "client/src/main/java/org/apache/rocketmq/client/impl/MQClientAPIImpl.java",
+                        "line": 825
+                    },
+                    {
+                        "message": "viewMessage(...) : MessageExt [properties, <map.value>] : String",
+                        "uri": "client/src/main/java/org/apache/rocketmq/client/impl/MQAdminImpl.java",
+                        "line": 264
+                    },
+                    {
+                        "message": "viewMessage(...) : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/admin/DefaultMQAdminExtImpl.java",
+                        "line": 990
+                    },
+                    {
+                        "message": "viewMessage(...) : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/admin/DefaultMQAdminExtImpl.java",
+                        "line": 320
+                    },
+                    {
+                        "message": "viewMessage(...) : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/admin/DefaultMQAdminExt.java",
+                        "line": 497
+                    },
+                    {
+                        "message": "viewMessage(...) : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByUniqueKeySubCommand.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "msg : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByUniqueKeySubCommand.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "msg : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByUniqueKeySubCommand.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "msg : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByUniqueKeySubCommand.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "parameter this : MessageClientExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientExt.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "this : MessageClientExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientExt.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "msg : MessageClientExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientIDSetter.java",
+                        "line": 135
+                    },
+                    {
+                        "message": "msg : MessageClientExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientIDSetter.java",
+                        "line": 136
+                    },
+                    {
+                        "message": "parameter this : MessageClientExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/Message.java",
+                        "line": 101
+                    },
+                    {
+                        "message": "this : MessageClientExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/Message.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "this.properties : HashMap [<map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/Message.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "get(...) : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/Message.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "getProperty(...) : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientIDSetter.java",
+                        "line": 136
+                    },
+                    {
+                        "message": "getUniqID(...) : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientExt.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "uniqID : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientExt.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "getMsgId(...) : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByUniqueKeySubCommand.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "bodyTmpFilePath",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByUniqueKeySubCommand.java",
+                        "line": 161
+                    }
+                ],
+                [
+                    {
+                        "message": "new String(...) : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/UtilAll.java",
+                        "line": 248
+                    },
+                    {
+                        "message": "bytes2string(...) : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 69
+                    },
+                    {
+                        "message": "createMessageId(...) : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 378
+                    },
+                    {
+                        "message": "msgId : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 379
+                    },
+                    {
+                        "message": "msgId : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageExt.java",
+                        "line": 172
+                    },
+                    {
+                        "message": "msgId : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageExt.java",
+                        "line": 173
+                    },
+                    {
+                        "message": "this [post update] : MessageExt [msgId] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageExt.java",
+                        "line": 173
+                    },
+                    {
+                        "message": "msgExt [post update] : MessageExt [msgId] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 379
+                    },
+                    {
+                        "message": "msgExt : MessageExt [msgId] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 385
+                    },
+                    {
+                        "message": "decode(...) : MessageExt [msgId] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "clientDecode(...) : MessageExt [msgId] : String",
+                        "uri": "client/src/main/java/org/apache/rocketmq/client/impl/MQClientAPIImpl.java",
+                        "line": 820
+                    },
+                    {
+                        "message": "messageExt : MessageExt [msgId] : String",
+                        "uri": "client/src/main/java/org/apache/rocketmq/client/impl/MQClientAPIImpl.java",
+                        "line": 825
+                    },
+                    {
+                        "message": "viewMessage(...) : MessageExt [msgId] : String",
+                        "uri": "client/src/main/java/org/apache/rocketmq/client/impl/MQAdminImpl.java",
+                        "line": 264
+                    },
+                    {
+                        "message": "viewMessage(...) : MessageExt [msgId] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/admin/DefaultMQAdminExtImpl.java",
+                        "line": 990
+                    },
+                    {
+                        "message": "viewMessage(...) : MessageExt [msgId] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/admin/DefaultMQAdminExtImpl.java",
+                        "line": 320
+                    },
+                    {
+                        "message": "viewMessage(...) : MessageExt [msgId] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/admin/DefaultMQAdminExt.java",
+                        "line": 497
+                    },
+                    {
+                        "message": "viewMessage(...) : MessageExt [msgId] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByUniqueKeySubCommand.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "msg : MessageExt [msgId] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByUniqueKeySubCommand.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "msg : MessageExt [msgId] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByUniqueKeySubCommand.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "msg : MessageExt [msgId] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByUniqueKeySubCommand.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "parameter this : MessageExt [msgId] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageExt.java",
+                        "line": 168
+                    },
+                    {
+                        "message": "this <.field> : MessageExt [msgId] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageExt.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "msgId : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageExt.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "getMsgId(...) : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByUniqueKeySubCommand.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "bodyTmpFilePath",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByUniqueKeySubCommand.java",
+                        "line": 161
+                    }
+                ],
+                [
+                    {
+                        "message": "new String(...) : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 371
+                    },
+                    {
+                        "message": "propertiesString : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 372
+                    },
+                    {
+                        "message": "properties : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 426
+                    },
+                    {
+                        "message": "properties : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 429
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 429
+                    },
+                    {
+                        "message": "i : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 431
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 431
+                    },
+                    {
+                        "message": "...[...] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 433
+                    },
+                    {
+                        "message": "map [post update] : HashMap [<map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 433
+                    },
+                    {
+                        "message": "map : HashMap [<map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 438
+                    },
+                    {
+                        "message": "string2messageProperties(...) : HashMap [<map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 372
+                    },
+                    {
+                        "message": "map : HashMap [<map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 373
+                    },
+                    {
+                        "message": "msgExt [post update] : MessageExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 373
+                    },
+                    {
+                        "message": "msgExt : MessageExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 385
+                    },
+                    {
+                        "message": "decode(...) : MessageExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageDecoder.java",
+                        "line": 148
+                    },
+                    {
+                        "message": "clientDecode(...) : MessageExt [properties, <map.value>] : String",
+                        "uri": "client/src/main/java/org/apache/rocketmq/client/impl/MQClientAPIImpl.java",
+                        "line": 820
+                    },
+                    {
+                        "message": "messageExt : MessageExt [properties, <map.value>] : String",
+                        "uri": "client/src/main/java/org/apache/rocketmq/client/impl/MQClientAPIImpl.java",
+                        "line": 825
+                    },
+                    {
+                        "message": "viewMessage(...) : MessageExt [properties, <map.value>] : String",
+                        "uri": "client/src/main/java/org/apache/rocketmq/client/impl/MQAdminImpl.java",
+                        "line": 264
+                    },
+                    {
+                        "message": "viewMessage(...) : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/admin/DefaultMQAdminExtImpl.java",
+                        "line": 990
+                    },
+                    {
+                        "message": "viewMessage(...) : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/admin/DefaultMQAdminExtImpl.java",
+                        "line": 320
+                    },
+                    {
+                        "message": "viewMessage(...) : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/admin/DefaultMQAdminExt.java",
+                        "line": 497
+                    },
+                    {
+                        "message": "viewMessage(...) : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByUniqueKeySubCommand.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "msg : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByUniqueKeySubCommand.java",
+                        "line": 65
+                    },
+                    {
+                        "message": "msg : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByUniqueKeySubCommand.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "msg : MessageExt [properties, <map.value>] : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByUniqueKeySubCommand.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "parameter this : MessageClientExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientExt.java",
+                        "line": 30
+                    },
+                    {
+                        "message": "this : MessageClientExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientExt.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "msg : MessageClientExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientIDSetter.java",
+                        "line": 135
+                    },
+                    {
+                        "message": "msg : MessageClientExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientIDSetter.java",
+                        "line": 136
+                    },
+                    {
+                        "message": "parameter this : MessageClientExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/Message.java",
+                        "line": 101
+                    },
+                    {
+                        "message": "this : MessageClientExt [properties, <map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/Message.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "this.properties : HashMap [<map.value>] : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/Message.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "get(...) : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/Message.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "getProperty(...) : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientIDSetter.java",
+                        "line": 136
+                    },
+                    {
+                        "message": "getUniqID(...) : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientExt.java",
+                        "line": 31
+                    },
+                    {
+                        "message": "uniqID : String",
+                        "uri": "common/src/main/java/org/apache/rocketmq/common/message/MessageClientExt.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "getMsgId(...) : String",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByUniqueKeySubCommand.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "bodyTmpFilePath",
+                        "uri": "tools/src/main/java/org/apache/rocketmq/tools/command/message/QueryMsgByUniqueKeySubCommand.java",
+                        "line": 161
+                    }
+                ]
+            ]
+        }
+    ]
+}

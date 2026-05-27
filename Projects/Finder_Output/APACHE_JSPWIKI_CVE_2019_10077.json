@@ -1,0 +1,3691 @@
+{
+    "cwe_id": "cwe-079",
+    "vulnerabilities": [
+        {
+            "traces": [
+                [
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/providers/BasicAttachmentProvider.java",
+                        "line": 201
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/providers/BasicAttachmentProvider.java",
+                        "line": 219
+                    },
+                    {
+                        "message": "findAttachmentDir(...) : File",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/providers/BasicAttachmentProvider.java",
+                        "line": 441
+                    },
+                    {
+                        "message": "attDir : File",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/providers/BasicAttachmentProvider.java",
+                        "line": 445
+                    },
+                    {
+                        "message": "dir : File",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/providers/BasicAttachmentProvider.java",
+                        "line": 402
+                    },
+                    {
+                        "message": "dir : File",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/providers/BasicAttachmentProvider.java",
+                        "line": 414
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/providers/BasicAttachmentProvider.java",
+                        "line": 414
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/providers/BasicAttachmentProvider.java",
+                        "line": 430
+                    },
+                    {
+                        "message": "findFile(...) : File",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/providers/BasicAttachmentProvider.java",
+                        "line": 445
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/providers/BasicAttachmentProvider.java",
+                        "line": 447
+                    },
+                    {
+                        "message": "new FileInputStream(...) : FileInputStream",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/providers/BasicAttachmentProvider.java",
+                        "line": 447
+                    },
+                    {
+                        "message": "getAttachmentData(...) : FileInputStream",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/attachment/AttachmentManager.java",
+                        "line": 435
+                    },
+                    {
+                        "message": "getAttachmentStream(...) : FileInputStream",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/attachment/AttachmentServlet.java",
+                        "line": 288
+                    },
+                    {
+                        "message": "in : FileInputStream",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/attachment/AttachmentServlet.java",
+                        "line": 293
+                    },
+                    {
+                        "message": "buffer [post update] : byte[]",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/attachment/AttachmentServlet.java",
+                        "line": 293
+                    },
+                    {
+                        "message": "buffer",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/attachment/AttachmentServlet.java",
+                        "line": 295
+                    }
+                ],
+                [
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/providers/BasicAttachmentProvider.java",
+                        "line": 209
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/providers/BasicAttachmentProvider.java",
+                        "line": 219
+                    },
+                    {
+                        "message": "findAttachmentDir(...) : File",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/providers/BasicAttachmentProvider.java",
+                        "line": 441
+                    },
+                    {
+                        "message": "attDir : File",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/providers/BasicAttachmentProvider.java",
+                        "line": 445
+                    },
+                    {
+                        "message": "dir : File",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/providers/BasicAttachmentProvider.java",
+                        "line": 402
+                    },
+                    {
+                        "message": "dir : File",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/providers/BasicAttachmentProvider.java",
+                        "line": 414
+                    },
+                    {
+                        "message": "new File(...) : File",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/providers/BasicAttachmentProvider.java",
+                        "line": 414
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/providers/BasicAttachmentProvider.java",
+                        "line": 430
+                    },
+                    {
+                        "message": "findFile(...) : File",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/providers/BasicAttachmentProvider.java",
+                        "line": 445
+                    },
+                    {
+                        "message": "f : File",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/providers/BasicAttachmentProvider.java",
+                        "line": 447
+                    },
+                    {
+                        "message": "new FileInputStream(...) : FileInputStream",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/providers/BasicAttachmentProvider.java",
+                        "line": 447
+                    },
+                    {
+                        "message": "getAttachmentData(...) : FileInputStream",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/attachment/AttachmentManager.java",
+                        "line": 435
+                    },
+                    {
+                        "message": "getAttachmentStream(...) : FileInputStream",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/attachment/AttachmentServlet.java",
+                        "line": 288
+                    },
+                    {
+                        "message": "in : FileInputStream",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/attachment/AttachmentServlet.java",
+                        "line": 293
+                    },
+                    {
+                        "message": "buffer [post update] : byte[]",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/attachment/AttachmentServlet.java",
+                        "line": 293
+                    },
+                    {
+                        "message": "buffer",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/attachment/AttachmentServlet.java",
+                        "line": 295
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "encode(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1282
+                    },
+                    {
+                        "message": "encodeName(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/url/DefaultURLConstructor.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "uri : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/url/DefaultURLConstructor.java",
+                        "line": 105
+                    },
+                    {
+                        "message": "replace(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/url/DefaultURLConstructor.java",
+                        "line": 105
+                    },
+                    {
+                        "message": "uri : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/url/DefaultURLConstructor.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "replace(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/url/DefaultURLConstructor.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "uri : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/url/DefaultURLConstructor.java",
+                        "line": 108
+                    },
+                    {
+                        "message": "encodeURI(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/url/DefaultURLConstructor.java",
+                        "line": 88
+                    },
+                    {
+                        "message": "dest : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 228
+                    },
+                    {
+                        "message": "dest : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 240
+                    },
+                    {
+                        "message": "res [post update] : StringBuilder",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 240
+                    },
+                    {
+                        "message": "res : StringBuilder",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 245
+                    },
+                    {
+                        "message": "res : StringBuilder",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 247
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 247
+                    },
+                    {
+                        "message": "replaceString(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/url/DefaultURLConstructor.java",
+                        "line": 88
+                    },
+                    {
+                        "message": "baseptrn : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/url/DefaultURLConstructor.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "orig : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 228
+                    },
+                    {
+                        "message": "orig : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "replaceString(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/url/DefaultURLConstructor.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "baseptrn : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/url/DefaultURLConstructor.java",
+                        "line": 91
+                    },
+                    {
+                        "message": "doReplacement(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/url/DefaultURLConstructor.java",
+                        "line": 140
+                    },
+                    {
+                        "message": "makeURL(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/url/DefaultURLConstructor.java",
+                        "line": 173
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/url/DefaultURLConstructor.java",
+                        "line": 173
+                    },
+                    {
+                        "message": "makeURL(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 883
+                    },
+                    {
+                        "message": "getURL(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/attachment/AttachmentServlet.java",
+                        "line": 304
+                    },
+                    {
+                        "message": "errorPage : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/attachment/AttachmentServlet.java",
+                        "line": 434
+                    },
+                    {
+                        "message": "nextPage : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/attachment/AttachmentServlet.java",
+                        "line": 448
+                    },
+                    {
+                        "message": "validateNextPage(...)",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/attachment/AttachmentServlet.java",
+                        "line": 304
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getData(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/user/XMLUserDatabase.java",
+                        "line": 716
+                    },
+                    {
+                        "message": "text : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/user/XMLUserDatabase.java",
+                        "line": 720
+                    },
+                    {
+                        "message": "extractText(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/user/XMLUserDatabase.java",
+                        "line": 398
+                    },
+                    {
+                        "message": "value",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/user/XMLUserDatabase.java",
+                        "line": 400
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "newName : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/user/XMLUserDatabase.java",
+                        "line": 458
+                    },
+                    {
+                        "message": "newName : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/user/XMLUserDatabase.java",
+                        "line": 493
+                    },
+                    {
+                        "message": "value : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/user/XMLUserDatabase.java",
+                        "line": 815
+                    },
+                    {
+                        "message": "value",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/user/XMLUserDatabase.java",
+                        "line": 817
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "readLine(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/diff/ExternalDiffProvider.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "line : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/diff/ExternalDiffProvider.java",
+                        "line": 194
+                    },
+                    {
+                        "message": "trim(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/diff/ExternalDiffProvider.java",
+                        "line": 194
+                    },
+                    {
+                        "message": "out [post update] : StringBuilder",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/diff/ExternalDiffProvider.java",
+                        "line": 194
+                    },
+                    {
+                        "message": "out : StringBuilder",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/diff/ExternalDiffProvider.java",
+                        "line": 195
+                    },
+                    {
+                        "message": "out : StringBuilder",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/diff/ExternalDiffProvider.java",
+                        "line": 198
+                    },
+                    {
+                        "message": "out : StringBuilder",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/diff/ExternalDiffProvider.java",
+                        "line": 199
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/diff/ExternalDiffProvider.java",
+                        "line": 199
+                    },
+                    {
+                        "message": "colorizeDiff(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/diff/ExternalDiffProvider.java",
+                        "line": 126
+                    },
+                    {
+                        "message": "diff : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/diff/ExternalDiffProvider.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "makeDiffHtml(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/diff/DifferenceManager.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "diff : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/diff/DifferenceManager.java",
+                        "line": 112
+                    },
+                    {
+                        "message": "makeDiff(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1921
+                    },
+                    {
+                        "message": "diff : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1923
+                    },
+                    {
+                        "message": "getDiff(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/InsertDiffTag.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "diff",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/InsertDiffTag.java",
+                        "line": 116
+                    }
+                ],
+                [
+                    {
+                        "message": "readLine(...) : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/FileUtil.java",
+                        "line": 143
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/FileUtil.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "result [post update] : StringBuilder",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/FileUtil.java",
+                        "line": 145
+                    },
+                    {
+                        "message": "result : StringBuilder",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/FileUtil.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/FileUtil.java",
+                        "line": 170
+                    },
+                    {
+                        "message": "runSimpleCommand(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/diff/ExternalDiffProvider.java",
+                        "line": 118
+                    },
+                    {
+                        "message": "output : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/diff/ExternalDiffProvider.java",
+                        "line": 121
+                    },
+                    {
+                        "message": "getBytes(...) : byte[]",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/diff/ExternalDiffProvider.java",
+                        "line": 121
+                    },
+                    {
+                        "message": "new String(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/diff/ExternalDiffProvider.java",
+                        "line": 121
+                    },
+                    {
+                        "message": "rawWikiDiff : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/diff/ExternalDiffProvider.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 211
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 212
+                    },
+                    {
+                        "message": "orig : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 228
+                    },
+                    {
+                        "message": "orig : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "replaceString(...) : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 212
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 213
+                    },
+                    {
+                        "message": "orig : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 228
+                    },
+                    {
+                        "message": "orig : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "replaceString(...) : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 213
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 214
+                    },
+                    {
+                        "message": "orig : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 228
+                    },
+                    {
+                        "message": "orig : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "replaceString(...) : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 214
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 215
+                    },
+                    {
+                        "message": "orig : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 228
+                    },
+                    {
+                        "message": "orig : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "replaceString(...) : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 215
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 217
+                    },
+                    {
+                        "message": "replaceEntities(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/diff/ExternalDiffProvider.java",
+                        "line": 123
+                    },
+                    {
+                        "message": "diff : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/diff/ExternalDiffProvider.java",
+                        "line": 147
+                    },
+                    {
+                        "message": "makeDiffHtml(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/diff/DifferenceManager.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "diff : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/diff/DifferenceManager.java",
+                        "line": 112
+                    },
+                    {
+                        "message": "makeDiff(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1921
+                    },
+                    {
+                        "message": "diff : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1923
+                    },
+                    {
+                        "message": "getDiff(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/InsertDiffTag.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "diff",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/InsertDiffTag.java",
+                        "line": 116
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getString(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/LinkTag.java",
+                        "line": 457
+                    },
+                    {
+                        "message": "trim(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/LinkTag.java",
+                        "line": 457
+                    },
+                    {
+                        "message": "linktext",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/LinkTag.java",
+                        "line": 458
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getAttribute(...) : Object",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/preferences/Preferences.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "(...)... : Preferences",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/preferences/Preferences.java",
+                        "line": 165
+                    },
+                    {
+                        "message": "prefs : Preferences",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/preferences/Preferences.java",
+                        "line": 168
+                    },
+                    {
+                        "message": "get(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/preferences/Preferences.java",
+                        "line": 168
+                    },
+                    {
+                        "message": "getPreference(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/preferences/Preferences.java",
+                        "line": 283
+                    },
+                    {
+                        "message": "prefDateFormat : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/preferences/Preferences.java",
+                        "line": 308
+                    },
+                    {
+                        "message": "new SimpleDateFormat(...) : SimpleDateFormat",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/preferences/Preferences.java",
+                        "line": 308
+                    },
+                    {
+                        "message": "fmt : SimpleDateFormat",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/preferences/Preferences.java",
+                        "line": 319
+                    },
+                    {
+                        "message": "getDateFormat(...) : SimpleDateFormat",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/PageDateTag.java",
+                        "line": 85
+                    },
+                    {
+                        "message": "fmt : SimpleDateFormat",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/PageDateTag.java",
+                        "line": 89
+                    },
+                    {
+                        "message": "format(...)",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/PageDateTag.java",
+                        "line": 89
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "page : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1263
+                    },
+                    {
+                        "message": "page : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1266
+                    },
+                    {
+                        "message": "page : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ui/CommandResolver.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "...?...:... : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ui/CommandResolver.java",
+                        "line": 334
+                    },
+                    {
+                        "message": "getFinalPageName(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1266
+                    },
+                    {
+                        "message": "getFinalPageName(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 1092
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 1096
+                    },
+                    {
+                        "message": "getFinalPageName(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 655
+                    },
+                    {
+                        "message": "ref : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 657
+                    },
+                    {
+                        "message": "cleanedRefs [post update] : TreeSet [<element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 657
+                    },
+                    {
+                        "message": "cleanedRefs : TreeSet [<element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 660
+                    },
+                    {
+                        "message": "m_refersTo [post update] : Map [<map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 660
+                    },
+                    {
+                        "message": "this <.field> [post update] : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 660
+                    },
+                    {
+                        "message": "this <.method> [post update] : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "this <.method> [post update] : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 275
+                    },
+                    {
+                        "message": "this : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 312
+                    },
+                    {
+                        "message": "listener : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventUtils.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "listener : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventUtils.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "listener : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventManager.java",
+                        "line": 230
+                    },
+                    {
+                        "message": "listener : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventManager.java",
+                        "line": 234
+                    },
+                    {
+                        "message": "c_monitor : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventManager.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "c_monitor : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventManager.java",
+                        "line": 354
+                    },
+                    {
+                        "message": "parameter this : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 1110
+                    },
+                    {
+                        "message": "this <.method> : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 1118
+                    },
+                    {
+                        "message": "parameter this : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 558
+                    },
+                    {
+                        "message": "this <.field> : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 560
+                    },
+                    {
+                        "message": "m_refersTo : Map [<map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 560
+                    },
+                    {
+                        "message": "get(...) : TreeSet [<element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 560
+                    },
+                    {
+                        "message": "refTo : TreeSet [<element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 564
+                    },
+                    {
+                        "message": "iterator(...) : Iterator [<element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 564
+                    },
+                    {
+                        "message": "itRefTo : Iterator [<element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 567
+                    },
+                    {
+                        "message": "next(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 567
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 571
+                    },
+                    {
+                        "message": "msg : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/InternalWikiException.java",
+                        "line": 37
+                    },
+                    {
+                        "message": "msg : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/InternalWikiException.java",
+                        "line": 39
+                    },
+                    {
+                        "message": "this <constr(this)> [post update] : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/InternalWikiException.java",
+                        "line": 39
+                    },
+                    {
+                        "message": "new InternalWikiException(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 571
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 558
+                    },
+                    {
+                        "message": "Exception out: pageRemoved(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 1118
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 1110
+                    },
+                    {
+                        "message": "Exception out: actionPerformed(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventManager.java",
+                        "line": 354
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventManager.java",
+                        "line": 350
+                    },
+                    {
+                        "message": "Exception out: fireEvent(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/AuthorizationManager.java",
+                        "line": 739
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/AuthorizationManager.java",
+                        "line": 735
+                    },
+                    {
+                        "message": "Exception out: fireEvent(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/AuthorizationManager.java",
+                        "line": 183
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/AuthorizationManager.java",
+                        "line": 176
+                    },
+                    {
+                        "message": "Exception out: checkPermission(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/BasicSearchProvider.java",
+                        "line": 174
+                    },
+                    {
+                        "message": "catch (...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/BasicSearchProvider.java",
+                        "line": 187
+                    },
+                    {
+                        "message": "Uncaught exception : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/BasicSearchProvider.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/BasicSearchProvider.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "Exception out: findPages(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/BasicSearchProvider.java",
+                        "line": 199
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/BasicSearchProvider.java",
+                        "line": 198
+                    },
+                    {
+                        "message": "Exception out: findPages(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/SearchManager.java",
+                        "line": 348
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/SearchManager.java",
+                        "line": 344
+                    },
+                    {
+                        "message": "Exception out: findPages(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 112
+                    },
+                    {
+                        "message": "Exception out: doBasicQuery(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "e : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 96
+                    },
+                    {
+                        "message": "e : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "getMessage(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "execute(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/DefaultPluginManager.java",
+                        "line": 342
+                    },
+                    {
+                        "message": "execute(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/PluginTag.java",
+                        "line": 110
+                    },
+                    {
+                        "message": "result : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/PluginTag.java",
+                        "line": 112
+                    },
+                    {
+                        "message": "executePlugin(...)",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/PluginTag.java",
+                        "line": 126
+                    }
+                ],
+                [
+                    {
+                        "message": "title : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1114
+                    },
+                    {
+                        "message": "title : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1133
+                    },
+                    {
+                        "message": "beautifyTitle(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 369
+                    },
+                    {
+                        "message": "author : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 377
+                    },
+                    {
+                        "message": "format(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 377
+                    },
+                    {
+                        "message": "buffer [post update] : StringBuilder",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 377
+                    },
+                    {
+                        "message": "sb [post update] : StringBuilder",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 286
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 290
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 298
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 298
+                    },
+                    {
+                        "message": "execute(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/DefaultPluginManager.java",
+                        "line": 342
+                    },
+                    {
+                        "message": "execute(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/PluginTag.java",
+                        "line": 110
+                    },
+                    {
+                        "message": "result : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/PluginTag.java",
+                        "line": 112
+                    },
+                    {
+                        "message": "executePlugin(...)",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/PluginTag.java",
+                        "line": 126
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "page : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1263
+                    },
+                    {
+                        "message": "page : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1266
+                    },
+                    {
+                        "message": "page : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ui/CommandResolver.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "...?...:... : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ui/CommandResolver.java",
+                        "line": 334
+                    },
+                    {
+                        "message": "getFinalPageName(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1266
+                    },
+                    {
+                        "message": "getFinalPageName(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 1092
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 1096
+                    },
+                    {
+                        "message": "getFinalPageName(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 655
+                    },
+                    {
+                        "message": "ref : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 657
+                    },
+                    {
+                        "message": "cleanedRefs [post update] : TreeSet [<element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 657
+                    },
+                    {
+                        "message": "cleanedRefs : TreeSet [<element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 660
+                    },
+                    {
+                        "message": "m_refersTo [post update] : Map [<map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 660
+                    },
+                    {
+                        "message": "this <.field> [post update] : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 660
+                    },
+                    {
+                        "message": "this <.method> [post update] : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "this <.method> [post update] : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 275
+                    },
+                    {
+                        "message": "this : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 312
+                    },
+                    {
+                        "message": "listener : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventUtils.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "listener : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventUtils.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "listener : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventManager.java",
+                        "line": 230
+                    },
+                    {
+                        "message": "listener : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventManager.java",
+                        "line": 234
+                    },
+                    {
+                        "message": "c_monitor : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventManager.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "c_monitor : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventManager.java",
+                        "line": 354
+                    },
+                    {
+                        "message": "parameter this : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 1110
+                    },
+                    {
+                        "message": "this <.method> : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 1118
+                    },
+                    {
+                        "message": "parameter this : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 558
+                    },
+                    {
+                        "message": "this <.field> : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 560
+                    },
+                    {
+                        "message": "m_refersTo : Map [<map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 560
+                    },
+                    {
+                        "message": "get(...) : TreeSet [<element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 560
+                    },
+                    {
+                        "message": "refTo : TreeSet [<element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 564
+                    },
+                    {
+                        "message": "iterator(...) : Iterator [<element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 564
+                    },
+                    {
+                        "message": "itRefTo : Iterator [<element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 567
+                    },
+                    {
+                        "message": "next(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 567
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 571
+                    },
+                    {
+                        "message": "msg : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/InternalWikiException.java",
+                        "line": 37
+                    },
+                    {
+                        "message": "msg : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/InternalWikiException.java",
+                        "line": 39
+                    },
+                    {
+                        "message": "this <constr(this)> [post update] : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/InternalWikiException.java",
+                        "line": 39
+                    },
+                    {
+                        "message": "new InternalWikiException(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 571
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 558
+                    },
+                    {
+                        "message": "Exception out: pageRemoved(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 1118
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 1110
+                    },
+                    {
+                        "message": "Exception out: actionPerformed(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventManager.java",
+                        "line": 354
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventManager.java",
+                        "line": 350
+                    },
+                    {
+                        "message": "Exception out: fireEvent(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/AuthorizationManager.java",
+                        "line": 739
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/AuthorizationManager.java",
+                        "line": 735
+                    },
+                    {
+                        "message": "Exception out: fireEvent(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/AuthorizationManager.java",
+                        "line": 183
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/AuthorizationManager.java",
+                        "line": 176
+                    },
+                    {
+                        "message": "Exception out: checkPermission(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/BasicSearchProvider.java",
+                        "line": 174
+                    },
+                    {
+                        "message": "catch (...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/BasicSearchProvider.java",
+                        "line": 187
+                    },
+                    {
+                        "message": "Uncaught exception : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/BasicSearchProvider.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/BasicSearchProvider.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "Exception out: findPages(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/BasicSearchProvider.java",
+                        "line": 199
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/BasicSearchProvider.java",
+                        "line": 198
+                    },
+                    {
+                        "message": "Exception out: findPages(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/SearchManager.java",
+                        "line": 348
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/SearchManager.java",
+                        "line": 344
+                    },
+                    {
+                        "message": "Exception out: findPages(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 112
+                    },
+                    {
+                        "message": "Exception out: doBasicQuery(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "e : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 96
+                    },
+                    {
+                        "message": "e : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "getMessage(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "execute(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/DefaultPluginManager.java",
+                        "line": 342
+                    },
+                    {
+                        "message": "execute(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/PluginTag.java",
+                        "line": 110
+                    },
+                    {
+                        "message": "result : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/PluginTag.java",
+                        "line": 112
+                    },
+                    {
+                        "message": "executePlugin(...)",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/PluginTag.java",
+                        "line": 148
+                    }
+                ],
+                [
+                    {
+                        "message": "title : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1114
+                    },
+                    {
+                        "message": "title : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1133
+                    },
+                    {
+                        "message": "beautifyTitle(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 369
+                    },
+                    {
+                        "message": "author : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 377
+                    },
+                    {
+                        "message": "format(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 377
+                    },
+                    {
+                        "message": "buffer [post update] : StringBuilder",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 377
+                    },
+                    {
+                        "message": "sb [post update] : StringBuilder",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 286
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 290
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 298
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 298
+                    },
+                    {
+                        "message": "execute(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/DefaultPluginManager.java",
+                        "line": 342
+                    },
+                    {
+                        "message": "execute(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/PluginTag.java",
+                        "line": 110
+                    },
+                    {
+                        "message": "result : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/PluginTag.java",
+                        "line": 112
+                    },
+                    {
+                        "message": "executePlugin(...)",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/PluginTag.java",
+                        "line": 148
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "page : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1263
+                    },
+                    {
+                        "message": "page : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1266
+                    },
+                    {
+                        "message": "page : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ui/CommandResolver.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "...?...:... : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ui/CommandResolver.java",
+                        "line": 334
+                    },
+                    {
+                        "message": "getFinalPageName(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1266
+                    },
+                    {
+                        "message": "getFinalPageName(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 1092
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 1096
+                    },
+                    {
+                        "message": "getFinalPageName(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 655
+                    },
+                    {
+                        "message": "ref : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 657
+                    },
+                    {
+                        "message": "cleanedRefs [post update] : TreeSet [<element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 657
+                    },
+                    {
+                        "message": "cleanedRefs : TreeSet [<element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 660
+                    },
+                    {
+                        "message": "m_refersTo [post update] : Map [<map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 660
+                    },
+                    {
+                        "message": "this <.field> [post update] : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 660
+                    },
+                    {
+                        "message": "this <.method> [post update] : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "this <.method> [post update] : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 275
+                    },
+                    {
+                        "message": "this : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 312
+                    },
+                    {
+                        "message": "listener : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventUtils.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "listener : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventUtils.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "listener : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventManager.java",
+                        "line": 230
+                    },
+                    {
+                        "message": "listener : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventManager.java",
+                        "line": 234
+                    },
+                    {
+                        "message": "c_monitor : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventManager.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "c_monitor : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventManager.java",
+                        "line": 354
+                    },
+                    {
+                        "message": "parameter this : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 1110
+                    },
+                    {
+                        "message": "this <.method> : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 1118
+                    },
+                    {
+                        "message": "parameter this : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 558
+                    },
+                    {
+                        "message": "this <.field> : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 560
+                    },
+                    {
+                        "message": "m_refersTo : Map [<map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 560
+                    },
+                    {
+                        "message": "get(...) : TreeSet [<element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 560
+                    },
+                    {
+                        "message": "refTo : TreeSet [<element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 564
+                    },
+                    {
+                        "message": "iterator(...) : Iterator [<element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 564
+                    },
+                    {
+                        "message": "itRefTo : Iterator [<element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 567
+                    },
+                    {
+                        "message": "next(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 567
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 571
+                    },
+                    {
+                        "message": "msg : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/InternalWikiException.java",
+                        "line": 37
+                    },
+                    {
+                        "message": "msg : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/InternalWikiException.java",
+                        "line": 39
+                    },
+                    {
+                        "message": "this <constr(this)> [post update] : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/InternalWikiException.java",
+                        "line": 39
+                    },
+                    {
+                        "message": "new InternalWikiException(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 571
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 558
+                    },
+                    {
+                        "message": "Exception out: pageRemoved(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 1118
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 1110
+                    },
+                    {
+                        "message": "Exception out: actionPerformed(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventManager.java",
+                        "line": 354
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventManager.java",
+                        "line": 350
+                    },
+                    {
+                        "message": "Exception out: fireEvent(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/AuthorizationManager.java",
+                        "line": 739
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/AuthorizationManager.java",
+                        "line": 735
+                    },
+                    {
+                        "message": "Exception out: fireEvent(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/AuthorizationManager.java",
+                        "line": 183
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/AuthorizationManager.java",
+                        "line": 176
+                    },
+                    {
+                        "message": "Exception out: checkPermission(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/BasicSearchProvider.java",
+                        "line": 174
+                    },
+                    {
+                        "message": "catch (...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/BasicSearchProvider.java",
+                        "line": 187
+                    },
+                    {
+                        "message": "Uncaught exception : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/BasicSearchProvider.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/BasicSearchProvider.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "Exception out: findPages(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/BasicSearchProvider.java",
+                        "line": 199
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/BasicSearchProvider.java",
+                        "line": 198
+                    },
+                    {
+                        "message": "Exception out: findPages(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/SearchManager.java",
+                        "line": 348
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/SearchManager.java",
+                        "line": 344
+                    },
+                    {
+                        "message": "Exception out: findPages(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 112
+                    },
+                    {
+                        "message": "Exception out: doBasicQuery(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "e : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 96
+                    },
+                    {
+                        "message": "e : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "getMessage(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "execute(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/DefaultPluginManager.java",
+                        "line": 342
+                    },
+                    {
+                        "message": "execute(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 203
+                    },
+                    {
+                        "message": "result : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 219
+                    },
+                    {
+                        "message": "invoke(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "getText(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 121
+                    },
+                    {
+                        "message": "getValue(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/render/CleanTextRenderer.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "sb [post update] : StringBuilder",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/render/CleanTextRenderer.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/render/CleanTextRenderer.java",
+                        "line": 85
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/render/CleanTextRenderer.java",
+                        "line": 85
+                    },
+                    {
+                        "message": "getString(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/render/RenderingManager.java",
+                        "line": 271
+                    },
+                    {
+                        "message": "getHTML(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/render/RenderingManager.java",
+                        "line": 332
+                    },
+                    {
+                        "message": "getHTML(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1526
+                    },
+                    {
+                        "message": "result : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1539
+                    },
+                    {
+                        "message": "textToHTML(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/TranslateTag.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "result",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/TranslateTag.java",
+                        "line": 70
+                    }
+                ],
+                [
+                    {
+                        "message": "title : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1114
+                    },
+                    {
+                        "message": "title : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1133
+                    },
+                    {
+                        "message": "beautifyTitle(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 369
+                    },
+                    {
+                        "message": "author : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 377
+                    },
+                    {
+                        "message": "format(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 377
+                    },
+                    {
+                        "message": "buffer [post update] : StringBuilder",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 377
+                    },
+                    {
+                        "message": "sb [post update] : StringBuilder",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 286
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 290
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 298
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 298
+                    },
+                    {
+                        "message": "execute(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/DefaultPluginManager.java",
+                        "line": 342
+                    },
+                    {
+                        "message": "execute(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 203
+                    },
+                    {
+                        "message": "result : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 219
+                    },
+                    {
+                        "message": "invoke(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 153
+                    },
+                    {
+                        "message": "getText(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 121
+                    },
+                    {
+                        "message": "getValue(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/render/CleanTextRenderer.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "sb [post update] : StringBuilder",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/render/CleanTextRenderer.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/render/CleanTextRenderer.java",
+                        "line": 85
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/render/CleanTextRenderer.java",
+                        "line": 85
+                    },
+                    {
+                        "message": "getString(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/render/RenderingManager.java",
+                        "line": 271
+                    },
+                    {
+                        "message": "getHTML(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/render/RenderingManager.java",
+                        "line": 332
+                    },
+                    {
+                        "message": "getHTML(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1526
+                    },
+                    {
+                        "message": "result : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1539
+                    },
+                    {
+                        "message": "textToHTML(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/TranslateTag.java",
+                        "line": 68
+                    },
+                    {
+                        "message": "result",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/TranslateTag.java",
+                        "line": 70
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getParameter(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiContext.java",
+                        "line": 503
+                    },
+                    {
+                        "message": "result : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiContext.java",
+                        "line": 506
+                    },
+                    {
+                        "message": "getHttpParameter(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 291
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 292
+                    },
+                    {
+                        "message": "getValue(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/VariableTag.java",
+                        "line": 86
+                    },
+                    {
+                        "message": "value : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/VariableTag.java",
+                        "line": 107
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 211
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 212
+                    },
+                    {
+                        "message": "orig : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 228
+                    },
+                    {
+                        "message": "orig : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "replaceString(...) : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 212
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 213
+                    },
+                    {
+                        "message": "orig : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 228
+                    },
+                    {
+                        "message": "orig : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "replaceString(...) : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 213
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 214
+                    },
+                    {
+                        "message": "orig : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 228
+                    },
+                    {
+                        "message": "orig : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "replaceString(...) : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 214
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 215
+                    },
+                    {
+                        "message": "orig : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 228
+                    },
+                    {
+                        "message": "orig : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 231
+                    },
+                    {
+                        "message": "replaceString(...) : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 215
+                    },
+                    {
+                        "message": "src : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 217
+                    },
+                    {
+                        "message": "replaceEntities(...)",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/tags/VariableTag.java",
+                        "line": 107
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getInputStream(...) : ServletInputStream",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/xmlrpc/RPCServlet.java",
+                        "line": 129
+                    },
+                    {
+                        "message": "execute(...) : byte[]",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/xmlrpc/RPCServlet.java",
+                        "line": 129
+                    },
+                    {
+                        "message": "result",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/xmlrpc/RPCServlet.java",
+                        "line": 142
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getUrl(...) : BasedSequence",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ExternalLinkNodePostProcessorState.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ExternalLinkNodePostProcessorState.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "urlRef : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 39
+                    },
+                    {
+                        "message": "urlRef : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "this [post update] : ImageLinkNodePostProcessorState [urlRef] : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "new ImageLinkNodePostProcessorState(...) : ImageLinkNodePostProcessorState [urlRef] : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ExternalLinkNodePostProcessorState.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "parameter this : ImageLinkNodePostProcessorState [urlRef] : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 51
+                    },
+                    {
+                        "message": "this <.field> : ImageLinkNodePostProcessorState [urlRef] : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "urlRef : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 52
+                    },
+                    {
+                        "message": "of(...)",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 52
+                    }
+                ],
+                [
+                    {
+                        "message": "getText(...) : BasedSequence",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 54
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 54
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 52
+                    },
+                    {
+                        "message": "of(...)",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 52
+                    }
+                ],
+                [
+                    {
+                        "message": "getUrl(...) : BasedSequence",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/InterWikiLinkNodePostProcessorState.java",
+                        "line": 67
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/InterWikiLinkNodePostProcessorState.java",
+                        "line": 67
+                    },
+                    {
+                        "message": "split(...) : String[]",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/InterWikiLinkNodePostProcessorState.java",
+                        "line": 67
+                    },
+                    {
+                        "message": "...[...] : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/InterWikiLinkNodePostProcessorState.java",
+                        "line": 71
+                    },
+                    {
+                        "message": "dest : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 228
+                    },
+                    {
+                        "message": "dest : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 240
+                    },
+                    {
+                        "message": "res [post update] : StringBuilder",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 240
+                    },
+                    {
+                        "message": "res : StringBuilder",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 245
+                    },
+                    {
+                        "message": "res : StringBuilder",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 247
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 247
+                    },
+                    {
+                        "message": "replaceString(...) : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/InterWikiLinkNodePostProcessorState.java",
+                        "line": 71
+                    },
+                    {
+                        "message": "urlReference : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/InterWikiLinkNodePostProcessorState.java",
+                        "line": 73
+                    },
+                    {
+                        "message": "urlRef : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 39
+                    },
+                    {
+                        "message": "urlRef : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "this [post update] : ImageLinkNodePostProcessorState [urlRef] : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "new ImageLinkNodePostProcessorState(...) : ImageLinkNodePostProcessorState [urlRef] : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/InterWikiLinkNodePostProcessorState.java",
+                        "line": 73
+                    },
+                    {
+                        "message": "parameter this : ImageLinkNodePostProcessorState [urlRef] : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 51
+                    },
+                    {
+                        "message": "this <.field> : ImageLinkNodePostProcessorState [urlRef] : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "urlRef : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 52
+                    },
+                    {
+                        "message": "of(...)",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 52
+                    }
+                ],
+                [
+                    {
+                        "message": "getUrl(...) : BasedSequence",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/LocalLinkNodePostProcessorState.java",
+                        "line": 52
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/LocalLinkNodePostProcessorState.java",
+                        "line": 52
+                    },
+                    {
+                        "message": "attachmentname : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/attachment/AttachmentManager.java",
+                        "line": 248
+                    },
+                    {
+                        "message": "attachmentname : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/attachment/AttachmentManager.java",
+                        "line": 266
+                    },
+                    {
+                        "message": "attachmentname : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/attachment/AttachmentManager.java",
+                        "line": 268
+                    },
+                    {
+                        "message": "getAttachmentInfoName(...) : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/LocalLinkNodePostProcessorState.java",
+                        "line": 52
+                    },
+                    {
+                        "message": "attachment : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/LocalLinkNodePostProcessorState.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "urlRef : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 39
+                    },
+                    {
+                        "message": "urlRef : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "this [post update] : ImageLinkNodePostProcessorState [urlRef] : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 41
+                    },
+                    {
+                        "message": "new ImageLinkNodePostProcessorState(...) : ImageLinkNodePostProcessorState [urlRef] : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/LocalLinkNodePostProcessorState.java",
+                        "line": 63
+                    },
+                    {
+                        "message": "parameter this : ImageLinkNodePostProcessorState [urlRef] : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 51
+                    },
+                    {
+                        "message": "this <.field> : ImageLinkNodePostProcessorState [urlRef] : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "urlRef : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 53
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 52
+                    },
+                    {
+                        "message": "of(...)",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/ImageLinkNodePostProcessorState.java",
+                        "line": 52
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getText(...) : BasedSequence",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/LocalLinkNodePostProcessorState.java",
+                        "line": 58
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/LocalLinkNodePostProcessorState.java",
+                        "line": 58
+                    },
+                    {
+                        "message": "of(...)",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/LocalLinkNodePostProcessorState.java",
+                        "line": 58
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "getUrl(...) : BasedSequence",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/NodePostProcessorStateCommonOperations.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/NodePostProcessorStateCommonOperations.java",
+                        "line": 64
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/NodePostProcessorStateCommonOperations.java",
+                        "line": 66
+                    },
+                    {
+                        "message": "of(...)",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/NodePostProcessorStateCommonOperations.java",
+                        "line": 66
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "varName : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 226
+                    },
+                    {
+                        "message": "varName : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 237
+                    },
+                    {
+                        "message": "varName : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 329
+                    },
+                    {
+                        "message": "varName : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 344
+                    },
+                    {
+                        "message": "varName : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 344
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 347
+                    },
+                    {
+                        "message": "msg : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/api/exceptions/NoSuchVariableException.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "msg : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/api/exceptions/NoSuchVariableException.java",
+                        "line": 36
+                    },
+                    {
+                        "message": "this <constr(this)> [post update] : NoSuchVariableException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/api/exceptions/NoSuchVariableException.java",
+                        "line": 36
+                    },
+                    {
+                        "message": "new NoSuchVariableException(...) : NoSuchVariableException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 347
+                    },
+                    {
+                        "message": "Exception return : NoSuchVariableException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 225
+                    },
+                    {
+                        "message": "Exception out: getValue(...) : NoSuchVariableException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 113
+                    },
+                    {
+                        "message": "Exception return : NoSuchVariableException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "Exception out: parseAndGetValue(...) : NoSuchVariableException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/VariableLinkNodePostProcessorState.java",
+                        "line": 56
+                    },
+                    {
+                        "message": "e : NoSuchVariableException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/VariableLinkNodePostProcessorState.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "e : NoSuchVariableException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/VariableLinkNodePostProcessorState.java",
+                        "line": 60
+                    },
+                    {
+                        "message": "getMessage(...) : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/VariableLinkNodePostProcessorState.java",
+                        "line": 60
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/VariableLinkNodePostProcessorState.java",
+                        "line": 60
+                    },
+                    {
+                        "message": "errMsg : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/NodePostProcessorStateCommonOperations.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/NodePostProcessorStateCommonOperations.java",
+                        "line": 73
+                    },
+                    {
+                        "message": "of(...)",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/NodePostProcessorStateCommonOperations.java",
+                        "line": 73
+                    }
+                ],
+                [
+                    {
+                        "message": "link : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 101
+                    },
+                    {
+                        "message": "link : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 105
+                    },
+                    {
+                        "message": "link : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 111
+                    },
+                    {
+                        "message": "substring(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 111
+                    },
+                    {
+                        "message": "varName : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 113
+                    },
+                    {
+                        "message": "trim(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 113
+                    },
+                    {
+                        "message": "varName : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 226
+                    },
+                    {
+                        "message": "varName : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 237
+                    },
+                    {
+                        "message": "varName : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 329
+                    },
+                    {
+                        "message": "varName : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 344
+                    },
+                    {
+                        "message": "varName : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 344
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 347
+                    },
+                    {
+                        "message": "msg : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/api/exceptions/NoSuchVariableException.java",
+                        "line": 35
+                    },
+                    {
+                        "message": "msg : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/api/exceptions/NoSuchVariableException.java",
+                        "line": 36
+                    },
+                    {
+                        "message": "this <constr(this)> [post update] : NoSuchVariableException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/api/exceptions/NoSuchVariableException.java",
+                        "line": 36
+                    },
+                    {
+                        "message": "new NoSuchVariableException(...) : NoSuchVariableException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 347
+                    },
+                    {
+                        "message": "Exception return : NoSuchVariableException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 225
+                    },
+                    {
+                        "message": "Exception out: getValue(...) : NoSuchVariableException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 113
+                    },
+                    {
+                        "message": "Exception return : NoSuchVariableException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/VariableManager.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "Exception out: parseAndGetValue(...) : NoSuchVariableException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/VariableLinkNodePostProcessorState.java",
+                        "line": 56
+                    },
+                    {
+                        "message": "e : NoSuchVariableException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/VariableLinkNodePostProcessorState.java",
+                        "line": 59
+                    },
+                    {
+                        "message": "e : NoSuchVariableException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/VariableLinkNodePostProcessorState.java",
+                        "line": 60
+                    },
+                    {
+                        "message": "getMessage(...) : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/VariableLinkNodePostProcessorState.java",
+                        "line": 60
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/VariableLinkNodePostProcessorState.java",
+                        "line": 60
+                    },
+                    {
+                        "message": "errMsg : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/NodePostProcessorStateCommonOperations.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/NodePostProcessorStateCommonOperations.java",
+                        "line": 73
+                    },
+                    {
+                        "message": "of(...)",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/NodePostProcessorStateCommonOperations.java",
+                        "line": 73
+                    }
+                ],
+                [
+                    {
+                        "message": "group(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 263
+                    },
+                    {
+                        "message": "plugin : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 276
+                    },
+                    {
+                        "message": "pluginName : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 81
+                    },
+                    {
+                        "message": "pluginName : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "this <.field> [post update] : PluginContent [m_pluginName] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "new PluginContent(...) : PluginContent [m_pluginName] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 276
+                    },
+                    {
+                        "message": "result : PluginContent [m_pluginName] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 278
+                    },
+                    {
+                        "message": "parsePluginLine(...) : PluginContent [m_pluginName] : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/PluginLinkNodePostProcessorState.java",
+                        "line": 67
+                    },
+                    {
+                        "message": "pluginContent : PluginContent [m_pluginName] : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/PluginLinkNodePostProcessorState.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "parameter this : PluginContent [m_pluginName] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 228
+                    },
+                    {
+                        "message": "this <.method> : PluginContent [m_pluginName] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 239
+                    },
+                    {
+                        "message": "parameter this : PluginContent [m_pluginName] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 92
+                    },
+                    {
+                        "message": "this <.field> : PluginContent [m_pluginName] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "m_pluginName : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "getPluginName(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 239
+                    },
+                    {
+                        "message": "format(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 239
+                    },
+                    {
+                        "message": "message : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/api/exceptions/PluginException.java",
+                        "line": 47
+                    },
+                    {
+                        "message": "message : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/api/exceptions/PluginException.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "this <constr(this)> [post update] : PluginException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/api/exceptions/PluginException.java",
+                        "line": 48
+                    },
+                    {
+                        "message": "new PluginException(...) : PluginException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 239
+                    },
+                    {
+                        "message": "Exception return : PluginException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 228
+                    },
+                    {
+                        "message": "Exception out: executeParse(...) : PluginException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/PluginLinkNodePostProcessorState.java",
+                        "line": 75
+                    },
+                    {
+                        "message": "e : PluginException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/PluginLinkNodePostProcessorState.java",
+                        "line": 78
+                    },
+                    {
+                        "message": "e : PluginException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/PluginLinkNodePostProcessorState.java",
+                        "line": 85
+                    },
+                    {
+                        "message": "getMessage(...) : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/PluginLinkNodePostProcessorState.java",
+                        "line": 85
+                    },
+                    {
+                        "message": "format(...) : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/PluginLinkNodePostProcessorState.java",
+                        "line": 82
+                    },
+                    {
+                        "message": "errMsg : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/NodePostProcessorStateCommonOperations.java",
+                        "line": 72
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/NodePostProcessorStateCommonOperations.java",
+                        "line": 73
+                    },
+                    {
+                        "message": "of(...)",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/NodePostProcessorStateCommonOperations.java",
+                        "line": 73
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "page : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1263
+                    },
+                    {
+                        "message": "page : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1266
+                    },
+                    {
+                        "message": "page : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ui/CommandResolver.java",
+                        "line": 295
+                    },
+                    {
+                        "message": "...?...:... : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ui/CommandResolver.java",
+                        "line": 334
+                    },
+                    {
+                        "message": "getFinalPageName(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1266
+                    },
+                    {
+                        "message": "getFinalPageName(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 1092
+                    },
+                    {
+                        "message": "s : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 1096
+                    },
+                    {
+                        "message": "getFinalPageName(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 655
+                    },
+                    {
+                        "message": "ref : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 657
+                    },
+                    {
+                        "message": "cleanedRefs [post update] : TreeSet [<element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 657
+                    },
+                    {
+                        "message": "cleanedRefs : TreeSet [<element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 660
+                    },
+                    {
+                        "message": "m_refersTo [post update] : Map [<map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 660
+                    },
+                    {
+                        "message": "this <.field> [post update] : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 660
+                    },
+                    {
+                        "message": "this <.method> [post update] : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 204
+                    },
+                    {
+                        "message": "this <.method> [post update] : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 275
+                    },
+                    {
+                        "message": "this : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 312
+                    },
+                    {
+                        "message": "listener : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventUtils.java",
+                        "line": 94
+                    },
+                    {
+                        "message": "listener : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventUtils.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "listener : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventManager.java",
+                        "line": 230
+                    },
+                    {
+                        "message": "listener : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventManager.java",
+                        "line": 234
+                    },
+                    {
+                        "message": "c_monitor : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventManager.java",
+                        "line": 160
+                    },
+                    {
+                        "message": "c_monitor : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventManager.java",
+                        "line": 354
+                    },
+                    {
+                        "message": "parameter this : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 1110
+                    },
+                    {
+                        "message": "this <.method> : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 1118
+                    },
+                    {
+                        "message": "parameter this : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 558
+                    },
+                    {
+                        "message": "this <.field> : ReferenceManager [m_refersTo, <map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 560
+                    },
+                    {
+                        "message": "m_refersTo : Map [<map.value>, <element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 560
+                    },
+                    {
+                        "message": "get(...) : TreeSet [<element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 560
+                    },
+                    {
+                        "message": "refTo : TreeSet [<element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 564
+                    },
+                    {
+                        "message": "iterator(...) : Iterator [<element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 564
+                    },
+                    {
+                        "message": "itRefTo : Iterator [<element>] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 567
+                    },
+                    {
+                        "message": "next(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 567
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 571
+                    },
+                    {
+                        "message": "msg : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/InternalWikiException.java",
+                        "line": 37
+                    },
+                    {
+                        "message": "msg : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/InternalWikiException.java",
+                        "line": 39
+                    },
+                    {
+                        "message": "this <constr(this)> [post update] : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/InternalWikiException.java",
+                        "line": 39
+                    },
+                    {
+                        "message": "new InternalWikiException(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 571
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 558
+                    },
+                    {
+                        "message": "Exception out: pageRemoved(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 1118
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/ReferenceManager.java",
+                        "line": 1110
+                    },
+                    {
+                        "message": "Exception out: actionPerformed(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventManager.java",
+                        "line": 354
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/event/WikiEventManager.java",
+                        "line": 350
+                    },
+                    {
+                        "message": "Exception out: fireEvent(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/AuthorizationManager.java",
+                        "line": 739
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/AuthorizationManager.java",
+                        "line": 735
+                    },
+                    {
+                        "message": "Exception out: fireEvent(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/AuthorizationManager.java",
+                        "line": 183
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/AuthorizationManager.java",
+                        "line": 176
+                    },
+                    {
+                        "message": "Exception out: checkPermission(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/BasicSearchProvider.java",
+                        "line": 174
+                    },
+                    {
+                        "message": "catch (...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/BasicSearchProvider.java",
+                        "line": 187
+                    },
+                    {
+                        "message": "Uncaught exception : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/BasicSearchProvider.java",
+                        "line": 169
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/BasicSearchProvider.java",
+                        "line": 152
+                    },
+                    {
+                        "message": "Exception out: findPages(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/BasicSearchProvider.java",
+                        "line": 199
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/BasicSearchProvider.java",
+                        "line": 198
+                    },
+                    {
+                        "message": "Exception out: findPages(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/SearchManager.java",
+                        "line": 348
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/search/SearchManager.java",
+                        "line": 344
+                    },
+                    {
+                        "message": "Exception out: findPages(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 117
+                    },
+                    {
+                        "message": "Exception return : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 112
+                    },
+                    {
+                        "message": "Exception out: doBasicQuery(...) : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 93
+                    },
+                    {
+                        "message": "e : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 96
+                    },
+                    {
+                        "message": "e : InternalWikiException [java.lang.Throwable.message] : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "getMessage(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "... + ... : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/Search.java",
+                        "line": 98
+                    },
+                    {
+                        "message": "execute(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/DefaultPluginManager.java",
+                        "line": 342
+                    },
+                    {
+                        "message": "execute(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 203
+                    },
+                    {
+                        "message": "result : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 219
+                    },
+                    {
+                        "message": "invoke(...) : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/PluginLinkNodePostProcessorState.java",
+                        "line": 102
+                    },
+                    {
+                        "message": "pluginInvocation : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/PluginLinkNodePostProcessorState.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "pluginInvocation(...) : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/PluginLinkNodePostProcessorState.java",
+                        "line": 73
+                    },
+                    {
+                        "message": "pluginInvocation : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/PluginLinkNodePostProcessorState.java",
+                        "line": 74
+                    },
+                    {
+                        "message": "of(...)",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/PluginLinkNodePostProcessorState.java",
+                        "line": 74
+                    }
+                ],
+                [
+                    {
+                        "message": "title : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1114
+                    },
+                    {
+                        "message": "title : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1133
+                    },
+                    {
+                        "message": "beautifyTitle(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 369
+                    },
+                    {
+                        "message": "author : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 377
+                    },
+                    {
+                        "message": "format(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 377
+                    },
+                    {
+                        "message": "buffer [post update] : StringBuilder",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 377
+                    },
+                    {
+                        "message": "sb [post update] : StringBuilder",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 286
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 290
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 298
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/WeblogPlugin.java",
+                        "line": 298
+                    },
+                    {
+                        "message": "execute(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/plugin/DefaultPluginManager.java",
+                        "line": 342
+                    },
+                    {
+                        "message": "execute(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 203
+                    },
+                    {
+                        "message": "result : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/parser/PluginContent.java",
+                        "line": 219
+                    },
+                    {
+                        "message": "invoke(...) : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/PluginLinkNodePostProcessorState.java",
+                        "line": 102
+                    },
+                    {
+                        "message": "pluginInvocation : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/PluginLinkNodePostProcessorState.java",
+                        "line": 106
+                    },
+                    {
+                        "message": "pluginInvocation(...) : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/PluginLinkNodePostProcessorState.java",
+                        "line": 73
+                    },
+                    {
+                        "message": "pluginInvocation : String",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/PluginLinkNodePostProcessorState.java",
+                        "line": 74
+                    },
+                    {
+                        "message": "of(...)",
+                        "uri": "jspwiki-markdown/src/main/java/org/apache/wiki/markdown/extensions/jspwikilinks/postprocessor/PluginLinkNodePostProcessorState.java",
+                        "line": 74
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": []
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "text : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1723
+                    },
+                    {
+                        "message": "text : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1727
+                    },
+                    {
+                        "message": "postData : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 462
+                    },
+                    {
+                        "message": "postData : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 466
+                    },
+                    {
+                        "message": "postData : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 480
+                    },
+                    {
+                        "message": "charAt(...) : Number",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 480
+                    },
+                    {
+                        "message": "sb [post update] : StringBuilder",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 480
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 485
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 486
+                    },
+                    {
+                        "message": "sb : StringBuilder",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 489
+                    },
+                    {
+                        "message": "toString(...) : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/TextUtil.java",
+                        "line": 489
+                    },
+                    {
+                        "message": "normalizePostData(...) : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1727
+                    },
+                    {
+                        "message": "proposedText : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/WikiEngine.java",
+                        "line": 1745
+                    },
+                    {
+                        "message": "secondWikiText : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/diff/DifferenceManager.java",
+                        "line": 100
+                    },
+                    {
+                        "message": "secondWikiText : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/diff/DifferenceManager.java",
+                        "line": 103
+                    },
+                    {
+                        "message": "p2 : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/diff/ExternalDiffProvider.java",
+                        "line": 104
+                    },
+                    {
+                        "message": "p2 : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/diff/ExternalDiffProvider.java",
+                        "line": 113
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/FileUtil.java",
+                        "line": 69
+                    },
+                    {
+                        "message": "content : String",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/FileUtil.java",
+                        "line": 80
+                    },
+                    {
+                        "message": "new StringReader(...) : StringReader",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/FileUtil.java",
+                        "line": 80
+                    },
+                    {
+                        "message": "in : StringReader",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/FileUtil.java",
+                        "line": 85
+                    },
+                    {
+                        "message": "in : StringReader",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/FileUtil.java",
+                        "line": 183
+                    },
+                    {
+                        "message": "in : StringReader",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/FileUtil.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "buf [post update] : char[]",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/FileUtil.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "buf",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/FileUtil.java",
+                        "line": 191
+                    }
+                ],
+                [
+                    {
+                        "message": "username : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/login/CookieAuthenticationLoginModule.java",
+                        "line": 240
+                    },
+                    {
+                        "message": "username : String",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/login/CookieAuthenticationLoginModule.java",
+                        "line": 261
+                    },
+                    {
+                        "message": "new StringReader(...) : StringReader",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/auth/login/CookieAuthenticationLoginModule.java",
+                        "line": 261
+                    },
+                    {
+                        "message": "in : StringReader",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/FileUtil.java",
+                        "line": 183
+                    },
+                    {
+                        "message": "in : StringReader",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/FileUtil.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "buf [post update] : char[]",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/FileUtil.java",
+                        "line": 189
+                    },
+                    {
+                        "message": "buf",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/FileUtil.java",
+                        "line": 191
+                    }
+                ]
+            ]
+        },
+        {
+            "traces": [
+                [
+                    {
+                        "message": "source : File",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/attachment/AttachmentManager.java",
+                        "line": 486
+                    },
+                    {
+                        "message": "source : File",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/attachment/AttachmentManager.java",
+                        "line": 494
+                    },
+                    {
+                        "message": "new FileInputStream(...) : FileInputStream",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/attachment/AttachmentManager.java",
+                        "line": 494
+                    },
+                    {
+                        "message": "in : FileInputStream",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/attachment/AttachmentManager.java",
+                        "line": 495
+                    },
+                    {
+                        "message": "in : FileInputStream",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/attachment/AttachmentManager.java",
+                        "line": 514
+                    },
+                    {
+                        "message": "in : FileInputStream",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/attachment/AttachmentManager.java",
+                        "line": 533
+                    },
+                    {
+                        "message": "data : FileInputStream",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/providers/BasicAttachmentProvider.java",
+                        "line": 336
+                    },
+                    {
+                        "message": "data : FileInputStream",
+                        "uri": "jspwiki-main/src/main/java/org/apache/wiki/providers/BasicAttachmentProvider.java",
+                        "line": 360
+                    },
+                    {
+                        "message": "in : FileInputStream",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/FileUtil.java",
+                        "line": 206
+                    },
+                    {
+                        "message": "in : FileInputStream",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/FileUtil.java",
+                        "line": 212
+                    },
+                    {
+                        "message": "buf [post update] : byte[]",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/FileUtil.java",
+                        "line": 212
+                    },
+                    {
+                        "message": "buf",
+                        "uri": "jspwiki-util/src/main/java/org/apache/wiki/util/FileUtil.java",
+                        "line": 214
+                    }
+                ]
+            ]
+        }
+    ]
+}
